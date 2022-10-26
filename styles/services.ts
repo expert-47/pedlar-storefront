@@ -70,14 +70,11 @@ export const useStyles = makeStyles({
     textAlign: "center",
   },
   img: {
-  
     display: "flex",
     flexDirection: "column",
-   
-   
-    marginTop:"40px",
+
+    marginTop: "40px",
     paddingRight: "20px",
-   
   },
   styling: {
     color: theme.palette.secondary.light,

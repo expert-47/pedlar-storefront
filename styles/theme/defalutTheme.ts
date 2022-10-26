@@ -27,7 +27,7 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Poppins",
+    fontFamily: "inter",
 
     h3: {
       fontSize: "28px",
@@ -68,54 +68,13 @@ export const theme = createTheme({
     },
   },
 });
-theme.typography.h1 = {
-  fontSize: "48px",
-  fontWeight: 600,
-  fontFamily: "Poppins",
-  [theme.breakpoints.up("sm")]: {
-    fontSize: "72px",
-  },
-};
 
-theme.typography.h2 = {
-  fontSize: "32px",
-  fontWeight: 600,
-  fontFamily: "Poppins",
-  [theme.breakpoints.up("sm")]: {
-    fontSize: "48px",
-  },
-};
-theme.typography.h5 = {
-  fontFamily: "Poppins",
-  fontWeight: "bold",
-};
-
-theme.typography.body1 = {
-  fontSize: "16px",
-  fontWeight: 400,
-  fontFamily: "Poppins",
-  [theme.breakpoints.up("sm")]: {
-    fontSize: "18px",
-  },
-};
-
-theme.typography.subtitle1 = {
-  fontSize: "24px",
-  fontWeight: 400,
-  lineHeight: "51px",
-  letterSpacing: "0.5px",
-  fontFamily: "Poppins",
-  [theme.breakpoints.up("sm")]: {
-    fontSize: "36px",
-  },
-};
-
-theme.typography.subtitle2 = {
-  fontSize: "16px",
-  fontWeight: 400,
-  fontFamily: "Poppins",
-  [theme.breakpoints.up("sm")]: {
-    fontWeight: 500,
-    fontSize: "20px",
-  },
-};
+// theme.typography.subtitle2 = {
+//   fontSize: "16px",
+//   fontWeight: 400,
+//   fontFamily: "Poppins",
+//   [theme.breakpoints.up("sm")]: {
+//     fontWeight: 500,
+//     fontSize: "20px",
+//   },
+// };

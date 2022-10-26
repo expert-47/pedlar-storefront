@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
 import { theme } from "styles/theme/defalutTheme";
 import { ThemeProvider } from "@mui/material";
 
@@ -10,7 +9,7 @@ const { EmotionCacheProvider, withEmotionCache } = createEmotionSsrAdvancedAppro
 );
 
 export { withEmotionCache };
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   return (
     <EmotionCacheProvider>
       <ThemeProvider theme={theme}>

@@ -20,9 +20,7 @@ export const Home = () => {
       <ProductListing />
       <CustomGrid>
         <GridGallery />
-        <GridGallery />
         <BrandListing />
-        <BrandTitles />
       </CustomGrid>
       <Divider style={{ marginTop: "100px", height: "1px" }} />
       <CustomGrid>

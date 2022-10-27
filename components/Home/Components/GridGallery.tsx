@@ -4,14 +4,7 @@ import CardComponent from "./CardComponent";
 
 const GridGallery = () => {
   return (
-    <Grid
-      container
-      item
-      xs={12}
-      md={12}
-      lg={12}
-      style={{ justifyContent: "center", paddingTop: "20px", paddingBottom: "20px" }}
-    >
+    <Grid container style={{ justifyContent: "center", paddingTop: "20px", paddingBottom: "20px" }}>
       <Grid container item xs={12} sm={12} md={6} lg={6}>
         <img src="/grid-img1.png" alt="Grid-img1" style={{ width: "100%", height: "88%" }} />
         <CardComponent />

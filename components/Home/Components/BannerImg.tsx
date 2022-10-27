@@ -8,6 +8,7 @@ import TextBox from "./TextBox";
 const BannerImg = () => {
   const { classes, cx } = useStyles();
   const isMatch = useMediaQuery("(max-width:780px)");
+
   return (
     <CustomContainer
       style={{

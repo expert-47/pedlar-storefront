@@ -49,7 +49,7 @@ const Navbar = () => {
 
                 <DropdownMenu type={"Brands"} />
 
-                <DropdownMenu type={"Shops"} />
+                <DropdownMenu type={"Brands"} />
 
                 <Link href="faq">
                   <Button color="inherit" className={cx(classes.tabButton)}>

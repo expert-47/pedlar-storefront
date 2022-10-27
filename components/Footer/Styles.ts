@@ -5,9 +5,10 @@ export const useStyles = makeStyles({
 })(() => ({
   gridstyle: {
     display: "flex",
+    paddingLeft: "49px",
+    paddingRight: "49px",
     alignItems: "center",
-    justifyContent:"center",
-    padding:"20px"
+    justifyContent: "center",
   },
   typoheading: {
     marginTop: "40px",
@@ -21,6 +22,10 @@ export const useStyles = makeStyles({
     paddingTop: "11px",
     fontWeight: "600",
     color: "rgba(28, 27, 31, 0.64)",
+  },
+  bankingicons: {
+    width: "34px",
+    paddingLeft: "10px",
   },
 }));
 export const styles = {};

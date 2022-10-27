@@ -9,7 +9,7 @@ const { EmotionCacheProvider, withEmotionCache } = createEmotionSsrAdvancedAppro
 );
 
 export { withEmotionCache };
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps } : any) {
   return (
     <EmotionCacheProvider>
       <ThemeProvider theme={theme}>

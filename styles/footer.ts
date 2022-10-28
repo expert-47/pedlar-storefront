@@ -14,9 +14,9 @@ export const useStyles = makeStyles({
     backgroundColor: theme.palette.primary.main,
   },
   footerImage: {
-    height: "35px",
-    width: "10%",
-   // padding: "2px",
+    height: "24px",
+    width: "35px",
+   padding: "2px",
     lineHeight: "16px",
   },
   footerText: {

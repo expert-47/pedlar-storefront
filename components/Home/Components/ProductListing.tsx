@@ -1,19 +1,43 @@
 import React from "react";
-import { useStyles } from "../Style";
+import { useStyles } from "styles/home";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 import { CustomGrid } from "components/Layout/layout";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 const ProductListing = () => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   return (
-    <CustomGrid>
-      <Grid container item lg={12} style={{ marginTop: "50px" }}>
-        <Grid container item xs={9} sm={10} md={10.5} lg={11}>
+    <CustomGrid
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Grid
+        container
+        sm={11.5}
+        md={10}
+        lg={12}
+        paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+        paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+      >
+        <Grid container item xs={8} sm={10} md={10.5} lg={11}>
           <Typography className={cx(classes.gridtag1typo1)}>New Additions</Typography>
         </Grid>
-        <Grid container item xs={3} sm={2} md={1.5} lg={1} style={{ alignItems: "center" }}>
+        <Grid
+          container
+          item
+          xs={4}
+          sm={2}
+          md={1.5}
+          lg={1}
+          paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+          justifyContent={"center"}
+          alignItems="center"
+        >
           <Typography className={cx(classes.gridtag1typo2)}>Shop ALL</Typography>
           <ArrowRightAltIcon />
         </Grid>

@@ -5,12 +5,13 @@ export const theme = createTheme({
     primary: {
       main: "#FFFFFF",
       dark: "#000000",
-      contrastText: "##1C1B1F",
+      contrastText: "#1C1B1F",
       light: "#8652FF",
     },
     success: {
       main: "rgba(0, 0, 0, 0.2)",
       light: "rgba(28, 27, 31, 0.64)",
+      dark: "rgba(28, 27, 31, 0.64)"
     },
     divider: "rgba(6,6,6,0.12)",
   },

@@ -18,7 +18,7 @@ export function CustomContainer(props: ContainerProps) {
   const { children } = props;
 
   return (
-    <Container maxWidth={"xl"} disableGutters {...props}>
+    <Container  disableGutters {...props}>
       {children}
     </Container>
   );
@@ -27,7 +27,7 @@ export function CustomContainer(props: ContainerProps) {
 export function CustomGrid(props: ContainerProps) {
   const { children } = props;
   return (
-    <Container maxWidth={"lg"} disableGutters {...props}>
+    <Container  disableGutters {...props}>
       {children}
     </Container>
   );

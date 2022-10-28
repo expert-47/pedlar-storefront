@@ -31,39 +31,39 @@ const Navbar = () => {
           {!isMatch ? (
             <ResponsiveNavbar />
           ) : (
-            <Toolbar className={cx(classes.toolbar)}>
-              <Stack direction="row" className={cx(classes.leftContainer)}>
-                <Link href="/">
-                  <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px" }} />
-                </Link>
-                <Typography fontSize={"22px"} fontWeight={"400"} paddingLeft={"5px"}>
-                  Hannah Juneva
-                </Typography>
-              </Stack>
-              <Stack direction="row" spacing={2}>
-                <Link href="/">
-                  <Button color="inherit" className={cx(classes.tabButton)}>
-                    Home
-                  </Button>
-                </Link>
+            <Grid container item lg={12} className={cx(classes.padding)}>
+              <Toolbar className={cx(classes.toolbar)}>
+                <Stack direction="row" className={cx(classes.leftContainer)}>
+                  <Link href="/">
+                    <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px" }} />
+                  </Link>
+                  <Typography fontSize={"22px"} fontWeight={"400"} paddingLeft={"5px"}>
+                    Hannah Juneva
+                  </Typography>
+                </Stack>
+                <Stack direction="row" spacing={2}>
+                  <Link href="/">
+                    <Button className={cx(classes.tabButton)}>Home</Button>
+                  </Link>
 
-                <DropdownMenu type={"Brands"} />
+                  <DropdownMenu type={"Brands"} />
 
-                <DropdownMenu type={"Brands"} />
+                  <DropdownMenu type={"Brands"} />
 
-                <Link href="faq">
-                  <Button color="inherit" className={cx(classes.tabButton)}>
-                    Faq
-                  </Button>
-                </Link>
-                <IconButton className={cx(classes.iconColor)}>
-                  <SearchIcon />
-                </IconButton>
-                <IconButton className={cx(classes.iconColor)}>
-                  <ShoppingCartOutlinedIcon />
-                </IconButton>
-              </Stack>
-            </Toolbar>
+                  <Link href="faq">
+                    <Button color="inherit" className={cx(classes.tabButton)}>
+                      Faq
+                    </Button>
+                  </Link>
+                  <IconButton className={cx(classes.iconColor)}>
+                    <SearchIcon />
+                  </IconButton>
+                  <IconButton className={cx(classes.iconColor)}>
+                    <ShoppingCartOutlinedIcon />
+                  </IconButton>
+                </Stack>
+              </Toolbar>
+            </Grid>
           )}
         </CustomContainer>
       </AppBar>

@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "pedlar-storefront-ui-dev-temp",
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

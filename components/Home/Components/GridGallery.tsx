@@ -17,6 +17,7 @@ const GridGallery = (props: GridProps) => {
     >
       <Grid
         container
+        item
         sm={11.5}
         md={10.5}
         lg={12}
@@ -28,7 +29,7 @@ const GridGallery = (props: GridProps) => {
       >
         <Grid
           container
-          // item
+          item
           xs={12}
           sm={12}
           md={6}
@@ -41,7 +42,7 @@ const GridGallery = (props: GridProps) => {
         </Grid>
         <Grid
           container
-          // item
+          item
           gap={2}
           xs={12}
           sm={12}

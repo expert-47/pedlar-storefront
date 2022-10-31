@@ -7,9 +7,13 @@ export default function Layout(props: ContainerProps) {
   const { children } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
-      <Navbar />
-      {children}
-      <Footer />
+      <header>
+        <Navbar />
+      </header>
+      <main>{children}</main>
+      <footer>
+        <Footer />
+      </footer>
     </Container>
   );
 }
@@ -18,7 +22,7 @@ export function CustomContainer(props: ContainerProps) {
   const { children } = props;
 
   return (
-    <Container  disableGutters {...props}>
+    <Container maxWidth={"xl"} disableGutters {...props}>
       {children}
     </Container>
   );
@@ -27,7 +31,7 @@ export function CustomContainer(props: ContainerProps) {
 export function CustomGrid(props: ContainerProps) {
   const { children } = props;
   return (
-    <Container  disableGutters {...props}>
+    <Container maxWidth={"lg"} disableGutters {...props}>
       {children}
     </Container>
   );

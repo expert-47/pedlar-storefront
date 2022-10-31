@@ -1,8 +1,7 @@
-import { Grid, Typography, InputBase } from "@mui/material";
+import { Grid, Typography, InputBase, Button } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import Text from "components/CustomText";
-import { Commonbutton } from "../components/Button/Commonbutton";
 import CheckoutOrder from "components/checkoutOrder/CheckoutOrder";
 import { useStyles } from "components/checkoutOrder/Style";
 
@@ -60,7 +59,7 @@ const Checkout = () => {
       </Grid>
 
       <Grid item container style={{ padding: "50px" }} lg={7}>
-      {/* <Grid item container style={{ display: "flex", alignItems: "center" }} lg={7}> */}
+        {/* <Grid item container style={{ display: "flex", alignItems: "center" }} lg={7}> */}
 
         <Grid>
           <Text className={cx(classes.headingStyle)}>Personal Information</Text>
@@ -79,9 +78,7 @@ const Checkout = () => {
               <InputBase placeholder="Phone Number" className={cx(classes.inputStyle)} />
             </Grid>
           </Grid>
-          <Text className={cx(classes.headingStyle)}>
-            Delivery Information
-          </Text>
+          <Text className={cx(classes.headingStyle)}>Delivery Information</Text>
           <Grid container spacing={1} sm={12} lg={10}>
             <Grid item xs={12} sm={12} md={6} lg={6}>
               <InputBase placeholder="Address" className={cx(classes.inputStyle)} />
@@ -102,7 +99,7 @@ const Checkout = () => {
               <InputBase placeholder="Postcode" className={cx(classes.inputStyle)} />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Commonbutton
+              <Button
                 variant="text"
                 label="Go to Payment"
                 style={{

@@ -20,13 +20,14 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
     >
       <Grid
         container
+        item
+        lg={12}
         sm={11.5}
         md={10}
-        lg={12}
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >
-        <Grid container item xs={7} sm={9} md={10.5} lg={10}>
+        <Grid container item md={10.5} lg={10} xs={7} sm={9}>
           <Typography className={cx(classes.gridtag1typo1)}>{leftHeading}</Typography>
         </Grid>
         <Grid

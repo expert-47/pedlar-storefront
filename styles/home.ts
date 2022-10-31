@@ -30,10 +30,13 @@ export const useStyles = makeStyles({
   },
   shopbutton: {
     backgroundColor: theme.palette.primary.dark,
-    color: theme.palette.primary.contrastText,
+    color: theme.palette.primary.main,
     borderRadius: "20px",
     fontWeight: "600",
     textTransform: "none",
+    "&:hover": {
+      color: theme.palette.primary.contrastText,
+    },
   },
   mainbargrid: {
     // display: "flex",
@@ -85,7 +88,7 @@ export const useStyles = makeStyles({
     height: "1px",
   },
   baseFooter: {
-    fontWeight: "600"
+    fontWeight: "600",
   },
   boxtext: {
     color: "black",
@@ -94,7 +97,6 @@ export const useStyles = makeStyles({
   },
   baseFootTypopara: {
     fontWeight: "600",
-    
   },
   baseFootTypotext: {
     paddingTop: "11px",

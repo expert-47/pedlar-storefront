@@ -4,6 +4,7 @@ import { Typography, Button, Grid } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/Layout/layout";
 import CloseIcon from "@mui/icons-material/Close";
+import { Box } from "@mui/system";
 
 const Bar = () => {
   const { classes, cx } = useStyles();
@@ -58,12 +59,15 @@ const Bar = () => {
         >
           <Button className={cx(classes.btn)}>Signup for free</Button>
         </Grid>
-        {/* <Grid container item
-          justifyContent={{ lg: "flex-end", md: "flex-end", xs: "flex-end" }}
-          alignItems={{ lg: "flex-start", md: "flex-start", xs: "flex-start" }}
-        > */}
-        <CloseIcon className={cx(classes.closeIcon)} />
-        {/* </Grid> */}
+        <Box
+        // style={{
+        //   position: "absolute",
+        //   top: 20,
+        //   right: 20,
+        // }}
+        >
+          <CloseIcon className={cx(classes.closeIcon)} />
+        </Box>
       </Grid>
     </CustomContainer>
   );

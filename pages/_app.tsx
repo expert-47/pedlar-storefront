@@ -4,12 +4,10 @@ import { ThemeProvider } from "@mui/material";
 
 import { createEmotionSsrAdvancedApproach } from "tss-react/nextJs";
 
-const { EmotionCacheProvider, withEmotionCache } = createEmotionSsrAdvancedApproach(
-  { key: "css" } /* Argument of createCache */,
-);
-
+const { EmotionCacheProvider, withEmotionCache } = createEmotionSsrAdvancedApproach({ key: "css" });
 export { withEmotionCache };
-function MyApp({ Component, pageProps } : any) {
+
+function MyApp({ Component, pageProps }: any) {
   return (
     <EmotionCacheProvider>
       <ThemeProvider theme={theme}>

@@ -1,14 +1,11 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import Text from "components/CustomText";
-import { Commonbutton } from "components/Button/Commonbutton";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import { useStyles } from "../checkoutOrder/Style";
-
-
 
 const CheckoutOrder = () => {
   const { classes, cx } = useStyles();
@@ -36,7 +33,7 @@ const CheckoutOrder = () => {
               <AddIcon style={{ fontSize: "14px" }} className={cx(classes.addRemoveIcon)} />
             </Grid>
           </Box>
-          <Commonbutton
+          <Button
             variant="text"
             label="Remove"
             // classname="removeBtn"

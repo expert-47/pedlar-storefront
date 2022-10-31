@@ -5,21 +5,31 @@ export const useStyles = makeStyles()((theme) => ({
     alignItems: "center",
     width: "100%",
   },
+  Typography: { color: theme.palette.primary.contrastText },
   appBar: { backgroundColor: "white", width: "100%" },
   marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingLeft: "40px",
-    paddingRight: "40px",
+    width: "100%",
   },
-  iconColor: { color: "black" },
+  padding: {
+    width: "100%",
+    paddingRight: theme.spacing(30),
+    paddingLeft: theme.spacing(30),
+
+    [theme.breakpoints.down("lg")]: {
+      paddingRight: theme.spacing(20),
+      paddingLeft: theme.spacing(20),
+    },
+  },
+  iconColor: { color: theme.palette.success.dark },
   leftContainer: {
     display: "flex",
     alignItems: "center",
   },
-  tabButton: { color: "black", fontSize: "16px", fontWeight: "600" },
+  tabButton: { color: theme.palette.success.dark, fontSize: "16px", fontWeight: "600" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px" },
   menuContainer: {
     width: "100%",

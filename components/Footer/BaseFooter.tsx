@@ -1,45 +1,71 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
-import { useStyles } from "./Styles";
+import { Typography, useTheme } from "@mui/material";
+import { useStyles } from "styles/home";
+import { CustomGrid } from "components/Layout/layout";
 
 const BaseFooter = () => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
 
   return (
-    <Grid container item xs={12} sm={12} md={12} lg={12} style={{ alignItems: "center" }}>
-      <Grid item xs={12} sm={8} md={8} lg={8.5}>
-        <Typography fontSize={"22px"} className={cx(classes.typoheading)}>
-          Help & Support
-        </Typography>
-        <Typography fontSize={"20px"} className={cx(classes.typopara)}>
-          Shipping & Returns
-        </Typography>
-        <Typography fontSize={"20px"} className={cx(classes.typotext)}>
-          International Shipping
-        </Typography>
-        <Typography fontSize={"20px"} className={cx(classes.typotext)}>
-          Contact
-        </Typography>
-        <Typography fontSize={"20px"} className={cx(classes.typotext)}>
-          Terms & Condition
-        </Typography>
-        <Typography fontSize={"20px"} className={cx(classes.typotext)}>
-          Privacy Policy
-        </Typography>
-        <Typography fontSize={"20px"} className={cx(classes.typotext)}>
-          FAQ
-        </Typography>
-      </Grid>
+    <CustomGrid
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Grid
+        container
+        item
+        sm={11.5}
+        md={10}
+        lg={12}
+        paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+        paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+      >
+        <Grid item xs={12} sm={12} md={8} lg={8.5}>
+          <Typography fontSize={"22px"} className={cx(classes.baseFootTypoheading)}>
+            Help & Support
+          </Typography>
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+            Shipping & Returns
+          </Typography>
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+            International Shipping
+          </Typography>
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+            Contact
+          </Typography>
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+            Terms & Condition
+          </Typography>
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+            Privacy Policy
+          </Typography>
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+            FAQ
+          </Typography>
+        </Grid>
 
-      <Grid item xs={11} sm={4} md={4} lg={3.5}>
-        <Typography style={{ fontWeight: "600", fontSize: "20px" }}>
-          We're always here to help.
-          <br />
-          Contact us at support@pedlar.com and out customer service team will be in touch.
-        </Typography>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={4}
+          lg={3.5}
+          container
+          paddingY={{ xs: theme.spacing(30), md: theme.spacing(80), lg: theme.spacing(80) }}
+        >
+          <Typography fontSize={"20px"} className={cx(classes.baseFootTypopara)}>
+            We're always here to help.
+            <br />
+            Contact us at support@pedlar.com and out customer service team will be in touch.
+          </Typography>
+        </Grid>
       </Grid>
-    </Grid>
+    </CustomGrid>
   );
 };
 

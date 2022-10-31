@@ -1,13 +1,14 @@
 import React from "react";
-import { useStyles } from "../Style";
+import { useStyles } from "styles/home";
 import Grid from "@mui/material/Grid";
 import { CustomContainer } from "../../Layout/layout";
-import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material";
 import TextBox from "./TextBox";
 
 const BannerImg = () => {
   const { classes, cx } = useStyles();
-  const isMatch = useMediaQuery("(max-width:780px)");
+  const theme = useTheme();
+
   return (
     <CustomContainer
       style={{
@@ -17,18 +18,13 @@ const BannerImg = () => {
       }}
     >
       <Grid
-        item
         container
-        lg={12}
-        style={{
-          display: "flex",
-          justifyContent: isMatch ? "center" : "flex-start",
-          alignItems: "center",
-          alignSelf: "center",
-        }}
+        alignItems="center"
+        justifyContent={{ lg: "flex-start", md: "center", sm: "center", xs: "center" }}
+        paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid item container xs={11.5} md={7} lg={8}>
-          <img src="/header.png" alt="headerimage" className={cx(classes.img)}></img>
+        <Grid item container xs={11.5} md={8} lg={8}>
+          <img src="/bannerImage.png" alt="headerimage" className={cx(classes.img)}></img>
         </Grid>
         <Grid
           item
@@ -36,11 +32,8 @@ const BannerImg = () => {
           xs={10.5}
           md={5}
           lg={4}
-          style={{
-            marginLeft: isMatch ? 0 : "-10%",
-            marginTop: isMatch ? "-10%" : 0,
-            backgroundColor: "white",
-          }}
+          marginLeft={{ lg: "-10%", md: "-10%" }}
+          marginTop={{ lg: 0, md: 0, sm: "-10%", xs: "-10%" }}
         >
           <TextBox />
         </Grid>

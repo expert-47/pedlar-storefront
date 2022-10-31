@@ -2,9 +2,8 @@ import Text from "components/CustomText";
 import GalleryGrid1 from "components/Home/Components/GridGallery";
 import ProductHeader from "components/Home/Components/ProductHeader";
 import Layout, { CustomGrid } from "components/Layout/layout";
-import { Grid } from "@mui/material";
+import { Grid, Button } from "@mui/material";
 import Head from "next/head";
-import { Commonbutton } from "components/Button/Commonbutton";
 
 const index = () => {
   <link rel="icon" href="/favicon.ico" />;
@@ -44,9 +43,8 @@ const index = () => {
         <Text fontSize="10px" fontWeight="600">
           {"You ' ve viewed 20 out 0f 100 products"}
         </Text>
-        <Commonbutton
+        <Button
           variant="outlined"
-          label="Load more"
           style={{
             width: "15em",
             border: "2px solid black",
@@ -58,8 +56,9 @@ const index = () => {
             textTransform: "none",
             marginTop: "10px",
           }}
-          classname="loadMoreBtn"
-        />
+        >
+          Load more
+        </Button>
       </Grid>
     </Layout>
   );

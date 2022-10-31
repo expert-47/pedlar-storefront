@@ -60,10 +60,10 @@ const Footer = () => {
           paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
           <img src="/amex.png" className={cx(classes.footerImage)}></img>
-          <img src="/applePay.png" className={cx(classes.footerImage)}></img>
+          <img src="/applepay.png" className={cx(classes.footerImage)}></img>
           <img src="/mastercard.png" className={cx(classes.footerImage)}></img>
-          <img src="/payPal.png" className={cx(classes.footerImage)}></img>
-          <img src="/shopPay.png" className={cx(classes.footerImage)}></img>
+          <img src="/paypal.png" className={cx(classes.footerImage)}></img>
+          <img src="/shoppay.png" className={cx(classes.footerImage)}></img>
           <img src="/visa.png" className={cx(classes.footerImage)}></img>
         </Grid>
       </Grid>

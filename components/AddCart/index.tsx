@@ -268,7 +268,7 @@ const Cart = () => {
             paddingBottom: "50px",
           }}
         >
-          <Grid item xs={11} sm={9} md={10} lg={9.2} sx={{ paddingTop: "30px" }}>
+          <Grid container item xs={11} sm={9} md={10} lg={9.2} sx={{ paddingTop: "30px" }}>
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography sx={{ paddingBottom: "20px", fontWeight: "600", fontSize: "22px" }}>
                 You might like

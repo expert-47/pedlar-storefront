@@ -1,35 +1,28 @@
-import * as React from 'react';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MobileStepper from '@mui/material/MobileStepper';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
-import { Grid } from '@mui/material';
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+import * as React from "react";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import MobileStepper from "@mui/material/MobileStepper";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import SwipeableViews from "react-swipeable-views-react-18-fix";
+import { Grid } from "@mui/material";
 
 const images = [
   {
-    label: 'Coat',
-    imgPath:
-      '/grid-img1.png',
+    label: "Coat",
+    imgPath: "/grid-img1.png",
   },
   {
-    label:'Coat',
-    imgPath:
-      '/grid-img1.png',
+    label: "Coat",
+    imgPath: "/grid-img1.png",
   },
   {
-    label: 'Coat',
-    imgPath:
-    '/grid-img1.png',
+    label: "Coat",
+    imgPath: "/grid-img1.png",
   },
   {
-    label: 'Coat',
-    imgPath:
-    '/grid-img1.png',
+    label: "Coat",
+    imgPath: "/grid-img1.png",
   },
 ];
 
@@ -51,22 +44,20 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <Grid item xs={12} sx={{ flexGrow: 1,alignItems:'center' }}>
+    <Grid item xs={12} sx={{ flexGrow: 1, alignItems: "center" }}>
       <Paper
         square
         elevation={0}
         sx={{
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           height: 50,
           pl: 2,
-          bgcolor: 'background.default',
+          bgcolor: "background.default",
         }}
-      >
-      
-      </Paper>
-      <AutoPlaySwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+      ></Paper>
+      <SwipeableViews
+        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
         onChangeIndex={handleStepChange}
         enableMouseEvents
@@ -78,12 +69,12 @@ function SwipeableTextMobileStepper() {
                 component="img"
                 sx={{
                   height: 355,
-                  display: 'block',
+                  display: "block",
                   maxWidth: 400,
-                  justifyItems:'center',
-                  overflow: 'hidden',
-                  width: '80%',
-                  paddingLeft:'13%'
+                  justifyItems: "center",
+                  overflow: "hidden",
+                  width: "80%",
+                  paddingLeft: "13%",
                 }}
                 src={step.imgPath}
                 alt={step.label}
@@ -91,25 +82,13 @@ function SwipeableTextMobileStepper() {
             ) : null}
           </div>
         ))}
-      </AutoPlaySwipeableViews>
+      </SwipeableViews>
       <MobileStepper
         steps={maxSteps}
         position="static"
         activeStep={activeStep}
-        nextButton={
-          <Button
-      
-          >
-           
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-           
-            
-            
-          </Button>
-        }
+        nextButton={<Button></Button>}
+        backButton={<Button size="small" onClick={handleBack} disabled={activeStep === 0}></Button>}
       />
     </Grid>
   );

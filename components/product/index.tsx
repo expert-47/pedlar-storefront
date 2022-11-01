@@ -58,18 +58,18 @@ const Cart = () => {
                   </Grid>
 
                   <Grid
-                    item
+                    container
                     xs={12}
                     sm={12}
                     md={12}
                     lg={12}
-                    gap={1}
+                    gap={5}
                     sx={{
-                      paddingTop: "30px",
-                      paddingBottom: "30px",
+                      justifyContent: "center",
                       display: "flex",
                     }}
                   >
+
                     <Grid item xs={12} sm={10} md={6} lg={6} sx={{}}>
                       <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px", color: "#1C1B1F" }}>
                         Size

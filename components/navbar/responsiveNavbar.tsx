@@ -5,15 +5,15 @@ import { useStyles } from "styles/navbar";
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { PedlarDrawer } from "./components/PedlarDrawer";
+import PedlarDrawer from "./components/padlarDrawer";
 
 export const ResponsiveNavbar = () => {
   const { classes, cx } = useStyles();
   const theme = useTheme();
-  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openDrawer, toggleDrawer] = useState(false);
 
   const onClickDrawer = () => {
-    setOpenDrawer(!openDrawer);
+    toggleDrawer(!openDrawer);
   };
 
   return (
@@ -24,7 +24,7 @@ export const ResponsiveNavbar = () => {
           paddingRight: 0,
         }}
       >
-        <PedlarDrawer />
+        <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
           <MenuIcon onClick={onClickDrawer} className={cx(classes.menuIcon)} />
           <Link href="/">

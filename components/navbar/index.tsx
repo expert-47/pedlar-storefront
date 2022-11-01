@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 import { Stack } from "@mui/system";
@@ -11,16 +11,37 @@ import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
-
+import PadlarCollapseView from "./components/padlarCollapseView";
 import Typography from "components/customText";
+import { brandList, shopList } from "./data";
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
+  const [showBrandsList, toggleBrandsList] = useState(false);
+  const [showShopList, toggleShopList] = useState(false);
 
   const { classes, cx } = useStyles();
+  const onClickBrands = () => {
+    if (showShopList) {
+      toggleShopList(false);
+    }
+    toggleBrandsList((prv) => !prv);
+  };
+  const onClickShop = () => {
+    if (showBrandsList) {
+      toggleBrandsList(false);
+    }
+    toggleShopList((prv) => !prv);
+  };
   return (
     <Grid container item xs={12} sm={12} lg={12} className={cx(classes.container)}>
-      <AppBar position="static" className={cx(classes.appBar)}>
+      <AppBar
+        position="static"
+        className={cx(classes.appBar)}
+        sx={{
+          boxShadow: 3,
+        }}
+      >
         <Marquee className={cx(classes.marquee)} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
             FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
@@ -46,9 +67,9 @@ const Navbar = () => {
                     <Button className={cx(classes.tabButton)}>Home</Button>
                   </Link>
 
-                  <DropdownMenu type={"Brands"} />
+                  <DropdownMenu type={"Brands"} handleClick={onClickBrands} open={showBrandsList} />
 
-                  <DropdownMenu type={"Brands"} />
+                  <DropdownMenu type={"Shop"} handleClick={onClickShop} open={showShopList} />
 
                   <Link href="faq">
                     <Button color="inherit" className={cx(classes.tabButton)}>
@@ -67,6 +88,8 @@ const Navbar = () => {
           )}
         </CustomContainer>
       </AppBar>
+      <PadlarCollapseView open={showBrandsList} data={brandList} />
+      <PadlarCollapseView open={showShopList} data={shopList} />
     </Grid>
   );
 };

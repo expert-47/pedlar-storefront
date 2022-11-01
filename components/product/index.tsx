@@ -45,44 +45,17 @@ const Cart = () => {
               </Grid>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ justifyContent: "center" }}>
+            <Grid container item xs={12} sm={12} md={6} lg={6} sx={{ justifyContent: "center" }}>
               <Grid item xs={11} sm={6} md={10} lg={6} sx={{ textAlign: "center", paddingTop: "40px" }}>
                 <Grid>
                   <Typography sx={{ fontSize: "12px", fontWeight: "600" }}>LOW CLASSIC</Typography>
                   <Typography sx={{ fontWeight: "600", fontSize: "40px", lineHeight: "120%", paddingTop: "14px" }}>
                     Green Polyster <br></br> Blazer
                   </Typography>
-                  <Grid item xs={12} sm={12} md={12} lg={12} gap={1} sx={{ display: "flex", flexDirection: "row" }}>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                      <Typography
-                        sx={{
-                          fontWeight: "600",
-                          fontSize: "24px",
-                          paddingTop: "30px",
-                          textDecoration: "line-through",
-                          textAlign: "right",
-                          color: "#808080 ",
-                        }}
-                      >
-                        $420
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6} lg={6}>
-                      <Typography sx={{ fontWeight: "600", fontSize: "24px", paddingTop: "30px", textAlign: "left" }}>
-                        $365
-                      </Typography>
-                    </Grid>
+                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{justifyContent: "center"}}>
+                    <Typography style={{fontWeight: "600", fontSize: "24px"}}>$365</Typography>
                   </Grid>
-                  <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px" }}>
-                    {
-                      " Hi honeys! I’ve worked closely with some of my fave brands tocurate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
-                    }
-                    <br></br>
-                    <br></br>
-                    {
-                      "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
-                    }
-                  </Typography>
+                  
                   <Grid
                     item
                     xs={12}
@@ -197,6 +170,22 @@ const Cart = () => {
                     }}
                   >
                     All orders shipped directly from each brand{" "}
+                  </Typography>
+                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{marginTop: "10px",borderTop: "thin solid lightgray;",justifyContent: "space-between"}}>
+                    <Typography style={{fontWeight: "700", fontSize: "14px", color: "#1C1B1F"}}>
+                      Description
+                      </Typography>
+                      <Grid sx={{fontWeight: "700", fontSize: "14px", color: "#000000", lineHeight: "10px"}}>___</Grid>
+                  </Grid>
+                  <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px" }}>
+                    {
+                      " Hi honeys! I’ve worked closely with some of my fave brands tocurate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
+                    }
+                    <br></br>
+                    <br></br>
+                    {
+                      "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
+                    }
                   </Typography>
                   <Grid
                     item

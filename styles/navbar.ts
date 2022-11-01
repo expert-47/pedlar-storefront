@@ -78,4 +78,19 @@ export const useStyles = makeStyles()((theme) => ({
     borderRadius: "25px",
     border: "1px solid rgba(0,0,0,0.3)",
   },
+  navTypography: {
+    fontWeight: "400",
+    paddingLeft: "2px",
+  },
+  menuIcon: {
+    padding: "2px",
+  },
+  responsiveTypography: {
+    fontWeight: "400",
+    padding: "2px",
+  },
+  // responsiveImage: {
+  //   width: "100%",
+  //   height: "22px",
+  // },
 }));

@@ -8,11 +8,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import CustomGrid from "../layout";
+import CustomGrid, { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useStyles } from "tss-react/mui";
 import SwipeableTextMobileStepper from "./components/carousel";
+import Layout from "../layout";
 
 const Cart = () => {
   const { classes, cx } = useStyles();
@@ -26,8 +27,8 @@ const Cart = () => {
   };
 
   return (
-    <>
-      <CustomGrid>
+    <Layout>
+      <CustomContainer>
         <Box sx={{ flexGrow: 1, paddingTop: "20px", borderBottom: 1, borderColor: "#C5C5C5", paddingBottom: "50px" }}>
           <Grid container>
             <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
@@ -52,10 +53,10 @@ const Cart = () => {
                   <Typography sx={{ fontWeight: "600", fontSize: "40px", lineHeight: "120%", paddingTop: "14px" }}>
                     Green Polyster <br></br> Blazer
                   </Typography>
-                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{justifyContent: "center"}}>
-                    <Typography style={{fontWeight: "600", fontSize: "24px"}}>$365</Typography>
+                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{ justifyContent: "center" }}>
+                    <Typography style={{ fontWeight: "600", fontSize: "24px" }}>$365</Typography>
                   </Grid>
-                  
+
                   <Grid
                     item
                     xs={12}
@@ -171,11 +172,11 @@ const Cart = () => {
                   >
                     All orders shipped directly from each brand{" "}
                   </Typography>
-                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{marginTop: "10px",borderTop: "thin solid lightgray;",justifyContent: "space-between"}}>
-                    <Typography style={{fontWeight: "700", fontSize: "14px", color: "#1C1B1F"}}>
+                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{ marginTop: "10px", borderTop: "thin solid lightgray;", justifyContent: "space-between" }}>
+                    <Typography style={{ fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>
                       Description
-                      </Typography>
-                      <Grid sx={{fontWeight: "700", fontSize: "14px", color: "#000000", lineHeight: "10px"}}>___</Grid>
+                    </Typography>
+                    <Grid sx={{ fontWeight: "700", fontSize: "14px", color: "#000000", lineHeight: "10px" }}>___</Grid>
                   </Grid>
                   <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px" }}>
                     {
@@ -295,8 +296,9 @@ const Cart = () => {
             </Grid>
           </Grid>
         </Grid>
-      </CustomGrid>
-    </>
+      </CustomContainer>
+      </Layout>
+    
   );
 };
 

@@ -71,7 +71,7 @@ const Cart = () => {
                     }}
                   >
                     <Grid item xs={12} sm={10} md={6} lg={6} sx={{}}>
-                      <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px" }}>
+                      <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px", color: "#1C1B1F" }}>
                         Size
                       </Typography>
                       <FormControl sx={{ width: "100%" }}>
@@ -97,7 +97,7 @@ const Cart = () => {
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={10} md={6} lg={6}>
-                      <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px" }}>
+                      <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px", color: "#1C1B1F" }}>
                         Color
                       </Typography>
                       <FormControl sx={{ width: "100%" }}>
@@ -134,11 +134,15 @@ const Cart = () => {
                       <Button
                         variant="contained"
                         sx={{
-                          backgroundColor: "#000000",
+                          backgroundColor: "#1C1B1F",
                           color: "white",
                           borderRadius: "25px",
                           width: "100%",
                           height: "46px",
+                          fontWeight: "600",
+                          fontSize: "16px",
+                          textTransform: 'none'
+
                         }}
                       >
                         Add to cart
@@ -155,6 +159,8 @@ const Cart = () => {
                           borderColor: "black",
                           fontSize: "16px",
                           fontWeight: "600",
+                          textTransform: 'none',
+
                         }}
                       >
                         Buy now
@@ -173,12 +179,12 @@ const Cart = () => {
                     All orders shipped directly from each brand{" "}
                   </Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} sx={{ marginTop: "10px", borderTop: "thin solid lightgray;", justifyContent: "space-between" }}>
-                    <Typography style={{ fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>
+                    <Typography style={{ marginTop: "10px", fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>
                       Description
                     </Typography>
-                    <Grid sx={{ fontWeight: "700", fontSize: "14px", color: "#000000", lineHeight: "10px" }}>___</Grid>
+                    <Grid sx={{ marginTop: "10px", fontWeight: "700", fontSize: "14px", color: "#1C1B1F", lineHeight: "10px" }}>__</Grid>
                   </Grid>
-                  <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px" }}>
+                  <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px", color: "#1C1B1F" }}>
                     {
                       " Hi honeys! I’ve worked closely with some of my fave brands tocurate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
                     }
@@ -297,8 +303,8 @@ const Cart = () => {
           </Grid>
         </Grid>
       </CustomContainer>
-      </Layout>
-    
+    </Layout>
+
   );
 };
 

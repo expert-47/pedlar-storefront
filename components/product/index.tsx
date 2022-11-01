@@ -200,11 +200,18 @@ const Cart = () => {
                     sm={12}
                     md={12}
                     lg={12}
-                    sx={{ alignItems: "center", paddingTop: "25px", display: { xs: "none", md: "block" } }}
+                    sx={{ alignItems: "center", paddingTop: "25px", display: { md: "block" } }}
                   >
-                    <Accordion>
+                    <Accordion elevation={0}>
+                      <AccordionSummary >
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        
+                      </AccordionDetails>
+                    </Accordion>
+                      <Accordion elevation={0}>
                       <AccordionSummary expandIcon={<AddIcon />}>
-                        <Typography sx={{ fontWeight: "700", fontSize: "14px" }}>Product </Typography>
+                        <Typography sx={{ fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>Shipping</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography>
@@ -213,9 +220,9 @@ const Cart = () => {
                         </Typography>
                       </AccordionDetails>
                     </Accordion>
-                    <Accordion>
+                    <Accordion elevation={0}>
                       <AccordionSummary expandIcon={<AddIcon />}>
-                        <Typography sx={{ fontWeight: "700", fontSize: "14px" }}>Details</Typography>
+                        <Typography sx={{ fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>Returns</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography>
@@ -224,26 +231,11 @@ const Cart = () => {
                         </Typography>
                       </AccordionDetails>
                     </Accordion>
-                    <Accordion>
-                      <AccordionSummary expandIcon={<AddIcon />}>
-                        <Typography sx={{ fontWeight: "700", fontSize: "14px" }}>Shipping</Typography>
+                    <Accordion elevation={0}>
+                      <AccordionSummary >
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
-                          amet blandit leo lobortis eget.
-                        </Typography>
-                      </AccordionDetails>
-                    </Accordion>
-                    <Accordion>
-                      <AccordionSummary expandIcon={<AddIcon />}>
-                        <Typography sx={{ fontWeight: "700", fontSize: "14px" }}>Duties and Taxes</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
-                          amet blandit leo lobortis eget.
-                        </Typography>
+                        
                       </AccordionDetails>
                     </Accordion>
                   </Grid>

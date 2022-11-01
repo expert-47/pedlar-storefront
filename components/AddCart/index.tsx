@@ -8,11 +8,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import CustomGrid from "../../layout";
+import CustomGrid from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useStyles } from "tss-react/mui";
-import SwipeableTextMobileStepper from "./carousel";
+import SwipeableTextMobileStepper from "./components/carousel";
 
 const Cart = () => {
   const { classes, cx } = useStyles();

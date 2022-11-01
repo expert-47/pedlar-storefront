@@ -1,9 +1,9 @@
 import React from "react";
 import { useStyles } from "styles/home";
 import Grid from "@mui/material/Grid";
-import { CustomContainer } from "../../Layout/layout";
+import { CustomContainer } from "../../layout";
 import { useTheme } from "@mui/material";
-import TextBox from "./TextBox";
+import TextBox from "./textBox";
 
 const BannerImg = () => {
   const { classes, cx } = useStyles();

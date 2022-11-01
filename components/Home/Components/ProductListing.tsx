@@ -2,7 +2,7 @@ import React from "react";
 import { useStyles } from "styles/home";
 import Grid from "@mui/material/Grid";
 import { Typography, useTheme } from "@mui/material";
-import { CustomGrid } from "components/Layout/layout";
+import { CustomGrid } from "components/layout";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 const ProductListing = () => {

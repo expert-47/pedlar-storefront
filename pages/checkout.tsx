@@ -1,9 +1,9 @@
 import { Grid, Typography, InputBase, Button } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import Text from "components/CustomText";
-import CheckoutOrder from "components/checkoutOrder/CheckoutOrder";
-import { useStyles } from "components/checkoutOrder/Style";
+import Text from "components/customText";
+import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
+import { useStyles } from "components/checkoutOrder/style";
 
 const Checkout = () => {
   const { classes, cx } = useStyles();

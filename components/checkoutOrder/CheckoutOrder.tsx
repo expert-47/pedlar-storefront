@@ -1,11 +1,11 @@
 import React from "react";
 import { Grid, Button } from "@mui/material";
-import Text from "components/CustomText";
+import Text from "components/customText";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import { useStyles } from "../checkoutOrder/Style";
+import { useStyles } from "./style";
 
 const CheckoutOrder = () => {
   const { classes, cx } = useStyles();

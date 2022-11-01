@@ -51,7 +51,7 @@ function SwipeableTextMobileStepper() {
   };
 
   return (
-    <Grid xs={12} sx={{ flexGrow: 1,alignItems:'center' }}>
+    <Grid item xs={12} sx={{ flexGrow: 1,alignItems:'center' }}>
       <Paper
         square
         elevation={0}

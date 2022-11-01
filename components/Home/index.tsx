@@ -1,12 +1,11 @@
 import React from "react";
-import BannerImg from "./Components/BannerImg";
-import ProductListing from "./Components/ProductListing";
-import BrandListing from "./Components/BrandListing";
+import BannerImg from "./components/banner";
+import BrandListing from "./components/brandListing";
 import { Grid } from "@mui/material";
-import Bar from "./Components/Bar";
-import GridGallery from "./Components/GridGallery";
+import Bar from "./components/bar";
+import GridGallery from "./components/gridGallery";
 // import BrandTitles from "./Components/BrandTitles";
-import BaseFooter from "../Footer/BaseFooter";
+import BaseFooter from "components/footer/baseFooter";
 // import ReverseGallery from "./Components/ReverseGallery";
 import Divider from "@mui/material/Divider";
 import { useStyles } from "styles/home";
@@ -18,8 +17,7 @@ export const Home = () => {
       <BannerImg />
       <Divider className={cx(classes.bannerDivider)} />
       <Bar />
-      <BrandListing leftHeading="New Additions" rightHeading="Shop ALL" />
-
+      <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
       <GridGallery />
       <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
       <GridGallery

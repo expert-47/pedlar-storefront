@@ -1,6 +1,6 @@
 import React from "react";
 import { useStyles } from "styles/home";
-import Text from "../../CustomText/index";
+import Text from "../../customText/index";
 import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";

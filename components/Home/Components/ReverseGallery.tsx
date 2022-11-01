@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import CardComponent from "./CardComponent";
+import CardComponent from "./cardComponent";
 
 const ReverseGallery = () => {
   return (

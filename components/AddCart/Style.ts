@@ -1,5 +1,4 @@
 import { makeStyles } from "tss-react/mui";
-import useMediaQuery from '@mui/material/useMediaQuery';
 export const useStyles = makeStyles({
   name: "ComponentAbout",
   uniqId: "aboutComponent",

@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { Typography, useTheme } from "@mui/material";
 import { useStyles } from "styles/home";
-import { CustomGrid } from "components/Layout/layout";
+import { CustomGrid } from "components/layout";
 
 const BaseFooter = () => {
   const { classes, cx } = useStyles();

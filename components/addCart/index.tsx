@@ -8,12 +8,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import CustomGrid from "../Layout/layout";
+import CustomGrid from "../layout";
 import AddIcon from "@mui/icons-material/Add";
-import { useStyle } from "./Style";
-import { Style } from "@mui/icons-material";
+
 import { useStyles } from "tss-react/mui";
-import SwipeableTextMobileStepper from "./carousel";
+import SwipeableTextMobileStepper from "./components/carousel";
 
 const Cart = () => {
   const { classes, cx } = useStyles();
@@ -30,37 +29,30 @@ const Cart = () => {
     <>
       <CustomGrid>
         <Box sx={{ flexGrow: 1, paddingTop: "20px", borderBottom: 1, borderColor: "#C5C5C5", paddingBottom: "50px" }}>
-          <Grid container >
-            <Grid xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
-              <Grid xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
+              <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <SwipeableTextMobileStepper />
               </Grid>
-              <Grid sx={{ display: { xs: "none", sm: "block" }}}>
+              <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
                 <img src="/grid-img1.png"></img>
               </Grid>
-              <Grid sx={{ display: { xs: "none", sm: "block", paddingTop:'25px' } }}>
+              <Grid item sx={{ display: { xs: "none", sm: "block", paddingTop: "25px" } }}>
                 <img src="/grid-img1.png"></img>
               </Grid>
-              <Grid sx={{ display: { xs: "none", sm: "block",paddingTop:'25px'  } }}>
+              <Grid item sx={{ display: { xs: "none", sm: "block", paddingTop: "25px" } }}>
                 <img src="/grid-img1.png"></img>
               </Grid>
             </Grid>
 
-            <Grid container item xs={12} sm={12} md={6} lg={6} sx={{ justifyContent: "center" }}>
-              <Grid container xs={11} sm={6} md={10} lg={6} sx={{ textAlign: "center", paddingTop: "40px" }}>
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ justifyContent: "center" }}>
+              <Grid item xs={11} sm={6} md={10} lg={6} sx={{ textAlign: "center", paddingTop: "40px" }}>
                 <Grid>
-                  <Typography sx={{ fontSize: "12px", fontWeight: "600"}}>LOW CLASSIC</Typography>
-                  <Typography sx={{ fontWeight: "600", fontSize: "40px",lineHeight: '120%',paddingTop:'14px'  }}>Green Polyster <br></br> Blazer</Typography>
-                  <Grid
-                    conatiner
-                    item
-                    xs={12}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                    gap={1}
-                    sx={{ display: "flex", flexDirection: "row" }}
-                  >
+                  <Typography sx={{ fontSize: "12px", fontWeight: "600" }}>LOW CLASSIC</Typography>
+                  <Typography sx={{ fontWeight: "600", fontSize: "40px", lineHeight: "120%", paddingTop: "14px" }}>
+                    Green Polyster <br></br> Blazer
+                  </Typography>
+                  <Grid item xs={12} sm={12} md={12} lg={12} gap={1} sx={{ display: "flex", flexDirection: "row" }}>
                     <Grid item xs={12} sm={12} md={6} lg={6}>
                       <Typography
                         sx={{
@@ -92,7 +84,6 @@ const Cart = () => {
                     }
                   </Typography>
                   <Grid
-                    conatiner
                     item
                     xs={12}
                     sm={12}
@@ -102,21 +93,10 @@ const Cart = () => {
                     sx={{
                       paddingTop: "30px",
                       paddingBottom: "30px",
-                      display:'flex',
-                      
+                      display: "flex",
                     }}
                   >
-                    <Grid
-                      item
-                      xs={12}
-                      sm={10}
-                      md={6}
-                      lg={6}
-                      sx={{
-                      
-                    
-                      }}
-                    >
+                    <Grid item xs={12} sm={10} md={6} lg={6} sx={{}}>
                       <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px" }}>
                         Size
                       </Typography>
@@ -142,7 +122,7 @@ const Cart = () => {
                         </Select>
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={10} md={6} lg={6} >
+                    <Grid item xs={12} sm={10} md={6} lg={6}>
                       <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px" }}>
                         Color
                       </Typography>
@@ -170,7 +150,6 @@ const Cart = () => {
                     </Grid>
                   </Grid>
                   <Grid
-                    container
                     item
                     xs={12}
                     md={12}
@@ -200,9 +179,8 @@ const Cart = () => {
                           width: "100%",
                           height: "46px",
                           borderColor: "black",
-                        fontSize:'16px',
-                        fontWeight:'600',
-              
+                          fontSize: "16px",
+                          fontWeight: "600",
                         }}
                       >
                         Buy now
@@ -221,6 +199,7 @@ const Cart = () => {
                     All orders shipped directly from each brand{" "}
                   </Typography>
                   <Grid
+                    item
                     xs={12}
                     sm={12}
                     md={12}
@@ -290,36 +269,36 @@ const Cart = () => {
           }}
         >
           <Grid container item xs={11} sm={9} md={10} lg={9.2} sx={{ paddingTop: "30px" }}>
-            <Grid xs={12} sm={12} md={12} lg={12}>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography sx={{ paddingBottom: "20px", fontWeight: "600", fontSize: "22px" }}>
                 You might like
               </Typography>
             </Grid>
-            <Grid xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
+            <Grid item xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
               <img style={{ width: "90%", height: "70%" }} src="/grid-img3.png"></img>
               <Typography sx={{ fontWeight: "600", fontSize: "12px" }}>SISLEY PARIS</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px", width: "90%" }}>Eye Contour Mask</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px" }}>$42</Typography>
             </Grid>
-            <Grid xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
+            <Grid item xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
               <img style={{ width: "90%", height: "70%" }} src="/grid-img3.png"></img>
               <Typography sx={{ fontWeight: "600", fontSize: "12px" }}>SISLEY PARIS</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px", width: "90%" }}>Eye Contour Mask</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px" }}>$42</Typography>
             </Grid>
-            <Grid xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
+            <Grid item xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
               <img style={{ width: "90%", height: "70%" }} src="/grid-img3.png"></img>
               <Typography sx={{ fontWeight: "600", fontSize: "12px" }}>SISLEY PARIS</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px", width: "90%" }}>Eye Contour Mask</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px" }}>$42</Typography>
             </Grid>
-            <Grid xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
+            <Grid item xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
               <img style={{ width: "90%", height: "70%" }} src="/grid-img3.png"></img>
               <Typography sx={{ fontWeight: "600", fontSize: "12px" }}>SISLEY PARIS</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px", width: "90%" }}>Eye Contour Mask</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px" }}>$42</Typography>
             </Grid>
-            <Grid xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
+            <Grid item xs={6} sm={6} md={2.4} lg={2.4} sx={{ paddingBottom: "50px" }}>
               <img style={{ width: "90%", height: "70%" }} src="/grid-img3.png"></img>
               <Typography sx={{ fontWeight: "600", fontSize: "12px" }}>SISLEY PARIS</Typography>
               <Typography sx={{ fontWeight: "600", fontSize: "16px", width: "90%" }}>Eye Contour Mask</Typography>

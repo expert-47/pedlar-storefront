@@ -6,13 +6,13 @@ import { useStyles } from "styles/navbar";
 import Marquee from "react-fast-marquee";
 
 import SearchIcon from "@mui/icons-material/Search";
-import DropdownMenu from "./Components/DropdownMenu";
-import { ResponsiveNavbar } from "./ResponsiveNavbar";
-import { CustomContainer } from "components/Layout/layout";
+import DropdownMenu from "./components/dropdownMenu";
+import { ResponsiveNavbar } from "./responsiveNavbar";
+import { CustomContainer } from "components/layout";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
-import Typography from "components/CustomText";
+import Typography from "components/customText";
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));

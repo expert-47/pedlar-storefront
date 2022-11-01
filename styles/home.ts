@@ -22,6 +22,7 @@ export const useStyles = makeStyles({
     paddingTop: "50px",
   },
   baseFootTypoheading: {
+    color: theme.palette.primary.dark,
     marginTop: "40px",
     fontWeight: "700",
   },
@@ -31,21 +32,24 @@ export const useStyles = makeStyles({
   shopbutton: {
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.primary.main,
-    borderRadius: "20px",
+    borderRadius: "666px",
     fontWeight: "600",
     textTransform: "none",
     "&:hover": {
       color: theme.palette.primary.contrastText,
     },
+    padding: "10px 32.5px",
   },
   mainbargrid: {
     // display: "flex",
     backgroundColor: theme.palette.primary.dark,
   },
   bartext: {
-    color: "white",
+    color: theme.palette.primary.main,
     fontSize: "24px",
     fontWeight: "700",
+    minWidth:"50%",
+    paddingRight: "50px"
   },
   barbtn: {
     display: "flex",
@@ -54,21 +58,27 @@ export const useStyles = makeStyles({
     fontSize: "16px",
     fontWeight: "600",
     borderRadius: "30px",
-    backgroundColor: "white",
-    color: "black",
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.dark,
     textTransform: "none",
+    padding: "10px 32.5px",
   },
   closeIcon: {
-    color: "white",
-    // position: "absolute",
+    color: theme.palette.primary.main,
+    
   },
   gridtag1typo1: {
     fontSize: "22px",
     fontWeight: "700",
+    color: theme.palette.primary.dark,
   },
   gridtag1typo2: {
     fontSize: "12px",
     fontWeight: "600",
+  },
+  arrowIcon: {
+    fontSize: "small",
+    padding: "2px"
   },
   galleryImg1: {
     width: "100%",
@@ -91,17 +101,18 @@ export const useStyles = makeStyles({
     fontWeight: "600",
   },
   boxtext: {
-    color: "black",
+    color: theme.palette.primary.dark,
     fontWeight: "600",
     paddingLeft: "8px",
   },
   baseFootTypopara: {
+    color: theme.palette.primary.dark,
     fontWeight: "600",
   },
   baseFootTypotext: {
     paddingTop: "11px",
     fontWeight: "600",
-    color: "rgba(28, 27, 31, 0.64)",
+    color: theme.palette.success.dark,
   },
   bankingicons: {
     width: "34px",

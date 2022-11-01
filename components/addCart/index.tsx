@@ -8,7 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import CustomGrid from "../../components/layout";
+import CustomGrid from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useStyles } from "tss-react/mui";

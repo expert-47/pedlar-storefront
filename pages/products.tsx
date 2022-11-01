@@ -1,5 +1,5 @@
 import Text from "components/customText";
-import GalleryGrid1 from "components/home/components/gridGallery";
+import GalleryGrid from "components/home/components/gridGallery";
 import ProductHeader from "components/home/components/productHeader";
 import Layout, { CustomGrid } from "components/layout";
 import { Grid, Button } from "@mui/material";
@@ -19,8 +19,8 @@ const index = () => {
       </Head>
       <CustomGrid>
         <ProductHeader />
-        <GalleryGrid1 />
-        <GalleryGrid1
+        <GalleryGrid />
+        <GalleryGrid
           container
           gap={4}
           lg={12}

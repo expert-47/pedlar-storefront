@@ -71,7 +71,7 @@ const Cart = () => {
                   </Grid>
                   <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px", color: "#1C1B1F", textAlign: "start" }}>
                     {
-                      " Hi honeys! I’ve worked closely with some of my fave brands tocurate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
+                      " Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
                     }
                     <br></br>
                     <br></br>

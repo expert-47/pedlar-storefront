@@ -59,6 +59,7 @@ const Cart = () => {
 
                   <Grid
                     container
+                    item
                     xs={12}
                     sm={12}
                     md={12}
@@ -70,7 +71,7 @@ const Cart = () => {
                     }}
                   >
 
-                    <Grid item xs={12} sm={10} md={6} lg={6} sx={{}}>
+                    <Grid item xs={12} sm={12} md={5.9} lg={5.9} sx={{}}>
                       <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px", color: "#1C1B1F" }}>
                         Size
                       </Typography>
@@ -96,7 +97,7 @@ const Cart = () => {
                         </Select>
                       </FormControl>
                     </Grid>
-                    <Grid item xs={12} sm={10} md={6} lg={6}>
+                    <Grid item xs={12} sm={12} md={5.9} lg={5.9}>
                       <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px", color: "#1C1B1F" }}>
                         Color
                       </Typography>

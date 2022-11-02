@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { useStyles } from "styles/navbar";
+import styles from "styles/navbar";
 
 import { Box, Collapse, Grid, MenuItem, useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";

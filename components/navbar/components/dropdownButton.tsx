@@ -5,7 +5,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-import { useStyles } from "styles/navbar";
+import styles from "styles/navbar";
 
 import { Button, Grid } from "@mui/material";
 import { Box } from "@mui/system";
@@ -17,7 +17,7 @@ interface Props {
 }
 const DropdownMenu = (props: Props) => {
   const { type = "Brands", data } = props;
-  const { classes, cx } = useStyles();
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openMenu = Boolean(anchorEl);
@@ -30,11 +30,7 @@ const DropdownMenu = (props: Props) => {
 
   return (
     <>
-      <Button
-        className={cx(classes.tabButton)}
-        onClick={handleClick}
-        endIcon={openMenu ? <ExpandLess /> : <ExpandMore />}
-      >
+      <Button sx={styles.tabButton} onClick={handleClick} endIcon={openMenu ? <ExpandLess /> : <ExpandMore />}>
         {type}
       </Button>
       <Menu
@@ -47,17 +43,17 @@ const DropdownMenu = (props: Props) => {
             maxWidth: "unset",
           },
         }}
-        className={cx(classes.menu)}
+        sx={styles.menu}
         anchorEl={anchorEl}
         open={openMenu}
         onClose={handleClose}
       >
-        <Grid className={cx(classes.menuContainer)}>
-          <Box className={cx(classes.menuInnerContainer)}>
+        <Grid sx={styles.menuContainer}>
+          <Box sx={styles.menuInnerContainer}>
             {data.map((item) => (
               <MenuItem>{item}</MenuItem>
             ))}
-            <MenuItem className={cx(classes.menuItem)}>
+            <MenuItem sx={styles.menuItem}>
               <Link href="/">
                 <a>View all</a>
               </Link>

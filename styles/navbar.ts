@@ -1,11 +1,10 @@
-import { makeStyles } from "tss-react/mui";
-export const useStyles = makeStyles()((theme) => ({
+const styles = {
   container: {
     display: "flex",
     alignItems: "center",
     width: "100%",
   },
-  Typography: { color: theme.palette.primary.contrastText },
+  Typography: { color: (theme) => theme.palette.primary.contrastText },
   appBar: { backgroundColor: "white", width: "100%" },
   marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
   toolbar: {
@@ -16,20 +15,25 @@ export const useStyles = makeStyles()((theme) => ({
   },
   padding: {
     width: "100%",
-    paddingRight: theme.spacing(30),
-    paddingLeft: theme.spacing(30),
-
-    [theme.breakpoints.down("lg")]: {
-      paddingRight: theme.spacing(20),
-      paddingLeft: theme.spacing(20),
+    paddingRight: {
+      md: (theme) => theme.spacing(30),
+      sm: (theme) => theme.spacing(30),
+      sx: (theme) => theme.spacing(30),
+      lg: (theme) => theme.spacing(20),
+    },
+    paddingLeft: {
+      md: (theme) => theme.spacing(30),
+      sm: (theme) => theme.spacing(30),
+      sx: (theme) => theme.spacing(30),
+      lg: (theme) => theme.spacing(20),
     },
   },
-  iconColor: { color: theme.palette.success.dark },
+  iconColor: { color: (theme) => theme.palette.success.dark },
   leftContainer: {
     display: "flex",
     alignItems: "center",
   },
-  tabButton: { color: theme.palette.success.dark, fontSize: "16px", fontWeight: "600" },
+  tabButton: { color: (theme) => theme.palette.success.dark, fontSize: "16px", fontWeight: "600" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px" },
   menuContainer: {
     width: "100%",
@@ -47,7 +51,7 @@ export const useStyles = makeStyles()((theme) => ({
     alignSelf: "flex-end",
   },
   menu: {
-    marginTop: theme.spacing(1.6),
+    marginTop: (theme) => theme.spacing(1.6),
     minWidth: "100%",
     left: "unset",
     right: "unset",
@@ -91,8 +95,6 @@ export const useStyles = makeStyles()((theme) => ({
     fontWeight: "400",
     padding: "2px",
   },
-  // responsiveImage: {
-  //   width: "100%",
-  //   height: "22px",
-  // },
-}));
+};
+
+export default styles;

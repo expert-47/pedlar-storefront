@@ -1,14 +1,13 @@
 import { Grid, Toolbar, Typography, useTheme, IconButton } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import { useStyles } from "styles/navbar";
+import styles from "styles/navbar";
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PedlarDrawer from "./components/padlarDrawer";
 
 export const ResponsiveNavbar = () => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
 
@@ -20,27 +19,27 @@ export const ResponsiveNavbar = () => {
     <React.Fragment>
       <Toolbar
         style={{
-          paddingLeft: 0,
-          paddingRight: 0,
+          paddingLeft: theme.spacing(10),
+          paddingRight: theme.spacing(20),
         }}
       >
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
-          <MenuIcon onClick={onClickDrawer} className={cx(classes.menuIcon)} />
+          <MenuIcon onClick={onClickDrawer} sx={styles.menuIcon} />
           <Link href="/">
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
-          <Typography sx={{ flexGrow: 1 }} style={{ fontSize: "22px" }} className={cx(classes.responsiveTypography)}>
+          <Typography style={{ fontSize: "22px" }} sx={styles.responsiveTypography}>
             Hannah Juneva
           </Typography>
-          <IconButton
-            style={{
-              maxWidth: "20px",
-            }}
-          >
-            <ShoppingCartIcon />
-          </IconButton>
         </Grid>
+        <IconButton
+          style={{
+            maxWidth: "20px",
+          }}
+        >
+          <ShoppingCartIcon />
+        </IconButton>
       </Toolbar>
     </React.Fragment>
   );

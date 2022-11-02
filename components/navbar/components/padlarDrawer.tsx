@@ -21,10 +21,9 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
-import { useStyles } from "styles/navbar";
+import styles from "styles/navbar";
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
-  const { classes, cx } = useStyles();
   const { openDrawer, toggleDrawer } = props;
 
   const paperStyle = {
@@ -66,7 +65,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Direc
         </Typography>
       </Marquee>
-      <List className={cx(classes.drawerList)}>
+      <List sx={styles.drawerList}>
         <Grid
           container
           item
@@ -94,11 +93,11 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               border: "1px solid rgba(0,0,0,0.3)",
             }}
           >
-            <SearchIcon className={cx(classes.drawerIcon)} />
+            <SearchIcon sx={styles.drawerIcon} />
             <InputBase placeholder="Search store" type="text" aria-label="search icons"></InputBase>
           </Box>
         </Grid>
-        <ListItemText className={cx(classes.drawerText)}>
+        <ListItemText sx={styles.drawerText}>
           <Link href="/">
             <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               Home

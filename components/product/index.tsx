@@ -12,7 +12,6 @@ import CustomGrid, { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 
 import { useStyles } from "tss-react/mui";
-import SwipeableTextMobileStepper from "./components/carousel";
 import Layout from "../layout";
 
 const Cart = () => {
@@ -33,7 +32,7 @@ const Cart = () => {
           <Grid container>
             <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
               <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
-                <SwipeableTextMobileStepper />
+                {/* <SwipeableTextMobileStepper /> */}
               </Grid>
               <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
                 <img src="/grid-img1.png"></img>

@@ -1,11 +1,10 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import { Typography, useTheme } from "@mui/material";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 import { CustomGrid } from "components/layout";
 
 const BaseFooter = () => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
 
   return (
@@ -26,25 +25,25 @@ const BaseFooter = () => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >
         <Grid item xs={12} sm={12} md={8} lg={8.5}>
-          <Typography fontSize={"22px"} className={cx(classes.baseFootTypoheading)}>
+          <Typography fontSize={"22px"} sx={styles.baseFootTypoheading}>
             Help & Support
           </Typography>
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
             Shipping & Returns
           </Typography>
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
             International Shipping
           </Typography>
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
             Contact
           </Typography>
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
             Terms & Condition
           </Typography>
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
             Privacy Policy
           </Typography>
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypotext)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
             FAQ
           </Typography>
         </Grid>
@@ -58,7 +57,7 @@ const BaseFooter = () => {
           container
           paddingY={{ xs: theme.spacing(30), md: theme.spacing(80), lg: theme.spacing(80) }}
         >
-          <Typography fontSize={"20px"} className={cx(classes.baseFootTypopara)}>
+          <Typography fontSize={"20px"} sx={styles.baseFootTypopara}>
             We're always here to help.
             <br />
             Contact us at support@pedlar.com and out customer service team will be in touch.

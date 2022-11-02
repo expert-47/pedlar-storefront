@@ -1,5 +1,5 @@
 import React from "react";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 import Grid from "@mui/material/Grid";
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
@@ -7,7 +7,6 @@ import { CustomGrid } from "components/layout";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
   const { leftHeading, rightHeading } = props;
   return (
@@ -31,7 +30,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
         <Grid container item xs={7} sm={9} md={9} lg={9}>
-          <Typography className={cx(classes.gridtag1typo1)}>{leftHeading}</Typography>
+          <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
         <Grid
           container
@@ -45,8 +44,8 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           paddingX={{ xs: theme.spacing(0), md: theme.spacing(40), lg: theme.spacing(10) }}
           // paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
         >
-          <Typography className={cx(classes.gridtag1typo2)}>{rightHeading}</Typography>
-          <ArrowForwardIcon className={cx(classes.arrowIcon)} />
+          <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
+          <ArrowForwardIcon sx={styles.arrowIcon} />
         </Grid>
       </Grid>
     </CustomGrid>

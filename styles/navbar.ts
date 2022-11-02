@@ -1,10 +1,12 @@
-const styles = {
+import { SxProps } from "@mui/material";
+
+const styles: SxProps = {
   container: {
     display: "flex",
     alignItems: "center",
     width: "100%",
   },
-  Typography: { color: (theme) => theme.palette.primary.contrastText },
+  Typography: { color: "primary.contrastText" },
   appBar: { backgroundColor: "white", width: "100%" },
   marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
   toolbar: {
@@ -16,24 +18,24 @@ const styles = {
   padding: {
     width: "100%",
     paddingRight: {
-      md: (theme) => theme.spacing(30),
-      sm: (theme) => theme.spacing(30),
-      sx: (theme) => theme.spacing(30),
-      lg: (theme) => theme.spacing(20),
+      md: 30,
+      sm: 30,
+      sx: 30,
+      lg: 20,
     },
     paddingLeft: {
-      md: (theme) => theme.spacing(30),
-      sm: (theme) => theme.spacing(30),
-      sx: (theme) => theme.spacing(30),
-      lg: (theme) => theme.spacing(20),
+      md: 30,
+      sm: 30,
+      sx: 30,
+      lg: 20,
     },
   },
-  iconColor: { color: (theme) => theme.palette.success.dark },
+  iconColor: { color: "success.dark" },
   leftContainer: {
     display: "flex",
     alignItems: "center",
   },
-  tabButton: { color: (theme) => theme.palette.success.dark, fontSize: "16px", fontWeight: "600" },
+  tabButton: { color: "success.dark", fontSize: "16px", fontWeight: "600" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px" },
   menuContainer: {
     width: "100%",
@@ -51,7 +53,7 @@ const styles = {
     alignSelf: "flex-end",
   },
   menu: {
-    marginTop: (theme) => theme.spacing(1.6),
+    marginTop: 1.6,
     minWidth: "100%",
     left: "unset",
     right: "unset",

@@ -1,3 +1,4 @@
+import { SxProps } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
 export const useStyles = makeStyles({
   name: "ComponentHome",
@@ -48,8 +49,8 @@ export const useStyles = makeStyles({
     color: theme.palette.primary.main,
     fontSize: "24px",
     fontWeight: "700",
-    minWidth:"50%",
-    paddingRight: "50px"
+    minWidth: "50%",
+    paddingRight: "50px",
   },
   barbtn: {
     display: "flex",
@@ -65,7 +66,6 @@ export const useStyles = makeStyles({
   },
   closeIcon: {
     color: theme.palette.primary.main,
-    
   },
   gridtag1typo1: {
     fontSize: "22px",
@@ -78,7 +78,7 @@ export const useStyles = makeStyles({
   },
   arrowIcon: {
     fontSize: "small",
-    padding: "2px"
+    padding: "2px",
   },
   galleryImg1: {
     width: "100%",
@@ -119,4 +119,117 @@ export const useStyles = makeStyles({
     paddingLeft: "10px",
   },
 }));
-export const style = {};
+const styles = {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  img: {
+    width: "100%",
+  },
+  typotext: {
+    // height: "374px",
+    padding: "15px",
+    paddingTop: "50px",
+  },
+  baseFootTypoheading: {
+    color: "primary.dark",
+    marginTop: "40px",
+    fontWeight: "700",
+  },
+  typopara: {
+    fontWeight: "700",
+  },
+  shopbutton: {
+    backgroundColor: "primary.dark",
+    color: "primary.main",
+    borderRadius: "666px",
+    fontWeight: "600",
+    textTransform: "none",
+    "&:hover": {
+      color: "primary.contrastText",
+    },
+    padding: "10px 32.5px",
+    fontSize: 16,
+  },
+  mainbargrid: {
+    // display: "flex",
+    backgroundColor: "primary.dark",
+  },
+  bartext: {
+    color: "primary.main",
+    fontSize: "24px",
+    fontWeight: "700",
+    minWidth: "50%",
+    paddingRight: "50px",
+  },
+  barbtn: {
+    display: "flex",
+  },
+  btn: {
+    fontSize: "16px",
+    fontWeight: "600",
+    borderRadius: "30px",
+    backgroundColor: "primary.main",
+    color: "primary.dark",
+    textTransform: "none",
+    padding: "10px 32.5px",
+  },
+  closeIcon: {
+    color: "primary.main",
+  },
+  gridtag1typo1: {
+    fontSize: "22px",
+    fontWeight: "700",
+    color: "primary.dark",
+  },
+  gridtag1typo2: {
+    fontSize: "12px",
+    fontWeight: "600",
+  },
+  arrowIcon: {
+    fontSize: "small",
+    padding: "2px",
+  },
+  galleryImg1: {
+    width: "100%",
+    height: "88%",
+  },
+  galleryImg2: {
+    width: "100%",
+  },
+  bannerDivider: {
+    marginTop: "50px",
+    marginBottom: "50px",
+    height: "1px",
+  },
+  footerDivider: {
+    marginTop: "50px",
+    marginBottom: "10px",
+    height: "1px",
+  },
+  baseFooter: {
+    fontWeight: "600",
+  },
+  boxtext: {
+    color: "primary.dark",
+    fontWeight: "600",
+    paddingLeft: "8px",
+  },
+  baseFootTypopara: {
+    color: "primary.dark",
+    fontWeight: "600",
+  },
+  baseFootTypotext: {
+    paddingTop: "11px",
+    fontWeight: "600",
+    color: "success.dark",
+  },
+  bankingicons: {
+    width: "34px",
+    paddingLeft: "10px",
+  },
+};
+
+export default styles;

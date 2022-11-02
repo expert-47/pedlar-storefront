@@ -1,12 +1,12 @@
 import React from "react";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
+
 import { Typography, Button, Grid } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
 import CloseIcon from "@mui/icons-material/Close";
 
 const Bar = () => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
   return (
     <CustomContainer
@@ -23,7 +23,7 @@ const Bar = () => {
         sm={11.5}
         md={11.5}
         lg={11.5}
-        className={cx(classes.mainbargrid)}
+        sx={styles.mainbargrid}
         justifyContent={{ lg: "space-between", md: "center", sm: "center", xs: "center" }}
         paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
         paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
@@ -37,10 +37,8 @@ const Bar = () => {
           paddingX={{ md: theme.spacing(5), lg: theme.spacing(5) }}
           paddingY={{ md: theme.spacing(5), lg: theme.spacing(5) }}
         >
-          <Typography className={cx(classes.bartext)}>
-            Love Fashion? Have your own style? Share it with your community.
-          </Typography>
-          <Button className={cx(classes.btn)}>Signup for free</Button>
+          <Typography sx={styles.bartext}>Love Fashion? Have your own style? Share it with your community.</Typography>
+          <Button sx={styles.btn}>Signup for free</Button>
         </Grid>
         <Grid
           container
@@ -51,7 +49,7 @@ const Bar = () => {
           justifyContent={{ xs: "flex-end", sm: "flex-end" }}
           alignItems={{ xs: "flex-start", sm: "flex-start" }}
         >
-          <CloseIcon className={cx(classes.closeIcon)} />
+          <CloseIcon sx={styles.closeIcon} />
         </Grid>
       </Grid>
     </CustomContainer>

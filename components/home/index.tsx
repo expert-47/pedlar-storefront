@@ -4,18 +4,15 @@ import BrandListing from "./components/brandListing";
 import { Grid } from "@mui/material";
 import Bar from "./components/bar";
 import GridGallery from "./components/gridGallery";
-// import BrandTitles from "./Components/BrandTitles";
 import BaseFooter from "components/footer/baseFooter";
-// import ReverseGallery from "./Components/ReverseGallery";
 import Divider from "@mui/material/Divider";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 
 export const Home = () => {
-  const { classes, cx } = useStyles();
   return (
     <Grid>
       <BannerImg />
-      <Divider className={cx(classes.bannerDivider)} />
+      <Divider sx={styles.bannerDivider} />
       <Bar />
       <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
       <GridGallery />
@@ -27,9 +24,8 @@ export const Home = () => {
         }}
       />
 
-      <Divider className={cx(classes.footerDivider)} />
+      <Divider sx={styles.footerDivider} />
       <BaseFooter />
-      {/* <Divider className={cx(classes.footerDivider)} /> */}
     </Grid>
   );
 };

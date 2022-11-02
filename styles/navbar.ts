@@ -49,6 +49,8 @@ export const useStyles = makeStyles()((theme) => ({
   menu: {
     marginTop: theme.spacing(1.6),
     minWidth: "100%",
+    left: "unset",
+    right: "unset",
   },
   drawerText: {
     color: "black",

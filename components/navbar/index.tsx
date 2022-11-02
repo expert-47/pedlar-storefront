@@ -6,7 +6,7 @@ import { useStyles } from "styles/navbar";
 import Marquee from "react-fast-marquee";
 
 import SearchIcon from "@mui/icons-material/Search";
-import DropdownMenu from "./components/dropdownMenu";
+import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -21,18 +21,7 @@ const Navbar = () => {
   const [showShopList, toggleShopList] = useState(false);
 
   const { classes, cx } = useStyles();
-  const onClickBrands = () => {
-    if (showShopList) {
-      toggleShopList(false);
-    }
-    toggleBrandsList((prv) => !prv);
-  };
-  const onClickShop = () => {
-    if (showBrandsList) {
-      toggleBrandsList(false);
-    }
-    toggleShopList((prv) => !prv);
-  };
+
   return (
     <Grid container item xs={12} sm={12} lg={12} className={cx(classes.container)}>
       <AppBar
@@ -67,9 +56,9 @@ const Navbar = () => {
                     <Button className={cx(classes.tabButton)}>Home</Button>
                   </Link>
 
-                  <DropdownMenu type={"Brands"} handleClick={onClickBrands} open={showBrandsList} />
+                  <DropdownButton type={"Brands"} data={brandList} />
 
-                  <DropdownMenu type={"Shop"} handleClick={onClickShop} open={showShopList} />
+                  <DropdownButton type={"Shop"} data={shopList} />
 
                   <Link href="faq">
                     <Button color="inherit" className={cx(classes.tabButton)}>
@@ -88,8 +77,6 @@ const Navbar = () => {
           )}
         </CustomContainer>
       </AppBar>
-      <PadlarCollapseView open={showBrandsList} data={brandList} />
-      <PadlarCollapseView open={showShopList} data={shopList} />
     </Grid>
   );
 };

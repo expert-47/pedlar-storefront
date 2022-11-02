@@ -9,7 +9,7 @@
     "lint": "next lint",
     "lint:errors": "next lint --quiet",
     "lint:fix": "next lint --fix",
-    "prepare": "husky install",
+    "prepare": "node -e \"if (process.env.NODE_ENV !== 'production'){process.exit(1)} \" || husky install",
     "pre-commit": "next lint"
   },
   "dependencies": {

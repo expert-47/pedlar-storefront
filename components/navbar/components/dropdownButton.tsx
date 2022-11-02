@@ -38,7 +38,6 @@ const DropdownMenu = (props: Props) => {
         {type}
       </Button>
       <Menu
-        id="basic-menu"
         PaperProps={{
           elevation: 1,
           sx: {

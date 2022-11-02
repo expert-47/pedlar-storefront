@@ -1,5 +1,5 @@
 import * as React from "react";
-import SwipeableViews from 'react-swipeable-views';
+// import SwipeableViews from 'react-swipeable-views';
 
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -58,7 +58,7 @@ function SwipeableTextMobileStepper() {
           bgcolor: "background.default",
         }}
       ></Paper>
-      <SwipeableViews
+      {/* <SwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}
         onChangeIndex={handleStepChange}
@@ -84,7 +84,7 @@ function SwipeableTextMobileStepper() {
             ) : null}
           </div>
         ))}
-      </SwipeableViews>
+      </SwipeableViews> */}
       <MobileStepper
         steps={maxSteps}
         position="static"

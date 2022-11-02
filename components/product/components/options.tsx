@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-
+import styles from 'styles/product'
 
 
 function Options() {
@@ -28,14 +28,11 @@ return(
         md={12}
         lg={12}
         gap={22}
-        sx={{
-            justifyContent: "center",
-            display: "flex",
-        }}
+        sx={styles.container}
     >
 
         <Grid item xs={12} sm={12} md={5} lg={5} sx={{}}>
-            <Typography style={{ textAlign: "left", fontSize: "14px", fontWeight: "700", color: "#1C1B1F" }}>
+            <Typography sx={styles.typography}>
                 Size
             </Typography>
             <FormControl sx={{ width: "100%" }}>
@@ -43,15 +40,7 @@ return(
                     value={Size}
                     onChange={handleChange1}
                     displayEmpty
-                    sx={{
-                        borderRadius: "50px",
-                        height: "46px",
-                        width: "100%",
-                        borderColor: "#000000 20%",
-                        textAlign: "left",
-                        fontSize: "14px",
-                        fontWeight: "400",
-                    }}
+                    sx={styles.select}
                     IconComponent= {KeyboardArrowDownIcon}
                 >
                     <MenuItem value="">XS</MenuItem>
@@ -62,7 +51,7 @@ return(
             </FormControl>
         </Grid>
         <Grid item xs={12} sm={12} md={5} lg={5}>
-            <Typography style={{ textAlign: "left", fontSize: "14px", fontWeight: "700", color: "#1C1B1F" }}>
+            <Typography sx={styles.typography}>
                 Colour
             </Typography>
             <FormControl sx={{ width: "100%" }}>
@@ -70,15 +59,7 @@ return(
                     value={Colour}
                     onChange={handleChange2}
                     displayEmpty
-                    sx={{
-                        borderRadius: "50px",
-                        height: "46px",
-                        width: "100%",
-                        borderColor: "#000000 20%",
-                        textAlign: "left",
-                        fontSize: "14px",
-                        fontWeight: "400",
-                    }}
+                    sx={styles.select}
                     IconComponent= {KeyboardArrowDownIcon}
 
                 >

@@ -39,14 +39,14 @@ const Cart = () => {
             </Grid>
 
             <Grid container item xs={12} sm={12} md={6} lg={6} sx={{ justifyContent: "center" }}>
-              <Grid item xs={11} sm={6} md={9} lg={9} sx={{ textAlign: "center", paddingTop: "40px" }}>
+              <Grid item xs={11} sm={6} md={10} lg={10} sx={{ textAlign: "center", paddingTop: "40px" }}>
                 <Grid>
                   <Typography sx={{ fontSize: "12px", fontWeight: "600" }}>LOW CLASSIC</Typography>
                   <Typography sx={{ fontWeight: "600", fontSize: "40px", lineHeight: "120%", paddingTop: "14px" }}>
                     Green Polyster <br></br> Blazer
                   </Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} sx={{ justifyContent: "center" }}>
-                    <Typography style={{ fontWeight: "600", fontSize: "24px" }}>$365</Typography>
+                    <Typography style={{margin: "16px", fontWeight: "600", fontSize: "24px" }}>$365</Typography>
                   </Grid>
 
                   <Options></Options>

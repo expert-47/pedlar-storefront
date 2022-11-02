@@ -27,14 +27,14 @@ return(
         sm={12}
         md={12}
         lg={12}
-        gap={5}
+        gap={22}
         sx={{
             justifyContent: "center",
             display: "flex",
         }}
     >
 
-        <Grid item xs={12} sm={12} md={5.9} lg={5.9} sx={{}}>
+        <Grid item xs={12} sm={12} md={5} lg={5} sx={{}}>
             <Typography style={{ textAlign: "left", fontSize: "14px", fontWeight: "700", color: "#1C1B1F" }}>
                 Size
             </Typography>
@@ -61,7 +61,7 @@ return(
                 </Select>
             </FormControl>
         </Grid>
-        <Grid item xs={12} sm={12} md={5.9} lg={5.9}>
+        <Grid item xs={12} sm={12} md={5} lg={5}>
             <Typography style={{ textAlign: "left", fontSize: "14px", fontWeight: "700", color: "#1C1B1F" }}>
                 Colour
             </Typography>

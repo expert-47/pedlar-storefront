@@ -11,6 +11,8 @@ import AddIcon from "@mui/icons-material/Add";
 import Layout from "../layout";
 import Options from "./components/options"
 import Action from "./components/action"
+import styles from 'styles/product'
+
 
 const Cart = () => {
   return (
@@ -63,13 +65,13 @@ const Cart = () => {
                   >
                     All Orders Shipped Directly From Each Brand{" "}
                   </Typography>
-                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={{ marginTop: "24px", borderTop: "thin solid lightgray;", justifyContent: "space-between" }}>
+                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.descriptionGrid}>
                     <Typography style={{ marginTop: "24px", fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>
                       Description
                     </Typography>
                     <Grid sx={{ marginTop: "10px", fontWeight: "700", fontSize: "14px", color: "#1C1B1F", lineHeight: "10px" }}>__</Grid>
                   </Grid>
-                  <Typography sx={{ fontSize: "14px", fontWeight: "400", paddingTop: "30px", color: "#1C1B1F", textAlign: "start" }}>
+                  <Typography sx={styles.descriptionTypography}>
                     {
                       " Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
                     }
@@ -85,7 +87,7 @@ const Cart = () => {
                     sm={12}
                     md={12}
                     lg={12}
-                    sx={{ alignItems: "center", paddingTop: "25px", display: { md: "block" } }}
+                    sx={styles.accordianGrid}
                   >
                     <Accordion elevation={0}>
                       <AccordionSummary >
@@ -96,7 +98,7 @@ const Cart = () => {
                     </Accordion>
                     <Accordion elevation={0}>
                       <AccordionSummary expandIcon={<AddIcon />}>
-                        <Typography sx={{ fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>Shipping</Typography>
+                        <Typography sx={styles.accordianTypography}>Shipping</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography>
@@ -107,7 +109,7 @@ const Cart = () => {
                     </Accordion>
                     <Accordion elevation={0}>
                       <AccordionSummary expandIcon={<AddIcon />}>
-                        <Typography sx={{ fontWeight: "700", fontSize: "14px", color: "#1C1B1F" }}>Returns</Typography>
+                        <Typography sx={styles.accordianTypography}>Returns</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography>

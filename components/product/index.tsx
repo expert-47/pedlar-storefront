@@ -59,6 +59,7 @@ const Cart = () => {
 
                   <Grid
                     container
+                    item
                     xs={12}
                     sm={12}
                     md={12}

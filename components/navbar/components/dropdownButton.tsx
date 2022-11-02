@@ -30,13 +30,17 @@ const DropdownMenu = (props: Props) => {
 
   return (
     <>
-      <Button className={cx(classes.tabButton)} onClick={handleClick} endIcon={open ? <ExpandLess /> : <ExpandMore />}>
+      <Button
+        className={cx(classes.tabButton)}
+        onClick={handleClick}
+        endIcon={openMenu ? <ExpandLess /> : <ExpandMore />}
+      >
         {type}
       </Button>
       <Menu
         id="basic-menu"
         PaperProps={{
-          elevation: 0,
+          elevation: 1,
           sx: {
             mt: 10.5,
             left: 0,

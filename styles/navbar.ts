@@ -1,11 +1,10 @@
-import { makeStyles } from "tss-react/mui";
-export const useStyles = makeStyles()((theme) => ({
+const styles = {
   container: {
     display: "flex",
     alignItems: "center",
     width: "100%",
   },
-  Typography: { color: theme.palette.primary.contrastText },
+  Typography: { color: "primary.contrastText" },
   appBar: { backgroundColor: "white", width: "100%" },
   marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
   toolbar: {
@@ -16,39 +15,85 @@ export const useStyles = makeStyles()((theme) => ({
   },
   padding: {
     width: "100%",
-    paddingRight: theme.spacing(30),
-    paddingLeft: theme.spacing(30),
-
-    [theme.breakpoints.down("lg")]: {
-      paddingRight: theme.spacing(20),
-      paddingLeft: theme.spacing(20),
+    paddingRight: {
+      md: 30,
+      sm: 30,
+      sx: 30,
+      lg: 20,
+    },
+    paddingLeft: {
+      md: 30,
+      sm: 30,
+      sx: 30,
+      lg: 20,
     },
   },
-  iconColor: { color: theme.palette.success.dark },
+  iconColor: { color: "success.dark" },
   leftContainer: {
     display: "flex",
     alignItems: "center",
   },
-  tabButton: { color: theme.palette.success.dark, fontSize: "16px", fontWeight: "600" },
-  menuItem: { color: "black", fontWeight: "600", fontSize: "12px" },
+  tabButton: { color: "success.dark", fontSize: "16px", fontWeight: "600" },
+  menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
-    width: "100%",
+    width: "100vw",
     display: "flex",
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
   },
   menuInnerContainer: {
     color: "black",
     fontWeight: "800",
     display: "flex",
     flexDirection: "row",
-    width: "60%",
+    width: "80%",
     flexWrap: "wrap",
     alignSelf: "flex-end",
   },
   menu: {
-    marginTop: theme.spacing(1.6),
+    marginTop: 1.6,
     minWidth: "100%",
+    left: "unset",
+    right: "unset",
+    borderRadius: 0,
+  },
+  menuText1: {
+    fontWeight: "600",
+    color: "#1C1B1F",
+  },
+  menuText2: {
+    fontWeight: "600",
+    color: "rgba(28, 27, 31, 0.8)",
+  },
+  menuButton: {
+    backgroundColor: "#000000",
+    color: "white",
+    borderRadius: "25px",
+    width: "100%",
+    textTransform: "none",
+    fontWeight: "600",
+    fontSize: "16px",
+  },
+  outlinedButton: {
+    backgroundColor: "white",
+    color: "black",
+    borderColor: "black",
+    borderRadius: "25px",
+    width: "100%",
+    textTransform: "none",
+    fontWeight: "600",
+    fontSize: "16px",
+  },
+  menuCheck: {
+    margin: "0px",
+    padding: "2px",
+  },
+  menuDivider: {
+    width: "100vw",
+    top: "173px",
+    border: "0.5px solid rgba(28, 27, 31, 0.32)",
+    marginTop: "12px",
+    marginBottom: "12px",
   },
   drawerText: {
     color: "black",
@@ -78,4 +123,17 @@ export const useStyles = makeStyles()((theme) => ({
     borderRadius: "25px",
     border: "1px solid rgba(0,0,0,0.3)",
   },
-}));
+  navTypography: {
+    fontWeight: "400",
+    paddingLeft: "2px",
+  },
+  menuIcon: {
+    padding: "2px",
+  },
+  responsiveTypography: {
+    fontWeight: "400",
+    padding: "2px",
+  },
+};
+
+export default styles;

@@ -1,12 +1,11 @@
 import React from "react";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 import Text from "../../customText/index";
 import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 const TextBox = () => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
   return (
     <Box
@@ -32,7 +31,7 @@ const TextBox = () => {
           }}
         >
           <InstagramIcon />
-          <Text fontSize={"16px"} className={cx(classes.boxtext)}>
+          <Text fontSize={"16px"} sx={styles.boxtext}>
             elinorcharlotte
           </Text>
         </Grid>
@@ -45,7 +44,7 @@ const TextBox = () => {
           }}
         >
           <InstagramIcon />
-          <Text fontSize={"16px"} className={cx(classes.boxtext)}>
+          <Text fontSize={"16px"} sx={styles.boxtext}>
             elridge
           </Text>
         </Grid>
@@ -54,9 +53,7 @@ const TextBox = () => {
             paddingTop: "20px",
           }}
         >
-          <Button fontSize="16px" className={cx(classes.shopbutton)}>
-            Shop now
-          </Button>
+          <Button sx={styles.shopbutton}>Shop now</Button>
         </Grid>
       </Grid>
     </Box>

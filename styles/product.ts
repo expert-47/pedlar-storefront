@@ -1,3 +1,5 @@
+import { makeStyles } from "tss-react/mui";
+
 const styles = {
   mainContainer: {
     display: "flex",
@@ -21,13 +23,14 @@ const styles = {
     borderRadius: "50px",
     height: "46px",
     width: "100%",
-    borderColor: "#000000 20%",
+    borderColor: "success.main",
     "&.Mui-focused": {
       borderRadius: "50px",
-      borderColor: "#000000 20%",
+      borderColor: "success.main",
       '& .MuiOutlinedInput-notchedOutline': {
         borderRadius: "50px",
-        borderColor: "#000000",      }
+        borderColor: "success.main",
+          }
     },
     textAlign: "left",
     fontSize: "14px",

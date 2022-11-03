@@ -11,7 +11,11 @@ export const theme = createTheme({
     success: {
       main: "rgba(0, 0, 0, 0.2)",
       light: "rgba(28, 27, 31, 0.64)",
-      dark: "rgba(28, 27, 31, 0.64)"
+      dark: "rgba(28, 27, 31, 0.64)",
+    },
+    info: {
+      main: "#C5C5C5",
+      contrastText: "#6750A4",
     },
     divider: "rgba(6,6,6,0.12)",
   },

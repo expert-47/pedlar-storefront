@@ -22,6 +22,13 @@ const styles = {
     height: "46px",
     width: "100%",
     borderColor: "#000000 20%",
+    "&.Mui-focused": {
+      borderRadius: "50px",
+      borderColor: "#000000 20%",
+      '& .MuiOutlinedInput-notchedOutline': {
+        borderRadius: "50px",
+        borderColor: "#000000",      }
+    },
     textAlign: "left",
     fontSize: "14px",
     fontWeight: "400",

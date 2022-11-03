@@ -5,7 +5,7 @@ import Layout, { CustomGrid } from "components/layout";
 import { Grid, Button } from "@mui/material";
 import Head from "next/head";
 
-const index = () => {
+const Products = () => {
   <link rel="icon" href="/favicon.ico" />;
   return (
     <Layout>
@@ -18,8 +18,8 @@ const index = () => {
         <meta property="og:title" content="Home" key="Home" name="description" />
       </Head>
       <CustomGrid>
-        <ProductHeader />
-        <GalleryGrid />
+        <ProductHeader/>
+        <GalleryGrid/>
         <GalleryGrid
           container
           gap={4}
@@ -64,4 +64,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Products;

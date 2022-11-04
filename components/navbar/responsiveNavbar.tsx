@@ -18,10 +18,10 @@ export const ResponsiveNavbar = () => {
   return (
     <React.Fragment>
       <Toolbar
-        style={{
-          paddingLeft: theme.spacing(10),
-          paddingRight: theme.spacing(20),
-        }}
+        // style={{
+        //   paddingLeft: theme.spacing(10),
+        //   paddingRight: theme.spacing(20),
+        // }}
       >
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
@@ -29,7 +29,7 @@ export const ResponsiveNavbar = () => {
           <Link href="/">
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
-          <Typography style={{ fontSize: "22px" }} sx={styles.responsiveTypography}>
+          <Typography sx={styles.responsiveTypography}>
             Hannah Juneva
           </Typography>
         </Grid>

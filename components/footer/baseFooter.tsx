@@ -25,26 +25,20 @@ const BaseFooter = () => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >
         <Grid item xs={12} sm={12} md={8} lg={8.5}>
-          <Typography fontSize={"22px"} sx={styles.baseFootTypoheading}>
+          <Typography sx={styles.baseFootTypoheading}>
             Help & Support
           </Typography>
-          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
+          <Typography sx={styles.baseFootTypotext}>
             Shipping & Returns
           </Typography>
-          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
-            International Shipping
+          <Typography sx={styles.baseFootTypotext}>
+            FAQ
           </Typography>
-          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
-            Contact
-          </Typography>
-          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
+          <Typography sx={styles.baseFootTypotext}>
             Terms & Condition
           </Typography>
-          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
+          <Typography sx={styles.baseFootTypotext}>
             Privacy Policy
-          </Typography>
-          <Typography fontSize={"20px"} sx={styles.baseFootTypotext}>
-            FAQ
           </Typography>
         </Grid>
 

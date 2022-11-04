@@ -127,6 +127,10 @@ const styles = {
   img: {
     width: "100%",
   },
+  bannerText: {
+    fontWeight: "700",
+    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
+  },
   typotext: {
     // height: "374px",
     padding: "15px",
@@ -136,6 +140,7 @@ const styles = {
     color: "primary.dark",
     marginTop: "40px",
     fontWeight: "700",
+    fontSize:"22px"
   },
   typopara: {
     fontWeight: "700",
@@ -158,7 +163,7 @@ const styles = {
   },
   bartext: {
     color: "primary.main",
-    fontSize:{lg:"24px", md:"24px",sm:"20px", xs:"20px"} ,
+    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
     fontWeight: "700",
     minWidth: "50%",
     paddingRight: "50px",
@@ -174,7 +179,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    marginTop:"20px"
+    marginTop: {xs:"20px", sm: "10px", lg: "0px"},
   },
   closeIcon: {
     color: "primary.main",
@@ -218,10 +223,12 @@ const styles = {
     paddingLeft: "8px",
   },
   baseFootTypopara: {
+    fontSize:"20px",
     color: "primary.dark",
     fontWeight: "600",
   },
   baseFootTypotext: {
+    fontSize:"20px",
     paddingTop: "11px",
     fontWeight: "600",
     color: "success.dark",

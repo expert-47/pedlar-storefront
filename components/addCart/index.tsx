@@ -97,7 +97,7 @@ const Cart = () => {
                     }}
                   >
                     <Grid item xs={12} sm={10} md={6} lg={6} sx={{}}>
-                      <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px" }}>
+                      <Typography style={{ textAlign: "left", fontSize: "14px", fontWeight: "700", paddingLeft: "15px" }}>
                         Size
                       </Typography>
                       <FormControl sx={{ width: "100%" }}>
@@ -123,7 +123,7 @@ const Cart = () => {
                       </FormControl>
                     </Grid>
                     <Grid item xs={12} sm={10} md={6} lg={6}>
-                      <Typography style={{ textAlign: "left", fontSize: "14px", weight: "700", paddingLeft: "15px" }}>
+                      <Typography style={{ textAlign: "left", fontSize: "14px", fontWeight: "700", paddingLeft: "15px" }}>
                         Color
                       </Typography>
                       <FormControl sx={{ width: "100%" }}>

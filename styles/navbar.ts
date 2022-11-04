@@ -131,6 +131,7 @@ const styles = {
     padding: "2px",
   },
   responsiveTypography: {
+    fontSize: "22px",
     fontWeight: "400",
     padding: "2px",
   },

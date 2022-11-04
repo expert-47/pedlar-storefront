@@ -1,4 +1,3 @@
-import { SxProps } from "@mui/material";
 import { makeStyles } from "tss-react/mui";
 export const useStyles = makeStyles({
   name: "ComponentHome",
@@ -159,7 +158,7 @@ const styles = {
   },
   bartext: {
     color: "primary.main",
-    fontSize: "24px",
+    fontSize:{lg:"24px", md:"24px",sm:"20px", xs:"20px"} ,
     fontWeight: "700",
     minWidth: "50%",
     paddingRight: "50px",
@@ -175,6 +174,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
+    marginTop:"20px"
   },
   closeIcon: {
     color: "primary.main",

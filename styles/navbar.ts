@@ -1,6 +1,4 @@
-import { SxProps } from "@mui/material";
-
-const styles: SxProps = {
+const styles = {
   container: {
     display: "flex",
     alignItems: "center",
@@ -36,19 +34,19 @@ const styles: SxProps = {
     alignItems: "center",
   },
   tabButton: { color: "success.dark", fontSize: "16px", fontWeight: "600" },
-  menuItem: { color: "black", fontWeight: "600", fontSize: "12px" },
+  menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
-    width: "100%",
+    width: "100vw",
     display: "flex",
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
   },
   menuInnerContainer: {
     color: "black",
     fontWeight: "800",
     display: "flex",
     flexDirection: "row",
-    width: "60%",
+    width: "80%",
     flexWrap: "wrap",
     alignSelf: "flex-end",
   },
@@ -57,6 +55,45 @@ const styles: SxProps = {
     minWidth: "100%",
     left: "unset",
     right: "unset",
+    borderRadius: 0,
+  },
+  menuText1: {
+    fontWeight: "600",
+    color: "#1C1B1F",
+  },
+  menuText2: {
+    fontWeight: "600",
+    color: "rgba(28, 27, 31, 0.8)",
+  },
+  menuButton: {
+    backgroundColor: "#000000",
+    color: "white",
+    borderRadius: "25px",
+    width: "100%",
+    textTransform: "none",
+    fontWeight: "600",
+    fontSize: "16px",
+  },
+  outlinedButton: {
+    backgroundColor: "white",
+    color: "black",
+    borderColor: "black",
+    borderRadius: "25px",
+    width: "100%",
+    textTransform: "none",
+    fontWeight: "600",
+    fontSize: "16px",
+  },
+  menuCheck: {
+    margin: "0px",
+    padding: "2px",
+  },
+  menuDivider: {
+    width: "100vw",
+    top: "173px",
+    border: "0.5px solid rgba(28, 27, 31, 0.32)",
+    marginTop: "12px",
+    marginBottom: "12px",
   },
   drawerText: {
     color: "black",

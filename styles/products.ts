@@ -22,7 +22,8 @@ const styles = {
         color: "rgba(28, 27, 31, 0.64)",
         fontSize: "16px",
         fontWeight: 600,
-        textTransform: "none"
+        textTransform: "none",
+        padding: 0
       },
       
     select: {

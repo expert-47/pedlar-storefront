@@ -8,6 +8,7 @@ import styles from "styles/products";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
 import { Button, useMediaQuery, useTheme } from "@mui/material";
+import { CustomGrid } from "components/layout";
 
 
 
@@ -15,7 +16,6 @@ const ProductHeader = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const theme = useTheme();
-  const largeScreen = useMediaQuery(theme.breakpoints.up('md'));
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -24,27 +24,25 @@ const ProductHeader = () => {
     setAnchorEl(null);
   };
   return (
+    <CustomGrid>
     <Grid
       container
-      sm={10}
-      md={11.3}
-      lg={11.3}
-      direction={largeScreen?"row":"column"}
-
-      style={{ display: "flex", justifyContent: "space-between", padding: "10px"}}
+  
+      paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+     
+      style={{ display: "flex", justifyContent: "space-between"}}
     >
-      <Grid  item>
+      <Grid columns={{ xs: 10}}
+        item>
         <Typography variant="h1" gutterBottom color="#1C1B1F">
           All Products
         </Typography>
       </Grid>
 
-      <Grid item style={{ display: "flex"}}>
-        {/* <div>
-        <DropdownMenu type={"Brands"} />
-        <DropdownMenu type={"Category"} /></div> */}
-
-
+      <Grid columns={{ xs: 10}}
+         item style={{ display: "flex" }}
+         gap={24}
+         >
         <div>
 
           <Button
@@ -55,7 +53,7 @@ const ProductHeader = () => {
             sx={styles.inputLabel}
             onClick={handleClick}
           >
-            Brands
+          Brands
             <KeyboardArrowDownIcon />
           </Button>
           <Menu
@@ -144,6 +142,7 @@ const ProductHeader = () => {
         </FormControl> */}
       </Grid>
     </Grid>
+    </CustomGrid>                                       
   );
 };
 

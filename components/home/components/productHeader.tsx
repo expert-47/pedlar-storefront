@@ -28,7 +28,7 @@ const ProductHeader = () => {
     <Grid
       container
   
-      paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+      paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
      
       style={{ display: "flex", justifyContent: "space-between"}}
     >

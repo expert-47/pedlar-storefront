@@ -40,12 +40,12 @@ const GridGallery = (props: GridProps) => {
 
         >
           <img src="/grid-img1.png" alt="Grid-img1" className={cx(classes.galleryImg1)} />
-          <CardComponent />
+          <CardComponent name={"Low Classic"} type={"Green Polyester Blazer"} price="$365"/>
         </Grid>
         <Grid
           container
           item
-          gap={2}
+          gap={24}
           xs={12}
           sm={12}
           md={6}
@@ -55,19 +55,19 @@ const GridGallery = (props: GridProps) => {
         >
           <Grid item xs={5.5} lg={5.5}>
             <img src="/grid-img2.png" alt="Grid-img2" className={cx(classes.galleryImg2)}></img>
-            <CardComponent />
+            <CardComponent name={"Veja X Marni"} type={"35s"} price="$320"/>
           </Grid>
           <Grid item xs={5.5} lg={5.5}>
             <img src="/grid-img3.png" alt="Grid-img3" className={cx(classes.galleryImg2)}></img>
-            <CardComponent />
+            <CardComponent name={"Sisley Paris"} type={"Eye Contour Mask"} price="$42"/>
           </Grid>
           <Grid item xs={5.5} lg={5.5}>
             <img src="/grid-img4.png" alt="Grid-img4" className={cx(classes.galleryImg2)}></img>
-            <CardComponent />
+            <CardComponent name={"Nike"} type={"High-Waisted Fleece Open-Hem Pant"} price="$975"/>
           </Grid>
           <Grid item xs={5.5} lg={5.5}>
             <img src="/grid-img5.png" alt="Grid-img5" className={cx(classes.galleryImg2)}></img>
-            <CardComponent />
+            <CardComponent name={"Matteau"} type={"Drop Earring Collection"} price="$450"/>
           </Grid>
         </Grid>
       </Grid>

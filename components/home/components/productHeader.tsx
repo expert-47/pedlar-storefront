@@ -27,19 +27,16 @@ const ProductHeader = () => {
     <CustomGrid>
     <Grid
       container
-  
-      paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
+      paddingX={{ xs: theme.spacing(20),sm: theme.spacing(16), md: theme.spacing(20), lg: theme.spacing(12) }}
      
       style={{ display: "flex", justifyContent: "space-between"}}
     >
-      <Grid columns={{ xs: 10}}
-        item>
+
         <Typography variant="h1" gutterBottom color="#1C1B1F">
           All Products
         </Typography>
-      </Grid>
 
-      <Grid columns={{ xs: 10}}
+      <Grid columns={{ sm: 12}}
          item style={{ display: "flex" }}
          gap={24}
          >

@@ -51,7 +51,7 @@ const BaseFooter = () => {
           container
           paddingY={{ xs: theme.spacing(30), md: theme.spacing(80), lg: theme.spacing(80) }}
         >
-          <Typography fontSize={"20px"} sx={styles.baseFootTypopara}>
+          <Typography sx={styles.baseFootTypopara}>
             We're always here to help.
             <br />
             Contact us at support@pedlar.com and out customer service team will be in touch.

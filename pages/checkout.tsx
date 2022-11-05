@@ -1,13 +1,9 @@
 import { Grid, Typography, InputBase, Button } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
-import Text from "components/customText";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
-import { useStyles } from "components/checkoutOrder/style";
-
+import styles from "styles/checkout";
 const Checkout = () => {
-  const { classes, cx } = useStyles();
-
   return (
     <Grid
       container
@@ -21,107 +17,83 @@ const Checkout = () => {
           display: "flex",
         }}
       >
-        <Grid container spacing={3}>
+        <Grid
+          container
+          lg={12}
+          md={12}
+          sm={12}
+          xs={12}
+          spacing={3}
+          padding="20px 20px"
+          direction={{ xs: "column-reverse", sm: "row", md: "row", lg: "row" }}
+        >
           <Grid item xs>
-            <Text fontSize="12px" m={2}>
-              Cart - Information - Payment
-            </Text>
+            <Typography sx={styles.headerText1}>Cart - Information - Payment</Typography>
           </Grid>
           <Grid item xs={6} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Link href="/">
               <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
             </Link>
-            <Typography variant="h5" component="div" style={{ padding: "5px", fontWeight: "400", fontSize: "22px" }}>
+            <Typography variant="h5" component="div" sx={styles.headerText2}>
               Hannah Juneva
             </Typography>
           </Grid>
           <Grid item xs></Grid>
         </Grid>
-        {/* <Grid sm={12} lg={4}>
-          <Text fontSize="12px" m={2}>
-            Cart - Information - Payment
-          </Text>
-        </Grid>
-        <Grid style={{ display: "flex", alignItems: "center" }} sm={12} lg={8}>
-          <Link href="/">
-            <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
-          </Link>
-          <Typography variant="h5" component="div" style={{ padding: "5px", fontWeight: "400", fontSize: "22px" }}>
-            Hannah Juneva
-          </Typography>
-        </Grid> */}
       </Grid>
 
-      <Grid lg={12} style={{ paddingLeft: "0px" }}>
-        <Text fontSize="26px" className={cx(classes.checkoutText)}>
+      <Grid xs={12} lg={12} sx={styles.checkoutContainer}>
+        <Typography sx={styles.checkoutText}>
           Checkout
-        </Text>
+        </Typography>
       </Grid>
 
-      <Grid item container style={{ padding: "50px" }} lg={7}>
-        {/* <Grid item container style={{ display: "flex", alignItems: "center" }} lg={7}> */}
-
-        <Grid>
-          <Text className={cx(classes.headingStyle)}>Personal Information</Text>
+      <Grid item container xs={12} md={7} lg={7} sx={styles.mainContainer}>
+          <Typography sx={styles.headingStyle}>Personal Information</Typography>
 
           <Grid container spacing={1} sm={12} lg={10}>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="First Name" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="First Name" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Last Name" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Last Name" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Email" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Email" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Phone Number" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Phone Number" sx={styles.inputStyle} />
             </Grid>
           </Grid>
-          <Text className={cx(classes.headingStyle)}>Delivery Information</Text>
+          <Typography sx={styles.headingStyle}>Delivery Information</Typography>
           <Grid container spacing={1} sm={12} lg={10}>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Address" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Address" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Apartment" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Apartment" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="City" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="City" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="State/Territory" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="State/Territory" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Country" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Country" sx={styles.inputStyle} />
             </Grid>
-            <Grid item xs={12} sm={12} md={6} lg={6}>
-              <InputBase placeholder="Postcode" className={cx(classes.inputStyle)} />
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={styles.inputBaseGrid}>
+              <InputBase placeholder="Postcode" sx={styles.inputStyle} />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Button
-                variant="text"
-                label="Go to Payment"
-                style={{
-                  display: "block",
-                  width: "100%",
-                  height: "46px",
-                  borderRadius: "30px",
-                  backgroundColor: "black",
-                  color: "white",
-                  textTransform: "none",
-                  padding: "12px 24px 12px 24px",
-                }}
-                classname="deliveryBtn"
-              />
+              <Button sx={styles.paymentButton}>Go to payment</Button>              
             </Grid>
           </Grid>
-        </Grid>
       </Grid>
       {/* YOU ARE ORDERING */}
-      <Grid container item sm={12} lg={5} style={{ padding: "50px" }} spacing={1}>
+      <Grid container item xs={12} md={5} lg={5} sx={styles.mainContainer}>
         <Grid sm={12} lg={12}>
-          <Text className={cx(classes.headingStyle)}>You are ordering</Text>
+          <Typography sx={styles.headingStyle}>You are ordering</Typography>
         </Grid>
         <CheckoutOrder />
         <CheckoutOrder />
@@ -129,12 +101,12 @@ const Checkout = () => {
 
         <Grid container style={{ display: "flex", padding: "5px", justifyContent: "space-between" }} sm={12} lg={7}>
           <Grid style={{ display: "flex", justifyContent: "space-between" }}>
-            <Text className={cx(classes.totalText)}>Total</Text>
-            <Text fontSize="12px" className={cx(classes.taxStyle)}>
+            <Typography sx={styles.totalText}>Total</Typography>
+            <Typography fontSize="12px" sx={styles.taxStyle}>
               Incl. VAT & Taxes
-            </Text>
+            </Typography>
           </Grid>
-          <Text className={cx(classes.paymentTotal)}>$320</Text>
+          <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
       </Grid>
     </Grid>

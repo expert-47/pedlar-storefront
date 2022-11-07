@@ -9,7 +9,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
 import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
-import DropdownMenu from "components/navbar/components/dropdownMenu";
+import DropdownButton from "components/navbar/components/dropdownButton"
+import { brandList, shopList } from "components/navbar/data";
+
 
 
 
@@ -54,8 +56,8 @@ const ProductHeader = () => {
           Brands
             <KeyboardArrowDownIcon />
           </Button> */}
-                            <DropdownMenu type={"Brands"} />
-                            <DropdownMenu type={"Category"} />
+                  <DropdownButton type={"Category"} data={brandList} />
+                  <DropdownButton type={"Category"} data={brandList} />
 
           {/* <Menu
             id="demo-positioned-menu"

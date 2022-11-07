@@ -3,9 +3,13 @@ import { Grid, GridProps, useTheme } from "@mui/material";
 import CardComponent from "./cardComponent";
 import styles from "styles/home";
 import { CustomGrid } from "components/layout";
+import { useStyles } from "styles/home";
+
 
 const GridGallery = (props: GridProps) => {
   const theme = useTheme();
+  const { classes, cx } = useStyles();
+
   return (
     <CustomGrid
       style={{

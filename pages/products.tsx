@@ -2,10 +2,20 @@ import Text from "components/customText";
 import GalleryGrid from "components/home/components/gridGallery";
 import ProductHeader from "components/home/components/productHeader";
 import Layout, { CustomGrid } from "components/layout";
-import { Grid, Button } from "@mui/material";
+import { Grid, Button, useTheme, Divider } from "@mui/material";
 import Head from "next/head";
+import BrandListing from "components/home/components/brandListing";
+import GridGallery from "components/home/components/gridGallery";
+import BaseFooter from "components/footer/baseFooter";
+import { useStyles } from "styles/home";
 
-const index = () => {
+
+
+const Products = () => {
+  const theme = useTheme();
+  const { classes, cx } = useStyles();
+
+
   <link rel="icon" href="/favicon.ico" />;
   return (
     <Layout>
@@ -17,16 +27,35 @@ const index = () => {
         <meta property="og:description" content="Home" />
         <meta property="og:title" content="Home" key="Home" name="description" />
       </Head>
-      <CustomGrid>
+      <Grid
+        container
+        sm={11.5}
+        md={10.5}
+        lg={12}
+        alignItems={{ xs: "center", md: "center", lg: "center" }}
+        justifyContent={{ xs: "center", md: "center", lg: "center" }}
+        paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+        paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}>
+
         <ProductHeader />
-        <GalleryGrid />
-        <GalleryGrid
+        <GalleryGrid 
+        paddingX={0}
+        />
+        {/* <GalleryGrid
           container
           gap={4}
           lg={12}
           style={{ minHeight: "auto", flexDirection: "row-reverse", marginTop: "70px" }}
-        />
-      </CustomGrid>
+        /> */}
+        <GridGallery
+        style={{
+          flexDirection: "row-reverse",
+          display: "flex",
+        }}
+      />
+            <GridGallery />
+
+      </Grid>
 
       <Grid
         container
@@ -40,8 +69,9 @@ const index = () => {
           marginBottom: "100px",
         }}
       >
-        <Text fontSize="10px" fontWeight="600">
-          {"You ' ve viewed 20 out 0f 100 products"}
+
+        <Text fontSize="12px" fontWeight="600">
+          {"You've viewed 20 out of 100 products"}
         </Text>
         <Button
           variant="outlined"
@@ -51,8 +81,8 @@ const index = () => {
             borderRadius: "30px",
             backgroundColor: "white",
             color: "#1E1E1E",
-            fontWeight: "900",
-            fontSize: "13px",
+            fontWeight: "600",
+            fontSize: "16px",
             textTransform: "none",
             marginTop: "10px",
           }}
@@ -60,8 +90,10 @@ const index = () => {
           Load more
         </Button>
       </Grid>
+      <Divider className={cx(classes.footerDivider)} />
+      <BaseFooter />
     </Layout>
   );
 };
 
-export default index;
+export default Products;

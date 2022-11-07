@@ -14,7 +14,7 @@ interface Props {
   type: string;
   data: string[];
 }
-const DropdownMenu = (props: Props) => {
+const DropdownButton = (props: Props) => {
   const theme = useTheme();
   const { type = "Brands", data } = props;
   const [brands, setBrands] = useState(false);
@@ -132,4 +132,4 @@ const DropdownMenu = (props: Props) => {
   );
 };
 
-export default DropdownMenu;
+export default DropdownButton;

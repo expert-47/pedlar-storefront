@@ -21,10 +21,14 @@ const styles = {
   checkoutText: {
     fontSize: "26px",
     fontWeight: "600",
+    paddingTop: "20px"
   },
   headingStyle: {
     fontWeight: "600",
     fontSize: "16px",
+    marginTop: {
+      xs: 10,
+    },
   },
   checkoutContainer: {
     paddingLeft: {
@@ -35,12 +39,20 @@ const styles = {
     },
   },
   mainContainer: {
-    padding: {
+    paddingLeft: {
       lg: 85,
       md: 85,
       sm: 10,
       xs: 10,
     },
+    paddingRight: {
+      lg: 85,
+      md: 85,
+      sm: 10,
+      xs: 10,
+    },
+    paddingTop: "20px",
+    paddingBottom: "20px",
   },
   inputBaseGrid: {
     padding: {
@@ -70,11 +82,13 @@ const styles = {
     color: "#1C1B1F",
   },
   brandName: {
+    fontSize: "12px",
     fontWeight: "600",
     textTransform: "uppercase",
     marginTop: "15px",
   },
   productPrice: {
+    fontSize: "16px",
     fontWeight: "600",
     lineHeight: "20px",
     top: "232px",
@@ -88,7 +102,7 @@ const styles = {
     padding: "4px",
   },
   addRemoveText: {
-    fontSize:"14px",
+    fontSize: "14px",
     fontWeight: "400",
     letterSpacing: "-0.02em",
     color: "#000000",
@@ -110,14 +124,14 @@ const styles = {
     top: "343px",
   },
   paymentButton: {
-    display: "block",
+    // display: "block",
     width: "100%",
     height: "46px",
     borderRadius: "30px",
     backgroundColor: "black",
     color: "white",
     textTransform: "none",
-    padding: "12px 24px 12px 24px",
+    // padding: "12px 24px 12px 24px",
     marginTop: {
       xs: 8,
       md: 8,

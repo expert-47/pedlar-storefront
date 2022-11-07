@@ -12,10 +12,10 @@ const CheckoutOrder = () => {
     <Grid container item lg={7} style={{ display: "flex" }}>
       <img src="/Product Image.png" width="100" height="100"></img>
       <Grid style={{ margin: "10px",  }}>
-        <Typography fontSize="12px" sx={styles.brandName}>
+        <Typography sx={styles.brandName}>
           Veja X Marni
         </Typography>
-        <Typography fontSize="16px" sx={styles.productPrice}>
+        <Typography sx={styles.productPrice}>
           $320
         </Typography>
         <Grid style={{ display: "flex", justifyContent: "space-between", marginTop: "15px" }}>

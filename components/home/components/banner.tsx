@@ -1,12 +1,11 @@
 import React from "react";
-import { useStyles } from "styles/home";
+
 import Grid from "@mui/material/Grid";
 import { CustomContainer } from "../../layout";
 import { useTheme } from "@mui/material";
 import TextBox from "./textBox";
 
 const BannerImg = () => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
 
   return (
@@ -24,7 +23,14 @@ const BannerImg = () => {
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
         <Grid item container xs={11.5} md={8} lg={8}>
-          <img src="/bannerImage.png" alt="headerimage" className={cx(classes.img)}></img>
+          <img
+            src="/bannerImage.png"
+            alt="headerimage"
+            style={{
+              width: "100%",
+              height: theme.breakpoints.up("md") ? "595px" : "300px",
+            }}
+          ></img>
         </Grid>
         <Grid
           item

@@ -1,11 +1,10 @@
 import React from "react";
 import { Grid, GridProps, useTheme } from "@mui/material";
 import CardComponent from "./cardComponent";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 import { CustomGrid } from "components/layout";
 
 const GridGallery = (props: GridProps) => {
-  const { classes, cx } = useStyles();
   const theme = useTheme();
   return (
     <CustomGrid
@@ -37,7 +36,6 @@ const GridGallery = (props: GridProps) => {
           justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
           paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(20) }}
           paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-
         >
           <img src="/grid-img1.png" alt="Grid-img1" className={cx(classes.galleryImg1)} />
           <CardComponent name={"Low Classic"} type={"Green Polyester Blazer"} price="$365"/>

@@ -6,7 +6,7 @@ const styles = {
   },
   Typography: { color: "primary.contrastText" },
   appBar: { backgroundColor: "white", width: "100%" },
-  marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
+  marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px"},
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
@@ -33,7 +33,12 @@ const styles = {
     display: "flex",
     alignItems: "center",
   },
-  tabButton: { color: "success.dark", fontSize: "16px", fontWeight: "600" },
+  navTypo : {
+    fontSize:"22px",
+    fontWeight:"400",
+    paddingLeft:"5px",
+  },
+  tabButton: { color: "rgba(28, 27, 31, 0.8)", fontSize: "16px", fontWeight: "600" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
     width: "100vw",
@@ -87,6 +92,9 @@ const styles = {
   menuCheck: {
     margin: "0px",
     padding: "2px",
+    "&.Mui-checked": {
+      color: "black",
+    },
   },
   menuDivider: {
     width: "100vw",

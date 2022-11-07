@@ -20,13 +20,14 @@ const Navbar = () => {
 
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
-      <AppBar position="static" sx={styles.appBar}>
+      <AppBar position="static" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
             FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
             All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Direc
           </Typography>
         </Marquee>
+
         <CustomContainer>
           {!isMatch ? (
             <ResponsiveNavbar />
@@ -37,9 +38,7 @@ const Navbar = () => {
                   <Link href="/">
                     <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px" }} />
                   </Link>
-                  <Typography fontSize={"22px"} fontWeight={"400"} paddingLeft={"5px"}>
-                    Hannah Juneva
-                  </Typography>
+                  <Typography sx={styles.navTypo}>Hannah Juneva</Typography>
                 </Stack>
                 <Stack direction="row" spacing={2}>
                   <Link href="/">

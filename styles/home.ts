@@ -140,7 +140,7 @@ const styles = {
     color: "primary.dark",
     marginTop: "40px",
     fontWeight: "700",
-    fontSize:"22px"
+    fontSize: "22px",
   },
   typopara: {
     fontWeight: "700",
@@ -151,9 +151,6 @@ const styles = {
     borderRadius: "666px",
     fontWeight: "600",
     textTransform: "none",
-    "&:hover": {
-      color: "primary.contrastText",
-    },
     padding: "10px 32.5px",
     fontSize: 16,
   },
@@ -179,7 +176,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    marginTop: {xs:"20px", sm: "10px", lg: "0px"},
+    marginTop: { xs: "20px", sm: "10px", lg: "0px" },
   },
   closeIcon: {
     color: "primary.main",
@@ -192,10 +189,12 @@ const styles = {
   gridtag1typo2: {
     fontSize: "12px",
     fontWeight: "600",
+    color: "primary.dark",
   },
   arrowIcon: {
     fontSize: "small",
     padding: "2px",
+    color: "primary.dark",
   },
   galleryImg1: {
     width: "100%",
@@ -223,12 +222,12 @@ const styles = {
     paddingLeft: "8px",
   },
   baseFootTypopara: {
-    fontSize:"20px",
+    fontSize: "20px",
     color: "primary.dark",
     fontWeight: "600",
   },
   baseFootTypotext: {
-    fontSize:"20px",
+    fontSize: "20px",
     paddingTop: "11px",
     fontWeight: "600",
     color: "success.dark",

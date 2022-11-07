@@ -2,12 +2,19 @@ import Text from "components/customText";
 import GalleryGrid from "components/home/components/gridGallery";
 import ProductHeader from "components/home/components/productHeader";
 import Layout, { CustomGrid } from "components/layout";
-import { Grid, Button, useTheme } from "@mui/material";
+import { Grid, Button, useTheme, Divider } from "@mui/material";
 import Head from "next/head";
+import BrandListing from "components/home/components/brandListing";
+import GridGallery from "components/home/components/gridGallery";
+import BaseFooter from "components/footer/baseFooter";
+import { useStyles } from "styles/home";
+
 
 
 const Products = () => {
   const theme = useTheme();
+  const { classes, cx } = useStyles();
+
 
   <link rel="icon" href="/favicon.ico" />;
   return (
@@ -34,12 +41,20 @@ const Products = () => {
         <GalleryGrid 
         paddingX={0}
         />
-        <GalleryGrid
+        {/* <GalleryGrid
           container
           gap={4}
           lg={12}
           style={{ minHeight: "auto", flexDirection: "row-reverse", marginTop: "70px" }}
-        />
+        /> */}
+        <GridGallery
+        style={{
+          flexDirection: "row-reverse",
+          display: "flex",
+        }}
+      />
+            <GridGallery />
+
       </Grid>
 
       <Grid
@@ -54,8 +69,9 @@ const Products = () => {
           marginBottom: "100px",
         }}
       >
-        <Text fontSize="10px" fontWeight="600">
-          {"You ' ve viewed 20 out 0f 100 products"}
+
+        <Text fontSize="12px" fontWeight="600">
+          {"You've viewed 20 out of 100 products"}
         </Text>
         <Button
           variant="outlined"
@@ -65,8 +81,8 @@ const Products = () => {
             borderRadius: "30px",
             backgroundColor: "white",
             color: "#1E1E1E",
-            fontWeight: "900",
-            fontSize: "13px",
+            fontWeight: "600",
+            fontSize: "16px",
             textTransform: "none",
             marginTop: "10px",
           }}
@@ -74,6 +90,8 @@ const Products = () => {
           Load more
         </Button>
       </Grid>
+      <Divider className={cx(classes.footerDivider)} />
+      <BaseFooter />
     </Layout>
   );
 };

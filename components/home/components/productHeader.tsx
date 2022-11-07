@@ -9,6 +9,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import Menu from '@mui/material/Menu';
 import { Button, useMediaQuery, useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
+import DropdownMenu from "components/navbar/components/dropdownMenu";
 
 
 
@@ -36,13 +37,13 @@ const ProductHeader = () => {
           All Products
         </Typography>
 
-      <Grid columns={{ sm: 12}}
+      <Grid columns={{ md: 12}}
          item style={{ display: "flex" }}
          gap={24}
          >
         <div>
 
-          <Button
+          {/* <Button
             id="demo-positioned-button"
             aria-controls={open ? 'demo-positioned-menu' : undefined}
             aria-haspopup="true"
@@ -52,8 +53,11 @@ const ProductHeader = () => {
           >
           Brands
             <KeyboardArrowDownIcon />
-          </Button>
-          <Menu
+          </Button> */}
+                            <DropdownMenu type={"Brands"} />
+                            <DropdownMenu type={"Category"} />
+
+          {/* <Menu
             id="demo-positioned-menu"
             aria-labelledby="demo-positioned-button"
             anchorEl={anchorEl}
@@ -105,38 +109,8 @@ const ProductHeader = () => {
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
-        </div>
-        {/* <FormControl size="small" variant="standard" sx={{ minWidth: 80 }}>
-          <InputLabel style={styles.inputLabel}>Brands</InputLabel>
-          <Select
-            disableUnderline={true}
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            IconComponent= {KeyboardArrowDownIcon}
-            label="Brands"
-          >
-            <MenuItem value="">Brands</MenuItem>
-            <MenuItem value={10}>Brands</MenuItem>
-            <MenuItem value={20}>Brands</MenuItem>
-            <MenuItem value={30}>Brands</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl variant="standard" sx={{ minWidth: 90 }}>
-          <InputLabel style={styles.inputLabel} id="demo-simple-select-standard-label">Category</InputLabel>
-          <Select
-            disableUnderline={true}
-            labelId="demo-simple-select-standard-label"
-            id="demo-simple-select-standard"
-            label="Category"
-            IconComponent= {KeyboardArrowDownIcon}
-
-          >
-            <MenuItem value={10}>Category</MenuItem>
-            <MenuItem value={20}>Category</MenuItem>
-            <MenuItem value={30}>Category</MenuItem>
-          </Select>
-        </FormControl> */}
+        </div> */}
+       </div>
       </Grid>
     </Grid>
     </CustomGrid>                                       

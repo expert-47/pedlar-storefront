@@ -42,10 +42,10 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           justifyContent={"flex-end"}
           alignItems={"center"}
           paddingX={{ xs: theme.spacing(0), md: theme.spacing(40), lg: theme.spacing(10) }}
-          // paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
         >
-          <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
-          <ArrowForwardIcon sx={styles.arrowIcon} />
+            <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
+            <ArrowForwardIcon sx={styles.arrowIcon} />
+          
         </Grid>
       </Grid>
     </CustomGrid>

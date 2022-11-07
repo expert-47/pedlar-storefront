@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-import React, { useState } from "react";
+import React from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";

@@ -26,7 +26,7 @@ const PadlarCollapseView = (props: Props) => {
         alignItems: "flex-end",
         justifyContent: "flex-end",
         width: "100%",
-        boxShadow: 1,
+        // boxShadow: 1,
       }}
     >
       <CustomContainer>

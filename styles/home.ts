@@ -127,6 +127,10 @@ const styles = {
   img: {
     width: "100%",
   },
+  bannerText: {
+    fontWeight: "700",
+    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
+  },
   typotext: {
     // height: "374px",
     padding: "15px",
@@ -136,6 +140,7 @@ const styles = {
     color: "primary.dark",
     marginTop: "40px",
     fontWeight: "700",
+    fontSize: "22px",
   },
   typopara: {
     fontWeight: "700",
@@ -146,9 +151,6 @@ const styles = {
     borderRadius: "666px",
     fontWeight: "600",
     textTransform: "none",
-    "&:hover": {
-      color: "primary.contrastText",
-    },
     padding: "10px 32.5px",
     fontSize: 16,
   },
@@ -158,7 +160,7 @@ const styles = {
   },
   bartext: {
     color: "primary.main",
-    fontSize:{lg:"24px", md:"24px",sm:"20px", xs:"20px"} ,
+    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
     fontWeight: "700",
     minWidth: "50%",
     paddingRight: "50px",
@@ -174,7 +176,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    marginTop:"20px"
+    marginTop: { xs: "20px", sm: "10px", lg: "0px" },
   },
   closeIcon: {
     color: "primary.main",
@@ -187,10 +189,12 @@ const styles = {
   gridtag1typo2: {
     fontSize: "12px",
     fontWeight: "600",
+    color: "primary.dark",
   },
   arrowIcon: {
     fontSize: "small",
     padding: "2px",
+    color: "primary.dark",
   },
   galleryImg1: {
     width: "100%",
@@ -218,10 +222,12 @@ const styles = {
     paddingLeft: "8px",
   },
   baseFootTypopara: {
+    fontSize: "20px",
     color: "primary.dark",
     fontWeight: "600",
   },
   baseFootTypotext: {
+    fontSize: "20px",
     paddingTop: "11px",
     fontWeight: "600",
     color: "success.dark",

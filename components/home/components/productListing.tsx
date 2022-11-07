@@ -37,8 +37,8 @@ const ProductListing = () => {
           justifyContent={"center"}
           alignItems="center"
         >
-          <Typography sx={styles.gridtag1typo2}>Shop ALL</Typography>
-          <ArrowRightAltIcon />
+            <Typography sx={styles.gridtag1typo2}>Shop ALL</Typography>
+            <ArrowRightAltIcon />
         </Grid>
       </Grid>
     </CustomGrid>

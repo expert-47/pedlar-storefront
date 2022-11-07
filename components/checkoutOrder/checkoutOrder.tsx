@@ -1,54 +1,40 @@
 import React from "react";
-import { Grid, Button } from "@mui/material";
-import Text from "components/customText";
+import { Grid, Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import { useStyles } from "./style";
+import styles from "styles/checkout";
 
 const CheckoutOrder = () => {
-  const { classes, cx } = useStyles();
 
   return (
     <Grid container item lg={7} style={{ display: "flex" }}>
-      <img src="/Product Image.png" className={cx(classes.image)}></img>
-      <Grid style={{ marginLeft: "10px" }}>
-        <Text fontSize="12px" className={cx(classes.brandName)}>
+      <img src="/Product Image.png" width="100" height="100"></img>
+      <Grid style={{ margin: "10px",  }}>
+        <Typography sx={styles.brandName}>
           Veja X Marni
-        </Text>
-        <Text fontSize="16px" className={cx(classes.productPrice)}>
+        </Typography>
+        <Typography sx={styles.productPrice}>
           $320
-        </Text>
+        </Typography>
         <Grid style={{ display: "flex", justifyContent: "space-between", marginTop: "15px" }}>
           <Box
             component="span"
             sx={{ borderRadius: "3px", border: "1px solid #DDDDDD", width: "85px", height: "25px" }}
           >
             <Grid style={{ display: "flex", justifyContent: "space-between" }}>
-              <RemoveIcon style={{ fontSize: "14px" }} className={cx(classes.addRemoveIcon)} />
-              <Text fontSize="14px" className={cx(classes.addRemoveText)}>
+              <RemoveIcon sx={styles.addRemoveIcon} />
+              <Typography sx={styles.addRemoveText}>
                 1
-              </Text>
-              <AddIcon style={{ fontSize: "14px" }} className={cx(classes.addRemoveIcon)} />
+              </Typography>
+              <AddIcon sx={styles.addRemoveIcon} />
             </Grid>
           </Box>
-          <Button
-            variant="text"
-            label="Remove"
-            // classname="removeBtn"
-            // className={cx(classes.removeButton)}
-            style={{
-              fontSize: "12px",
-              fontWeight: "500",
-              color: "#1C1B1F",
-              textDecorationLine: "underline",
-              lineHeight: "20px",
-            }}
-          />
+          <Button sx={styles.removeButton}>Remove</Button>
         </Grid>
       </Grid>
-      <Divider className={cx(classes.divider)} />
+      <Divider sx={styles.divider} />
     </Grid>
   );
 };

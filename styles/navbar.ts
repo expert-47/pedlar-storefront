@@ -51,7 +51,6 @@ const styles = {
     fontWeight: "800",
     display: "flex",
     flexDirection: "row",
-    width: "80%",
     flexWrap: "wrap",
     alignSelf: "flex-end",
   },
@@ -97,7 +96,6 @@ const styles = {
     },
   },
   menuDivider: {
-    width: "100vw",
     top: "173px",
     border: "0.5px solid rgba(28, 27, 31, 0.32)",
     marginTop: "12px",

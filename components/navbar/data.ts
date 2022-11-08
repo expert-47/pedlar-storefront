@@ -20,13 +20,7 @@ export const brandList = [
   "Brand name",
   "Brand name",
   "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
+
 ];
 
 export const shopList = [
@@ -44,19 +38,5 @@ export const shopList = [
   "shop name",
   "shop name",
   "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
+
 ];

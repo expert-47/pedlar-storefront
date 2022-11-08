@@ -34,7 +34,7 @@ const ProductHeader = () => {
         container
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(16), md: theme.spacing(20), lg: theme.spacing(12) }}
 
-        style={{ display: "flex", justifyContent: "space-between" }}
+        style={{ display: "flex", justifyContent: "space-between",  flexDirection: isMatch ?"row": "column" }}
       >
 
         <Typography variant="h1" gutterBottom color="#1C1B1F">

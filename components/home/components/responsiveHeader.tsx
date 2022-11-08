@@ -71,7 +71,7 @@ export const ResponsiveHeader = (props: Props) => {
       >
         <Grid>
           <Button onClick={handleClick} style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}>
-            <Grid>
+            <Grid style={{ borderBottom: open ?"solid black 2px": "none"}}>
               Brands
             </Grid>
             {open ? <ExpandLess style={{ transform: "scale(0.8)" }} /> : <ExpandMore style={{ transform: "scale(0.8)" }} />}
@@ -80,7 +80,8 @@ export const ResponsiveHeader = (props: Props) => {
 
         <Grid>
           <Button onClick={handleClicks} style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}>
-            <Grid>Category</Grid> {opens ? <ExpandLess style={{ transform: "scale(0.8)" }} /> : <ExpandMore style={{ transform: "scale(0.8)" }} />}
+          <Grid style={{ borderBottom: opens ?"solid black 2px": "none"}}>
+Category</Grid> {opens ? <ExpandLess style={{ transform: "scale(0.8)" }} /> : <ExpandMore style={{ transform: "scale(0.8)" }} />}
           </Button>
 
         </Grid>

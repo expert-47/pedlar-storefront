@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
-      <AppBar position="static" sx={styles.appBar} elevation={0}>
+      <AppBar position="fixed" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
             FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
@@ -32,7 +32,7 @@ const Navbar = () => {
           {!isMatch ? (
             <ResponsiveNavbar />
           ) : (
-            <Grid container item lg={12} sx={styles.padding}>
+            <Grid container item md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href="/">
@@ -51,7 +51,7 @@ const Navbar = () => {
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>
-                      Faq
+                      FAQ
                     </Button>
                   </Link>
                   <IconButton sx={styles.iconColor}>

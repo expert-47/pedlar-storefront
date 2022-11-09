@@ -166,7 +166,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </List>
           <Link href="faq">
             <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
-              Faq
+              FAQ
             </ListItem>
           </Link>
         </ListItemText>

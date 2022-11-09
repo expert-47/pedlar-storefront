@@ -21,15 +21,26 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         container
         item
         xs={11}
-        sm={11}
-        md={11}
-        lg={11}
-        justifyContent={"center"}
-        alignItems={"center"}
+        // sm={11}
+        md={10.5}
+        lg={12}
+        alignItems={{ xs: "center", md: "center", lg: "center" }}
+        justifyContent={{ xs: "space-between", md: "space-between", lg: "space-between" }}
         paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(40) }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid container item xs={7} sm={9} md={9} lg={9}>
+        <Grid
+          container
+          item
+          xs={7}
+          sm={9}
+          md={9}
+          lg={9}
+          // paddingX={{ xs: theme.spacing(10),sm: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+          justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
+          alignItems={"center"}
+
+        >
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
         <Grid
@@ -39,13 +50,13 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           sm={3}
           md={3}
           lg={3}
-          justifyContent={"flex-end"}
+          // paddingX={{ xs: theme.spacing(10),sm: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+          justifyContent={{ xs: "flex-end", md: "flex-end", lg: "flex-end" }}
           alignItems={"center"}
-          paddingX={{ xs: theme.spacing(0), md: theme.spacing(40), lg: theme.spacing(10) }}
+
         >
-            <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
-            <ArrowForwardIcon sx={styles.arrowIcon} />
-          
+          <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
+          <ArrowForwardIcon sx={styles.arrowIcon} />
         </Grid>
       </Grid>
     </CustomGrid>

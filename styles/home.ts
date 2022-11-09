@@ -81,7 +81,7 @@ export const useStyles = makeStyles({
   },
   galleryImg1: {
     width: "100%",
-    height: "88%",
+    // height: "88%",
   },
   galleryImg2: {
     width: "100%",
@@ -198,7 +198,7 @@ const styles = {
   },
   galleryImg1: {
     width: "100%",
-    height: "88%",
+    // height: "88%",
   },
   galleryImg2: {
     width: "100%",
@@ -225,6 +225,10 @@ const styles = {
     fontSize: "20px",
     color: "primary.dark",
     fontWeight: "600",
+    marginTop: {
+      xs: "60px",
+      md: "-10px"
+    }
   },
   baseFootTypotext: {
     fontSize: "20px",

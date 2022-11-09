@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, GridProps, useTheme } from "@mui/material";
 import CardComponent from "./cardComponent";
-import styles from "styles/home";
+// import styles from "styles/home";
 import { CustomGrid } from "components/layout";
 import { useStyles } from "styles/home";
 
@@ -37,9 +37,10 @@ const GridGallery = (props: GridProps) => {
           sm={12}
           md={6}
           lg={6}
+          sx={{backgroundColor: "red"}}
           justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
-          paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(20) }}
-          paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+          // paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(20) }}
+          // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
           <img src="/grid-img1.png" alt="Grid-img1" className={cx(classes.galleryImg1)} />
           <CardComponent name={"Low Classic"} type={"Green Polyester Blazer"} price="$365"/>
@@ -47,12 +48,15 @@ const GridGallery = (props: GridProps) => {
         <Grid
           container
           item
-          gap={24}
+          gap={2}
+          // spacing={2}
           xs={12}
           sm={12}
           md={6}
           lg={6}
-          justifyContent={{ xs: "center", md: "center", lg: "center" }}
+          sx={{backgroundColor: "blue"}}
+          justifyContent={{ xs: "center", md: "flex-end", lg: "flex-end" }}
+          
           // paddingX={{ xs: theme.spacing(0), md: theme.spacing(5), lg: theme.spacing(40) }}
         >
           <Grid item xs={5.5} lg={5.5}>

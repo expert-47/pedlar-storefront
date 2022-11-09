@@ -17,27 +17,16 @@ export const ResponsiveNavbar = () => {
 
   return (
     <React.Fragment>
-      <Toolbar
-        // style={{
-        //   paddingLeft: theme.spacing(10),
-        //   paddingRight: theme.spacing(20),
-        // }}
-      >
+      <Toolbar>
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
-        <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
+        <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <MenuIcon onClick={onClickDrawer} sx={styles.menuIcon} />
           <Link href="/">
-            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
+            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} style={{ padding: "10px" }} />
           </Link>
-          <Typography sx={styles.responsiveTypography}>
-            Hannah Juneva
-          </Typography>
+          <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>
-        <IconButton
-          style={{
-            maxWidth: "20px",
-          }}
-        >
+        <IconButton sx={styles.shoppingCartIcon}>
           <ShoppingCartIcon />
         </IconButton>
       </Toolbar>

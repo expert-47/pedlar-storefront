@@ -130,6 +130,8 @@ const styles = {
     color: "#1C1B1F",
     textDecorationLine: "underline",
     lineHeight: "20px",
+    position: "absolute",
+    right: "12px"
   },
   divider: {
     backgroundColor: "#DDDDDD",

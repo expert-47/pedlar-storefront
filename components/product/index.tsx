@@ -16,8 +16,19 @@ import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
+
+const buttonStyle = {
+  display: "none"
+};
+
+const properties = {
+  prevArrow: <button style={{ ...buttonStyle }}></button>,
+  nextArrow: <button style={{ ...buttonStyle }}></button>
+}
+
 const Cart = () => {
     const images = [
+      "/grid-img1.png",
       "/grid-img1.png",
       "/grid-img1.png",
       "/grid-img1.png",];
@@ -29,20 +40,21 @@ const Cart = () => {
               <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
                 <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                   <Grid>
-                    <Slide>
+                    <Slide {...properties} indicators={true}>
                       <Box className="each-slide-effect">
                         <Box sx={styles.eachSlideEffect} style={{ 'backgroundImage': `url(${images[0]})` }}>
-                          {/* <Box sx={styles.eachSlideEffectSpan}>Slide 1</Box> */}
                         </Box>
                       </Box>
                       <Box className="each-slide-effect">
                         <Box sx={styles.eachSlideEffect} style={{ 'backgroundImage': `url(${images[1]})` }}>
-                        {/* <Box sx={styles.eachSlideEffectSpan}>Slide 1</Box> */}
                         </Box>
                       </Box>
                       <Box className="each-slide-effect">
                         <Box sx={styles.eachSlideEffect} style={{ 'backgroundImage': `url(${images[2]})` }}>
-                        {/* <Box sx={styles.eachSlideEffectSpan}>Slide 1</Box> */}
+                        </Box>
+                      </Box>
+                      <Box className="each-slide-effect">
+                        <Box sx={styles.eachSlideEffect} style={{ 'backgroundImage': `url(${images[2]})` }}>
                         </Box>
                       </Box>
                     </Slide>

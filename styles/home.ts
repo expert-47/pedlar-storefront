@@ -36,7 +36,7 @@ export const useStyles = makeStyles({
     fontWeight: "600",
     textTransform: "none",
     "&:hover": {
-      color: theme.palette.primary.contrastText,
+      color: theme.palette.primary.dark,
     },
     padding: "10px 32.5px",
   },
@@ -153,6 +153,9 @@ const styles = {
     textTransform: "none",
     padding: "10px 32.5px",
     fontSize: 16,
+    "&:hover": {
+      backgroundColor: "primary.dark",
+    },
   },
   mainbargrid: {
     // display: "flex",

@@ -18,8 +18,7 @@ export const brandList = [
   "Brand name",
   "Brand name",
   "Brand name",
-  "Brand name",
-  "Brand name",
+  "Brand name"
 
 ];
 

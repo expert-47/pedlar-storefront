@@ -11,9 +11,14 @@ import CartDrawer from "components/cartDrawer/cartDrawer";
 export const ResponsiveNavbar = () => {
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
+  const [openCartDrawer, toggleCartDrawer] = useState(false);
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
+  };
+
+  const onClickCartDrawer = () => {
+    toggleCartDrawer(!openCartDrawer);
   };
 
   return (
@@ -32,8 +37,8 @@ export const ResponsiveNavbar = () => {
             maxWidth: "20px",
           }}
         >
-          <ShoppingCartIcon onClick={onClickDrawer} />
-          <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
+          <ShoppingCartIcon onClick={onClickCartDrawer} />
+          <CartDrawer openDrawer={openCartDrawer} toggleDrawer={toggleCartDrawer} />
           
         </IconButton>
       </Toolbar>

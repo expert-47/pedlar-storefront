@@ -17,7 +17,8 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     display: "flex",
     flexDirection: "column",
     backgroundColor: "white",
-    padding: "0px 20px",
+    justifyContent: "space-between",
+    padding: "20px",
   };
 
   return (
@@ -29,7 +30,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         sx: paperStyle,
       }}
     >
-      <Grid container xs={12} md={12} lg={12} display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+      <Grid container xs={12} md={12} lg={12} display={"flex"} maxHeight="30px" justifyContent={"space-between"} alignItems={"center"}>
         <Typography sx={styles.cartDrawerTypo}>Cart (3)</Typography>
         <CloseIcon
           onClick={() => {
@@ -37,13 +38,13 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           }}
         />
       </Grid>
-      <Grid container xs={12} md={12} lg={12} justifyContent={"center"} alignItems={"center"}>
+      <Grid container xs={12} md={12} lg={12} justifyContent={"center"} paddingY={"30px"}>
         <CheckoutOrder />
         <CheckoutOrder />
         <CheckoutOrder />
       </Grid>
 
-      <Grid container xs={12} md={12} lg={12} direction={"column"} marginTop={"30%"}>
+      <Grid container xs={12} md={12} lg={12} direction={"column"} marginTop={"40%"}>
         <Grid container style={{ display: "flex", padding: "5px", justifyContent: "space-between" }}>
           <Grid style={{ display: "flex", justifyContent: "space-between" }}>
             <Typography sx={styles.totalText}>Total</Typography>

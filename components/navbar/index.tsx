@@ -59,7 +59,7 @@ const Navbar = () => {
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>
-                      Faq
+                      FAQ
                     </Button>
                   </Link>
                   <IconButton sx={styles.iconColor}>

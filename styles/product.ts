@@ -90,6 +90,19 @@ const styles = {
     borderColor: "info.main",
     paddingBottom: "50px",
   },
+  eachSlideEffect: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundSize: "cover",
+    height:" 350px",
+  },
+  eachSlideEffectSpan: {
+    padding: "20px",
+    fontSize: "20px",
+    background: "#efefef",
+    textAlign: "center",
+  },
   text: { paddingBottom: "20px", fontWeight: "600", fontSize: "22px" },
 };
 

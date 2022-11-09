@@ -18,10 +18,7 @@ export const ResponsiveNavbar = () => {
   return (
     <React.Fragment>
       <Toolbar
-        // style={{
-        //   paddingLeft: theme.spacing(10),
-        //   paddingRight: theme.spacing(20),
-        // }}
+   
       >
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>

@@ -25,7 +25,7 @@ export const ResponsiveNavbar = () => {
       >
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
-          <MenuIcon onClick={onClickDrawer} sx={styles.menuIcon} />
+          <Image width={20} height={15} src="/menuIcon.png" onClick={onClickDrawer} sx={styles.menuIcon} />
           <Link href="/">
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>

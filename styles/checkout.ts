@@ -21,7 +21,22 @@ const styles = {
   checkoutText: {
     fontSize: "26px",
     fontWeight: "600",
-    paddingTop: "20px"
+    paddingTop: "20px",
+  },
+  checkoutButton: {
+    width: "100%",
+    backgroundColor: "primary.dark",
+    color: "primary.main",
+    borderRadius: "666px",
+    fontWeight: "600",
+    textTransform: "none",
+    padding: "12px 24px",
+    fontSize: "16px",
+    "&:hover": {
+      backgroundColor: "primary.dark",
+    },
+    marginTop: "10px",
+    marginBottom: "30px"
   },
   headingStyle: {
     fontWeight: "600",
@@ -136,6 +151,10 @@ const styles = {
       xs: 8,
       md: 8,
     },
+  },
+  cartDrawerTypo: {
+    fontWeight: "600",
+    fontSize: "26px",
   },
 };
 

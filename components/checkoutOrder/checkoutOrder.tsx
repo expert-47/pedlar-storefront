@@ -9,9 +9,9 @@ import styles from "styles/checkout";
 const CheckoutOrder = () => {
 
   return (
-    <Grid container item lg={7} style={{ display: "flex" }}>
-      <img src="/Product Image.png" width="100" height="100"></img>
-      <Grid style={{ margin: "10px",  }}>
+    <Grid container style={{ display: "flex" }}>
+      <img src="/productImage.png" width="100" height="100" />
+      <Grid style={{ margin: "10px" }}>
         <Typography sx={styles.brandName}>
           Veja X Marni
         </Typography>

@@ -38,7 +38,7 @@ const styles = {
     fontWeight:"400",
     paddingLeft:"5px",
   },
-  tabButton: { color: "rgba(28, 27, 31, 0.8)", fontSize: "16px", fontWeight: "600" },
+  tabButton: { color: "rgba(28, 27, 31, 0.8)", fontSize: "16px", fontWeight: "600", textTransform: "none" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
     width: "100vw",

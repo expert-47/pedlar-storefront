@@ -24,6 +24,7 @@ const styles = {
     paddingTop: "20px",
   },
   checkoutButton: {
+    width: "100%",
     backgroundColor: "primary.dark",
     color: "primary.main",
     borderRadius: "666px",
@@ -35,6 +36,7 @@ const styles = {
       backgroundColor: "primary.dark",
     },
     marginTop: "10px",
+    marginBottom: "30px"
   },
   headingStyle: {
     fontWeight: "600",

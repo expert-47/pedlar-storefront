@@ -152,9 +152,9 @@ const styles = {
     fontWeight: "600",
     textTransform: "none",
     padding: "10px 32.5px",
-    fontSize: 16,
+    fontSize: "16px",
     "&:hover": {
-      backgroundColor: "primary.dark",
+      // backgroundColor: "primary.main",
     },
   },
   mainbargrid: {
@@ -180,6 +180,9 @@ const styles = {
     textTransform: "none",
     padding: "10px 32.5px",
     marginTop: { xs: "20px", sm: "10px", lg: "0px" },
+    "&:hover": {
+      backgroundColor: "primary.main",
+    },
   },
   closeIcon: {
     color: "primary.main",

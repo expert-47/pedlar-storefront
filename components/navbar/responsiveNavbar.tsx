@@ -25,21 +25,15 @@ export const ResponsiveNavbar = () => {
     <React.Fragment>
       <Toolbar>
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
-        <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
-          <Image width={20} height={15} src="/menuIcon.png" onClick={onClickDrawer} sx={styles.menuIcon} />
+        <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
+          <MenuIcon onClick={onClickDrawer} sx={styles.menuIcon} />
           <Link href="/">
-            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
+            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} style={{ padding: "10px" }} />
           </Link>
           <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>
-        <IconButton
-          style={{
-            maxWidth: "20px",
-          }}
-        >
-          <ShoppingCartIcon onClick={onClickCartDrawer} />
-          <CartDrawer openDrawer={openCartDrawer} toggleDrawer={toggleCartDrawer} />
-          
+        <IconButton sx={styles.shoppingCartIcon}>
+          <ShoppingCartIcon />
         </IconButton>
       </Toolbar>
     </React.Fragment>

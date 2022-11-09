@@ -7,6 +7,7 @@ import GridGallery from "./components/gridGallery";
 import BaseFooter from "components/footer/baseFooter";
 import Divider from "@mui/material/Divider";
 import styles from "styles/home";
+import BrandTitles from "./components/brandTitles";
 
 export const Home = () => {
   return (
@@ -16,13 +17,14 @@ export const Home = () => {
       <Bar />
       <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
       <GridGallery />
-      <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
       <GridGallery
         style={{
           flexDirection: "row-reverse",
           display: "flex",
         }}
       />
+      <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
+      <BrandTitles />
 
       <Divider sx={styles.footerDivider} />
       <BaseFooter />

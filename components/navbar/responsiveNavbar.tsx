@@ -6,36 +6,40 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PedlarDrawer from "./components/padlarDrawer";
+import CartDrawer from "components/cartDrawer/cartDrawer";
 
 export const ResponsiveNavbar = () => {
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
+  const [openCartDrawer, toggleCartDrawer] = useState(false);
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
 
+  const onClickCartDrawer = () => {
+    toggleCartDrawer(!openCartDrawer);
+  };
+
   return (
     <React.Fragment>
-      <Toolbar
-   
-      >
+      <Toolbar>
         <PedlarDrawer toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(5) }}>
           <Image width={20} height={15} src="/menuIcon.png" onClick={onClickDrawer} sx={styles.menuIcon} />
           <Link href="/">
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
-          <Typography sx={styles.responsiveTypography}>
-            Hannah Juneva
-          </Typography>
+          <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>
         <IconButton
           style={{
             maxWidth: "20px",
           }}
         >
-          <ShoppingCartIcon />
+          <ShoppingCartIcon onClick={onClickCartDrawer} />
+          <CartDrawer openDrawer={openCartDrawer} toggleDrawer={toggleCartDrawer} />
+          
         </IconButton>
       </Toolbar>
     </React.Fragment>

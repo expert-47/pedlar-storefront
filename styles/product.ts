@@ -77,7 +77,7 @@ const styles = {
   },
   sign: {
     marginTop: "20px",
-    color: "primary.contrastText",
+    color: "rgba(0, 0, 0, 0.54)",
 
  
   },

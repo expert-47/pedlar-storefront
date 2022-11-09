@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 import { Stack } from "@mui/system";
@@ -14,9 +14,17 @@ import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } fr
 
 import Typography from "components/customText";
 import { brandList, shopList } from "./data";
+import CartDrawer from "components/cartDrawer/cartDrawer";
+
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const [openCartDrawer, toggleCartDrawer] = useState(false);
+
+  const onClickDrawer = () => {
+    toggleCartDrawer(!openCartDrawer);
+  };
 
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
@@ -58,9 +66,10 @@ const Navbar = () => {
                     <SearchIcon />
                   </IconButton>
                   <IconButton sx={styles.iconColor}>
-                    <ShoppingCartOutlinedIcon />
+                    <ShoppingCartOutlinedIcon onClick={onClickDrawer} />
                   </IconButton>
                 </Stack>
+                <CartDrawer openDrawer={openCartDrawer} toggleDrawer={toggleCartDrawer} />
               </Toolbar>
             </Grid>
           )}

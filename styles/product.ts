@@ -36,6 +36,7 @@ const styles = {
     fontWeight: "400",
   },
   descriptionGrid: {
+    display: "flex",
     marginTop: "24px",
     borderTop: "thin solid lightgray;",
     justifyContent: "space-between",
@@ -74,6 +75,12 @@ const styles = {
     fontSize: "14px",
     color: "primary.contrastText",
     lineHeight: "10px",
+  },
+  sign: {
+    marginTop: "20px",
+    color: "primary.contrastText",
+
+ 
   },
   bottomContainer: {
     paddingTop: "40px",

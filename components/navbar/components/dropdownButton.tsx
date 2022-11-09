@@ -37,9 +37,12 @@ const DropdownButton = (props: Props) => {
 
   return (
     <>
-      <Button sx={styles.tabButton} onClick={handleClick} endIcon={openMenu ? <ExpandLess /> : <ExpandMore />}>
-        {type}
+    <Grid style={{display:"flex", alignItems: "center", justifyContent: "center"}}>
+      <Button  sx={styles.tabButton} onClick={handleClick} >
+        <Box style={{ borderBottom: openMenu ?"solid #1C1B1F 1px": "none"}} >{type}</Box>
+      {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
       </Button>
+      </Grid>
       <Menu
         PaperProps={{
           elevation: 1,
@@ -65,17 +68,6 @@ const DropdownButton = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
             paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Grid item sm={3} lg={7}>
-              <Text fontSize="26px" sx={styles.menuText1}>
-                All Products
-              </Text>
-            </Grid>
-            <Grid item sm={4} lg={3} display={"flex"} justifyContent={"space-evenly"}>
-              <PedlarButton handleClick={showBrands} buttonText="Brands" open={brands} />
-              <PedlarButton handleClick={showCategory} buttonText="Category" open={category} />
-            </Grid>
-
-            <Divider sx={styles.menuDivider} />
 
             <Grid
               container

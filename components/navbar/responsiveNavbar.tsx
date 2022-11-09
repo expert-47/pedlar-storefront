@@ -6,13 +6,19 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import PedlarDrawer from "./components/padlarDrawer";
+import CartDrawer from "components/cartDrawer/cartDrawer";
 
 export const ResponsiveNavbar = () => {
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
+  const [openCartDrawer, toggleCartDrawer] = useState(false);
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
+  };
+
+  const onClickCartDrawer = () => {
+    toggleCartDrawer(!openCartDrawer);
   };
 
   return (

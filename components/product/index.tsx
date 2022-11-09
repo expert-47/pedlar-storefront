@@ -7,6 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from '@mui/icons-material/Remove';
 
 import Layout from "../layout";
 import Options from "./components/options";
@@ -51,6 +52,7 @@ const Cart = () => {
                   <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.descriptionGrid}>
                     <Typography style={styles.bottomHeading}>Description</Typography>
                     <Divider sx={styles.divider} />
+                    <RemoveIcon sx={styles.sign} ></RemoveIcon>
                   </Grid>
                   <Typography sx={styles.descriptionTypography}>
                     {

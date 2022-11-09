@@ -3,7 +3,6 @@ const styles = {
   mainContainer: {
     display: "flex",
     justifyContent: "center",
-    paddingTop: "20px",
     borderBottom: 1,
     borderColor: "info.main",
     paddingBottom: "50px",

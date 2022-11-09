@@ -36,7 +36,7 @@ const GridGallery = (props: GridProps) => {
           xs={12}
           sm={12}
           md={6}
-          lg={6}
+          lg={5.9}
           justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
           paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(20) }}
           paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
@@ -50,7 +50,7 @@ const GridGallery = (props: GridProps) => {
           gap={24}
           xs={12}
           sm={12}
-          md={6}
+          md={5.9}
           lg={6}
           justifyContent={{ xs: "center", md: "center", lg: "center" }}
           // paddingX={{ xs: theme.spacing(0), md: theme.spacing(5), lg: theme.spacing(40) }}

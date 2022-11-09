@@ -51,19 +51,7 @@ const Products = () => {
         <GalleryGrid 
         paddingX={0}
         />
-        {/* <GalleryGrid
-          container
-          gap={4}
-          lg={12}
-          style={{ minHeight: "auto", flexDirection: "row-reverse", marginTop: "70px" }}
-        /> */}
-        {/* <GridGallery
-        style={{
-          flexDirection: "row-reverse",
-          display: "flex",
-        }}
-      />
-            <GridGallery /> */}
+
 
       </Grid>
 

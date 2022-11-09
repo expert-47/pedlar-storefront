@@ -31,7 +31,7 @@ return(
         sx={styles.container}
     >
 
-        <Grid item xs={12} sm={12} md={5} lg={5} sx={{}}>
+        <Grid item xs={12} sm={12} md={5.6} lg={5.6} sx={{}}>
             <Typography sx={styles.typography}>
                 Size
             </Typography>
@@ -50,7 +50,7 @@ return(
                 </Select>
             </FormControl>
         </Grid>
-        <Grid item xs={12} sm={12} md={5} lg={5}>
+        <Grid item xs={12} sm={12} md={5.6} lg={5.6}>
             <Typography sx={styles.typography}>
                 Colour
             </Typography>

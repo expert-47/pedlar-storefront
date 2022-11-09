@@ -17,6 +17,9 @@ import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
 import ProductHeader from "components/home/components/productHeader";
+import { useStyles } from "styles/home";
+import BaseFooter from "components/footer/baseFooter";
+
 
 const buttonStyle = {
   display: "none"
@@ -28,6 +31,7 @@ const properties = {
 }
 
 const Cart = () => {
+  const { classes, cx } = useStyles();
   const images = [
     "/grid-img1.png",
     "/grid-img1.png",
@@ -159,6 +163,8 @@ const Cart = () => {
           </Grid>
         </Grid>
       </CustomContainer>
+      <Divider className={cx(classes.footerDivider)} />
+      <BaseFooter />
     </Layout>
   );
 };

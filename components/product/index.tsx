@@ -100,7 +100,7 @@ const Cart = () => {
           </Grid>
         </Box>
         <Grid container spacing={4} sx={styles.bottomContainer}>
-          <Grid container item xs={11} sm={9} md={10} lg={9.2} paddingTop="30px">
+          <Grid container item xs={11} sm={9} md={11.4} lg={8.4} paddingTop="30px">
             <Grid item xs={12} sm={12} md={12} lg={12}>
               <Typography sx={styles.text}>You might like</Typography>
             </Grid>

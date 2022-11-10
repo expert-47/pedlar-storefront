@@ -19,12 +19,13 @@ const CardComponent = ({ name, type, price }: React.PropsWithChildren<Props>) =>
             textTransform: "uppercase",
             paddingTop: "8px",
             lineHeight: "16px",
+            color: "#1C1B1F"
           }}
         >
           {name}
         </Typography>
-        <Typography style={{ fontSize: "16px", fontWeight: "600", textOverflow: "wrap" }}>{type}</Typography>
-        <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
+        <Typography style={{ fontSize: "16px", fontWeight: "600", textOverflow: "wrap", color: "#1C1B1F" }}>{type}</Typography>
+        <Typography style={{ fontSize: "16px", fontWeight: "600", color: "#1C1B1F" }}>{price}</Typography>
       </Grid>
     </>
   );

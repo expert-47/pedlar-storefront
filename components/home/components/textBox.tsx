@@ -30,7 +30,7 @@ const TextBox = () => {
             alignItems: "center",
           }}
         >
-          <InstagramIcon />
+          <InstagramIcon style={{color: "#1C1B1F"}} />
           <Text fontSize={"16px"} sx={styles.boxtext}>
             elinorcharlotte
           </Text>
@@ -43,7 +43,7 @@ const TextBox = () => {
             alignItems: "center",
           }}
         >
-          <img src="tiktok.png" style={{marginLeft: "8px"}} />
+          <img src="tiktok.png" style={{marginLeft: "8px", color: "#1C1B1F"}} />
           <Text fontSize={"16px"} sx={styles.boxtext}>
             elridge
           </Text>

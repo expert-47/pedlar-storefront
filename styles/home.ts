@@ -240,6 +240,18 @@ const styles = {
     width: "34px",
     paddingLeft: "10px",
   },
+  brandImage: {
+    height: {
+      lg: "176px",
+      md: "176px",
+      xs: "158px"
+    },
+    width: {
+      lg: "176px",
+      md: "176px",
+      xs: "158px"
+    }
+  }
 };
 
 export default styles;

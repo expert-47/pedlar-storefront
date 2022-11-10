@@ -26,7 +26,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         alignItems={{ xs: "center", md: "center", lg: "center" }}
         justifyContent={{ xs: "space-between", md: "space-between", lg: "space-between" }}
         paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(40) }}
-        paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
       >
         <Grid
           container

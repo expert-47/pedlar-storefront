@@ -8,6 +8,10 @@ import {
   ListItem,
   MenuItem,
   ListItemButton,
+  Button,
+  Divider,
+  Checkbox,
+  useTheme,
 } from "@mui/material";
 import Link from "next/link";
 
@@ -23,11 +27,13 @@ import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
+
 import { brandList, shopList } from "components/navbar/data";
 
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
+  const theme = useTheme();
 
   const paperStyle = {
     color: "black",
@@ -40,6 +46,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
+
   };
   const [open, setOpen] = React.useState(false);
   const [opens, setOpens] = React.useState(false);
@@ -96,7 +103,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               border: "1px solid rgba(0,0,0,0.3)",
             }}
           >
-            <SearchIcon style={{color: "rgba(0,0,0,0.3)", padding: "2px"}} sx={styles.drawerIcon} />
+            <SearchIcon style={{ color: "rgba(0,0,0,0.3)", padding: "2px" }} sx={styles.drawerIcon} />
             <InputBase placeholder="Search store" type="text" aria-label="search icons"></InputBase>
           </Box>
         </Grid>
@@ -108,55 +115,104 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </Link>
           <List>
             <ListItemButton onClick={handleClick} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{color: open? "rgba(0,0,0,0.3)": "inherit"}}>
+              <ListItem style={{ color: open ? "rgba(0,0,0,0.3)" : "inherit" }}>
                 Brands
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </ListItemButton>
-            <Collapse in={open}>
-              <ListItem>
-                <Grid container gap={10} item xs={12} sm={12}>
-                {brandList.map((item) => (
-             
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
-            ))}
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">
-                     View all.....
-                    </Link>
-                  </Grid>
+            <Collapse in={open} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Divider sx={styles.menuDivider} />
+
+              <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                container item xs={12} sm={12} md={12}>
+
+                <Box sx={styles.menuInnerContainer}>
+                  {brandList.map((item) => (
+                    <MenuItem>
+                      <Checkbox sx={styles.menuCheck} />
+                      <ListItemText>{item}</ListItemText>
+                    </MenuItem>
+                  ))}
+                </Box>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="contained" sx={styles.menuButton}>
+                    Apply
+                  </Button>
                 </Grid>
-              </ListItem>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton}>
+                    Reset filters
+                  </Button>
+                </Grid>
+              </Grid>
             </Collapse>
           </List>
           <List>
             <ListItemButton onClick={handleClicks} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{color: opens? "rgba(0,0,0,0.3)": "inherit"}}>Shops {opens ? <ExpandLess /> : <ExpandMore />}</ListItem>
+              <ListItem style={{ color: opens ? "rgba(0,0,0,0.3)" : "inherit" }}>Shops {opens ? <ExpandLess /> : <ExpandMore />}</ListItem>
             </ListItemButton>
-            <Collapse in={opens}>
-            <ListItem>
-                <Grid container gap={10} item xs={12} sm={12}>
+            <Collapse in={opens} >
+            <Divider sx={styles.menuDivider} />
+
+            <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }} container item xs={12} sm={12} md={12}>
+
+              <Box sx={styles.menuInnerContainer}>
                 {shopList.map((item) => (
-             
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
-            ))}
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">
-                     View all.....
-                    </Link>
-                  </Grid>
-                </Grid>
-              </ListItem>
-            </Collapse>
-          </List>
-          <Link href="faq">
-            <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
-              FAQ
-            </ListItem>
-          </Link>
-        </ListItemText>
+                  <MenuItem>
+                    <Checkbox sx={styles.menuCheck} />
+                    <ListItemText>{item}</ListItemText>
+                  </MenuItem>
+                ))}
+              </Box>
+              <Grid
+                xs={12}
+                sm={12}
+                md={2}
+                lg={2}
+                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              >
+                <Button variant="contained" sx={styles.menuButton}>
+                  Apply
+                </Button>
+              </Grid>
+              <Grid
+                xs={12}
+                sm={12}
+                md={2}
+                lg={2}
+                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              >
+                <Button variant="outlined" sx={styles.outlinedButton}>
+                  Reset filters
+                </Button>
+              </Grid>
+            </Grid>
+          </Collapse>
       </List>
-    </Drawer>
+      <Link href="faq">
+        <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
+          FAQ
+        </ListItem>
+      </Link>
+    </ListItemText>
+      </List >
+    </Drawer >
   );
 };
 

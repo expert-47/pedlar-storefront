@@ -24,7 +24,7 @@ const BaseFooter = () => {
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >
-        <Grid item xs={12} sm={12} md={8} lg={8.5}>
+        <Grid item xs={12} sm={12} md={7.5} lg={7}>
           <Typography sx={styles.baseFootTypoheading}>
             Help & Support
           </Typography>
@@ -47,7 +47,7 @@ const BaseFooter = () => {
           xs={12}
           sm={12}
           md={4}
-          lg={3.5}
+          lg={3.8}
           container
           paddingY={{ xs: theme.spacing(30), md: theme.spacing(80), lg: theme.spacing(80) }}
         >

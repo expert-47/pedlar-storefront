@@ -238,7 +238,7 @@ const styles = {
   },
   baseFootTypotext: {
     fontSize: "20px",
-    paddingTop: "11px",
+    paddingTop: "6px",
     fontWeight: "600",
     color: "success.dark",
   },

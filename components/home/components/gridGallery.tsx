@@ -17,8 +17,8 @@ const GridGallery = (props: GridProps) => {
       <Grid
         container
         sm={11.5}
-        md={10.5}
-        lg={12}
+        md={11.3}
+        lg={11.5}
         columnSpacing={10}
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}

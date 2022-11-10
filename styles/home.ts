@@ -36,7 +36,7 @@ export const useStyles = makeStyles({
     fontWeight: "600",
     textTransform: "none",
     "&:hover": {
-      color: theme.palette.primary.contrastText,
+      color: theme.palette.primary.dark,
     },
     padding: "10px 32.5px",
   },
@@ -152,7 +152,10 @@ const styles = {
     fontWeight: "600",
     textTransform: "none",
     padding: "10px 32.5px",
-    fontSize: 16,
+    fontSize: "16px",
+    "&:hover": {
+      // backgroundColor: "primary.main",
+    },
   },
   mainbargrid: {
     // display: "flex",
@@ -177,6 +180,9 @@ const styles = {
     textTransform: "none",
     padding: "10px 32.5px",
     marginTop: { xs: "20px", sm: "10px", lg: "0px" },
+    "&:hover": {
+      backgroundColor: "primary.main",
+    },
   },
   closeIcon: {
     color: "primary.main",
@@ -198,7 +204,7 @@ const styles = {
   },
   galleryImg1: {
     width: "100%",
-    height: "88%",
+    // height: "88%",
   },
   galleryImg2: {
     width: "100%",
@@ -225,6 +231,10 @@ const styles = {
     fontSize: "20px",
     color: "primary.dark",
     fontWeight: "600",
+    marginTop: {
+      xs: "60px",
+      md: "-10px",
+    },
   },
   baseFootTypotext: {
     fontSize: "20px",

@@ -23,6 +23,9 @@ import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
+import { brandList, shopList } from "components/navbar/data";
+
+
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
 
@@ -86,14 +89,14 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
         <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>
           <Box
             style={{
-              paddingLeft: "5px",
+              padding: "5px",
               display: "flex",
               alignItems: "center",
               borderRadius: "25px",
               border: "1px solid rgba(0,0,0,0.3)",
             }}
           >
-            <SearchIcon sx={styles.drawerIcon} />
+            <SearchIcon style={{color: "rgba(0,0,0,0.3)", padding: "2px"}} sx={styles.drawerIcon} />
             <InputBase placeholder="Search store" type="text" aria-label="search icons"></InputBase>
           </Box>
         </Grid>
@@ -105,68 +108,50 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </Link>
           <List>
             <ListItemButton onClick={handleClick} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem>
+              <ListItem style={{color: open? "rgba(0,0,0,0.3)": "inherit"}}>
                 Brands
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </ListItemButton>
             <Collapse in={open}>
-              <Grid container item xs={12} sm={12} md={12}>
-                <Grid item xs={6} sm={6}>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                </Grid>
-                <Grid item xs={6} sm={6}>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Brands Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "none" }}>
+              <ListItem>
+                <Grid container gap={10} item xs={12} sm={12}>
+                {brandList.map((item) => (
+             
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
+            ))}
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
                     <Link href="/">
-                      <a>View all</a>
+                     View all.....
                     </Link>
-                  </MenuItem>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </ListItem>
             </Collapse>
           </List>
           <List>
             <ListItemButton onClick={handleClicks} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem>Shops {opens ? <ExpandLess /> : <ExpandMore />}</ListItem>
+              <ListItem style={{color: opens? "rgba(0,0,0,0.3)": "inherit"}}>Shops {opens ? <ExpandLess /> : <ExpandMore />}</ListItem>
             </ListItemButton>
             <Collapse in={opens}>
-              <Grid container item xs={12} sm={12} md={12}>
-                <Grid item xs={6} sm={6}>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                </Grid>
-                <Grid item xs={6} sm={6}>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>Shop Name</MenuItem>
-                  <MenuItem style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "none" }}>
+            <ListItem>
+                <Grid container gap={10} item xs={12} sm={12}>
+                {shopList.map((item) => (
+             
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
+            ))}
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
                     <Link href="/">
-                      <a>View all</a>
+                     View all.....
                     </Link>
-                  </MenuItem>
+                  </Grid>
                 </Grid>
-              </Grid>
+              </ListItem>
             </Collapse>
           </List>
           <Link href="faq">
             <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
-              Faq
+              FAQ
             </ListItem>
           </Link>
         </ListItemText>

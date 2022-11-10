@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
 import { Stack } from "@mui/system";
@@ -14,13 +14,21 @@ import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } fr
 
 import Typography from "components/customText";
 import { brandList, shopList } from "./data";
+import CartDrawer from "components/cartDrawer/cartDrawer";
+
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
+  const [openCartDrawer, toggleCartDrawer] = useState(false);
+
+  const onClickDrawer = () => {
+    toggleCartDrawer(!openCartDrawer);
+  };
+
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
-      <AppBar position="static" sx={styles.appBar} elevation={0}>
+      <AppBar position="fixed" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
             FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
@@ -32,7 +40,7 @@ const Navbar = () => {
           {!isMatch ? (
             <ResponsiveNavbar />
           ) : (
-            <Grid container item lg={12} sx={styles.padding}>
+            <Grid container item md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href="/">
@@ -51,16 +59,17 @@ const Navbar = () => {
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>
-                      Faq
+                      FAQ
                     </Button>
                   </Link>
                   <IconButton sx={styles.iconColor}>
                     <SearchIcon />
                   </IconButton>
                   <IconButton sx={styles.iconColor}>
-                    <ShoppingCartOutlinedIcon />
+                    <ShoppingCartOutlinedIcon onClick={onClickDrawer} />
                   </IconButton>
                 </Stack>
+                <CartDrawer openDrawer={openCartDrawer} toggleDrawer={toggleCartDrawer} />
               </Toolbar>
             </Grid>
           )}

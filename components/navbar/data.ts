@@ -2,7 +2,7 @@ export const pages = [
   { name: "Home", link: "/" },
   { name: "Brands", link: "/brands" },
   { name: "Shop", link: "/Shop" },
-  { name: "Faq", link: "/Faq" },
+  { name: "FAQ", link: "/Faq" },
 ];
 
 export const brandList = [
@@ -18,15 +18,8 @@ export const brandList = [
   "Brand name",
   "Brand name",
   "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
-  "Brand name",
+  "Brand name"
+
 ];
 
 export const shopList = [
@@ -44,19 +37,5 @@ export const shopList = [
   "shop name",
   "shop name",
   "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
-  "shop name",
+
 ];

@@ -9,6 +9,7 @@ import { Box } from "@mui/system";
 import Text from "components/customText";
 import ListItemText from "@mui/material/ListItemText";
 import PedlarButton from "./pedlarButton";
+import ProductHeader from "components/home/components/productHeader";
 
 interface Props {
   type: string;
@@ -68,12 +69,13 @@ const DropdownButton = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
             paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-
+        <ProductHeader/>
             <Grid
               container
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
+              paddingTop={"10px"}
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
               <Box sx={styles.menuInnerContainer}>

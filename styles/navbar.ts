@@ -53,6 +53,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    padding: "30px"
   },
   menuInnerContainer: {
     color: "black",

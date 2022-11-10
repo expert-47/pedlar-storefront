@@ -146,13 +146,13 @@ const Cart = () => {
         </Box>
         <Grid container spacing={4} sx={styles.bottomContainer}>
           <Grid container item xs={11} sm={9} md={11.4} lg={8.4} paddingTop="30px">
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="20px">
               <Typography sx={styles.text}>You might like</Typography>
             </Grid>
             {[0, 0, 0, 0, 0, 0].map((item, index) => {
               return (
-                <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingBottom="50px">
-                  <img style={{ width: "90%", height: "70%" }} src="/grid-img3.png"></img>
+                <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="20px" paddingBottom="50px">
+                  <img style={{ width: "95%", height: "70%" }} src="/grid-img3.png"></img>
                   <Typography variant="body1">SISLEY PARIS</Typography>
                   <Typography variant="subtitle2">Eye Contour Mask</Typography>
                   <Typography variant="subtitle2">$42</Typography>

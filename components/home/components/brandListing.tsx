@@ -21,7 +21,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         container
         item
         xs={11}
-        // sm={11}
         md={10.5}
         lg={12}
         alignItems={{ xs: "center", md: "center", lg: "center" }}
@@ -36,7 +35,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           sm={9}
           md={9}
           lg={9}
-          // paddingX={{ xs: theme.spacing(10),sm: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
           alignItems={"center"}
 
@@ -50,7 +48,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           sm={3}
           md={3}
           lg={3}
-          // paddingX={{ xs: theme.spacing(10),sm: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           justifyContent={{ xs: "flex-end", md: "flex-end", lg: "flex-end" }}
           alignItems={"center"}
 

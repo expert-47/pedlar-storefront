@@ -16,12 +16,12 @@ const BrandTitles = (props: GridProps) => {
         container
         item
         xs={11.5}
+        sm={11.5}
         md={11.5}
         lg={12}
         gap={10}
-        alignItems={{ xs: "center", md: "center", lg: "center" }}
-        justifyContent={{ xs: "center", md: "center", lg: "center" }}
-        direction={{xs: "column", md: "row" , lg: "row"}}
+        alignItems={{ xs: "center", sm: "center", md: "center", lg: "center" }}
+        justifyContent={{ xs: "center",sm: "center", md: "center", lg: "center" }}
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         {...props}
@@ -37,19 +37,19 @@ const BrandTitles = (props: GridProps) => {
             textAlign: "center",
           }}
         >
-          <img style={{ height: "100%", width: "100%" }} src="/Frame1.png" alt="bordergrid"></img>
+          <img  src="/ganni.png" alt="bordergrid"></img>
         </Grid>
         <Grid item xs={5.5} sm={2} md={2} lg={2.2} style={{ border: "1px solid rgba(0,0,0,0.4)", textAlign: "center" }}>
-          <img style={{ height: "100%", width: "100%" }} src="/Frame2.png" alt="bordergrid"></img>
+          <img style={{ height: "100%", width: "100%" }} src="/1969.png" alt="bordergrid"></img>
         </Grid>
         <Grid item xs={5.5} sm={2} md={2} lg={2.2} style={{ border: "1px solid rgba(0,0,0,0.4)", textAlign: "center" }}>
-          <img style={{ height: "100%", width: "100%" }} src="/Frame3.png" alt="bordergrid"></img>
+          <img style={{ height: "100%", width: "100%" }} src="/hunza.png" alt="bordergrid"></img>
         </Grid>
         <Grid item xs={5.5} sm={2} md={2} lg={2.2} style={{ border: "1px solid rgba(0,0,0,0.4)", textAlign: "center" }}>
-          <img style={{ height: "100%", width: "100%" }} src="/Frame4.png" alt="bordergrid"></img>
+          <img style={{ height: "100%", width: "100%" }} src="/low-classic.png" alt="bordergrid"></img>
         </Grid>
         <Grid item xs={5.5} sm={2} md={2} lg={2.2} style={{ border: "1px solid rgba(0,0,0,0.4)", textAlign: "center" }}>
-          <img style={{ height: "100%", width: "100%" }} src="/Frame5.png" alt="bordergrid"></img>
+          <img style={{ height: "100%", width: "100%" }} src="/peach-den.png" alt="bordergrid"></img>
         </Grid>
       </Grid>
     </CustomGrid>

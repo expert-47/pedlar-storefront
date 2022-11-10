@@ -3,7 +3,6 @@ const styles = {
   mainContainer: {
     display: "flex",
     justifyContent: "center",
-    paddingTop: "20px",
     borderBottom: 1,
     borderColor: "info.main",
     paddingBottom: "50px",
@@ -36,6 +35,7 @@ const styles = {
     fontWeight: "400",
   },
   descriptionGrid: {
+    display: "flex",
     marginTop: "24px",
     borderTop: "thin solid lightgray;",
     justifyContent: "space-between",
@@ -75,6 +75,12 @@ const styles = {
     color: "primary.contrastText",
     lineHeight: "10px",
   },
+  sign: {
+    marginTop: "20px",
+    color: "rgba(0, 0, 0, 0.54)",
+
+ 
+  },
   bottomContainer: {
     paddingTop: "40px",
     justifyContent: "center",
@@ -82,6 +88,19 @@ const styles = {
     paddingLeft: "1%",
     borderColor: "info.main",
     paddingBottom: "50px",
+  },
+  eachSlideEffect: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundSize: "cover",
+    height:" 350px",
+  },
+  eachSlideEffectSpan: {
+    padding: "20px",
+    fontSize: "20px",
+    background: "#efefef",
+    textAlign: "center",
   },
   text: { paddingBottom: "20px", fontWeight: "600", fontSize: "22px" },
 };

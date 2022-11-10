@@ -18,6 +18,7 @@ const OrderDetailCollapsible = () => {
           <Grid sm={12} lg={12}>
             <Typography sx={styles.headingStyle}>You are ordering</Typography>
           </Grid>
+
           <CheckoutOrder />
           <CheckoutOrder />
           <CheckoutOrder />
@@ -37,4 +38,3 @@ const OrderDetailCollapsible = () => {
   );
 };
 export default OrderDetailCollapsible;
-

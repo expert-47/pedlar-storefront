@@ -42,7 +42,7 @@ const GridGallery = (props: GridProps) => {
           item
           xs={12}
           sm={12}
-          md={6}
+          md={5.9}
           lg={6}
           columnSpacing={10}
           // sx={{ backgroundColor: "blue" }}

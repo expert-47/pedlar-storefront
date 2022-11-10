@@ -41,7 +41,6 @@ const Cart = () => {
     <Layout>
 
       <CustomContainer>
-        <ProductHeader />
         <Box sx={styles.mainContainer}>
           <Grid container item md={12} lg={9}>
             <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>

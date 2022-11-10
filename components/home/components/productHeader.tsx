@@ -37,7 +37,7 @@ const ProductHeader = () => {
         style={{ display: "flex", justifyContent: "space-between",  flexDirection: isMatch ?"row": "column" }}
       >
 
-        <Typography variant="h1" gutterBottom color="#1C1B1F">
+        <Typography variant="h1" color="#1C1B1F">
           All Products
         </Typography>
 

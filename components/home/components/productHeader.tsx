@@ -48,7 +48,7 @@ const ProductHeader = () => {
             <ResponsiveHeader data={brandList} />
           </>
         ) : (
-          <Grid columns={{ xs: 12, md: 12 }}
+          <Grid gap={3} columns={{ xs: 12, md: 12 }}
             item style={{ display: "flex" }}
           >                <DropdownButton type={"Brands"} data={brandList} />
             <DropdownButton type={"Category"} data={shopList} />

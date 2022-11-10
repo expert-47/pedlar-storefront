@@ -4,23 +4,18 @@ import Image from "next/image";
 import styles from "styles/navbar";
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PedlarDrawer from "./components/padlarDrawer";
 import CartDrawer from "components/cartDrawer/cartDrawer";
+
 
 export const ResponsiveNavbar = () => {
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
-  const [openCartDrawer, toggleCartDrawer] = useState(false);
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
-
-  const onClickCartDrawer = () => {
-    toggleCartDrawer(!openCartDrawer);
-  };
-
   return (
     <React.Fragment>
       <Toolbar>
@@ -33,8 +28,10 @@ export const ResponsiveNavbar = () => {
           <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>
         <IconButton sx={styles.shoppingCartIcon}>
-          <ShoppingCartIcon />
+          <ShoppingCartOutlinedIcon onClick={onClickDrawer} />
         </IconButton>
+        <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
+
       </Toolbar>
     </React.Fragment>
   );

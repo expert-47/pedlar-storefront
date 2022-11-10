@@ -9,11 +9,11 @@ const BrandTitles = (props: GridProps) => {
 
   return (
     <CustomGrid
-    // style={{
-    //   display: "flex",
-    //   justifyContent: "center",
-    //   alignItems: "center",
-    // }}
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       <Grid
         container
@@ -22,9 +22,8 @@ const BrandTitles = (props: GridProps) => {
         md={12}
         lg={12}
         gap={10}
-        paddingX={{xs: theme.spacing(20), }}
-        justifyContent={{ xs: "flex-start", md: "center", lg: "center" }}
-        alignItems={{xs: "center", md: "center", lg: "center"}}
+        paddingX={{ xs: theme.spacing(20),sm: theme.spacing(35), md: theme.spacing(88), lg: theme.spacing(40) }}
+        justifyContent={{ xs: "flex-start", sm: "flex-start", md: "flex-start", lg: "flex-start" }}
         {...props}
       >
         {brands.map((item) => (

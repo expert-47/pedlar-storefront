@@ -20,10 +20,10 @@ const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
-  const [openCartDrawer, toggleCartDrawer] = useState(false);
+  const [openDrawer, toggleDrawer] = useState(false);
 
   const onClickDrawer = () => {
-    toggleCartDrawer(!openCartDrawer);
+    toggleDrawer(!openDrawer);
   };
 
   return (
@@ -40,7 +40,7 @@ const Navbar = () => {
           {!isMatch ? (
             <ResponsiveNavbar />
           ) : (
-            <Grid container item md={12} lg={12} sx={styles.padding}>
+            <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href="/">
@@ -69,7 +69,7 @@ const Navbar = () => {
                     <ShoppingCartOutlinedIcon onClick={onClickDrawer} />
                   </IconButton>
                 </Stack>
-                <CartDrawer openDrawer={openCartDrawer} toggleDrawer={toggleCartDrawer} />
+                <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
               </Toolbar>
             </Grid>
           )}

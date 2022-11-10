@@ -249,12 +249,12 @@ const styles = {
   brandImage: {
     height: {
       lg: "176px",
-      md: "176px",
+      md: "158px",
       xs: "158px"
     },
     width: {
       lg: "176px",
-      md: "176px",
+      md: "158px",
       xs: "158px"
     }
   }

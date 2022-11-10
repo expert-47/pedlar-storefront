@@ -42,8 +42,8 @@ const Cart = () => {
 
       <CustomContainer>
         <Box sx={styles.mainContainer}>
-          <Grid container item md={12} lg={9}>
-            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
+          <Grid container item md={12} lg={12}>
+            <Grid container item xs={12} sm={12} md={6} lg={7} sx={{display: "flex", justifyContent: "center", textAlign: "center", paddingTop: "26px" }}>
               <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Slide {...properties} indicators={true}>
@@ -77,7 +77,7 @@ const Cart = () => {
               </Grid>
             </Grid>
 
-            <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">
+            <Grid container item xs={12} sm={12} md={6} lg={4.5} justifyContent="center">
               <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
                 <Grid>
                   <Typography sx={styles.heading}>LOW CLASSIC</Typography>

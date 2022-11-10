@@ -3,7 +3,6 @@ const styles = {
   mainContainer: {
     display: "flex",
     justifyContent: "center",
-    paddingTop: "20px",
     borderBottom: 1,
     borderColor: "info.main",
     paddingBottom: "50px",
@@ -78,7 +77,7 @@ const styles = {
   },
   sign: {
     marginTop: "20px",
-    color: "primary.contrastText",
+    color: "rgba(0, 0, 0, 0.54)",
 
  
   },

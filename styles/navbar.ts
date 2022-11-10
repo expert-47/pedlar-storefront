@@ -104,12 +104,12 @@ const styles = {
       color: "black",
     },
   },
-  // menuDivider: {
-  //   top: "173px",
-  //   border: "0.5px solid rgba(28, 27, 31, 0.32)",
-  //   marginTop: "12px",
-  //   marginBottom: "12px",
-  // },
+  menuDivider: {
+    top: "173px",
+    border: "0.5px solid rgba(28, 27, 31, 0.32)",
+    marginTop: "12px",
+    marginBottom: "12px",
+  },
   drawerText: {
     color: "black",
     fontWeight: "500",

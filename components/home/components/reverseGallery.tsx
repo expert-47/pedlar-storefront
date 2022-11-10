@@ -1,33 +1,40 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, GridProps } from "@mui/material";
 import CardComponent from "./cardComponent";
+import { CustomGrid } from "components/layout";
 
-const ReverseGallery = () => {
+interface Props {
+  girdProps?: GridProps;
+  data: any[];
+}
+const ReverseGallery = ({ girdProps, data}: Props) => {
   return (
-    <Grid container xs={12} md={12} lg={12} style={{ paddingTop: "20px", paddingBottom: "20px" }}>
-      <Grid container item gap={2} xs={12} sm={12} md={5.5} lg={6.3}>
-        <Grid item xs={5.5} lg={5.5}>
-          <img src="/grid-img6.png" alt="Grid-img6" style={{ width: "100%" }}></img>
-          <CardComponent />
+    <CustomGrid
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Grid container sm={12} columnSpacing={10} {...girdProps}>
+        <Grid container item xs={12} sm={12} md={6} lg={6} columnSpacing={10} rowSpacing={10}>
+          {data.slice(1,5).map((item) => (
+            <Grid item xs={6} lg={6}>
+              <Grid item height={{ lg: "224px", md: "224px", sm: "224px", xs: "158px" }} xs={12}>
+                <img src={item.imgPath} style={{ width: "100%", height: "100%" }}></img>
+              </Grid>
+              <CardComponent name={item.name} type={item.type} price={item.price} />
+            </Grid>
+          ))}
         </Grid>
-        <Grid item xs={5.5} lg={5.5}>
-          <img src="/grid-img3.png" alt="Grid-img3" style={{ width: "100%" }}></img>
-          <CardComponent />
-        </Grid>
-        <Grid item xs={5.5} lg={5.5}>
-          <img src="/grid-img4.png" alt="Grid-img4" style={{ width: "100%" }}></img>
-          <CardComponent />
-        </Grid>
-        <Grid item xs={5.5} lg={5.5}>
-          <img src="/grid-img8.png" alt="Grid-img8" style={{ width: "100%" }}></img>
-          <CardComponent />
+        <Grid container item xs={12} sm={12} md={6} lg={6}>
+          <Grid item height={{ lg: "534px", md: "534px", sm: "390px", xs: "390px" }} xs={12}>
+            <img src={data[0].imgPath} alt="Grid-img7" style={{ width: "100%", height: "100%" }}></img>
+          </Grid>
+          <CardComponent name={data[0].name} type={data[0].type} price={data[0].price} />
         </Grid>
       </Grid>
-      <Grid container item xs={12} sm={12} md={6} lg={5.5}>
-        <img src="/grid-img7.png" alt="Grid-img7" style={{ width: "100%", height: "90%" }}></img>
-        <CardComponent />
-      </Grid>
-    </Grid>
+    </CustomGrid>
   );
 };
 

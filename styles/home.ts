@@ -154,7 +154,7 @@ const styles = {
     padding: "10px 32.5px",
     fontSize: "16px",
     "&:hover": {
-      // backgroundColor: "primary.main",
+      backgroundColor: "primary.dark",
     },
   },
   mainbargrid: {
@@ -246,6 +246,21 @@ const styles = {
     width: "34px",
     paddingLeft: "10px",
   },
+  brandImage: {
+    height: {
+      lg: "176px",
+      md: "158px",
+      sm:"158px",
+      xs: "158px"
+    },
+    width: {
+      lg: "176px",
+      md: "158px",
+      sm:"158px",
+      xs: "158px",
+      
+    },
+  }
 };
 
 export default styles;

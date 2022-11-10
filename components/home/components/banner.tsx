@@ -7,7 +7,7 @@ import TextBox from "./textBox";
 
 const BannerImg = () => {
   const theme = useTheme();
-const isMatch= useMediaQuery( theme.breakpoints.between("xs","sm"))
+  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   return (
     <CustomContainer
       style={{
@@ -18,19 +18,20 @@ const isMatch= useMediaQuery( theme.breakpoints.between("xs","sm"))
     >
       <Grid
         container
-      item
-        alignItems="center"
+        item
+        alignItems={"center"}
+        paddingX={{xs: theme.spacing(10)}}
         justifyContent={{ lg: "center", md: "center", sm: "center", xs: "center" }}
-      lg={11}
-        >
-        <Grid item  xs={11.5} md={4} lg={4}>
+        lg={11}
+      >
+        <Grid item xs={11.5} md={4} lg={4} marginTop={{lg: "8%", md: "11%", sm: "15%", xs: "26%"}}>
           <img
             src="/hannah.png"
             alt="headerimage"
             style={{
-              marginTop: "2px",
+              // marginTop: "2px",
               width: "100%",
-              height:isMatch ? "415px" : "595px",
+              height: isMatch ? "415px" : "595px",
             }}
           ></img>
         </Grid>
@@ -41,7 +42,7 @@ const isMatch= useMediaQuery( theme.breakpoints.between("xs","sm"))
           md={7}
           lg={7}
           marginLeft={{ lg: "-4%", md: "-4%" }}
-          marginTop={{ lg: 0, md: 0, sm: "-20%", xs: "-20%" }}
+          marginTop={{ lg: "8%", md: "10%", sm: "-20%", xs: "-20%" }}
         >
           <TextBox />
         </Grid>

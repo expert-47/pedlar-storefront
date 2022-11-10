@@ -34,11 +34,12 @@ const Bar = () => {
           xs={11}
           md={10}
           lg={11}
+          alignItems={"center"}
           paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
           paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
         >
           <Typography sx={styles.bartext}>Love Fashion? Have your own style? Share it with your community.</Typography>
-          <Button sx={styles.btn}>Signup for free</Button>
+          <Button sx={styles.btn}>Sign up for free</Button>
         </Grid>
         <Grid
           container

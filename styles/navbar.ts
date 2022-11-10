@@ -6,7 +6,7 @@ const styles = {
   },
   Typography: { color: "primary.contrastText" },
   appBar: { backgroundColor: "white", width: "100%" },
-  marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px"},
+  marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
   toolbar: {
     display: "flex",
     justifyContent: "space-between",
@@ -16,14 +16,14 @@ const styles = {
   padding: {
     width: "100%",
     paddingRight: {
-      md: 30,
-      sm: 30,
+      md: 20,
+      sm: 23,
       sx: 30,
       lg: 20,
     },
     paddingLeft: {
-      md: 30,
-      sm: 30,
+      md: 20,
+      sm: 23,
       sx: 30,
       lg: 20,
     },
@@ -33,13 +33,20 @@ const styles = {
     display: "flex",
     alignItems: "center",
   },
-  navTypo : {
-    fontSize:"22px",
-    fontWeight:"400",
-    paddingLeft:"5px",
+  navTypo: {
+    fontSize: "22px",
+    fontWeight: "400",
+    paddingLeft: "5px",
   },
-  tabButton: { color: "rgba(28, 27, 31, 0.8)", fontSize: "16px", fontWeight: "600", textTransform: "none", borderRadius: "0", paddingY: "0" },
-  tabIcon: { alignItems: "center"},
+  tabButton: {
+    color: "rgba(28, 27, 31, 0.8)",
+    fontSize: "16px",
+    fontWeight: "600",
+    textTransform: "none",
+    borderRadius: "0",
+    paddingY: "0",
+  },
+  tabIcon: { alignItems: "center" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
     width: "100vw",
@@ -136,12 +143,18 @@ const styles = {
     paddingLeft: "2px",
   },
   menuIcon: {
-    padding: "2px",
+    padding: "4px",
   },
   responsiveTypography: {
     fontSize: "22px",
     fontWeight: "400",
-    padding: "2px",
+    padding: "5px",
+  },
+  shoppingCartIcon: {
+    maxWidth: "20px",
+    paddingRight: {
+      xs: "24px",
+    },
   },
 };
 

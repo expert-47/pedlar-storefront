@@ -1,31 +1,125 @@
 import React from "react";
 import BannerImg from "./components/banner";
 import BrandListing from "./components/brandListing";
-import { Grid } from "@mui/material";
+import { Box, Grid, useTheme } from "@mui/material";
 import Bar from "./components/bar";
-import GridGallery from "./components/gridGallery";
 import BaseFooter from "components/footer/baseFooter";
 import Divider from "@mui/material/Divider";
 import styles from "styles/home";
 import BrandTitles from "./components/brandTitles";
+import ReverseGallery from "./components/reverseGallery";
+
+const gallery1 = [
+  {
+    label: "Coat",
+    imgPath: "/grid-img1.png",
+    name: "Low Classic",
+    type: "Green Polyester Blazer",
+    price: "$365",
+  },
+  {
+    label: "Veja",
+    imgPath: "/grid-img2.png",
+    name: "Veja X Marni",
+    type: "35s",
+    price: "$320",
+  },
+  {
+    label: "Mask",
+    imgPath: "/grid-img3.png",
+    name: "Sisley Paris",
+    type: "Eye Contour Mask",
+    price: "$42",
+  },
+  {
+    label: "Fleece",
+    imgPath: "/grid-img4.png",
+    name: "Nike",
+    type: "High-Waisted Fleece Open",
+    price: "$975",
+  },
+  {
+    label: "Earring",
+    imgPath: "/grid-img5.png",
+    name: "Matteau",
+    type: "Drop Earring Collection",
+    price: "$42",
+  },
+];
+const gallery2 = [
+  {
+    label: "Kasbah",
+    imgPath: "/grid-img7.png",
+    name: "19-69",
+    type: "KASBAH",
+    price: "$310",
+  },
+  {
+    label: "Purse",
+    imgPath: "/grid-img6.png",
+    name: "Ganni",
+    type: "Beaded Banana Purse",
+    price: "$525",
+  },
+  {
+    label: "Mask",
+    imgPath: "/grid-img3.png",
+    name: "Sisley Paris",
+    type: "Eye Contour Mask",
+    price: "$42",
+  },
+  {
+    label: "Fleece",
+    imgPath: "/grid-img4.png",
+    name: "Nike",
+    type: "High-Waisted Fleece Open",
+    price: "$975",
+  },
+  {
+    label: "Coco",
+    imgPath: "/grid-img8.png",
+    name: "Hunza G",
+    type: "Coco Bikini",
+    price: "$300",
+  },
+];
 
 export const Home = () => {
+  const theme = useTheme();
+
   return (
     <Grid>
       <BannerImg />
       <Divider sx={styles.bannerDivider} />
       <Bar />
-      <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
-      <GridGallery />
-      <GridGallery
-        style={{
-          flexDirection: "row-reverse",
-          display: "flex",
+      <Box
+        sx={{
+          paddingLeft: { xs: theme.spacing(20), sm: theme.spacing(40), md: theme.spacing(80), lg: theme.spacing(40) },
+          paddingRight: { xs: theme.spacing(20), sm: theme.spacing(40), md: theme.spacing(80), lg: theme.spacing(40) },
         }}
-      />
-      <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
-      <BrandTitles />
-
+      >
+        <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
+        <ReverseGallery
+          girdProps={{
+            flexDirection: {
+              lg: "row-reverse",
+              sm: "column-reverse",
+            },
+          }}
+          data={gallery1}
+        />
+        <ReverseGallery
+          data={gallery2}
+          girdProps={{
+            flexDirection: {
+              lg: "row",
+              sm: "column-reverse",
+            },
+          }}
+        />
+        <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
+        <BrandTitles />
+      </Box>
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Grid>

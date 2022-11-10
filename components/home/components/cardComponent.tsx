@@ -20,6 +20,8 @@ const CardComponent = ({ name, type, price, crossPrice }: React.PropsWithChildre
             textTransform: "uppercase",
             paddingTop: "8px",
             lineHeight: "16px",
+            color: "#1C1B1F",
+
           }}
         >
           {name}

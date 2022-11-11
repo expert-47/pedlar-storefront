@@ -41,7 +41,6 @@ const CardComponent = ({ name, type, price, image,crossPrice }: React.PropsWithC
           <Typography style={{ fontSize: "16px", fontWeight: "600", textOverflow: "wrap", color: "#1C1B1F" }}>
             {type}
           </Typography>
-          <Typography style={{ fontSize: "16px", fontWeight: "600", color: "#1C1B1F" }}>{price}</Typography>
           {crossPrice ? <Grid sx={{ display: "flex" }}>
           <Typography style={{ fontSize: "16px", fontWeight: "600", textDecoration: "line-through",textDecorationColor: "#1C1B1F", textDecorationThickness: "0.05em",
  color: "#1C1B1F" }}>{crossPrice}</Typography>

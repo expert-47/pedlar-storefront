@@ -114,54 +114,23 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </Link>
           <List>
             <ListItemButton onClick={handleClick} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{ color: open ? "rgba(0,0,0,0.3)" : "inherit" }}>
+              <ListItem style={{color: open? "rgba(0,0,0,0.3)": "inherit"}}>
                 Brands
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </ListItemButton>
-            <Collapse in={open} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Divider sx={styles.menuDivider} />
-
-              <Grid
-                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-                container
-                item
-                xs={12}
-                sm={12}
-                md={12}
-              >
-                <Box sx={styles.menuInnerContainer}>
+            <Collapse in={open}>
+                <Grid container gap={10} item xs={12} sm={12}>
                   {brandList.map((item) => (
-                    <MenuItem>
-                      <Checkbox sx={styles.menuCheck} />
-                      <ListItemText>{item}</ListItemText>
-                    </MenuItem>
+             
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
                   ))}
-                </Box>
-                <Grid
-                  xs={12}
-                  sm={12}
-                  md={2}
-                  lg={2}
-                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                >
-                  <Button variant="contained" sx={styles.menuButton}>
-                    Apply
-                  </Button>
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
+                    <Link href="/">
+                     View all.....
+                    </Link>
                 </Grid>
-                <Grid
-                  xs={12}
-                  sm={12}
-                  md={2}
-                  lg={2}
-                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                >
-                  <Button variant="outlined" sx={styles.outlinedButton}>
-                    Reset filters
-                  </Button>
-                </Grid>
+                
               </Grid>
             </Collapse>
           </List>
@@ -172,48 +141,17 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               </ListItem>
             </ListItemButton>
             <Collapse in={opens}>
-              <Divider sx={styles.menuDivider} />
-
-              <Grid
-                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-                container
-                item
-                xs={12}
-                sm={12}
-                md={12}
-              >
-                <Box sx={styles.menuInnerContainer}>
-                  {shopList.map((item) => (
-                    <MenuItem>
-                      <Checkbox sx={styles.menuCheck} />
-                      <ListItemText>{item}</ListItemText>
-                    </MenuItem>
+                <Grid container gap={10} item xs={12} sm={12}>
+                  {brandList.map((item) => (
+             
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
                   ))}
-                </Box>
-                <Grid
-                  xs={12}
-                  sm={12}
-                  md={2}
-                  lg={2}
-                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                >
-                  <Button variant="contained" sx={styles.menuButton}>
-                    Apply
-                  </Button>
+                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
+                    <Link href="/">
+                     View all.....
+                    </Link>
                 </Grid>
-                <Grid
-                  xs={12}
-                  sm={12}
-                  md={2}
-                  lg={2}
-                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                >
-                  <Button variant="outlined" sx={styles.outlinedButton}>
-                    Reset filters
-                  </Button>
-                </Grid>
+             
               </Grid>
             </Collapse>
           </List>

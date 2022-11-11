@@ -7,6 +7,8 @@ import styles from "styles/navbar";
 import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import ListItemText from "@mui/material/ListItemText";
+import PedlarButton from "./pedlarButton";
+import ProductHeader from "components/home/components/productHeader";
 
 interface Props {
   type: string;
@@ -35,11 +37,11 @@ const DropdownButton = (props: Props) => {
 
   return (
     <>
-    <Grid style={{display:"flex", alignItems: "center", justifyContent: "center"}}>
-      <Button  sx={styles.tabButton} onClick={handleClick} >
-        <Box style={{ borderBottom: openMenu ?"solid #1C1B1F 1px": "none"}} >{type}</Box>
-      {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
-      </Button>
+      <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Button sx={styles.tabButton} onClick={handleClick}>
+          <Box style={{ borderBottom: openMenu ? "solid #1C1B1F 1px" : "none" }}>{type}</Box>
+          {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
+        </Button>
       </Grid>
       <Menu
         PaperProps={{
@@ -66,12 +68,13 @@ const DropdownButton = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
             paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-
+            <ProductHeader />
             <Grid
               container
               display={"flex"}
               justifyContent={"center"}
               alignItems={"center"}
+              paddingTop={"10px"}
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
               <Box sx={styles.menuInnerContainer}>

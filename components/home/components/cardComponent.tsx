@@ -7,10 +7,11 @@ interface Props {
   name: string;
   type: string;
   price: string;
-  image: string;
+  image?: string;
+  crossPrice?:string
 }
 
-const CardComponent = ({ name, type, price, image }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({ name, type, price, image,crossPrice }: React.PropsWithChildren<Props>) => {
   return (
     <Link href={"/product"}>
       <Box
@@ -41,6 +42,14 @@ const CardComponent = ({ name, type, price, image }: React.PropsWithChildren<Pro
             {type}
           </Typography>
           <Typography style={{ fontSize: "16px", fontWeight: "600", color: "#1C1B1F" }}>{price}</Typography>
+          {crossPrice ? <Grid sx={{ display: "flex" }}>
+          <Typography style={{ fontSize: "16px", fontWeight: "600", textDecoration: "line-through",textDecorationColor: "#1C1B1F", textDecorationThickness: "0.05em",
+ color: "#1C1B1F" }}>{crossPrice}</Typography>
+          <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
+        </Grid> :
+        <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
+
+        }
         </Grid>
       </Box>
     </Link>

@@ -7,6 +7,12 @@ import {
   InputBase,
   ListItem,
   ListItemButton,
+  Button,
+  Divider,
+  Checkbox,
+  useTheme,
+  MenuItem,
+  Box,
 } from "@mui/material";
 import Link from "next/link";
 
@@ -15,7 +21,6 @@ import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Box } from "@mui/system";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -26,6 +31,7 @@ import { brandList, shopList } from "components/navbar/data";
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
+  const theme = useTheme();
 
   const paperStyle = {
     color: "black",
@@ -111,19 +117,50 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </ListItemButton>
-            <Collapse in={open}>
-              <ListItem>
-                <Grid container gap={10} item xs={12} sm={12}>
+            <Collapse in={open} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Divider sx={styles.menuDivider} />
+
+              <Grid
+                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                container
+                item
+                xs={12}
+                sm={12}
+                md={12}
+              >
+                <Box sx={styles.menuInnerContainer}>
                   {brandList.map((item) => (
-                    <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                      {item}
-                    </Grid>
+                    <MenuItem>
+                      <Checkbox sx={styles.menuCheck} />
+                      <ListItemText>{item}</ListItemText>
+                    </MenuItem>
                   ))}
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">View all.....</Link>
-                  </Grid>
+                </Box>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="contained" sx={styles.menuButton}>
+                    Apply
+                  </Button>
                 </Grid>
-              </ListItem>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton}>
+                    Reset filters
+                  </Button>
+                </Grid>
+              </Grid>
             </Collapse>
           </List>
           <List>
@@ -133,18 +170,49 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               </ListItem>
             </ListItemButton>
             <Collapse in={opens}>
-              <ListItem>
-                <Grid container gap={10} item xs={12} sm={12}>
+              <Divider sx={styles.menuDivider} />
+
+              <Grid
+                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                container
+                item
+                xs={12}
+                sm={12}
+                md={12}
+              >
+                <Box sx={styles.menuInnerContainer}>
                   {shopList.map((item) => (
-                    <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                      {item}
-                    </Grid>
+                    <MenuItem>
+                      <Checkbox sx={styles.menuCheck} />
+                      <ListItemText>{item}</ListItemText>
+                    </MenuItem>
                   ))}
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">View all.....</Link>
-                  </Grid>
+                </Box>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="contained" sx={styles.menuButton}>
+                    Apply
+                  </Button>
                 </Grid>
-              </ListItem>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton}>
+                    Reset filters
+                  </Button>
+                </Grid>
+              </Grid>
             </Collapse>
           </List>
           <Link href="faq">

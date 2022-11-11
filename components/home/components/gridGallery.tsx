@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, GridProps } from "@mui/material";
+import { Grid, GridProps, Typography, useTheme } from "@mui/material";
 import CardComponent from "./cardComponent";
 import { CustomGrid } from "components/layout";
 
@@ -31,16 +31,29 @@ const ReverseGallery = (props: GridProps) => {
         alignItems: "center",
       }}
     >
-      <Grid container sm={12} columnSpacing={10} {...props}>
-        <Grid container item xs={12} sm={12} md={6} lg={6}>
-          <Grid item height={{ lg: "534px", md: "534px", sm: "390px", xs: "390px" }} xs={12}>
-            <img src="/grid-img1.png" alt="Grid-img1" style={{ width: "100%", height: "100%" }}></img>
-          </Grid>
-          <CardComponent
-            name={"Low Classic"}
-            type={"Green Polyester Blazer"}
-            price="$365"
-          />
+      <Grid
+        container
+        sm={11.5}
+        md={11.3}
+        lg={11.5}
+        columnSpacing={10}
+        // paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
+        // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+        {...props}
+      >
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          md={6}
+          lg={6}
+          // sx={{ backgroundColor: "red" }}
+          justifyContent={{ xs: "center", md: "flex-start", lg: "flex-start" }}
+        >
+          <img src="/grid-img1.png" alt="Grid-img1" width="100%" height="89%" />
+
+          <CardComponent crossPrice="$420" name={"Low Classic"} type={"Green Polyester Blazer"} price="$365" />
         </Grid>
 
         <Grid container item xs={12} sm={12} md={6} lg={6} columnSpacing={10} rowSpacing={10}>

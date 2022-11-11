@@ -31,7 +31,7 @@ const ProductHeader = () => {
           marginBottom: "20px",
         }}
       >
-        <Typography variant="h1" gutterBottom color="#1C1B1F">
+        <Typography variant="h1" color="#1C1B1F">
           All Products
         </Typography>
 
@@ -40,7 +40,7 @@ const ProductHeader = () => {
             <ResponsiveHeader data={brandList} />
           </>
         ) : (
-          <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
+          <Grid gap={3} columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
             {" "}
             <DropdownButton type={"Brands"} data={brandList} />
             <DropdownButton type={"Category"} data={shopList} />

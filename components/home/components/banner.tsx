@@ -41,7 +41,7 @@ const BannerImg = () => {
           md={7}
           lg={7}
           marginLeft={{ lg: "-4%", md: "-4%" }}
-          marginTop={{ lg: "8%", md: "10%", sm: "-20%", xs: "-30%" }}
+          marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
         >
           <TextBox />
         </Grid>

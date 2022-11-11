@@ -62,7 +62,7 @@ const Footer = () => {
           <img src="/amex.png" className={cx(classes.footerImage)}></img>
           <img src="/applePay.png" className={cx(classes.footerImage)}></img>
           <img src="/mastercard.png" className={cx(classes.footerImage)}></img>
-          <img src="/payPal.png" className={cx(classes.footerImage)}></img>
+          <img src="/paypal.png" className={cx(classes.footerImage)}></img>
           <img src="/shopPay.png" className={cx(classes.footerImage)}></img>
           <img src="/visa.png" className={cx(classes.footerImage)}></img>
         </Grid>

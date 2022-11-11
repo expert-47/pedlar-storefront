@@ -15,9 +15,7 @@ export default function Layout(props: LayoutProps) {
         <Navbar />
       </header>
       <main
-        style={{
-          marginTop: "108px",
-        }}
+       
       >
         {children}
       </main>

@@ -11,7 +11,7 @@ import {
   Button,
   useTheme,
   Checkbox,
-  Divider
+  Divider,
 } from "@mui/material";
 import Link from "next/link";
 
@@ -28,7 +28,6 @@ import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 import { shopList } from "components/navbar/data";
 
-
 interface Props {
   data: string[];
 }
@@ -36,7 +35,6 @@ interface Props {
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
   const { data } = props;
-
 
   const paperStyle = {
     color: "black",
@@ -56,42 +54,54 @@ export const ResponsiveHeader = (props: Props) => {
   const handleClick = () => {
     setOpen(!open);
     setOpens(false);
-
   };
   const handleClicks = () => {
     setOpens(!opens);
     setOpen(false);
-
   };
 
   return (
     <React.Fragment>
-      <Grid columns={{ xs: 12, md: 12 }}
-        item style={{ display: "flex" }}
-      >
+      <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
         <Grid>
-          <Button onClick={handleClick} style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}>
-            <Grid style={{ borderBottom: open ?"solid black 2px": "none"}}>
-              Brands
-            </Grid>
-            {open ? <ExpandLess style={{ transform: "scale(0.8)" }} /> : <ExpandMore style={{ transform: "scale(0.8)" }} />}
+          <Button
+            onClick={handleClick}
+            style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}
+          >
+            <Grid style={{ borderBottom: open ? "solid black 2px" : "none" }}>Brands</Grid>
+            {open ? (
+              <ExpandLess style={{ transform: "scale(0.8)" }} />
+            ) : (
+              <ExpandMore style={{ transform: "scale(0.8)" }} />
+            )}
           </Button>
         </Grid>
 
         <Grid>
-          <Button onClick={handleClicks} style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}>
-          <Grid style={{ borderBottom: opens ?"solid black 2px": "none"}}>
-Category</Grid> {opens ? <ExpandLess style={{ transform: "scale(0.8)" }} /> : <ExpandMore style={{ transform: "scale(0.8)" }} />}
+          <Button
+            onClick={handleClicks}
+            style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}
+          >
+            <Grid style={{ borderBottom: opens ? "solid black 2px" : "none" }}>Category</Grid>{" "}
+            {opens ? (
+              <ExpandLess style={{ transform: "scale(0.8)" }} />
+            ) : (
+              <ExpandMore style={{ transform: "scale(0.8)" }} />
+            )}
           </Button>
-
         </Grid>
       </Grid>
       <Collapse in={open} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Divider sx={styles.menuDivider} />
 
-        <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-          container item xs={12} sm={12} md={12}>
-
+        <Grid
+          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+          container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+        >
           <Box sx={styles.menuInnerContainer}>
             {data.map((item) => (
               <MenuItem>
@@ -129,8 +139,14 @@ Category</Grid> {opens ? <ExpandLess style={{ transform: "scale(0.8)" }} /> : <E
       <Collapse in={opens}>
         <Divider sx={styles.menuDivider} />
 
-        <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }} container item xs={12} sm={12} md={12}>
-
+        <Grid
+          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+          container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+        >
           <Box sx={styles.menuInnerContainer}>
             {shopList.map((item) => (
               <MenuItem>

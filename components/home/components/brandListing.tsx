@@ -5,6 +5,7 @@ import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Link from "next/link";
 
 const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
   const theme = useTheme();
@@ -38,18 +39,23 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         >
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
-        <Grid
-          container
-          item
-          xs={5}
-          sm={3}
-          md={3}
-          lg={3}
-          justifyContent={{ xs: "flex-end", sm: "flex-end", md: "flex-end", lg: "flex-end" }}
-        >
-          <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
-          <ArrowForwardIcon sx={styles.arrowIcon} />
-        </Grid>
+        <Link href={"/products"}>
+          <Grid
+            container
+            item
+            xs={5}
+            sm={3}
+            md={3}
+            lg={3}
+            justifyContent={{ xs: "flex-end", sm: "flex-end", md: "flex-end", lg: "flex-end" }}
+            style={{
+              cursor: "pointer",
+            }}
+          >
+            <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
+            <ArrowForwardIcon sx={styles.arrowIcon} />
+          </Grid>
+        </Link>
       </Grid>
     </CustomGrid>
   );

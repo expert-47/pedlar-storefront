@@ -99,7 +99,9 @@ const Products = () => {
       </Head>
       <Grid
         container
-        
+        sm={11.5}
+        md={10.5}
+        lg={12}
         alignItems={{ xs: "center", md: "center", lg: "center" }}
         justifyContent={{ xs: "center", md: "center", lg: "center" }}
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}

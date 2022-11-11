@@ -52,18 +52,20 @@ const styles = {
     width: "100vw",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
-    padding: "30px"
+    justifyContent: "end",
+    // padding: "30px",
   },
   menuInnerContainer: {
+    display: "flex",
     color: "black",
     fontWeight: "800",
-    display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     alignSelf: "flex-end",
   },
   menu: {
+    display: "flex",
+    flexDirection: "row",
     top: "-12px",
     marginTop: 1.6,
     minWidth: "100%",

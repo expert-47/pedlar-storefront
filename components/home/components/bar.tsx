@@ -35,7 +35,7 @@ const Bar = () => {
           md={10}
           lg={11}
           alignItems={"center"}
-          paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
+          paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(25) }}
           paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
         >
           <Typography sx={styles.bartext}>Love Fashion? Have your own style? Share it with your community.</Typography>

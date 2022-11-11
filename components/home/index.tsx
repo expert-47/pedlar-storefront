@@ -7,7 +7,7 @@ import BaseFooter from "components/footer/baseFooter";
 import Divider from "@mui/material/Divider";
 import styles from "styles/home";
 import BrandTitles from "./components/brandTitles";
-import ReverseGallery from "./components/reverseGallery";
+import Gallery from "./components/Gallery";
 
 const gallery1 = [
   {
@@ -99,23 +99,29 @@ export const Home = () => {
         }}
       >
         <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
-        <ReverseGallery
+        <Gallery
           girdProps={{
             flexDirection: {
               lg: "row-reverse",
+              md: "row-reverse",
               sm: "column-reverse",
+              xs: "column-reverse",
             },
           }}
           data={gallery1}
         />
-        <ReverseGallery
+        <Gallery
           data={gallery2}
           girdProps={{
             flexDirection: {
               lg: "row",
+              md: "row",
               sm: "column-reverse",
+              xs: "column-reverse",
             },
+            marginTop: 40,
           }}
+          columnSpacing={0}
         />
         <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles />

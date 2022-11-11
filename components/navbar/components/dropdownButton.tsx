@@ -4,9 +4,8 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Checkbox, Divider } from "@mui/material";
+import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
-import Text from "components/customText";
 import ListItemText from "@mui/material/ListItemText";
 import PedlarButton from "./pedlarButton";
 import ProductHeader from "components/home/components/productHeader";
@@ -18,8 +17,8 @@ interface Props {
 const DropdownButton = (props: Props) => {
   const theme = useTheme();
   const { type = "Brands", data } = props;
-  const [brands, setBrands] = useState(false);
-  const [category, setCategory] = useState(false);
+  // const [brands, setBrands] = useState(false);
+  // const [category, setCategory] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openMenu = Boolean(anchorEl);
@@ -29,20 +28,20 @@ const DropdownButton = (props: Props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const showBrands = () => {
-    setBrands((prv) => !prv);
-  };
-  const showCategory = () => {
-    setCategory((prv) => !prv);
-  };
+  // const showBrands = () => {
+  //   setBrands((prv) => !prv);
+  // };
+  // const showCategory = () => {
+  //   setCategory((prv) => !prv);
+  // };
 
   return (
     <>
-    <Grid style={{display:"flex", alignItems: "center", justifyContent: "center"}}>
-      <Button  sx={styles.tabButton} onClick={handleClick} >
-        <Box style={{ borderBottom: openMenu ?"solid #1C1B1F 1px": "none"}} >{type}</Box>
-      {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
-      </Button>
+      <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Button sx={styles.tabButton} onClick={handleClick}>
+          <Box style={{ borderBottom: openMenu ? "solid #1C1B1F 1px" : "none" }}>{type}</Box>
+          {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
+        </Button>
       </Grid>
       <Menu
         PaperProps={{
@@ -69,7 +68,7 @@ const DropdownButton = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
             paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-        <ProductHeader/>
+            <ProductHeader />
             <Grid
               container
               display={"flex"}

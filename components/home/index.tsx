@@ -103,6 +103,7 @@ export const Home = () => {
           girdProps={{
             flexDirection: {
               lg: "row-reverse",
+              md: "row-reverse",
               sm: "column-reverse",
             },
           }}
@@ -113,6 +114,7 @@ export const Home = () => {
           girdProps={{
             flexDirection: {
               lg: "row",
+              md: "row",
               sm: "column-reverse",
             },
           }}

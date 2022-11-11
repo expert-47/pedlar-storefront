@@ -6,7 +6,6 @@ import {
   Typography,
   InputBase,
   ListItem,
-  MenuItem,
   ListItemButton,
 } from "@mui/material";
 import Link from "next/link";
@@ -24,7 +23,6 @@ import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
 import { brandList, shopList } from "components/navbar/data";
-
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
@@ -96,7 +94,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               border: "1px solid rgba(0,0,0,0.3)",
             }}
           >
-            <SearchIcon style={{color: "rgba(0,0,0,0.3)", padding: "2px"}} sx={styles.drawerIcon} />
+            <SearchIcon style={{ color: "rgba(0,0,0,0.3)", padding: "2px" }} sx={styles.drawerIcon} />
             <InputBase placeholder="Search store" type="text" aria-label="search icons"></InputBase>
           </Box>
         </Grid>
@@ -108,7 +106,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </Link>
           <List>
             <ListItemButton onClick={handleClick} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{color: open? "rgba(0,0,0,0.3)": "inherit"}}>
+              <ListItem style={{ color: open ? "rgba(0,0,0,0.3)" : "inherit" }}>
                 Brands
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
@@ -116,14 +114,13 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
             <Collapse in={open}>
               <ListItem>
                 <Grid container gap={10} item xs={12} sm={12}>
-                {brandList.map((item) => (
-             
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
-            ))}
+                  {brandList.map((item) => (
+                    <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
+                      {item}
+                    </Grid>
+                  ))}
                   <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">
-                     View all.....
-                    </Link>
+                    <Link href="/">View all.....</Link>
                   </Grid>
                 </Grid>
               </ListItem>
@@ -131,19 +128,20 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </List>
           <List>
             <ListItemButton onClick={handleClicks} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{color: opens? "rgba(0,0,0,0.3)": "inherit"}}>Shops {opens ? <ExpandLess /> : <ExpandMore />}</ListItem>
+              <ListItem style={{ color: opens ? "rgba(0,0,0,0.3)" : "inherit" }}>
+                Shops {opens ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
             </ListItemButton>
             <Collapse in={opens}>
-            <ListItem>
+              <ListItem>
                 <Grid container gap={10} item xs={12} sm={12}>
-                {shopList.map((item) => (
-             
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
-            ))}
+                  {shopList.map((item) => (
+                    <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
+                      {item}
+                    </Grid>
+                  ))}
                   <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">
-                     View all.....
-                    </Link>
+                    <Link href="/">View all.....</Link>
                   </Grid>
                 </Grid>
               </ListItem>

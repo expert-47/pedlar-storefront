@@ -20,16 +20,15 @@ const BannerImg = () => {
         container
         item
         alignItems={"center"}
-        paddingX={{xs: theme.spacing(10)}}
+        paddingX={{ xs: theme.spacing(10) }}
         justifyContent={{ lg: "center", md: "center", sm: "center", xs: "center" }}
         lg={11}
       >
-        <Grid item xs={11.5} md={4} lg={4} marginTop={{lg: "8%", md: "11%", sm: "15%", xs: "26%"}}>
+        <Grid item xs={11.5} md={4} lg={4}>
           <img
             src="/hannah.png"
             alt="headerimage"
             style={{
-              // marginTop: "2px",
               width: "100%",
               height: isMatch ? "415px" : "595px",
             }}
@@ -42,7 +41,7 @@ const BannerImg = () => {
           md={7}
           lg={7}
           marginLeft={{ lg: "-4%", md: "-4%" }}
-          marginTop={{ lg: "8%", md: "10%", sm: "-20%", xs: "-20%" }}
+          marginTop={{ lg: "8%", md: "10%", sm: "-20%", xs: "-30%" }}
         >
           <TextBox />
         </Grid>

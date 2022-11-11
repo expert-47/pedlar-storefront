@@ -2,8 +2,7 @@ import React from "react";
 import styles from "styles/home";
 import Text from "../../customText/index";
 import Grid from "@mui/material/Grid";
-import { Button, Box, useTheme,Typography } from "@mui/material";
-import InstagramIcon from "@mui/icons-material/Instagram";
+import { Button, Box, useTheme, Typography } from "@mui/material";
 
 const TextBox = () => {
   const theme = useTheme();
@@ -30,7 +29,7 @@ const TextBox = () => {
             alignItems: "center",
           }}
         >
-          <InstagramIcon style={{color: "#1C1B1F"}} />
+          <img src="/instagram.png" height="16px" width="16px" />
           <Text fontSize={"16px"} sx={styles.boxtext}>
             elinorcharlotte
           </Text>
@@ -43,7 +42,7 @@ const TextBox = () => {
             alignItems: "center",
           }}
         >
-          <img src="tiktok.png" style={{marginLeft: "8px", color: "#1C1B1F"}} />
+          <img src="tiktok.png" />
           <Text fontSize={"16px"} sx={styles.boxtext}>
             elridge
           </Text>
@@ -57,7 +56,6 @@ const TextBox = () => {
         </Grid>
       </Grid>
     </Box>
-   
   );
 };
 

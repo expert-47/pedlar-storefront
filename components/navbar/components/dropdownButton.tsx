@@ -4,11 +4,9 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Checkbox, Divider } from "@mui/material";
+import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
-import Text from "components/customText";
 import ListItemText from "@mui/material/ListItemText";
-import PedlarButton from "./pedlarButton";
 
 interface Props {
   type: string;
@@ -17,8 +15,8 @@ interface Props {
 const DropdownButton = (props: Props) => {
   const theme = useTheme();
   const { type = "Brands", data } = props;
-  const [brands, setBrands] = useState(false);
-  const [category, setCategory] = useState(false);
+  // const [brands, setBrands] = useState(false);
+  // const [category, setCategory] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const openMenu = Boolean(anchorEl);
@@ -28,12 +26,12 @@ const DropdownButton = (props: Props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const showBrands = () => {
-    setBrands((prv) => !prv);
-  };
-  const showCategory = () => {
-    setCategory((prv) => !prv);
-  };
+  // const showBrands = () => {
+  //   setBrands((prv) => !prv);
+  // };
+  // const showCategory = () => {
+  //   setCategory((prv) => !prv);
+  // };
 
   return (
     <>

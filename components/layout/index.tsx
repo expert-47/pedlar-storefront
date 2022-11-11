@@ -14,7 +14,13 @@ export default function Layout(props: LayoutProps) {
         <NextSeo {...seo} />
         <Navbar />
       </header>
-      <main>{children}</main>
+      <main
+        style={{
+          marginTop: "108px",
+        }}
+      >
+        {children}
+      </main>
       <footer>
         <Footer />
       </footer>

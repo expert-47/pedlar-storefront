@@ -13,6 +13,7 @@ import {
   useTheme,
   MenuItem,
   Box,
+  IconButton
 } from "@mui/material";
 import Link from "next/link";
 
@@ -20,7 +21,6 @@ import React from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -88,7 +88,9 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
             </Link>
             <Typography style={{ fontSize: "22px", fontWeight: "400", paddingLeft: "5px" }}>Hannah Juneva</Typography>
           </Grid>
-          <ShoppingCartIcon />
+          <IconButton sx={styles.shoppingCartIcon}>
+            <img src="/cart.png" height="19.48px" width="19.48px" />
+          </IconButton>
         </Grid>
         <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>
           <Box

@@ -1,7 +1,7 @@
 import Text from "components/customText";
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Button, useTheme, Divider } from "@mui/material";
+import { Grid, Button, useTheme, Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
@@ -97,15 +97,15 @@ const Products = () => {
         <meta property="og:description" content="Home" />
         <meta property="og:title" content="Home" key="Home" name="description" />
       </Head>
-      <Grid
-        container
-        sm={11.5}
-        md={10.5}
-        lg={12}
-        alignItems={{ xs: "center", md: "center", lg: "center" }}
-        justifyContent={{ xs: "center", md: "center", lg: "center" }}
-        paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
-        paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+      <Box
+        sx={{
+          alignItems: { xs: "center", md: "center", lg: "center" },
+          justifyContent: { xs: "center", md: "center", lg: "center" },
+          paddingLeft: { xs: "10px", md: "20px", lg: "40px" },
+          paddingRight: { xs: "10px", md: "20px", lg: "40px" },
+
+          // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+        }}
       >
         <ProductHeader />
         <Gallery
@@ -132,7 +132,7 @@ const Products = () => {
           }}
           columnSpacing={0}
         />
-      </Grid>
+      </Box>
       <Grid
         style={{
           marginTop: "20px",

@@ -4,12 +4,9 @@ import Link from "next/link";
 import { Stack } from "@mui/system";
 import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
-
-import SearchIcon from "@mui/icons-material/Search";
 import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
 import Typography from "components/customText";
@@ -44,7 +41,7 @@ const Navbar = () => {
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href="/">
-                    <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px" }} />
+                    <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
                   </Link>
                   <Typography sx={styles.navTypo}>Hannah Juneva</Typography>
                 </Stack>
@@ -63,10 +60,10 @@ const Navbar = () => {
                     </Button>
                   </Link>
                   <IconButton sx={styles.iconColor}>
-                    <SearchIcon />
+                    <img src="/search.png" height="19.48px" width="19.48px" />
                   </IconButton>
                   <IconButton sx={styles.iconColor}>
-                    <ShoppingCartOutlinedIcon onClick={onClickDrawer} />
+                    <img src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
                   </IconButton>
                 </Stack>
                 <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />

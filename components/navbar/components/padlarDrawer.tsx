@@ -6,12 +6,13 @@ import {
   Typography,
   InputBase,
   ListItem,
-  MenuItem,
   ListItemButton,
   Button,
   Divider,
   Checkbox,
   useTheme,
+  MenuItem,
+  Box,
 } from "@mui/material";
 import Link from "next/link";
 
@@ -20,16 +21,13 @@ import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Box } from "@mui/system";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
-
 import { brandList, shopList } from "components/navbar/data";
-
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
@@ -46,7 +44,6 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
-
   };
   const [open, setOpen] = React.useState(false);
   const [opens, setOpens] = React.useState(false);
@@ -123,9 +120,14 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
             <Collapse in={open} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
               <Divider sx={styles.menuDivider} />
 
-              <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-                container item xs={12} sm={12} md={12}>
-
+              <Grid
+                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                container
+                item
+                xs={12}
+                sm={12}
+                md={12}
+              >
                 <Box sx={styles.menuInnerContainer}>
                   {brandList.map((item) => (
                     <MenuItem>
@@ -163,56 +165,64 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </List>
           <List>
             <ListItemButton onClick={handleClicks} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{ color: opens ? "rgba(0,0,0,0.3)" : "inherit" }}>Shops {opens ? <ExpandLess /> : <ExpandMore />}</ListItem>
+              <ListItem style={{ color: opens ? "rgba(0,0,0,0.3)" : "inherit" }}>
+                Shops {opens ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
             </ListItemButton>
-            <Collapse in={opens} >
-            <Divider sx={styles.menuDivider} />
+            <Collapse in={opens}>
+              <Divider sx={styles.menuDivider} />
 
-            <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }} container item xs={12} sm={12} md={12}>
-
-              <Box sx={styles.menuInnerContainer}>
-                {shopList.map((item) => (
-                  <MenuItem>
-                    <Checkbox sx={styles.menuCheck} />
-                    <ListItemText>{item}</ListItemText>
-                  </MenuItem>
-                ))}
-              </Box>
               <Grid
+                style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+                container
+                item
                 xs={12}
                 sm={12}
-                md={2}
-                lg={2}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                md={12}
               >
-                <Button variant="contained" sx={styles.menuButton}>
-                  Apply
-                </Button>
+                <Box sx={styles.menuInnerContainer}>
+                  {shopList.map((item) => (
+                    <MenuItem>
+                      <Checkbox sx={styles.menuCheck} />
+                      <ListItemText>{item}</ListItemText>
+                    </MenuItem>
+                  ))}
+                </Box>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="contained" sx={styles.menuButton}>
+                    Apply
+                  </Button>
+                </Grid>
+                <Grid
+                  xs={12}
+                  sm={12}
+                  md={2}
+                  lg={2}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton}>
+                    Reset filters
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid
-                xs={12}
-                sm={12}
-                md={2}
-                lg={2}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-              >
-                <Button variant="outlined" sx={styles.outlinedButton}>
-                  Reset filters
-                </Button>
-              </Grid>
-            </Grid>
-          </Collapse>
+            </Collapse>
+          </List>
+          <Link href="faq">
+            <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
+              FAQ
+            </ListItem>
+          </Link>
+        </ListItemText>
       </List>
-      <Link href="faq">
-        <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
-          FAQ
-        </ListItem>
-      </Link>
-    </ListItemText>
-      </List >
-    </Drawer >
+    </Drawer>
   );
 };
 

@@ -9,6 +9,19 @@ const config: DefaultSeoProps = {
   },
   titleTemplate: "pedlar",
   defaultTitle: "pedlar",
+  additionalLinkTags: [
+    {
+      rel: "icon",
+      href: "/pedlar.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      href: "/pedlar.png",
+      sizes: "76x76",
+    },
+  ],
+  description:
+    "We’re always here to help.  Contact us at hello@pedlar.store and our customer service team will be in touch.",
   twitter: {
     handle: "@handle",
     site: "@site",

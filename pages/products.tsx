@@ -1,20 +1,90 @@
 import Text from "components/customText";
-import GalleryGrid from "components/home/components/gridGallery";
 import ProductHeader from "components/home/components/productHeader";
-import Layout, { CustomGrid } from "components/layout";
+import Layout from "components/layout";
 import { Grid, Button, useTheme, Divider } from "@mui/material";
 import Head from "next/head";
-import BrandListing from "components/home/components/brandListing";
-import GridGallery from "components/home/components/gridGallery";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
+import Gallery from "components/home/components/Gallery";
 
-
+const gallery1 = [
+  {
+    label: "Coat",
+    imgPath: "/grid-img1.png",
+    name: "Low Classic",
+    type: "Green Polyester Blazer",
+    price: "$365",
+  },
+  {
+    label: "Veja",
+    imgPath: "/grid-img2.png",
+    name: "Veja X Marni",
+    type: "35s",
+    price: "$320",
+  },
+  {
+    label: "Mask",
+    imgPath: "/grid-img3.png",
+    name: "Sisley Paris",
+    type: "Eye Contour Mask",
+    price: "$42",
+  },
+  {
+    label: "Fleece",
+    imgPath: "/grid-img4.png",
+    name: "Nike",
+    type: "High-Waisted Fleece Open",
+    price: "$975",
+  },
+  {
+    label: "Earring",
+    imgPath: "/grid-img5.png",
+    name: "Matteau",
+    type: "Drop Earring Collection",
+    price: "$42",
+  },
+];
+const gallery2 = [
+  {
+    label: "Kasbah",
+    imgPath: "/grid-img7.png",
+    name: "19-69",
+    type: "KASBAH",
+    price: "$310",
+  },
+  {
+    label: "Purse",
+    imgPath: "/grid-img6.png",
+    name: "Ganni",
+    type: "Beaded Banana Purse",
+    price: "$525",
+  },
+  {
+    label: "Mask",
+    imgPath: "/grid-img3.png",
+    name: "Sisley Paris",
+    type: "Eye Contour Mask",
+    price: "$42",
+  },
+  {
+    label: "Fleece",
+    imgPath: "/grid-img4.png",
+    name: "Nike",
+    type: "High-Waisted Fleece Open",
+    price: "$975",
+  },
+  {
+    label: "Coco",
+    imgPath: "/grid-img8.png",
+    name: "Hunza G",
+    type: "Coco Bikini",
+    price: "$300",
+  },
+];
 
 const Products = () => {
   const theme = useTheme();
   const { classes, cx } = useStyles();
-
 
   <link rel="icon" href="/favicon.ico" />;
   return (
@@ -29,46 +99,47 @@ const Products = () => {
       </Head>
       <Grid
         container
-        sm={11.5}
-        md={10.5}
-        lg={12}
-        sx={{display: "flex", alignItems: "center", padding: "180px"}}
+        
         alignItems={{ xs: "center", md: "center", lg: "center" }}
         justifyContent={{ xs: "center", md: "center", lg: "center" }}
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
-        paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}>
-
+        paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+      >
         <ProductHeader />
-        <GalleryGrid 
-        paddingX={0}
+        <Gallery
+          girdProps={{
+            flexDirection: {
+              lg: "row-reverse",
+              md: "row-reverse",
+              sm: "column-reverse",
+              xs: "column-reverse",
+            },
+          }}
+          data={gallery1}
         />
-        <GalleryGrid 
-        paddingX={0}
-        style={{
-          flexDirection: "row-reverse",
-          display: "flex",
-        }}
+        <Gallery
+          data={gallery2}
+          girdProps={{
+            flexDirection: {
+              lg: "row",
+              md: "row",
+              sm: "column-reverse",
+              xs: "column-reverse",
+            },
+            marginTop: 40,
+          }}
+          columnSpacing={0}
         />
-        <GalleryGrid 
-        paddingX={0}
-        />
-
-
       </Grid>
-
       <Grid
-        container
-        sm={12}
-        lg={12}
         style={{
+          marginTop: "20px",
           display: "flex",
+          justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-          marginTop: "70px",
-          marginBottom: "100px",
         }}
       >
-
         <Text fontSize="12px" fontWeight="600">
           {"You've viewed 20 out of 100 products"}
         </Text>

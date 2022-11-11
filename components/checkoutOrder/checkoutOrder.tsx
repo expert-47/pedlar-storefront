@@ -7,17 +7,12 @@ import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
 
 const CheckoutOrder = () => {
-
   return (
-    <Grid container style={{ display: "flex" }}>
+    <Grid container style={{ display: "flex", alignItems: "center" }}>
       <img src="/productImage.png" width="100" height="100" />
-      <Grid style={{ margin: "10px" }}>
-        <Typography sx={styles.brandName}>
-          Veja X Marni
-        </Typography>
-        <Typography sx={styles.productPrice}>
-          $320
-        </Typography>
+      <Grid style={{ padding: "10px", marginBottom: "5px" }}>
+        <Typography sx={styles.brandName}>Veja X Marni</Typography>
+        <Typography sx={styles.productPrice}>$320</Typography>
         <Grid style={{ display: "flex", justifyContent: "space-between", marginTop: "15px" }}>
           <Box
             component="span"
@@ -25,9 +20,7 @@ const CheckoutOrder = () => {
           >
             <Grid style={{ display: "flex", justifyContent: "space-between" }}>
               <RemoveIcon sx={styles.addRemoveIcon} />
-              <Typography sx={styles.addRemoveText}>
-                1
-              </Typography>
+              <Typography sx={styles.addRemoveText}>1</Typography>
               <AddIcon sx={styles.addRemoveIcon} />
             </Grid>
           </Box>

@@ -13,20 +13,19 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
     <CustomGrid
       style={{
         display: "flex",
-        justifyContent: "center",
+        // justifyContent: "center",
         alignItems: "center",
       }}
     >
       <Grid
         container
         item
-        xs={11}
-        md={10.5}
+        xs={12}
+        md={12}
         lg={12}
         alignItems={{ xs: "center", md: "center", lg: "center" }}
         justifyContent={{ xs: "space-between", md: "space-between", lg: "space-between" }}
-        paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(40) }}
-        paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+        paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
       >
         <Grid
           container
@@ -36,8 +35,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           md={9}
           lg={9}
           justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
-          alignItems={"center"}
-
         >
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
@@ -48,9 +45,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           sm={3}
           md={3}
           lg={3}
-          justifyContent={{ xs: "flex-end", md: "flex-end", lg: "flex-end" }}
-          alignItems={"center"}
-
+          justifyContent={{ xs: "flex-end", sm: "flex-end", md: "flex-end", lg: "flex-end" }}
         >
           <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
           <ArrowForwardIcon sx={styles.arrowIcon} />

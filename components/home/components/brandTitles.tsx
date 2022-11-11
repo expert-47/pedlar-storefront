@@ -1,11 +1,10 @@
 import React from "react";
-import { Box, Grid, GridProps, useTheme } from "@mui/material";
+import { Box, Grid, GridProps } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import { brands } from "./data";
 import styles from "styles/home";
 
 const BrandTitles = (props: GridProps) => {
-  const theme = useTheme();
 
   return (
     <CustomGrid
@@ -21,9 +20,7 @@ const BrandTitles = (props: GridProps) => {
         sm={12}
         md={12}
         lg={12}
-        gap={10}
-        paddingX={{ xs: theme.spacing(20),sm: theme.spacing(35), md: theme.spacing(88), lg: theme.spacing(40) }}
-        justifyContent={{ xs: "flex-start", sm: "flex-start", md: "flex-start", lg: "flex-start" }}
+        gap={12}
         {...props}
       >
         {brands.map((item) => (

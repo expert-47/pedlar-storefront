@@ -6,7 +6,6 @@ import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
 
 import SearchIcon from "@mui/icons-material/Search";
-import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -15,6 +14,7 @@ import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } fr
 import Typography from "components/customText";
 import { brandList, shopList } from "./data";
 import CartDrawer from "components/cartDrawer/cartDrawer";
+import DropDownMenu from "./components/dropDownMenu";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -53,9 +53,9 @@ const Navbar = () => {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-                  <DropdownButton type={"Brands"} data={brandList} />
+                  <DropDownMenu type={"Brands"} data={brandList} />
 
-                  <DropdownButton type={"Shop"} data={shopList} />
+                  <DropDownMenu type={"Shop"} data={shopList} />
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>

@@ -31,6 +31,12 @@ const properties = {
 }
 
 const Cart = () => {
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
   const { classes, cx } = useStyles();
   const images = [
     "/grid-img1.png",
@@ -92,7 +98,7 @@ const Cart = () => {
                   <Action></Action>
 
                   <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
-                  <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.descriptionGrid}>
+                  {/* <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.descriptionGrid}>
                     <Typography style={styles.bottomHeading}>Description</Typography>
                     <Divider sx={styles.divider} />
                     <RemoveIcon sx={styles.sign} ></RemoveIcon>
@@ -106,29 +112,46 @@ const Cart = () => {
                     {
                       "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
                     }
-                  </Typography>
+                  </Typography> */}
                   <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
                     <Accordion elevation={0}>
                       <AccordionSummary />
                       <AccordionDetails />
                     </Accordion>
-                    <Accordion elevation={0}>
-                      <AccordionSummary expandIcon={<AddIcon />}>
+                    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} elevation={0}>
+                      <AccordionSummary       expandIcon={expanded === 'panel1'?<RemoveIcon />:<AddIcon/>}>
+                        <Typography sx={styles.accordianTypography}>Description</Typography>
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        <Typography sx={styles.descriptionTypography}>
+                          {
+                            " Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
+                          }
+                          <br></br>
+                          <br></br>
+                          {
+                            "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
+                          }
+                        </Typography>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} elevation={0}>
+                      <AccordionSummary expandIcon={expanded === 'panel2'?<RemoveIcon />:<AddIcon/>}>
                         <Typography sx={styles.accordianTypography}>Shipping</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography>
+                        <Typography sx={styles.descriptionTypography}>
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
                           amet blandit leo lobortis eget.
                         </Typography>
                       </AccordionDetails>
                     </Accordion>
-                    <Accordion elevation={0}>
-                      <AccordionSummary expandIcon={<AddIcon />}>
+                    <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} elevation={0}>
+                      <AccordionSummary expandIcon={expanded === 'panel3'?<RemoveIcon />:<AddIcon/>}>
                         <Typography sx={styles.accordianTypography}>Returns</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography>
+                        <Typography sx={styles.descriptionTypography}>
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
                           amet blandit leo lobortis eget.
                         </Typography>

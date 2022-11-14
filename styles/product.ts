@@ -41,9 +41,8 @@ const styles = {
     justifyContent: "space-between",
   },
   descriptionTypography: {
-    fontSize: "14px",
+    fontSize: "16px",
     fontWeight: "400",
-    paddingTop: "30px",
     color: "#1C1B1F",
     textAlign: "start",
   },
@@ -54,7 +53,7 @@ const styles = {
   },
   accordianTypography: {
     fontWeight: "700",
-    fontSize: "14px",
+    fontSize: "16px",
     color: "#1C1B1F",
   },
   heading: { fontSize: "12px", fontWeight: "600" },

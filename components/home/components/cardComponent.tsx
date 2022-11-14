@@ -8,17 +8,17 @@ interface Props {
   type: string;
   price: string;
   image?: string;
-  crossPrice?:string
+  crossPrice?: string
 }
 
-const CardComponent = ({ name, type, price, image,crossPrice }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({ name, type, price, image, crossPrice }: React.PropsWithChildren<Props>) => {
   return (
     <Link href={"/product"}>
       <Box
-      style={{
-        cursor: "pointer",
-        width:"100%"
-      }}
+        style={{
+          cursor: "pointer",
+          width: "100%"
+        }}
       >
         {image && (
           <Grid item xs={12}>
@@ -42,13 +42,15 @@ const CardComponent = ({ name, type, price, image,crossPrice }: React.PropsWithC
             {type}
           </Typography>
           {crossPrice ? <Grid sx={{ display: "flex" }}>
-          <Typography style={{ fontSize: "16px", fontWeight: "600", textDecoration: "line-through",textDecorationColor: "#1C1B1F", textDecorationThickness: "0.05em",
- color: "#1C1B1F" }}>{crossPrice}</Typography>
-          <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
-        </Grid> :
-        <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
+            <Typography style={{
+              fontSize: "16px", fontWeight: "600", textDecoration: "line-through", textDecorationColor: "#1C1B1F87", textDecorationThickness: "0.1em",
+              color: "#1C1B1F87"
+            }}>{crossPrice}</Typography>
+            <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
+          </Grid> :
+            <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
 
-        }
+          }
         </Grid>
       </Box>
     </Link>

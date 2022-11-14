@@ -39,6 +39,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         >
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
+        
         <Link href={"/products"}>
           <Grid
             container

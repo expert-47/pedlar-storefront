@@ -3,6 +3,7 @@ import styles from "styles/home";
 import Text from "../../customText/index";
 import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme, Typography } from "@mui/material";
+import Link from "next/link";
 
 const TextBox = () => {
   const theme = useTheme();
@@ -47,13 +48,15 @@ const TextBox = () => {
             elridge
           </Text>
         </Grid>
-        <Grid
-          style={{
-            paddingTop: "20px",
-          }}
-        >
-          <Button sx={styles.shopbutton}>Shop now</Button>
-        </Grid>
+        <Link href={"/checkout"}>
+          <Grid
+            style={{
+              paddingTop: "20px",
+            }}
+          >
+            <Button sx={styles.shopbutton}>Shop now</Button>
+          </Grid>
+        </Link>
       </Grid>
     </Box>
   );

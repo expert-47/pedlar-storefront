@@ -64,7 +64,7 @@ const styles = {
     paddingTop: "35px",
     fontWeight: "700",
     fontSize: "14px",
-    display: { xs: "none", md: "block" },
+    // display: { xs: "none", md: "block" },
   },
   bottomHeading: { marginTop: "24px", fontWeight: "700", fontSize: "14px", color: "primary.contrastText" },
   divider: {

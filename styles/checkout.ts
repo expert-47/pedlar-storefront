@@ -36,7 +36,7 @@ const styles = {
       backgroundColor: "primary.dark",
     },
     marginTop: "10px",
-    marginBottom: "30px"
+    marginBottom: "30px",
   },
   headingStyle: {
     fontWeight: "600",
@@ -130,8 +130,8 @@ const styles = {
     color: "#1C1B1F",
     textDecorationLine: "underline",
     lineHeight: "20px",
-    position: "absolute",
-    right: "12px"
+    // position: "absolute",
+    // marginLeft: "32px"
   },
   divider: {
     backgroundColor: "#DDDDDD",
@@ -141,23 +141,31 @@ const styles = {
     top: "343px",
   },
   paymentButton: {
-    // display: "block",
     width: "100%",
     height: "46px",
     borderRadius: "30px",
     backgroundColor: "black",
     color: "white",
     textTransform: "none",
-    // padding: "12px 24px 12px 24px",
     marginTop: {
       xs: 8,
       md: 8,
+    },
+    "&:hover": {
+      backgroundColor: "primary.dark",
     },
   },
   cartDrawerTypo: {
     fontWeight: "600",
     fontSize: "26px",
   },
+  cartDrawerSlider: {
+    overflow: "scroll",
+    height: "75vh",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+  }
 };
 
 export default styles;

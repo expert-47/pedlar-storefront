@@ -10,7 +10,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   const paperStyle = {
     color: "black",
     width: {
-      lg: "20%",
+      lg: "25%",
       md: "30%",
     },
     height: "100%",
@@ -50,10 +50,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
             }}
           />
         </Grid>
-        <Grid container item xs={12} md={12} lg={12} justifyContent={"center"} paddingY={"30px"}>
-          <CheckoutOrder />
-          <CheckoutOrder />
-          <CheckoutOrder />
+        <Grid
+          container
+          item
+          xs={12}
+          md={12}
+          lg={12}
+          justifyContent={"center"}
+          paddingY={"30px"}
+          sx={styles.cartDrawerSlider}
+        >
+          {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(() => (
+            <CheckoutOrder />
+          ))}
         </Grid>
       </Grid>
 

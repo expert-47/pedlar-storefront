@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Button, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
@@ -8,27 +8,55 @@ import styles from "styles/checkout";
 
 const CheckoutOrder = () => {
   return (
-    <Grid container style={{ display: "flex", alignItems: "center" }}>
-      <img src="/productImage.png" width="100" height="100" />
-      <Grid style={{ padding: "10px", marginBottom: "5px" }}>
-        <Typography sx={styles.brandName}>Veja X Marni</Typography>
-        <Typography sx={styles.productPrice}>$320</Typography>
-        <Grid style={{ display: "flex", justifyContent: "space-between", marginTop: "15px" }}>
+    <Box
+      style={{
+        display: "flex",
+        width: "100%",
+        flexDirection: "column",
+      }}
+    >
+      <Box style={{ display: "flex", width: "100%", alignItems: "center", flexDirection: "row" }}>
+        <Box
+          style={{
+            width: "130px",
+            height: "130px",
+          }}
+        >
+          <img src="/productImage.png" style={{ cursor: "pointer" }} />
+        </Box>
+        <Box
+          style={{ marginBottom: "5px", cursor: "pointer", display: "flex", flexDirection: "column", width: "100%" }}
+        >
+          <Typography sx={styles.brandName}>Veja X Marni</Typography>
+          <Typography sx={styles.productPrice}>$320</Typography>
           <Box
-            component="span"
-            sx={{ borderRadius: "3px", border: "1px solid #DDDDDD", width: "85px", height: "25px" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+            marginTop={"15px"}
           >
-            <Grid style={{ display: "flex", justifyContent: "space-between" }}>
+            <Box
+              component="span"
+              sx={{
+                borderRadius: "3px",
+                border: "1px solid #DDDDDD",
+                width: "85px",
+                height: "25px",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
               <RemoveIcon sx={styles.addRemoveIcon} />
               <Typography sx={styles.addRemoveText}>1</Typography>
               <AddIcon sx={styles.addRemoveIcon} />
-            </Grid>
+            </Box>
+            <Button sx={styles.removeButton}>Remove</Button>
           </Box>
-          <Button sx={styles.removeButton}>Remove</Button>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
       <Divider sx={styles.divider} />
-    </Grid>
+    </Box>
   );
 };
 

@@ -15,7 +15,7 @@ export default function Layout(props: LayoutProps) {
         <Navbar />
       </header>
       <main
-       
+       style={{paddingTop: "115px"}}
       >
         {children}
       </main>

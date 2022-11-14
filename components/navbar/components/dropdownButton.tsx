@@ -59,16 +59,20 @@ const DropdownButton = (props: Props) => {
         open={openMenu}
         onClose={handleClose}
       >
-        <Grid container sx={styles.menuContainer}>
+        <Grid container justifyContent={"center"}
+          sx={styles.menuContainer}>
           <Grid
             container
             display={"flex"}
             justifyContent={"center"}
             alignItems={"center"}
+            sm={9}
+            lg={9}
+            md={9}
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
             paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <ProductHeader />
+            {/* <ProductHeader /> */}
             <Grid
               container
               display={"flex"}
@@ -96,8 +100,8 @@ const DropdownButton = (props: Props) => {
               <Grid
                 xs={7}
                 sm={7}
-                md={2}
-                lg={2}
+                md={2.5}
+                lg={2.5}
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
@@ -108,8 +112,8 @@ const DropdownButton = (props: Props) => {
               <Grid
                 xs={7}
                 sm={7}
-                md={2}
-                lg={2}
+                md={2.5}
+                lg={2.5}
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >

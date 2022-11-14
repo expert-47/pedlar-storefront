@@ -3,9 +3,7 @@ const styles = {
   mainContainer: {
     display: "flex",
     justifyContent: "center",
-    borderBottom: 1,
     borderColor: "info.main",
-    paddingBottom: "50px",
   },
   container: {
     justifyContent: "center",
@@ -41,9 +39,8 @@ const styles = {
     justifyContent: "space-between",
   },
   descriptionTypography: {
-    fontSize: "14px",
+    fontSize: "16px",
     fontWeight: "400",
-    paddingTop: "30px",
     color: "#1C1B1F",
     textAlign: "start",
   },
@@ -54,7 +51,7 @@ const styles = {
   },
   accordianTypography: {
     fontWeight: "700",
-    fontSize: "14px",
+    fontSize: "16px",
     color: "#1C1B1F",
   },
   heading: { fontSize: "12px", fontWeight: "600" },
@@ -65,7 +62,7 @@ const styles = {
     paddingTop: "35px",
     fontWeight: "700",
     fontSize: "14px",
-    display: { xs: "none", md: "block" },
+    // display: { xs: "none", md: "block" },
   },
   bottomHeading: { marginTop: "24px", fontWeight: "700", fontSize: "14px", color: "primary.contrastText" },
   divider: {

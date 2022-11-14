@@ -52,7 +52,7 @@ const styles = {
     width: "100vw",
     display: "flex",
     alignItems: "center",
-    justifyContent: "end",
+    justifyContent: "center",
     // padding: "30px",
   },
   menuInnerContainer: {
@@ -90,6 +90,7 @@ const styles = {
     fontWeight: "600",
     fontSize: "16px",
   },
+
   outlinedButton: {
     backgroundColor: "white",
     color: "black",

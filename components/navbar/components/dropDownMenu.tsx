@@ -61,12 +61,9 @@ const DropDownMenu = (props: Props) => {
                 open={openMenu}
                 onClose={handleClose}
             >
-                <Grid lg={24} md={12} sm={12} container style={{ display: "flex", alignItems: "center", justifyContent: "center" }} >
-                    <Grid container sx={styles.menuContainer} md={4} lg={4} sm={3}>
-                    </Grid>
-                    <Grid container sx={styles.menuContainer} md={4} lg={4} sm={3}>
-                    </Grid>
-                    <Grid container sx={styles.menuContainer} md={4} lg={4} sm={4}>
+ <Grid lg={11} md={12} sm={12} xl={9.3} container style={{ display: "flex", alignItems: "center", justifyContent: "end" }} >
+                 
+                 <Grid container sx={styles.menuContainer} md={4} lg={4} sm={8}>
                         <Grid
 
                             container

@@ -3,9 +3,7 @@ const styles = {
   mainContainer: {
     display: "flex",
     justifyContent: "center",
-    borderBottom: 1,
     borderColor: "info.main",
-    paddingBottom: "50px",
   },
   container: {
     justifyContent: "center",

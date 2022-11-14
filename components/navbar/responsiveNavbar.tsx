@@ -27,16 +27,16 @@ export const ResponsiveNavbar = () => {
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <MenuIcon onClick={onClickDrawer} sx={styles.menuIcon} />
           <Link href="/">
-            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} style={{ padding: "10px" }} />
+            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
           <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>
-        <IconButton sx={styles.shoppingCartIcon}>
+        <IconButton onClick={onClickCart} sx={styles.shoppingCartIcon}>
           <img
             src="/cart.png"
             height="19.48px"
             width="19.48px"
-            onClick={onClickCart}
+            
           />
         </IconButton>
         <CartDrawer openDrawer={openCart} toggleDrawer={toggleCart} />

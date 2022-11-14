@@ -58,6 +58,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
       </Grid>
 
       <Grid
+        item
         container
         xs={12}
         md={12}

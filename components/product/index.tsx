@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import { Divider, Grid, Typography } from "@mui/material";
 import { Slide } from 'react-slideshow-image';
 
+
 import 'react-slideshow-image/dist/styles.css'
 
 import Accordion from "@mui/material/Accordion";
@@ -10,6 +11,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 import Layout from "../layout";
@@ -72,7 +75,21 @@ const Cart = () => {
                   </Slide>
                 </Grid>
               </Grid>
-              <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
+              <ImageList cols={1} sx={{
+                height: "240vh", scrollbarWidth: "none", '&::-webkit-scrollbar': { display: 'none' }, display: { xs: "none", sm: "block" }
+                                }}>
+                {images.map((item) => (
+                  <ImageListItem sx={{paddingBottom: "25px"}} key={item}>
+                    <img
+                      src={`${item}?w=164&h=164&fit=crop&auto=format`}
+                      srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                      loading="lazy"
+                    />
+                  </ImageListItem>
+                ))}
+              </ImageList>
+
+              {/* <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
                 <img src="/grid-img1.png"></img>
               </Grid>
               <Grid item sx={{ display: { xs: "none", sm: "block", paddingTop: "25px" } }}>
@@ -80,7 +97,8 @@ const Cart = () => {
               </Grid>
               <Grid item sx={{ display: { xs: "none", sm: "block", paddingTop: "25px" } }}>
                 <img src="/grid-img1.png"></img>
-              </Grid>
+              </Grid> */}
+
             </Grid>
 
             <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">
@@ -119,7 +137,7 @@ const Cart = () => {
                       <AccordionDetails />
                     </Accordion>
                     <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')} elevation={0}>
-                      <AccordionSummary       expandIcon={expanded === 'panel1'?<RemoveIcon />:<AddIcon/>}>
+                      <AccordionSummary expandIcon={expanded === 'panel1' ? <RemoveIcon /> : <AddIcon />}>
                         <Typography sx={styles.accordianTypography}>Description</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
@@ -136,7 +154,7 @@ const Cart = () => {
                       </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')} elevation={0}>
-                      <AccordionSummary expandIcon={expanded === 'panel2'?<RemoveIcon />:<AddIcon/>}>
+                      <AccordionSummary expandIcon={expanded === 'panel2' ? <RemoveIcon /> : <AddIcon />}>
                         <Typography sx={styles.accordianTypography}>Shipping</Typography>
                       </AccordionSummary>
                       <AccordionDetails>
@@ -147,7 +165,7 @@ const Cart = () => {
                       </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')} elevation={0}>
-                      <AccordionSummary expandIcon={expanded === 'panel3'?<RemoveIcon />:<AddIcon/>}>
+                      <AccordionSummary expandIcon={expanded === 'panel3' ? <RemoveIcon /> : <AddIcon />}>
                         <Typography sx={styles.accordianTypography}>Returns</Typography>
                       </AccordionSummary>
                       <AccordionDetails>

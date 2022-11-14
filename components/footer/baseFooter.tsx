@@ -18,9 +18,10 @@ const BaseFooter = () => {
       <Grid
         container
         item
-        sm={11.5}
-        md={10}
-        lg={12}
+        xs={10}
+        sm={8.5}
+        md={11}
+        lg={10}
         paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >

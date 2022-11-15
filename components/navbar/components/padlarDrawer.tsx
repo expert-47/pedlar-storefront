@@ -120,12 +120,12 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               </ListItem>
             </ListItemButton>
             <Collapse in={open}>
-                <Grid container gap={10} item xs={12} sm={12}>
+                <Grid container item gap={10} item xs={12} sm={12}>
                   {brandList.map((item) => (
              
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
+                  <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
                   ))}
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
+                  <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
                     <Link href="/">
                      View all.....
                     </Link>
@@ -144,9 +144,9 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
                 <Grid container gap={10} item xs={12} sm={12}>
                   {brandList.map((item) => (
              
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
+                  <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
                   ))}
-                  <Grid xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
+                  <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
                     <Link href="/">
                      View all.....
                     </Link>

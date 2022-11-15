@@ -63,6 +63,10 @@ const styles = {
     flexWrap: "wrap",
     alignSelf: "flex-end",
   },
+  menuItems: {
+    fontWeight: "500",
+    fontSize: "14px",
+  },
   menu: {
     display: "flex",
     flexDirection: "row",
@@ -147,7 +151,8 @@ const styles = {
     paddingLeft: "2px",
   },
   menuIcon: {
-    padding: "4px",
+    paddingRight: "4px",
+    paddingTop: "6px",
   },
   responsiveTypography: {
     fontSize: "22px",

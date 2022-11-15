@@ -4,7 +4,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Checkbox, Divider } from "@mui/material";
+import { Button, Grid, useTheme, Checkbox, Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Text from "components/customText";
 import ListItemText from "@mui/material/ListItemText";
@@ -36,7 +36,6 @@ const DropDownMenu = (props: Props) => {
     const showCategory = () => {
         setCategory((prv) => !prv);
     };
-
     return (
         <>
             <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -61,9 +60,9 @@ const DropDownMenu = (props: Props) => {
                 open={openMenu}
                 onClose={handleClose}
             >
-                <Grid lg={11} md={12} sm={12} xl={9.3} container style={{ display: "flex", alignItems: "center", justifyContent: "end" }} >
+                <Grid lg={12} md={12} sm={12} xl={10} container style={{ display: "flex", alignItems: "center", justifyContent: "end",    maxWidth: "100%", }} >
 
-                    <Grid container sx={styles.menuContainer} md={4} lg={4} sm={8}>
+                    <Grid container item sx={styles.menuContainer} md={6} lg={6} sm={8} xl={4}>
                         <Grid
 
                             container
@@ -84,7 +83,7 @@ const DropDownMenu = (props: Props) => {
                                 <Box sx={styles.menuInnerContainer}>
                                     {data.map((item) => (
                                         <MenuItem >
-                                            <ListItemText>{item}</ListItemText>
+                                            <Typography sx={styles.menuItems}>{item}</Typography>
 
                                         </MenuItem>
                                     ))}

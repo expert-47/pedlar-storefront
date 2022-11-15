@@ -48,7 +48,7 @@ const TextBox = () => {
             elridge
           </Text>
         </Grid>
-        <Link href={"/checkout"}>
+        <Link href={"/products"}>
           <Grid
             style={{
               paddingTop: "20px",

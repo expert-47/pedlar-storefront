@@ -6,6 +6,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { data } from "./data";
 
 const OrderDetailCollapsible = () => {
   return (
@@ -19,9 +20,11 @@ const OrderDetailCollapsible = () => {
             <Typography sx={styles.headingStyle}>You are ordering</Typography>
           </Grid>
 
-          <CheckoutOrder />
-          <CheckoutOrder />
-          <CheckoutOrder />
+          <Grid container item justifyContent={"center"}>
+            {data.map((item) => (
+              <CheckoutOrder image={item.image} name={item.name} price={item.price} />
+            ))}
+          </Grid>
 
           <Grid container style={{ display: "flex", padding: "5px", justifyContent: "space-between" }} sm={12} lg={7}>
             <Grid style={{ display: "flex", justifyContent: "space-between" }}>

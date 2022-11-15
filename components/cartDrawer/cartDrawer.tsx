@@ -3,6 +3,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
+import { data } from "components/checkoutOrder/data";
+import Link from "next/link";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
@@ -57,11 +59,16 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           md={12}
           lg={12}
           justifyContent={"center"}
-          paddingY={"30px"}
+          alignItems={"center"}
+          paddingY={"40px"}
           sx={styles.cartDrawerSlider}
         >
-          {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(() => (
-            <CheckoutOrder />
+          {data.map((item) => (
+            <CheckoutOrder 
+              image={item.image}
+              name={item.name}
+              price={item.price}
+            />
           ))}
         </Grid>
       </Grid>
@@ -80,7 +87,8 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           </Grid>
           <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
-        <Button sx={styles.checkoutButton}>Checkout</Button>
+        <Link href="/checkout">
+        <Button sx={styles.checkoutButton}>Checkout</Button></Link>
       </Grid>
     </Drawer>
   );

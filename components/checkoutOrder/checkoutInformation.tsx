@@ -6,10 +6,9 @@ import { CustomGrid } from "components/layout";
 const CheckoutInformation = () => {
   return (
     <Grid container item xs={12} sm={12} md={12} lg={7} >
+      
      <CustomGrid>     
-      <Grid xs={12} lg={12} sx={styles.checkoutContainer}>
-        <Typography sx={styles.checkoutText}>Checkout</Typography>
-      </Grid>
+      
       <Grid item container xs={12} lg={12} sx={styles.mainContainer}>
         <Typography sx={styles.headingStyle}>Personal Information</Typography>
 

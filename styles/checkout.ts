@@ -5,6 +5,7 @@ const styles = {
   headerText2: {
     fontWeight: "400",
     fontSize: "22px",
+    paddingLeft: "5px"
   },
   inputStyle: {
     width: "100%",
@@ -161,7 +162,7 @@ const styles = {
   },
   cartDrawerSlider: {
     overflow: "scroll",
-    height: "75vh",
+    // height: "75vh",
     "&::-webkit-scrollbar": {
       display: "none",
     },

@@ -106,15 +106,16 @@ const styles = {
     fontSize: "16px",
   },
   menuCheck: {
+    fontSize: "16px",
+    fontWeight: "400",
     margin: "0px",
-    padding: "2px",
     "&.Mui-checked": {
       color: "black",
     },
   },
   menuDivider: {
     top: "173px",
-    border: "0.5px solid rgba(28, 27, 31, 0.32)",
+    border: "0.001px solid rgb(28 27 31 / 7%)",
     marginTop: "12px",
     marginBottom: "12px",
   },

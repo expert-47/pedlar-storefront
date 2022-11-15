@@ -7,8 +7,8 @@ const index = () => {
   return (
     <Layout
       seo={{
-        title: "Home",
-        titleTemplate: "Home",
+        title: "Pedlar - Hannah Juneva Store",
+        description: "Hi honeys! I’ve worked closely with some of my favorite brands to curate my own store!",
       }}
     >
       <Home />

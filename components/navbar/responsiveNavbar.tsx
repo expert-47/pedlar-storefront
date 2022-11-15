@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import PedlarDrawer from "./components/padlarDrawer";
 import CartDrawer from "components/cartDrawer/cartDrawer";
+import { Box } from "@mui/system";
 
 export const ResponsiveNavbar = () => {
   const theme = useTheme();
@@ -25,9 +26,9 @@ export const ResponsiveNavbar = () => {
       <Toolbar>
         <PedlarDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
-          <MenuIcon onClick={onClickDrawer} sx={styles.menuIcon} />
+          <Box sx={styles.menuIcon}> <Image src="/menuIcon.png" alt="No Image Found" onClick={onClickDrawer} width={20} height={15} /></Box>
           <Link href="/">
-            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
+            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25}/>
           </Link>
           <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>

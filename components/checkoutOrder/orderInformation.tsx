@@ -9,7 +9,20 @@ const OrderInformation = () => {
       <Grid sm={12} lg={12}>
         <Typography sx={styles.headingStyle}>You are ordering</Typography>
       </Grid>
-      <Grid container item xs={12} md={8} lg={10}>
+      <Grid
+        container
+        item
+        xs={12}
+        md={8}
+        lg={10}
+        sx={{
+          overflow: "scroll",
+          height: "75vh",
+          "&::-webkit-scrollbar": {
+            display: "none",
+          },
+        }}
+      >
         {[0, 0, 0, 0, 0, 0, 0, 0].map(() => (
           <CheckoutOrder />
         ))}

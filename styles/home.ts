@@ -186,6 +186,7 @@ const styles = {
   },
   closeIcon: {
     color: "primary.main",
+    cursor: "pointer"
   },
   gridtag1typo1: {
     fontSize: "22px",

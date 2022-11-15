@@ -6,7 +6,13 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
 
-const CheckoutOrder = () => {
+interface Props {
+  data: string[];
+  name: string;
+  price: string;
+}
+
+const CheckoutOrder = (props: Props) => {
   return (
     <Box
       style={{

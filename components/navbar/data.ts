@@ -36,6 +36,5 @@ export const shopList = [
   "shop name",
   "shop name",
   "shop name",
-  "shop name",
 
 ];

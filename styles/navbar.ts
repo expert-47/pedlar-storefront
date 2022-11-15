@@ -63,6 +63,10 @@ const styles = {
     flexWrap: "wrap",
     alignSelf: "flex-end",
   },
+  menuItems: {
+    fontWeight: "500",
+    fontSize: "14px",
+  },
   menu: {
     display: "flex",
     flexDirection: "row",

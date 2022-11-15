@@ -52,8 +52,8 @@ const Cart = () => {
       <CustomContainer>
         <Box sx={styles.mainContainer}>
           <Grid container item md={12} lg={9}>
-            <Grid item xs={12} sm={12} md={6} lg={6} sx={{ textAlign: "center", paddingTop: "26px" }}>
-              <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={{display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", paddingTop: "26px" }}>
+              <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Slide {...properties} indicators={true}>
                     <Box className="each-slide-effect">

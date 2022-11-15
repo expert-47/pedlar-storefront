@@ -22,6 +22,8 @@ import styles from "styles/product";
 import ProductHeader from "components/home/components/productHeader";
 import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
+import { useMediaQuery, useTheme } from "@mui/material";
+
 
 
 const buttonStyle = {
@@ -34,7 +36,9 @@ const properties = {
 }
 
 const Cart = () => {
+  const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>(false);
+  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -51,8 +55,8 @@ const Cart = () => {
 
       <CustomContainer>
         <Box sx={styles.mainContainer}>
-          <Grid container item md={12} lg={9}>
-            <Grid item xs={12} sm={12} md={6} lg={6} sx={{display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", paddingTop: "26px" }}>
+          <Grid container item md={11} lg={9} xl={9}>
+            <Grid item xs={12} sm={12} md={6} lg={6} sx={{display: "flex", alignItems: "center", justifyContent: isMatch? "center" : "start", textAlign: "center", paddingTop: "26px" }}>
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Slide {...properties} indicators={true}>
@@ -186,13 +190,13 @@ const Cart = () => {
           </Grid>
         </Box>
         <Grid container spacing={4} sx={styles.bottomContainer}>
-          <Grid container item xs={11} sm={9} md={11.4} lg={8.4} paddingTop="30px">
-            <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="20px">
+          <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
+            <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
               <Typography sx={styles.text}>You might like</Typography>
             </Grid>
             {[0, 0, 0, 0, 0, 0].map((item, index) => {
               return (
-                <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="20px" paddingBottom="50px">
+                <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
                   <img style={{ width: "95%", height: "70%" }} src="/grid-img3.png"></img>
                   <Typography variant="body1">SISLEY PARIS</Typography>
                   <Typography variant="subtitle2">Eye Contour Mask</Typography>

@@ -159,6 +159,13 @@ const styles = {
     fontWeight: "600",
     fontSize: "26px",
   },
+  cartDrawerSlider: {
+    overflow: "scroll",
+    height: "75vh",
+    "&::-webkit-scrollbar": {
+      display: "none",
+    },
+  }
 };
 
 export default styles;

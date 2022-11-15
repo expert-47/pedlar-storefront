@@ -252,7 +252,7 @@ const styles = {
       lg: "176px",
       md: "158px",
       sm:"158px",
-      xs: "158px"
+      xs: "158px",
     },
     width: {
       lg: "176px",

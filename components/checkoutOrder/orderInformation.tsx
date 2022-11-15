@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
+import { data } from "./data";
 
 const OrderInformation = () => {
   return (
@@ -17,14 +18,18 @@ const OrderInformation = () => {
         lg={10}
         sx={{
           overflow: "scroll",
-          height: "75vh",
+          // height: "75vh",
           "&::-webkit-scrollbar": {
             display: "none",
           },
         }}
       >
-        {[0, 0, 0, 0, 0, 0, 0, 0].map(() => (
-          <CheckoutOrder />
+        {data.map((item) => (
+          <CheckoutOrder
+          image={item.image}
+          name={item.name}
+          price={item.price}
+          />
         ))}
       </Grid>
       <Grid

@@ -12,11 +12,11 @@ const config: DefaultSeoProps = {
   additionalLinkTags: [
     {
       rel: "icon",
-      href: "/pedlar.png",
+      href: "/pedlarIcon.png",
     },
     {
       rel: "apple-touch-icon",
-      href: "/pedlar.png",
+      href: "/pedlarIcon.png",
       sizes: "76x76",
     },
   ],

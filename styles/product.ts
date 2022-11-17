@@ -90,8 +90,10 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backgroundSize: "cover",
-    height:" 350px",
+    backgroundSize: "contain",
+    height:" 400px",
+    backgroundPosition: "center center",
+    backgroundRepeat: "no-repeat"
   },
   eachSlideEffectSpan: {
     padding: "20px",

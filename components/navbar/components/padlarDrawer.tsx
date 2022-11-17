@@ -114,24 +114,28 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </Link>
           <List>
             <ListItemButton onClick={handleClick} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
-              <ListItem style={{color: open? "rgba(0,0,0,0.3)": "inherit"}}>
+              <ListItem style={{ color: open ? "rgba(0,0,0,0.3)" : "inherit" }}>
                 Brands
                 {open ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </ListItemButton>
             <Collapse in={open}>
-                <Grid container item gap={10} item xs={12} sm={12}>
-                  {brandList.map((item) => (
-             
-                  <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
-                  ))}
-                  <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">
-                     View all.....
-                    </Link>
-                </Grid>
-                
-              </Grid>
+              <List>
+                <ListItem>
+                  <Grid container item gap={10} item xs={12} sm={12}>
+                    {brandList.map((item) => (
+
+                      <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
+                    ))}
+                      <Link href="/">
+                        <ListItemText style={{color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                          View all.....
+                        </ListItemText>
+                      </Link>
+
+                  </Grid>
+                </ListItem>
+              </List>
             </Collapse>
           </List>
           <List>
@@ -141,18 +145,22 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               </ListItem>
             </ListItemButton>
             <Collapse in={opens}>
-                <Grid container gap={10} item xs={12} sm={12}>
-                  {brandList.map((item) => (
-             
-                  <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>{item}</Grid>
-                  ))}
-                  <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "600", fontSize: "12px" }}>
-                    <Link href="/">
-                     View all.....
-                    </Link>
-                </Grid>
-             
-              </Grid>
+              <List>
+                <ListItem>
+                  <Grid container item gap={10} item xs={12} sm={12}>
+                    {brandList.map((item) => (
+
+                      <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
+                    ))}
+                      <Link href="/">
+                        <ListItemText style={{color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                          View all.....
+                        </ListItemText>
+                      </Link>
+
+                  </Grid>
+                </ListItem>
+              </List>
             </Collapse>
           </List>
           <Link href="faq">

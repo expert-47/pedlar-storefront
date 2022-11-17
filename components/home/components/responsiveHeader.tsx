@@ -62,13 +62,13 @@ export const ResponsiveHeader = (props: Props) => {
 
   return (
     <React.Fragment>
-      <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
+      <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex", paddingTop: "12px" }}>
         <Grid>
           <Button
             onClick={handleClick}
-            style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}
+            style={{ fontSize: "16px", color: "#1C1B1Fe3", fontWeight: "600", padding: "unset" }}
           >
-            <Grid style={{ borderBottom: open ? "solid black 2px" : "none" }}>Brands</Grid>
+            <Grid style={{ borderBottom: open ? "solid black 1.5px" : "none", textTransform: "none" }}>Brands</Grid>
             {open ? (
               <ExpandLess style={{ transform: "scale(0.8)" }} />
             ) : (
@@ -80,9 +80,9 @@ export const ResponsiveHeader = (props: Props) => {
         <Grid>
           <Button
             onClick={handleClicks}
-            style={{ fontSize: "16px", color: "#1C1B1F", fontWeight: "600", padding: "unset" }}
+            style={{ fontSize: "16px", color: "#1C1B1Fe3", fontWeight: "600", padding: "unset" }}
           >
-            <Grid style={{ borderBottom: opens ? "solid black 2px" : "none" }}>Category</Grid>{" "}
+            <Grid style={{ borderBottom: opens ? "solid black 1.5px" : "none", textTransform: "none" }}>Category</Grid>{" "}
             {opens ? (
               <ExpandLess style={{ transform: "scale(0.8)" }} />
             ) : (
@@ -102,14 +102,18 @@ export const ResponsiveHeader = (props: Props) => {
           sm={12}
           md={12}
         >
-          <Box sx={styles.menuInnerContainer}>
+          <Grid gap={20} sx={styles.menuInnerContainer}>
             {data.map((item) => (
-              <MenuItem>
-                <Checkbox sx={styles.menuCheck} />
-                <ListItemText>{item}</ListItemText>
-              </MenuItem>
+              <Grid style={{display: "flex"}}>
+                <Grid>
+                  <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />
+                </Grid>
+                <Grid>
+                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>{item}</Typography>
+                </Grid>
+              </Grid>
             ))}
-          </Box>
+          </Grid>
           <Grid
             xs={12}
             sm={12}
@@ -147,14 +151,18 @@ export const ResponsiveHeader = (props: Props) => {
           sm={12}
           md={12}
         >
-          <Box sx={styles.menuInnerContainer}>
+           <Grid gap={20} sx={styles.menuInnerContainer}>
             {shopList.map((item) => (
-              <MenuItem>
-                <Checkbox sx={styles.menuCheck} />
-                <ListItemText>{item}</ListItemText>
-              </MenuItem>
+              <Grid style={{display: "flex"}}>
+                <Grid>
+                  <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />
+                </Grid>
+                <Grid>
+                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>{item}</Typography>
+                </Grid>
+              </Grid>
             ))}
-          </Box>
+          </Grid>
           <Grid
             xs={12}
             sm={12}

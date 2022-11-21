@@ -15,10 +15,11 @@ import Link from "next/link";
 interface Props {
     type: string;
     data: string[];
+    loading: boolean;
 }
 const DropDownMenu = (props: Props) => {
     const theme = useTheme();
-    const { type = "Brands", data } = props;
+    const { type = "Brands", data, loading } = props;
     const [brands, setBrands] = useState(false);
     const [category, setCategory] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -60,7 +61,7 @@ const DropDownMenu = (props: Props) => {
                 open={openMenu}
                 onClose={handleClose}
             >
-                <Grid lg={12} md={12} sm={12} xl={10} container style={{ display: "flex", alignItems: "center", justifyContent: "end",    maxWidth: "100%", }} >
+                <Grid lg={12} md={12} sm={12} xl={10} container style={{ display: "flex", alignItems: "center", justifyContent: "end", maxWidth: "100%", }} >
 
                     <Grid container item sx={styles.menuContainer} md={6} lg={6} sm={8} xl={4}>
                         <Grid
@@ -81,14 +82,19 @@ const DropDownMenu = (props: Props) => {
                                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
                             >
                                 <Box sx={styles.menuInnerContainer}>
-                                    {data.map((item) => (
-                                        <MenuItem >
-                                            <Typography sx={styles.menuItems}>{item}</Typography>
+                                    {loading
+                                        ?
+                                        < Typography sx={styles.menuItems}>Loading Brands...</Typography>
+                                        :
+                                        (data.sort().slice(0, 28).map((item) => (
+                                            <MenuItem >
+                                                <Typography sx={styles.menuItems}>{item}</Typography>
 
-                                        </MenuItem>
-                                    ))}
+                                            </MenuItem>
+                                        )))
+                                    }
                                     <Link href="/">
-                                        <ListItemText style={{ paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                                        <ListItemText style={{ paddingTop: "4px", paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
                                             View all.....
                                         </ListItemText>
                                     </Link>

@@ -28,11 +28,15 @@ export default function Navbar() {
     toggleDrawer(!openDrawer);
   };
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   async function initProducts() {
+    setLoading(true);
     await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
         .then(response => response.json())
         .then(response => {
             setData((response.data).map(item=> item.vendor));
+            setLoading(false);
          } )
         .catch(err => console.error(err));
   }
@@ -66,9 +70,9 @@ export default function Navbar() {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-                  <DropDownMenu type={"Brands"} data={data} />
+                  <DropDownMenu loading={loading} type={"Brands"} data={data} />
 
-                  <DropDownMenu type={"Shop"} data={shopList} />
+                  <DropDownMenu loading={loading} type={"Shop"} data={shopList} />
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>

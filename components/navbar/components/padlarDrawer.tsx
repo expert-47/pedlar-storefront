@@ -33,11 +33,16 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
   const { openDrawer, toggleDrawer } = props;
   const theme = useTheme();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   async function initProducts() {
+    setLoading(true);
     await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
       .then(response => response.json())
       .then(response => {
         setData((response.data).map(item => item.vendor));
+        setLoading(false);
+
       })
       .catch(err => console.error(err));
   }
@@ -134,10 +139,14 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {data.sort().slice(0, 28).map((item) => (
-
+                    {loading
+                      ?
+                      <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>Loading Brands...</Grid>
+                      :
+                    data.sort().slice(0, 28).map((item) => (
                       <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
-                    ))}
+                    ))
+                    }
                     <Link href="/">
                       <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
                         View all.....

@@ -12,7 +12,6 @@ import { CustomContainer } from "components/layout";
 import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
 import Typography from "components/customText";
-import { shopList } from "./data";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
@@ -29,6 +28,8 @@ export default function Navbar() {
   };
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [shopList, setShopList] = useState([]);
+  const [loadingShops, setLoadingShops] = useState(false);
 
   async function initProducts() {
     setLoading(true);
@@ -40,8 +41,19 @@ export default function Navbar() {
          } )
         .catch(err => console.error(err));
   }
+  async function getCategories() {
+    setLoadingShops(true);
+    await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories`)
+      .then(response => response.json())
+      .then(response => {
+        setShopList((response.data).map(item => item.productType));
+        setLoadingShops(false);
+      })
+      .catch(err => console.error(err));
+  }
   useEffect(()=>{
     initProducts()
+    getCategories()
   }, [])
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
@@ -72,7 +84,7 @@ export default function Navbar() {
 
                   <DropDownMenu loading={loading} type={"Brands"} data={data} />
 
-                  <DropDownMenu loading={loading} type={"Shop"} data={shopList} />
+                  <DropDownMenu loading={loadingShops} type={"Shop"} data={shopList} />
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>

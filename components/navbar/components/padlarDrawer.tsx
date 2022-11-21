@@ -27,13 +27,14 @@ import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
-import { shopList } from "components/navbar/data";
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
   const theme = useTheme();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [shopList, setShopList] = useState([]);
+  const [loadingShops, setLoadingShops] = useState(false);
 
   async function initProducts() {
     setLoading(true);
@@ -46,8 +47,19 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
       })
       .catch(err => console.error(err));
   }
+  async function getCategories() {
+    setLoadingShops(true);
+    await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories`)
+      .then(response => response.json())
+      .then(response => {
+        setShopList((response.data).map(item => item.productType));
+        setLoadingShops(false);
+      })
+      .catch(err => console.error(err));
+  }
   useEffect(() => {
     initProducts()
+    getCategories()
   }, [])
   const paperStyle = {
     color: "black",
@@ -167,11 +179,15 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
             <Collapse in={opens}>
               <List>
                 <ListItem>
-                  <Grid container item gap={10} item xs={12} sm={12}>
-                    {shopList.map((item) => (
-
+                <Grid container item gap={10} item xs={12} sm={12}>
+                    {loadingShops
+                      ?
+                      <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>Loading Shops...</Grid>
+                      :
+                    shopList.sort().slice(0, 28).map((item) => (
                       <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
-                    ))}
+                    ))
+                    }
                     <Link href="/">
                       <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
                         View all.....

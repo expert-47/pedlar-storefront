@@ -94,7 +94,7 @@ const DropDownMenu = (props: Props) => {
                                         )))
                                     }
                                     <Link href="/">
-                                        <ListItemText style={{ paddingTop: "8px", paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                                        <ListItemText style={{ paddingTop: "4px", paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
                                             View all.....
                                         </ListItemText>
                                     </Link>

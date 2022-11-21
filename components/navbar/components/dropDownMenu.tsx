@@ -81,14 +81,14 @@ const DropDownMenu = (props: Props) => {
                                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
                             >
                                 <Box sx={styles.menuInnerContainer}>
-                                    {data.map((item) => (
+                                    {data.sort().slice(0, 28).map((item) => (
                                         <MenuItem >
                                             <Typography sx={styles.menuItems}>{item}</Typography>
 
                                         </MenuItem>
                                     ))}
                                     <Link href="/">
-                                        <ListItemText style={{ paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                                        <ListItemText style={{paddingTop: "8px", paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
                                             View all.....
                                         </ListItemText>
                                     </Link>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { Stack } from "@mui/system";
@@ -12,20 +12,33 @@ import { CustomContainer } from "components/layout";
 import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
 import Typography from "components/customText";
-import { brandList, shopList } from "./data";
+import { shopList } from "./data";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
-const Navbar = () => {
+
+
+export default function Navbar() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-
+  
   const [openDrawer, toggleDrawer] = useState(false);
-
+  
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
-
+  const [data, setData] = useState([]);
+  async function initProducts() {
+    await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
+        .then(response => response.json())
+        .then(response => {
+            setData((response.data).map(item=> item.vendor));
+         } )
+        .catch(err => console.error(err));
+  }
+  useEffect(()=>{
+    initProducts()
+  }, [])
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
@@ -53,7 +66,7 @@ const Navbar = () => {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-                  <DropDownMenu type={"Brands"} data={brandList} />
+                  <DropDownMenu type={"Brands"} data={data} />
 
                   <DropDownMenu type={"Shop"} data={shopList} />
 
@@ -79,4 +92,3 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;

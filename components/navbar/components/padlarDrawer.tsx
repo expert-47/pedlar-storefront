@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -27,12 +27,23 @@ import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
-import { brandList, shopList } from "components/navbar/data";
+import { shopList } from "components/navbar/data";
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
   const theme = useTheme();
-
+  const [data, setData] = useState([]);
+  async function initProducts() {
+    await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
+      .then(response => response.json())
+      .then(response => {
+        setData((response.data).map(item => item.vendor));
+      })
+      .catch(err => console.error(err));
+  }
+  useEffect(() => {
+    initProducts()
+  }, [])
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -123,15 +134,15 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {brandList.map((item) => (
+                    {data.sort().slice(0, 28).map((item) => (
 
                       <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
                     ))}
-                      <Link href="/">
-                        <ListItemText style={{color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
-                          View all.....
-                        </ListItemText>
-                      </Link>
+                    <Link href="/">
+                      <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                        View all.....
+                      </ListItemText>
+                    </Link>
 
                   </Grid>
                 </ListItem>
@@ -148,15 +159,15 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {brandList.map((item) => (
+                    {shopList.map((item) => (
 
                       <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
                     ))}
-                      <Link href="/">
-                        <ListItemText style={{color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
-                          View all.....
-                        </ListItemText>
-                      </Link>
+                    <Link href="/">
+                      <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                        View all.....
+                      </ListItemText>
+                    </Link>
 
                   </Grid>
                 </ListItem>

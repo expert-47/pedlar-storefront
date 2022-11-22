@@ -1,10 +1,11 @@
 import React from "react";
 import Layout from "StoreComponents/Layout";
+import Gridbox from "StoreComponents/MarqueeBox/Gridbox";
 
 const storeIndex = () => {
   return (
     <Layout>
-      <h3>This is store site</h3>
+        <Gridbox />
     </Layout>
   );
 };

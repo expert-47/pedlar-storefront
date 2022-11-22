@@ -38,7 +38,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
 
   async function initProducts() {
     setLoading(true);
-    await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
+    await fetch(`https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
       .then(response => response.json())
       .then(response => {
         setData((response.data).map(item => item.vendor));
@@ -49,7 +49,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
   }
   async function getCategories() {
     setLoadingShops(true);
-    await fetch(`http://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories`)
+    await fetch(`https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories`)
       .then(response => response.json())
       .then(response => {
         setShopList((response.data).map(item => item.productType));

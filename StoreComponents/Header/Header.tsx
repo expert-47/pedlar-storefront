@@ -46,7 +46,7 @@ const Header = () => {
           </>
         ) : (
           <>
-            <Grid item xs={12} sm={12} md={12} lg={4} style={{ paddingLeft: "30px" }}>
+            <Grid item xs={12} sm={12} md={12} lg={4} style={{ paddingLeft: "70px" }}>
               <Image src="/header-logo.svg" alt="header-logo" height={75} width={250} onClick={openStorePage} />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4} gap={1} style={{ textAlign: "center" }}>
@@ -61,7 +61,7 @@ const Header = () => {
                 </Typography>
               </Button>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4} gap={1} style={{ textAlign: "right", paddingRight: "50px" }}>
+            <Grid item xs={12} sm={12} md={12} lg={4} gap={1} style={{ textAlign: "right", paddingRight: "75px" }}>
               <Button sx={styles.Login} onClick={openLogin}>
                 <Typography textTransform="none" sx={styles.LoginTypo}>
                   Log in

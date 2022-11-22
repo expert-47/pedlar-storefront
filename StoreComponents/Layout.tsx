@@ -2,11 +2,8 @@ import React from "react";
 import { Container, ContainerProps } from "@mui/material";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
-import { NextSeoProps } from "next-seo";
 
-interface LayoutProps extends ContainerProps {
-  seo?: NextSeoProps;
-}
+interface LayoutProps extends ContainerProps {}
 
 const Layout = (props: LayoutProps) => {
   const { children } = props;

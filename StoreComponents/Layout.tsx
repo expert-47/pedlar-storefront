@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, ContainerProps } from "@mui/material";
-import Header from "./Header/header";
-import Footer from "./Footer/footer";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 import { NextSeoProps } from "next-seo";
 
 interface LayoutProps extends ContainerProps {

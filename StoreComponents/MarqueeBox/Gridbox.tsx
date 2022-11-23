@@ -6,7 +6,7 @@ import { styles } from "./Style";
 
 const Gridbox = () => {
   return (
-    <>
+    <Grid style={{ paddingTop: "40px" }}>
       <Marquee direction="right" speed={40}>
         <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
           Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
@@ -85,7 +85,7 @@ const Gridbox = () => {
           Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
         </Typography>
       </Marquee>
-    </>
+    </Grid>
   );
 };
 

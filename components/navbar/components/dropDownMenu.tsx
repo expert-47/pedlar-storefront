@@ -4,7 +4,7 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Checkbox, Divider, Typography } from "@mui/material";
+import { Button, Grid, useTheme, Checkbox, Divider, Typography, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
 import Text from "components/customText";
 import ListItemText from "@mui/material/ListItemText";
@@ -84,7 +84,7 @@ const DropDownMenu = (props: Props) => {
                                 <Box sx={styles.menuInnerContainer}>
                                     {loading
                                         ?
-                                        < Typography sx={styles.menuItems}>Loading Brands...</Typography>
+                                        <CircularProgress color="inherit" /> 
                                         :
                                         (data.sort().slice(0, 28).map((item) => (
                                             <MenuItem >

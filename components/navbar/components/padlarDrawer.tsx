@@ -13,7 +13,8 @@ import {
   useTheme,
   MenuItem,
   Box,
-  IconButton
+  IconButton,
+  CircularProgress
 } from "@mui/material";
 import Link from "next/link";
 
@@ -33,8 +34,8 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
   const { openDrawer, toggleDrawer } = props;
   const theme = useTheme();
 
-  const {data} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
-  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
+  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
+  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -127,11 +128,10 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
                   <Grid container item gap={10} item xs={12} sm={12}>
                     {!data
                       ?
-                      <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>Loading Brands...</Grid>
-                      :
-                      data.data.map(item=> item.vendor).sort().slice(0, 28).map((item) => (
-                      <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
-                    ))
+                      <CircularProgress color="inherit" /> :
+                      data.data.map(item => item.vendor).sort().slice(0, 28).map((item) => (
+                        <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
+                      ))
                     }
                     <Link href="/">
                       <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
@@ -153,14 +153,13 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
             <Collapse in={opens}>
               <List>
                 <ListItem>
-                <Grid container item gap={10} item xs={12} sm={12}>
+                  <Grid container item gap={10} item xs={12} sm={12}>
                     {!shopList
                       ?
-                      <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>Loading Shops...</Grid>
-                      :
-                      shopList.data.map(item=> item.productType).sort().slice(0, 28).map((item) => (
-                      <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
-                    ))
+                      <CircularProgress color="inherit" /> :
+                      shopList.data.map(item => item.productType).sort().slice(0, 28).map((item) => (
+                        <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
+                      ))
                     }
                     <Link href="/">
                       <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>

@@ -13,7 +13,7 @@ const Banner = () => {
           <Grid sx={styles.bannerText}>
             <Typography sx={styles.FirstList}>We put fashion</Typography>
             <Box style={{display:"flex", alignItems:"center"}}>
-              <Typed 
+              {/* <Typed 
                 strings={[
                   "Creatore",
                   "Influencers",
@@ -24,7 +24,7 @@ const Banner = () => {
                 backSpeed={100}
                 style={{fontSize:"48px",color:'#1C1B1F', fontFamily: "Inter", fontWeight: '900'}}
               />
-              <Typography style={{fontSize:"48px",color:'#1C1B1F', fontFamily: "Inter", fontWeight: '900'}}>in business</Typography>
+              <Typography style={{fontSize:"48px",color:'#1C1B1F', fontFamily: "Inter", fontWeight: '900'}}>in business</Typography> */}
             </Box>
             <Typography sx={styles.FirstPara}>Simplified creator commerce. Sell directly to your followers through customisable storefronts.</Typography>
             <Grid>

@@ -29,5 +29,24 @@ export const styles ={
     },
     footerRow : {
         justifyContent:'space-between',
+        padding:'0 10px',
+        ["@media (max-width:800px)"]: {
+           flexDirection : 'column-reverse',
+        }
+    },
+    footerLogo:{
+        paddingBottom:'40px',
+    },
+    footersocialRow :{
+        display:'flex',
+        alignItems:"flex-start",
+        ["@media (max-width:800px)"]: {
+           flexDirection:'column-reverse'
+        },
+    },
+    footerMoblink : {
+        ["@media (max-width:800px)"]: {
+           paddingTop:'15px',
+        }
     }
 };

@@ -74,11 +74,10 @@ const DropDownMenu = (props: Props) => {
                                 </Grid>
                                 :
                                 <Grid display={"flex"}
-                                    justifyContent={"space-around"}
+                                    justifyContent={"space-between"}
                                     alignItems={"center"}>
                                     <Grid></Grid>
-                                    <Grid></Grid>
-                                    <Grid>
+                                    <Grid paddingRight={60}>
                                         {(data.sort().slice(0, 28).map((item) => (
                                             <MenuItem >
                                                 <Typography sx={styles.menuItems}>{item}</Typography>

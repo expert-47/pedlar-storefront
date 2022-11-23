@@ -50,18 +50,14 @@ const styles = {
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
     width: "100vw",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
     // padding: "30px",
   },
   menuInnerContainer: {
-    display: "flex",
+    width: "100%",
     color: "black",
     fontWeight: "800",
     flexDirection: "row",
     flexWrap: "wrap",
-    alignSelf: "flex-end",
   },
   menuItems: {
     fontWeight: "500",

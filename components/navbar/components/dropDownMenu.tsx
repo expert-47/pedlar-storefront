@@ -61,48 +61,43 @@ const DropDownMenu = (props: Props) => {
                 open={openMenu}
                 onClose={handleClose}
             >
-                <Grid lg={12} md={12} sm={12} xl={10} container style={{ display: "flex", alignItems: "center", justifyContent: "end", maxWidth: "100%", }} >
+                <Grid container style={{ maxWidth: "100%", }} >
 
-                    <Grid container item sx={styles.menuContainer} md={6} lg={6} sm={8} xl={4}>
-                        <Grid
+                    <Grid container item sx={styles.menuContainer}>
 
-                            container
-                            item
-                            display={"flex"}
-                            justifyContent={"center"}
-                            alignItems={"center"}
-                            paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
-                            paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
-                        >
-                            <Grid
-                                container
-                                display={"flex"}
-                                justifyContent={"center"}
-                                alignItems={"center"}
-                                paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
-                            >
-                                <Box sx={styles.menuInnerContainer}>
-                                    {loading
-                                        ?
-                                        <CircularProgress color="inherit" /> 
-                                        :
-                                        (data.sort().slice(0, 28).map((item) => (
+                        <Box sx={styles.menuInnerContainer}>
+                            {loading
+                                ?
+                                <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
+
+                                    <CircularProgress color="inherit" />
+                                </Grid>
+                                :
+                                <Grid display={"flex"}
+                                    justifyContent={"space-around"}
+                                    alignItems={"center"}>
+                                    <Grid></Grid>
+                                    <Grid></Grid>
+                                    <Grid>
+                                        {(data.sort().slice(0, 28).map((item) => (
                                             <MenuItem >
                                                 <Typography sx={styles.menuItems}>{item}</Typography>
 
                                             </MenuItem>
-                                        )))
-                                    }
-                                    <Link href="/">
-                                        <ListItemText style={{ paddingTop: "4px", paddingLeft: "8px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
-                                            View all.....
-                                        </ListItemText>
-                                    </Link>
-                                </Box>
-                            </Grid>
+                                        )))}
+                                        < Link href="/">
+                                            <ListItemText style={{ paddingTop: "4px", paddingLeft: "16px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                                                View all.....
+                                            </ListItemText>
+                                        </Link>
+                                    </Grid>
+                                </Grid>
 
-                        </Grid>
+                            }
+                        </Box>
                     </Grid>
+
+
                 </Grid>
 
             </Menu>

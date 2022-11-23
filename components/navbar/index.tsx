@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import useSwr from 'swr';
+
 
 import { Stack } from "@mui/system";
 import styles from "styles/navbar";
@@ -16,7 +18,6 @@ import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
 
-
 export default function Navbar() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
@@ -26,35 +27,10 @@ export default function Navbar() {
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [shopList, setShopList] = useState([]);
-  const [loadingShops, setLoadingShops] = useState(false);
+  const {data} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
+  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
 
-  async function initProducts() {
-    setLoading(true);
-    await fetch(`https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
-        .then(response => response.json())
-        .then(response => {
-            setData((response.data).map(item=> item.vendor));
-            setLoading(false);
-         } )
-        .catch(err => console.error(err));
-  }
-  async function getCategories() {
-    setLoadingShops(true);
-    await fetch(`https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories`)
-      .then(response => response.json())
-      .then(response => {
-        setShopList((response.data).map(item => item.productType));
-        setLoadingShops(false);
-      })
-      .catch(err => console.error(err));
-  }
-  useEffect(()=>{
-    initProducts()
-    getCategories()
-  }, [])
+
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
@@ -82,9 +58,9 @@ export default function Navbar() {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-                  <DropDownMenu loading={loading} type={"Brands"} data={data} />
+                  <DropDownMenu loading={!data} type={"Brands"} data={data? data.data.map(item=> item.vendor) : []} />
 
-                  <DropDownMenu loading={loadingShops} type={"Shop"} data={shopList} />
+                  <DropDownMenu loading={!shopList} type={"Shop"} data={shopList ? shopList.data.map(item=> item.productType):[]} />
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>

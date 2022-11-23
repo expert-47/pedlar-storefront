@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 
 import React, { useEffect, useState } from "react";
+import useSwr from 'swr';
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -31,36 +32,9 @@ import styles from "styles/navbar";
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
   const theme = useTheme();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [shopList, setShopList] = useState([]);
-  const [loadingShops, setLoadingShops] = useState(false);
 
-  async function initProducts() {
-    setLoading(true);
-    await fetch(`https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors`)
-      .then(response => response.json())
-      .then(response => {
-        setData((response.data).map(item => item.vendor));
-        setLoading(false);
-
-      })
-      .catch(err => console.error(err));
-  }
-  async function getCategories() {
-    setLoadingShops(true);
-    await fetch(`https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories`)
-      .then(response => response.json())
-      .then(response => {
-        setShopList((response.data).map(item => item.productType));
-        setLoadingShops(false);
-      })
-      .catch(err => console.error(err));
-  }
-  useEffect(() => {
-    initProducts()
-    getCategories()
-  }, [])
+  const {data} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
+  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -151,11 +125,11 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {loading
+                    {!data
                       ?
                       <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>Loading Brands...</Grid>
                       :
-                    data.sort().slice(0, 28).map((item) => (
+                      data.data.map(item=> item.vendor).sort().slice(0, 28).map((item) => (
                       <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
                     ))
                     }
@@ -180,11 +154,11 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                 <Grid container item gap={10} item xs={12} sm={12}>
-                    {loadingShops
+                    {!shopList
                       ?
                       <Grid item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>Loading Shops...</Grid>
                       :
-                    shopList.sort().slice(0, 28).map((item) => (
+                      shopList.data.map(item=> item.productType).sort().slice(0, 28).map((item) => (
                       <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
                     ))
                     }

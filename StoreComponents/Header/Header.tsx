@@ -28,9 +28,9 @@ const Header = () => {
   const openPopup = () => setOpen(true);
   const closePopup = () => setOpen(false);
   const handleClose = () => setOpen(false);
-  const [selected, setSelected] = useState(true);
-  const onChangeCreator = () => setSelected(true);
-  const onChangeBrand = () => setSelected(false);
+  const [userType, setUserType] = useState(true);
+  const onChangeCreator = () => setUserType(true);
+  const onChangeBrand = () => setUserType(false);
 
   const openStorePage = () => {
     router.push("/store/storeIndex");
@@ -85,7 +85,7 @@ const Header = () => {
                   ]}
                 >
                   <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
-                    {selected ? (
+                    {userType ? (
                       <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
                     ) : (
                       <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
@@ -95,10 +95,22 @@ const Header = () => {
                     </IconButton>
                   </Grid>
                   <Tabs sx={styles.TabSelector}>
-                    <Tab label="I'm a Creater" onClick={onChangeCreator} />
-                    <Tab label="I'm a Brand" onClick={onChangeBrand} />
+                    <Tab
+                      sx={{
+                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                      }}
+                      label="I'm a Creater"
+                      onClick={onChangeCreator}
+                    />
+                    <Tab
+                      sx={{
+                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                      }}
+                      label="I'm a Brand"
+                      onClick={onChangeBrand}
+                    />
                   </Tabs>
-                  {selected ? (
+                  {userType ? (
                     <Box>
                       <TextField
                         label="First Name"

@@ -11,6 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import PedlarButton from "./pedlarButton";
 import ProductHeader from "components/home/components/productHeader";
 import Link from "next/link";
+import { CustomContainer } from "components/layout";
 
 interface Props {
     type: string;
@@ -45,61 +46,73 @@ const DropDownMenu = (props: Props) => {
                     {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
                 </Button>
             </Grid>
-            <Menu
-                PaperProps={{
-                    elevation: 1,
-                    sx: {
-                        mt: 10.5,
-                        left: 0,
-                        l: 0,
-                        maxWidth: "unset",
-                        borderRadius: 0,
-                    },
-                }}
-                sx={styles.menu}
-                anchorEl={anchorEl}
-                open={openMenu}
-                onClose={handleClose}
-            >
-                <Grid container style={{ maxWidth: "100%", }} >
+            <Grid container display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}>
+                <CustomContainer>
+                    <Menu
+                        transformOrigin={{ vertical: "top", horizontal: "right" }}
+                        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                        PaperProps={{
+                            elevation: 1,
+                            sx: {
+                                mt: 10.5,
+                                left: 0,
+                                l: 0,
+                                borderRadius: 0,
+                                width: "100%"
+                            },
+                        }}
+                        sx={styles.menu}
+                        anchorEl={anchorEl}
+                        open={openMenu}
+                        onClose={handleClose}
+                    >
+                        <CustomContainer>
+                            <Grid container style={{ maxWidth: "100%"}} >
 
-                    <Grid container item sx={styles.menuContainer}>
+                                <Grid container item sx={styles.menuContainer}>
+                                    <CustomContainer>
+                                        <Box sx={styles.menuInnerContainer}>
+                                            {loading
+                                                ?
+                                                <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
 
-                        <Box sx={styles.menuInnerContainer}>
-                            {loading
-                                ?
-                                <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
+                                                    <CircularProgress color="inherit" />
+                                                </Grid>
+                                                :
+                                                <Grid display={"flex"}
+                                                    justifyContent={"space-between"}
+                                                    alignItems={"center"}>
+                                                    <Grid></Grid>
+                                                    <Grid paddingRight={60}>
+                                                        {(data.sort().slice(0, 28).map((item) => (
+                                                            <MenuItem >
+                                                                <Typography sx={styles.menuItems}>{item}</Typography>
 
-                                    <CircularProgress color="inherit" />
+                                                            </MenuItem>
+                                                        )))}
+                                                        < Link href="/">
+                                                            <ListItemText style={{ paddingTop: "4px", paddingLeft: "16px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                                                                View all.....
+                                                            </ListItemText>
+                                                        </Link>
+                                                    </Grid>
+                                                </Grid>
+
+                                            }
+                                        </Box>
+                                    </CustomContainer>
                                 </Grid>
-                                :
-                                <Grid display={"flex"}
-                                    justifyContent={"space-between"}
-                                    alignItems={"center"}>
-                                    <Grid></Grid>
-                                    <Grid paddingRight={60}>
-                                        {(data.sort().slice(0, 28).map((item) => (
-                                            <MenuItem >
-                                                <Typography sx={styles.menuItems}>{item}</Typography>
-
-                                            </MenuItem>
-                                        )))}
-                                        < Link href="/">
-                                            <ListItemText style={{ paddingTop: "4px", paddingLeft: "16px", color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
-                                                View all.....
-                                            </ListItemText>
-                                        </Link>
-                                    </Grid>
-                                </Grid>
-
-                            }
-                        </Box>
-                    </Grid>
 
 
-                </Grid>
+                            </Grid>
+                        </CustomContainer>
 
-            </Menu>
+                    </Menu>
+                </CustomContainer>
+                <Grid item></Grid>
+            </Grid>
         </>
     );
 };

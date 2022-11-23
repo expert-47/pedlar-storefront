@@ -9,11 +9,11 @@ const Layout = (props: LayoutProps) => {
   const { children } = props;
 
   return (
-    <Container>
+    <>
       <Header />
-      {children}
+      <Container>{children}</Container>
       <Footer />
-    </Container>
+    </>
   );
 };
 

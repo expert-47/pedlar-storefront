@@ -16,7 +16,7 @@ const Faq = () => {
 
   return (
     <CustomContainer>
-      <Box style={{ paddingTop: "40px", paddingBottom: "40px" }}>
+      <Box style={{ marginTop: "100px", marginBottom: "100px" }}>
         <Grid container item xs={12} sm={12} md={12} lg={12}>
           <Grid item xs={12} sm={12} md={12} lg={6}>
             <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>

@@ -8,7 +8,7 @@ import { styles } from "./Style";
 const Gridbox = () => {
   return (
     <CustomContainer>
-      <Grid style={{ paddingTop: "40px" }}>
+      <Grid style={{ marginTop: "137px" }}>
         <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar

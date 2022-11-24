@@ -1,21 +1,11 @@
-import {
-  Box,
-  Grid,
-  Typography,
-  Container,
-  Dialog,
-  Tabs,
-  Tab,
-  IconButton,
-  TextField,
-  InputAdornment,
-} from "@mui/material";
+import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, TextField, InputAdornment } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import { styles } from "./style";
 import Typed from "react-typed";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
+import { CustomContainer } from "StoreComponents/Layout";
 
 const Banner = () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +16,7 @@ const Banner = () => {
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
   return (
-    <Container>
+    <CustomContainer>
       <Box>
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
           <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "108px" }}></img>
@@ -231,7 +221,7 @@ const Banner = () => {
           </Grid>
         </Grid>
       </Box>
-    </Container>
+    </CustomContainer>
   );
 };
 

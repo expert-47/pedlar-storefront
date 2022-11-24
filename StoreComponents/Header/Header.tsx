@@ -72,6 +72,12 @@ const Header = () => {
                   Log in
                 </Typography>
               </Button>
+
+              <Button sx={styles.GetAccess} onClick={openPopup}>
+                <Typography textTransform="none" sx={styles.GetAccessTypo}>
+                  Get Access
+                </Typography>
+              </Button>
               <Dialog open={open} onClose={handleClose}>
                 <Box
                   sx={[
@@ -245,11 +251,6 @@ const Header = () => {
                   </Typography>
                 </Box>
               </Dialog>
-              <Button sx={styles.GetAccess} onClick={openPopup}>
-                <Typography textTransform="none" sx={styles.GetAccessTypo}>
-                  Get Access
-                </Typography>
-              </Button>
             </Grid>
           </>
         )}

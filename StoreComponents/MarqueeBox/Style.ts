@@ -70,7 +70,7 @@ export const styles = {
   marqueeright: {
     color: "#ebe8e4",
     width: "1350px",
-    //position: "absolute",
+    position: "absolute",
     transformOrigin: "335px 391px",
     transform: "rotate(90deg)",
     right: "0px",
@@ -85,7 +85,7 @@ export const styles = {
   marqueeleft: {
     color: "#ebe8e4",
     width: "1350px",
-    //position: "absolute",
+    position: "absolute",
     transformOrigin: "366px 394px",
     transform: "rotate(-90deg)",
     left: "0",

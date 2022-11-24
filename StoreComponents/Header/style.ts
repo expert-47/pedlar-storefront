@@ -87,6 +87,10 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
+  RespLoginBox: {
+    borderRadius: "10px",
+    p: 25,
+  },
   TextFeild: {
     width: "100%",
     color: "rgb(121, 116, 126)",

@@ -11,12 +11,19 @@ export const styles = {
     ["@media (max-width:1145px)"]: {
       bottom: "-16px",
     },
+    ["@media (max-width:767px)"]: {
+      position: "unset",
+      width: "100%",
+    },
   },
   FirstList: {
     color: " #1C1B1F",
     fontSize: "48px",
     ["@media (max-width:1145px)"]: {
       fontSize: "42px",
+    },
+    ["@media (max-width:850px)"]: {
+      fontSize: "28px",
     },
   },
   FirstPara: {
@@ -25,7 +32,7 @@ export const styles = {
     padding: "0 0 22px 0px",
     color: " #1C1B1F",
     ["@media (max-width:1145px)"]: {
-      fontSize: "20px",
+      fontSize: "18px",
     },
   },
   creator: {

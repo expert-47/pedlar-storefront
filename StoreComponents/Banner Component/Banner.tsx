@@ -6,8 +6,13 @@ import { styles } from "./style";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import { CustomContainer } from "StoreComponents/Layout";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Banner = () => {
+ 
+  const isMatch = useMediaQuery('(max-width:1145px)');
+  const isMedium = useMediaQuery('(max-width:850px)');
+  const isSmall = useMediaQuery('(max-width:767px)');
   const [open, setOpen] = useState(false);
   const openPopup = () => setOpen(true);
   const closePopup = () => setOpen(false);
@@ -15,12 +20,18 @@ const Banner = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
+
   return (
     <CustomContainer>
       <Box>
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
+<<<<<<< HEAD
           <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "108px" }}></img>
           <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.bannerText}>
+=======
+          <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}></img>
+          <Grid sx={styles.bannerText}>
+>>>>>>> 869ba0a16ac5bae8d32e462a23143572d2b41bca
             <Typography sx={styles.FirstList}>We put fashion</Typography>
             <Box style={{ display: "flex", alignItems: "center" }}>
               {/* <Typed
@@ -28,9 +39,21 @@ const Banner = () => {
                 loop
                 typeSpeed={150}
                 backSpeed={100}
+<<<<<<< HEAD
                 style={{ fontSize: "48px", color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" }}
               /> */}
               <Typography style={{ fontSize: "48px", color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" }}>
+=======
+                style={{
+                  color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
+                  fontSize: isMedium? "28px":( isMatch ? "40px" : "48px")
+                }}
+              />
+              <Typography style={{
+                  color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
+                  fontSize: isMedium? "28px":( isMatch ? "40px" : "48px")
+                }}>
+>>>>>>> 869ba0a16ac5bae8d32e462a23143572d2b41bca
                 in business
               </Typography>
             </Box>

@@ -2,8 +2,7 @@ export const styles = {
   header: {
     display: "flex",
     flexDirection: "row",
-    paddingTop: "14px",
-    paddingBottom: "15px",
+    paddingTop: "10px",
     backgroundColor: "#f9f6f2",
   },
   Respheader: {
@@ -34,10 +33,11 @@ export const styles = {
     fontWeight: "600",
   },
   Login: {
+    width: "100%",
     color: "black",
+    padding: "12px",
     border: "1.5px solid",
     borderRadius: "25px",
-    marginRight: "20px",
   },
   LoginTypo: {
     fontSize: "16px",
@@ -50,9 +50,12 @@ export const styles = {
     padding: "12px, 16px, 12px, 16px",
   },
   GetAccess: {
+    width: "90%",
     color: "white",
     backgroundColor: "#1C1B1F",
     border: "1.5px solid",
+    padding: "12px",
+
     borderRadius: "25px",
     "&:hover": {
       backgroundColor: "#1C1B1F",
@@ -83,8 +86,8 @@ export const styles = {
     },
   },
   LoginBox: {
+    backgroundColor: "#f9f6f2",
     width: "500px",
-    borderRadius: "10px",
     p: 25,
   },
   RespLoginBox: {
@@ -93,21 +96,25 @@ export const styles = {
   },
   TextFeild: {
     width: "100%",
-    color: "rgb(121, 116, 126)",
+    color: "#49454F",
+    borderColor: "#49454F",
     borderRadius: "5px",
     marginBottom: "24px",
   },
   TextFeilds: {
     width: "100%",
-    border: ".5px solid rgba(0, 0, 0, 0.4)",
+    fontSize: "16px",
+    fontWeight: "400",
+    color: "#49454F",
+    borderColor: "#49454F",
     borderRadius: "5px",
     marginBottom: "24px",
   },
   TabSelector: {
-    background: " transparent",
-    borderRadius: "10px",
-    border: "1px solid rgba(28, 27, 31, 0.64)",
+    backgroundColor: " transparent",
+    borderRadius: "15px",
+    border: "1px solid ",
     marginBottom: "24px",
-    width: "250px",
+    width: "60%",
   },
 };

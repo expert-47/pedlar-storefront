@@ -81,7 +81,7 @@ const DropdownButton = (props: Props) => {
               paddingTop={"10px"}
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
-              <Box sx={styles.menuInnerContainer}>
+              <Box sx={styles.menuInnerContainer} style={{display: "flex"}}>
                 {data.map((item) => (
                   <MenuItem>
                     <Checkbox sx={styles.menuCheck} />

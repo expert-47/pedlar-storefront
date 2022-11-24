@@ -16,6 +16,8 @@ import {
 import Link from "next/link";
 
 import React from "react";
+import useSwr from 'swr';
+
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -26,7 +28,6 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
-import { shopList } from "components/navbar/data";
 
 interface Props {
   data: string[];
@@ -35,6 +36,8 @@ interface Props {
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
   const { data } = props;
+  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
+
 
   const paperStyle = {
     color: "black",
@@ -152,7 +155,7 @@ export const ResponsiveHeader = (props: Props) => {
           md={12}
         >
            <Grid gap={20} sx={styles.menuInnerContainer}>
-            {shopList.map((item) => (
+            {(shopList ? shopList.data.map(item=> item.productType) : []) .map((item) => (
               <Grid style={{display: "flex"}}>
                 <Grid>
                   <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />

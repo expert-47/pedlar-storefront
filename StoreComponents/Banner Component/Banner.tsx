@@ -2,7 +2,7 @@ import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, TextField, InputA
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import { styles } from "./style";
-//import Typed from "react-typed";
+import Typed from "react-typed";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import { CustomContainer } from "StoreComponents/Layout";
@@ -25,25 +25,15 @@ const Banner = () => {
     <CustomContainer>
       <Box>
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
-<<<<<<< HEAD
-          <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "108px" }}></img>
-          <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.bannerText}>
-=======
           <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}></img>
           <Grid sx={styles.bannerText}>
->>>>>>> 869ba0a16ac5bae8d32e462a23143572d2b41bca
             <Typography sx={styles.FirstList}>We put fashion</Typography>
             <Box style={{ display: "flex", alignItems: "center" }}>
-              {/* <Typed
+               <Typed
                 strings={["Creatore", "Influencers", "Curators"]}
                 loop
                 typeSpeed={150}
                 backSpeed={100}
-<<<<<<< HEAD
-                style={{ fontSize: "48px", color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" }}
-              /> */}
-              <Typography style={{ fontSize: "48px", color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" }}>
-=======
                 style={{
                   color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
                   fontSize: isMedium? "28px":( isMatch ? "40px" : "48px")
@@ -53,7 +43,6 @@ const Banner = () => {
                   color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
                   fontSize: isMedium? "28px":( isMatch ? "40px" : "48px")
                 }}>
->>>>>>> 869ba0a16ac5bae8d32e462a23143572d2b41bca
                 in business
               </Typography>
             </Box>

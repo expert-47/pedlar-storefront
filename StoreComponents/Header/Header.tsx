@@ -68,7 +68,7 @@ const Header = () => {
                   </Typography>
                 </Button>
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={4} gap={1} style={{ textAlign: "right", paddingRight: "75px" }}>
+              <Grid item xs={12} sm={12} md={12} lg={4} gap={1} style={{ textAlign: "right" }}>
                 <Button sx={styles.Login} onClick={openPopup}>
                   <Typography textTransform="none" sx={styles.LoginTypo}>
                     Log in

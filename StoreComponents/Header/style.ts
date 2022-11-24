@@ -51,11 +51,11 @@ export const styles = {
   },
   GetAccess: {
     color: "white",
-    background: "black",
+    backgroundColor: "#1C1B1F",
     border: "1.5px solid",
     borderRadius: "25px",
     "&:hover": {
-      backgroundColor: "black",
+      backgroundColor: "#1C1B1F",
     },
   },
   Login1: {

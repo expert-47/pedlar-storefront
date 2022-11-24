@@ -2,7 +2,6 @@ export const styles = {
   mainGrid: {
     background: "#FFFFFF",
     borderRadius: "16px",
-    boxShadow: " 0 8px 10px grey",
     padding: "40px 0",
     width: "100%",
     position: "relative",

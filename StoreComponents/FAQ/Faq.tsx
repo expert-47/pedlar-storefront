@@ -17,11 +17,11 @@ const Faq = () => {
   return (
     <CustomContainer>
       <Box style={{ marginTop: "100px", marginBottom: "100px" }}>
-        <Grid container item xs={12} sm={12} md={12} lg={12}>
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "space-between" }}>
+          <Grid item xs={12} sm={12} md={5} lg={4}>
             <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
             <Accordion
               expanded={expanded === "panel1"}
               onChange={handleChange("panel1")}

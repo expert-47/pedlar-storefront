@@ -61,7 +61,7 @@ const ResponsiveHeader = () => {
   };
 
   const paperStyle = {
-    width: "40%",
+    width: "auto",
     boxShadow: "none",
     backgroundColor: "#f9f6f2",
   };

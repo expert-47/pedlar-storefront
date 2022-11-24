@@ -25,11 +25,10 @@ export const styles = {
   staticFooter: {
     background: "#1C1B1F",
     borderRadius: " 16px 16px 0px 0px",
-    padding: " 80px 0",
+    paddingTop: " 80px",
   },
   footerRow: {
     justifyContent: "space-between",
-    padding: "0 10px",
     ["@media (max-width:800px)"]: {
       flexDirection: "column-reverse",
     },

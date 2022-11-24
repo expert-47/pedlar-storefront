@@ -4,7 +4,6 @@ export const styles = {
     color: " #1C1B1F",
     fontFamily: "Inter",
     fontWeight: "700",
-    maxWidth: " 332px",
     lineHeight: " 1.2",
   },
   acordianText: {

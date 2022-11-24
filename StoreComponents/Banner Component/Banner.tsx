@@ -2,7 +2,7 @@ import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, TextField, InputA
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import { styles } from "./style";
-import Typed from "react-typed";
+//import Typed from "react-typed";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import { CustomContainer } from "StoreComponents/Layout";
@@ -20,16 +20,16 @@ const Banner = () => {
       <Box>
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
           <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "108px" }}></img>
-          <Grid sx={styles.bannerText}>
+          <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.bannerText}>
             <Typography sx={styles.FirstList}>We put fashion</Typography>
             <Box style={{ display: "flex", alignItems: "center" }}>
-              <Typed
+              {/* <Typed
                 strings={["Creatore", "Influencers", "Curators"]}
                 loop
                 typeSpeed={150}
                 backSpeed={100}
                 style={{ fontSize: "48px", color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" }}
-              />
+              /> */}
               <Typography style={{ fontSize: "48px", color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" }}>
                 in business
               </Typography>

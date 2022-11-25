@@ -7,6 +7,9 @@ export const styles = {
     paddingBottom: "16px",
     fontWeight: "800",
   },
+  ["@media (max-width:767px)"]: {
+    paddingBottom: "20px",
+  },
   footerText: {
     fontFamily: "Inter",
     paddingBottom: "18px",
@@ -26,15 +29,25 @@ export const styles = {
     background: "#1C1B1F",
     borderRadius: " 16px 16px 0px 0px",
     paddingTop: " 80px",
+    paddingBottom:"40px",
+    ["@media (max-width:1240px)"]: {
+      padding: '80px 21px 40px',
+    },
+    ["@media (max-width:767px)"]: {
+      padding: '41px 21px 20px',
+    },
   },
   footerRow: {
     justifyContent: "space-between",
-    ["@media (max-width:800px)"]: {
+    ["@media (max-width:767px)"]: {
       flexDirection: "column-reverse",
     },
   },
   footerLogo: {
     paddingBottom: "40px",
+    ["@media (max-width:767px)"]: {
+      paddingTop: "40px",
+    },
   },
   footersocialRow: {
     display: "flex",
@@ -48,4 +61,9 @@ export const styles = {
       paddingTop: "15px",
     },
   },
+  footerMobcol:{
+    ["@media (max-width:767px)"]: {
+      flexDirection: 'column-reverse',
+    },
+  }
 };

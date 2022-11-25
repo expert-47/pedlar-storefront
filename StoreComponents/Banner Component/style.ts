@@ -5,15 +5,21 @@ export const styles = {
     bottom: "2px",
     margin: " 0 auto",
     width: "45%",
+    paddingRight: "10px",
     ["@media (max-width:1400px)"]: {
       bottom: "-16px",
     },
     ["@media (max-width:1145px)"]: {
       bottom: "-16px",
+      right:"-8px",
+    },
+    ["@media (max-width:960px)"]: {
+      bottom:" -48px",
     },
     ["@media (max-width:767px)"]: {
       position: "unset",
       width: "100%",
+      padding:' 0 17px',
     },
   },
   FirstList: {
@@ -22,9 +28,7 @@ export const styles = {
     ["@media (max-width:1145px)"]: {
       fontSize: "42px",
     },
-    ["@media (max-width:850px)"]: {
-      fontSize: "28px",
-    },
+    
   },
   FirstPara: {
     opacity: "0.64",
@@ -33,6 +37,9 @@ export const styles = {
     color: " #1C1B1F",
     ["@media (max-width:1145px)"]: {
       fontSize: "18px",
+    },
+    ["@media (max-width:767px)"]: {
+      fontSize: "20px",
     },
   },
   creator: {
@@ -58,6 +65,14 @@ export const styles = {
       fontWeight: "900",
       padding: "12px 0",
     },
+    ["@media (max-width:850px)"]: {
+      fontSize: " 21px",
+      padding: "12px 0",
+    },
+    ["@media (max-width:767px)"]: {
+      width:'100%',
+      marginBottom: '20px',
+    }
   },
   brands: {
     background: "transparent",
@@ -78,6 +93,13 @@ export const styles = {
       fontWeight: "900",
       padding: "12px 0",
     },
+    ["@media (max-width:850px)"]: {
+      fontSize: " 16px",
+      padding: "12px 0",
+    },
+    ["@media (max-width:767px)"]: {
+      width:'100%',
+    }
   },
   LoginBox: {
     width: "500px",
@@ -103,4 +125,10 @@ export const styles = {
     marginBottom: "24px",
     width: "250px",
   },
+  animateRow : {
+    ["@media (max-width:800px)"]: {
+      flexDirection:"column",
+      alignItems:'flex-start',
+    },
+  }
 };

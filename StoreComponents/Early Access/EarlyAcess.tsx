@@ -5,7 +5,8 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { CustomContainer } from "StoreComponents/Layout";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
-
+import { useTheme } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery';
 const EarlyAcess = () => {
   const [open, setOpen] = useState(false);
   const openPopup = () => setOpen(true);
@@ -14,25 +15,36 @@ const EarlyAcess = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
+  const theme = useTheme();
+  const isMatch = useMediaQuery('(max-width:800px)');
+  const isMob = useMediaQuery('(max-width:767px)');
   return (
     <CustomContainer>
+      <Box
+       paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+       paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      >
       <Box sx={styles.Box}>
-        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ alignItems: "center" }}>
-          <Grid item xs={12} sm={12} md={12} lg={5}>
-            <Typography fontSize={"54px"}>Get early access</Typography>
+        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ alignItems: "center" }}
+          paddingX={{ xs: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
+        >
+          <Grid item xs={12} sm={12} md={4} lg={5}>
+            <Typography style={{fontSize: isMob? "48px" : "54px" }}>Get early access</Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={2} style={{ textAlign: "center" }}>
+          <Grid item xs={12} sm={12} md={2} lg={2}
+            style={{display: isMatch? "none" : "block", textAlign: "center"}}
+          >
             <ArrowForwardIcon style={{ height: "77px", width: "50px" }} />
           </Grid>
-          <Grid container item xs={12} sm={12} md={12} lg={5} style={{ textAlign: "center" }}>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
+          <Grid container item xs={12} sm={12} md={6} lg={5} style={{ textAlign: isMatch ? "left" : "center", marginTop : isMatch ? '20px' : "0px"}}>
+            <Grid item xs={12} sm={4} md={6} lg={6}>
               <Button sx={styles.creator} onClick={openPopup}>
                 <Typography textTransform="none" fontSize={"22px"}>
                   I’m a creator
                 </Typography>
               </Button>
             </Grid>
-            <Grid item xs={12} sm={6} md={6} lg={6}>
+            <Grid item xs={12} sm={4} md={6} lg={6}>
               <Button sx={styles.brands} onClick={openPopup}>
                 <Typography textTransform="none" fontSize={"22px"}>
                   I’m a brand
@@ -215,6 +227,7 @@ const EarlyAcess = () => {
           </Grid>
         </Grid>
       </Box>
+    </Box>
     </CustomContainer>
   );
 };

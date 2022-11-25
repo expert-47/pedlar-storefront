@@ -11,12 +11,12 @@ export const styles = {
     padding: "0 0 100px 0",
     fontWeight: " 700",
     ["@media (max-width:1100px)"]: {
-      padding: "0 0 71px 0",
+      paddingBottom: "71px",
       fontSize: "42px",
     },
     ["@media (max-width:767px)"]: {
-      fontSize: "25px",
-      padding: "0 0 39px 0",
+      fontSize: "30px",
+      paddingBottom: " 39px",
     },
   },
   gridinnerPara: {
@@ -25,9 +25,6 @@ export const styles = {
     fontWeight: "600",
     fontSize: "22px",
     opacity: "0.64",
-    ["@media (max-width:1199px)"]: {
-      fontSize: "18px",
-    },
   },
   gridinnereText: {
     color: "#1C1B1E",
@@ -45,6 +42,10 @@ export const styles = {
     paddingLeft: "22px",
     ["@media (max-width:1199px)"]: {
       fontSize: "17px",
+    },
+    ["@media (max-width:767px)"]: {
+      fontSize: "22px",
+      paddingLeft: '32px',
     },
   },
   gridimgBox: {

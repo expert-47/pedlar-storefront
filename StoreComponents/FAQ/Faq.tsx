@@ -7,6 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CustomContainer } from "StoreComponents/Layout";
+import { useTheme } from "@mui/material";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Faq = () => {
@@ -14,13 +15,17 @@ const Faq = () => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
-  const isMatches = useMediaQuery('(max-width:899px)');
+  const theme = useTheme();
+  const isMatch = useMediaQuery('(max-width:767px)');
   return (
     <CustomContainer>
-      <Box style={{ marginTop: "100px", marginBottom: "100px" ,
-       padding: isMatches ? "0px 19px" : "0px 0px"}}
+      <Box style={{ margin: isMatch? '34px 0px' : '80px 0px' }}
+       paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+       paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "space-between" }}>
+        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "space-between" }}
+          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        >
           <Grid item xs={12} sm={12} md={5} lg={4}>
             <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>
           </Grid>

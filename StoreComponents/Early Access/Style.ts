@@ -6,6 +6,9 @@ export const styles = {
     borderRadius: "15px",
     paddingTop: "40px",
     paddingBottom: "40px",
+    ["@media (max-width:800px)"]: {
+      marginTop: "70px",
+    },
   },
   creator: {
     backgroundColor: "#1C1B1F",
@@ -16,6 +19,9 @@ export const styles = {
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
+    ["@media (max-width:600px)"]: {
+      marginBottom: "20px",
+    }
   },
   brands: {
     backgroundColor: "white",

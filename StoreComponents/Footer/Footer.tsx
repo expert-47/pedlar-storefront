@@ -4,12 +4,18 @@ import Link from "@mui/material/Link";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
 import { CustomContainer } from "StoreComponents/Layout";
-
+import { useTheme } from "@mui/material";
 const Footer = () => {
+  const theme = useTheme();
   return (
-    <Box sx={styles.staticFooter}>
+    <Box sx={styles.staticFooter}
+      paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+    
+    >
       <CustomContainer>
-        <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.footerRow}>
+        <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.footerRow}
+          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        >
           <Grid item xs={12} sm={5} md={5} lg={5}>
             <Box sx={styles.footerLogo}>
               <img src="/footer-logo.svg" alt="" />

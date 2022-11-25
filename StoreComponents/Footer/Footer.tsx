@@ -25,16 +25,16 @@ const Footer = () => {
                 <Link href="#" sx={styles.footerLink}>
                   FAQs
                 </Link>
-                <Link href="#" sx={styles.footerLink}>
+                <Link href="/store/ShippingReturnsPolicy" sx={styles.footerLink}>
                   Shipping & Returns
                 </Link>
-                <Link href="#" sx={styles.footerLink}>
+                <Link href="/store/creatorterms" sx={styles.footerLink}>
                   Creator Terms & Conditions
                 </Link>
-                <Link href="#" sx={styles.footerLink}>
+                <Link href="/store/brandterms" sx={styles.footerLink}>
                   Brands Terms & Conditions
                 </Link>
-                <Link href="#" sx={styles.footerLink}>
+                <Link href="/store/privacypolicy" sx={styles.footerLink}>
                   Privacy Policy
                 </Link>
               </Box>

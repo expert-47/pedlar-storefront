@@ -3,13 +3,13 @@ import { Grid, Typography } from "@mui/material";
 import { CustomContainer } from "StoreComponents/Landinglayout";
 import { styles } from "./style";
 
-const Husttle = () => {
+const Pointofpurchase = () => {
   return (
     <CustomContainer>
       <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.MainGrid}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Grid item xs={12} sm={12} md={12} lg={9}>
           <Typography textTransform={"none"} fontSize={"54px"} sx={styles.heading}>
-            A side-hustle without the hassle
+            Create moments of inspiration closer to the point of purchase
           </Typography>
         </Grid>
         <Grid
@@ -28,12 +28,12 @@ const Husttle = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"}>
-                20% Commission
+                Increase Sales and Brand Exposure
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"}>
-                A cut above the rest. Earn more for selling products you love.
+                Let our creators promote and sell your products for you.
               </Typography>
             </Grid>
           </Grid>
@@ -43,12 +43,12 @@ const Husttle = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"}>
-                Curate and customise
+                Set and forget
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"}>
-                Make it your business. Create a storefront and showcase your personal aesthetic and style.
+                All stock easily integrated in under two minutes. Fulfil orders as normal.
               </Typography>
             </Grid>
           </Grid>
@@ -58,12 +58,12 @@ const Husttle = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"}>
-                Simple and free
+                Free to join, only pay commission on sales
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"}>
-                Setup your store in two minutes and start selling instantly. Never pay to use Pedlar.
+                Free, forever. Only pay commission on sales creators make.
               </Typography>
             </Grid>
           </Grid>
@@ -73,12 +73,12 @@ const Husttle = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"}>
-                No hassle
+                People trust people
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"}>
-                Pedlar handles all the customer support, shipping and inventory.
+                Deepen existing creator relationships or find new, lucrative partnerships.
               </Typography>
             </Grid>
           </Grid>
@@ -88,4 +88,4 @@ const Husttle = () => {
   );
 };
 
-export default Husttle;
+export default Pointofpurchase;

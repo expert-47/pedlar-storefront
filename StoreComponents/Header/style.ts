@@ -55,7 +55,6 @@ export const styles = {
     backgroundColor: "#1C1B1F",
     border: "1.5px solid",
     padding: "12px",
-
     borderRadius: "25px",
     "&:hover": {
       backgroundColor: "#1C1B1F",

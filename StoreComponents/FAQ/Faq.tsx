@@ -7,16 +7,19 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CustomContainer } from "StoreComponents/Layout";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Faq = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
-
+  const isMatches = useMediaQuery('(max-width:899px)');
   return (
     <CustomContainer>
-      <Box style={{ marginTop: "100px", marginBottom: "100px" }}>
+      <Box style={{ marginTop: "100px", marginBottom: "100px" ,
+       padding: isMatches ? "0px 19px" : "0px 0px"}}
+      >
         <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "space-between" }}>
           <Grid item xs={12} sm={12} md={5} lg={4}>
             <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>

@@ -25,10 +25,10 @@ const Banner = () => {
     <CustomContainer>
       <Box>
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
-          <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}></img>
+          {isSmall?<img src="/bannerMob.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}/> : <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}/>}
           <Grid sx={styles.bannerText}>
             <Typography sx={styles.FirstList}>We put fashion</Typography>
-            <Box style={{ display: "flex", alignItems: "center" }}>
+            <Box style={{ display: "flex" }} sx={styles.animateRow}>
                <Typed
                 strings={["Creatore", "Influencers", "Curators"]}
                 loop
@@ -36,12 +36,12 @@ const Banner = () => {
                 backSpeed={100}
                 style={{
                   color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
-                  fontSize: isMedium? "28px":( isMatch ? "40px" : "48px")
+                  fontSize: isSmall? "42px" : isMedium? "28px":( isMatch ? "40px" : "48px")
                 }}
               />
               <Typography style={{
                   color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
-                  fontSize: isMedium? "28px":( isMatch ? "40px" : "48px")
+                  fontSize: isSmall? "42px" : isMedium? "28px":( isMatch ? "40px" : "48px")
                 }}>
                 in business
               </Typography>

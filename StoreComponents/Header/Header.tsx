@@ -20,7 +20,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import ResponsiveHeader from "./ResponsiveHeader";
 import { CustomContainer } from "StoreComponents/Layout";
-
 const Header = () => {
   const theme = useTheme();
   const router = useRouter();
@@ -46,7 +45,10 @@ const Header = () => {
   return (
     <AppBar elevation={0} sx={styles.header}>
       <CustomContainer>
-        <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.MainGrid}>
+        <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.MainGrid}
+         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      
+        >
           {isMatch ? (
             <>
               <ResponsiveHeader />

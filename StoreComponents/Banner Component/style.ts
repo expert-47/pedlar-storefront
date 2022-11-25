@@ -16,6 +16,9 @@ export const styles = {
     ["@media (max-width:960px)"]: {
       bottom:" -48px",
     },
+    ["@media (max-width:800px)"]: {
+      bottom: '-93px',
+    },
     ["@media (max-width:767px)"]: {
       position: "unset",
       width: "100%",
@@ -26,6 +29,12 @@ export const styles = {
     color: " #1C1B1F",
     fontSize: "48px",
     ["@media (max-width:1145px)"]: {
+      fontSize: "42px",
+    },
+    ["@media (max-width:800px)"]: {
+      fontSize: "28px",
+    },
+    ["@media (max-width:767px)"]: {
       fontSize: "42px",
     },
     
@@ -66,6 +75,7 @@ export const styles = {
       padding: "12px 0",
     },
     ["@media (max-width:850px)"]: {
+      width: " 140px",
       fontSize: " 21px",
       padding: "12px 0",
     },
@@ -95,6 +105,7 @@ export const styles = {
     },
     ["@media (max-width:850px)"]: {
       fontSize: " 16px",
+      width: "140px",
       padding: "12px 0",
     },
     ["@media (max-width:767px)"]: {
@@ -126,6 +137,7 @@ export const styles = {
     width: "250px",
   },
   animateRow : {
+    alignItems:'center',
     ["@media (max-width:800px)"]: {
       flexDirection:"column",
       alignItems:'flex-start',

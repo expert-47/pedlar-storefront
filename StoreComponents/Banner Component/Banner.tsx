@@ -7,7 +7,7 @@ import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import { CustomContainer } from "StoreComponents/Layout";
 import useMediaQuery from '@mui/material/useMediaQuery';
-
+import { useTheme } from "@mui/material";
 const Banner = () => {
  
   const isMatch = useMediaQuery('(max-width:1145px)');
@@ -20,10 +20,13 @@ const Banner = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
-
+  const theme = useTheme();
   return (
     <CustomContainer>
-      <Box>
+      <Box
+          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        >
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
           {isSmall?<img src="/bannerMob.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}/> : <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }}/>}
           <Grid sx={styles.bannerText}>
@@ -36,12 +39,12 @@ const Banner = () => {
                 backSpeed={100}
                 style={{
                   color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
-                  fontSize: isSmall? "42px" : isMedium? "28px":( isMatch ? "40px" : "48px")
+                  fontSize: isSmall? "42px" : isMedium? "28px":( isMatch ? "39px" : "48px")
                 }}
               />
               <Typography style={{
                   color: "#1C1B1F", fontFamily: "Inter", fontWeight: "900" ,
-                  fontSize: isSmall? "42px" : isMedium? "28px":( isMatch ? "40px" : "48px")
+                  fontSize: isSmall? "42px" : isMedium? "28px":( isMatch ? "39px" : "48px")
                 }}>
                 in business
               </Typography>

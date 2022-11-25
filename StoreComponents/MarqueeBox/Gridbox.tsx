@@ -4,11 +4,18 @@ import React from "react";
 import Marquee from "react-fast-marquee";
 import { CustomContainer } from "StoreComponents/Layout";
 import { styles } from "./Style";
+import { useTheme } from "@mui/material";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const Gridbox = () => {
+  const theme = useTheme();
+  const isMatch = useMediaQuery('(max-width:767px)');
   return (
     <CustomContainer>
-      <Grid style={{ marginTop: "137px" }}>
+      <Grid style={{ marginTop: isMatch? '20px' : "137px" }}
+       paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+       paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      >
         <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
@@ -20,10 +27,15 @@ const Gridbox = () => {
           </Typography>
         </Marquee>
         <Box sx={styles.mainGrid}>
-          <Typography sx={styles.gridboxText}>
+          <Typography sx={styles.gridboxText}
+            paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+          >
             Build personalised storefronts to sell the brands you love directly to your audience
           </Typography>
-          <Grid container item gap={16} sm={12} md={12} lg={12} xs={12}>
+          <Grid container item gap={16} sm={12} md={12} lg={12} xs={12}
+            paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+            paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+          >
             <Grid item xs={12} sm={7} md={7} lg={4.95}>
               <img src="/home-sec2-img1.png" alt="Picture of the author" style={{ width: "100%", height: "100%" }} />
             </Grid>

@@ -31,7 +31,7 @@ const TextBox = () => {
           }}
         >
           <img src="/instagram.png" height="16px" width="16px" />
-          <Text fontSize={"16px"} sx={styles.boxtext}>
+          <Text fontSize={"18px"} sx={styles.boxtext}>
             elinorcharlotte
           </Text>
         </Grid>
@@ -44,7 +44,7 @@ const TextBox = () => {
           }}
         >
           <img src="tiktok.png" />
-          <Text fontSize={"16px"} sx={styles.boxtext}>
+          <Text fontSize={"18px"} sx={styles.boxtext}>
             elridge
           </Text>
         </Grid>

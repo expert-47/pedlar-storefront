@@ -51,7 +51,7 @@ export default function Navbar() {
                   <Link href="/">
                     <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
                   </Link>
-                  <Typography sx={styles.navTypo}>Hannah Juneva</Typography>
+                  <Grid sx={styles.navTypo}>Hannah Juneva</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
                   <Link href="/">

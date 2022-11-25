@@ -1,5 +1,6 @@
 import React from "react";
-import ForCreator from "StoreComponents/Creator Page/ForCreator";
+import ForCreator from "StoreComponents/Creator Page/Banner Components/ForCreator";
+import Husttle from "StoreComponents/Creator Page/Side Husttle/Husttle";
 import Layout from "StoreComponents/Layout";
 
 const forcreator = () => {
@@ -10,6 +11,7 @@ const forcreator = () => {
       }}
     >
       <ForCreator />
+      <Husttle />
     </Layout>
   );
 };

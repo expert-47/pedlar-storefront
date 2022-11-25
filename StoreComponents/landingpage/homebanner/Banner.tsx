@@ -1,13 +1,17 @@
-import { Box, Button, Dialog, Grid, IconButton, InputAdornment, Tab, Tabs, TextField, Typography } from "@mui/material";
+import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, TextField, InputAdornment } from "@mui/material";
+import Button from "@mui/material/Button";
 import React, { useState } from "react";
-import { styles } from "./Style";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { CustomContainer } from "StoreComponents/Layout";
+import { styles } from "./style";
+import Typed from "react-typed";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
+import { CustomContainer } from "StoreComponents/Landinglayout";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
-import useMediaQuery from '@mui/material/useMediaQuery';
-const EarlyAcess = () => {
+const Banner = () => {
+  const isMatch = useMediaQuery("(max-width:1145px)");
+  const isMedium = useMediaQuery("(max-width:850px)");
+  const isSmall = useMediaQuery("(max-width:767px)");
   const [open, setOpen] = useState(false);
   const openPopup = () => setOpen(true);
   const closePopup = () => setOpen(false);
@@ -16,39 +20,53 @@ const EarlyAcess = () => {
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
   const theme = useTheme();
-  const isMatch = useMediaQuery('(max-width:800px)');
-  const isMob = useMediaQuery('(max-width:767px)');
   return (
     <CustomContainer>
       <Box
-       paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-       paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-      <Box sx={styles.Box}>
-        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ alignItems: "center" }}
-          paddingX={{ xs: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
-        >
-          <Grid item xs={12} sm={12} md={4} lg={5}>
-            <Typography style={{fontSize: isMob? "48px" : "54px" }}>Get early access</Typography>
-          </Grid>
-          <Grid item xs={12} sm={12} md={2} lg={2}
-            style={{display: isMatch? "none" : "block", textAlign: "center"}}
-          >
-            <ArrowForwardIcon style={{ height: "77px", width: "50px" }} />
-          </Grid>
-          <Grid container item xs={12} sm={12} md={6} lg={5} style={{ textAlign: isMatch ? "left" : "center", marginTop : isMatch ? '20px' : "0px"}}>
-            <Grid item xs={12} sm={4} md={6} lg={6}>
+        <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
+          {isSmall ? (
+            <img src="/bannerMob.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }} />
+          ) : (
+            <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }} />
+          )}
+          <Grid sx={styles.bannerText}>
+            <Typography sx={styles.FirstList}>We put fashion</Typography>
+            <Box style={{ display: "flex" }} sx={styles.animateRow}>
+              <Typed
+                strings={["Creatore", "Influencers", "Curators"]}
+                loop
+                typeSpeed={150}
+                backSpeed={100}
+                style={{
+                  color: "#1C1B1F",
+                  fontFamily: "Inter",
+                  fontWeight: "900",
+                  fontSize: isSmall ? "42px" : isMedium ? "28px" : isMatch ? "39px" : "48px",
+                }}
+              />
+              <Typography
+                style={{
+                  color: "#1C1B1F",
+                  fontFamily: "Inter",
+                  fontWeight: "900",
+                  fontSize: isSmall ? "42px" : isMedium ? "28px" : isMatch ? "39px" : "48px",
+                }}
+              >
+                in business
+              </Typography>
+            </Box>
+            <Typography sx={styles.FirstPara}>
+              Simplified creator commerce. Sell directly to your followers through customisable storefronts.
+            </Typography>
+            <Grid>
               <Button sx={styles.creator} onClick={openPopup}>
-                <Typography textTransform="none" fontSize={"22px"}>
-                  I’m a creator
-                </Typography>
+                I’m a creator
               </Button>
-            </Grid>
-            <Grid item xs={12} sm={4} md={6} lg={6}>
               <Button sx={styles.brands} onClick={openPopup}>
-                <Typography textTransform="none" fontSize={"22px"}>
-                  I’m a brand
-                </Typography>
+                I’m a brand
               </Button>
               <Dialog open={open} onClose={handleClose}>
                 <Box
@@ -227,9 +245,8 @@ const EarlyAcess = () => {
           </Grid>
         </Grid>
       </Box>
-    </Box>
     </CustomContainer>
   );
 };
 
-export default EarlyAcess;
+export default Banner;

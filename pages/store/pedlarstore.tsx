@@ -1,11 +1,11 @@
 import React from "react";
-import Banner from "StoreComponents/Banner Component/Banner";
-import Company from "StoreComponents/Company Section/Company";
-import EarlyAcess from "StoreComponents/Early Access/EarlyAcess";
-import Faq from "StoreComponents/FAQ/Faq";
-import Layout from "StoreComponents/Layout";
-import Gridbox from "StoreComponents/MarqueeBox/Gridbox";
-import Cardslider from "StoreComponents/CardSlider/Cardslider";
+import Banner from "StoreComponents/landingpage/homebanner/Banner";
+import Company from "StoreComponents/landingpage/comapny/Company";
+import EarlyAcess from "StoreComponents/landingpage/earlyaccess/EarlyAcess";
+import Faq from "StoreComponents/landingpage/faq/Faq";
+import Layout from "StoreComponents/Landinglayout";
+import Gridbox from "StoreComponents/landingpage/marqueegrid/Gridbox";
+import Cardslider from "StoreComponents/landingpage/cardslider/Cardslider";
 
 const storeIndex = () => {
   return (
@@ -13,7 +13,6 @@ const storeIndex = () => {
       sx={{
         backgroundColor: "#f9f6f2",
         alignItems: "center",
-        //background: "url(/Grain-Texture.png)",
         backgroundPosition: "top left",
         backgroundSize: "unset",
         backgroundRepeat: "repeat",

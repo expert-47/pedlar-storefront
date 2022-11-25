@@ -1,6 +1,6 @@
-import React from 'react'
-import BrandTerms from 'StoreComponents/Brand Terms/BrandTerms'
-import Layout from 'StoreComponents/Layout'
+import React from "react";
+import BrandTerms from "StoreComponents/staticpages/brandterms/BrandTerms";
+import Layout from "StoreComponents/Landinglayout";
 
 const brandterms = () => {
   return (
@@ -12,6 +12,6 @@ const brandterms = () => {
       <BrandTerms />
     </Layout>
   );
-}
+};
 
-export default brandterms
+export default brandterms;

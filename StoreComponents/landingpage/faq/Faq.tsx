@@ -6,9 +6,9 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { CustomContainer } from "StoreComponents/Layout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { useTheme } from "@mui/material";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Faq = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -16,14 +16,22 @@ const Faq = () => {
     setExpanded(isExpanded ? panel : false);
   };
   const theme = useTheme();
-  const isMatch = useMediaQuery('(max-width:767px)');
+  const isMatch = useMediaQuery("(max-width:767px)");
   return (
     <CustomContainer>
-      <Box style={{ margin: isMatch? '34px 0px' : '80px 0px' }}
-       paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-       paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      <Box
+        style={{ margin: isMatch ? "34px 0px" : "80px 0px" }}
+        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "space-between" }}
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          style={{ justifyContent: "space-between" }}
           paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={12} md={5} lg={4}>

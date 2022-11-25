@@ -1,8 +1,8 @@
 import React from "react";
-import Layout from "StoreComponents/Layout";
-import ReturnPolicy from "StoreComponents/Return Policy/ReturnPolicy";
+import Layout from "StoreComponents/Landinglayout";
+import ReturnPolicy from "StoreComponents/staticpages/shippingreturnpolicy/shippingreturnspolicy";
 
-const ShippingReturnsPolicy = () => {
+const shippingreturnspolicy = () => {
   return (
     <Layout
       sx={{
@@ -14,4 +14,4 @@ const ShippingReturnsPolicy = () => {
   );
 };
 
-export default ShippingReturnsPolicy;
+export default shippingreturnspolicy;

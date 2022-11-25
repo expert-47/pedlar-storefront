@@ -3,17 +3,21 @@ import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/Layout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { useTheme } from "@mui/material";
 const Footer = () => {
   const theme = useTheme();
   return (
-    <Box sx={styles.staticFooter}
-      paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-    
-    >
+    <Box sx={styles.staticFooter} paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
       <CustomContainer>
-        <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.footerRow}
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={styles.footerRow}
           paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={5} md={5} lg={5}>
@@ -28,10 +32,10 @@ const Footer = () => {
           <Grid container item xs={12} sm={6} md={6} lg={6} sx={styles.footerMobcol}>
             <Grid item xs={12} sm={12} md={12} lg={7} sx={styles.footersocialRow}>
               <Box sx={styles.footerMoblink}>
-                <Link href="#" sx={styles.footerLink}>
+                <Link href="/store/faq" sx={styles.footerLink}>
                   FAQs
                 </Link>
-                <Link href="/store/ShippingReturnsPolicy" sx={styles.footerLink}>
+                <Link href="/store/shippingreturnspolicy" sx={styles.footerLink}>
                   Shipping & Returns
                 </Link>
                 <Link href="/store/creatorterms" sx={styles.footerLink}>

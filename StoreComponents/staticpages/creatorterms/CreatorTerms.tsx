@@ -1,6 +1,6 @@
 import React from "react";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/Layout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { Grid, Typography, Box } from "@mui/material";
 
 const CreatorTerms = () => {

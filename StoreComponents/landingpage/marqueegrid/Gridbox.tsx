@@ -2,19 +2,20 @@ import { Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { CustomContainer } from "StoreComponents/Layout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { styles } from "./Style";
 import { useTheme } from "@mui/material";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Gridbox = () => {
   const theme = useTheme();
-  const isMatch = useMediaQuery('(max-width:767px)');
+  const isMatch = useMediaQuery("(max-width:767px)");
   return (
     <CustomContainer>
-      <Grid style={{ marginTop: isMatch? '20px' : "137px" }}
-       paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-       paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      <Grid
+        style={{ marginTop: isMatch ? "20px" : "137px" }}
+        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
         <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
@@ -27,12 +28,20 @@ const Gridbox = () => {
           </Typography>
         </Marquee>
         <Box sx={styles.mainGrid}>
-          <Typography sx={styles.gridboxText}
+          <Typography
+            sx={styles.gridboxText}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
           >
             Build personalised storefronts to sell the brands you love directly to your audience
           </Typography>
-          <Grid container item gap={16} sm={12} md={12} lg={12} xs={12}
+          <Grid
+            container
+            item
+            gap={16}
+            sm={12}
+            md={12}
+            lg={12}
+            xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
             paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
           >

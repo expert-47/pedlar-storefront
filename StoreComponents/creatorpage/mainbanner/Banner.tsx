@@ -1,10 +1,10 @@
 import React from "react";
 import { Grid, Typography, Button } from "@mui/material";
-import { CustomContainer } from "StoreComponents/Layout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
 
-const ForCreator = () => {
+const Banner = () => {
   return (
     <CustomContainer>
       <Grid
@@ -48,4 +48,4 @@ const ForCreator = () => {
   );
 };
 
-export default ForCreator;
+export default Banner;

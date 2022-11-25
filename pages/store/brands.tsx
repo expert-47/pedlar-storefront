@@ -1,18 +1,17 @@
 import React from "react";
-import CreatorTerms from "StoreComponents/staticpages/creatorterms/CreatorTerms";
+import ForBrand from "StoreComponents/brandpage/ForBrand";
 import Layout from "StoreComponents/Landinglayout";
 
-const creatorterms = () => {
+const brands = () => {
   return (
     <Layout
       sx={{
         backgroundColor: "#f9f6f2",
-        color: "#1C1B1F",
       }}
     >
-      <CreatorTerms />
+      <ForBrand />
     </Layout>
   );
 };
 
-export default creatorterms;
+export default brands;

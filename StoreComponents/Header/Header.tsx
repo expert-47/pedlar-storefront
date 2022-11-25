@@ -19,7 +19,7 @@ import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import ResponsiveHeader from "./ResponsiveHeader";
-import { CustomContainer } from "StoreComponents/Layout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 const Header = () => {
   const theme = useTheme();
   const router = useRouter();
@@ -33,21 +33,27 @@ const Header = () => {
   const onChangeBrand = () => setUserType(false);
 
   const openStorePage = () => {
-    router.push("/store/storeIndex");
+    router.push("/store/pedlarstore");
   };
   const openCreators = () => {
-    router.push("/store/forcreator");
+    router.push("/store/creator");
   };
   const openBrands = () => {
-    router.push("/store/forbrands");
+    router.push("/store/brands");
   };
 
   return (
     <AppBar elevation={0} sx={styles.header}>
       <CustomContainer>
-        <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.MainGrid}
-         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-      
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={styles.MainGrid}
+          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           {isMatch ? (
             <>

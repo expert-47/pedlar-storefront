@@ -22,13 +22,13 @@ const Header = () => {
   const onChangeBrand = () => setUserType(false);
 
   const openStorePage = () => {
-    router.push("/store/pedlarstore");
+    router.push("/landing");
   };
   const openCreators = () => {
-    router.push("/store/creator");
+    router.push("/landing/creator");
   };
   const openBrands = () => {
-    router.push("/store/brands");
+    router.push("/landing/brands");
   };
 
   return (

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { styles } from "./style";
 import Typed from "react-typed";
 import CloseIcon from "@mui/icons-material/Close";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "StoreComponents/landinglayout";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import Creatorpopup from "StoreComponents/popupdialog/creatorpopup";

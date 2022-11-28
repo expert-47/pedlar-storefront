@@ -3,7 +3,7 @@ import Banner from "StoreComponents/landingpage/homebanner/Banner";
 import Company from "StoreComponents/landingpage/comapny/Company";
 import EarlyAcess from "StoreComponents/landingpage/earlyaccess/EarlyAcess";
 import Faq from "StoreComponents/landingpage/faq/Faq";
-import Layout from "StoreComponents/Landinglayout";
+import Layout from "StoreComponents/landinglayout";
 import Gridbox from "StoreComponents/landingpage/marqueegrid/Gridbox";
 import Cardslider from "StoreComponents/landingpage/cardslider/Cardslider";
 

@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "StoreComponents/Landinglayout";
-import ReturnPolicy from "StoreComponents/staticpages/shippingreturnpolicy/shippingreturnspolicy";
+import Layout from "StoreComponents/landinglayout";
+import ReturnPolicy from "StoreComponents/staticpages/returnpolicy/returnpolicy";
 
 const shippingreturnspolicy = () => {
   return (

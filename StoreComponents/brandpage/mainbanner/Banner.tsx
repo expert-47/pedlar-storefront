@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography, Button } from "@mui/material";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "StoreComponents/landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
 import BrandBanner from "../../../public/forbrand-sec1-img1.png";

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography, Button } from "@mui/material";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "StoreComponents/landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
 import CreatorBanner from "../../../public/creator-benner.png";

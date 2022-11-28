@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "StoreComponents/landinglayout";
 import { useTheme } from "@mui/material";
 const Footer = () => {
   const theme = useTheme();
@@ -35,7 +35,7 @@ const Footer = () => {
                 <Link href="/store/faq" sx={styles.footerLink}>
                   FAQs
                 </Link>
-                <Link href="/store/shippingreturnspolicy" sx={styles.footerLink}>
+                <Link href="/store/returnpolicy" sx={styles.footerLink}>
                   Shipping & Returns
                 </Link>
                 <Link href="/store/creatorterms" sx={styles.footerLink}>

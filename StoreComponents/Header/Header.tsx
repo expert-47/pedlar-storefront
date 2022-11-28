@@ -9,6 +9,8 @@ import ResponsiveHeader from "./ResponsiveHeader";
 import { CustomContainer } from "StoreComponents/Landinglayout";
 import Creatorpopup from "StoreComponents/popupdialog/creatorpopup";
 import Brandspopup from "StoreComponents/popupdialog/brandspopup";
+import headerlogo from "../../public/header-logo.svg";
+
 const Header = () => {
   const theme = useTheme();
   const router = useRouter();
@@ -51,7 +53,14 @@ const Header = () => {
           ) : (
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                <Image src="/header-logo.svg" alt="header-logo" height={75} width={230} onClick={openStorePage} />
+                <Image
+                  src={headerlogo}
+                  alt="header-logo"
+                  height={85}
+                  width={250}
+                  onClick={openStorePage}
+                  style={{ cursor: "pointer" }}
+                />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={5} gap={1} style={{ textAlign: "center" }}>
                 <Button sx={styles.Button} onClick={openCreators}>

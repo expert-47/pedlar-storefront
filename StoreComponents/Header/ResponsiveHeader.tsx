@@ -29,23 +29,21 @@ const ResponsiveHeader = () => {
   const onChangeBrand = () => setUserType(false);
 
   const openStorePage = () => {
-    router.push("/store/storeIndex");
+    router.push("/landing");
   };
   const openCreators = () => {
-    router.push("/store/forcreator");
+    router.push("/landing/creator");
   };
   const openBrands = () => {
-    router.push("/store/forbrands");
+    router.push("/landing/brands");
   };
 
   const onClickDrawer = () => {
     setOpenDrawar(true);
-    //console.log("clicked Open");
   };
 
   const onCloseDrawer = () => {
     setOpenDrawar(false);
-    //console.log("clicked close");
   };
 
   const paperStyle = {
@@ -61,7 +59,7 @@ const ResponsiveHeader = () => {
         height={75}
         width={250}
         onClick={openStorePage}
-        style={{ paddingLeft: "38px" }}
+        style={{ cursor: "pointer" }}
       />
       <Drawer
         anchor="right"
@@ -74,7 +72,7 @@ const ResponsiveHeader = () => {
           <img
             src="/header-logo.svg"
             alt="header-logo"
-            style={{ height: "62px", width: "192px", paddingLeft: "18px" }}
+            style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
             onClick={openStorePage}
           />
           <IconButton onClick={onCloseDrawer}>

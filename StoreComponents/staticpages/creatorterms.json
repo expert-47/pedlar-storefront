@@ -1,17 +1,36 @@
 [
-    {
-      "id": 0,
-      "mainheading": "Creator Terms and Conditions",
-      "text": "You agree that by using the Pedlar Platform and/or by pressing ‘Yes’/’I accept/Submit‘, these Terms and Conditions will be the Agreement governing the relationship between you and Pedlar and you agree to be bound by these Terms and Conditions.",
-      "heading": "1. Definitions and Interpretation",
-      "subheading": "1.1 Definitions",
-      "subtext": "The following terms in these Terms and Conditions have the meanings set out below, unless otherwise indicated:"
-    },
-    {
-      "id": 1,
-      "text": "You agree that by using the Pedlar Platform and/or by pressing ‘Yes’/’I accept/Submit‘, these Terms and Conditions will be the Agreement governing the relationship between you and Pedlar and you agree to be bound by these Terms and Conditions.",
-      "heading": "1. Definitions and Interpretation",
-      "subheading": "1.1 Definitions",
-      "subtext": "The following terms in these Terms and Conditions have the meanings set out below, unless otherwise indicated:"
-    }
-  ]
+  {
+    "id": 0,
+    "heading": "Creator Terms and Conditions",
+    "description": "These are the Terms and Conditions referred to in the Pedlar Store Pty Ltd (ACN 655 606 250) (Pedlar) Platform.",
+    "subtext": "You agree that by using the Pedlar Platform and/or by pressing ‘Yes’/’I accept/Submit‘, these Terms and Conditions will be the Agreement governing the relationship between you and Pedlar and you agree to be bound by these Terms and Conditions."
+  },
+  {
+    "id": 1,
+    "heading": "1. Definitions and Interpretation",
+    "subheading": "1.1 Definitions",
+    "description": "The following terms in these Terms and Conditions have the meanings set out below, unless otherwise indicated:",
+    "text": "(1) Agreement means the agreement comprising:",
+    "subtext": "(a) these Terms and Conditions"
+  },
+  {
+    "id": 2,
+    "text": "(2) Confidential Information",
+    "subtext": "means all information disclosed (including inadvertently) by a party (Discloser) in connection with the Agreement, all information disclosed by a third party that the Discloser is required to keep confidential, including (without limitation):",
+    "subtext1": "(a) information which, either orally or in writing, is designated or indicated as being the proprietary or confidential information of the Discloser or a third party to whom the Discloser owes an obligation of confidentiality;",
+    "subtext2": "(b) Information derived partly or wholly from the information, including (without limitation) any calculation, conclusion, summary, computer modelling; and",
+    "subtext3": "(c) trade secrets or information that is capable of protection at law or equity as confidential information, and the parties agree that the terms of the Agreement are jointly owned Confidential Information;"
+  },
+  {
+    "id": 3,
+    "text": "(3) Force Majeure Event",
+    "subtext": "means any of the following causes provided that they are outside the reasonable control of the affected party and could not have been prevented or avoided by that party taking all reasonable steps:",
+    "subtext1": "(a) act of God, earthquake, cyclone, fire, explosion, flood, landslide, lightning, storm, tempest, drought or meteor;",
+    "subtext2": "(b) war (declared or undeclared), invasion, act of a foreign enemy, hostilities between nations, civil insurrection or militarily usurped power;",
+    "subtext3": "(c) act of public enemy, sabotage or malicious damage, terrorism or civil unrest;",
+    "subtext4": "(d) ionising radiation or contamination by radioactivity from any nuclear waste or from combustion of nuclear fuel;",
+    "subtext5": "(e) confiscation, nationalisation, requisition, expropriation, prohibition, embargo, restraint or damage to property by or under the order of any government or government authority (except where such arises out of a failure by a party to comply with any Law)",
+    "subtext6": "(f) health crisis or pandemic or any nature; or",
+    "subtext7": "(g) strikes, blockades, lock out or other industrial disputes other than an industrial dispute that only involves the party’s personnel."
+  }
+]

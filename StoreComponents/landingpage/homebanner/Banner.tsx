@@ -2,7 +2,9 @@ import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton } from "@mui/mater
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import { styles } from "./style";
-import Typed from "react-typed";
+// import Typed from "react-typed";
+import Typewriter from "typewriter-effect";
+
 import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
@@ -29,14 +31,14 @@ const Banner = () => {
       >
         <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
           {isSmall ? (
-            <img src="/bannerMob.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }} />
+            <img src="/bannerMob.png" alt="home banner" style={{ width: "100%", paddingTop: "90px" }} />
           ) : (
-            <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "100px" }} />
+            <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "90px" }} />
           )}
           <Grid sx={styles.bannerText}>
             <Typography sx={styles.FirstList}>We put fashion</Typography>
             <Box style={{ display: "flex" }} sx={styles.animateRow}>
-              <Typed
+              {/* <Typed
                 strings={["Creatore", "Influencers", "Curators"]}
                 loop
                 typeSpeed={150}
@@ -46,6 +48,15 @@ const Banner = () => {
                   fontFamily: "Inter",
                   fontWeight: "900",
                   fontSize: isSmall ? "42px" : isMedium ? "28px" : isMatch ? "39px" : "48px",
+                }}
+              /> */}
+              <Typewriter
+                options={{
+                  strings: ["Creatore", "Influencers", "Curators"],
+                  autoStart: true,
+                  loop: true,
+                  skipAddStyles: true,
+                  wrapperClassName: "Typewriter__wrapper",
                 }}
               />
               <Typography

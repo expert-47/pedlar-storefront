@@ -8,28 +8,129 @@ const CreatorTerms = () => {
   return (
     <CustomContainer>
       <Box sx={styles.MainBox}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography textTransform={"none"} fontSize={"48px"}>
-            Creator Terms and Conditions
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            {
-              "You agree that by using the Pedlar Platform and/or by pressing ‘Yes’/’I accept/Submit‘, these Terms and Conditions will be the Agreement governing the relationship between you and Pedlar and you agree to be bound by these Terms and Conditions."
-            }
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-            1. Definitions and Interpretation
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-            1.1 Definitions
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            The following terms in these Terms and Conditions have the meanings set out below, unless otherwise
-            indicated:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) <b>Agreement</b> means the agreement comprising:
-          </Typography>
+        {Creatorterms.map((creatorterms, index) => {
+          if (index === 0) {
+            return (
+              <Box>
+                <Grid item xs={12} sm={12} md={12} lg={12} key={creatorterms.id}>
+                  <Typography textTransform={"none"} fontSize={"48px"}>
+                    {creatorterms.heading}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.description}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext}
+                  </Typography>
+                  <br />
+                </Grid>
+              </Box>
+            );
+          }
+          if (index === 1) {
+            return (
+              <Box>
+                <Grid item xs={12} sm={12} md={12} lg={12} key={creatorterms.id}>
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                    {creatorterms.heading}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                    {creatorterms.subheading}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.description}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.text}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext}
+                  </Typography>
+                  <br />
+                </Grid>
+              </Box>
+            );
+          }
+          if (index === 2) {
+            return (
+              <Box>
+                <Grid item xs={12} sm={12} md={12} lg={12} key={creatorterms.id}>
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                    {creatorterms.text}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext1}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext2}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext3}
+                  </Typography>
+                  <br />
+                </Grid>
+              </Box>
+            );
+          }
+          if (index === 3) {
+            return (
+              <Box>
+                <Grid item xs={12} sm={12} md={12} lg={12} key={creatorterms.id}>
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                    {creatorterms.text}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext1}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext2}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext3}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext4}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext5}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext6}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext7}
+                  </Typography>
+                </Grid>
+              </Box>
+            );
+          }
+        })}
+        {/* <Grid item xs={12} sm={12} md={12} lg={12}>
+
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
             (a) these Terms and Conditions
           </Typography>
@@ -733,34 +834,7 @@ const CreatorTerms = () => {
             not usually, but may disclose that Personal Information to certain third parties in accordance with the
             Privacy Law. Otherwise, Pedlar will abide by its Privacy Policy.
           </Typography>
-        </Grid>
-        {/* {Creatorterms.map((creatorterms) => {
-            return (
-              <Box>
-                <Grid item xs={12} sm={12} md={12} lg={12} key={creatorterms.id}>
-                  <Typography textTransform={"none"} fontSize={"48px"}>
-                    {creatorterms.mainheading}
-                  </Typography>
-                  <br />
-                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-                    {creatorterms.text}
-                  </Typography>
-                  <br />
-                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                    {creatorterms.heading}
-                  </Typography>
-                  <br />
-                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                    {creatorterms.subheading}
-                  </Typography>
-                  <br />
-                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-                    {creatorterms.subtext}
-                  </Typography>
-                </Grid>
-              </Box>
-            );
-        })} */}
+        </Grid> */}
       </Box>
     </CustomContainer>
   );

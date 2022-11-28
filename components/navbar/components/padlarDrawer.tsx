@@ -72,7 +72,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
       >
         <Typography style={{ fontSize: "14px", fontWeight: "600" }}>
           FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All
-          Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Direc
+          Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand -
         </Typography>
       </Marquee>
       <List sx={styles.drawerList}>

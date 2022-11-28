@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "StoreComponents/landinglayout";
 import ReturnPolicy from "StoreComponents/staticpages/returnpolicy/returnpolicy";
 
-const shippingreturnspolicy = () => {
+const Returnpolicy = () => {
   return (
     <Layout
       sx={{
@@ -14,4 +14,4 @@ const shippingreturnspolicy = () => {
   );
 };
 
-export default shippingreturnspolicy;
+export default Returnpolicy;

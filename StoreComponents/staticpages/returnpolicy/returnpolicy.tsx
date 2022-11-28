@@ -1,7 +1,7 @@
 import React from "react";
+import { CustomContainer } from "StoreComponents/landinglayout";
 import { Grid, Typography, Box } from "@mui/material";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/landinglayout";
 
 const ReturnPolicy = () => {
   return (

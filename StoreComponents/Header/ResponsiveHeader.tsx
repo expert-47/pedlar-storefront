@@ -1,18 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Dialog,
-  Drawer,
-  Grid,
-  IconButton,
-  InputAdornment,
-  Slide,
-  Tab,
-  Tabs,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Tab, Tabs, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -20,6 +6,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
 import { TransitionProps } from "@mui/material/transitions";
+import Creatorpopup from "StoreComponents/popupdialog/creatorpopup";
+import Brandspopup from "StoreComponents/popupdialog/brandspopup";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -32,10 +20,10 @@ const Transition = React.forwardRef(function Transition(
 const ResponsiveHeader = () => {
   const router = useRouter();
   const [opendrawer, setOpenDrawar] = useState(false);
-  const [open, setOpen] = useState(false);
-  const openPopup = () => setOpen(true);
-  const closePopup = () => setOpen(false);
-  const handleClose = () => setOpen(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const openPopup = () => setOpenDialog(true);
+  const closePopup = () => setOpenDialog(false);
+  const handleClose = () => setOpenDialog(false);
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
@@ -122,7 +110,7 @@ const ResponsiveHeader = () => {
                   Log in
                 </Typography>
               </Button>
-              <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+              <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
                 <Box
                   sx={[
                     styles.RespLoginBox,
@@ -160,133 +148,7 @@ const ResponsiveHeader = () => {
                       onClick={onChangeBrand}
                     />
                   </Tabs>
-                  {userType ? (
-                    <Box>
-                      <TextField
-                        label="First Name"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Last Name"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Email Address"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="City"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Instagram Username"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <Image src="/insta-icon.svg" alt="insta" height={20} width={20} />
-                            </InputAdornment>
-                          ),
-                        }}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Tiktok Username"
-                        placeholder="Enter Here"
-                        sx={styles.TextFeild}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <Image src="/tiktok-icon.svg" alt="insta" height={20} width={20} />
-                            </InputAdornment>
-                          ),
-                        }}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                    </Box>
-                  ) : (
-                    <Box>
-                      <TextField
-                        label="First Name"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Last Name"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Company Name"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Email Address"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Phone Number (+61)"
-                        placeholder="Enter Here"
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                      <TextField
-                        label="Brand Website"
-                        placeholder="Enter Here"
-                        required
-                        sx={styles.TextFeild}
-                        InputLabelProps={{
-                          style: { color: "grey", borderColor: "grey" },
-                        }}
-                      />
-                    </Box>
-                  )}
+                  {userType ? <Creatorpopup /> : <Brandspopup />}
                   <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
                   <Typography>
                     {

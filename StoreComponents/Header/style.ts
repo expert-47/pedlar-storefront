@@ -87,6 +87,7 @@ export const styles = {
   LoginBox: {
     backgroundColor: "#f9f6f2",
     width: "500px",
+    borderRadius: "10px",
     p: 25,
   },
   RespLoginBox: {
@@ -110,10 +111,10 @@ export const styles = {
     marginBottom: "24px",
   },
   TabSelector: {
-    backgroundColor: " transparent",
-    borderRadius: "15px",
-    border: "1px solid ",
+    background: " transparent",
+    borderRadius: "10px",
+    border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    width: "60%",
+    width: "250px",
   },
 };

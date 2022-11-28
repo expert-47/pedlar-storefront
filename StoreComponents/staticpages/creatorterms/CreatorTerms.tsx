@@ -2,6 +2,7 @@ import React from "react";
 import { styles } from "./style";
 import { CustomContainer } from "StoreComponents/landinglayout";
 import { Grid, Typography, Box } from "@mui/material";
+import Creatorterms from "../creatorterms.json";
 
 const CreatorTerms = () => {
   return (
@@ -733,6 +734,33 @@ const CreatorTerms = () => {
             Privacy Law. Otherwise, Pedlar will abide by its Privacy Policy.
           </Typography>
         </Grid>
+        {/* {Creatorterms.map((creatorterms) => {
+            return (
+              <Box>
+                <Grid item xs={12} sm={12} md={12} lg={12} key={creatorterms.id}>
+                  <Typography textTransform={"none"} fontSize={"48px"}>
+                    {creatorterms.mainheading}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.text}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                    {creatorterms.heading}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                    {creatorterms.subheading}
+                  </Typography>
+                  <br />
+                  <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+                    {creatorterms.subtext}
+                  </Typography>
+                </Grid>
+              </Box>
+            );
+        })} */}
       </Box>
     </CustomContainer>
   );

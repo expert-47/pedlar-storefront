@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, Typography, Button } from "@mui/material";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/landinglayout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 const Company = () => {

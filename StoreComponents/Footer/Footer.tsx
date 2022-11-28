@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
-import InstagramIcon from "@mui/icons-material/Instagram";
+// import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/landinglayout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { useTheme } from "@mui/material";
 const Footer = () => {
   const theme = useTheme();
@@ -32,7 +32,7 @@ const Footer = () => {
           <Grid container item xs={12} sm={6} md={6} lg={6} sx={styles.footerMobcol}>
             <Grid item xs={12} sm={12} md={12} lg={7} sx={styles.footersocialRow}>
               <Box sx={styles.footerMoblink}>
-                <Link href="/landing/faq" sx={styles.footerLink}>
+                <Link href="#" sx={styles.footerLink}>
                   FAQs
                 </Link>
                 <Link href="/landing/returnpolicy" sx={styles.footerLink}>
@@ -51,7 +51,7 @@ const Footer = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={5}>
               <Box style={{ display: "flex", alignItems: "center" }}>
-                <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} />
+                {/* <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} /> */}
                 <Link href="#" sx={styles.footersocial}>
                   Instagram
                 </Link>

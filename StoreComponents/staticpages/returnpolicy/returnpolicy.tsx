@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomContainer } from "StoreComponents/landinglayout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { Grid, Typography, Box } from "@mui/material";
 import { styles } from "./style";
 

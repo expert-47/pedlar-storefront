@@ -2,7 +2,7 @@ import { Box, Button, Dialog, Grid, IconButton, InputAdornment, Tab, Tabs, TextF
 import React, { useState } from "react";
 import { styles } from "./Style";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { CustomContainer } from "StoreComponents/landinglayout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import Image from "next/image";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";

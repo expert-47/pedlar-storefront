@@ -1,10 +1,10 @@
 import React from "react";
-import Faq from "StoreComponents/brandpage/faq/Faq";
-import Banner from "StoreComponents/brandpage/mainbanner/Banner";
+import Faq from "StoreComponents/brandpage/faq/faq";
+import Banner from "StoreComponents/brandpage/mainbanner/banner";
 import Layout from "StoreComponents/landinglayout";
-import Cardslider from "StoreComponents/landingpage/cardslider/Cardslider";
-import Pointofpurchase from "StoreComponents/brandpage/pointofpurchase/Pointofpurchase";
-import Influncerheading from "StoreComponents/brandpage/influncerheading/Influncerheading";
+import Cardslider from "StoreComponents/landingpage/cardslider/cardslider";
+import Pointofpurchase from "StoreComponents/brandpage/pointofpurchase/pointofpurchase";
+import Influncerheading from "StoreComponents/brandpage/influncerheading/influncerheading";
 import Businesstoday from "StoreComponents/brandpage/businesstoday/businesstoday";
 
 const brands = () => {

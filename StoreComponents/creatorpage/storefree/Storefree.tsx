@@ -1,7 +1,7 @@
 import { Grid, Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import { CustomContainer } from "StoreComponents/landinglayout";
+import { CustomContainer } from "StoreComponents/Landinglayout";
 import { styles } from "./style";
 
 const Storefree = () => {

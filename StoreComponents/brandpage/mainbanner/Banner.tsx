@@ -3,6 +3,7 @@ import { Grid, Typography, Button } from "@mui/material";
 import { CustomContainer } from "StoreComponents/Landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
+import BrandBanner from "../../../public/forbrand-sec1-img1.png";
 
 const Banner = () => {
   return (
@@ -19,7 +20,7 @@ const Banner = () => {
         justifyContent={{ sm: "left" }}
       >
         <Grid item xs={12} sm={12} md={12} lg={6.3}>
-          <Image src={"/creator-benner.png"} alt={"Creator banner"} height={"570"} width={"660"} />
+          <Image src={BrandBanner} alt={"Creator banner"} />
         </Grid>
         <Grid
           item

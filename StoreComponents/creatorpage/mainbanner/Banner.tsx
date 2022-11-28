@@ -3,6 +3,7 @@ import { Grid, Typography, Button } from "@mui/material";
 import { CustomContainer } from "StoreComponents/Landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
+import CreatorBanner from "../../../public/creator-benner.png";
 
 const Banner = () => {
   return (
@@ -14,23 +15,15 @@ const Banner = () => {
         sm={12}
         md={12}
         lg={12}
+        gap={50}
         sx={styles.MainBox}
         style={{ alignItems: "center" }}
         justifyContent={{ sm: "left" }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={6.3}>
-          <Image src={"/creator-benner.png"} alt={"Creator banner"} height={"570"} width={"660"} />
+        <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Image src={CreatorBanner} alt={"Creator banner"} />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          sm={10.3}
-          md={7.7}
-          lg={5.4}
-          sx={styles.GridBox}
-          style={{ justifyContent: "flex-end" }}
-          //justifyContent={{ md: "left" }}
-        >
+        <Grid item xs={12} sm={10.3} md={7.7} lg={5} sx={styles.GridBox} style={{ justifyContent: "flex-end" }}>
           <Typography textTransform={"none"} fontSize={"64px"} sx={styles.heading}>
             Give your audience what they want
           </Typography>

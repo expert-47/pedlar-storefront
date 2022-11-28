@@ -7,6 +7,7 @@ export const styles = {
     width: "100%",
     padding: "40px",
     borderRadius: "20px",
+    backgroundColor: "white",
   },
   heading: {
     lineHeight: "60px",

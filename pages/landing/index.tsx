@@ -5,6 +5,7 @@ import EarlyAcess from "../../StoreComponents/landingpage/earlyaccess/EarlyAcess
 import Faq from "../../StoreComponents/landingpage/faq/Faq";
 import Layout from "../../StoreComponents/landinglayout";
 import Gridbox from "../../StoreComponents/landingpage/marqueegrid/Gridbox";
+import Picturecarousel from "../../StoreComponents/landingpage/picture-carousel/picturecarousel";
 
 const index = () => {
   return (
@@ -25,6 +26,7 @@ const index = () => {
       <Banner />
       <Gridbox />
       <Company />
+      <Picturecarousel />
       {/* <Cardslider /> */}
       {/* <Slider /> */}
       {/* <Sliderr /> */}

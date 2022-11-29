@@ -2,7 +2,7 @@ import React from "react";
 import Faq from "../../StoreComponents/brandpage/faq/faq";
 import Banner from "../../StoreComponents/brandpage/mainbanner/banner";
 import Layout from "../../StoreComponents/landinglayout";
-import Cardslider from "../../StoreComponents/landingpage/cardslider/cardslider";
+import Cardslider from "../../StoreComponents/landingpage/pictureslider/cardslider";
 import Pointofpurchase from "../../StoreComponents/brandpage/pointofpurchase/pointofpurchase";
 import Influncerheading from "../../StoreComponents/brandpage/influncerheading/influncerheading";
 import Businesstoday from "../../StoreComponents/brandpage/businesstoday/businesstoday";

@@ -5,7 +5,7 @@ import EarlyAcess from "../../StoreComponents/landingpage/earlyaccess/earlyacess
 import Faq from "../../StoreComponents/landingpage/faq/faq";
 import Layout from "../../StoreComponents/landinglayout";
 import Gridbox from "../../StoreComponents/landingpage/marqueegrid/gridbox";
-import Cardslider from "../../StoreComponents/landingpage/cardslider/cardslider";
+import Cardslider from "../../StoreComponents/landingpage/pictureslider/cardslider";
 
 const index = () => {
   return (

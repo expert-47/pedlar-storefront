@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/lab": "^5.0.0-alpha.101",
     "@mui/material": "^5.10.11",
+    "@swiper/core": "^0.0.21",
     "axios": "^1.2.0",
     "jquery": "^3.6.1",
     "next": "12.3.0",

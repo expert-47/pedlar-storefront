@@ -2,10 +2,16 @@ import { Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { CustomContainer } from "../../landinglayout";
-import { styles } from "./Style";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Image from 'next/image';
+import firstGrid from '../../../public/home-sec2-img1.png';
+import secondGrid from '../../../public/home-sec2-img2.png';
+import thirdGrid from '../../../public/home-sec2-img3.png';
+import glow from '../../../public/glow.svg';
+import { CustomContainer } from "../../landinglayout";
+import { styles } from "./Style";
+
 
 const Gridbox = () => {
   const theme = useTheme();
@@ -37,7 +43,7 @@ const Gridbox = () => {
           <Grid
             container
             item
-            gap={16}
+            gap={10}
             sm={12}
             md={12}
             lg={12}
@@ -46,22 +52,34 @@ const Gridbox = () => {
             paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
           >
             <Grid item xs={12} sm={7} md={7} lg={4.95}>
-              <img src="/home-sec2-img1.png" alt="Picture of the author" style={{ width: "100%", height: "100%" }} />
+              <Image
+                src={firstGrid}
+                alt="Picture of the author"
+              />
             </Grid>
             <Grid item xs={12} sm={3} md={2.5} lg={2.4}>
               <Grid sx={styles.gridimgBox}>
                 <Grid>
-                  <img src="/home-sec2-img2.png" alt="Picture of the author" style={{ width: "100%" }} />
+                  <Image
+                    src={secondGrid}
+                    alt="Picture of the author"
+                  />
                 </Grid>
                 <Grid sx={styles.gridimgBoxInner}>
-                  <img src="/home-sec2-img3.png" alt="Picture of the author" style={{ width: "100%" }} />
+                  <Image
+                    src={thirdGrid}
+                    alt="Picture of the author"
+                  />
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4}>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box style={{ marginTop: "7px" }}>
-                  <img src="/glow.svg" alt="Picture of the author" />
+                  <Image
+                    src={glow}
+                    alt="Picture of the author"
+                  />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText}>More money. Less problems</Typography>
@@ -72,7 +90,10 @@ const Gridbox = () => {
               </Grid>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box style={{ marginTop: "7px" }}>
-                  <img src="/glow.svg" alt="Picture of the author" />
+                  <Image
+                    src={glow}
+                    alt="Picture of the author"
+                  />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText}>Simple and free</Typography>
@@ -83,7 +104,10 @@ const Gridbox = () => {
               </Grid>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box style={{ marginTop: "7px" }}>
-                  <img src="/glow.svg" alt="Picture of the author" />
+                  <Image
+                    src={glow}
+                    alt="Picture of the author"
+                  />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText}>Business as usual</Typography>

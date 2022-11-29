@@ -1,23 +1,20 @@
 export const styles = {
   bannerText: {
     position: "absolute",
-    right: "-20px",
-    bottom: "2px",
+    right: "0px",
+    bottom: "36px",
     margin: " 0 auto",
-    width: "45%",
+    width: "50%",
     paddingRight: "10px",
-    ["@media (max-width:1400px)"]: {
-      bottom: "-16px",
-    },
     ["@media (max-width:1145px)"]: {
-      bottom: "-16px",
-      right: "-8px",
+      bottom: "2px"
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",
     },
     ["@media (max-width:800px)"]: {
-      bottom: "-93px",
+      bottom: "6px",
+      width: "69%",
     },
     ["@media (max-width:767px)"]: {
       position: "unset",
@@ -30,9 +27,6 @@ export const styles = {
     fontSize: "48px",
     ["@media (max-width:1145px)"]: {
       fontSize: "42px",
-    },
-    ["@media (max-width:800px)"]: {
-      fontSize: "28px",
     },
     ["@media (max-width:767px)"]: {
       fontSize: "42px",

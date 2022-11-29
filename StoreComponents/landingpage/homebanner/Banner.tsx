@@ -1,16 +1,20 @@
-import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton } from "@mui/material";
+import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, responsiveFontSizes } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
-import { styles } from "./style";
-// import Typed from "react-typed";
 import Typewriter from "typewriter-effect";
-
 import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
+import Image from 'next/image'
+import desktopBanner from '../../../public/home-banner1.png';
+import tabBanner from '../../../public/bannerMd.png';
+import mobileBanner from '../../../public/bannerMob.png';
+// import Typed from "react-typed";
+import { styles } from "./style";
 import Creatorpopup from "../../popupdialog/creatorpopup";
 import Brandspopup from "../../popupdialog/brandspopup";
 import { CustomContainer } from "../../landinglayout";
+
 const Banner = () => {
   const isMatch = useMediaQuery("(max-width:1145px)");
   const isMedium = useMediaQuery("(max-width:850px)");
@@ -29,14 +33,31 @@ const Banner = () => {
         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}>
+        <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}
+        
+          marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
+        >
           {isSmall ? (
-            <img src="/bannerMob.png" alt="home banner" style={{ width: "100%", paddingTop: "90px" }} />
-          ) : (
-            <img src="/home-banner1.png" alt="home banner" style={{ width: "100%", paddingTop: "90px" }} />
+            <Image
+              src={mobileBanner}
+              alt="Picture of the author"
+            />
+          ) : 
+          isMedium ? (
+            <Image
+              src={tabBanner}
+              alt="Picture of the author"
+            />
+          )
+          :
+          (
+            <Image
+              src={desktopBanner}
+              alt="Picture of the author"
+            />
           )}
           <Grid sx={styles.bannerText}>
-            <Typography sx={styles.FirstList}>We put fashion</Typography>
+            <Typography fontSize={{xs:'34px',md:'40px',lg:'48px'}}>We put fashion</Typography>
             <Box style={{ display: "flex" }} sx={styles.animateRow}>
               {/* <Typed
                 strings={["Creatore", "Influencers", "Curators"]}
@@ -64,7 +85,7 @@ const Banner = () => {
                   color: "#1C1B1F",
                   fontFamily: "Inter",
                   fontWeight: "900",
-                  fontSize: isSmall ? "42px" : isMedium ? "28px" : isMatch ? "39px" : "48px",
+                  fontSize: isSmall ? "34px" : isMedium ? "34px" : isMatch ? "39px" : "48px",
                 }}
               >
                 in business

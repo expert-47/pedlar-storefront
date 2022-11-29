@@ -1,5 +1,5 @@
 import React from "react";
-import CreatorTerms from "../../StoreComponents/staticpages/creatorterms/creatorterms";
+import CreatorTerms from "../../StoreComponents/staticpages/creatorterms/CreatorTerms";
 import Layout from "../../StoreComponents/landinglayout";
 
 const creatorterms = () => {

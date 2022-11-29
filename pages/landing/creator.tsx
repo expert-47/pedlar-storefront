@@ -1,10 +1,10 @@
 import React from "react";
-import Banner from "../../StoreComponents/creatorpage/mainbanner/banner";
-import Husttle from "../../StoreComponents/creatorpage/husttle/husttle";
+import Banner from "../../StoreComponents/creatorpage/mainbanner/Banner";
+import Husttle from "../../StoreComponents/creatorpage/husttle/Husttle";
 import Layout from "../../StoreComponents/landinglayout";
-import Company from "../../StoreComponents/creatorpage/comapny/company";
-import Faq from "../../StoreComponents/creatorpage/faq/faq";
-import Storefree from "../../StoreComponents/creatorpage/storefree/storefree";
+import Company from "../../StoreComponents/creatorpage/comapny/Company";
+import Faq from "../../StoreComponents/creatorpage/faq/Faq";
+import Storefree from "../../StoreComponents/creatorpage/storefree/Storefree";
 
 const creator = () => {
   return (

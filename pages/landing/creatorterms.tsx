@@ -1,6 +1,6 @@
 import React from "react";
-import CreatorTerms from "StoreComponents/staticpages/creatorterms/creatorterms";
-import Layout from "StoreComponents/landinglayout";
+import CreatorTerms from "../../StoreComponents/staticpages/creatorterms/creatorterms";
+import Layout from "../../StoreComponents/landinglayout";
 
 const creatorterms = () => {
   return (

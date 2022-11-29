@@ -2,7 +2,7 @@ import { Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "../../landinglayout";
 import { styles } from "./Style";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";

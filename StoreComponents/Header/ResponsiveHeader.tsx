@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
 import { TransitionProps } from "@mui/material/transitions";
-import Creatorpopup from "StoreComponents/popupdialog/creatorpopup";
-import Brandspopup from "StoreComponents/popupdialog/brandspopup";
+import Creatorpopup from "../../StoreComponents/popupdialog/creatorpopup";
+import Brandspopup from "../../StoreComponents/popupdialog/brandspopup";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {

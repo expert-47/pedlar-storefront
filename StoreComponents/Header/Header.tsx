@@ -5,10 +5,10 @@ import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery,
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import ResponsiveHeader from "./ResponsiveHeader";
-import { CustomContainer } from "StoreComponents/Landinglayout";
-import Creatorpopup from "StoreComponents/popupdialog/creatorpopup";
-import Brandspopup from "StoreComponents/popupdialog/brandspopup";
+import ResponsiveHeader from "./responsiveheader";
+import { CustomContainer } from "../landinglayout";
+import Creatorpopup from "../popupdialog/creatorpopup";
+import Brandspopup from "../popupdialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
 
 const Header = () => {

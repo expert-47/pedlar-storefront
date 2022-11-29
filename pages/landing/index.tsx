@@ -1,13 +1,12 @@
 import React from "react";
-import Banner from "StoreComponents/landingpage/homebanner/banner";
-import Company from "StoreComponents/landingpage/comapny/company";
-import EarlyAcess from "StoreComponents/landingpage/earlyaccess/earlyacess";
-import Faq from "StoreComponents/landingpage/faq/faq";
-import Layout from "StoreComponents/Landinglayout";
-import Gridbox from "StoreComponents/landingpage/marqueegrid/gridbox";
-import Cardslider from "StoreComponents/landingpage/cardslider/cardslider";
+import Banner from "../../StoreComponents/landingpage/homebanner/banner";
+import Company from "../../StoreComponents/landingpage/comapny/company";
+import EarlyAcess from "../../StoreComponents/landingpage/earlyaccess/earlyacess";
+import Faq from "../../StoreComponents/landingpage/faq/faq";
+import Layout from "../../StoreComponents/landinglayout";
+import Gridbox from "../../StoreComponents/landingpage/marqueegrid/gridbox";
 
-const storeIndex = () => {
+const index = () => {
   return (
     <Layout
       sx={{
@@ -26,11 +25,13 @@ const storeIndex = () => {
       <Banner />
       <Gridbox />
       <Company />
-      <Cardslider />
+      {/* <Cardslider /> */}
+      {/* <Slider /> */}
+      {/* <Sliderr /> */}
       <EarlyAcess />
       <Faq />
     </Layout>
   );
 };
 
-export default storeIndex;
+export default index;

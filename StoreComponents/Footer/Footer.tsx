@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
 // import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "../landinglayout";
 import { useTheme } from "@mui/material";
 const Footer = () => {
   const theme = useTheme();

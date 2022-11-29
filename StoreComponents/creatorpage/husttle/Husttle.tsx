@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 
 const Husttle = () => {

@@ -8,9 +8,9 @@ import Typewriter from "typewriter-effect";
 import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
-import Creatorpopup from "StoreComponents/popupdialog/creatorpopup";
-import Brandspopup from "StoreComponents/popupdialog/brandspopup";
-import { CustomContainer } from "StoreComponents/Landinglayout";
+import Creatorpopup from "../../popupdialog/creatorpopup";
+import Brandspopup from "../../popupdialog/brandspopup";
+import { CustomContainer } from "../../landinglayout";
 const Banner = () => {
   const isMatch = useMediaQuery("(max-width:1145px)");
   const isMedium = useMediaQuery("(max-width:850px)");

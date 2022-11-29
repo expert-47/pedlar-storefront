@@ -1,10 +1,10 @@
 import React from "react";
-import Banner from "../../StoreComponents/landingpage/homebanner/banner";
-import Company from "../../StoreComponents/landingpage/comapny/company";
-import EarlyAcess from "../../StoreComponents/landingpage/earlyaccess/earlyacess";
-import Faq from "../../StoreComponents/landingpage/faq/faq";
+import Banner from "../../StoreComponents/landingpage/homebanner/Banner";
+import Company from "../../StoreComponents/landingpage/comapny/Company";
+import EarlyAcess from "../../StoreComponents/landingpage/earlyaccess/EarlyAcess";
+import Faq from "../../StoreComponents/landingpage/faq/Faq";
 import Layout from "../../StoreComponents/landinglayout";
-import Gridbox from "../../StoreComponents/landingpage/marqueegrid/gridbox";
+import Gridbox from "../../StoreComponents/landingpage/marqueegrid/Gridbox";
 
 const index = () => {
   return (

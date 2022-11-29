@@ -29,7 +29,7 @@ const BannerImg = () => {
             src="/hannah.png"
             alt="headerimage"
             style={{
-              width: "100%",
+              width: isMatch ? "100%": "476px",
               height: isMatch ? "415px" : "595px",
             }}
           ></img>

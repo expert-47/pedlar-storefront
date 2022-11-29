@@ -37,7 +37,7 @@ export default function Navbar() {
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
             FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
-            All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Direc
+            All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand -
           </Typography>
         </Marquee>
 
@@ -51,7 +51,7 @@ export default function Navbar() {
                   <Link href="/">
                     <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
                   </Link>
-                  <Typography sx={styles.navTypo}>Hannah Juneva</Typography>
+                  <Grid sx={styles.navTypo}>Hannah Juneva</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
                   <Link href="/">

@@ -7,8 +7,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import ResponsiveHeader from "./responsiveheader";
 import { CustomContainer } from "../landinglayout";
-import Creatorpopup from "../../StoreComponents/popupdialog/creatorpopup";
-import Brandspopup from "../../StoreComponents/popupdialog/brandspopup";
+import Creatorpopup from "../popupdialog/creatorpopup";
+import Brandspopup from "../popupdialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
 
 const Header = () => {

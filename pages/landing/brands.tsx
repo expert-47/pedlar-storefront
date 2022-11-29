@@ -1,6 +1,6 @@
 import React from "react";
 import Faq from "../../StoreComponents/brandpage/faq/Faq";
-import Banner from "../../StoreComponents/brandpage/mainbanner//Banner";
+import Banner from "../../StoreComponents/brandpage/mainbanner/Banner";
 import Layout from "../../StoreComponents/landinglayout";
 import Pointofpurchase from "../../StoreComponents/brandpage/pointofpurchase/Pointofpurchase";
 import Influncerheading from "../../StoreComponents/brandpage/influncerheading/Influncerheading";

@@ -4,6 +4,8 @@ export const styles = {
     borderRadius: "16px",
     padding: "40px 0",
     width: "100%",
+    position:'relative',
+    zIndex:'99',
   },
   gridboxText: {
     color: "#1C1B1F",

@@ -7,7 +7,7 @@ export const styles = {
     width: "50%",
     paddingRight: "10px",
     ["@media (max-width:1145px)"]: {
-      bottom: "2px"
+      bottom: "-39px"
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",

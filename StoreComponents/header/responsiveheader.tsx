@@ -137,20 +137,38 @@ const ResponsiveHeader = () => {
                     </IconButton>
                   </Grid>
                   <Tabs sx={styles.TabSelector}>
-                    <Tab
-                      sx={{
-                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                      }}
-                      label="I'm a Creater"
-                      onClick={onChangeCreator}
-                    />
-                    <Tab
-                      sx={{
-                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                      }}
-                      label="I'm a Brand"
-                      onClick={onChangeBrand}
-                    />
+                    <Button>
+                      <Tab
+                        style={{
+                          textTransform: "none",
+                          color: "black",
+                          fontSize: "16px",
+                          fontWeight: "700",
+                          borderRadius: "15px",
+                        }}
+                        sx={{
+                          backgroundColor: userType == true ? "#a696cc" : "transparent",
+                        }}
+                        label="I'm a Creater"
+                        onClick={onChangeCreator}
+                      />
+                    </Button>
+                    <Button>
+                      <Tab
+                        style={{
+                          textTransform: "none",
+                          color: "black",
+                          fontSize: "16px",
+                          fontWeight: "700",
+                          borderRadius: "15px",
+                        }}
+                        sx={{
+                          backgroundColor: userType == false ? "#a696cc" : "transparent",
+                        }}
+                        label="I'm a Brand"
+                        onClick={onChangeBrand}
+                      />
+                    </Button>
                   </Tabs>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
                   <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>

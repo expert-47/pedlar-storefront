@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
+import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -99,7 +99,7 @@ const Header = () => {
                 </Grid>
               </Grid>
               <Dialog open={openDialog} onClose={handleClose}>
-                <Box
+              <Grid container item xs={12} sm={12} md={12} lg={12}
                   sx={[
                     styles.LoginBox,
                     {
@@ -161,7 +161,7 @@ const Header = () => {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }
                   </Typography>
-                </Box>
+                </Grid>
               </Dialog>
             </>
           )}

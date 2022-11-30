@@ -89,7 +89,13 @@ const Banner = () => {
                 I’m a brand
               </Button>
               <Dialog open={openDialog} onClose={handleClose}>
-                <Box
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}
                   sx={[
                     styles.LoginBox,
                     {
@@ -146,12 +152,12 @@ const Banner = () => {
                   </Tabs>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
                   <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
-                  <Typography>
+                  <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }
                   </Typography>
-                </Box>
+                </Grid>
               </Dialog>
             </Grid>
           </Grid>

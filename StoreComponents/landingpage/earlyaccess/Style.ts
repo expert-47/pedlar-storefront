@@ -21,7 +21,7 @@ export const styles = {
     },
     ["@media (max-width:600px)"]: {
       marginBottom: "20px",
-    }
+    },
   },
   brands: {
     backgroundColor: "white",
@@ -54,5 +54,6 @@ export const styles = {
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
     width: "250px",
+    padding: "5px",
   },
 };

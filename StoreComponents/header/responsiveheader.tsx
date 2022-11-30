@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Tab, Tabs, Typography } from "@mui/material";
+import { AppBar, Button, Dialog, Drawer, Grid, IconButton, Slide, Tab, Tabs, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -109,7 +109,13 @@ const ResponsiveHeader = () => {
                 </Typography>
               </Button>
               <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
-                <Box
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  sm={12}
+                  md={12}
+                  lg={12}
                   sx={[
                     styles.RespLoginBox,
                     {
@@ -148,12 +154,12 @@ const ResponsiveHeader = () => {
                   </Tabs>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
                   <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
-                  <Typography>
+                  <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }
                   </Typography>
-                </Box>
+                </Grid>
               </Dialog>
             </Grid>
           </Grid>

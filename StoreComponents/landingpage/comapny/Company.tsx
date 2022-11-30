@@ -1,10 +1,21 @@
-import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, Typography, Button, Dialog, IconButton, Tabs, Tab } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
+import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Creatorpopup from "../../popupdialog/creatorpopup";
+import Brandspopup from "../../popupdialog/brandspopup";
+
 const Company = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [userType, setUserType] = useState(true);
+  const openPopup = () => setOpenDialog(true);
+  const onChangeCreator = () => setUserType(true);
+  const onChangeBrand = () => setUserType(false);
+  const handleClose = () => setOpenDialog(false);
+  const closePopup = () => setOpenDialog(false);
   const isTab = useMediaQuery("(max-width:800px)");
   const theme = useTheme();
   return (
@@ -52,11 +63,82 @@ const Company = () => {
           lg={2.5}
           paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Button sx={styles.creator}>
+          <Button sx={styles.creator} onClick={openPopup}>
             <Typography textTransform="none" fontSize={"22px"}>
               I’m a creator
             </Typography>
           </Button>
+          <Dialog open={openDialog} onClose={handleClose}>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              sx={[
+                styles.LoginBox,
+                {
+                  overflow: "scroll",
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                },
+              ]}
+            >
+              <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                {userType ? (
+                  <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                ) : (
+                  <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+                )}
+                <IconButton onClick={closePopup}>
+                  <CloseIcon style={{ color: "black" }} />
+                </IconButton>
+              </Grid>
+              <Tabs sx={styles.TabSelector}>
+                <Button>
+                  <Tab
+                    style={{
+                      textTransform: "none",
+                      color: "black",
+                      fontSize: "16px",
+                      fontWeight: "700",
+                      borderRadius: "15px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == true ? "#a696cc" : "transparent",
+                    }}
+                    label="I'm a Creater"
+                    onClick={onChangeCreator}
+                  />
+                </Button>
+                <Button>
+                  <Tab
+                    style={{
+                      textTransform: "none",
+                      color: "black",
+                      fontSize: "16px",
+                      fontWeight: "700",
+                      borderRadius: "15px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == false ? "#a696cc" : "transparent",
+                    }}
+                    label="I'm a Brand"
+                    onClick={onChangeBrand}
+                  />
+                </Button>
+              </Tabs>
+              {userType ? <Creatorpopup /> : <Brandspopup />}
+              <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
+              <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                {
+                  "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+                }
+              </Typography>
+            </Grid>
+          </Dialog>
         </Grid>
       </Grid>
     </CustomContainer>

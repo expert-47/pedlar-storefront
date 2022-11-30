@@ -1,10 +1,8 @@
 export const styles = {
   faqText: {
-    fontSize: "54px",
     color: " #1C1B1F",
     fontFamily: "Inter",
-    fontWeight: "700",
-    lineHeight: " 1.2",
+    lineHeight: "unset",
     ["@media (max-width:1199px)"]: {
       paddingBottom:' 42px',
       fontSize: '48px',

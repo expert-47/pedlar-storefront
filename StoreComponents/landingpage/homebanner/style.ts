@@ -16,10 +16,10 @@ export const styles = {
       bottom: "6px",
       width: "69%",
     },
-    ["@media (max-width:767px)"]: {
+    ["@media (max-width:600px)"]: {
       position: "unset",
       width: "100%",
-      padding: " 0 17px",
+      paddingTop:'20px',
     },
   },
   FirstList: {

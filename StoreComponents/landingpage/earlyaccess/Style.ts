@@ -4,32 +4,27 @@ export const styles = {
     display: "flex",
     backgroundColor: "white",
     borderRadius: "15px",
-    paddingTop: "40px",
-    paddingBottom: "40px",
-    ["@media (max-width:800px)"]: {
-      marginTop: "70px",
-    },
   },
   creator: {
     backgroundColor: "#1C1B1F",
-    width: "90%",
     color: "white",
-    padding: "20px",
     borderRadius: "40px",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
-    ["@media (max-width:600px)"]: {
+    ["@media (max-width:767px)"]: {
       marginBottom: "20px",
+      width:'100%',
     },
   },
   brands: {
     backgroundColor: "white",
     border: "1px solid",
-    width: "90%",
     color: "black",
-    padding: "20px",
     borderRadius: "40px",
+    ["@media (max-width:767px)"]: {
+      width:'100%',
+    },
   },
   LoginBox: {
     width: "500px",

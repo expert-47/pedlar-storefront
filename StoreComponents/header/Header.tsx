@@ -167,6 +167,8 @@ const Header = () => {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }
                   </Typography>
+
+
                 </Grid>
               </Dialog>
             </>

@@ -134,7 +134,7 @@ export const styles = {
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    width: "250px",
+    width: "300px",
     padding: "5px",
   },
   animateRow: {
@@ -143,5 +143,10 @@ export const styles = {
       flexDirection: "column",
       alignItems: "flex-start",
     },
+  },
+  PopupBox: {
+    backgroundColor: "#f9f6f2",
+    borderRadius: "10px",
+    p: 25,
   },
 };

@@ -3,7 +3,6 @@ export const styles = {
     marginTop: "55px",
     color: "#1C1B1F",
     fontWeight: "700",
-
   },
   Typography: {
     marginTop: "30px",
@@ -32,5 +31,6 @@ export const styles = {
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
     width: "250px",
+    padding: "5px",
   },
 };

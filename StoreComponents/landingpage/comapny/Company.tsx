@@ -69,69 +69,75 @@ const Company = () => {
             </Typography>
           </Button>
           <Dialog open={openDialog} onClose={handleClose}>
-              <Grid container item xs={12} sm={12} md={12} lg={12}
-                  sx={[
-                    styles.LoginBox,
-                    {
-                      overflow: "scroll",
-                      "&::-webkit-scrollbar": {
-                        display: "none",
-                      },
-                    },
-                  ]}
-                >
-                  <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
-                    {userType ? (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
-                    ) : (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
-                    )}
-                    <IconButton onClick={closePopup}>
-                      <CloseIcon style={{ color: "black" }} />
-                    </IconButton>
-                  </Grid>
-                  <Tabs sx={styles.TabSelector}>
-                    <Button>
-                      <Tab
-                        style={{
-                          textTransform: "none",
-                          color: "black",
-                          fontSize: "16px",
-                          fontWeight: "700",
-                          borderRadius: "15px",
-                        }}
-                        sx={{
-                          backgroundColor: userType == true ? "#a696cc" : "transparent",
-                        }}
-                        label="I'm a Creater"
-                        onClick={onChangeCreator}
-                      />
-                    </Button>
-                    <Button>
-                      <Tab
-                        style={{
-                          textTransform: "none",
-                          color: "black",
-                          fontSize: "16px",
-                          fontWeight: "700",
-                          borderRadius: "15px",
-                        }}
-                        sx={{
-                          backgroundColor: userType == false ? "#a696cc" : "transparent",
-                        }}
-                        label="I'm a Brand"
-                        onClick={onChangeBrand}
-                      />
-                    </Button>
-                  </Tabs>
-                  {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
-                  <Typography>
-                    {
-                      "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                    }
-                  </Typography>
-                </Grid>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              sx={[
+                styles.LoginBox,
+                {
+                  overflow: "scroll",
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                },
+              ]}
+            >
+              <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                {userType ? (
+                  <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                ) : (
+                  <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+                )}
+                <IconButton onClick={closePopup}>
+                  <CloseIcon style={{ color: "black" }} />
+                </IconButton>
+              </Grid>
+              <Tabs sx={styles.TabSelector}>
+                <Button>
+                  <Tab
+                    style={{
+                      textTransform: "none",
+                      color: "black",
+                      fontSize: "16px",
+                      fontWeight: "700",
+                      borderRadius: "15px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == true ? "#a696cc" : "transparent",
+                    }}
+                    label="I'm a Creater"
+                    onClick={onChangeCreator}
+                  />
+                </Button>
+                <Button>
+                  <Tab
+                    style={{
+                      textTransform: "none",
+                      color: "black",
+                      fontSize: "16px",
+                      fontWeight: "700",
+                      borderRadius: "15px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == false ? "#a696cc" : "transparent",
+                    }}
+                    label="I'm a Brand"
+                    onClick={onChangeBrand}
+                  />
+                </Button>
+              </Tabs>
+              {userType ? <Creatorpopup /> : <Brandspopup />}
+              <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
+              <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                {
+                  "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+                }
+              </Typography>
+            </Grid>
           </Dialog>
         </Grid>
       </Grid>

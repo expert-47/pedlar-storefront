@@ -5,8 +5,8 @@ import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Creatorpopup from "../../popupdialog/creatorpopup";
-import Brandspopup from "../../popupdialog/brandspopup";
+import Creatorpopup from "../../popup-dialog/creatorpopup";
+import Brandspopup from "../../popup-dialog/brandspopup";
 
 const Company = () => {
   const [openDialog, setOpenDialog] = useState(false);

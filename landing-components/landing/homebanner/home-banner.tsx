@@ -1,20 +1,24 @@
+import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, responsiveFontSizes } from "@mui/material";
+import Button from "@mui/material/Button";
 import React, { useState } from "react";
-import { styles } from "./style";
+import Typewriter from "typewriter-effect";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import ResponsiveHeader from "./responsiveheader";
-import { CustomContainer } from "../landinglayout";
-import Creatorpopup from "../popupdialog/creatorpopup";
-import Brandspopup from "../popupdialog/brandspopup";
-import headerlogo from "../../public/header-logo.svg";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material";
+import Image from 'next/image'
+import desktopBanner from '../../../public/home-banner1.png';
+import tabBanner from '../../../public/bannerMd.png';
+import mobileBanner from '../../../public/bannerMob.png';
+// import Typed from "react-typed";
+import { styles } from "./style";
+import Creatorpopup from "../../popup-dialog/creatorpopup";
+import Brandspopup from "../../popup-dialog/brandspopup";
+import { CustomContainer } from "../../landinglayout";
 
-const Header = () => {
-  const theme = useTheme();
-  const router = useRouter();
-  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
+const Banner = () => {
+  const isMatch = useMediaQuery("(max-width:1145px)");
+  const isMedium = useMediaQuery("(max-width:850px)");
+  const isSmall = useMediaQuery("(max-width:767px)");
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
@@ -22,82 +26,68 @@ const Header = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
-
-  const openStorePage = () => {
-    router.push("/landing");
-  };
-  const openCreators = () => {
-    router.push("/landing/creator");
-  };
-  const openBrands = () => {
-    router.push("/landing/brands");
-  };
-
+  const theme = useTheme();
   return (
-    <AppBar elevation={0} sx={styles.header}>
-      <CustomContainer>
-        <Grid
-          container
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          sx={styles.MainGrid}
-          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+    <CustomContainer>
+      <Box
+        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}
+        
+          marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
         >
-          {isMatch ? (
-            <>
-              <ResponsiveHeader />
-            </>
-          ) : (
-            <>
-              <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                <Image
-                  src={headerlogo}
-                  alt="header-logo"
-                  height={85}
-                  width={250}
-                  onClick={openStorePage}
-                  style={{ cursor: "pointer" }}
-                />
-              </Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={5} gap={20} style={{ justifyContent: "center" }}>
-                <Grid onClick={openCreators}>
-                  <Typography textTransform="none" sx={styles.Button}>
-                    For Creators
-                  </Typography>
-                </Grid>
-                <Grid onClick={openBrands}>
-                  <Typography textTransform="none" sx={styles.Button}>
-                    For Brands
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={3.5}
-                gap={5}
-                style={{ textAlign: "right", display: "flex", justifyContent: "flex-end" }}
+          {isSmall ? (
+            <Image
+              src={mobileBanner}
+              alt="Picture of the author"
+              style={{width:'100%'}}
+            />
+          ) : 
+          isMedium ? (
+            <Image
+              src={tabBanner}
+              alt="Picture of the author"
+            />
+          )
+          :
+          (
+            <Image
+              src={desktopBanner}
+              alt="Picture of the author"
+            />
+          )}
+          <Grid sx={styles.bannerText}>
+            <Typography fontSize={{xs:'34px', sm:'42px',md:'40px',lg:'48px',xl:'48px'}} fontWeight={'700'} lineHeight={'unset'} color={'#1C1B1F'}>We put fashion</Typography>
+            <Box style={{ display: "flex" }} sx={styles.animateRow}>
+              <Typewriter
+                options={{
+                  strings: ["Creatore", "Influencers", "Curators"],
+                  autoStart: true,
+                  loop: true,
+                  skipAddStyles: true,
+                  wrapperClassName: "Typewriter__wrapper",
+                }}
+              />
+              <Typography
+                fontWeight={'700'} color={'#1C1B1F'} lineHeight={'unset'}
+                fontSize={{xs:'34px', sm:'42px',md:'40px',lg:'48px',xl:'48px'}}
               >
-                <Grid item xs={12} sm={12} md={12} lg={4}>
-                  <Button sx={styles.Login} onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.LoginTypo}>
-                      Log in
-                    </Typography>
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={5}>
-                  <Button sx={styles.GetAccess} onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.GetAccessTypo}>
-                      Get Access
-                    </Typography>
-                  </Button>
-                </Grid>
-              </Grid>
+                in business
+              </Typography>
+            </Box>
+            <Typography sx={styles.FirstPara}
+             fontSize={{xs:'18px',md:'22px'}}
+            >
+              Simplified creator commerce. Sell directly to your followers through customisable storefronts.
+            </Typography>
+            <Grid>
+              <Button sx={styles.creator} onClick={openPopup}>
+                I’m a creator
+              </Button>
+              <Button sx={styles.brands} onClick={openPopup}>
+                I’m a brand
+              </Button>
               <Dialog open={openDialog} onClose={handleClose}>
                 <Grid
                   container
@@ -169,12 +159,12 @@ const Header = () => {
                   </Typography>
                 </Grid>
               </Dialog>
-            </>
-          )}
+            </Grid>
+          </Grid>
         </Grid>
-      </CustomContainer>
-    </AppBar>
+      </Box>
+    </CustomContainer>
   );
 };
 
-export default Header;
+export default Banner;

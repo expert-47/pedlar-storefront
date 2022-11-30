@@ -1,13 +1,13 @@
 import { Box, Button, Dialog, Grid, IconButton, Tab, Tabs, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { styles } from "./Style";
+import { styles } from "./style";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Creatorpopup from "../../popupdialog/creatorpopup";
-import Brandspopup from "../../popupdialog/brandspopup";
+import Creatorpopup from "../../popup-dialog/creatorpopup";
+import Brandspopup from "../../popup-dialog/brandspopup";
 
 const EarlyAcess = () => {
   const [openDialog, setOpenDialog] = useState(false);

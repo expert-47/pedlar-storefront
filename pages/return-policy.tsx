@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../../StoreComponents/landinglayout";
-import ReturnPolicy from "../../StoreComponents/staticpages/returnpolicy/returnpolicy";
+import Layout from "../landing-components/landinglayout";
+import ReturnPolicy from "../landing-components/static-pages//return-policy/return-policy";
 
 const Returnpolicy = () => {
   return (

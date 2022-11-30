@@ -1,24 +1,25 @@
-import { Box, Grid, Typography, Dialog, Tabs, Tab, IconButton, responsiveFontSizes } from "@mui/material";
-import Button from "@mui/material/Button";
-import React, { useState } from "react";
-import Typewriter from "typewriter-effect";
+import { AppBar, Button, Dialog, Drawer, Grid, IconButton, Slide, Tab, Tabs, Typography } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material";
-import Image from 'next/image'
-import desktopBanner from '../../../public/home-banner1.png';
-import tabBanner from '../../../public/bannerMd.png';
-import mobileBanner from '../../../public/bannerMob.png';
-// import Typed from "react-typed";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { styles } from "./style";
-import Creatorpopup from "../../popupdialog/creatorpopup";
-import Brandspopup from "../../popupdialog/brandspopup";
-import { CustomContainer } from "../../landinglayout";
+import { TransitionProps } from "@mui/material/transitions";
+import Creatorpopup from "../popup-dialog/creatorpopup";
+import Brandspopup from "../popup-dialog/brandspopup";
 
-const Banner = () => {
-  const isMatch = useMediaQuery("(max-width:1145px)");
-  const isMedium = useMediaQuery("(max-width:850px)");
-  const isSmall = useMediaQuery("(max-width:767px)");
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+const ResponsiveHeader = () => {
+  const router = useRouter();
+  const [opendrawer, setOpenDrawar] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
@@ -26,69 +27,88 @@ const Banner = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
-  const theme = useTheme();
+
+  const openStorePage = () => {
+    router.push("/landing");
+  };
+  const openCreators = () => {
+    router.push("/for-creator");
+  };
+  const openBrands = () => {
+    router.push("//for-brands");
+  };
+
+  const onClickDrawer = () => {
+    setOpenDrawar(true);
+  };
+
+  const onCloseDrawer = () => {
+    setOpenDrawar(false);
+  };
+
+  const paperStyle = {
+    width: "auto",
+    boxShadow: "none",
+    backgroundColor: "#f9f6f2",
+  };
   return (
-    <CustomContainer>
-      <Box
-        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+    <AppBar elevation={0} sx={styles.Respheader}>
+      <Image
+        src="/header-logo.svg"
+        alt="header-logo"
+        height={75}
+        width={250}
+        onClick={openStorePage}
+        style={{ cursor: "pointer" }}
+      />
+      <Drawer
+        anchor="right"
+        open={opendrawer}
+        PaperProps={{
+          sx: paperStyle,
+        }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={12} style={{ position: "relative" }}
-        
-          marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
-        >
-          {isSmall ? (
-            <Image
-              src={mobileBanner}
-              alt="Picture of the author"
-              style={{width:'100%'}}
-            />
-          ) : 
-          isMedium ? (
-            <Image
-              src={tabBanner}
-              alt="Picture of the author"
-            />
-          )
-          :
-          (
-            <Image
-              src={desktopBanner}
-              alt="Picture of the author"
-            />
-          )}
-          <Grid sx={styles.bannerText}>
-            <Typography fontSize={{xs:'34px', sm:'42px',md:'40px',lg:'48px',xl:'48px'}} fontWeight={'700'} lineHeight={'unset'} color={'#1C1B1F'}>We put fashion</Typography>
-            <Box style={{ display: "flex" }} sx={styles.animateRow}>
-              <Typewriter
-                options={{
-                  strings: ["Creatore", "Influencers", "Curators"],
-                  autoStart: true,
-                  loop: true,
-                  skipAddStyles: true,
-                  wrapperClassName: "Typewriter__wrapper",
-                }}
-              />
-              <Typography
-                fontWeight={'700'} color={'#1C1B1F'} lineHeight={'unset'}
-                fontSize={{xs:'34px', sm:'42px',md:'40px',lg:'48px',xl:'48px'}}
-              >
-                in business
+        <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "32px" }}>
+          <img
+            src="/header-logo.svg"
+            alt="header-logo"
+            style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
+            onClick={openStorePage}
+          />
+          <IconButton onClick={onCloseDrawer}>
+            <CloseIcon style={{ height: "40px", width: "40px", marginRight: "19px", color: "black" }} />
+          </IconButton>
+        </Grid>
+        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
+          <Grid>
+            <Button sx={styles.ButtonR} onClick={openCreators}>
+              <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                For Creators
               </Typography>
-            </Box>
-            <Typography sx={styles.FirstPara}
-             fontSize={{xs:'18px',md:'22px'}}
-            >
-              Simplified creator commerce. Sell directly to your followers through customisable storefronts.
-            </Typography>
+            </Button>
+          </Grid>
+          <Grid>
+            <Button sx={styles.ButtonR} onClick={openBrands}>
+              <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                For Brands
+              </Typography>
+            </Button>
+          </Grid>
+          <Grid style={{ textAlign: "center" }}>
             <Grid>
-              <Button sx={styles.creator} onClick={openPopup}>
-                I’m a creator
+              <Button sx={styles.GetAccess1} onClick={openPopup}>
+                <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                  Get Access
+                </Typography>
               </Button>
-              <Button sx={styles.brands} onClick={openPopup}>
-                I’m a brand
+            </Grid>
+            <Grid>
+              <Button sx={styles.Login1} onClick={openPopup}>
+                <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                  Log in
+                </Typography>
               </Button>
-              <Dialog open={openDialog} onClose={handleClose}>
+              <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
                 <Grid
                   container
                   item
@@ -97,7 +117,7 @@ const Banner = () => {
                   md={12}
                   lg={12}
                   sx={[
-                    styles.LoginBox,
+                    styles.RespLoginBox,
                     {
                       overflow: "scroll",
                       "&::-webkit-scrollbar": {
@@ -162,9 +182,12 @@ const Banner = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Box>
-    </CustomContainer>
+      </Drawer>
+      <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
+        <MenuIcon />
+      </IconButton>
+    </AppBar>
   );
 };
 
-export default Banner;
+export default ResponsiveHeader;

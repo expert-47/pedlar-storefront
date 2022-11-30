@@ -1,25 +1,20 @@
-import { AppBar, Button, Dialog, Drawer, Grid, IconButton, Slide, Tab, Tabs, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import CloseIcon from "@mui/icons-material/Close";
-import Image from "next/image";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
-import { TransitionProps } from "@mui/material/transitions";
-import Creatorpopup from "../popupdialog/creatorpopup";
-import Brandspopup from "../popupdialog/brandspopup";
+import CloseIcon from "@mui/icons-material/Close";
+import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import ResponsiveHeader from "./responsive-header";
+import { CustomContainer } from "../landinglayout";
+import Creatorpopup from "../popup-dialog/creatorpopup";
+import Brandspopup from "../popup-dialog/brandspopup";
+import headerlogo from "../../public/header-logo.svg";
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
-const ResponsiveHeader = () => {
+const Header = () => {
+  const theme = useTheme();
   const router = useRouter();
-  const [opendrawer, setOpenDrawar] = useState(false);
+  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
@@ -29,86 +24,81 @@ const ResponsiveHeader = () => {
   const onChangeBrand = () => setUserType(false);
 
   const openStorePage = () => {
-    router.push("/landing");
+    router.push("/");
   };
   const openCreators = () => {
-    router.push("/landing/creator");
+    router.push("/for-creator");
   };
   const openBrands = () => {
-    router.push("/landing/brands");
+    router.push("/for-brandss");
   };
 
-  const onClickDrawer = () => {
-    setOpenDrawar(true);
-  };
-
-  const onCloseDrawer = () => {
-    setOpenDrawar(false);
-  };
-
-  const paperStyle = {
-    width: "auto",
-    boxShadow: "none",
-    backgroundColor: "#f9f6f2",
-  };
   return (
-    <AppBar elevation={0} sx={styles.Respheader}>
-      <Image
-        src="/header-logo.svg"
-        alt="header-logo"
-        height={75}
-        width={250}
-        onClick={openStorePage}
-        style={{ cursor: "pointer" }}
-      />
-      <Drawer
-        anchor="right"
-        open={opendrawer}
-        PaperProps={{
-          sx: paperStyle,
-        }}
-      >
-        <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "32px" }}>
-          <img
-            src="/header-logo.svg"
-            alt="header-logo"
-            style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
-            onClick={openStorePage}
-          />
-          <IconButton onClick={onCloseDrawer}>
-            <CloseIcon style={{ height: "40px", width: "40px", marginRight: "19px", color: "black" }} />
-          </IconButton>
-        </Grid>
-        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
-          <Grid>
-            <Button sx={styles.ButtonR} onClick={openCreators}>
-              <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                For Creators
-              </Typography>
-            </Button>
-          </Grid>
-          <Grid>
-            <Button sx={styles.ButtonR} onClick={openBrands}>
-              <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                For Brands
-              </Typography>
-            </Button>
-          </Grid>
-          <Grid style={{ textAlign: "center" }}>
-            <Grid>
-              <Button sx={styles.GetAccess1} onClick={openPopup}>
-                <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                  Get Access
-                </Typography>
-              </Button>
-            </Grid>
-            <Grid>
-              <Button sx={styles.Login1} onClick={openPopup}>
-                <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                  Log in
-                </Typography>
-              </Button>
-              <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+    <AppBar elevation={0} sx={styles.header}>
+      <CustomContainer>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={styles.MainGrid}
+          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        >
+          {isMatch ? (
+            <>
+              <ResponsiveHeader />
+            </>
+          ) : (
+            <>
+              <Grid item xs={12} sm={12} md={12} lg={3.5}>
+                <Image
+                  src={headerlogo}
+                  alt="header-logo"
+                  height={85}
+                  width={250}
+                  onClick={openStorePage}
+                  style={{ cursor: "pointer" }}
+                />
+              </Grid>
+              <Grid container item xs={12} sm={12} md={12} lg={5} gap={20} style={{ justifyContent: "center" }}>
+                <Grid onClick={openCreators}>
+                  <Typography textTransform="none" sx={styles.Button}>
+                    For Creators
+                  </Typography>
+                </Grid>
+                <Grid onClick={openBrands}>
+                  <Typography textTransform="none" sx={styles.Button}>
+                    For Brands
+                  </Typography>
+                </Grid>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={3.5}
+                gap={5}
+                style={{ textAlign: "right", display: "flex", justifyContent: "flex-end" }}
+              >
+                <Grid item xs={12} sm={12} md={12} lg={4}>
+                  <Button sx={styles.Login} onClick={openPopup}>
+                    <Typography textTransform="none" sx={styles.LoginTypo}>
+                      Log in
+                    </Typography>
+                  </Button>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12} lg={5}>
+                  <Button sx={styles.GetAccess} onClick={openPopup}>
+                    <Typography textTransform="none" sx={styles.GetAccessTypo}>
+                      Get Access
+                    </Typography>
+                  </Button>
+                </Grid>
+              </Grid>
+              <Dialog open={openDialog} onClose={handleClose}>
                 <Grid
                   container
                   item
@@ -117,7 +107,7 @@ const ResponsiveHeader = () => {
                   md={12}
                   lg={12}
                   sx={[
-                    styles.RespLoginBox,
+                    styles.LoginBox,
                     {
                       overflow: "scroll",
                       "&::-webkit-scrollbar": {
@@ -179,15 +169,12 @@ const ResponsiveHeader = () => {
                   </Typography>
                 </Grid>
               </Dialog>
-            </Grid>
-          </Grid>
+            </>
+          )}
         </Grid>
-      </Drawer>
-      <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
-        <MenuIcon />
-      </IconButton>
+      </CustomContainer>
     </AppBar>
   );
 };
 
-export default ResponsiveHeader;
+export default Header;

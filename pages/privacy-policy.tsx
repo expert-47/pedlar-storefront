@@ -1,6 +1,6 @@
 import React from "react";
-import Layout from "../../StoreComponents/landinglayout";
-import PrivacyPolicy from "../../StoreComponents/staticpages/privacypolicy/PrivacyPolicy";
+import Layout from "../landing-components/landinglayout";
+import PrivacyPolicy from "../landing-components/static-pages/privacy-policy/privacy-policy";
 
 const privacypolicy = () => {
   return (

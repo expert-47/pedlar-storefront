@@ -10,7 +10,7 @@ import secondGrid from '../../../public/home-sec2-img2.png';
 import thirdGrid from '../../../public/home-sec2-img3.png';
 import glow from '../../../public/glow.svg';
 import { CustomContainer } from "../../landinglayout";
-import { styles } from "./Style";
+import { styles } from "./style";
 
 
 const Gridbox = () => {

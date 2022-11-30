@@ -41,6 +41,7 @@ const Banner = () => {
             <Image
               src={mobileBanner}
               alt="Picture of the author"
+              style={{width:'100%'}}
             />
           ) : 
           isMedium ? (
@@ -57,20 +58,8 @@ const Banner = () => {
             />
           )}
           <Grid sx={styles.bannerText}>
-            <Typography fontSize={{xs:'34px',md:'40px',lg:'48px'}}>We put fashion</Typography>
+            <Typography fontSize={{xs:'34px', sm:'42px',md:'40px',lg:'48px',xl:'48px'}} fontWeight={'700'} lineHeight={'unset'} color={'#1C1B1F'}>We put fashion</Typography>
             <Box style={{ display: "flex" }} sx={styles.animateRow}>
-              {/* <Typed
-                strings={["Creatore", "Influencers", "Curators"]}
-                loop
-                typeSpeed={150}
-                backSpeed={100}
-                style={{
-                  color: "#1C1B1F",
-                  fontFamily: "Inter",
-                  fontWeight: "900",
-                  fontSize: isSmall ? "42px" : isMedium ? "28px" : isMatch ? "39px" : "48px",
-                }}
-              /> */}
               <Typewriter
                 options={{
                   strings: ["Creatore", "Influencers", "Curators"],
@@ -81,17 +70,15 @@ const Banner = () => {
                 }}
               />
               <Typography
-                style={{
-                  color: "#1C1B1F",
-                  fontFamily: "Inter",
-                  fontWeight: "900",
-                  fontSize: isSmall ? "34px" : isMedium ? "34px" : isMatch ? "39px" : "48px",
-                }}
+                fontWeight={'700'} color={'#1C1B1F'} lineHeight={'unset'}
+                fontSize={{xs:'34px', sm:'42px',md:'40px',lg:'48px',xl:'48px'}}
               >
                 in business
               </Typography>
             </Box>
-            <Typography sx={styles.FirstPara}>
+            <Typography sx={styles.FirstPara}
+             fontSize={{xs:'18px',md:'22px'}}
+            >
               Simplified creator commerce. Sell directly to your followers through customisable storefronts.
             </Typography>
             <Grid>

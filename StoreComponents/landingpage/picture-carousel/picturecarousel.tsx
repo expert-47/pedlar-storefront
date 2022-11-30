@@ -1,20 +1,21 @@
 import React from "react";
 import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { styles } from "./style";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// install Virtual module
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
 const Picturecarousel = () => {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   return (
     <Box style={{ paddingTop: "100px" }}>
       <Swiper
-        slidesPerView={5}
+        slidesPerView={isMatch ? 1 : 5}
         centeredSlides={false}
         spaceBetween={30}
         autoplay={{

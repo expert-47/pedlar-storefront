@@ -62,17 +62,17 @@ const Header = () => {
                   style={{ cursor: "pointer" }}
                 />
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={5} gap={1} style={{ textAlign: "center" }}>
-                <Button sx={styles.Button} onClick={openCreators}>
+              <Grid container item xs={12} sm={12} md={12} lg={5} gap={20} style={{ justifyContent: "center" }}>
+                <Grid onClick={openCreators}>
                   <Typography textTransform="none" sx={styles.Button}>
                     For Creators
                   </Typography>
-                </Button>
-                <Button sx={styles.Button} onClick={openBrands}>
+                </Grid>
+                <Grid onClick={openBrands}>
                   <Typography textTransform="none" sx={styles.Button}>
                     For Brands
                   </Typography>
-                </Button>
+                </Grid>
               </Grid>
               <Grid
                 item
@@ -167,8 +167,6 @@ const Header = () => {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }
                   </Typography>
-
-
                 </Grid>
               </Dialog>
             </>

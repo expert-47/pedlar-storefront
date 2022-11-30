@@ -1,11 +1,11 @@
-import { Box, InputAdornment, TextField } from "@mui/material";
+import { Grid, InputAdornment, TextField } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import { styles } from "./styles";
 
 const Creatorpopup = () => {
   return (
-    <Box>
+    <Grid item xs={12} sm={12} md={12} lg={12}>
       <TextField
         label="First Name"
         placeholder="Enter Here"
@@ -73,7 +73,7 @@ const Creatorpopup = () => {
           style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
-    </Box>
+    </Grid>
   );
 };
 

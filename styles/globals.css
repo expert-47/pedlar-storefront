@@ -11,9 +11,11 @@
   font-size: 42px;
   font-weight: 900;
 }
+
+
 .swiper {
   width: 100%;
-  height: 200px;
+  height: 100%;
 }
 
 .swiper-slide {
@@ -41,9 +43,4 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.carousal {
-  background-color: "red";
-  height: "20px";
 }

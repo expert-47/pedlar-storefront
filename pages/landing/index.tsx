@@ -12,24 +12,12 @@ const index = () => {
     <Layout
       sx={{
         backgroundColor: "#f9f6f2",
-        alignItems: "center",
-        backgroundPosition: "top left",
-        backgroundSize: "unset",
-        backgroundRepeat: "repeat",
-        width: "100%",
-        height: "unset",
-        mixBlendMode: "overlay",
-        zIndex: "2",
-        position: "absolute",
       }}
     >
       <Banner />
       <Gridbox />
       <Company />
       <Picturecarousel />
-      {/* <Cardslider /> */}
-      {/* <Slider /> */}
-      {/* <Sliderr /> */}
       <EarlyAcess />
       <Faq />
     </Layout>

@@ -36,9 +36,9 @@ const Company = () => {
           sm={12}
           md={12}
           lg={12}
-          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Typography style={{ fontSize: isTab ? "46px" : "54px" }} sx={styles.heading}>
+          <Typography fontSize={{xs:'48px', sm:'54px'}} fontWeight={'700'} paddingBottom={'40px'} sx={styles.heading}>
             You're in good company
           </Typography>
         </Grid>
@@ -48,9 +48,9 @@ const Company = () => {
           sm={12}
           md={10}
           lg={8}
-          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Typography style={{ fontSize: isTab ? "30px" : "40px" }} sx={styles.Typography}>
+          <Typography fontSize={{xs:'30px', sm:'40px'}} sx={styles.Typography}>
             Join hundreds of creators and influencers selling their favourite Australian brands directly to their
             audience.
           </Typography>
@@ -61,7 +61,7 @@ const Company = () => {
           sm={4}
           md={3}
           lg={2.5}
-          paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Button sx={styles.creator} onClick={openPopup}>
             <Typography textTransform="none" fontSize={"22px"}>

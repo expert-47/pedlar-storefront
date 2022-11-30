@@ -19,7 +19,6 @@ const EarlyAcess = () => {
   const onChangeBrand = () => setUserType(false);
   const theme = useTheme();
   const isMatch = useMediaQuery("(max-width:800px)");
-  const isMob = useMediaQuery("(max-width:767px)");
   
   return (
     <CustomContainer>
@@ -36,10 +35,11 @@ const EarlyAcess = () => {
             md={12}
             lg={12}
             style={{ alignItems: "center" }}
-            paddingX={{ xs: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
+            paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+            paddingY={{ xs: theme.spacing(40), md: theme.spacing(40), lg: theme.spacing(55) }}
           >
             <Grid item xs={12} sm={12} md={4} lg={5}>
-              <Typography style={{ fontSize: isMob ? "48px" : "54px" }}>Get early access</Typography>
+              <Typography fontSize={{md:'54px',xs:'48px'}} fontWeight={'700'} lineHeight={'unset'}>Get early access</Typography>
             </Grid>
             <Grid
               item
@@ -47,7 +47,7 @@ const EarlyAcess = () => {
               sm={12}
               md={2}
               lg={2}
-              style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
+              style={{ display: isMatch ? "none" : "block", textAlign: "center"}}
             >
               <ArrowForwardIcon style={{ height: "77px", width: "50px" }} />
             </Grid>
@@ -58,18 +58,18 @@ const EarlyAcess = () => {
               sm={12}
               md={6}
               lg={5}
-              style={{ textAlign: isMatch ? "left" : "center", marginTop: isMatch ? "20px" : "0px" }}
+              style={{ textAlign: isMatch ? "left" : "right", marginTop: isMatch ? "20px" : "0px"}}
             >
               <Grid item xs={12} sm={4} md={6} lg={6}>
                 <Button sx={styles.creator} onClick={openPopup}>
-                  <Typography textTransform="none" fontSize={"22px"}>
+                  <Typography textTransform="none" fontSize={"22px"} padding={'10px 20px'}>
                     I’m a creator
                   </Typography>
                 </Button>
               </Grid>
-              <Grid item xs={12} sm={4} md={6} lg={6}>
+              <Grid item xs={12} sm={4} md={6} lg={5}>
                 <Button sx={styles.brands} onClick={openPopup}>
-                  <Typography textTransform="none" fontSize={"22px"}>
+                  <Typography textTransform="none" fontSize={"22px"} padding={'10px 20px'}>
                     I’m a brand
                   </Typography>
                 </Button>

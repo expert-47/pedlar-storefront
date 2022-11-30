@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import Marquee from "react-fast-marquee";
 import { useTheme } from "@mui/material";
+import Link from '@mui/material/Link';
 import Image from 'next/image';
 import firstGrid from '../../../public/home-sec2-img1.png';
 import secondGrid from '../../../public/home-sec2-img2.png';
@@ -118,8 +119,8 @@ const Gridbox = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid>
-                <Typography sx={styles.creator}>Creators and Brands, Get Started →</Typography>
+              <Grid style={{paddingLeft:'25px'}}>
+                <Link href="" sx={styles.creator} fontFamily={'Inter'} fontSize={{xs:'18px', lg:'22px'}} fontWeight={'600'}>Creators and Brands, Get Started →</Link>
               </Grid>
             </Grid>
           </Grid> 

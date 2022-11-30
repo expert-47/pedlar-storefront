@@ -19,16 +19,8 @@ export const styles = {
   },
   creator: {
     color: "#8652FF",
-    fontWeight: "600",
-    fontSize: "22px",
-    paddingLeft: "22px",
-    ["@media (max-width:1199px)"]: {
-      fontSize: "17px",
-    },
-    ["@media (max-width:767px)"]: {
-      fontSize: "22px",
-      paddingLeft: '32px',
-    },
+    textDecoration:'none',
+   
   },
   gridimgBox: {
     ["@media (max-width:600px)"]: {
@@ -50,12 +42,10 @@ export const styles = {
   },
   marqueebottom: {
     color: "#ebe8e4",
-    width: "1350px",
     transform: "rotate(-180deg)",
   },
   marqueeleft: {
     color: "#ebe8e4",
-    width: "1350px",
     position: "absolute",
     transformOrigin: "366px 394px",
     transform: "rotate(-90deg)",

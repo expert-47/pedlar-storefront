@@ -23,6 +23,10 @@ export const styles = {
     color: "Black",
     fontSize: "16px",
     fontWeight: "600",
+    cursor: "pointer",
+    "&:active": {
+      display: "inline-block",
+    },
   },
   ButtonR: {
     color: "Black",

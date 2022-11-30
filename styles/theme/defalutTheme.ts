@@ -59,10 +59,6 @@ export const theme = createTheme({
       fontSize: "14px",
       fontWeight: 700,
     },
-    h5: {
-      fontSize: "24px",
-      fontWeight: 600,
-    },
   },
   spacing: 1,
 });

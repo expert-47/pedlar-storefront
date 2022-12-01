@@ -7,6 +7,7 @@ export const styles = {
     width: "100%",
     padding: "40px",
     borderRadius: "20px",
+    backgroundColor: "white",
   },
   heading: {
     lineHeight: "60px",
@@ -27,5 +28,8 @@ export const styles = {
     fontWeight: "600",
     borderRadius: "40px",
     padding: "20px",
+    "&:hover": {
+      backgroundColor: "#1C1B1F",
+    },
   },
 };

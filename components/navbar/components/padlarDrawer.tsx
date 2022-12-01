@@ -14,12 +14,12 @@ import {
   MenuItem,
   Box,
   IconButton,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
 import Link from "next/link";
 
 import React, { useEffect, useState } from "react";
-import useSwr from 'swr';
+import useSwr from "swr";
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -29,13 +29,12 @@ import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
-
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
   const theme = useTheme();
 
-  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
-  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
+  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
+  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -72,7 +71,8 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
       >
         <Typography style={{ fontSize: "14px", fontWeight: "600" }}>
           FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All
-          Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand -
+          Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From The
+          Brand -
         </Typography>
       </Marquee>
       <List sx={styles.drawerList}>
@@ -126,19 +126,32 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {!data
-                      ?
-                      <CircularProgress color="inherit" /> :
-                      data.data.map(item => item.vendor).sort().slice(0, 28).map((item) => (
-                        <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
-                      ))
-                    }
+                    {!data ? (
+                      <CircularProgress color="inherit" />
+                    ) : (
+                      data.data
+                        .map((item) => item.vendor)
+                        .sort()
+                        .slice(0, 28)
+                        .map((item) => (
+                          <Grid
+                            key={item}
+                            item
+                            xs={5.5}
+                            sm={5.5}
+                            style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                          >
+                            {item}
+                          </Grid>
+                        ))
+                    )}
                     <Link href="/">
-                      <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                      <ListItemText
+                        style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
+                      >
                         View all.....
                       </ListItemText>
                     </Link>
-
                   </Grid>
                 </ListItem>
               </List>
@@ -154,19 +167,32 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {!shopList
-                      ?
-                      <CircularProgress color="inherit" /> :
-                      shopList.data.map(item => item.productType).sort().slice(0, 28).map((item) => (
-                        <Grid key={item} item xs={5.5} sm={5.5} style={{ color: "black", fontWeight: "500", fontSize: "14px" }}>{item}</Grid>
-                      ))
-                    }
+                    {!shopList ? (
+                      <CircularProgress color="inherit" />
+                    ) : (
+                      shopList.data
+                        .map((item) => item.productType)
+                        .sort()
+                        .slice(0, 28)
+                        .map((item) => (
+                          <Grid
+                            key={item}
+                            item
+                            xs={5.5}
+                            sm={5.5}
+                            style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                          >
+                            {item}
+                          </Grid>
+                        ))
+                    )}
                     <Link href="/">
-                      <ListItemText style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}>
+                      <ListItemText
+                        style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
+                      >
                         View all.....
                       </ListItemText>
                     </Link>
-
                   </Grid>
                 </ListItem>
               </List>

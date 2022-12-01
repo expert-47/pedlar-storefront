@@ -2,16 +2,16 @@ export const styles = {
   heading: {
     marginTop: "45px",
     color: "#1C1B1F",
-    lineHeight:'unset',
-    zIndex:'2',
-    position:'relative',
+    lineHeight: "unset",
+    zIndex: "2",
+    position: "relative",
   },
   Typography: {
     color: "rgba(28, 27, 31, 0.64)",
     marginBottom: "40px",
-    lineHeight:'unset',
-    zIndex:'2',
-    position:'relative',
+    lineHeight: "unset",
+    zIndex: "2",
+    position: "relative",
   },
   creator: {
     width: "100%",
@@ -19,7 +19,7 @@ export const styles = {
     color: "white",
     padding: "20px",
     borderRadius: "40px",
-    zIndex:'5',
+    zIndex: "5",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
@@ -30,12 +30,12 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
-  TabSelector: {
-    background: " transparent",
+  BoxSelector: {
+    display: "flex",
+    backgroundColor: "transparent",
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    width: "250px",
     padding: "5px",
   },
 };

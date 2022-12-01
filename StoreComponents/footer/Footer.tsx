@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
-import Image from 'next/image'
-import footerLogo from '../../public/footer-logo.svg';
+import Image from "next/image";
+import footerLogo from "../../public/footer-logo.svg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
 import { CustomContainer } from "../landinglayout";
@@ -25,13 +25,17 @@ const Footer = () => {
         >
           <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="#">
-              <Image
-                src={footerLogo}
-                alt="footer logo"
-              />
+              <Image src={footerLogo} alt="footer logo" />
             </Link>
-            <Typography sx={styles.footerText} fontSize={'22px'} fontWeight={'500'} paddingTop={'40px'}>We’re always here to help.</Typography>
-            <Typography sx={styles.footerText} fontSize={'22px'} fontWeight={'500'} style={{ margin: "0 auto 0 0", maxWidth: "435px" }}>
+            <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"500"} paddingTop={"40px"}>
+              We’re always here to help.
+            </Typography>
+            <Typography
+              sx={styles.footerText}
+              fontSize={"22px"}
+              fontWeight={"500"}
+              style={{ margin: "0 auto 0 0", maxWidth: "435px" }}
+            >
               Contact us at hello@pedlar.store and our team will be in touch.
             </Typography>
           </Grid>
@@ -56,9 +60,9 @@ const Footer = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={5}>
-              <Box style={{ display: "flex", alignItems: "center", paddingBottom:'16px' }}>
+              <Box style={{ display: "flex", alignItems: "center", paddingBottom: "16px" }}>
                 <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} />
-                <Link href="#" sx={styles.footersocial}>
+                <Link href="https://www.instagram.com/pedlar.official/" target="blank" sx={styles.footersocial}>
                   Instagram
                 </Link>
               </Box>

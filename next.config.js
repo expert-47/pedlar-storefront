@@ -18,7 +18,7 @@ const nextConfig = {
         $: "jquery",
         jQuery: "jquery",
         "window.jQuery": "jquery",
-      })
+      }),
     );
     return config;
   },

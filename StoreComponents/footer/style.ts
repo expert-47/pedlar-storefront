@@ -24,7 +24,7 @@ export const styles = {
     background: "#1C1B1F",
     borderRadius: " 16px 16px 0px 0px",
     paddingTop: " 80px",
-    paddingBottom:"40px",
+    paddingBottom: "40px",
   },
   footerRow: {
     justifyContent: "space-between",
@@ -33,6 +33,6 @@ export const styles = {
     zIndex:'5',
   },
   footerLogocol: {
-    zIndex:'5',
-  }
+    zIndex: "5",
+  },
 };

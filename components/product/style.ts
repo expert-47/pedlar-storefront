@@ -8,10 +8,10 @@ export const useStyles = makeStyles({
     color: "black",
     textAlign: "center",
   },
-  disp:{
-    [theme.breakpoint.down('500')]:{
-      display:'none',
-    }
-  }
+  disp: {
+    [theme.breakpoint.down("500")]: {
+      display: "none",
+    },
+  },
 }));
 export const style = {};

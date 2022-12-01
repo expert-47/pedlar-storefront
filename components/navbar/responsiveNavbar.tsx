@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import styles from "styles/navbar";
 import React, { useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
 import PedlarDrawer from "./components/padlarDrawer";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";

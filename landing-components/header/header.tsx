@@ -23,7 +23,7 @@ const Header = () => {
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const trigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
+  const trigger = useScrollTrigger({ threshold: 30, disableHysteresis: true,});
 
   const openStorePage = () => {
     router.push("/");
@@ -55,7 +55,7 @@ const Header = () => {
           ) : (
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                {trigger || router.pathname != "/landing" ? (
+                {trigger || router.pathname != "/" ? (
                   <Image
                     src={headerlogo}
                     alt="header-logo"

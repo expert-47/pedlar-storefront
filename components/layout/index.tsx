@@ -14,11 +14,7 @@ export default function Layout(props: LayoutProps) {
         <NextSeo {...seo} />
         <Navbar />
       </header>
-      <main
-       style={{paddingTop: "115px"}}
-      >
-        {children}
-      </main>
+      <main style={{ paddingTop: "115px" }}>{children}</main>
       <footer>
         <Footer />
       </footer>

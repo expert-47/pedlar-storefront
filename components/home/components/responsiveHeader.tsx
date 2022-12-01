@@ -16,8 +16,7 @@ import {
 import Link from "next/link";
 
 import React from "react";
-import useSwr from 'swr';
-
+import useSwr from "swr";
 
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -36,8 +35,7 @@ interface Props {
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
   const { data } = props;
-  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
-
+  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
 
   const paperStyle = {
     color: "black",
@@ -107,12 +105,14 @@ export const ResponsiveHeader = (props: Props) => {
         >
           <Grid gap={20} sx={styles.menuInnerContainer}>
             {data.map((item) => (
-              <Grid style={{display: "flex"}}>
+              <Grid style={{ display: "flex" }}>
                 <Grid>
                   <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />
                 </Grid>
                 <Grid>
-                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>{item}</Typography>
+                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
+                    {item}
+                  </Typography>
                 </Grid>
               </Grid>
             ))}
@@ -154,14 +154,16 @@ export const ResponsiveHeader = (props: Props) => {
           sm={12}
           md={12}
         >
-           <Grid gap={20} sx={styles.menuInnerContainer}>
-            {(shopList ? shopList.data.map(item=> item.productType) : []) .map((item) => (
-              <Grid style={{display: "flex"}}>
+          <Grid gap={20} sx={styles.menuInnerContainer}>
+            {(shopList ? shopList.data.map((item) => item.productType) : []).map((item) => (
+              <Grid style={{ display: "flex" }}>
                 <Grid>
                   <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />
                 </Grid>
                 <Grid>
-                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>{item}</Typography>
+                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
+                    {item}
+                  </Typography>
                 </Grid>
               </Grid>
             ))}

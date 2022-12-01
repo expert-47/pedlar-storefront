@@ -4,12 +4,12 @@ export const styles = {
     borderRadius: "16px",
     padding: "40px 0",
     width: "100%",
-    position:'relative',
-    zIndex:'3',
+    position: "relative",
+    zIndex: "3",
   },
   gridboxText: {
     color: "#1C1B1F",
-    lineHeight:'unset'
+    lineHeight: "unset",
   },
   gridinnerPara: {
     color: "#1C1B1E",
@@ -21,8 +21,7 @@ export const styles = {
   },
   creator: {
     color: "#8652FF",
-    textDecoration:'none',
-   
+    textDecoration: "none",
   },
   gridimgBox: {
     ["@media (max-width:600px)"]: {

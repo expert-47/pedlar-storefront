@@ -4,29 +4,29 @@ export const styles = {
     display: "flex",
     backgroundColor: "white",
     borderRadius: "15px",
-    position:'relative',
+    position: "relative",
   },
   creator: {
     backgroundColor: "#1C1B1F",
     color: "white",
     borderRadius: "40px",
-    zIndex:'5',
+    zIndex: "5",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
     ["@media (max-width:767px)"]: {
       marginBottom: "20px",
-      width:'100%',
+      width: "100%",
     },
   },
   brands: {
     backgroundColor: "white",
     border: "1px solid",
     color: "black",
-    zIndex:'5',
+    zIndex: "5",
     borderRadius: "40px",
     ["@media (max-width:767px)"]: {
-      width:'100%',
+      width: "100%",
     },
   },
   LoginBox: {

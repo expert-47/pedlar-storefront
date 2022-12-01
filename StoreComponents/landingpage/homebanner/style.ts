@@ -7,7 +7,7 @@ export const styles = {
     width: "50%",
     paddingRight: "10px",
     ["@media (max-width:1145px)"]: {
-      bottom: "-39px"
+      bottom: "-39px",
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",
@@ -19,7 +19,7 @@ export const styles = {
     ["@media (max-width:600px)"]: {
       position: "unset",
       width: "100%",
-      paddingTop:'20px',
+      paddingTop: "20px",
     },
   },
   FirstList: {
@@ -51,8 +51,8 @@ export const styles = {
     padding: "15px 0",
     textTransform: " initial",
     marginRight: "28px",
-    zIndex:'5',
-    position:'relative',
+    zIndex: "5",
+    position: "relative",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
@@ -73,8 +73,8 @@ export const styles = {
     fontSize: "22px",
     fontWeight: "600",
     padding: "15px 0",
-    zIndex:'5',
-    position:'relative',
+    zIndex: "5",
+    position: "relative",
     textTransform: " initial",
     ["@media (max-width:600px)"]: {
       width: "100%",

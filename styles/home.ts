@@ -187,7 +187,7 @@ const styles = {
   },
   closeIcon: {
     color: "primary.main",
-    cursor: "pointer"
+    cursor: "pointer",
   },
   gridtag1typo1: {
     fontSize: "22px",
@@ -252,17 +252,16 @@ const styles = {
     height: {
       lg: "176px",
       md: "158px",
-      sm:"158px",
+      sm: "158px",
       xs: "158px",
     },
     width: {
       lg: "176px",
       md: "158px",
-      sm:"158px",
+      sm: "158px",
       xs: "158px",
-      
     },
-  }
+  },
 };
 
 export default styles;

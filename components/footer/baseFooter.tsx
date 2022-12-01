@@ -26,21 +26,11 @@ const BaseFooter = () => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >
         <Grid item xs={12} sm={12} md={7.5} lg={7}>
-          <Typography sx={styles.baseFootTypoheading}>
-            Help & Support
-          </Typography>
-          <Typography sx={styles.baseFootTypotext}>
-            Shipping & Returns
-          </Typography>
-          <Typography sx={styles.baseFootTypotext}>
-            FAQ
-          </Typography>
-          <Typography sx={styles.baseFootTypotext}>
-            Terms & Condition
-          </Typography>
-          <Typography sx={styles.baseFootTypotext}>
-            Privacy Policy
-          </Typography>
+          <Typography sx={styles.baseFootTypoheading}>Help & Support</Typography>
+          <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
+          <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
+          <Typography sx={styles.baseFootTypotext}>Terms & Condition</Typography>
+          <Typography sx={styles.baseFootTypotext}>Privacy Policy</Typography>
         </Grid>
 
         <Grid

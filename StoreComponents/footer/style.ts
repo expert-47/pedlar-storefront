@@ -24,7 +24,7 @@ export const styles = {
     background: "#1C1B1F",
     borderRadius: " 16px 16px 0px 0px",
     paddingTop: " 80px",
-    paddingBottom:"40px",
+    paddingBottom: "40px",
   },
   footerRow: {
     justifyContent: "space-between",
@@ -41,16 +41,16 @@ export const styles = {
   },
   footerMoblink: {
     ["@media (max-width:767px)"]: {
-      paddingBottom:'50px',
+      paddingBottom: "50px",
     },
   },
-  footerMobcol:{
-    zIndex:'5',
+  footerMobcol: {
+    zIndex: "5",
     ["@media (max-width:767px)"]: {
-      flexDirection: 'column-reverse',
+      flexDirection: "column-reverse",
     },
   },
   footerLogocol: {
-    zIndex:'5',
-  }
+    zIndex: "5",
+  },
 };

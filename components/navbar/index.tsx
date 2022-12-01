@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import useSwr from 'swr';
-
+import useSwr from "swr";
 
 import { Stack } from "@mui/system";
 import styles from "styles/navbar";
@@ -17,19 +16,17 @@ import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
-
 export default function Navbar() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-  
+
   const [openDrawer, toggleDrawer] = useState(false);
-  
+
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
-  const {data} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
-  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
-
+  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
+  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
 
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
@@ -37,7 +34,8 @@ export default function Navbar() {
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
             FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
-            All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand -
+            All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From
+            The Brand -
           </Typography>
         </Marquee>
 
@@ -58,9 +56,17 @@ export default function Navbar() {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-                  <DropDownMenu loading={!data} type={"Brands"} data={data? data.data.map(item=> item.vendor) : []} />
+                  <DropDownMenu
+                    loading={!data}
+                    type={"Brands"}
+                    data={data ? data.data.map((item) => item.vendor) : []}
+                  />
 
-                  <DropDownMenu loading={!shopList} type={"Shop"} data={shopList ? shopList.data.map(item=> item.productType):[]} />
+                  <DropDownMenu
+                    loading={!shopList}
+                    type={"Shop"}
+                    data={shopList ? shopList.data.map((item) => item.productType) : []}
+                  />
 
                   <Link href="faq">
                     <Button color="inherit" sx={styles.tabButton}>
@@ -82,5 +88,4 @@ export default function Navbar() {
       </AppBar>
     </Grid>
   );
-};
-
+}

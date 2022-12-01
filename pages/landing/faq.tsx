@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import Layout from "../../StoreComponents/landinglayout";
-import Faq from "../../StoreComponents/staticpages/faqpage/Faq"
+import Faq from "../../StoreComponents/staticpages/faqpage/Faq";
 
 const faq = () => {
   return (
@@ -13,6 +13,6 @@ const faq = () => {
       <Faq />
     </Layout>
   );
-}
+};
 
-export default faq
+export default faq;

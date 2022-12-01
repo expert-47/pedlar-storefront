@@ -4,7 +4,6 @@ import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Creatorpopup from "../../popupdialog/creatorpopup";
 import Brandspopup from "../../popupdialog/brandspopup";
 

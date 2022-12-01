@@ -22,16 +22,6 @@ export const styles = {
       paddingTop:'20px',
     },
   },
-  FirstList: {
-    color: " #1C1B1F",
-    fontSize: "48px",
-    ["@media (max-width:1145px)"]: {
-      fontSize: "42px",
-    },
-    ["@media (max-width:767px)"]: {
-      fontSize: "42px",
-    },
-  },
   FirstPara: {
     opacity: "0.64",
     padding: "10px 0 22px 0px",

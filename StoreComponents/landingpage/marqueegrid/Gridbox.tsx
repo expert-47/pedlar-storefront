@@ -59,7 +59,7 @@ const Gridbox = () => {
               />
             </Grid>
             <Grid item xs={12} sm={3.5} md={2.5} lg={2.2}>
-              <Grid sx={styles.gridimgBox}>
+              <Grid display={{xs:'flex',sm:'unset'}}>
                 <Grid>
                   <Image
                     src={secondGrid}

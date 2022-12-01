@@ -10,33 +10,33 @@ import Box from '@mui/material/Box';
 import Image from 'next/image'
 import orangeMeshes from '../../public/orange-meshes.png'
 import pinkMeshes from '../../public/left-pink-meshes.png'
-import grainTexture from '../../public/Grain-Texture.png';
+// import grainTexture from '../../public/Grain-Texture.png';
 import orangepinkmesh from '../../public/mesh-pink-orange.png';
 
-const styles = {
-  paperContainer: {
-    backgroundColor: "#f9f6f2",
-    "&::before": {
-      backgroundImage:`url(${grainTexture.src})`,
-      backgroundPosition:' 0 0',
-        backgroundRepeat: 'repeat',
-        backgroundSize:' initial',
-        content :`""`,
-        height:' 100%',
-        mixBlendMode: 'overlay',
-        opacity: '.6',
-        position: 'absolute',
-        width: '100%',
-        zIndex: '4',
-    }
+// const styles = {
+//   paperContainer: {
+//     backgroundColor: "#f9f6f2",
+//     "&::before": {
+//       backgroundImage:`url(${grainTexture.src})`,
+//       backgroundPosition:' 0 0',
+//         backgroundRepeat: 'repeat',
+//         backgroundSize:' initial',
+//         content :`""`,
+//         height:' 100%',
+//         mixBlendMode: 'overlay',
+//         opacity: '.6',
+//         position: 'absolute',
+//         width: '100%',
+//         zIndex: '4',
+//     }
      
-  }
-};
+//   }
+// };
 const index = () => {
   return (
     <Layout
-      style={{position:'relative'}}
-      sx = {styles.paperContainer}
+      style={{position:'relative',backgroundColor: "#f9f6f2",}}
+      // sx = {styles.paperContainer}
     >
       <Box style={{position:'relative'}}>
         <Box  style={{position: 'absolute',

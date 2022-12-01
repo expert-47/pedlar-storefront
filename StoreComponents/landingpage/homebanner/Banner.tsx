@@ -16,7 +16,6 @@ import Brandspopup from "../../popupdialog/brandspopup";
 import { CustomContainer } from "../../landinglayout";
 
 const Banner = () => {
-  const isMatch = useMediaQuery("(max-width:1145px)");
   const isMedium = useMediaQuery("(max-width:850px)");
   const isSmall = useMediaQuery("(max-width:767px)");
   const [openDialog, setOpenDialog] = useState(false);

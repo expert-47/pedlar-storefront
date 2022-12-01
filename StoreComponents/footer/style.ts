@@ -28,27 +28,9 @@ export const styles = {
   },
   footerRow: {
     justifyContent: "space-between",
-    ["@media (max-width:767px)"]: {
-      flexDirection: "column-reverse",
-    },
-  },
-  footersocialRow: {
-    display: "flex",
-    alignItems: "flex-start",
-    ["@media (max-width:800px)"]: {
-      flexDirection: "column-reverse",
-    },
-  },
-  footerMoblink: {
-    ["@media (max-width:767px)"]: {
-      paddingBottom:'50px',
-    },
   },
   footerMobcol:{
     zIndex:'5',
-    ["@media (max-width:767px)"]: {
-      flexDirection: 'column-reverse',
-    },
   },
   footerLogocol: {
     zIndex:'5',

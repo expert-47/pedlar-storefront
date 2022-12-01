@@ -45,8 +45,12 @@ export const styles = {
     },
   },
   footerMobcol:{
+    zIndex:'5',
     ["@media (max-width:767px)"]: {
       flexDirection: 'column-reverse',
     },
+  },
+  footerLogocol: {
+    zIndex:'5',
   }
 };

@@ -16,7 +16,6 @@ const Company = () => {
   const onChangeBrand = () => setUserType(false);
   const handleClose = () => setOpenDialog(false);
   const closePopup = () => setOpenDialog(false);
-  const isTab = useMediaQuery("(max-width:800px)");
   const theme = useTheme();
   return (
     <CustomContainer>

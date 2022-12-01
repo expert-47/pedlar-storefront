@@ -22,7 +22,7 @@ const Footer = () => {
           sx={styles.footerRow}
           paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Grid item xs={12} sm={5} md={5} lg={5}>
+          <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="#">
               <Image
                 src={footerLogo}

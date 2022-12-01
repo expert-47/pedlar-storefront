@@ -25,5 +25,7 @@ export const styles = {
     borderTop: "1px solid rgb(28, 27, 31)",
     borderRadius: "unset",
     padding: "10px",
+    zIndex:'5',
+   
   },
 };

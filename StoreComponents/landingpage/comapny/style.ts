@@ -3,11 +3,15 @@ export const styles = {
     marginTop: "45px",
     color: "#1C1B1F",
     lineHeight:'unset',
+    zIndex:'2',
+    position:'relative',
   },
   Typography: {
     color: "rgba(28, 27, 31, 0.64)",
     marginBottom: "40px",
     lineHeight:'unset',
+    zIndex:'2',
+    position:'relative',
   },
   creator: {
     width: "100%",
@@ -15,6 +19,7 @@ export const styles = {
     color: "white",
     padding: "20px",
     borderRadius: "40px",
+    zIndex:'5',
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },

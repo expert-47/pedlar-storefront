@@ -5,7 +5,7 @@ export const styles = {
     padding: "40px 0",
     width: "100%",
     position:'relative',
-    zIndex:'99',
+    zIndex:'3',
   },
   gridboxText: {
     color: "#1C1B1F",

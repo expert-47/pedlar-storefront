@@ -9,14 +9,35 @@ import Picturecarousel from "../../StoreComponents/landingpage/picture-carousel/
 import Box from '@mui/material/Box';
 import Image from 'next/image'
 import orangeMeshes from '../../public/orange-meshes.png'
-// import pinkMeshes from '../../public/left-pink-meshes.png'
+import pinkMeshes from '../../public/left-pink-meshes.png'
+import grainTexture from '../../public/Grain-Texture.png';
+import orangepinkmesh from '../../public/mesh-pink-orange.png';
+// import { styles } from '../../StoreComponents/style';
 
+const styles = {
+  paperContainer: {
+    backgroundColor: "#f9f6f2",
+    "&::before": {
+      backgroundImage:`url(${grainTexture.src})`,
+      backgroundPosition:' 0 0',
+        backgroundRepeat: 'repeat',
+        backgroundSize:' initial',
+        content :`""`,
+        height:' 100%',
+        mixBlendMode: 'overlay',
+        opacity: '.6',
+        position: 'absolute',
+        width: '100%',
+        zIndex: '4',
+    }
+     
+  }
+};
 const index = () => {
   return (
     <Layout
-      sx={{
-        backgroundColor: "#f9f6f2",
-      }}
+      style={{position:'relative'}}
+      sx = {styles.paperContainer}
     >
       <Box style={{position:'relative'}}>
         <Box  style={{position: 'absolute',
@@ -30,16 +51,28 @@ const index = () => {
             alt="Orange meshes"
           />
         </Box>
-        {/* <Box  style={{position: 'absolute',
+        <Box  style={{position: 'absolute',
               left: '0',
-              top: '1187px',
               width: 'auto',
-              zIndex: '0'}}>
+              zIndex: '0'}}
+              top={{xs:'117px',lg:'117px'}}
+              >
           <Image
             src={pinkMeshes}
             alt="pink meshes"
           />
-        </Box> */}
+        </Box>
+        <Box  style={{position: 'absolute',
+              right: '0',
+              width: 'auto',
+              zIndex: '0'}}
+              top={{xs:'933px',md:'627px', lg:'545px'}}
+              >
+          <Image
+            src={orangepinkmesh}
+            alt="orange pink meshes"
+          />
+        </Box>
       </Box>
       <Banner />
       <Gridbox />

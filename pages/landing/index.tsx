@@ -12,7 +12,6 @@ import orangeMeshes from '../../public/orange-meshes.png'
 import pinkMeshes from '../../public/left-pink-meshes.png'
 import grainTexture from '../../public/Grain-Texture.png';
 import orangepinkmesh from '../../public/mesh-pink-orange.png';
-// import { styles } from '../../StoreComponents/style';
 
 const styles = {
   paperContainer: {
@@ -55,7 +54,7 @@ const index = () => {
               left: '0',
               width: 'auto',
               zIndex: '0'}}
-              top={{xs:'117px',lg:'117px'}}
+              top={{xs:'687px', md:'500px' ,lg:'117px'}}
               >
           <Image
             src={pinkMeshes}

@@ -3,7 +3,7 @@ export const styles = {
     color: " #1C1B1F",
     fontFamily: "Inter",
     lineHeight: "unset",
-    paddingBottom:'40px',
+    paddingBottom: "40px",
   },
   acordianText: {
     opacity: "0.64",
@@ -25,5 +25,6 @@ export const styles = {
     borderTop: "1px solid rgb(28, 27, 31)",
     borderRadius: "unset",
     padding: "10px",
+    zIndex: "5",
   },
 };

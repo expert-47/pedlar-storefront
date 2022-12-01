@@ -64,11 +64,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           sx={styles.cartDrawerSlider}
         >
           {data.map((item) => (
-            <CheckoutOrder 
-              image={item.image}
-              name={item.name}
-              price={item.price}
-            />
+            <CheckoutOrder image={item.image} name={item.name} price={item.price} />
           ))}
         </Grid>
       </Grid>
@@ -83,7 +79,11 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         justifyContent={"flex-end"}
         alignItems={"flex-end"}
       >
-        <Grid container item style={{ display: "flex", padding: "5px", justifyContent: "space-between", alignItems: "center" }}>
+        <Grid
+          container
+          item
+          style={{ display: "flex", padding: "5px", justifyContent: "space-between", alignItems: "center" }}
+        >
           <Grid style={{ display: "flex", justifyContent: "space-between" }}>
             <Typography sx={styles.totalText}>Total</Typography>
             <Typography fontSize="12px" sx={styles.taxStyle}>
@@ -93,7 +93,8 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
         <Link href="/checkout">
-        <Button sx={styles.checkoutButton}>Checkout</Button></Link>
+          <Button sx={styles.checkoutButton}>Checkout</Button>
+        </Link>
       </Grid>
     </Drawer>
   );

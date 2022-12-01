@@ -1,9 +1,12 @@
 export const styles = {
   header: {
+    height: "15%",
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
+    paddingBottom: "10px",
     backgroundColor: "#f9f6f2",
+    alignItems: "center",
   },
   Respheader: {
     display: "flex",
@@ -114,12 +117,12 @@ export const styles = {
     borderRadius: "5px",
     marginBottom: "24px",
   },
-  TabSelector: {
-    background: " transparent",
+  BoxSelector: {
+    display: "flex",
+    backgroundColor: "transparent",
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    width: "250px",
     padding: "5px",
   },
 };

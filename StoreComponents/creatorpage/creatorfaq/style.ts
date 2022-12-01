@@ -6,8 +6,8 @@ export const styles = {
     fontWeight: "700",
     lineHeight: " 1.2",
     ["@media (max-width:1199px)"]: {
-      paddingBottom:' 42px',
-      fontSize: '48px',
+      paddingBottom: " 42px",
+      fontSize: "48px",
     },
   },
   acordianText: {
@@ -31,7 +31,7 @@ export const styles = {
     borderRadius: "unset",
     padding: "10px",
     ["@media (max-width:767px)"]: {
-      padding : '4px 10px',
+      padding: "4px 10px",
     },
   },
 };

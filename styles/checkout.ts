@@ -5,7 +5,7 @@ const styles = {
   headerText2: {
     fontWeight: "400",
     fontSize: "22px",
-    paddingLeft: "5px"
+    paddingLeft: "5px",
   },
   inputStyle: {
     width: "100%",
@@ -166,7 +166,7 @@ const styles = {
     "&::-webkit-scrollbar": {
       display: "none",
     },
-  }
+  },
 };
 
 export default styles;

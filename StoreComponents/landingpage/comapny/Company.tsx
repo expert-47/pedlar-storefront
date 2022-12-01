@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Dialog, IconButton, Tabs, Tab } from "@mui/material";
+import { Grid, Typography, Button, Dialog, IconButton, Box } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Creatorpopup from "../../popupdialog/creatorpopup";
 import Brandspopup from "../../popupdialog/brandspopup";
 
@@ -16,7 +15,6 @@ const Company = () => {
   const onChangeBrand = () => setUserType(false);
   const handleClose = () => setOpenDialog(false);
   const closePopup = () => setOpenDialog(false);
-  const isTab = useMediaQuery("(max-width:800px)");
   const theme = useTheme();
   return (
     <CustomContainer>
@@ -38,7 +36,12 @@ const Company = () => {
           lg={12}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Typography fontSize={{xs:'48px', sm:'54px'}} fontWeight={'700'} paddingBottom={'40px'} sx={styles.heading}>
+          <Typography
+            fontSize={{ xs: "48px", sm: "54px" }}
+            fontWeight={"700"}
+            paddingBottom={"40px"}
+            sx={styles.heading}
+          >
             You're in good company
           </Typography>
         </Grid>
@@ -50,7 +53,7 @@ const Company = () => {
           lg={8}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Typography fontSize={{xs:'30px', sm:'40px'}} sx={styles.Typography}>
+          <Typography fontSize={{ xs: "30px", sm: "40px" }} sx={styles.Typography}>
             Join hundreds of creators and influencers selling their favourite Australian brands directly to their
             audience.
           </Typography>
@@ -96,42 +99,44 @@ const Company = () => {
                   <CloseIcon style={{ color: "black" }} />
                 </IconButton>
               </Grid>
-              <Tabs sx={styles.TabSelector}>
-                <Button>
-                  <Tab
-                    style={{
-                      textTransform: "none",
-                      color: "black",
-                      fontSize: "16px",
-                      fontWeight: "700",
-                      borderRadius: "15px",
-                    }}
-                    sx={{
-                      backgroundColor: userType == true ? "#a696cc" : "transparent",
-                    }}
-                    label="I'm a Creater"
-                    onClick={onChangeCreator}
-                  />
+              <Box sx={styles.BoxSelector}>
+                <Button
+                  style={{
+                    textTransform: "none",
+                    color: "#49454F",
+                    fontSize: "16px",
+                    fontWeight: "700",
+                    borderRadius: "10px",
+                  }}
+                  sx={{
+                    backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                  }}
+                  onClick={onChangeCreator}
+                >
+                  I'm a Creater
                 </Button>
-                <Button>
-                  <Tab
-                    style={{
-                      textTransform: "none",
-                      color: "black",
-                      fontSize: "16px",
-                      fontWeight: "700",
-                      borderRadius: "15px",
-                    }}
-                    sx={{
-                      backgroundColor: userType == false ? "#a696cc" : "transparent",
-                    }}
-                    label="I'm a Brand"
-                    onClick={onChangeBrand}
-                  />
+                <Button
+                  style={{
+                    textTransform: "none",
+                    color: "#49454F",
+                    fontSize: "16px",
+                    fontWeight: "700",
+                    borderRadius: "10px",
+                  }}
+                  sx={{
+                    backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                  }}
+                  onClick={onChangeBrand}
+                >
+                  I'm a Brand
                 </Button>
-              </Tabs>
+              </Box>
               {userType ? <Creatorpopup /> : <Brandspopup />}
-              <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
+              <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
+                <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                  Get in touch
+                </Typography>
+              </Button>
               <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                 {
                   "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

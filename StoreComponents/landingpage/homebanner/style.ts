@@ -7,7 +7,7 @@ export const styles = {
     width: "50%",
     paddingRight: "10px",
     ["@media (max-width:1145px)"]: {
-      bottom: "-39px"
+      bottom: "-39px",
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",
@@ -19,17 +19,7 @@ export const styles = {
     ["@media (max-width:600px)"]: {
       position: "unset",
       width: "100%",
-      paddingTop:'20px',
-    },
-  },
-  FirstList: {
-    color: " #1C1B1F",
-    fontSize: "48px",
-    ["@media (max-width:1145px)"]: {
-      fontSize: "42px",
-    },
-    ["@media (max-width:767px)"]: {
-      fontSize: "42px",
+      paddingTop: "20px",
     },
   },
   FirstPara: {
@@ -51,6 +41,8 @@ export const styles = {
     padding: "15px 0",
     textTransform: " initial",
     marginRight: "28px",
+    zIndex: "5",
+    position: "relative",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
@@ -71,6 +63,8 @@ export const styles = {
     fontSize: "22px",
     fontWeight: "600",
     padding: "15px 0",
+    zIndex: "5",
+    position: "relative",
     textTransform: " initial",
     ["@media (max-width:600px)"]: {
       width: "100%",
@@ -94,12 +88,12 @@ export const styles = {
     borderRadius: "5px",
     marginBottom: "24px",
   },
-  TabSelector: {
-    background: " transparent",
+  BoxSelector: {
+    display: "flex",
+    backgroundColor: "transparent",
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    width: "300px",
     padding: "5px",
   },
   animateRow: {

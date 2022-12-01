@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
-import Image from 'next/image'
-import footerLogo from '../../public/footer-logo.svg';
+import Image from "next/image";
+import footerLogo from "../../public/footer-logo.svg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
 import { CustomContainer } from "../landinglayout";
@@ -20,23 +20,28 @@ const Footer = () => {
           md={12}
           lg={12}
           sx={styles.footerRow}
+          flexDirection={{xs:'column-reverse',sm:'unset'}}
           paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Grid item xs={12} sm={5} md={5} lg={5}>
+          <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="#">
-              <Image
-                src={footerLogo}
-                alt="footer logo"
-              />
+              <Image src={footerLogo} alt="footer logo" />
             </Link>
-            <Typography sx={styles.footerText} fontSize={'22px'} fontWeight={'500'} paddingTop={'40px'}>We’re always here to help.</Typography>
-            <Typography sx={styles.footerText} fontSize={'22px'} fontWeight={'500'} style={{ margin: "0 auto 0 0", maxWidth: "435px" }}>
+            <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"500"} paddingTop={"40px"}>
+              We’re always here to help.
+            </Typography>
+            <Typography
+              sx={styles.footerText}
+              fontSize={"22px"}
+              fontWeight={"500"}
+              style={{ margin: "0 auto 0 0", maxWidth: "435px" }}
+            >
               Contact us at hello@pedlar.store and our team will be in touch.
             </Typography>
           </Grid>
-          <Grid container item xs={12} sm={6} md={6} lg={6} sx={styles.footerMobcol}>
-            <Grid item xs={12} sm={12} md={12} lg={7} sx={styles.footersocialRow}>
-              <Box sx={styles.footerMoblink}>
+          <Grid container item xs={12} sm={6} md={6} lg={6} sx={styles.footerMobcol} flexDirection={{xs:'column-reverse',sm:'unset'}}>
+            <Grid item xs={12} sm={12} md={12} lg={7}>
+              <Box marginBottom={{xs:'50px',sm:'0px'}}>
                 <Link href="#" sx={styles.footerLink}>
                   FAQs
                 </Link>
@@ -55,9 +60,9 @@ const Footer = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={5}>
-              <Box style={{ display: "flex", alignItems: "center", paddingBottom:'16px' }}>
+              <Box style={{ display: "flex", alignItems: "center", paddingBottom: "16px" }}>
                 <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} />
-                <Link href="#" sx={styles.footersocial}>
+                <Link href="https://www.instagram.com/pedlar.official/" target="blank" sx={styles.footersocial}>
                   Instagram
                 </Link>
               </Box>

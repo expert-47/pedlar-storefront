@@ -35,7 +35,9 @@ const Faq = () => {
           paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={12} md={5} lg={4}>
-            <Typography sx={styles.faqText} fontWeight={'700'} fontSize={{xs:'48px',lg:'54px'}}>Frequently Asked Questions</Typography>
+            <Typography sx={styles.faqText} fontWeight={"700"} fontSize={{ xs: "48px", lg: "54px" }}>
+              Frequently Asked Questions
+            </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Accordion

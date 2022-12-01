@@ -1,5 +1,5 @@
 import React from "react";
-import Faq from "../../StoreComponents/brandpage/faq/Faq";
+import Faq from "../../StoreComponents/brandpage/brandfaq/Faq";
 import Banner from "../../StoreComponents/brandpage/mainbanner/Banner";
 import Layout from "../../StoreComponents/landinglayout";
 import Pointofpurchase from "../../StoreComponents/brandpage/pointofpurchase/Pointofpurchase";

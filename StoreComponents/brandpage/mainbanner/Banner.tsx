@@ -30,7 +30,6 @@ const Banner = () => {
           lg={5.4}
           sx={styles.GridBox}
           style={{ justifyContent: "flex-end" }}
-          //justifyContent={{ md: "left" }}
         >
           <Typography textTransform={"none"} fontSize={"64px"} sx={styles.heading}>
             Give your audience what they want
@@ -40,7 +39,7 @@ const Banner = () => {
           </Typography>
           <Button sx={styles.Button}>
             <Typography textTransform={"none"} fontSize={"22px"}>
-              Get access - <span style={{ fontStyle: "italic", fontWeight: "400" }}>for free</span>
+              Schedule a call
             </Typography>
           </Button>
         </Grid>

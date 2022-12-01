@@ -27,5 +27,8 @@ export const styles = {
     fontWeight: "600",
     borderRadius: "40px",
     padding: "20px",
+    "&:hover": {
+      backgroundColor: "#1C1B1F",
+    },
   },
 };

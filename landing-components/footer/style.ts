@@ -24,29 +24,15 @@ export const styles = {
     background: "#1C1B1F",
     borderRadius: " 16px 16px 0px 0px",
     paddingTop: " 80px",
-    paddingBottom:"40px",
+    paddingBottom: "40px",
   },
   footerRow: {
     justifyContent: "space-between",
-    ["@media (max-width:767px)"]: {
-      flexDirection: "column-reverse",
-    },
-  },
-  footersocialRow: {
-    display: "flex",
-    alignItems: "flex-start",
-    ["@media (max-width:800px)"]: {
-      flexDirection: "column-reverse",
-    },
-  },
-  footerMoblink: {
-    ["@media (max-width:767px)"]: {
-      paddingBottom:'50px',
-    },
   },
   footerMobcol:{
-    ["@media (max-width:767px)"]: {
-      flexDirection: 'column-reverse',
-    },
-  }
+    zIndex:'5',
+  },
+  footerLogocol: {
+    zIndex: "5",
+  },
 };

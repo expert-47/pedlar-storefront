@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import useSwr from 'swr';
+import useSwr from "swr";
 
 import { useMediaQuery, useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
@@ -10,8 +10,8 @@ import { ResponsiveHeader } from "./responsiveHeader";
 const ProductHeader = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-  const {data} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/")
-  const {data: shopList} = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/")
+  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
+  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -38,13 +38,13 @@ const ProductHeader = () => {
 
         {!isMatch ? (
           <>
-            <ResponsiveHeader data={data? data.data.map(item=> item.vendor) : []} />
+            <ResponsiveHeader data={data ? data.data.map((item) => item.vendor) : []} />
           </>
         ) : (
-          <Grid gap={3} columns={{ xs: 12, md: 12 }}
-            item style={{ display: "flex" }}
-          >                <DropdownButton type={"Brands"} data={data? data.data.map(item=> item.vendor) : []}/>
-            <DropdownButton type={"Category"} data={shopList ? shopList.data.map(item=> item.productType):[]} />
+          <Grid gap={3} columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
+            {" "}
+            <DropdownButton type={"Brands"} data={data ? data.data.map((item) => item.vendor) : []} />
+            <DropdownButton type={"Category"} data={shopList ? shopList.data.map((item) => item.productType) : []} />
           </Grid>
         )}
       </Grid>

@@ -1,4 +1,3 @@
-
 const styles = {
   mainContainer: {
     display: "flex",
@@ -23,10 +22,10 @@ const styles = {
     "&.Mui-focused": {
       borderRadius: "50px",
       borderColor: "success.main",
-      '& .MuiOutlinedInput-notchedOutline': {
+      "& .MuiOutlinedInput-notchedOutline": {
         borderRadius: "50px",
         borderColor: "success.main",
-          }
+      },
     },
     textAlign: "left",
     fontSize: "14px",
@@ -75,8 +74,6 @@ const styles = {
   sign: {
     marginTop: "20px",
     color: "rgba(0, 0, 0, 0.54)",
-
- 
   },
   bottomContainer: {
     paddingTop: "40px",
@@ -91,9 +88,9 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     backgroundSize: "contain",
-    height:" 400px",
+    height: " 400px",
     backgroundPosition: "center center",
-    backgroundRepeat: "no-repeat"
+    backgroundRepeat: "no-repeat",
   },
   eachSlideEffectSpan: {
     padding: "20px",

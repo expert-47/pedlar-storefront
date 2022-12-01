@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Button, Grid, IconButton, Dialog, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,18 +10,20 @@ import { CustomContainer } from "../landinglayout";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 const Header = () => {
   const theme = useTheme();
   const router = useRouter();
-  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
   const handleClose = () => setOpenDialog(false);
+  const onChangeBrand = () => setUserType(false);
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
+  const trigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
 
   const openStorePage = () => {
     router.push("/");
@@ -30,7 +32,7 @@ const Header = () => {
     router.push("/for-creator");
   };
   const openBrands = () => {
-    router.push("/for-brandss");
+    router.push("/for-brands");
   };
 
   return (
@@ -53,16 +55,22 @@ const Header = () => {
           ) : (
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                <Image
-                  src={headerlogo}
-                  alt="header-logo"
-                  height={85}
-                  width={250}
-                  onClick={openStorePage}
-                  style={{ cursor: "pointer" }}
-                />
+                {trigger || router.pathname != "/landing" ? (
+                  <Image
+                    src={headerlogo}
+                    alt="header-logo"
+                    height={75}
+                    width={230}
+                    onClick={openStorePage}
+                    style={{ cursor: "pointer" }}
+                  />
+                ) : (
+                  <Box style={{ cursor: "pointer", marginTop: "70px", width: "85%" }}>
+                    <Image src={headerlogo} alt="header-logo" onClick={openStorePage} />
+                  </Box>
+                )}
               </Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={5} gap={20} style={{ justifyContent: "center" }}>
+              <Grid container item xs={12} sm={12} md={12} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid onClick={openCreators}>
                   <Typography textTransform="none" sx={styles.Button}>
                     For Creators
@@ -126,42 +134,44 @@ const Header = () => {
                       <CloseIcon style={{ color: "black" }} />
                     </IconButton>
                   </Grid>
-                  <Tabs sx={styles.TabSelector}>
-                    <Button>
-                      <Tab
-                        style={{
-                          textTransform: "none",
-                          color: "black",
-                          fontSize: "16px",
-                          fontWeight: "700",
-                          borderRadius: "15px",
-                        }}
-                        sx={{
-                          backgroundColor: userType == true ? "#a696cc" : "transparent",
-                        }}
-                        label="I'm a Creater"
-                        onClick={onChangeCreator}
-                      />
+                  <Box sx={styles.BoxSelector}>
+                    <Button
+                      style={{
+                        textTransform: "none",
+                        color: "#49454F",
+                        fontSize: "16px",
+                        fontWeight: "700",
+                        borderRadius: "10px",
+                      }}
+                      sx={{
+                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                      }}
+                      onClick={onChangeCreator}
+                    >
+                      I'm a Creater
                     </Button>
-                    <Button>
-                      <Tab
-                        style={{
-                          textTransform: "none",
-                          color: "black",
-                          fontSize: "16px",
-                          fontWeight: "700",
-                          borderRadius: "15px",
-                        }}
-                        sx={{
-                          backgroundColor: userType == false ? "#a696cc" : "transparent",
-                        }}
-                        label="I'm a Brand"
-                        onClick={onChangeBrand}
-                      />
+                    <Button
+                      style={{
+                        textTransform: "none",
+                        color: "#49454F",
+                        fontSize: "16px",
+                        fontWeight: "700",
+                        borderRadius: "10px",
+                      }}
+                      sx={{
+                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                      }}
+                      onClick={onChangeBrand}
+                    >
+                      I'm a Brand
                     </Button>
-                  </Tabs>
+                  </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
+                  <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
+                    <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                      Get in touch
+                    </Typography>
+                  </Button>
                   <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

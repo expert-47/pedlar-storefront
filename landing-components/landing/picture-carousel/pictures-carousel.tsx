@@ -23,7 +23,6 @@ const Picturecarousel = () => {
           disableOnInteraction: false,
         }}
         loop={true}
-        virtual
         modules={[Autoplay, Pagination, Navigation]}
         style={{ backgroundColor: "transparent" }}
       >

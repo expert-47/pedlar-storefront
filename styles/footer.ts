@@ -16,7 +16,7 @@ export const useStyles = makeStyles({
   footerImage: {
     height: "24px",
     width: "35px",
-   padding: "2px",
+    padding: "2px",
     lineHeight: "16px",
   },
   footerText: {

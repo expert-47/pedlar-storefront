@@ -4,33 +4,30 @@
 }
 .Typewriter {
   padding: 1px;
-  color: #1C1B1F;
+  color: #1c1b1f;
   font-family: "Inter";
   font-weight: 700;
 }
-@media screen and (min-width:1200px){
+@media screen and (min-width: 1200px) {
   .Typewriter {
-    font-size:48px !important;
+    font-size: 48px !important;
   }
 }
-@media screen and (max-width:1199px){
+@media screen and (max-width: 1199px) {
   .Typewriter {
-    font-size:40px;
+    font-size: 40px;
   }
 }
-@media screen and (max-width:899px){
+@media screen and (max-width: 899px) {
   .Typewriter {
-    font-size:42px;
+    font-size: 42px;
   }
 }
-@media screen and (max-width:599px){
+@media screen and (max-width: 599px) {
   .Typewriter {
-    font-size:34px;
+    font-size: 34px;
   }
 }
-
-
-
 
 .swiper {
   width: 100%;

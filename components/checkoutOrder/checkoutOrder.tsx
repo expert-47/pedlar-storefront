@@ -21,13 +21,14 @@ const CheckoutOrder = (props: Props) => {
         flexDirection: "column",
       }}
     >
-      <Box style={{ display: "flex", width: "100%", justifyContent: "center" , alignItems: "center", flexDirection: "row" }}>
+      <Box
+        style={{ display: "flex", width: "100%", justifyContent: "center", alignItems: "center", flexDirection: "row" }}
+      >
         <Box
           style={{
             width: "130px",
             height: "130px",
             cursor: "pointer",
-            
           }}
         >
           <img src={props.image} />

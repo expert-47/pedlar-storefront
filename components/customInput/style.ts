@@ -9,7 +9,7 @@ export const useStyles = makeStyles({
     padding: "20px",
     borderRadius: "70px",
     border: "1px solid #000000",
-    fontSize: "14px"
+    fontSize: "14px",
   },
 }));
 export const style = {};

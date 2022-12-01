@@ -14,7 +14,7 @@ const gallery1 = [
     name: "Low Classic",
     type: "Green Polyester Blazer",
     price: "$365",
-    crossPrice: "$420"
+    crossPrice: "$420",
   },
   {
     label: "Veja",

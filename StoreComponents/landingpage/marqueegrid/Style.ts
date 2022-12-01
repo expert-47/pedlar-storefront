@@ -21,16 +21,7 @@ export const styles = {
   },
   creator: {
     color: "#8652FF",
-<<<<<<< HEAD
     textDecoration:'none',
-=======
-    textDecoration: "none",
-  },
-  gridimgBox: {
-    ["@media (max-width:600px)"]: {
-      display: "flex",
-    },
->>>>>>> 6d288f63b94601b544980b2f0e14e6e480c05984
   },
   marqueetop: {
     color: "#ebe8e4",

@@ -15,7 +15,7 @@ const Picturecarousel = () => {
   return (
     <Box style={{ paddingTop: "100px" }}>
       <Swiper
-        slidesPerView={isMatch ? 1.2 : 4.2}
+        slidesPerView={isMatch ? 1 : 5}
         centeredSlides={false}
         spaceBetween={30}
         autoplay={{
@@ -23,7 +23,6 @@ const Picturecarousel = () => {
           disableOnInteraction: false,
         }}
         loop={true}
-        virtual
         modules={[Autoplay, Pagination, Navigation]}
         style={{ backgroundColor: "transparent" }}
       >

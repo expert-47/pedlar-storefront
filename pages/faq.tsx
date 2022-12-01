@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../landing-components/landinglayout";
-import Faq from "../landing-components/static-pages/faq/Faq";
+import Faq from "../landing-components/static-pages/faq/faq";
 
 
 const faq = () => {

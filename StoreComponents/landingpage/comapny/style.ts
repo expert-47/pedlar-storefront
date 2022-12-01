@@ -30,12 +30,12 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
-  TabSelector: {
-    background: " transparent",
+  BoxSelector: {
+    display: "flex",
+    backgroundColor: "transparent",
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    width: "250px",
     padding: "5px",
   },
 };

@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, Grid, IconButton, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Button, Dialog, Grid, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./Style";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -105,42 +105,42 @@ const EarlyAcess = () => {
                         <CloseIcon style={{ color: "black" }} />
                       </IconButton>
                     </Grid>
-                    <Tabs sx={styles.TabSelector}>
-                      <Button>
-                        <Tab
-                          style={{
-                            textTransform: "none",
-                            color: "black",
-                            fontSize: "16px",
-                            fontWeight: "700",
-                            borderRadius: "15px",
-                          }}
-                          sx={{
-                            backgroundColor: userType == true ? "#a696cc" : "transparent",
-                          }}
-                          label="I'm a Creater"
-                          onClick={onChangeCreator}
-                        />
+                    <Box sx={styles.BoxSelector}>
+                      <Button
+                        style={{
+                          textTransform: "none",
+                          color: "#49454F",
+                          fontSize: "16px",
+                          fontWeight: "700",
+                          borderRadius: "10px",
+                        }}
+                        sx={{
+                          backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        }}
+                        onClick={onChangeCreator}
+                      >
+                        I'm a Creater
                       </Button>
-                      <Button>
-                        <Tab
-                          style={{
-                            textTransform: "none",
-                            color: "black",
-                            fontSize: "16px",
-                            fontWeight: "700",
-                            borderRadius: "15px",
-                          }}
-                          sx={{
-                            backgroundColor: userType == false ? "#a696cc" : "transparent",
-                          }}
-                          label="I'm a Brand"
-                          onClick={onChangeBrand}
-                        />
+                      <Button
+                        style={{
+                          textTransform: "none",
+                          color: "#49454F",
+                          fontSize: "16px",
+                          fontWeight: "700",
+                          borderRadius: "10px",
+                        }}
+                        sx={{
+                          backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        }}
+                        onClick={onChangeBrand}
+                      >
+                        I'm a Brand
                       </Button>
-                    </Tabs>
+                    </Box>
                     {userType ? <Creatorpopup /> : <Brandspopup />}
-                    <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>Get in Touch</Button>
+                    <Button style={{ backgroundColor: "black", borderRadius: "20px" }}>
+                      <Typography textTransform={"none"}>Get in Touch</Typography>{" "}
+                    </Button>
                     <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                       {
                         "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

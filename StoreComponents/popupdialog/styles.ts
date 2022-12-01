@@ -2,7 +2,7 @@ export const styles = {
   TextFeild: {
     width: "100%",
     color: "#49454F",
-    borderColor: "#49454F",
+    border: "black",
     borderRadius: "5px",
     marginBottom: "24px",
   },

@@ -21,7 +21,7 @@ export const styles = {
   },
   creator: {
     color: "#8652FF",
-    textDecoration:'none',
+    textDecoration: "none",
   },
   marqueetop: {
     color: "#ebe8e4",

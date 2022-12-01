@@ -11,8 +11,7 @@ const Businesstoday = () => {
         <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "center" }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
             <Typography textTransform={"none"} fontSize={"54px"} sx={styles.heading}>
-              Start building your store,
-              <span style={{ fontStyle: "italic" }}>for free</span>
+              Grow your business today
             </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -114,10 +113,10 @@ const Businesstoday = () => {
             </Typography>
           </Button>
           <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "#49454F", lineHeight: "24px" }}>
-            <Typography textTransform={"none"} fontSize={"16px"}>
+            <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
               We will communicate with you about the information requested and other Pedlar services.
             </Typography>
-            <Typography textTransform={"none"} fontSize={"16px"}>
+            <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
               The use of your information is goverened by Pedlar’s Privacy Policy
             </Typography>
           </Grid>

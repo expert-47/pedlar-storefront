@@ -57,7 +57,7 @@ const ResponsiveHeader = () => {
         src="/header-logo.svg"
         alt="header-logo"
         height={75}
-        width={250}
+        width={230}
         onClick={openStorePage}
         style={{ cursor: "pointer" }}
       />

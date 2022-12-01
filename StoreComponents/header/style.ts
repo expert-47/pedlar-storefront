@@ -1,9 +1,12 @@
 export const styles = {
   header: {
+    height: "15%",
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
+    paddingBottom: "10px",
     backgroundColor: "#f9f6f2",
+    alignItems: "center",
   },
   Respheader: {
     display: "flex",

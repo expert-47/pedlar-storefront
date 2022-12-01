@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Button, Grid, IconButton, Tab, Dialog, Tabs, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -10,18 +10,20 @@ import { CustomContainer } from "../landinglayout";
 import Creatorpopup from "../popupdialog/creatorpopup";
 import Brandspopup from "../popupdialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 const Header = () => {
   const theme = useTheme();
   const router = useRouter();
-  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
   const handleClose = () => setOpenDialog(false);
+  const onChangeBrand = () => setUserType(false);
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
+  const trigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
 
   const openStorePage = () => {
     router.push("/landing");
@@ -53,16 +55,22 @@ const Header = () => {
           ) : (
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                <Image
-                  src={headerlogo}
-                  alt="header-logo"
-                  height={85}
-                  width={250}
-                  onClick={openStorePage}
-                  style={{ cursor: "pointer" }}
-                />
+                {trigger || router.pathname != "/landing" ? (
+                  <Image
+                    src={headerlogo}
+                    alt="header-logo"
+                    height={75}
+                    width={230}
+                    onClick={openStorePage}
+                    style={{ cursor: "pointer" }}
+                  />
+                ) : (
+                  <Box style={{ cursor: "pointer", marginTop: "70px", width: "85%" }}>
+                    <Image src={headerlogo} alt="header-logo" onClick={openStorePage} />
+                  </Box>
+                )}
               </Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={5} gap={20} style={{ justifyContent: "center" }}>
+              <Grid container item xs={12} sm={12} md={12} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid onClick={openCreators}>
                   <Typography textTransform="none" sx={styles.Button}>
                     For Creators

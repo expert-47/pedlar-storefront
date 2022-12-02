@@ -66,7 +66,7 @@ const Company = () => {
           lg={2.5}
           paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Button sx={styles.creator} onClick={openPopup}>
+          <Button sx={styles.CreatorButton} onClick={openPopup}>
             <Typography textTransform="none" fontSize={"22px"}>
               I’m a creator
             </Typography>

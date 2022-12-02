@@ -1,6 +1,7 @@
 import { Box, Button, Dialog, Grid, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./style";
+// import ArrowRIghtBlack from "../../../public/arrow-right-black.svg"
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
@@ -8,6 +9,7 @@ import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
+// import Image from "next/image";
 
 const EarlyAcess = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -51,6 +53,7 @@ const EarlyAcess = () => {
               lg={2}
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
+              {/* <Image src={ArrowRIghtBlack} alt="Arrow-RIght-Black" style={{ height: "77px", width: "50px" }} /> */}
               <ArrowForwardIcon style={{ height: "77px", width: "50px" }} />
             </Grid>
             <Grid
@@ -62,16 +65,16 @@ const EarlyAcess = () => {
               lg={5}
               style={{ textAlign: isMatch ? "left" : "right", marginTop: isMatch ? "20px" : "0px" }}
             >
-              <Grid item xs={12} sm={4} md={6} lg={6}>
-                <Button sx={styles.creator} onClick={openPopup}>
-                  <Typography textTransform="none" fontSize={"22px"} padding={"10px 20px"}>
+              <Grid item xs={12} sm={4} md={6} lg={7}>
+                <Button sx={styles.CreatorButton} onClick={openPopup}>
+                  <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"}>
                     I’m a creator
                   </Typography>
                 </Button>
               </Grid>
-              <Grid item xs={12} sm={4} md={6} lg={5}>
-                <Button sx={styles.brands} onClick={openPopup}>
-                  <Typography textTransform="none" fontSize={"22px"} padding={"10px 20px"}>
+              <Grid item xs={12} sm={4} md={6} lg={4}>
+                <Button sx={styles.BrandsButton} onClick={openPopup}>
+                  <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"}>
                     I’m a brand
                   </Typography>
                 </Button>

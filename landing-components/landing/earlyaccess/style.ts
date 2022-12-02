@@ -6,11 +6,13 @@ export const styles = {
     borderRadius: "15px",
     position: "relative",
   },
-  creator: {
+  CreatorButton: {
+    padding: "20px 16px",
+    margin: "initial",
     backgroundColor: "#1C1B1F",
-    color: "white",
-    borderRadius: "40px",
-    zIndex: "5",
+    color: "rgb(249, 246, 242)",
+    borderRadius: "666px",
+    zIndex: "4",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
@@ -19,12 +21,15 @@ export const styles = {
       width: "100%",
     },
   },
-  brands: {
-    backgroundColor: "white",
+  BrandsButton: {
+    backgroundColor: "transparent",
     border: "1px solid",
-    color: "black",
-    zIndex: "5",
-    borderRadius: "40px",
+    padding: "20px 16px",
+    margin: "initial",
+    width: "auto",
+    color: "rgb(28, 27, 31)",
+    zIndex: "4",
+    borderRadius: "666px",
     ["@media (max-width:767px)"]: {
       width: "100%",
     },

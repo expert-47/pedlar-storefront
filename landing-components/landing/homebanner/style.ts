@@ -41,7 +41,7 @@ export const styles = {
     padding: "15px 0",
     textTransform: " initial",
     marginRight: "28px",
-    zIndex: "5",
+    zIndex: "4",
     position: "relative",
     "&:hover": {
       backgroundColor: "#1C1B1F",

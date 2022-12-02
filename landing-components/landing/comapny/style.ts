@@ -13,13 +13,14 @@ export const styles = {
     zIndex: "2",
     position: "relative",
   },
-  creator: {
-    width: "100%",
+  CreatorButton: {
+    width: "auto",
     backgroundColor: "#1C1B1F",
-    color: "white",
-    padding: "20px",
+    color: "rgb(249, 246, 242)",
+    padding: "20px 20px",
+    margin: "initial",
     borderRadius: "40px",
-    zIndex: "5",
+    zIndex: "4",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },

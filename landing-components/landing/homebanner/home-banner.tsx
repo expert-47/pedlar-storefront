@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, Dialog, IconButton, responsiveFontSizes } from "@mui/material";
+import { Box, Grid, Typography, Dialog, IconButton } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
@@ -9,7 +9,6 @@ import Image from "next/image";
 import desktopBanner from "../../../public/home-banner1.png";
 import tabBanner from "../../../public/bannerMd.png";
 import mobileBanner from "../../../public/bannerMob.png";
-// import Typed from "react-typed";
 import { styles } from "./style";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";

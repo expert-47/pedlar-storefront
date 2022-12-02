@@ -1,6 +1,6 @@
 export const styles = {
   header: {
-    height: "17%",
+    height: "18%",
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
@@ -91,9 +91,8 @@ export const styles = {
   },
   LoginBox: {
     backgroundColor: "#f9f6f2",
-    width: "500px",
-    borderRadius: "10px",
-    p: 25,
+    width: "529px",
+    padding: "24px",
   },
   RespLoginBox: {
     borderRadius: "10px",

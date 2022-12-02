@@ -20,7 +20,7 @@ const Footer = () => {
           md={12}
           lg={12}
           sx={styles.footerRow}
-          flexDirection={{xs:'column-reverse',sm:'unset'}}
+          flexDirection={{ xs: "column-reverse", sm: "unset" }}
           paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
@@ -39,22 +39,31 @@ const Footer = () => {
               Contact us at hello@pedlar.store and our team will be in touch.
             </Typography>
           </Grid>
-          <Grid container item xs={12} sm={6} md={6} lg={6} sx={styles.footerMobcol} flexDirection={{xs:'column-reverse',sm:'unset'}}>
+          <Grid
+            container
+            item
+            xs={12}
+            sm={6}
+            md={6}
+            lg={6}
+            sx={styles.footerMobcol}
+            flexDirection={{ xs: "column-reverse", sm: "unset" }}
+          >
             <Grid item xs={12} sm={12} md={12} lg={7}>
-              <Box marginBottom={{xs:'50px',sm:'0px'}}>
-                <Link href="#" sx={styles.footerLink}>
+              <Box marginBottom={{ xs: "50px", sm: "0px" }}>
+                <Link href="#" target={"blank"} sx={styles.footerLink}>
                   FAQs
                 </Link>
-                <Link href="return-policy" sx={styles.footerLink}>
+                <Link href="return-policy" target={"blank"} sx={styles.footerLink}>
                   Shipping & Returns
                 </Link>
-                <Link href="/creator-terms" sx={styles.footerLink}>
+                <Link href="/creator-terms" target={"blank"} sx={styles.footerLink}>
                   Creator Terms & Conditions
                 </Link>
-                <Link href="/brand-terms" sx={styles.footerLink}>
+                <Link href="/brand-terms" target={"blank"} sx={styles.footerLink}>
                   Brands Terms & Conditions
                 </Link>
-                <Link href="/privacy-policy" sx={styles.footerLink}>
+                <Link href="/privacy-policy" target={"blank"} sx={styles.footerLink}>
                   Privacy Policy
                 </Link>
               </Box>

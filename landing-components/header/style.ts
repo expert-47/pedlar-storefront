@@ -7,7 +7,7 @@ export const styles = {
     paddingBottom: "10px",
     backgroundColor: "#f9f6f2",
     alignItems: "center",
-    zIndex: "99999",
+    //zIndex: "99999",
   },
   Respheader: {
     display: "flex",

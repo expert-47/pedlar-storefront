@@ -25,7 +25,7 @@ export const styles = {
     borderRadius: " 16px 16px 0px 0px",
     paddingTop: " 80px",
     paddingBottom: "40px",
-    zIndex:'9999',
+    //zIndex:'9999',
     position:'relative',
   },
   footerRow: {

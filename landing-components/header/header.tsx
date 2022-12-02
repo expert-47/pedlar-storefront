@@ -90,20 +90,16 @@ const Header = () => {
                 lg={3.5}
                 style={{ textAlign: "right", display: "flex", justifyContent: "flex-end" }}
               >
-                <Grid item xs={12} sm={12} md={12} lg={4}>
-                  <Button onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.LoginButton}>
-                      Log in
-                    </Typography>
-                  </Button>
-                </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={4.8}>
-                  <Button onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.GetAccessTypo}>
-                      Get Access
-                    </Typography>
-                  </Button>
-                </Grid>
+                <Button onClick={openPopup}>
+                  <Typography textTransform="none" sx={styles.LoginButton}>
+                    Log in
+                  </Typography>
+                </Button>
+                <Button onClick={openPopup}>
+                  <Typography textTransform="none" sx={styles.GetAccessTypo}>
+                    Get Access
+                  </Typography>
+                </Button>
               </Grid>
               <Dialog open={openDialog} onClose={handleClose}>
                 <Grid
@@ -144,6 +140,9 @@ const Header = () => {
                       }}
                       sx={{
                         backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        "&:hover": {
+                          backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        },
                       }}
                       onClick={onChangeCreator}
                     >
@@ -159,6 +158,9 @@ const Header = () => {
                       }}
                       sx={{
                         backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        "&:hover": {
+                          backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        },
                       }}
                       onClick={onChangeBrand}
                     >

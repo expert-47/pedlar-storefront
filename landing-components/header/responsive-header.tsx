@@ -147,6 +147,9 @@ const ResponsiveHeader = () => {
                       }}
                       sx={{
                         backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        "&:hover": {
+                          backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        },
                       }}
                       onClick={onChangeCreator}
                     >
@@ -162,6 +165,9 @@ const ResponsiveHeader = () => {
                       }}
                       sx={{
                         backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        "&:hover": {
+                          backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        },
                       }}
                       onClick={onChangeBrand}
                     >

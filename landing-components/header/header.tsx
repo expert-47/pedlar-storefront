@@ -23,7 +23,7 @@ const Header = () => {
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const trigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
+  const Scrolltrigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
 
   const openStorePage = () => {
     router.push("/");
@@ -55,18 +55,18 @@ const Header = () => {
           ) : (
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                {trigger || router.pathname != "/" ? (
+                {Scrolltrigger || router.pathname != "/" ? (
                   <Image
                     src={headerlogo}
-                    alt="header-logo"
+                    alt="pedlar-logo"
                     height={75}
                     width={230}
                     onClick={openStorePage}
                     style={{ cursor: "pointer" }}
                   />
                 ) : (
-                  <Box style={{ cursor: "pointer", marginTop: "65px", width: "80%" }}>
-                    <Image src={headerlogo} alt="header-logo" onClick={openStorePage} />
+                  <Box style={{ cursor: "pointer", marginTop: "65px", width: "85%" }}>
+                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
                   </Box>
                 )}
               </Grid>

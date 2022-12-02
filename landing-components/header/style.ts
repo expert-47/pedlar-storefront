@@ -1,6 +1,6 @@
 export const styles = {
   header: {
-    height: "18%",
+    height: "100px",
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
@@ -18,6 +18,11 @@ export const styles = {
     justifyContent: "space-between",
   },
   MainGrid: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  RespoMainGrid: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",

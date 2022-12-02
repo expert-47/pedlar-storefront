@@ -142,36 +142,37 @@ const ResponsiveHeader = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        fontWeight: "700",
                         borderRadius: "10px",
                       }}
                       sx={{
                         backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        fontWeight: userType == true ? "700" : "400",
                         "&:hover": {
                           backgroundColor: userType == true ? "#d0bcff" : "transparent",
                         },
                       }}
                       onClick={onChangeCreator}
                     >
-                      I'm a Creater
+                      I'm a creater
                     </Button>
                     <Button
                       style={{
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        fontWeight: "700",
                         borderRadius: "10px",
                       }}
                       sx={{
                         backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        fontWeight: userType == false ? "700" : "400",
+
                         "&:hover": {
                           backgroundColor: userType == false ? "#d0bcff" : "transparent",
                         },
                       }}
                       onClick={onChangeBrand}
                     >
-                      I'm a Brand
+                      I'm a brand
                     </Button>
                   </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}

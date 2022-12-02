@@ -2,14 +2,17 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
-
+import { useTheme } from "@mui/material";
 const Pointofpurchase = () => {
+  const theme = useTheme();
   return (
     <CustomContainer>
       <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.MainGrid}>
-        <Grid item xs={12} sm={12} md={12} lg={9}>
-          <Typography textTransform={"none"} fontSize={"54px"} sx={styles.heading}>
-            Create moments of inspiration closer to the point of purchase
+        <Grid item xs={12} sm={12} md={12} lg={12}>
+          <Typography textTransform={"none"} fontSize={{xs:'48px',md:'54px'}} sx={styles.heading}
+          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(50), lg: theme.spacing(60) }}
+          >
+             Create moments of inspiration closer to the point of purchase
           </Typography>
         </Grid>
         <Grid
@@ -19,66 +22,66 @@ const Pointofpurchase = () => {
           sm={12}
           md={12}
           lg={12}
-          gap={15}
+          gap={5}
           style={{ justifyContent: "space-evenly", padding: "20px" }}
         >
-          <Grid item xs={12} sm={5.5} md={5} lg={2.8} sx={styles.GridBox}>
+          <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <img src="/sales-brand1.svg" alt="hassle1" />
+              <img src="/hassle-icon1.png" alt="hassle1" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
-                Increase Sales and Brand Exposure
+                20% Commission
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-                Let our creators promote and sell your products for you.
+                A cut above the rest. Earn more for selling products you love.
               </Typography>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={5.5} md={5} lg={2.8} sx={styles.GridBox}>
+          <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "20px" }}>
-              <img src="/set-forgot.svg" alt="hassle2" />
+              <img src="/hassle-icon2.png" alt="hassle2" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
-                Set and forget
+                Curate and customise
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-                All stock easily integrated in under two minutes. Fulfil orders as normal.
+                Make it your business. Create a storefront and showcase your personal aesthetic and style.
               </Typography>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={5.5} md={5} lg={2.8} sx={styles.GridBox}>
+          <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <img src="/free-join.svg" alt="hassle3" />
+              <img src="/hassle-icon3.png" alt="hassle3" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
-                Free to join, only pay commission on sales
+                Simple and free
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-                Free, forever. Only pay commission on sales creators make.
+                Setup your store in two minutes and start selling instantly. Never pay to use Pedlar.
               </Typography>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm={5.5} md={5} lg={2.8} sx={styles.GridBox}>
+          <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <img src="/people-trust-people.svg" alt="hassle4" />
+              <img src="/hassle-icon4.png" alt="hassle4" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
-                People trust people
+                No hassle
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
               <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-                Deepen existing creator relationships or find new, lucrative partnerships.
+                Pedlar handles all the customer support, shipping and inventory.
               </Typography>
             </Grid>
           </Grid>

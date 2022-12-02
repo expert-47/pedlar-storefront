@@ -8,7 +8,6 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { CustomContainer } from "../../landinglayout";
 import { useTheme } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Faq = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
@@ -16,13 +15,12 @@ const Faq = () => {
     setExpanded(isExpanded ? panel : false);
   };
   const theme = useTheme();
-  const isMatch = useMediaQuery("(max-width:767px)");
   return (
     <CustomContainer>
       <Box
-        style={{ margin: isMatch ? "34px 0px" : "80px 0px" }}
         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        style={{zIndex:'999', position:'relative'}}
       >
         <Grid
           container
@@ -31,8 +29,8 @@ const Faq = () => {
           sm={12}
           md={12}
           lg={12}
-          style={{ justifyContent: "space-between", margin: "10px" }}
-          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+          style={{ justifyContent: "space-between",marginTop:"100px"}}
+          paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={12} md={5} lg={4}>
             <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>

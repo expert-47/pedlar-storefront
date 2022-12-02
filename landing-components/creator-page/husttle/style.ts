@@ -1,17 +1,15 @@
 export const styles = {
-  MainGrid: {
-    paddingTop: "97px",
-  },
-  GridBox: {
+ GridBox: {
     backgroundColor: "White",
     borderRadius: "15px",
     padding: "30px",
+    marginBottom:'16px',
   },
   heading: {
-    paddingLeft: "60px",
     fontWeight: "700",
     color: "#1C1B1F",
-    marginBottom: "20px",
+    lineHeight:'unset',
+    marginBottom:'40px',
   },
   title: {
     color: "#1C1B1F",

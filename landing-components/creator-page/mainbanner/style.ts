@@ -29,7 +29,7 @@ export const styles = {
     }
   },
   heading: {
-    lineHeight: "unset",
+    lineHeight: "1",
     color: "#1c1b1f",
     fontWeight: "bold",
     fontFamily: "Inter",
@@ -50,6 +50,9 @@ export const styles = {
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
+    ["@media (max-width:700px)"] : {
+      padding: "15px",
+    }
   },
   brandImg:{
     position: 'absolute',

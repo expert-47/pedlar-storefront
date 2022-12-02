@@ -51,10 +51,10 @@ const Footer = () => {
           >
             <Grid item xs={12} sm={12} md={12} lg={7}>
               <Box marginBottom={{ xs: "50px", sm: "0px" }}>
-                <Link href="#" target={"blank"} sx={styles.footerLink}>
+                <Link href="/return-policy" target={"blank"} sx={styles.footerLink}>
                   FAQs
                 </Link>
-                <Link href="return-policy" target={"blank"} sx={styles.footerLink}>
+                <Link href="/return-policy" target={"blank"} sx={styles.footerLink}>
                   Shipping & Returns
                 </Link>
                 <Link href="/creator-terms" target={"blank"} sx={styles.footerLink}>

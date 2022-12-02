@@ -4,8 +4,10 @@ import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
 import CreatorBanner from "../../../public/creator-benner.png";
+import { useTheme } from "@mui/material";
 
 const Banner = () => {
+  const theme = useTheme();
   return (
     <CustomContainer>
       <Grid
@@ -17,13 +19,12 @@ const Banner = () => {
         lg={12}
         gap={50}
         sx={styles.MainBox}
-        style={{ alignItems: "center" }}
+        style={{ position:"relative" }}
         justifyContent={{ sm: "left" }}
+        paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={6}>
-          <Image src={CreatorBanner} alt={"Creator banner"} />
-        </Grid>
-        <Grid item xs={12} sm={10.3} md={7.7} lg={5} sx={styles.GridBox} style={{ justifyContent: "flex-end" }}>
+       
+        <Grid sx={styles.GridBox} style={{ justifyContent: "flex-end" }}>
           <Typography textTransform={"none"} fontSize={"64px"} sx={styles.heading}>
             Give your audience what they want
           </Typography>
@@ -35,6 +36,9 @@ const Banner = () => {
               Get access - <span style={{ fontStyle: "italic", fontWeight: "400" }}>for free</span>
             </Typography>
           </Button>
+        </Grid>
+        <Grid sx={styles.brandImg}>
+          <Image src={CreatorBanner} alt={"Creator banner"} />
         </Grid>
       </Grid>
     </CustomContainer>

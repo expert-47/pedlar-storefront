@@ -1,13 +1,30 @@
 export const styles = {
   MainBox: {
-    paddingTop: "100px",
+    paddingTop: "163px",
     display: "flex",
+    alignItems:'center',
+    ["@media (max-width:1250px)"] : {
+      paddingTop: "112px",
+    },
+    ["@media (max-width:1160px)"] : {
+      alignItems:'flex-start',
+  }
   },
   GridBox: {
     width: "100%",
     padding: "40px",
     borderRadius: "20px",
     backgroundColor: "white",
+    margin: '0 0 0 auto',
+    maxWidth: '602px',
+    zIndex:' 99',
+    ["@media (max-width:1250px)"] : {
+      maxWidth: '455px',
+    },
+    ["@media (max-width:1160px)"] : {
+        margin: '300px 0 0 auto',
+        maxWidth: '602px',
+    }
   },
   heading: {
     lineHeight: "60px",
@@ -32,4 +49,10 @@ export const styles = {
       backgroundColor: "#1C1B1F",
     },
   },
+  brandImg:{
+    position: 'absolute',
+    left:'0px',
+    objectFit: 'cover',
+    width: '656px',
+  }
 };

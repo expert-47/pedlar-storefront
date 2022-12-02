@@ -26,7 +26,7 @@ const Company = () => {
           md={12}
           lg={12}
           style={{ margin: "30px" }}
-          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(15) }}
         >
           <Typography style={{ fontSize: isTab ? "46px" : "54px" }} sx={styles.heading}>
             You're in good company
@@ -39,7 +39,7 @@ const Company = () => {
           md={10}
           lg={8}
           style={{ margin: "30px" }}
-          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(15) }}
         >
           <Typography style={{ fontSize: isTab ? "30px" : "40px" }} sx={styles.Typography}>
             Join hundreds of creators and influencers selling their favourite Australian brands directly to their

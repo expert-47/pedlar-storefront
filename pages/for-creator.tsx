@@ -15,7 +15,8 @@ import Picturecarousel from "../landing-components/landing/picture-carousel/pict
 const creator = () => {
   return (
     <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }}>
-      <Box style={{ position: "relative" }}>position:'relative',<Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
+      <Box style={{ position: "relative" }}>
+        <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
           <Image src={bluemeshbrands} alt="Orange meshes" />
         </Box>
         <Box

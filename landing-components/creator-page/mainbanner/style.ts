@@ -1,6 +1,6 @@
 export const styles = {
   MainBox: {
-    paddingTop: "135px",
+    paddingTop: "160px",
     display: "flex",
     alignItems:'center',
     ["@media (max-width:1250px)"] : {

@@ -17,7 +17,6 @@ const index = () => {
   return (
     <Layout
       style={{position:'relative',backgroundColor: "#f9f6f2",}}
-      // sx = {styles.paperContainer}
     >
       <Box style={{position:'relative'}}>
         <Box  style={{position: 'absolute',

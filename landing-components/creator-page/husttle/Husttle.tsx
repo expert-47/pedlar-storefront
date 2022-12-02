@@ -8,10 +8,10 @@ const Husttle = () => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid container item xs={12} sm={12} md={12} lg={12} paddingTop={{xs:'85px',sm:'120px'}}>
+      <Grid container item xs={12} sm={12} md={12} lg={12} paddingTop={{xs:'85px',sm:'120px'}} style={{zIndex:'999',position:'relative'}}>
         <Grid item xs={12} sm={12} md={12} lg={12}>
           <Typography textTransform={"none"} fontSize={{xs:'48px',md:'54px'}} sx={styles.heading}
-           paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(60) }}
+          paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(50), lg: theme.spacing(60) }}
           >
             A side-hustle without the hassle
           </Typography>

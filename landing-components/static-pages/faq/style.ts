@@ -1,12 +1,11 @@
 export const styles = {
-    MainBox: {
-      padding: "40px",
-      paddingTop: "150px",
-      paddingBottom: "75px",
-      width: "75%",
-    },
-    spacing: {
-      paddingBottom: "20px",
-    },
-  };
-  
+  MainBox: {
+    padding: "30px",
+    paddingTop: "150px",
+    paddingBottom: "75px",
+    width: "75%",
+  },
+  spacing: {
+    paddingBottom: "20px",
+  },
+};

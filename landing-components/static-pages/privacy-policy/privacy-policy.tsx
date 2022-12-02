@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
           textTransform={"none"}
           fontSize={{ xs: "48px", sm: "64px", md: "64px", lg: "64px" }}
           fontWeight={"700"}
-          style={{ lineHeight: "normal" }}
+          style={{ lineHeight: "normal", paddingBottom: "60px" }}
         >
           Privacy Policy
         </Typography>
@@ -27,7 +27,7 @@ const PrivacyPolicy = () => {
           consent to the collection, use and disclosure of your information in connection with providing you our
           services.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           What we collect and how we collect it
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -58,7 +58,7 @@ const PrivacyPolicy = () => {
           promotion, competition, or survey; • join a mailing list; • post a review, rating or comment on our website or
           social media page.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Platform integration
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
           Privacy Policy. Those third-party services will have their own policies around the collection of information
           and you should make yourself aware of their terms.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Use of Cookies
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -106,7 +106,7 @@ const PrivacyPolicy = () => {
           disclose personal information for other purposes explained at the time of collection or which are required or
           authorised by or under law, and for which you have provided consent.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Digital marketing, advertising and opting out
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -119,7 +119,7 @@ const PrivacyPolicy = () => {
           Customer Service team here: hello@pedlar.store; or • Using the unsubscribe facility that we include in our
           electronic messages (eg email, SMS or MMS) to opt out of receiving those messages.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Sharing your personal information
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -140,7 +140,7 @@ const PrivacyPolicy = () => {
           other countries or jurisdictions depending on the nature of the services those recipients provide to Pedlar
           Pty Ltd.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Protection of personal information
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -159,7 +159,7 @@ const PrivacyPolicy = () => {
           access, please contact the Pedlar Customer service team as soon as practicable using these details:
           hello@pedlar.store
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Third party sites
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -170,7 +170,7 @@ const PrivacyPolicy = () => {
           Third party websites should have their own privacy and security policies, which we encourage you to read
           before supplying any personal information to them.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Access and Corrections
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -192,7 +192,7 @@ const PrivacyPolicy = () => {
           in our inability to provide you with the products and services you have requested. A record of the changes
           made to your personal information may be noted in your account or filing.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Complaints or Questions
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -209,7 +209,7 @@ const PrivacyPolicy = () => {
           circumstances of the complaint. In most cases, we expect that complaints will be investigated and a response
           generally provided within 30 days of receipt of the complaint.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Updates to this Policy
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -232,4 +232,3 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
-

@@ -11,7 +11,7 @@ const CreatorTerms = () => {
           textTransform={"none"}
           fontSize={{ xs: "48px", sm: "64px", md: "64px", lg: "64px" }}
           fontWeight={"700"}
-          style={{ lineHeight: "normal" }}
+          style={{ lineHeight: "normal", paddingBottom: "60px" }}
         >
           Creator Terms and Conditions
         </Typography>

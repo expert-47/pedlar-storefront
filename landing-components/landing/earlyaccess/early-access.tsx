@@ -119,6 +119,9 @@ const EarlyAcess = () => {
                         }}
                         sx={{
                           backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                          "&:hover": {
+                            backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                          },
                         }}
                         onClick={onChangeCreator}
                       >
@@ -134,6 +137,9 @@ const EarlyAcess = () => {
                         }}
                         sx={{
                           backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                          "&:hover": {
+                            backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                          },
                         }}
                         onClick={onChangeBrand}
                       >

@@ -23,7 +23,7 @@ const Header = () => {
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const trigger = useScrollTrigger({ threshold: 30, disableHysteresis: true,});
+  const trigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
 
   const openStorePage = () => {
     router.push("/");
@@ -88,18 +88,17 @@ const Header = () => {
                 sm={12}
                 md={12}
                 lg={3.5}
-                gap={5}
                 style={{ textAlign: "right", display: "flex", justifyContent: "flex-end" }}
               >
                 <Grid item xs={12} sm={12} md={12} lg={4}>
-                  <Button sx={styles.Login} onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.LoginTypo}>
+                  <Button onClick={openPopup}>
+                    <Typography textTransform="none" sx={styles.LoginButton}>
                       Log in
                     </Typography>
                   </Button>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={5}>
-                  <Button sx={styles.GetAccess} onClick={openPopup}>
+                <Grid item xs={12} sm={12} md={12} lg={4.8}>
+                  <Button onClick={openPopup}>
                     <Typography textTransform="none" sx={styles.GetAccessTypo}>
                       Get Access
                     </Typography>

@@ -1,6 +1,6 @@
 export const styles = {
   header: {
-    height: "15%",
+    height: "17%",
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
@@ -39,29 +39,27 @@ export const styles = {
     fontSize: "22px",
     fontWeight: "600",
   },
-  Login: {
-    width: "100%",
-    color: "black",
-    padding: "12px",
-    border: "1.5px solid",
-    borderRadius: "25px",
-  },
-  LoginTypo: {
+  LoginButton: {
     fontSize: "16px",
     fontWeight: "600",
-    padding: "12px, 16px, 12px, 16px",
+    margin: "0px 0px 0px 10px",
+    width: "100%",
+    textAlign: "center",
+    color: "black",
+    padding: "10px 16px",
+    border: "1.5px solid",
+    borderRadius: "666px",
   },
   GetAccessTypo: {
     fontSize: "16px",
     fontWeight: "600",
-    padding: "12px, 16px, 12px, 16px",
-  },
-  GetAccess: {
-    width: "90%",
+    padding: "10px 16px",
+    margin: "0px 0px 0px 10px",
+    textAlign: "center",
+    width: "100%",
     color: "white",
     backgroundColor: "#1C1B1F",
     border: "1.5px solid",
-    padding: "12px",
     borderRadius: "25px",
     "&:hover": {
       backgroundColor: "#1C1B1F",

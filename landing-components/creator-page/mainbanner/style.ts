@@ -1,6 +1,6 @@
 export const styles = {
   MainBox: {
-    paddingTop: "160px",
+    paddingTop: "141px",
     display: "flex",
     alignItems:'center',
     ["@media (max-width:1250px)"] : {
@@ -8,7 +8,10 @@ export const styles = {
     },
     ["@media (max-width:1160px)"] : {
       alignItems:'flex-start',
-  }
+    },
+    ["@media (max-width:800px)"] : {
+      paddingTop: "109px",
+    }
   },
   GridBox: {
     width: "100%",

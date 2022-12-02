@@ -39,7 +39,7 @@ const creator = () => {
         </Box>
         <Box
             style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
-            top={{ xs: "3684px",sm:'1806px', md:'1134px', lg: "41px" }}
+            top={{ xs: "3684px",sm:'1806px', md:'1134px', lg: "431px" }}
           >
             <Image src={bluemeshbrand} alt="orang brand meshes" />
         </Box>

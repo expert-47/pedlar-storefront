@@ -16,7 +16,7 @@ export const styles = {
       bottom: "6px",
       width: "69%",
     },
-    ["@media (max-width:600px)"]: {
+    ["@media (max-width:767px)"]: {
       position: "unset",
       width: "100%",
       paddingTop: "20px",

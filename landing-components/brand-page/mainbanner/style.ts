@@ -1,7 +1,10 @@
 export const styles = {
   MainBox: {
-    paddingTop: "125px",
+    paddingTop: "102px",
     display: "flex",
+    ["@media (max-width:1199px)"] : {
+      paddingTop: "110px",
+    }
   },
   GridBox: {
     width: "100%",

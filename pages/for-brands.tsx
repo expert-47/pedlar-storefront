@@ -30,7 +30,7 @@ const brands = () => {
         </Box>
         <Box
             style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
-            top={{ xs: "4083px",sm:'1806px', md:'1134px' }}
+            top={{ xs: "4083px",sm:'1806px', md:'1134px',lg:'1431px' }}
             bottom={{xs:'0px',lg:'0px'}}
           >
             <Image src={orangebottom} alt="orang brand meshes" />

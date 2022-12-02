@@ -6,9 +6,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
+import mobBanner from "../../../public/mobBanner.png";
 import desktopBanner from "../../../public/home-banner1.png";
 import tabBanner from "../../../public/bannerMd.png";
-import mobileBanner from "../../../public/bannerMob.png";
 import { styles } from "./style";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
@@ -41,11 +41,11 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobileBanner} alt="Picture of the author" style={{ width: "100%" }} />
+            <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%",borderRadius:"27px" }} />
           ) : isMedium ? (
-            <Image src={tabBanner} alt="Picture of the author" />
+            <Image src={tabBanner} alt="tab banner"/>
           ) : (
-            <Image src={desktopBanner} alt="Picture of the author" />
+            <Image src={desktopBanner} alt="desktop banner" />
           )}
           <Grid sx={styles.bannerText}>
             <Typography

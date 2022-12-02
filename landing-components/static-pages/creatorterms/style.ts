@@ -5,4 +5,7 @@ export const styles = {
     paddingBottom: "75px",
     width: "75%",
   },
+  spacing: {
+    paddingBottom: "20px",
+  },
 };

@@ -1,6 +1,6 @@
 export const styles = {
   MainBox: {
-    paddingTop: "163px",
+    paddingTop: "135px",
     display: "flex",
     alignItems:'center',
     ["@media (max-width:1250px)"] : {
@@ -12,7 +12,6 @@ export const styles = {
   },
   GridBox: {
     width: "100%",
-    padding: "40px",
     borderRadius: "20px",
     backgroundColor: "white",
     margin: '0 0 0 auto',
@@ -24,10 +23,13 @@ export const styles = {
     ["@media (max-width:1160px)"] : {
         margin: '300px 0 0 auto',
         maxWidth: '602px',
+    },
+    ["@media (max-width:700px)"] : {
+      margin: '200px 0 0 auto',
     }
   },
   heading: {
-    lineHeight: "60px",
+    lineHeight: "unset",
     color: "#1c1b1f",
     fontWeight: "bold",
     fontFamily: "Inter",
@@ -54,5 +56,8 @@ export const styles = {
     left:'0px',
     objectFit: 'cover',
     width: '656px',
+    ["@media (max-width:1160px)"] : {
+      width: '95%',
+    }
   }
 };

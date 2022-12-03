@@ -7,10 +7,15 @@ import { styles } from "./style";
 const Businesstoday = () => {
   return (
     <CustomContainer>
-      <Box sx={styles.MainBox} margin={{xs:'30px 20px',sm:'30px 33px'}} padding={{xs:'60px 15px 57px',sm:'60px 20px 57px'}} style={{zIndex:'999', position:'relative'}}>
+      <Box
+        sx={styles.MainBox}
+        margin={{ xs: "30px 20px", sm: "30px 33px" }}
+        padding={{ xs: "60px 15px 57px", sm: "60px 20px 57px" }}
+        style={{ zIndex: "999", position: "relative" }}
+      >
         <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "center" }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>
-            <Typography textTransform={"none"} fontSize={{xs:'48px',sm:'54px'}} sx={styles.heading}>
+            <Typography textTransform={"none"} fontSize={{ xs: "48px", sm: "54px" }} sx={styles.heading}>
               Grow your business today
             </Typography>
           </Grid>

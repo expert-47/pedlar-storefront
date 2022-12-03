@@ -54,7 +54,7 @@ const Gridbox = () => {
               <Image src={firstGrid} alt="Picture of the author" />
             </Grid>
             <Grid item xs={12} sm={3.5} md={2.5} lg={2.2}>
-              <Grid display={{xs:'flex',sm:'unset'}}>
+              <Grid display={{ xs: "flex", sm: "unset" }}>
                 <Grid>
                   <Image src={secondGrid} alt="Picture of the author" />
                 </Grid>

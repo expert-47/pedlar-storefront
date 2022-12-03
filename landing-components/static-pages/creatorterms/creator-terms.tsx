@@ -543,4 +543,3 @@ const CreatorTerms = () => {
 };
 
 export default CreatorTerms;
-

@@ -6,7 +6,7 @@ export const styles = {
   heading: {
     textAlign: "center",
     lineHeight: "60px",
-    fontWeight:'700',
+    fontWeight: "700",
   },
   title: {
     paddingTop: "20px",

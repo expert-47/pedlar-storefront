@@ -24,13 +24,18 @@ const Banner = () => {
         paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
         <Grid sx={styles.GridImg}>
-          <Image src={BrandBanner} alt={"brand banner"} style={{borderRadius:"10px"}}/>
+          <Image src={BrandBanner} alt={"brand banner"} style={{ borderRadius: "10px" }} />
         </Grid>
-        <Grid sx={styles.GridBox} style={{ justifyContent: "flex-end" }} padding={{xs:'20px',sm:'40px'}}>
-          <Typography textTransform={"none"} fontSize={{xs:'34px',sm:'54px',md:'64px'}} sx={styles.heading}>
+        <Grid sx={styles.GridBox} style={{ justifyContent: "flex-end" }} padding={{ xs: "20px", sm: "40px" }}>
+          <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "54px", md: "64px" }} sx={styles.heading}>
             Find new audience for your brand
           </Typography>
-          <Typography textTransform={"none"} fontSize={"22px"} sx={styles.title} padding={{xs:'20px 0 30px',sm:'20px 0 30px',md:'20px 0 10px'}}>
+          <Typography
+            textTransform={"none"}
+            fontSize={"22px"}
+            sx={styles.title}
+            padding={{ xs: "20px 0 30px", sm: "20px 0 30px", md: "20px 0 10px" }}
+          >
             Sell directly to Aussie shoppers with customised storefronts curated by social media creators.
           </Typography>
           <Button sx={styles.Button}>

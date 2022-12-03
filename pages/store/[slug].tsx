@@ -1,11 +1,11 @@
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 import Layout from "components/layout";
 import { Home } from "components/home";
 
 const index = () => {
-  const router = useRouter()
-const { slug } = router.query;
+  const router = useRouter();
+  const { slug } = router.query;
 
   return (
     <Layout

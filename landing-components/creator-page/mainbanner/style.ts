@@ -2,34 +2,34 @@ export const styles = {
   MainBox: {
     paddingTop: "141px",
     display: "flex",
-    alignItems:'center',
-    ["@media (max-width:1250px)"] : {
+    alignItems: "center",
+    ["@media (max-width:1250px)"]: {
       paddingTop: "112px",
     },
-    ["@media (max-width:1160px)"] : {
-      alignItems:'flex-start',
+    ["@media (max-width:1160px)"]: {
+      alignItems: "flex-start",
     },
-    ["@media (max-width:800px)"] : {
+    ["@media (max-width:800px)"]: {
       paddingTop: "109px",
-    }
+    },
   },
   GridBox: {
     width: "100%",
     borderRadius: "20px",
     backgroundColor: "white",
-    margin: '0 0 0 auto',
-    maxWidth: '602px',
-    zIndex:' 99',
-    ["@media (max-width:1250px)"] : {
-      maxWidth: '455px',
+    margin: "0 0 0 auto",
+    maxWidth: "602px",
+    zIndex: " 99",
+    ["@media (max-width:1250px)"]: {
+      maxWidth: "455px",
     },
-    ["@media (max-width:1160px)"] : {
-        margin: '300px 0 0 auto',
-        maxWidth: '602px',
+    ["@media (max-width:1160px)"]: {
+      margin: "300px 0 0 auto",
+      maxWidth: "602px",
     },
-    ["@media (max-width:700px)"] : {
-      margin: '200px 0 0 auto',
-    }
+    ["@media (max-width:700px)"]: {
+      margin: "200px 0 0 auto",
+    },
   },
   heading: {
     lineHeight: "1",
@@ -53,17 +53,17 @@ export const styles = {
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
-    ["@media (max-width:700px)"] : {
+    ["@media (max-width:700px)"]: {
       padding: "15px",
-    }
+    },
   },
-  brandImg:{
-    position: 'absolute',
-    left:'0px',
-    objectFit: 'cover',
-    width: '656px',
-    ["@media (max-width:1160px)"] : {
-      width: '95%',
-    }
-  }
+  brandImg: {
+    position: "absolute",
+    left: "0px",
+    objectFit: "cover",
+    width: "656px",
+    ["@media (max-width:1160px)"]: {
+      width: "95%",
+    },
+  },
 };

@@ -26,13 +26,13 @@ export const styles = {
     paddingTop: " 80px",
     paddingBottom: "40px",
     //zIndex:'9999',
-    position:'relative',
+    position: "relative",
   },
   footerRow: {
     justifyContent: "space-between",
   },
-  footerMobcol:{
-    zIndex:'5',
+  footerMobcol: {
+    zIndex: "5",
   },
   footerLogocol: {
     zIndex: "5",

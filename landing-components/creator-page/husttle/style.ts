@@ -1,15 +1,15 @@
 export const styles = {
- GridBox: {
+  GridBox: {
     backgroundColor: "White",
     borderRadius: "15px",
     padding: "30px",
-    marginBottom:'16px',
+    marginBottom: "16px",
   },
   heading: {
     fontWeight: "700",
     color: "#1C1B1F",
-    lineHeight:'unset',
-    marginBottom:'40px',
+    lineHeight: "unset",
+    marginBottom: "40px",
   },
   title: {
     color: "#1C1B1F",

@@ -43,16 +43,14 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%",borderRadius:"27px" }} />
+            <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} />
           ) : isMedium ? (
-            <Image src={tabBanner} alt="tab banner"/>
+            <Image src={tabBanner} alt="tab banner" />
           ) : isdektop ? (
             <Image src={desktopBanner} alt="desktop banner" />
-          ):
-          (
-              <Image src={largeBanner} alt="desktop banner" />
-          )
-          }
+          ) : (
+            <Image src={largeBanner} alt="desktop banner" />
+          )}
           <Grid sx={styles.bannerText}>
             <Typography
               fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "48px", xl: "48px" }}

@@ -8,6 +8,7 @@ import { useTheme } from "@mui/material";
 import Image from "next/image";
 import mobBanner from "../../../public/mobBanner.png";
 import desktopBanner from "../../../public/home-banner1.png";
+import largeBanner from "../../../public/home-banner2.png";
 import tabBanner from "../../../public/bannerMd.png";
 import { styles } from "./style";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
@@ -17,6 +18,7 @@ import { CustomContainer } from "../../landinglayout";
 const Banner = () => {
   const isMedium = useMediaQuery("(max-width:850px)");
   const isSmall = useMediaQuery("(max-width:767px)");
+  const isdektop = useMediaQuery("(max-width:1400px)");
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
@@ -44,9 +46,13 @@ const Banner = () => {
             <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%",borderRadius:"27px" }} />
           ) : isMedium ? (
             <Image src={tabBanner} alt="tab banner"/>
-          ) : (
+          ) : isdektop ? (
             <Image src={desktopBanner} alt="desktop banner" />
-          )}
+          ):
+          (
+              <Image src={largeBanner} alt="desktop banner" />
+          )
+          }
           <Grid sx={styles.bannerText}>
             <Typography
               fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "48px", xl: "48px" }}

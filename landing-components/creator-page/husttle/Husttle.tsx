@@ -1,10 +1,30 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
 
+const styless = {
+  paperContainer: {
+    position:'relative',
+    "&::before":{
+      backgroundImage: "url(/imgback.png)",
+      backgroundRepeat:'no-repeat',
+      backgroundSize: '100% 100%',
+      bottom: '-3px',
+      content: `""`,
+      height: '79px',
+      left: '-5px',
+      position: 'absolute',
+      width: '79px',
+      zIndex: '0',
+    }
+     
+  }
+};
+
 const Husttle = () => {
+
   const theme = useTheme();
   return (
     <CustomContainer>
@@ -28,7 +48,16 @@ const Husttle = () => {
         >
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <img src="/hassle-icon1.png" alt="hassle1" />
+              <Box sx={styless.paperContainer}>
+                <img src="/hassle-icon1.png" alt="hassle1" style={{backgroundColor: '#fff',
+                borderRadius: '50%;',
+                height:' 69px',
+                objectFit: 'scale-down',
+                width:' 69px',
+                zIndex:' 99',
+                position: 'relative'}} />
+              </Box>
+             
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>

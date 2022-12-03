@@ -6,9 +6,9 @@ import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
+import mobBanner from "../../../public/mobBanner.png";
 import desktopBanner from "../../../public/home-banner1.png";
 import tabBanner from "../../../public/bannerMd.png";
-import mobileBanner from "../../../public/bannerMob.png";
 import { styles } from "./style";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
@@ -41,11 +41,11 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobileBanner} alt="Picture of the author" style={{ width: "100%" }} />
+            <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%",borderRadius:"27px" }} />
           ) : isMedium ? (
-            <Image src={tabBanner} alt="Picture of the author" />
+            <Image src={tabBanner} alt="tab banner"/>
           ) : (
-            <Image src={desktopBanner} alt="Picture of the author" />
+            <Image src={desktopBanner} alt="desktop banner" />
           )}
           <Grid sx={styles.bannerText}>
             <Typography
@@ -119,36 +119,37 @@ const Banner = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        fontWeight: "700",
                         borderRadius: "10px",
                       }}
                       sx={{
                         backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        fontWeight: userType == true ? "700" : "400",
                         "&:hover": {
                           backgroundColor: userType == true ? "#d0bcff" : "transparent",
                         },
                       }}
                       onClick={onChangeCreator}
                     >
-                      I'm a Creater
+                      I'm a creater
                     </Button>
                     <Button
                       style={{
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        fontWeight: "700",
                         borderRadius: "10px",
                       }}
                       sx={{
                         backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        fontWeight: userType == false ? "700" : "400",
+
                         "&:hover": {
                           backgroundColor: userType == false ? "#d0bcff" : "transparent",
                         },
                       }}
                       onClick={onChangeBrand}
                     >
-                      I'm a Brand
+                      I'm a brand
                     </Button>
                   </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}

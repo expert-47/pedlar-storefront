@@ -1,738 +1,231 @@
 import React from "react";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
-import { Grid, Typography, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 
 const PrivacyPolicy = () => {
   return (
     <CustomContainer>
       <Box sx={styles.MainBox}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography textTransform={"none"} fontSize={"48px"}>
-            Creator Terms and Conditions
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            {
-              "You agree that by using the Pedlar Platform and/or by pressing ‘Yes’/’I accept/Submit‘, these Terms and Conditions will be the Agreement governing the relationship between you and Pedlar and you agree to be bound by these Terms and Conditions."
-            }
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-            1. Definitions and Interpretation
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-            1.1 Definitions
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            The following terms in these Terms and Conditions have the meanings set out below, unless otherwise
-            indicated:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) <b>Agreement</b> means the agreement comprising:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a) these Terms and Conditions
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2) <b>Confidential Information</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means all information disclosed (including inadvertently) by a party (Discloser) in connection
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            with the Agreement, all information disclosed by a third party that the Discloser is required to keep
-            confidential, including (without limitation):
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            information which, either orally or in writing, is designated or indicated as being the proprietary or
-            confidential
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            information of the Discloser or a third party to whom the Discloser owes an obligation of confidentiality;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (b)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Information derived partly or wholly from the information, including (without limitation) any calculation,
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            conclusion, summary, computer modelling; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (3) <b>Force Majeure Event</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means any of the following causes provided that they are outside the reasonable control of the affected
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            party and could not have been prevented or avoided by that party taking all reasonable steps:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            act of God, earthquake, cyclone, fire, explosion, flood, landslide, lightning, storm, tempest, drought or
-            meteor;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (b)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            war (declared or undeclared), invasion, act of a foreign enemy, hostilities between nations, civil
-            insurrection or militarily usurped power;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (c)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            act of public enemy, sabotage or malicious damage, terrorism or civil unrest;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (d)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            ionising radiation or contamination by radioactivity from any nuclear waste or from combustion of nuclear
-            fuel;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (e)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            confiscation, nationalisation, requisition, expropriation, prohibition, embargo, restraint or damage to
-            property by or
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            under the order of any government or government authority (except where such arises out of a failure by a
-            party to comply with any Law);
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (f) health crisis or pandemic or any nature; or
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (g)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            strikes, blockades, lock out or other industrial disputes other than an industrial dispute that only
-            involves the party’s personnel.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (4) <b>GST</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means Goods and Services Tax as defined in the A New Tax System (Goods and Services Tax) Act 1999 (Cth);
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (5) <b>Information</b> has the meaning given to that term in cl 8.1;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (6) <b>Instagram</b> means the Instagram application;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (7) <b>IPR</b> or <b> Intellectual Property Rights</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means all patents, rights to inventions, utility models, copyright and related rights, trade marks,
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            service marks, trade, business and domain names, rights in trade dress or get-up, rights in goodwill or to
-            sue for passing off, unfair competition rights, design rights, rights in computer software, database rights,
-            topography rights, rights in confidential information (including know-how and trade secrets) and any other
-            intellectual property rights of any kind whether registrable or not in any country, including any renewals
-            or extensions thereof;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (8) <b>Jurisdiction</b> means any of the following:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            the State of New South Wales and the Commonwealth of Australia – if your residential address is anywhere
-            else in the world.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (9) <b>Law</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means any applicable statute, regulation, by-law, ordinance or subordinate legislation in force from time to
-            time
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            in the Jurisdiction applicable to the Agreement;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (10) <b>Materials</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means material in any form, including drawings, reports, specifications, images, photos, videos and media
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            in Graphics Interchange Format and other proprietary media types (howsoever constituted) and other documents
-            provided by you in connection with the Agreement;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (11) <b>Payment</b> has the meaning given to that term in clause 5.1;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (12) <b>Pedlar Store</b> means any storefront on the Pedlar Platform;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (13) <b>Privacy Policy</b> means Pedlar’s Privacy Policy available at
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <a href="http://pedlar.store/ ">http://pedlar.store/</a> privacy policy;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (14) <b>Schedule</b> means the Schedule to this document;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (15) <b>Taxes</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            means GST, VAT or any sales tax that may apply in the Jurisdiction to the provision of the Agreement;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (16) <b>Terms and Conditions</b>means this document;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>1.2 Interpretation</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            In the Agreement:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) reference to:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a) one gender includes the others;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (b) the singular includes the plural and the plural includes the singular;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (c) a person includes a body corporate;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (d)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            a party includes the party’s executors, administrators, successors and permitted assigns;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (e) a thing includes the whole and each part of it separately;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (f)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            a statute, regulation, code or other law or a provision of any of them includes:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (i) any amendment or replacement of it; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (ii)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            another regulation or other statutory instrument made under it, or made under it as amended or replaced; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (g)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            dollars means Australian dollars unless otherwise stated in the Quote.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2) “Including” and similar expressions are not words of limitation.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (3)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Where a word or expression is given a particular meaning, other parts of speech and grammatical forms of
-            that word
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            or expression have a corresponding meaning.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (4)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Headings and any table of contents or index are for convenience only and do not form part of this Agreement
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            or affect its interpretation.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (5)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            A provision of this Agreement must not be construed to the disadvantage of a party merely because that party
-            was
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            responsible for the preparation of the Agreement or the inclusion of the provision in the Agreement.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>2. Application of these Terms and Conditions</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            These Terms and Conditions apply to any Pedlar Store for the provision of services offered by Pedlar to you
-            through
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            through the Pedlar Platform.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Pedlar may, at any time, and at its sole discretion, modify these Terms and Conditions.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (3)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            If you use the Pedlar Platform, will provide notice to you of these modifications
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (4)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Your use of the Pedlar Platform following any modification to the Terms and Conditions will be subject to
-            the most current
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            current version of the Terms and Conditions.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>3. Payment</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>3.1 Payment</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You will be paid up to 20% commission on the total sale price items sold on your Pedlar Store.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>3.2 Payment Method</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            All payments made by Pedlar to you will be to your nominated bank account or Paypal account using the
-            details provided by you when registering for the Pedlar Platform or such other payment method allowable and
-            nominated by Pedlar. It is your responsibility to ensure that these details have been provided and are
-            correct. Pedlar does not bear any responsibility for payments made to an incorrect bank details or Paypal
-            account or other account.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>3.3 Taxes</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Pedlar will pay an additional amount for Taxes if this is applicable to you in the relevant Jurisdiction.
-            Pedlar may also, from time to time, deduct withholding tax or any similar type of tax from amounts payable
-            under cl 4.1 if required by any Law.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>3.4 Time for Payment</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You will be paid 30 days after the sale is made subject to you not being in breach of this Agreement.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>4. Materials and Intellectual Property Rights (IPR)</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>4.1 Property in Posts</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            All Materials produced by you in connection with your Pedlar Storefront and all IPR in those Materials will
-            remain your property and not become the property of Pedlar.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>5. Confidential Information </b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You acknowledge that:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you may be provided with brand Materials by Pedlar to assist you in providing the Services; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            if you are provided with brand Materials, you agree that those brand Materials are provided to you on the
-            basis that:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you will keep the brand Materials strictly confidential and only disclose brand Materials: when compelled by
-            any Law,
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            at which point you will advise Pedlar of this; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (b)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you will take all reasonable steps to keep the brand Materials secure.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>6. Information </b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>6.1 Agreement to provide Information</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You agree to provide certain personal information to Pedlar as a condition of use of the Pedlar Platform,
-            such as your:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) name;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2) email address;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (3) social media handles; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (4)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            other information as might be required by Pedlar from time to time, including bank details, address and tax
-            status.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (together, the Information)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>6.2 Representations and warranties as to Information</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You represent and warrant to Pedlar that the Information provided by you is, and will be at all times, true
-            and accurate in all respects. You must notify Pedlar of any change in circumstances that may cause the
-            Information you have provided to become misleading, inaccurate or untrue. You acknowledge that Pedlar will
-            rely on the Information in performing its obligations under the Agreement and in complying with Laws
-            (including without limitation, any taxation laws) and you hereby indemnify Pedlar for any special
-            incidental, indirect, statutory, exemplary, punitive or consequential damages, including loss of profits,
-            arising out of, or in any way related to the inaccuracy of the Information.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>7. Indemnity and Limitation of Liability</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>7.1 No liability for Pedlar</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Pedlar shall not be liable to you for any damages of any kind arising out of your use of the Pedlar
-            Platform, whether such damage arises directly or indirectly. You agree and understand that the use of the
-            Pedlar Platform is undertaken at your own risk.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>7.2 Indemnity</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You agree to indemnify and hold harmless, Pedlar, its employees, personnel and agents from any and all
-            claims, liabilities, damages, losses and expenses arising out of or in any way connected with any of the
-            following matters:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) the content of any Posts you may make;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2) your breach of this Agreement;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (3) your breach of this Agreement;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (4) any misrepresentation made by you;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (5) your violation of any Laws; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (6)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            any of the warranties and undertakings you have given under this Agreement; whether such matters are alleged
-            or otherwise.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>8. Other matters</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>8.1 General warranties and undertakings</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            For as long as you are signed up for the Pedlar Platform:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) you undertake that:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            that you are and will be the sole author of all Materials produced by you in the course of providing
-            Services
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            which will be wholly original to you, and not in breach of the rights of any third party, including but not
-            limited to, any IPR;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (b)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you are in compliance with all relevant Laws in the Jurisdiction and any regulations or guidance notes
-            issued
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            pursuant to or in connection with those Laws and will continue to comply with same;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (c)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you will follow any best practice guidelines endorsed by Pedlar and notified to you from time to time;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (d)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you will not do anything which would defame, tend to defame or could be construed as being defamatory,
-            derogatory
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            or disparaging of Pedlar or any brand or their aﬃliates;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (e) any Materials you produce:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (i)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            will be your sole and original work, unless collaboration is necessary or implied, in which case it will be
-            the original
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            work of you and any collaborators;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (ii)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            will not infringe the IPR of any third party or any other proprietary or moral rights of a third party;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (iii) will not infringe any Laws;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (iv) will not be defamatory or tend to defame and third party; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (v)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            will not be obscene, graphic, pornographic, racially or religiously insensitive or in any way discriminatory
-            or offensive,
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            or with the tendency to offend;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (f)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you will not post any obscene, graphic, racially or religiously insensitive or any otherwise discriminatory
-            or content which
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            is offensive or might tend to offend any person, or do any other thing which might have the tendency to
-            offend any person; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2) you represent and warrant that:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (a)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you have not taken any fraudulent action, or procured that any fraudulent action is taken in relation to
-            your social
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            media channels (including, but not limited to, Facebook, Instagram, Twitter, Tiktok or blog).
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>8.2 Exclusivity</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            You agree to not establish a business in competition with Pedlar or compete (directly or indirectly) with
-            Pedlar in providing services similar to Pedlar, so long as you are signed up for the Pedlar Platform and for
-            a period of 3 months following you removing yourself from the Pedlar Platform.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>8.3 Restriction on action</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            So long as you are signed up for the Pedlar Platform:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you agree to not publish any material, whether in print or electronically, make any statement or do any
-            other thing which
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            may tend to defame or bring into disrepute, Pedlar or any brand, product or person/party on the Pedlar
-            Platform, or otherwise say or do anything that is adverse or prejudicial to Pedlar or a brand, or permit any
-            such thing to be done on your behalf; and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            you agree to indemnify Pedlar for any costs, losses or liabilities arising out of a breach of paragraph
-            8.3(1) by you.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>8.4 No relationship</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            For the avoidance of doubt, nothing in this Agreement constitute any relationship of employer and employee,
-            principal and agent or partnership between you and Pedlar. You must not represent yourself as being an
-            employee, agent or partner of Pedlar.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>8.5 Monitoring, suspension and termination of access</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Pedlar reserves the right to generally monitor the Pedlar Platform and all activity through the Pedlar
-            Platform. If you are in breach of this Agreement or Pedlar suspects that you are in breach of this
-            Agreement, or engaged in suspicious, fraudulent, abusive or other activity which Pedlar (in its absolute and
-            exclusive discretion) determines is not in accordance with its values or may be detrimental to its or a
-            brand’s interests it may choose to suspend or terminate your access to the Pedlar Platform.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9. General</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9.1 Force Majeure</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Despite any other provision of this agreement, if a party is unable to perform or is delayed in performing
-            an obligation under this agreement by reason of a Force Majeure Event:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            that obligation is suspended but only so far and for so long as it is affected by the Force Majeure Event;
-            and
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            the affected party will not be responsible for any loss or expense suffered or incurred by any other party
-            as a result of,
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            and to the extent that, the affected party is unable to perform or is delayed in performing its obligations
-            because of the Force Majeure Event.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9.2 No waiver</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            No forbearance or delay by Pedlar in exercising or enforcing its rights under the Agreement shall prejudice
-            or restrict the rights of Pedlar to exercise or enforce its rights at a later time and no waiver of any such
-            rights or of any breach of any contractual terms shall be deemed to be a waiver of any other right or of any
-            later breach. Pedlar may only waive a right under the Agreement by doing so in writing.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9.3 Assignment</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Pedlar may assign its rights under the Agreement by notice to you. You may not assign your rights under this
-            Agreement without the consent of Pedlar (which may be given or withheld in Pedlar’s absolute discretion).
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9.4 No derogation</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            The rights and remedies provided in this Agreement will not affect any other rights or remedies available to
-            either party.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9.5 Severability</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            If any provision of the Agreement is unenforceable, illegal or void, that provision is severed and the other
-            provisions of this Agreement remain in force.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>9.6 Jurisdiction</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            This Agreement is governed by the laws of New South Wales and each party submits to the exclusive
-            jurisdiction of the courts of New South Wales and any courts which have jurisdiction to hear appeals from
-            any of those courts and waives any right to object to any proceedings being brought in those courts.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>Schedule – Additional Provisions</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>10. Australia – Privacy</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>10.1 Definitions</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            The following words have the meanings set out below,:
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (1) Privacy Law means the Privacy Act 1988 (Cth);
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (2) Privacy Policy means Pedlar’ privacy policy found at{" "}
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <a href="http://pedlar.store/">http://pedlar.store/</a> privacy policy;
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            (3)
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Personal Information has the meaning given to that term in the Privacy Law.
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            <b>10.2 Personal Information</b>
-          </Typography>
-          <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
-            Where you provide Information to Pedlar, and such Information constitutes Personal Information, Pedlar does
-            not usually, but may disclose that Personal Information to certain third parties in accordance with the
-            Privacy Law. Otherwise, Pedlar will abide by its Privacy Policy.
-          </Typography>
-        </Grid>
+        <Typography
+          textTransform={"none"}
+          fontSize={{ xs: "48px", sm: "64px", md: "64px", lg: "64px" }}
+          fontWeight={"700"}
+          style={{ lineHeight: "normal", paddingBottom: "60px" }}
+        >
+          Privacy Policy
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Pedlar Store Pty Ltd (ACN 655 606 250) (Pedlar) is committed to protecting your personal information.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          This Privacy Policy sets out the details relating to your data relationship with Pedlar and applies to all
+          services and interactions with Pedlar and other related social media sites and pages.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          This Privacy Policy applies to products and services offered by us, and by using our services you agree and
+          consent to the collection, use and disclosure of your information in connection with providing you our
+          services.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          What we collect and how we collect it
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          The personal information we collect about you depends on the dealings you have with Pedlar. Personal
+          Information includes information about an individual who is reasonably identifiable. You generally have the
+          option of interacting with us anonymously or using a pseudonym, however in some instances this may prevent us
+          from being able to provide you with products and services, for example where you place an order for products
+          online. The types of personal information we collect and use information depending on your interaction and
+          transactions with us, including:
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          What Information do we collect?
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          • contact name and details; • payment and transaction information including type, bank and credit card details
+          etc; • delivery address or collection details; •username •password •gender •social media handles• your
+          location details through your smart phone or device; • certain departments may request sensitive information
+          such as skin type in cosmetics or size details in intimate apparel, in order to provide you with products or
+          services; • transaction, product, services and activity details of purchases, preferences and interactions.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          How do we collect information?
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          When may collect your personal information when you: • use or visit Pedlar’s online stores, related websites,
+          social media platforms or Apps; • make a purchase or place an order; • setup a Pedlar account; • enter a
+          competition or complete a survey; • send us an enquiry or provide us with feedback; • participate in a
+          promotion, competition, or survey; • join a mailing list; • post a review, rating or comment on our website or
+          social media page.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Platform integration
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          You may use our services in conjunction with a related third-party service. For example, in signing up as
+          user, you may authorise us to connect with a third-party service such as Instagram or blog platform (for
+          influencers) or other management service (for buyers). In doing so, you authorise us to access Personal
+          Information that may have been collected by those third-party services, and to use it in accordance with this
+          Privacy Policy. Those third-party services will have their own policies around the collection of information
+          and you should make yourself aware of their terms.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Use of Cookies
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Information is automatically collected through your use of the our sites, Affiliates’ websites and Apps,
+          electronic communications, through cookies. Cookies are small text files that websites or Apps may place on
+          your computer or device. Generally, cookies are used to recognise repeat users of websites and remember user
+          preferences. We may collect this information both anonymously and in relation to user accounts. Cookies are
+          also used to allow the website to gain statistical information about your usage behaviour and aggregate data
+          to allow Pedlar to customise a user"s experience on their websites. The information is used and disclosed by
+          us for purposes including statistical analysis and to assist us improving the functionality and usability of
+          the website and related Apps. You can switch off cookies by adjusting the settings on your web browser.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Why we collect personal information
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          We collect your personal information to provide, administer, improve and personalise our products and
+          services, and to support our business functions, including: • to provide you with products and services; • to
+          improve our service operations to enhance your customer experience; • to manage and work with our service
+          providers to fulfil your request for products and services such as processing transactions and payments,
+          delivering products and services, providing refunds and discounts; • to register and service your account,
+          including any online account with the Site and keeping your information up‐to‐date, and verifying your
+          identity; • promoting and communicating Pedlar products and services through direct marketing, events and
+          competitions, public relations and social media. We may also make use of third parties who use cookies to
+          serve ads to you based on your past visits and use of our website. This allows us to notify you of products or
+          offers which we think might be of interest to you; • to communicate with you and perform research and
+          statistical analysis, such as customer satisfaction and product and service improvement purposes, tailor
+          products and promotional offers to you, usage behaviour and user experience for online and digital platforms
+          to improve functionality and usability. This may include matching information we collect against other
+          information held by third parties, partners and sellers that you have consented to share your information with
+          (We may also use and disclose de-identified data for these purposes); • to respond to your query, feedback or
+          concerns; • responding to and interacting with regulatory bodies and relevant government agencies; • general
+          planning and administration, and as other required or permitted by law. We may also collect, hold, use and
+          disclose personal information for other purposes explained at the time of collection or which are required or
+          authorised by or under law, and for which you have provided consent.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Digital marketing, advertising and opting out
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          By providing your address, email address and contact number to Pedlar or its related parties and partners, you
+          consent to us contacting you. We may send this information in a variety of ways, including by mail, email,
+          social media, SMS, MMS, telephone and via Pedlar Apps. You may prefer to provide to us your personal email
+          address or mobile number rather than, for example, an email address accessible by your work colleagues. If we
+          send you direct marketing or send you electronic marketing messages based on your consent or as otherwise
+          permitted by applicable law, you may, at any time, withdraw your consent or opt-out by: • Contacting our
+          Customer Service team here: hello@pedlar.store; or • Using the unsubscribe facility that we include in our
+          electronic messages (eg email, SMS or MMS) to opt out of receiving those messages.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Sharing your personal information
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          We work with a number of suppliers that provide us with services to fulfil your request or carry out specific
+          functions on our behalf, including: • Contracted or approved third party service providers or contractors to
+          provide you with products or services requested by you or may be of interest to you, to process your payment,
+          to communicate offers and promotions to you, and for product development and product, service and market
+          research. • Our loyalty program partners, suppliers and service providers. • Approved technology services
+          including application and systems, cloud computing facilities, development and technical support, processing,
+          storing, hosting, research and to analyse data. • Business advisors, including lawyers, accountants,
+          insurance, recruitment advisors and agencies, auditors or other professional service providers to the extent
+          reasonably required. • Regulatory, investigative or government bodies to comply with applicable laws or
+          respond to valid legal process such as a search warrant, a court order or a subpoena and fraud management.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Some of our trusted service providers such as technology or data storage providers may be located outside of
+          Australia including Japan, Singapore, India, Hong Kong, the Philippines, the United States of America and
+          other countries or jurisdictions depending on the nature of the services those recipients provide to Pedlar
+          Pty Ltd.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Protection of personal information
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Personal information we hold will be in electronic form with our trusted service provider. Any trusted service
+          provider must observe and meet our information security requirements to minimise the risk of unauthorised
+          access to, and loss, misuse or unapproved alteration of, personal information.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          In addition we have a number of security controls in place and use a range of resources, process and
+          technology controls to protect your personal information. While we endeavour to protect the personal
+          information of users of our website, we cannot guarantee the security of information you disclose online. You
+          disclose that information at your own risk. You should be aware that no method of transmission over the
+          Internet or method of electronic storage is 100% secure. You can also help protect your personal information
+          by keeping your Pedlar account details confidential, access is limited and we encourage you to use a unique
+          and strong password, limit access to your computer and log out after use. If you become aware of unauthorised
+          access, please contact the Pedlar Customer service team as soon as practicable using these details:
+          hello@pedlar.store
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Third party sites
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          We may display advertisements from third parties and other content that links to third-party websites. Links
+          to third party sites that are not operated or controlled by us are provided for your convenience. If you click
+          on a third-party advertisement or link, you are leaving Pedlar and any personal information you provide will
+          not be covered by this Policy. We are not responsible for the privacy or security practices of those sites.
+          Third party websites should have their own privacy and security policies, which we encourage you to read
+          before supplying any personal information to them.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Access and Corrections
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Access If you would like access to personal information we hold about you, please contact the Pedlar Customer
+          Service team. When making an access request, please provide as much detail as you can about the particular
+          information you seek, in order to help us retrieve the information. We may ask you to verify your identity
+          before proceeding with any request you make, this includes providing us satisfactory proof of identity as
+          determined by us.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          Corrections If you ask us to correct personal information that we hold about you, or if we are satisfied that
+          the personal information we hold is inaccurate, out of date, incomplete, irrelevant or misleading, we will
+          take reasonable steps to correct that information to ensure that, having regard to the purpose for which it is
+          held, the information is accurate, up-to-date, complete, relevant and not misleading. If we correct personal
+          information about you, and we have previously disclosed that information to another agency or organisation
+          that is subject to the Privacy Act, you may ask us to notify that other entity. If so, we will take reasonable
+          steps to do so, unless this would be impracticable or unlawful. You should ensure that all personal
+          information submitted to us is complete, accurate, true and correct. Failure on your part to do so may result
+          in our inability to provide you with the products and services you have requested. A record of the changes
+          made to your personal information may be noted in your account or filing.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Complaints or Questions
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          If you would like further information about how we manage your personal information, or if you have any
+          queries relating to our Privacy Policy, or wish to lodge a complaint in relation to an alleged breach of the
+          Privacy Act, please contact the Customer Service team using the following contact details: hello@pedlar.store
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          We may ask you to submit your complaint in writing. We may discuss and share your complaint with our staff and
+          our service providers and others as required and appropriate.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          All complaints received by the Customer Service Team will be dealt with in a timely manner considering all the
+          circumstances of the complaint. In most cases, we expect that complaints will be investigated and a response
+          generally provided within 30 days of receipt of the complaint.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
+          Updates to this Policy
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          We may amend this Privacy Policy from time to time without notice. You should check this page regularly to
+          take notice of any changes. The current version will be posted on our website and a copy may be obtained by
+          contacting our Customer Service team.
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+          General
+        </Typography>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+          This Privacy Policy and your use of our services including the website is governed in all respects by the laws
+          of New South Wales, Australia and you agree to submit to the exclusive jurisdiction of the courts of
+          Australia. For information about privacy generally, you may visit the Office of the Australian Information
+          Commissioner’s website at www.oaic.gov.au.
+        </Typography>
       </Box>
     </CustomContainer>
   );

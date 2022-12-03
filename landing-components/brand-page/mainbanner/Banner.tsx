@@ -4,8 +4,10 @@ import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
 import BrandBanner from "../../../public/forbrand-sec1-img1.png";
+import { useTheme } from "@mui/material";
 
 const Banner = () => {
+  const theme = useTheme();
   return (
     <CustomContainer>
       <Grid
@@ -15,19 +17,20 @@ const Banner = () => {
         sm={12}
         md={12}
         lg={12}
-        gap={50}
+        gap={10}
         sx={styles.MainBox}
         style={{ alignItems: "center" }}
         justifyContent={{ sm: "left" }}
+        paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid item xs={12} sm={12} md={12} lg={6}>
-          <Image src={BrandBanner} alt={"brand banner"} />
+        <Grid sx={styles.GridImg}>
+          <Image src={BrandBanner} alt={"brand banner"} style={{borderRadius:"10px"}}/>
         </Grid>
-        <Grid item xs={12} sm={10.3} md={7.7} lg={5} sx={styles.GridBox} style={{ justifyContent: "flex-end" }}>
-          <Typography textTransform={"none"} fontSize={"64px"} sx={styles.heading}>
+        <Grid sx={styles.GridBox} style={{ justifyContent: "flex-end" }} padding={{xs:'20px',sm:'40px'}}>
+          <Typography textTransform={"none"} fontSize={{xs:'34px',sm:'54px',md:'64px'}} sx={styles.heading}>
             Find new audience for your brand
           </Typography>
-          <Typography textTransform={"none"} fontSize={"22px"} sx={styles.title}>
+          <Typography textTransform={"none"} fontSize={"22px"} sx={styles.title} padding={{xs:'20px 0 30px',sm:'20px 0 30px',md:'20px 0 10px'}}>
             Sell directly to Aussie shoppers with customised storefronts curated by social media creators.
           </Typography>
           <Button sx={styles.Button}>

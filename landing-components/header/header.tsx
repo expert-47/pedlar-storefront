@@ -23,7 +23,7 @@ const Header = () => {
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const trigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
+  const Scrolltrigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
 
   const openStorePage = () => {
     router.push("/");
@@ -55,18 +55,18 @@ const Header = () => {
           ) : (
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
-                {trigger || router.pathname != "/" ? (
+                {Scrolltrigger || router.pathname != "/" ? (
                   <Image
                     src={headerlogo}
-                    alt="header-logo"
+                    alt="pedlar-logo"
                     height={75}
                     width={230}
                     onClick={openStorePage}
                     style={{ cursor: "pointer" }}
                   />
                 ) : (
-                  <Box style={{ cursor: "pointer", marginTop: "70px", width: "85%" }}>
-                    <Image src={headerlogo} alt="header-logo" onClick={openStorePage} />
+                  <Box style={{ cursor: "pointer", marginTop: "65px", width: "85%" }}>
+                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
                   </Box>
                 )}
               </Grid>
@@ -135,40 +135,41 @@ const Header = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        fontWeight: "700",
                         borderRadius: "10px",
                       }}
                       sx={{
                         backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                        fontWeight: userType == true ? "700" : "400",
                         "&:hover": {
                           backgroundColor: userType == true ? "#d0bcff" : "transparent",
                         },
                       }}
                       onClick={onChangeCreator}
                     >
-                      I'm a Creater
+                      I'm a creater
                     </Button>
                     <Button
                       style={{
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        fontWeight: "700",
                         borderRadius: "10px",
                       }}
                       sx={{
                         backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                        fontWeight: userType == false ? "700" : "400",
+
                         "&:hover": {
                           backgroundColor: userType == false ? "#d0bcff" : "transparent",
                         },
                       }}
                       onClick={onChangeBrand}
                     >
-                      I'm a Brand
+                      I'm a brand
                     </Button>
                   </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
+                  <Button style={{ backgroundColor: "black", borderRadius: "666px", padding: "10px 16px" }}>
                     <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
                       Get in touch
                     </Typography>

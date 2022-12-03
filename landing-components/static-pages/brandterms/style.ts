@@ -8,4 +8,7 @@ export const styles = {
   spacing: {
     paddingBottom: "20px",
   },
+  space: {
+    paddingBottom: "10px",
+  },
 };

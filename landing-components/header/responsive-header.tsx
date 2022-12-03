@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Typography } from "@mui/material";
+import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Typography, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -8,6 +8,7 @@ import { styles } from "./style";
 import { TransitionProps } from "@mui/material/transitions";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
+import headerlogo from "../../public/header-logo.svg";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -19,6 +20,7 @@ const Transition = React.forwardRef(function Transition(
 });
 const ResponsiveHeader = () => {
   const router = useRouter();
+  const theme = useTheme();
   const [opendrawer, setOpenDrawar] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
@@ -53,147 +55,167 @@ const ResponsiveHeader = () => {
   };
   return (
     <AppBar elevation={0} sx={styles.Respheader}>
-      <Image
-        src="/header-logo.svg"
-        alt="header-logo"
-        height={75}
-        width={230}
-        onClick={openStorePage}
-        style={{ cursor: "pointer" }}
-      />
-      <Drawer
-        anchor="right"
-        open={opendrawer}
-        PaperProps={{
-          sx: paperStyle,
-        }}
+      <Grid
+        container
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        sx={styles.RespoMainGrid}
+        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "32px" }}>
-          <img
-            src="/header-logo.svg"
-            alt="header-logo"
-            style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
+        <Grid item xs={11} sm={11.5} md={11.5}>
+          <Image
+            src={headerlogo}
+            alt="pedlar-logo"
+            height={75}
+            width={230}
             onClick={openStorePage}
+            style={{ cursor: "pointer" }}
           />
-          <IconButton onClick={onCloseDrawer}>
-            <CloseIcon style={{ height: "40px", width: "40px", marginRight: "19px", color: "black" }} />
-          </IconButton>
         </Grid>
-        <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
-          <Grid>
-            <Button sx={styles.ButtonR} onClick={openCreators}>
-              <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                For Creators
-              </Typography>
-            </Button>
-          </Grid>
-          <Grid>
-            <Button sx={styles.ButtonR} onClick={openBrands}>
-              <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                For Brands
-              </Typography>
-            </Button>
-          </Grid>
-          <Grid style={{ textAlign: "center" }}>
-            <Grid>
-              <Button sx={styles.GetAccess1} onClick={openPopup}>
-                <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                  Get Access
-                </Typography>
-              </Button>
+        <Grid item xs={0.5} sm={0.5} md={0.5}>
+          <Drawer
+            anchor="right"
+            open={opendrawer}
+            PaperProps={{
+              sx: paperStyle,
+            }}
+          >
+            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "32px" }}>
+              <img
+                src="/header-logo.svg"
+                alt="header-logo"
+                style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
+                onClick={openStorePage}
+              />
+              <IconButton onClick={onCloseDrawer}>
+                <CloseIcon style={{ height: "40px", width: "40px", marginRight: "19px", color: "black" }} />
+              </IconButton>
             </Grid>
-            <Grid>
-              <Button sx={styles.Login1} onClick={openPopup}>
-                <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                  Log in
-                </Typography>
-              </Button>
-              <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
-                <Grid
-                  container
-                  item
-                  xs={12}
-                  sm={12}
-                  md={12}
-                  lg={12}
-                  sx={[
-                    styles.RespLoginBox,
-                    {
-                      overflow: "scroll",
-                      "&::-webkit-scrollbar": {
-                        display: "none",
-                      },
-                    },
-                  ]}
-                >
-                  <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
-                    {userType ? (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
-                    ) : (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
-                    )}
-                    <IconButton onClick={closePopup}>
-                      <CloseIcon style={{ color: "black" }} />
-                    </IconButton>
-                  </Grid>
-                  <Box sx={styles.BoxSelector}>
-                    <Button
-                      style={{
-                        textTransform: "none",
-                        color: "#49454F",
-                        fontSize: "16px",
-                        fontWeight: "700",
-                        borderRadius: "10px",
-                      }}
-                      sx={{
-                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                        "&:hover": {
-                          backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                        },
-                      }}
-                      onClick={onChangeCreator}
-                    >
-                      I'm a Creater
-                    </Button>
-                    <Button
-                      style={{
-                        textTransform: "none",
-                        color: "#49454F",
-                        fontSize: "16px",
-                        fontWeight: "700",
-                        borderRadius: "10px",
-                      }}
-                      sx={{
-                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                        "&:hover": {
-                          backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                        },
-                      }}
-                      onClick={onChangeBrand}
-                    >
-                      I'm a Brand
-                    </Button>
-                  </Box>
-                  {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
-                    <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                      Get in touch
+            <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
+              <Grid>
+                <Button sx={styles.ButtonR} onClick={openCreators}>
+                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                    For Creators
+                  </Typography>
+                </Button>
+              </Grid>
+              <Grid>
+                <Button sx={styles.ButtonR} onClick={openBrands}>
+                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                    For Brands
+                  </Typography>
+                </Button>
+              </Grid>
+              <Grid style={{ textAlign: "center" }}>
+                <Grid>
+                  <Button sx={styles.GetAccess1} onClick={openPopup}>
+                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                      Get Access
                     </Typography>
                   </Button>
-                  <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
-                    {
-                      "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                    }
-                  </Typography>
                 </Grid>
-              </Dialog>
+                <Grid>
+                  <Button sx={styles.Login1} onClick={openPopup}>
+                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                      Log in
+                    </Typography>
+                  </Button>
+                  <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+                    <Grid
+                      container
+                      item
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                      sx={[
+                        styles.RespLoginBox,
+                        {
+                          overflow: "scroll",
+                          "&::-webkit-scrollbar": {
+                            display: "none",
+                          },
+                        },
+                      ]}
+                    >
+                      <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                        {userType ? (
+                          <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>
+                            Join the waitlist!
+                          </Typography>
+                        ) : (
+                          <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>
+                            {"Let’s talk growth"}
+                          </Typography>
+                        )}
+                        <IconButton onClick={closePopup}>
+                          <CloseIcon style={{ color: "black" }} />
+                        </IconButton>
+                      </Grid>
+                      <Box sx={styles.BoxSelector}>
+                        <Button
+                          style={{
+                            textTransform: "none",
+                            color: "#49454F",
+                            fontSize: "16px",
+                            borderRadius: "10px",
+                          }}
+                          sx={{
+                            backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                            fontWeight: userType == true ? "700" : "400",
+                            "&:hover": {
+                              backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                            },
+                          }}
+                          onClick={onChangeCreator}
+                        >
+                          I'm a creater
+                        </Button>
+                        <Button
+                          style={{
+                            textTransform: "none",
+                            color: "#49454F",
+                            fontSize: "16px",
+                            borderRadius: "10px",
+                          }}
+                          sx={{
+                            backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                            fontWeight: userType == false ? "700" : "400",
+
+                            "&:hover": {
+                              backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                            },
+                          }}
+                          onClick={onChangeBrand}
+                        >
+                          I'm a brand
+                        </Button>
+                      </Box>
+                      {userType ? <Creatorpopup /> : <Brandspopup />}
+                      <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
+                        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                          Get in touch
+                        </Typography>
+                      </Button>
+                      <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                        {
+                          "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+                        }
+                      </Typography>
+                    </Grid>
+                  </Dialog>
+                </Grid>
+              </Grid>
             </Grid>
-          </Grid>
+          </Drawer>
+          <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
+            <MenuIcon />
+          </IconButton>
         </Grid>
-      </Drawer>
-      <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
-        <MenuIcon />
-      </IconButton>
+      </Grid>
     </AppBar>
   );
 };

@@ -3,9 +3,9 @@ import { Grid, Typography } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import { useTheme } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+
 const Influncerheading = () => {
-  const isTab = useMediaQuery("(max-width:800px)");
+
   const theme = useTheme();
   return (
     <CustomContainer>
@@ -15,10 +15,11 @@ const Influncerheading = () => {
         sm={12}
         md={12}
         lg={12}
-        style={{ margin: "30px" }}
-        paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Typography style={{ fontSize: isTab ? "46px" : "54px" }} sx={styles.heading}>
+        <Typography fontSize={{xs:'48px',sm:'54px'}} sx={styles.heading} width={{xs:'100%',sm:'85%',md:'60%'}}
+          paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
+        >
           Work with the world’s most talented influencers
         </Typography>
       </Grid>

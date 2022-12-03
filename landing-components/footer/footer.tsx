@@ -24,7 +24,7 @@ const Footer = () => {
           paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
-            <Link href="#">
+            <Link href="/">
               <Image src={footerLogo} alt="footer logo" />
             </Link>
             <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"500"} paddingTop={"40px"}>
@@ -51,19 +51,19 @@ const Footer = () => {
           >
             <Grid item xs={12} sm={12} md={12} lg={7}>
               <Box marginBottom={{ xs: "50px", sm: "0px" }}>
-                <Link href="/return-policy" target={"blank"} sx={styles.footerLink}>
+                <Link href="/faq" target={"FAQs"} sx={styles.footerLink}>
                   FAQs
                 </Link>
-                <Link href="/return-policy" target={"blank"} sx={styles.footerLink}>
+                <Link href="/return-policy" target={"Shipping & Returns"} sx={styles.footerLink}>
                   Shipping & Returns
                 </Link>
-                <Link href="/creator-terms" target={"blank"} sx={styles.footerLink}>
+                <Link href="/creator-terms" target={"Creator Terms & Conditions"} sx={styles.footerLink}>
                   Creator Terms & Conditions
                 </Link>
-                <Link href="/brand-terms" target={"blank"} sx={styles.footerLink}>
+                <Link href="/brand-terms" target={"Brands Terms & Conditions"} sx={styles.footerLink}>
                   Brands Terms & Conditions
                 </Link>
-                <Link href="/privacy-policy" target={"blank"} sx={styles.footerLink}>
+                <Link href="/privacy-policy" target={"Privacy Policy"} sx={styles.footerLink}>
                   Privacy Policy
                 </Link>
               </Box>

@@ -1,13 +1,12 @@
 export const styles = {
   MainBox: {
     backgroundColor: "white",
-    margin: "30px",
     borderRadius: "16px",
-    padding: "20px",
   },
   heading: {
     textAlign: "center",
     lineHeight: "60px",
+    fontWeight:'700',
   },
   title: {
     paddingTop: "20px",

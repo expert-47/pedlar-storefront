@@ -1,12 +1,13 @@
 export const styles = {
   header: {
-    height: "17%",
+    height: "100px",
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
     paddingBottom: "10px",
     backgroundColor: "#f9f6f2",
     alignItems: "center",
+    //zIndex: "99999",
   },
   Respheader: {
     display: "flex",
@@ -18,6 +19,11 @@ export const styles = {
     justifyContent: "space-between",
   },
   MainGrid: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  RespoMainGrid: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -91,9 +97,8 @@ export const styles = {
   },
   LoginBox: {
     backgroundColor: "#f9f6f2",
-    width: "500px",
-    borderRadius: "10px",
-    p: 25,
+    width: "529px",
+    padding: "24px",
   },
   RespLoginBox: {
     borderRadius: "10px",

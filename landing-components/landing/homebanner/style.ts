@@ -21,6 +21,10 @@ export const styles = {
       width: "100%",
       paddingTop: "20px",
     },
+    ["@media (min-width:1440px)"]: {
+      right: "6px",
+      width: "44%",
+    },
   },
   FirstPara: {
     opacity: "0.64",

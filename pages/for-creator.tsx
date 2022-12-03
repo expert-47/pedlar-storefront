@@ -11,7 +11,6 @@ import bluemeshbrand from "../public/blue-mesh-brand.png";
 import bluemeshbrands from "../public/blue-meshh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
 
-
 const creator = () => {
   return (
     <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }}>
@@ -20,28 +19,21 @@ const creator = () => {
           <Image src={bluemeshbrands} alt="Orange meshes" />
         </Box>
         <Box
-          style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}    top={{ xs: "3684px", sm: "1806px", md: "1134px", lg: "41px" }}
+          style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
+          top={{ xs: "3684px", sm: "1806px", md: "1134px", lg: "41px" }}
         >
           <Image src={bluemeshbrand} alt="orang brand meshes" />
         </Box>
       </Box>
-      <Box style={{position:'relative'}}>
-        <Box  style={{position: 'absolute',
-                right: '0',
-                width: 'auto',
-                zIndex: '0'}}
-                top={{xs:'0px',lg:'0px'}}
-                >
-            <Image
-              src={bluemeshbrands}
-              alt="Orange meshes"
-            />
+      <Box style={{ position: "relative" }}>
+        <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
+          <Image src={bluemeshbrands} alt="Orange meshes" />
         </Box>
         <Box
-            style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
-            top={{ xs: "3684px",sm:'1806px', md:'1134px', lg: "431px" }}
-          >
-            <Image src={bluemeshbrand} alt="orang brand meshes" />
+          style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
+          top={{ xs: "3684px", sm: "1806px", md: "1134px", lg: "431px" }}
+        >
+          <Image src={bluemeshbrand} alt="orang brand meshes" />
         </Box>
       </Box>
       <Banner />

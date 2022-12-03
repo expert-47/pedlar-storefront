@@ -20,7 +20,7 @@ const Faq = () => {
       <Box
         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-        style={{zIndex:'999', position:'relative'}}
+        style={{ zIndex: "999", position: "relative" }}
       >
         <Grid
           container
@@ -29,7 +29,7 @@ const Faq = () => {
           sm={12}
           md={12}
           lg={12}
-          style={{ justifyContent: "space-between",marginTop:"100px"}}
+          style={{ justifyContent: "space-between", marginTop: "100px" }}
           paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={12} md={5} lg={4}>

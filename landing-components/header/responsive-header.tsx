@@ -31,13 +31,13 @@ const ResponsiveHeader = () => {
   const onChangeBrand = () => setUserType(false);
 
   const openStorePage = () => {
-    router.push("/landing");
+    router.push("/");
   };
   const openCreators = () => {
     router.push("/for-creator");
   };
   const openBrands = () => {
-    router.push("//for-brands");
+    router.push("/for-brands");
   };
 
   const onClickDrawer = () => {

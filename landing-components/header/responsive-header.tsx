@@ -96,18 +96,32 @@ const ResponsiveHeader = () => {
             </Grid>
             <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
               <Grid>
-                <Button sx={styles.ButtonR} onClick={openCreators}>
-                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                <Grid sx={styles.ButtonR} onClick={openCreators}>
+                  <Typography
+                    textTransform="none"
+                    sx={{
+                      ...styles.ButtonRTypo,
+                      textDecorationLine: router.pathname == "/for-creator" && "underline",
+                      color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
+                    }}
+                  >
                     For Creators
                   </Typography>
-                </Button>
+                </Grid>
               </Grid>
               <Grid>
-                <Button sx={styles.ButtonR} onClick={openBrands}>
-                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                <Grid sx={styles.ButtonR} onClick={openBrands}>
+                  <Typography
+                    textTransform="none"
+                    sx={{
+                      ...styles.ButtonRTypo,
+                      textDecorationLine: router.pathname == "/for-brands" && "underline",
+                      color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
+                    }}
+                  >
                     For Brands
                   </Typography>
-                </Button>
+                </Grid>
               </Grid>
               <Grid style={{ textAlign: "center" }}>
                 <Grid>

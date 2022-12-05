@@ -5,6 +5,7 @@ import { styles } from "./style";
 import Image from "next/image";
 import BrandBanner from "../../../public/forbrand-sec1-img1.png";
 import { useTheme } from "@mui/material";
+import { Link as ScrollLink } from "react-scroll";
 
 const Banner = () => {
   const theme = useTheme();
@@ -39,9 +40,11 @@ const Banner = () => {
             Sell directly to Aussie shoppers with customised storefronts curated by social media creators.
           </Typography>
           <Button sx={styles.Button}>
-            <Typography textTransform={"none"} fontSize={"22px"}>
-              Schedule a call
-            </Typography>
+            <ScrollLink to="ScheduleCalleForm" spy={true} smooth={true} offset={-100} duration={500}>
+              <Typography textTransform={"none"} fontSize={"22px"}>
+                Schedule a call
+              </Typography>
+            </ScrollLink>
           </Button>
         </Grid>
       </Grid>

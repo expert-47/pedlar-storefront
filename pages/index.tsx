@@ -6,6 +6,7 @@ import Faq from "../landing-components/landing/faq/faq";
 import Layout,{CustomContainer} from "../landing-components/landinglayout";
 import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
+// import Howitswork from "../landing-components/landing/how-its-work/how-its-work"
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
@@ -44,6 +45,7 @@ const index = () => {
       <Gridbox />
       <Company />
       <Picturecarousel />
+      {/* <Howitswork /> */}
       <EarlyAcess />
       <Faq />
     </Layout>

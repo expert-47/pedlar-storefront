@@ -59,14 +59,14 @@ const Gridbox = () => {
                   <Image src={secondGrid} alt="Picture of the author" />
                 </Grid>
                 <Grid marginLeft={{ sm: "0px", xs: "13px" }} marginTop={{ lg: "14px", sm: "5px", xs: "0px" }}>
-                  <Image src={thirdGrid} alt="Picture of the author" />
+                  <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur"/>
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4.5}>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Picture of the author" />
+                  <Image src={glow} alt="Picture of the author" loading="lazy"  />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>

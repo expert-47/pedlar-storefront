@@ -22,21 +22,18 @@ const Header = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
-  const [activelinkbrand, setActiveLinkBrand] = useState("");
-  const [activelinkcreator, setActiveLinkCreator] = useState("");
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
   const Scrolltrigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
+  console.log("router", router.pathname == "/for-creator");
 
   const openStorePage = () => {
     router.push("/");
   };
   const openCreators = () => {
     router.push("/for-creator");
-    setActiveLinkCreator("/for-creator");
   };
   const openBrands = () => {
     router.push("/for-brands");
-    setActiveLinkBrand("/for-brands");
   };
 
   return (
@@ -80,8 +77,8 @@ const Header = () => {
                     textTransform="none"
                     sx={{
                       ...styles.Button,
-                      textDecorationLine: activelinkcreator && "underline",
-                      color: activelinkcreator && "rgba(28,27,31,.64)",
+                      textDecorationLine: router.pathname == "/for-creator" && "underline",
+                      color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
                     }}
                   >
                     For Creators
@@ -92,8 +89,8 @@ const Header = () => {
                     textTransform="none"
                     sx={{
                       ...styles.Button,
-                      textDecorationLine: activelinkbrand && "underline",
-                      color: activelinkbrand && "rgba(28,27,31,.64)",
+                      textDecorationLine: router.pathname == "/for-brands" && "underline",
+                      color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
                     }}
                   >
                     For Brands

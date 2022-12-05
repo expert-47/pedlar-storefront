@@ -24,7 +24,6 @@ const Header = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
   const Scrolltrigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
-  console.log("router", router.pathname == "/for-creator");
 
   const openStorePage = () => {
     router.push("/");

@@ -4,7 +4,7 @@ const config: DefaultSeoProps = {
   openGraph: {
     type: "website",
     locale: "en_IE",
-    url: "http://localhost:3000/",
+    url: "https://pedlar.store/",
     siteName: "pedlar",
   },
   titleTemplate: "pedlar",

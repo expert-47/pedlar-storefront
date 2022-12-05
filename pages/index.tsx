@@ -14,26 +14,29 @@ import orangepinkmesh from "../public/mesh-pink-orange.png";
 
 const index = () => {
   return (
-    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }}>
+    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }} seo={{
+      title: "Pedlar - Influencer store ",
+      description: "Pedlar making influencer to run there store easily!",
+    }}>
       <CustomContainer>
         <Box style={{ position: "relative" }}>
           <Box
             style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
             top={{ xs: "1059px", lg: "1187px" }}
           >
-            <Image src={orangeMeshes} alt="Orange meshes" />
+            <Image src={orangeMeshes} alt="Orange meshes"  loading={"lazy"} />
           </Box>
           <Box
             style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
             top={{ xs: "687px", md: "500px", lg: "117px" }}
           >
-            <Image src={pinkMeshes} alt="pink meshes" />
+            <Image src={pinkMeshes} alt="pink meshes" priority  />
           </Box>
           <Box
             style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
             top={{ xs: "933px", md: "627px", lg: "545px" }}
           >
-            <Image src={orangepinkmesh} alt="orange pink meshes" />
+            <Image src={orangepinkmesh} alt="orange pink meshes"  loading={"lazy"}  />
           </Box>
         </Box>
       </CustomContainer>

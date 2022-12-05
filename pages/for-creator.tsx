@@ -13,7 +13,10 @@ import Picturecarousel from "../landing-components/landing/picture-carousel/pict
 
 const creator = () => {
   return (
-    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }}>
+    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }} seo={{
+      title: "Pedlar - Creator Store ",
+      description: "Pedlar making creator to sell things easily!",
+    }}>
       <CustomContainer>
         <Box style={{ position: "relative" }}>
           <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>

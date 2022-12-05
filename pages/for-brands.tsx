@@ -13,7 +13,10 @@ import Picturecarousel from "../landing-components/landing/picture-carousel/pict
 
 const brands = () => {
   return (
-    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }}>
+    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }} seo={{
+      title: "Pedlar - Brand store ",
+      description: "Pedlar making brands to sell things easily!",
+    }}>
       <CustomContainer>
         <Box style={{ position: "relative" }}>
           <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>

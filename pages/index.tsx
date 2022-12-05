@@ -3,7 +3,7 @@ import Banner from "../landing-components/landing/homebanner/home-banner";
 import Company from "../landing-components/landing/comapny/company";
 import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
 import Faq from "../landing-components/landing/faq/faq";
-import Layout, { CustomContainer } from "../landing-components/landinglayout";
+import Layout,{CustomContainer} from "../landing-components/landinglayout";
 import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
 import Box from "@mui/material/Box";
@@ -24,19 +24,19 @@ const index = () => {
             style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
             top={{ xs: "1059px", lg: "1187px" }}
           >
-            <Image src={orangeMeshes} alt="Orange meshes"  loading={"lazy"} />
+            <Image src={orangeMeshes} alt="Orange meshes" loading={"lazy"} />
           </Box>
           <Box
             style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
             top={{ xs: "687px", md: "500px", lg: "117px" }}
           >
-            <Image src={pinkMeshes} alt="pink meshes" priority  />
+            <Image src={pinkMeshes} alt="pink meshes" priority />
           </Box>
           <Box
             style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
             top={{ xs: "933px", md: "627px", lg: "545px" }}
           >
-            <Image src={orangepinkmesh} alt="orange pink meshes"  loading={"lazy"}  />
+            <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
           </Box>
         </Box>
       </CustomContainer>

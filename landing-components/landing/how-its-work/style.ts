@@ -5,16 +5,17 @@ export const styles = {
     padding: "30px",
   },
   Heading: {
-    padding: "93px 0 0 60px",
+    padding: "50px 0 0 60px",
     color: "rgb(249, 246, 242)",
   },
   Texts: {
     color: "rgb(249, 246, 242)",
     paddingTop: "30px",
     paddingLeft: "60px",
+    margin:0
   },
   circlecount: {
-    width: "50px",
+    width: "30px",
     minWidth: "50px",
     height: "50px",
     borderRadius: "50%",

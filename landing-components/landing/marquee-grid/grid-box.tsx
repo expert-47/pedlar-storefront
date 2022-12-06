@@ -28,7 +28,6 @@ const Gridbox = () => {
     <CustomContainer>
       <Grid
         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
         <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>

@@ -19,10 +19,10 @@ export const styles = {
     margin: "0 0",
   },
   acordianPara: {
-    color: " #1C1B1F",
+    color: " rgb(28, 27, 31)",
     fontFamily: "Inter",
     fontSize: "16px",
-    opacity: "0.64",
+    fontWeight: "400",
   },
   acordianMain: {
     backgroundColor: "transparent",

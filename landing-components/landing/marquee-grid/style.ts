@@ -22,6 +22,7 @@ export const styles = {
   creator: {
     color: "#8652FF",
     textDecoration: "none",
+    cursor: "pointer",
   },
   marqueetop: {
     color: "#ebe8e4",
@@ -48,5 +49,19 @@ export const styles = {
     left: "0",
     top: "0",
     zIndex: "-1",
+  },
+  LoginBox: {
+    backgroundColor: "#f9f6f2",
+    width: "500px",
+    borderRadius: "10px",
+    p: 25,
+  },
+  BoxSelector: {
+    display: "flex",
+    backgroundColor: "transparent",
+    borderRadius: "10px",
+    border: "1px solid rgba(28, 27, 31, 0.64)",
+    marginBottom: "24px",
+    padding: "5px",
   },
 };

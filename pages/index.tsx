@@ -3,10 +3,10 @@ import Banner from "../landing-components/landing/homebanner/home-banner";
 import Company from "../landing-components/landing/comapny/company";
 import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
 import Faq from "../landing-components/landing/faq/faq";
-import Layout,{CustomContainer} from "../landing-components/landinglayout";
+import Layout, { CustomContainer } from "../landing-components/landinglayout";
 import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
-// import Howitswork from "../landing-components/landing/how-its-work/how-its-work"
+import Howitswork from "../landing-components/landing/how-its-work/how-its-work";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
@@ -15,10 +15,13 @@ import orangepinkmesh from "../public/mesh-pink-orange.png";
 
 const index = () => {
   return (
-    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }} seo={{
-      title: "Pedlar - Influencer store ",
-      description: "Pedlar making influencer to run there store easily!",
-    }}>
+    <Layout
+      style={{ position: "relative", backgroundColor: "#f9f6f2" }}
+      seo={{
+        title: "Pedlar - Influencer store ",
+        description: "Pedlar making influencer to run there store easily!",
+      }}
+    >
       <CustomContainer>
         <Box style={{ position: "relative" }}>
           <Box
@@ -45,7 +48,7 @@ const index = () => {
       <Gridbox />
       <Company />
       <Picturecarousel />
-      {/* <Howitswork /> */}
+      <Howitswork />
       <EarlyAcess />
       <Faq />
     </Layout>

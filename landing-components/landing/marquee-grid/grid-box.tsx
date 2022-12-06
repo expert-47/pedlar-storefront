@@ -1,9 +1,8 @@
-import { Typography, Grid } from "@mui/material";
+import { Typography, Grid, Dialog, IconButton, Button } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { useTheme } from "@mui/material";
-import Link from "@mui/material/Link";
 import Image from "next/image";
 import firstGrid from "../../../public/home-sec2-img1.png";
 import secondGrid from "../../../public/home-sec2-img2.png";
@@ -11,8 +10,19 @@ import thirdGrid from "../../../public/home-sec2-img3.png";
 import glow from "../../../public/glow.svg";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
+import CloseIcon from "@mui/icons-material/Close";
+import Creatorpopup from "../../popup-dialog/creatorpopup";
+import Brandspopup from "../../popup-dialog/brandspopup";
 
 const Gridbox = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const openPopup = () => setOpenDialog(true);
+  const closePopup = () => setOpenDialog(false);
+  const handleClose = () => setOpenDialog(false);
+  const [userType, setUserType] = useState(true);
+  const onChangeCreator = () => setUserType(true);
+  const onChangeBrand = () => setUserType(false);
+
   const theme = useTheme();
   return (
     <CustomContainer>
@@ -59,14 +69,14 @@ const Gridbox = () => {
                   <Image src={secondGrid} alt="Picture of the author" />
                 </Grid>
                 <Grid marginLeft={{ sm: "0px", xs: "13px" }} marginTop={{ lg: "14px", sm: "5px", xs: "0px" }}>
-                  <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur"/>
+                  <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
                 </Grid>
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4.5}>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Picture of the author" loading="lazy"  />
+                  <Image src={glow} alt="Picture of the author" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
@@ -104,15 +114,15 @@ const Gridbox = () => {
                 </Box>
               </Grid>
               <Grid style={{ paddingLeft: "25px" }}>
-                <Link
-                  href=""
+                <Typography
+                  onClick={openPopup}
                   sx={styles.creator}
                   fontFamily={"Inter"}
                   fontSize={{ xs: "18px", lg: "22px" }}
                   fontWeight={"600"}
                 >
                   Creators and Brands, Get Started →
-                </Link>
+                </Typography>
               </Grid>
             </Grid>
           </Grid>
@@ -127,6 +137,86 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
+        <Dialog open={openDialog} onClose={handleClose}>
+          <Grid
+            container
+            item
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            sx={[
+              styles.LoginBox,
+              {
+                overflow: "scroll",
+                "&::-webkit-scrollbar": {
+                  display: "none",
+                },
+              },
+            ]}
+          >
+            <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+              {userType ? (
+                <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+              ) : (
+                <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+              )}
+              <IconButton onClick={closePopup}>
+                <CloseIcon style={{ color: "black" }} />
+              </IconButton>
+            </Grid>
+            <Box sx={styles.BoxSelector}>
+              <Button
+                style={{
+                  textTransform: "none",
+                  color: "#49454F",
+                  fontSize: "16px",
+                  borderRadius: "10px",
+                }}
+                sx={{
+                  backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                  fontWeight: userType == true ? "700" : "400",
+                  "&:hover": {
+                    backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                  },
+                }}
+                onClick={onChangeCreator}
+              >
+                I'm a creater
+              </Button>
+              <Button
+                style={{
+                  textTransform: "none",
+                  color: "#49454F",
+                  fontSize: "16px",
+                  borderRadius: "10px",
+                }}
+                sx={{
+                  backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                  fontWeight: userType == false ? "700" : "400",
+
+                  "&:hover": {
+                    backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                  },
+                }}
+                onClick={onChangeBrand}
+              >
+                I'm a brand
+              </Button>
+            </Box>
+            {userType ? <Creatorpopup /> : <Brandspopup />}
+            <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                Get in touch
+              </Typography>
+            </Button>
+            <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+              {
+                "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+              }
+            </Typography>
+          </Grid>
+        </Dialog>
       </Grid>
     </CustomContainer>
   );

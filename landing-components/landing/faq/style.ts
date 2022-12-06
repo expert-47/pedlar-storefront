@@ -7,17 +7,17 @@ export const styles = {
   },
   acordianText: {
     opacity: "0.64",
-    color: " #1C1B1F",
+    color: " rgb(28, 27, 31)",
     fontFamily: "Inter",
     fontWight: "600",
     fontSize: "22px",
     margin: "0 0",
   },
   acordianPara: {
-    color: " #1C1B1F",
+    color: " rgb(28, 27, 31)",
     fontFamily: "Inter",
     fontSize: "16px",
-    opacity: "0.64",
+    fontWeight: "400",
   },
   acordianMain: {
     backgroundColor: "transparent",

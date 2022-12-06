@@ -3,7 +3,7 @@ import { Container, ContainerProps } from "@mui/material";
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import { NextSeo, NextSeoProps } from "next-seo";
-import Pedlarchatsupport from "../landing-components/pedlar-chat-support/pedlarchatsupport";
+//import Pedlarchatsupport from "../landing-components/pedlar-chat-support/pedlarchatsupport";
 
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
@@ -17,7 +17,7 @@ const Layout = (props: LayoutProps) => {
       <NextSeo {...seo} />
       <Header />
       {children}
-      <Pedlarchatsupport />
+      {/* <Pedlarchatsupport /> */}
       <Footer />
     </Container>
   );

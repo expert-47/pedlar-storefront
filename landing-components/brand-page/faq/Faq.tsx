@@ -19,7 +19,6 @@ const Faq = () => {
     <CustomContainer>
       <Box
         paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
         style={{ zIndex: "999", position: "relative" }}
       >
         <Grid

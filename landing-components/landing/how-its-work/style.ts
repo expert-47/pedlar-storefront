@@ -12,7 +12,7 @@ export const styles = {
     color: "rgb(249, 246, 242)",
     paddingTop: "30px",
     paddingLeft: "60px",
-    margin:0
+    margin: 0,
   },
   circlecount: {
     width: "30px",

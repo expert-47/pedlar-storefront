@@ -14,7 +14,6 @@ const Howitswork = () => {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
   ];
   return (
     <CustomContainer>
@@ -96,7 +95,7 @@ const Howitswork = () => {
                             {content.id}
                           </Typography>
                         </Grid>
-                        <Grid item xs={9} sm={9} md={9} lg={9} style={{ padding: "0px 0 0 28px" }}>
+                        <Grid item xs={9} sm={9} md={9} lg={10} style={{ padding: "0px 0 0 28px" }}>
                           <Typography fontSize={{ sx: "30px", sm: "30px", md: "40px", lg: "40px" }} fontWeight={600}>
                             {content.text}
                           </Typography>

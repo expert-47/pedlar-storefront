@@ -98,7 +98,7 @@ export const styles = {
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    padding: "5px",
+    padding: "6px 5px",
   },
   animateRow: {
     alignItems: "center",

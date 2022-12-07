@@ -99,6 +99,7 @@ export const styles = {
     backgroundColor: "#f9f6f2",
     width: "529px",
     padding: "24px",
+    borderRadius: "16px",
   },
   RespLoginBox: {
     borderRadius: "10px",
@@ -126,6 +127,6 @@ export const styles = {
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    padding: "5px",
+    padding: "6px 5px",
   },
 };

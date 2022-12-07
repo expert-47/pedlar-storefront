@@ -24,9 +24,7 @@ const EarlyAcess = () => {
 
   return (
     <CustomContainer>
-      <Box
-        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-      >
+      <Box paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
         <Box sx={styles.Box}>
           <Grid
             container
@@ -77,7 +75,15 @@ const EarlyAcess = () => {
                     I’m a brand
                   </Typography>
                 </Button>
-                <Dialog open={openDialog} onClose={handleClose}>
+                <Dialog
+                  open={openDialog}
+                  onClose={handleClose}
+                  sx={{
+                    ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+                      borderRadius: "16px",
+                    },
+                  }}
+                >
                   <Grid
                     container
                     item
@@ -114,6 +120,7 @@ const EarlyAcess = () => {
                           color: "#49454F",
                           fontSize: "16px",
                           borderRadius: "10px",
+                          padding: "2px 7px",
                         }}
                         sx={{
                           backgroundColor: userType == true ? "#d0bcff" : "transparent",
@@ -132,6 +139,7 @@ const EarlyAcess = () => {
                           color: "#49454F",
                           fontSize: "16px",
                           borderRadius: "10px",
+                          padding: "2px 7px",
                         }}
                         sx={{
                           backgroundColor: userType == false ? "#d0bcff" : "transparent",

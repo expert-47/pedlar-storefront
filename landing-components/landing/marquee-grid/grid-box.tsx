@@ -26,9 +26,7 @@ const Gridbox = () => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid
-        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
-      >
+      <Grid paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
         <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
@@ -136,7 +134,15 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Dialog open={openDialog} onClose={handleClose}>
+        <Dialog
+          open={openDialog}
+          onClose={handleClose}
+          sx={{
+            ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+              borderRadius: "16px",
+            },
+          }}
+        >
           <Grid
             container
             item
@@ -171,6 +177,7 @@ const Gridbox = () => {
                   color: "#49454F",
                   fontSize: "16px",
                   borderRadius: "10px",
+                  padding: "2px 7px",
                 }}
                 sx={{
                   backgroundColor: userType == true ? "#d0bcff" : "transparent",
@@ -189,6 +196,7 @@ const Gridbox = () => {
                   color: "#49454F",
                   fontSize: "16px",
                   borderRadius: "10px",
+                  padding: "2px 7px",
                 }}
                 sx={{
                   backgroundColor: userType == false ? "#d0bcff" : "transparent",

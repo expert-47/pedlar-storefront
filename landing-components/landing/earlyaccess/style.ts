@@ -35,6 +35,7 @@ export const styles = {
     },
   },
   LoginBox: {
+    backgroundColor: "#f9f6f2",
     width: "500px",
     borderRadius: "10px",
     p: 25,
@@ -57,6 +58,6 @@ export const styles = {
     borderRadius: "10px",
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
-    padding: "5px",
+    padding: "6px 5px",
   },
 };

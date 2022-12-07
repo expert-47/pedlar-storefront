@@ -45,7 +45,7 @@ const Banner = () => {
           {isSmall ? (
             <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} priority />
           ) : isMedium ? (
-            <Image src={tabBanner} alt="tab banner"  priority />
+            <Image src={tabBanner} alt="tab banner" priority />
           ) : isdektop ? (
             <Image src={desktopBanner} alt="desktop banner" priority placeholder="blur" />
           ) : (
@@ -89,7 +89,15 @@ const Banner = () => {
               <Button sx={styles.brands} onClick={openPopup}>
                 I’m a brand
               </Button>
-              <Dialog open={openDialog} onClose={handleClose}>
+              <Dialog
+                open={openDialog}
+                onClose={handleClose}
+                sx={{
+                  ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+                    borderRadius: "16px",
+                  },
+                }}
+              >
                 <Grid
                   container
                   item
@@ -124,6 +132,7 @@ const Banner = () => {
                         color: "#49454F",
                         fontSize: "16px",
                         borderRadius: "10px",
+                        padding: "2px 7px",
                       }}
                       sx={{
                         backgroundColor: userType == true ? "#d0bcff" : "transparent",
@@ -142,6 +151,7 @@ const Banner = () => {
                         color: "#49454F",
                         fontSize: "16px",
                         borderRadius: "10px",
+                        padding: "2px 7px",
                       }}
                       sx={{
                         backgroundColor: userType == false ? "#d0bcff" : "transparent",

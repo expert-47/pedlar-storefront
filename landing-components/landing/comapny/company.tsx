@@ -71,7 +71,15 @@ const Company = () => {
               I’m a creator
             </Typography>
           </Button>
-          <Dialog open={openDialog} onClose={handleClose}>
+          <Dialog
+            open={openDialog}
+            onClose={handleClose}
+            sx={{
+              ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+                borderRadius: "16px",
+              },
+            }}
+          >
             <Grid
               container
               item
@@ -106,6 +114,7 @@ const Company = () => {
                     color: "#49454F",
                     fontSize: "16px",
                     borderRadius: "10px",
+                    padding: "2px 7px",
                   }}
                   sx={{
                     backgroundColor: userType == true ? "#d0bcff" : "transparent",
@@ -124,6 +133,7 @@ const Company = () => {
                     color: "#49454F",
                     fontSize: "16px",
                     borderRadius: "10px",
+                    padding: "2px 7px",
                   }}
                   sx={{
                     backgroundColor: userType == false ? "#d0bcff" : "transparent",

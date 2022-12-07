@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { styles } from "./style";
-import { List, ListItem, useTheme } from "@mui/material";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, List, useTheme } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { Scrollspy } from "@makotot/ghostui";
 import Content from "./content.json";
@@ -67,7 +66,7 @@ const Howitswork = () => {
                     }}
                   >
                     {Content.map((content, key) => (
-                      <ListItem
+                      <Grid
                         id={`section-${key}`}
                         key={key}
                         data-cy={`section-item`}
@@ -100,7 +99,7 @@ const Howitswork = () => {
                             {content.text}
                           </Typography>
                         </Grid>
-                      </ListItem>
+                      </Grid>
                     ))}
                   </List>
                 </Grid>

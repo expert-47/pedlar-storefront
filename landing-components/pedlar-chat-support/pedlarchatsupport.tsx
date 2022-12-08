@@ -14,7 +14,7 @@ const Pedlarchatsupport = () => {
         transform: "translateZ(0px)",
         flexGrow: 1,
         zIndex: 200,
-        color: "white",
+        color: "#1C1B1F",
         ".css-i9wys1-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab": {
           backgroundColor: "#1C1B1F",
         },

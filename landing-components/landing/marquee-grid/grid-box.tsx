@@ -57,23 +57,21 @@ const Gridbox = () => {
             xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
           >
-            <Grid item xs={12} sm={8} md={6} lg={4.9}>
+            <Grid item xs={12} sm={8} md={6} lg={4.7}>
               <Image src={firstGrid} alt="Picture of the author" />
             </Grid>
-            <Grid item xs={12} sm={3.5} md={2.5} lg={2.2}>
-              <Grid display={{ xs: "flex", sm: "unset" }}>
-                <Grid>
-                  <Image src={secondGrid} alt="Picture of the author" />
-                </Grid>
-                <Grid marginLeft={{ sm: "0px", xs: "13px" }} marginTop={{ lg: "14px", sm: "5px", xs: "0px" }}>
-                  <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
-                </Grid>
+            <Grid container item xs={12} sm={3.55} md={2.65} lg={2.2} style={{ justifyContent: "space-between" }}>
+              <Grid item xs={5.8} sm={12} md={12} lg={12}>
+                <Image src={secondGrid} alt="Picture of the author" />
+              </Grid>
+              <Grid item xs={5.8} sm={12} md={12} lg={12}>
+                <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4.5}>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Picture of the author" loading="lazy" />
+                  <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
@@ -86,7 +84,7 @@ const Gridbox = () => {
               </Grid>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Picture of the author" />
+                  <Image src={glow} alt="Glow Star" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
@@ -99,7 +97,7 @@ const Gridbox = () => {
               </Grid>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Picture of the author" />
+                  <Image src={glow} alt="Glow Star" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>

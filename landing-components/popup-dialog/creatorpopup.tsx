@@ -7,12 +7,13 @@ const Creatorpopup = () => {
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>
       <TextField
+        variant="outlined"
         label="First Name"
         placeholder="Enter Here"
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -21,7 +22,7 @@ const Creatorpopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -30,7 +31,7 @@ const Creatorpopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -39,7 +40,7 @@ const Creatorpopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -48,7 +49,7 @@ const Creatorpopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
         InputProps={{
           startAdornment: (
@@ -70,7 +71,7 @@ const Creatorpopup = () => {
           ),
         }}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
     </Grid>

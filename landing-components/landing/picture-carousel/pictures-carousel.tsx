@@ -6,6 +6,11 @@ import { styles } from "./style";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Demoo from "../../../public/demoo.png";
+import Debbi from "../../../public/debbi.png";
+import Rename from "../../../public/rename.png";
+import Stephen from "../../../public/stephen.png";
+import Image from "next/image";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
@@ -28,74 +33,74 @@ const Picturecarousel = () => {
       >
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/demoo.png" />
+            <Image src={Demoo} alt="Mora Ruby" />
             <Typography sx={styles.cardText}>Mora Ruby</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/debbi.png" />
+            <Image src={Debbi} alt="Debbi Heart" />
             <Typography sx={styles.cardText}>Debbi Heart</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/rename.png" />
-            <Typography sx={styles.cardText}>Shadow</Typography>
+            <Image src={Rename} alt="Rename" />
+            <Typography sx={styles.cardText}>Rename</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/stephen.png" />
-            <Typography sx={styles.cardText}>Stephen Dan Smith</Typography>
+            <Image src={Stephen} alt="Stephen" />
+            <Typography sx={styles.cardText}>Stephen Dan</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/demoo.png" />
+            <Image src={Demoo} alt="Mora Ruby" />
             <Typography sx={styles.cardText}>Mora Ruby</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/debbi.png" />
+            <Image src={Debbi} alt="Debbi Heart" />
             <Typography sx={styles.cardText}>Debbi Heart</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/rename.png" />
+            <Image src={Rename} alt="Rename" />
             <Typography sx={styles.cardText}>Shadow</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/stephen.png" />
+            <Image src={Stephen} alt="Stephen" />
             <Typography sx={styles.cardText}>Stephen Dan Smith</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/demoo.png" />
+            <Image src={Demoo} alt="Mora Ruby" />
             <Typography sx={styles.cardText}>Mora Ruby</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/debbi.png" />
+            <Image src={Debbi} alt="Debbi Heart" />
             <Typography sx={styles.cardText}>Debbi Heart</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/rename.png" />
-            <Typography sx={styles.cardText}>Shadow</Typography>
+            <Image src={Rename} alt="Rename" />
+            <Typography sx={styles.cardText}>Rename</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <img src="/stephen.png" />
-            <Typography sx={styles.cardText}>Stephen Dan Smith</Typography>
+            <Image src={Stephen} alt="Stephen" />
+            <Typography sx={styles.cardText}>Stephen Dan</Typography>
           </Box>
         </SwiperSlide>
       </Swiper>

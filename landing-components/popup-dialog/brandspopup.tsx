@@ -11,7 +11,7 @@ const Brandspopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -20,7 +20,7 @@ const Brandspopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -29,7 +29,7 @@ const Brandspopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -38,7 +38,7 @@ const Brandspopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -46,7 +46,7 @@ const Brandspopup = () => {
         placeholder="Enter Here"
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
       <TextField
@@ -55,7 +55,7 @@ const Brandspopup = () => {
         required
         sx={styles.TextFeild}
         InputLabelProps={{
-          style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+          style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
         }}
       />
     </Box>

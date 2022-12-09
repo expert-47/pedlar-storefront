@@ -8,7 +8,7 @@ import { styles } from "./style";
 import { TransitionProps } from "@mui/material/transitions";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
-import headerlogo from "../../public/header-logo.svg";
+import headerlogo from "../../public/headerlogo.png";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -73,6 +73,7 @@ const ResponsiveHeader = () => {
             width={230}
             onClick={openStorePage}
             style={{ cursor: "pointer" }}
+            priority
           />
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>

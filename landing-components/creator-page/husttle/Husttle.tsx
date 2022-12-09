@@ -3,6 +3,13 @@ import { Grid, Typography, Box } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
+// import Image from "next/image";
+import HassleIcon1 from "../../../public/icon 1.png";
+import Image from "next/image";
+// import HassleIcon1 from "../../../public/hassle-icon1.png";
+// import HassleIcon2 from "../../../public/hassle-icon2.png";
+// import HassleIcon3 from "../../../public/hassle-icon3.png";
+// import HassleIcon4 from "../../../public/hassle-icon4.png";
 
 const styless = {
   imageshahdow: {
@@ -58,20 +65,8 @@ const Husttle = () => {
         >
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={styless.imageshahdow}>
-                <img
-                  src="/hassle-icon1.png"
-                  alt="hassle1"
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: "100px",
-                    height: " 69px",
-                    objectFit: "scale-down",
-                    width: " 69px",
-                    zIndex: " 99",
-                    position: "relative",
-                  }}
-                />
+              <Box>
+                <Image src={HassleIcon1} alt="hassle1" height={"69px"} width={"69px"} />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>

@@ -3,6 +3,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
+// import Image from "next/image";
+// import SalesBrand from "../../../public/sales-brand1.svg";
+// import SetForgot from "../../../public/set-forgot.svg";
+// import FreeJoin from "../../../public/free-join.svg";
+// import PropleTrustPeople from "../../../public/people-trust-people.svg";
 
 const styless = {
   imageshahdow: {

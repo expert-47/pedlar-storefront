@@ -175,7 +175,7 @@ const ResponsiveHeader = () => {
                             textTransform: "none",
                             color: "#49454F",
                             fontSize: "16px",
-                            borderRadius: "10px",
+                            borderRadius: "5px",
                           }}
                           sx={{
                             backgroundColor: userType == true ? "#d0bcff" : "transparent",
@@ -193,7 +193,7 @@ const ResponsiveHeader = () => {
                             textTransform: "none",
                             color: "#49454F",
                             fontSize: "16px",
-                            borderRadius: "10px",
+                            borderRadius: "5px",
                           }}
                           sx={{
                             backgroundColor: userType == false ? "#d0bcff" : "transparent",

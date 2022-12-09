@@ -29,7 +29,7 @@ const Gridbox = () => {
       <Grid paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
         <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         <Marquee direction="right" speed={40} gradient={false}>
@@ -174,7 +174,7 @@ const Gridbox = () => {
                   textTransform: "none",
                   color: "#49454F",
                   fontSize: "16px",
-                  borderRadius: "10px",
+                  borderRadius: "5px",
                   padding: "2px 7px",
                 }}
                 sx={{
@@ -193,7 +193,7 @@ const Gridbox = () => {
                   textTransform: "none",
                   color: "#49454F",
                   fontSize: "16px",
-                  borderRadius: "10px",
+                  borderRadius: "5px",
                   padding: "2px 7px",
                 }}
                 sx={{

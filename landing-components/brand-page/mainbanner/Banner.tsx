@@ -22,7 +22,7 @@ const Banner = () => {
         sx={styles.MainBox}
         style={{ alignItems: "center" }}
         justifyContent={{ sm: "left" }}
-        paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid sx={styles.GridImg}>
           <Image src={BrandBanner} alt={"brand banner"} style={{ borderRadius: "10px" }} priority placeholder="blur" />

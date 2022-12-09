@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../landing-components/creator-page/mainbanner/Banner";
 import Husttle from "../landing-components/creator-page/husttle/Husttle";
-import Layout,{CustomContainer} from "../landing-components/landinglayout";
+import Layout, { CustomContainer } from "../landing-components/landinglayout";
 import Company from "../landing-components/creator-page/comapny/Company";
 import Faq from "../landing-components/creator-page/faq/Faq";
 import Storefree from "../landing-components/creator-page/storefree/Storefree";

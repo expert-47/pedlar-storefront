@@ -1,33 +1,13 @@
 import React from "react";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
-// import Image from "next/image";
-import HassleIcon1 from "../../../public/icon 1.png";
 import Image from "next/image";
-// import HassleIcon1 from "../../../public/hassle-icon1.png";
-// import HassleIcon2 from "../../../public/hassle-icon2.png";
-// import HassleIcon3 from "../../../public/hassle-icon3.png";
-// import HassleIcon4 from "../../../public/hassle-icon4.png";
-
-const styless = {
-  imageshahdow: {
-    position: "relative",
-    "&::before": {
-      backgroundImage: "url(/imgback.png)",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "100% 100%",
-      bottom: "-.5px",
-      content: `""`,
-      height: "79px",
-      left: "-5px",
-      position: "absolute",
-      width: "79px",
-      zIndex: "0",
-    },
-  },
-};
+import HassleIcon1 from "../../../public/hassle-icon1.png";
+import HassleIcon2 from "../../../public/hassle-icon2.png";
+import HassleIcon3 from "../../../public/hassle-icon3.png";
+import HassleIcon4 from "../../../public/hassle-icon4.png";
 
 const Husttle = () => {
   const theme = useTheme();
@@ -65,9 +45,7 @@ const Husttle = () => {
         >
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box>
-                <Image src={HassleIcon1} alt="hassle1" height={"69px"} width={"69px"} />
-              </Box>
+              <Image src={HassleIcon1} alt="hassle1" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
@@ -82,21 +60,7 @@ const Husttle = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={styless.imageshahdow}>
-                <img
-                  src="/hassle-icon2.png"
-                  alt="hassle2"
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: "100px",
-                    height: " 69px",
-                    objectFit: "scale-down",
-                    width: " 69px",
-                    zIndex: " 99",
-                    position: "relative",
-                  }}
-                />
-              </Box>
+              <Image src={HassleIcon2} alt="hassle2" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
@@ -111,21 +75,7 @@ const Husttle = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={styless.imageshahdow}>
-                <img
-                  src="/hassle-icon3.png"
-                  alt="hassle3"
-                  style={{
-                    backgroundColor: "#fff",
-                    borderRadius: "100px",
-                    height: " 69px",
-                    objectFit: "scale-down",
-                    width: " 69px",
-                    zIndex: " 99",
-                    position: "relative",
-                  }}
-                />
-              </Box>
+              <Image src={HassleIcon3} alt="hassle3" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
@@ -140,21 +90,7 @@ const Husttle = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={styless.imageshahdow}>
-                <img
-                  src="/hassle-icon4.png"
-                  alt="hassle4"
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: "100px",
-                    height: " 69px",
-                    objectFit: "scale-down",
-                    width: " 69px",
-                    zIndex: " 99",
-                    position: "relative",
-                  }}
-                />
-              </Box>
+              <Image src={HassleIcon4} alt="hassle4" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>

@@ -26,15 +26,18 @@ const Gridbox = () => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
-        <Marquee direction="right" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+      <Grid
+        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        style={{ position: "relative" }}
+      >
+        <Marquee direction="right" speed={0.6} gradient={false} className="marq-left">
+          <Typography fontWeight={"600"} fontSize={"34px"}>
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         <Marquee direction="right" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueeright}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         <Box sx={styles.mainGrid}>
@@ -122,16 +125,17 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="left" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueeleft}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
-          </Typography>
-        </Marquee>
-        <Marquee direction="left" speed={40} gradient={false}>
+        <Marquee direction="right" speed={40} gradient={false}>
           <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueebottom}>
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+          </Typography>
+        </Marquee>
+        <Marquee direction="right" speed={0.6} gradient={false} className="marq-right">
+          <Typography fontWeight={"600"} fontSize={"34px"}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
+
         <Dialog
           open={openDialog}
           onClose={handleClose}

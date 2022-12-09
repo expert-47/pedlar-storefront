@@ -46,7 +46,7 @@ const Header = () => {
           md={12}
           lg={12}
           sx={styles.MainGrid}
-          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         >
           {isMatch ? (
             <>

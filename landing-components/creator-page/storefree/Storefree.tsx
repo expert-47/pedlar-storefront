@@ -14,7 +14,7 @@ const Storefree = () => {
         sx={styles.MainBox}
         margin={{ xs: "30px 20px", sm: "30px 30px" }}
         padding={{ xs: "60px 15px 57px", sm: "60px 20px 57px" }}
-        style={{ zIndex: "999", position: "relative" }}
+        style={{ zIndex: "999", position: "relative", marginTop: "100px", marginBottom: "100px" }}
       >
         <Grid container item xs={12} sm={12} md={12} lg={12} style={{ justifyContent: "center" }}>
           <Grid item xs={12} sm={12} md={12} lg={12}>

@@ -49,7 +49,7 @@ const Banner = () => {
           ) : isdektop ? (
             <Image src={desktopBanner} alt="desktop banner" priority placeholder="blur" />
           ) : (
-            <Image src={largeBanner} alt="desktop banner" priority placeholder="blur" />
+            <Image src={largeBanner} alt="Large banner" priority placeholder="blur" />
           )}
           <Grid sx={styles.bannerText}>
             <Typography
@@ -131,7 +131,7 @@ const Banner = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        borderRadius: "10px",
+                        borderRadius: "5px",
                         padding: "2px 7px",
                       }}
                       sx={{
@@ -150,7 +150,7 @@ const Banner = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        borderRadius: "10px",
+                        borderRadius: "5px",
                         padding: "2px 7px",
                       }}
                       sx={{

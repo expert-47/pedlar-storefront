@@ -157,7 +157,7 @@ const Header = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        borderRadius: "10px",
+                        borderRadius: "5px",
                         padding: "2px 7px",
                       }}
                       sx={{
@@ -176,7 +176,7 @@ const Header = () => {
                         textTransform: "none",
                         color: "#49454F",
                         fontSize: "16px",
-                        borderRadius: "10px",
+                        borderRadius: "5px",
                         padding: "2px 7px",
                       }}
                       sx={{

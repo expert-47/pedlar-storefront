@@ -13,9 +13,14 @@ const Pedlarchatsupport = () => {
         right: 16,
         transform: "translateZ(0px)",
         flexGrow: 1,
-        zIndex: 200,
+        zIndex: 9999,
         color: "#1C1B1F",
+
         ".css-i9wys1-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab": {
+          Color: "#1C1B1F",
+          backgroundColor: "#1C1B1F",
+        },
+        ".css-i9wys1-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab:hover": {
           backgroundColor: "#1C1B1F",
         },
       }}

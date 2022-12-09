@@ -45,7 +45,7 @@ const Banner = () => {
           </Button>
         </Grid>
         <Grid sx={styles.brandImg}>
-          <Image src={CreatorBanner} alt={"Creator banner"} />
+          <Image src={CreatorBanner} alt={"Creator banner"} priority placeholder="blur" />
         </Grid>
       </Grid>
     </CustomContainer>

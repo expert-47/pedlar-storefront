@@ -9,7 +9,7 @@ import ResponsiveHeader from "./responsive-header";
 import { CustomContainer } from "../landinglayout";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
-import headerlogo from "../../public/header-logo.svg";
+import headerlogo from "../../public/headerlogo.png";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 const Header = () => {
@@ -46,7 +46,7 @@ const Header = () => {
           md={12}
           lg={12}
           sx={styles.MainGrid}
-          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         >
           {isMatch ? (
             <>
@@ -63,10 +63,11 @@ const Header = () => {
                     width={230}
                     onClick={openStorePage}
                     style={{ cursor: "pointer" }}
+                    priority
                   />
                 ) : (
                   <Box style={{ cursor: "pointer", marginTop: "65px", width: "85%" }}>
-                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
+                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}
               </Grid>

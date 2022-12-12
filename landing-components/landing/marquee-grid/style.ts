@@ -27,11 +27,19 @@ export const styles = {
   marqueetop: {
     color: "rgb(28, 27, 31)",
     opacity: "0.08",
+    wordSpacing: '18px',
+    paddingLeft: '30px',
+    transform: 'translate(0px, 17px)',
+    ['@media (max-width:600px)']:{
+      transform: 'translate(0px, 11px)',
+    },
   },
   marqueebottom: {
     color: "rgb(28, 27, 31)",
     transform: "rotate(-180deg)",
     opacity: "0.08",
+    wordSpacing: '18px',
+    paddingLeft: '30px',
   },
   LoginBox: {
     backgroundColor: "#f9f6f2",

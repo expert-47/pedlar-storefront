@@ -10,7 +10,7 @@ import Image from "next/image";
 import orangetop from "../public/top-mesh.png";
 import orangebottom from "../public/bottom-mesh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/landing/how-its-work/how-its-work";
+import Howitswork from "../landing-components/brand-page/how-its-work/how-its-work";
 
 const brands = () => {
   return (

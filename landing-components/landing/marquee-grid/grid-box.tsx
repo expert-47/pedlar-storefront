@@ -30,13 +30,13 @@ const Gridbox = () => {
         paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{ position: "relative" }}
       >
-        <Marquee direction="right" speed={0.6} gradient={false} className="marq-left">
+        <Marquee direction="right" speed={0.6} gradient={false} style={{overflow:'hidden'}} className="marq-left">
           <Typography fontWeight={"600"} fontSize={"34px"}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
+        <Marquee direction="right" speed={40} gradient={false} style={{overflow:'hidden'}}>
+          <Typography fontWeight={"700"} fontSize={{xs:'24px',sm:'36px'}} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
@@ -125,12 +125,12 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="right" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueebottom}>
+        <Marquee direction="right" speed={40}  gradient={false} style={{overflow:'hidden'}}>
+          <Typography fontWeight={"700"} fontSize={{xs:'24px',sm:'36px'}} sx={styles.marqueebottom}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={0.6} gradient={false} className="marq-right">
+        <Marquee direction="right" speed={0.6} gradient={false} style={{overflow:'hidden'}} className="marq-right">
           <Typography fontWeight={"600"} fontSize={"34px"}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>

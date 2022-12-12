@@ -32,7 +32,7 @@ const Faq = () => {
           paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={12} md={5} lg={4}>
-            <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>
+            <Typography sx={styles.faqText}>Frequently Asked Questionss</Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <Accordion
@@ -46,13 +46,11 @@ const Faq = () => {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
+                <Typography sx={styles.acordianText}>How do I get my brand on Pedlar?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
-                  brands you love. Your storefront will be a place for your community to browse and shop your style. The
-                  best part: you'll earn 20% commision on all the sales you make.
+                  It takes less than two minutes to get set up on Pedlar. We seamlessly integrate your Shopify store into our platform using a Shopify app.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -62,12 +60,11 @@ const Faq = () => {
                 aria-controls="panel2bh-content"
                 id="panel2bh-header"
               >
-                <Typography sx={styles.acordianText}>Do I get paid for being on Pedlar?</Typography>
+                <Typography sx={styles.acordianText}>Do I need to manually upload all my product images, descriptions, sizes, prices and other product information onto Pedlar?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Creators earn a 20% commission on all sales made on their Pedlar store. Brands only pay commision when
-                  a sale is made.
+                  No. Once we have integrated your Shopify store with Pedlar, all inventory management is done automatically in real-time through APIs.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -77,11 +74,11 @@ const Faq = () => {
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"
               >
-                <Typography sx={styles.acordianText}>Does it cost to join Pedlar?</Typography>
+                <Typography sx={styles.acordianText}>What happens if there are changes to product prices, images and stock levels (e.g. product is sold out)?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Nope! It's completely free for both Creators and Brands.
+                All product information including prices, images and inventory levels are updated automatically on Pedlar. This means when changes are made on your Shopify store it is reflected on Pedlar in real time.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -91,12 +88,11 @@ const Faq = () => {
                 aria-controls="panel4bh-content"
                 id="panel4bh-header"
               >
-                <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
+                <Typography sx={styles.acordianText}>How will I receive orders?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Since Pedlar is an invite only platform, submit an application and our team will get back to you
-                  within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
+                You receive orders as soon as they are made and they will appear as normal on your Shopify store. All Pedlar orders are tagged from Pedlar so you'll know its an order from us.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -111,11 +107,11 @@ const Faq = () => {
                 aria-controls="panel5bh-content"
                 id="panel5bh-header"
               >
-                <Typography sx={styles.acordianText}>Does my store have its own unique URL?</Typography>
+                <Typography sx={styles.acordianText}>How does shipping and returns work?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Yep, when signing up you can choose your own unique URL.
+                You (the brand) ships the order using your normal order fulfilment process. Pedlar is committed to adhering to your shipping and returns policy so it's business as usual for you. If Pedlar chooses to subsidise shipping and returns, Pedlar will absorb that cost.
                 </Typography>
               </AccordionDetails>
             </Accordion>

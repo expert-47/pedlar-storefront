@@ -18,7 +18,6 @@ import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
-import ProductHeader from "components/home/components/productHeader";
 import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
@@ -98,48 +97,27 @@ const Cart = () => {
                   </ImageListItem>
                 ))}
               </ImageList>
-
-              {/* <Grid item sx={{ display: { xs: "none", sm: "block" } }}>
-                <img src="/grid-img1.png"></img>
-              </Grid>
-              <Grid item sx={{ display: { xs: "none", sm: "block", paddingTop: "25px" } }}>
-                <img src="/grid-img1.png"></img>
-              </Grid>
-              <Grid item sx={{ display: { xs: "none", sm: "block", paddingTop: "25px" } }}>
-                <img src="/grid-img1.png"></img>
-              </Grid> */}
             </Grid>
 
             <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">
               <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
                 <Grid>
-                  <Typography sx={styles.heading}>LOW CLASSIC</Typography>
+                  <Typography fontSize={"16px"} fontWeight={"600"}>
+                    LOW CLASSIC
+                  </Typography>
                   <Typography sx={styles.description}>
                     Green Polyster <br></br> Blazer
                   </Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-                    <Typography style={styles.price}>$365</Typography>
+                    <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
+                      $365
+                    </Typography>
                   </Grid>
 
                   <Options></Options>
                   <Action></Action>
 
                   <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
-                  {/* <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.descriptionGrid}>
-                    <Typography style={styles.bottomHeading}>Description</Typography>
-                    <Divider sx={styles.divider} />
-                    <RemoveIcon sx={styles.sign} ></RemoveIcon>
-                  </Grid>
-                  <Typography sx={styles.descriptionTypography}>
-                    {
-                      " Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
-                    }
-                    <br></br>
-                    <br></br>
-                    {
-                      "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
-                    }
-                  </Typography> */}
                   <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
                     <Accordion elevation={0}>
                       <AccordionSummary />
@@ -147,7 +125,9 @@ const Cart = () => {
                     </Accordion>
                     <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")} elevation={0}>
                       <AccordionSummary expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}>
-                        <Typography sx={styles.accordianTypography}>Description</Typography>
+                        <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
+                          Description
+                        </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography sx={styles.descriptionTypography}>
@@ -164,7 +144,9 @@ const Cart = () => {
                     </Accordion>
                     <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} elevation={0}>
                       <AccordionSummary expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}>
-                        <Typography sx={styles.accordianTypography}>Shipping</Typography>
+                        <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
+                          Shipping
+                        </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography sx={styles.descriptionTypography}>
@@ -175,7 +157,9 @@ const Cart = () => {
                     </Accordion>
                     <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")} elevation={0}>
                       <AccordionSummary expandIcon={expanded === "panel3" ? <RemoveIcon /> : <AddIcon />}>
-                        <Typography sx={styles.accordianTypography}>Returns</Typography>
+                        <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
+                          Returns
+                        </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
                         <Typography sx={styles.descriptionTypography}>
@@ -197,9 +181,9 @@ const Cart = () => {
         <Grid container spacing={4} sx={styles.bottomContainer}>
           <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
-              <Typography sx={styles.text}>You might like</Typography>
+              <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>You might like</Typography>
             </Grid>
-            {[0, 0, 0, 0, 0, 0].map((item, index) => {
+            {[0, 0, 0, 0, 0].map((item, index) => {
               return (
                 <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
                   <img style={{ width: "95%", height: "70%" }} src="/grid-img3.png"></img>

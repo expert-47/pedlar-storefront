@@ -164,8 +164,6 @@ const styles = {
   },
   bartext: {
     color: "primary.main",
-    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
-    fontWeight: "700",
     minWidth: "50%",
     paddingRight: "50px",
   },
@@ -190,17 +188,17 @@ const styles = {
     cursor: "pointer",
   },
   gridtag1typo1: {
-    fontSize: "22px",
-    fontWeight: "700",
+    fontSize: "34px",
+    fontWeight: "bold",
     color: "primary.dark",
   },
   gridtag1typo2: {
-    fontSize: "12px",
+    fontSize: "16px",
     fontWeight: "600",
     color: "primary.dark",
   },
   arrowIcon: {
-    fontSize: "small",
+    fontSize: "medium",
     padding: "2px",
     color: "primary.dark",
   },
@@ -250,13 +248,13 @@ const styles = {
   },
   brandImage: {
     height: {
-      lg: "176px",
+      lg: "215px",
       md: "158px",
       sm: "158px",
       xs: "158px",
     },
     width: {
-      lg: "176px",
+      lg: "225px",
       md: "158px",
       sm: "158px",
       xs: "158px",

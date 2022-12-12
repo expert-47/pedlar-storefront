@@ -68,61 +68,93 @@
   position: absolute !important;
   transform-origin: 100% 75%;
   top: unset;
-  right: 39px;
-  width: 750px !important;
+  right: 42px;
+  width: 703px !important;
   z-index: 0;
-  bottom: 20px;
+  bottom: 55px;
 }
 .marq-left {
   color: rgb(28, 27, 31);
   opacity: 0.08;
   transform: rotate(-90deg);
-  position: absolute;
-  transform-origin: 335px 391px;
-  left: 20px;
-  bottom: -110px;
-  width: 720px !important;
+  position: absolute !important;
+  transform-origin: 0 0;
+  left:0px;
+  bottom: 10px;
+  width: 703px !important;
   z-index: 0;
 }
-@media screen and (max-width: 1200px) {
+
+@media screen and (max-width: 1210px) {
   .marq-left {
-    bottom: -370px;
-    width: unset !important;
+    /* bottom: -370px;
+    width: unset !important; */
+    bottom: 8px;
+    width: 823px !important;
   }
   .marq-right {
     transform-origin: 100% 88%;
     right: 43px;
-    width: 1018px !important;
-    bottom: 48px;
+    width: 821px !important;
+    bottom: 64px;
   }
 }
+@media screen and (max-width: 1100px) {
+  .marq-left {
+    bottom: 3px;
+    width: 959px !important;
+  }
+  .marq-right{
+    width: 959px !important;
+  }
+}
+
+
 @media screen and (max-width: 850px) {
   .marq-left {
-    bottom: -478px;
-    width: 1079px !important;
+    bottom: 2px;
+    width: 1075px !important;
   }
   .marq-right {
     right: 45px;
-    width: 1102px !important;
-    bottom: 73px;
+    width: 1075px !important;
+    bottom: 56px;
   }
 }
 
 @media screen and (max-width: 600px) {
+  .marq-right {
+    right: 47px;
+    width: 1047px !important;
+    bottom: 45px;
+  }
   .marq-left {
-    bottom: -468px;
-    width: 1066px !important;
+    bottom: 8px;
+    width: 1035px !important;
+    left: 2px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .marq-left {
-    bottom: -594px;
-    width: 1191px !important;
+    bottom: 15px;
+    width: 1170px !important;
   }
   .marq-right {
-    width: 1198px !important;
-    bottom: 73px;
-    right: 42px;
+    width: 1170px !important;
+    bottom: 57px;
+    right: 32px
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .marq-left {
+    bottom: 38px;
+    width: 1215px !important;
+  }
+  .marq-right {
+    width: 1200px !important;
+    bottom: 92px;
+    right: 32px;
   }
 }

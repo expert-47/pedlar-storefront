@@ -43,7 +43,7 @@ const TextBox = () => {
             alignItems: "center",
           }}
         >
-          <img src="tiktok.png" />
+          <img src="/tiktok.png" />
           <Text fontSize={"18px"} sx={styles.boxtext}>
             elridge
           </Text>

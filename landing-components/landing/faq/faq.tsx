@@ -21,7 +21,7 @@ const Faq = () => {
     <CustomContainer>
       <Box
         style={{ margin: isMatch ? "34px 0px" : "80px 0px" }}
-        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid
           container

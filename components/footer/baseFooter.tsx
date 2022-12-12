@@ -45,7 +45,11 @@ const BaseFooter = () => {
           <Typography sx={styles.baseFootTypopara}>
             We're always here to help.
             <br />
-            Contact us at support@pedlar.com and out customer service team will be in touch.
+            Contact us at{" "}
+            <a href="hello@pedlar.store" style={{ textDecoration: "none", color: "black" }}>
+              hello@pedlar.store
+            </a>{" "}
+            and out customer service team will be in touch.
           </Typography>
         </Grid>
       </Grid>

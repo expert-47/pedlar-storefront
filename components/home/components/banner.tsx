@@ -4,8 +4,10 @@ import Grid from "@mui/material/Grid";
 import { CustomContainer } from "../../layout";
 import { useMediaQuery, useTheme } from "@mui/material";
 import TextBox from "./textBox";
+import Image from "next/image";
 
-const BannerImg = () => {
+
+const BannerImg = (props) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   return (
@@ -26,13 +28,20 @@ const BannerImg = () => {
       >
         <Grid item xs={11.5} md={4} lg={4}>
           <img
-            src="/hannah.png"
+            // src="/hannah.png"
+            
+            src={props?.HeaderData?.storefrontImageUrl ? props?.HeaderData?.storefrontImageUrl : "/hannah.png" }
             alt="headerimage"
             style={{
               width: isMatch ? "100%" : "476px",
               height: isMatch ? "415px" : "595px",
             }}
           ></img>
+
+          {/* <Image priority  src={props?.HeaderData?.storefrontImageUrl } alt="headerimage"  width={isMatch ? "100%" : "476px"} height={isMatch ? "415px" : "595px"} 
+          
+          
+          />  */}
         </Grid>
         <Grid
           item
@@ -43,7 +52,7 @@ const BannerImg = () => {
           marginLeft={{ lg: "-4%", md: "-4%" }}
           marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
         >
-          <TextBox />
+          <TextBox headerData={props?.HeaderData} />
         </Grid>
       </Grid>
     </CustomContainer>

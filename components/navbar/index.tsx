@@ -16,7 +16,7 @@ import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -49,7 +49,7 @@ export default function Navbar() {
                   <Link href="/">
                     <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
                   </Link>
-                  <Grid sx={styles.navTypo}>Hannah Juneva</Grid>
+                  <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : "Not Found"}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
                   <Link href="/">

@@ -149,7 +149,7 @@ const Storefree = () => {
               </Button>
             </Box>
           ) : (
-            <Box style={{ justifyContent: "center", textAlign: "center", padding: "50px" }}>
+            <Box style={{ textAlign: "center", alignItems: "center", padding: "140px" }}>
               <Box style={{ paddingBottom: "20px" }}>
                 <Typography fontSize={"48px"} fontWeight={700}>
                   Thank you!

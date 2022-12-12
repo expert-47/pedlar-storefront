@@ -8,6 +8,10 @@ const brandterms = () => {
       sx={{
         backgroundColor: "#f9f6f2",
       }}
+      seo={{
+        title: process.env.NEXT_PUBLIC_BRAND_TERMS_TITLE,
+        description: process.env.NEXT_PUBLIC_BRAND_TERMS_DESCRIPTION,
+      }}
     >
       <BrandTerms />
     </Layout>

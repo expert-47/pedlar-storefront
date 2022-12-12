@@ -30,8 +30,8 @@ const Banner = () => {
   return (
     <CustomContainer>
       <Box
+      sx={styles.MainBox}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
-        paddingY={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
         <Grid
           item

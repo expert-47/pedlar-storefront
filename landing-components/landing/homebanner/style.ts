@@ -1,4 +1,7 @@
 export const styles = {
+  MainBox: {
+    paddingTop: "25px",
+  },
   bannerText: {
     position: "absolute",
     right: "0px",

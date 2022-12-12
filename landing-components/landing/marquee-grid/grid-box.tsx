@@ -30,13 +30,17 @@ const Gridbox = () => {
         paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{ position: "relative" }}
       >
-        <Marquee direction="right" speed={0.6} gradient={false} style={{overflow:'hidden'}} className="marq-left">
-          <Typography fontWeight={"700"} fontSize={{xs:'24px',sm:'36px'}} style={{wordSpacing: '18px', paddingLeft:'30px'}}>
+        <Marquee direction="right" speed={0.6} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            style={{ wordSpacing: "18px", paddingLeft: "30px" }}
+          >
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={40} gradient={false} style={{overflow:'hidden'}}>
-          <Typography fontWeight={"700"} fontSize={{xs:'24px',sm:'36px'}} sx={styles.marqueetop}>
+        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+          <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
@@ -125,13 +129,22 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="right" speed={40}  gradient={false} style={{overflow:'hidden'}}>
-          <Typography fontWeight={"700"} fontSize={{xs:'24px',sm:'36px'}} sx={styles.marqueebottom} marginTop={{xs:'-12px',sm:'-18px'}}>
+        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            sx={styles.marqueebottom}
+            marginTop={{ xs: "-12px", sm: "-18px" }}
+          >
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={0.6} gradient={false} style={{overflow:'hidden'}} className="marq-right">
-          <Typography fontWeight={"700"} fontSize={{xs:'24px',sm:'36px'}} style={{wordSpacing: '18px', paddingLeft:'30px'}}>
+        <Marquee direction="right" speed={0.6} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            style={{ wordSpacing: "18px", paddingLeft: "30px" }}
+          >
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>

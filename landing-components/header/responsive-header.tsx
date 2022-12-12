@@ -88,11 +88,13 @@ const ResponsiveHeader = () => {
               <img
                 src="/header-logo.svg"
                 alt="header-logo"
-                style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
+                style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer", paddingTop: "10px" }}
                 onClick={openStorePage}
               />
               <IconButton onClick={onCloseDrawer}>
-                <CloseIcon style={{ height: "40px", width: "40px", marginRight: "19px", color: "black" }} />
+                <CloseIcon
+                  style={{ height: "40px", width: "40px", marginRight: "19px", color: "black", paddingTop: "10px" }}
+                />
               </IconButton>
             </Grid>
             <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>

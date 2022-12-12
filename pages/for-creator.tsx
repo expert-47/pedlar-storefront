@@ -1,7 +1,7 @@
 import React from "react";
 import Banner from "../landing-components/creator-page/mainbanner/Banner";
 import Husttle from "../landing-components/creator-page/husttle/Husttle";
-import Layout, { CustomContainer } from "../landing-components/landinglayout";
+import Layout from "../landing-components/landinglayout";
 import Company from "../landing-components/creator-page/comapny/Company";
 import Faq from "../landing-components/creator-page/faq/Faq";
 import Storefree from "../landing-components/creator-page/storefree/Storefree";
@@ -21,7 +21,6 @@ const creator = () => {
         description: "Pedlar making creator to sell things easily!",
       }}
     >
-      <CustomContainer>
         <Box style={{ position: "relative" }}>
           <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
             <Image src={bluemeshbrands} alt="Orange meshes" />
@@ -33,7 +32,6 @@ const creator = () => {
             <Image src={bluemeshbrand} alt="orang brand meshes" />
           </Box>
         </Box>
-      </CustomContainer>
       <Banner />
       <Husttle />
       <Howitswork />

@@ -35,11 +35,22 @@ const Bar = () => {
           md={10}
           lg={11}
           alignItems={"center"}
+          style={{ height: "104px", width: "1340px" }}
           paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(25) }}
           paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
         >
-          <Typography sx={styles.bartext}>Love Fashion? Have your own style? Share it with your community.</Typography>
-          <Button sx={styles.btn}>Sign up for free</Button>
+          <Typography
+            sx={styles.bartext}
+            fontWeight={"bold"}
+            fontSize={{ lg: "24px", md: "24px", sm: "20px", xs: "20px" }}
+          >
+            Love Fashion? Have your own style? Share it with your community.
+          </Typography>
+          <Button sx={styles.btn}>
+            <Typography fontSize={"16px"} fontWeight={"600"}>
+              Sign up for free
+            </Typography>
+          </Button>
         </Grid>
         <Grid
           container

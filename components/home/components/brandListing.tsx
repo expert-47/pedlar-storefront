@@ -51,6 +51,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
             justifyContent={{ xs: "flex-end", sm: "flex-end", md: "flex-end", lg: "flex-end" }}
             style={{
               cursor: "pointer",
+              alignItems: "center",
             }}
           >
             <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>

@@ -28,30 +28,30 @@ const CardComponent = ({ name, type, price, image, crossPrice }: React.PropsWith
         <Grid>
           <Typography
             style={{
-              fontSize: "12px",
-              fontWeight: "600",
               textTransform: "uppercase",
               paddingTop: "8px",
               lineHeight: "16px",
               color: "#1C1B1F",
             }}
+            fontSize={"12px"}
+            fontWeight={"600"}
           >
             {name}
           </Typography>
-          <Typography style={{ fontSize: "16px", fontWeight: "600", textOverflow: "wrap", color: "#1C1B1F" }}>
+          <Typography fontSize={"16px"} fontWeight={"600"} style={{ textOverflow: "wrap", color: "#1C1B1F" }}>
             {type}
           </Typography>
           {crossPrice ? (
             <Grid sx={{ display: "flex" }}>
               <Typography
                 style={{
-                  fontSize: "16px",
-                  fontWeight: "600",
                   textDecoration: "line-through",
                   textDecorationColor: "#1C1B1F87",
                   textDecorationThickness: "0.1em",
                   color: "#1C1B1F87",
                 }}
+                fontSize={"16px"}
+                fontWeight={"600"}
               >
                 {crossPrice}
               </Typography>

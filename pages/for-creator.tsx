@@ -10,7 +10,7 @@ import Image from "next/image";
 import bluemeshbrand from "../public/blue-mesh-brand.png";
 import bluemeshbrands from "../public/blue-meshh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/landing/how-its-work/how-its-work";
+import Howitswork from "../landing-components/creator-page/how-its-work/how-its-work";
 
 const creator = () => {
   return (
@@ -21,17 +21,17 @@ const creator = () => {
         description: "Pedlar making creator to sell things easily!",
       }}
     >
-        <Box style={{ position: "relative" }}>
-          <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
-            <Image src={bluemeshbrands} alt="Orange meshes" />
-          </Box>
-          <Box
-            style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
-            top={{ xs: "3684px", sm: "1806px", md: "1134px", lg: "41px" }}
-          >
-            <Image src={bluemeshbrand} alt="orang brand meshes" />
-          </Box>
+      <Box style={{ position: "relative" }}>
+        <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
+          <Image src={bluemeshbrands} alt="Orange meshes" />
         </Box>
+        <Box
+          style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
+          top={{ xs: "3684px", sm: "1806px", md: "1134px", lg: "41px" }}
+        >
+          <Image src={bluemeshbrand} alt="orang brand meshes" />
+        </Box>
+      </Box>
       <Banner />
       <Husttle />
       <Howitswork />

@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
-import firstGrid from "../../../public/home-sec2-img1.png";
-import secondGrid from "../../../public/home-sec2-img2.png";
-import thirdGrid from "../../../public/home-sec2-img3.png";
+import firstGrid from "../../../public/firstGrid.png";
+import secondGrid from "../../../public/secondGrid.png";
+import thirdGrid from "../../../public/thirdGrid.png";
 import glow from "../../../public/glow.svg";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
@@ -60,7 +60,7 @@ const Gridbox = () => {
             xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
           >
-            <Grid item xs={12} sm={8} md={6} lg={4.7}>
+            <Grid item xs={12} sm={8} md={6} lg={5}>
               <Image src={firstGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
             </Grid>
             <Grid container item xs={12} sm={3.55} md={2.65} lg={2.2} style={{ justifyContent: "space-between" }}>
@@ -135,7 +135,6 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-
         <Dialog
           open={openDialog}
           onClose={handleClose}

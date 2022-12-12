@@ -18,8 +18,8 @@ const index = () => {
     <Layout
       style={{ position: "relative", backgroundColor: "#f9f6f2" }}
       seo={{
-        title: "Pedlar - Influencer store ",
-        description: "Pedlar making influencer to run there store easily!",
+        title: process.env.NEXT_PUBLIC_LANDING_TITLE,
+        description: process.env.NEXT_PUBLIC_LANDING_DESCRIPTION,
       }}
     >
       <Box style={{ position: "relative" }}>

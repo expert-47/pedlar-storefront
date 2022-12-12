@@ -17,8 +17,8 @@ const creator = () => {
     <Layout
       style={{ position: "relative", backgroundColor: "#f9f6f2" }}
       seo={{
-        title: "Pedlar - Creator Store ",
-        description: "Pedlar making creator to sell things easily!",
+        title: process.env.NEXT_PUBLIC_CREATOR_TITLE,
+        description: process.env.NEXT_PUBLIC_CREATOR_DESCRIPTION,
       }}
     >
       <Box style={{ position: "relative" }}>

@@ -14,7 +14,13 @@ import Howitswork from "../landing-components/brand-page/how-its-work/how-its-wo
 
 const brands = () => {
   return (
-    <Layout style={{ position: "relative", backgroundColor: "#f9f6f2" }}>
+    <Layout
+      style={{ position: "relative", backgroundColor: "#f9f6f2" }}
+      seo={{
+        title: process.env.NEXT_PUBLIC_BRAND_TITLE,
+        description: process.env.NEXT_PUBLIC_BRAND_DESCRIPTION,
+      }}
+    >
       <Box style={{ position: "relative" }}>
         <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
           <Image src={orangetop} alt="Orange meshes" />

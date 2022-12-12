@@ -6,10 +6,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
-import mobBanner from "../../../public/mobBanner.png";
-import desktopBanner from "../../../public/home-banner1.png";
-import largeBanner from "../../../public/home-banner2.png";
-import tabBanner from "../../../public/bannerMd.png";
+import mobileBanner from "../../../public/mobBanner.png";
+import desktopBanner from "../../../public/DesktopBanner.png";
+import largeBanner from "../../../public/largeBanner.png";
+import tabBanner from "../../../public/TabletBanner.png";
 import { styles } from "./style";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
@@ -43,7 +43,7 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} priority />
+            <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} priority />
           ) : isMedium ? (
             <Image src={tabBanner} alt="tab banner" priority />
           ) : isdektop ? (

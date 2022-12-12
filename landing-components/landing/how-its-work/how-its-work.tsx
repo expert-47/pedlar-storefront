@@ -6,8 +6,8 @@ import { Scrollspy } from "@makotot/ghostui";
 import Content from "./content.json";
 import Images from "./images.json";
 import Responsivehowitworks from "./responsive-how-it-works";
-import purpleGradient from '../../../public/purple-gradient.png';
-import Image from 'next/image'
+import purpleGradient from "../../../public/purple-gradient.png";
+import Image from "next/image";
 
 const Howitswork = () => {
   const theme = useTheme();
@@ -133,7 +133,7 @@ const Howitswork = () => {
                             return (
                               <img
                                 src={image.img}
-                                alt="home-sec5-img1"
+                                alt="how-its-work-img"
                                 style={{ borderRadius: "16px", height: "600px", width: "300px" }}
                               />
                             );

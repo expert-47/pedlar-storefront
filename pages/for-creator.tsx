@@ -26,7 +26,7 @@ const creator = () => {
           <Image src={bluemeshbrands} alt="Orange meshes" />
         </Box>
         <Box
-          style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
+          style={{ position: "absolute", left: "0", width: "auto", zIndex: "0",  bottom:"0"}}
           top={{ xs: "3684px", sm: "1806px", md: "1134px", lg: "41px" }}
         >
           <Image src={bluemeshbrand} alt="orang brand meshes" />

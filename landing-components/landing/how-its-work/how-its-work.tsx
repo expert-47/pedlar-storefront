@@ -22,7 +22,7 @@ const Howitswork = () => {
   return (
     <CustomContainer>
       <Box
-        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{
           marginTop: "105px",
           display: "block",

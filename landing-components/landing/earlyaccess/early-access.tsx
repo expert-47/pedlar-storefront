@@ -24,7 +24,7 @@ const EarlyAcess = () => {
 
   return (
     <CustomContainer>
-      <Box paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}>
+      <Box paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}>
         <Box sx={styles.Box}>
           <Grid
             container

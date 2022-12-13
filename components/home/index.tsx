@@ -136,6 +136,7 @@ export const Home = (props) => {
             },
           }}
           data={gallery1}
+          newAdditionData={props?.newAdditionData}
         />
         <Gallery
           data={gallery2}

@@ -9,6 +9,7 @@ import styles from "styles/home";
 import BrandTitles from "./components/brandTitles";
 import Gallery from "./components/Gallery";
 
+
 const gallery1 = [
   {
     label: "Coat",
@@ -84,12 +85,38 @@ const gallery2 = [
   },
 ];
 
-export const Home = () => {
+export const Home = (props) => {
   const theme = useTheme();
 
+
+  
+
+  // const data =   axios.get(`https://pedlar-dev.ts.r.appspot.com/user/${props?.slugValue}/details`)
+  // .then(res => {
+  //     console.log("responese..." , res)
+    
+  // })
+  // const address = `https://pedlar-dev.ts.r.appspot.com/user/${props?.slugValue}/details`;
+  // const fetcher = async (url) => await axios.get(url);
+  // const { data, error } = useSwr(address, fetcher.data);
+
+
+
+
+  // const data2  = useSwr(`https://pedlar-dev.ts.r.appspot.com/user/brandon-new-store/details`);
+
+// console.log("data" ,   data);
+// console.log("sucess" , data?.success);
+
+  // debugger;
   return (
+
+
     <Grid>
-      <BannerImg />
+
+      
+
+      <BannerImg  HeaderData={props?.HeaderData}  />
       <Divider sx={styles.bannerDivider} />
       <Bar />
       <Box
@@ -129,5 +156,6 @@ export const Home = () => {
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Grid>
+    // : "No Record "
   );
 };

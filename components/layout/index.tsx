@@ -12,7 +12,7 @@ export default function Layout(props: LayoutProps) {
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        <Navbar />
+        <Navbar storefrontName={props?.storefrontName} />
       </header>
       <main style={{ paddingTop: "115px" }}>{children}</main>
       <footer>

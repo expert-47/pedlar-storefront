@@ -5,7 +5,9 @@ import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
 
-const TextBox = () => {
+const TextBox = (props) => {
+ 
+
   const theme = useTheme();
   return (
     <Box
@@ -32,7 +34,7 @@ const TextBox = () => {
         >
           <img src="/instagram.png" height="16px" width="16px" />
           <Text fontSize={"18px"} sx={styles.boxtext}>
-            elinorcharlotte
+           {props?.headerData?.instagramLink ? props?.headerData?.instagramLink : "  "}
           </Text>
         </Grid>
         <Grid
@@ -43,9 +45,10 @@ const TextBox = () => {
             alignItems: "center",
           }}
         >
-          <img src="/tiktok.png" />
+          <img src="/tiktok.png" height="16px" width="16px" />
           <Text fontSize={"18px"} sx={styles.boxtext}>
-            elridge
+          {props?.headerData?.tiktokLink ? props?.headerData?.tiktokLink : "  "}
+
           </Text>
         </Grid>
         <Link href={"/products"}>

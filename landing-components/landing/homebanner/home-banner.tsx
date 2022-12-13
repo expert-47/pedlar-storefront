@@ -63,7 +63,7 @@ const Banner = () => {
             <Box style={{ display: "flex" }} sx={styles.animateRow}>
               <Typewriter
                 options={{
-                  strings: ["Creatore", "Influencers", "Curators"],
+                  strings: ["Creators", "Influencers", "Curators"],
                   autoStart: true,
                   loop: true,
                   skipAddStyles: true,

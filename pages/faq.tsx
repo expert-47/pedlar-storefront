@@ -9,6 +9,10 @@ const faq = () => {
         backgroundColor: "#f9f6f2",
         color: "#1C1B1F",
       }}
+      seo={{
+        title: process.env.NEXT_PUBLIC_FAQ_TITLE,
+        description: process.env.NEXT_PUBLIC_FAQ_DESCRIPTION,
+      }}
     >
       <Faq />
     </Layout>

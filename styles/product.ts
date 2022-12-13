@@ -49,19 +49,16 @@ const styles = {
     display: { md: "block" },
   },
   accordianTypography: {
-    fontWeight: "700",
     fontSize: "16px",
     color: "#1C1B1F",
   },
-  heading: { fontSize: "12px", fontWeight: "600" },
   description: { fontWeight: "600", fontSize: "40px", lineHeight: "120%", paddingTop: "14px" },
-  price: { margin: "16px", fontWeight: "600", fontSize: "24px" },
+  price: { margin: "16px" },
   mainDescription: {
     color: "info.contrastText",
     paddingTop: "35px",
-    fontWeight: "700",
-    fontSize: "14px",
-    // display: { xs: "none", md: "block" },
+    fontWeight: "bold",
+    fontSize: "16px",
   },
   bottomHeading: { marginTop: "24px", fontWeight: "700", fontSize: "14px", color: "primary.contrastText" },
   divider: {
@@ -98,7 +95,7 @@ const styles = {
     background: "#efefef",
     textAlign: "center",
   },
-  text: { paddingBottom: "20px", fontWeight: "600", fontSize: "22px" },
+  text: { paddingBottom: "20px" },
 };
 
 export default styles;

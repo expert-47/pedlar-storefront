@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
-import firstGrid from "../../../public/home-sec2-img1.png";
-import secondGrid from "../../../public/home-sec2-img2.png";
-import thirdGrid from "../../../public/home-sec2-img3.png";
+import firstGrid from "../../../public/firstGrid.png";
+import secondGrid from "../../../public/secondGrid.png";
+import thirdGrid from "../../../public/thirdGrid.png";
 import glow from "../../../public/glow.svg";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
@@ -26,15 +26,22 @@ const Gridbox = () => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
-        <Marquee direction="right" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueetop}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+      <Grid
+        paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
+        style={{ position: "relative" }}
+      >
+        <Marquee direction="right" speed={0.6} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            style={{ wordSpacing: "18px", paddingLeft: "30px" }}
+          >
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueeright}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+          <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         <Box sx={styles.mainGrid}>
@@ -57,12 +64,12 @@ const Gridbox = () => {
             xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
           >
-            <Grid item xs={12} sm={8} md={6} lg={4.7}>
-              <Image src={firstGrid} alt="Picture of the author" />
+            <Grid item xs={12} sm={8} md={6} lg={5}>
+              <Image src={firstGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
             </Grid>
             <Grid container item xs={12} sm={3.55} md={2.65} lg={2.2} style={{ justifyContent: "space-between" }}>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
-                <Image src={secondGrid} alt="Picture of the author" />
+                <Image src={secondGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
               </Grid>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
                 <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
@@ -84,7 +91,7 @@ const Gridbox = () => {
               </Grid>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Glow Star" />
+                  <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
@@ -97,7 +104,7 @@ const Gridbox = () => {
               </Grid>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
-                  <Image src={glow} alt="Glow Star" />
+                  <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
@@ -122,13 +129,22 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="left" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueeleft}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            sx={styles.marqueebottom}
+            marginTop={{ xs: "-12px", sm: "-18px" }}
+          >
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="left" speed={40} gradient={false}>
-          <Typography fontWeight={"600"} fontSize={"34px"} sx={styles.marqueebottom}>
+        <Marquee direction="right" speed={0.6} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            style={{ wordSpacing: "18px", paddingLeft: "30px" }}
+          >
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>

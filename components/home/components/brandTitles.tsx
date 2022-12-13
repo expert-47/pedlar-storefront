@@ -13,12 +13,13 @@ const BrandTitles = (props: GridProps) => {
         alignItems: "center",
       }}
     >
-      <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props}>
+      <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props} style={{ justifyContent: "space-evenly" }}>
         {brands.map((item) => (
           <Box
             sx={styles.brandImage}
             style={{
-              border: "1px solid rgba(0,0,0,0.4)",
+              border: "1px solid grey",
+              boxShadow: "0 1px 1px grey",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",

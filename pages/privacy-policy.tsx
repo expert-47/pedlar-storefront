@@ -8,6 +8,10 @@ const privacypolicy = () => {
       sx={{
         backgroundColor: "#f9f6f2",
       }}
+      seo={{
+        title: process.env.NEXT_PUBLIC_PRIVACY_POLICY_TITLE,
+        description: process.env.NEXT_PUBLIC_PRIVACY_POLICY_DESCRIPTION,
+      }}
     >
       <PrivacyPolicy />
     </Layout>

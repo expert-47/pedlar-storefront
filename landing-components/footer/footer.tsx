@@ -11,7 +11,7 @@ import { useTheme } from "@mui/material";
 const Footer = () => {
   const theme = useTheme();
   return (
-    <Box sx={styles.staticFooter} paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}>
+    <Box sx={styles.staticFooter} paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}>
       <CustomContainer>
         <Grid
           container
@@ -22,7 +22,7 @@ const Footer = () => {
           lg={12}
           sx={styles.footerRow}
           flexDirection={{ xs: "column-reverse", sm: "unset" }}
-          paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="/">

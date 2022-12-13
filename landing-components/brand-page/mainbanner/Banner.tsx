@@ -20,12 +20,12 @@ const Banner = () => {
         lg={12}
         gap={10}
         sx={styles.MainBox}
-        style={{ alignItems: "center" }}
+        style={{ alignItems: "center", position: "relative" }}
         justifyContent={{ sm: "left" }}
-        paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid sx={styles.GridImg}>
-          <Image src={BrandBanner} alt={"brand banner"} style={{ borderRadius: "10px" }} />
+          <Image src={BrandBanner} alt={"brand banner"} style={{ borderRadius: "10px" }} priority placeholder="blur" />
         </Grid>
         <Grid sx={styles.GridBox} style={{ justifyContent: "flex-end" }} padding={{ xs: "20px", sm: "40px" }}>
           <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "54px", md: "64px" }} sx={styles.heading}>

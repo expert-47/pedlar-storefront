@@ -40,6 +40,9 @@ const Action = () => {
             fontSize: "16px",
             fontWeight: "600",
             textTransform: "none",
+            "&:hover": {
+              borderColor: "black",
+            },
           }}
         >
           Buy now

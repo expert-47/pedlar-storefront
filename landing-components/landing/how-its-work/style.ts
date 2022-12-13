@@ -3,6 +3,7 @@ export const styles = {
     backgroundColor: "#1c1b1f",
     borderRadius: "16px",
     padding: "30px",
+    position:'relative',
   },
   ResponsMainBox: {
     backgroundColor: "#1c1b1f",

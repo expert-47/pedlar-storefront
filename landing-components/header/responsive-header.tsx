@@ -8,7 +8,7 @@ import { styles } from "./style";
 import { TransitionProps } from "@mui/material/transitions";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
-import headerlogo from "../../public/header-logo.svg";
+import headerlogo from "../../public/headerlogo.png";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -63,7 +63,7 @@ const ResponsiveHeader = () => {
         md={12}
         lg={12}
         sx={styles.RespoMainGrid}
-        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
           <Image
@@ -73,6 +73,7 @@ const ResponsiveHeader = () => {
             width={230}
             onClick={openStorePage}
             style={{ cursor: "pointer" }}
+            priority
           />
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>
@@ -87,11 +88,13 @@ const ResponsiveHeader = () => {
               <img
                 src="/header-logo.svg"
                 alt="header-logo"
-                style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer" }}
+                style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer", paddingTop: "10px" }}
                 onClick={openStorePage}
               />
               <IconButton onClick={onCloseDrawer}>
-                <CloseIcon style={{ height: "40px", width: "40px", marginRight: "19px", color: "black" }} />
+                <CloseIcon
+                  style={{ height: "40px", width: "40px", marginRight: "19px", color: "black", paddingTop: "10px" }}
+                />
               </IconButton>
             </Grid>
             <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>

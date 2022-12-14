@@ -6,10 +6,16 @@ import { useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { any, string } from "prop-types";
+
 
 const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
   const theme = useTheme();
   const { leftHeading, rightHeading } = props;
+  const router = useRouter();
+  const slug=router?.query;
+
   return (
     <CustomGrid
       style={{
@@ -40,7 +46,11 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
 
-        <Link href={"/products"}>
+        <Link 
+        href={{pathname:"/products" , 
+        query : slug
+      }}
+        >
           <Grid
             container
             item

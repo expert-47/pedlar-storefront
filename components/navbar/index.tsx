@@ -49,7 +49,7 @@ export default function Navbar(props) {
                   <Link href="/">
                     <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
                   </Link>
-                  <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : "Not Found"}</Grid>
+                  <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
                   <Link href="/">

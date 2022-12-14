@@ -1,14 +1,13 @@
 import Layout from "components/layout";
 import { Home } from "components/home";
-import { any } from "prop-types";
+import Get_Collection_Query from "../components/GraphQl_Quries"
 
 
-import products from "styles/products";
-import { AnyARecord } from "dns";
 
-export default function index({ HeaderData , newAdditionData   }) {
+export default function index({ HeaderData , newAdditionData   }:any) {
 
 console.log("newAdditionData...." , {newAdditionData}); 
+
 
 
   return (
@@ -19,7 +18,10 @@ console.log("newAdditionData...." , {newAdditionData});
       }}
       storefrontName ={HeaderData?.data?.storefrontName}  
     >
-      <Home HeaderData={HeaderData?.data} newAdditionData={newAdditionData} />
+      <Home HeaderData={HeaderData?.data} newAdditionData={newAdditionData} /> 
+     
+
+      
     </Layout>
   );
 }
@@ -28,15 +30,15 @@ console.log("newAdditionData...." , {newAdditionData});
 export async function getServerSideProps(context:any) {
   
   const { slug } = context.query;
+
+  // console.log("slug++++++++++++++++++++++++++" ,slug);
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
   
   const HeaderData = await res.json();
 
+  // console.log("HeaderData*****************" , HeaderData);
+
 // products data 
-
-
-
-// let newAdditionData={};
 
 const getUserDetailByFetchAPICall = async () => { 
 
@@ -80,8 +82,9 @@ const getUserDetailByFetchAPICall = async () => {
               }
           }
       }
-  }`,
-  variables: { collectionId : `gid://shopify/Collection/${HeaderData?.data?.shopify_collection_id}` }
+  }`
+  ,
+  variables: { collectionId : `gid://shopify/Collection/${HeaderData?.data?.collectionId}` }
 
 
 };
@@ -102,15 +105,12 @@ const options = {
 
 };
 
-
+console.log("HeaderData?.data?.shopify_collection_id..........." , HeaderData?.data?.shopify_collection_id );
 const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
 
 const collectionData = await res.json();
 
-
-
-
-
+// console.log("collectionData.............." , collectionData);
 return collectionData;
 
 } ;

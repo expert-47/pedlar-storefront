@@ -158,3 +158,8 @@
     right: 32px;
   }
 }
+
+.css-1flewa0-MuiInputBase-root-MuiOutlinedInput-root,
+.css-a62vtt-MuiInputBase-root-MuiOutlinedInput-root{
+  font-size: 16px !important;
+}

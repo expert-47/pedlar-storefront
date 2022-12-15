@@ -23,23 +23,23 @@ const Responsivehowitworks = () => {
             </Typography>
           </Grid>
           <Grid container gap={1} item xs={12} sm={6} style={{ justifyContent: "space-between", paddingTop: "20px" }}>
-            <Grid item xs={2.2} sm={1.8} sx={styles.Respocirclecount}>
-              <Typography fontSize={{ sx: "30px", sm: "30px" }} fontWeight={600}>
+            <Grid item xs={2.2} sm={1.8}>
+              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px" }} fontWeight={600}>
                 1
               </Typography>
             </Grid>
-            <Grid item xs={2.2} sm={1.8} sx={styles.Respocirclecount}>
-              <Typography fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
+            <Grid item xs={2.2} sm={1.8}>
+              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
                 2
               </Typography>
             </Grid>
-            <Grid item xs={2.2} sm={1.8} sx={styles.Respocirclecount}>
-              <Typography fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
+            <Grid item xs={2.2} sm={1.8}>
+              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
                 3
               </Typography>
             </Grid>
-            <Grid item xs={2.2} sm={1.8} sx={styles.Respocirclecount}>
-              <Typography fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
+            <Grid item xs={2.2} sm={1.8}>
+              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
                 4
               </Typography>
             </Grid>

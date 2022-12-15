@@ -28,9 +28,8 @@ export const styles = {
     paddingTop: "30px",
   },
   circlecount: {
-    width: "30px",
-    minWidth: "50px",
-    height: "50px",
+    width: "45px",
+    height: "45px",
     borderRadius: "50%",
     border: "1px solid",
     backgroundColor: "transparent",
@@ -40,8 +39,9 @@ export const styles = {
     color: "rgba(249, 246, 242, 1)",
   },
   Respocirclecount: {
-    height: "50px",
-    borderRadius: "50px",
+    height: "43px",
+    width:"43px",
+    borderRadius: "50%",
     border: "1px solid",
     backgroundColor: "transparent",
     display: "flex",

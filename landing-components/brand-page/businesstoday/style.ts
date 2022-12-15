@@ -23,7 +23,6 @@ export const styles = {
     ".MuiOutlinedInput-notchedOutline": {
       borderColor: "rgba(121, 116, 126, 1) !important",
       fontSize: "16px",
-
       "&:hover": {
         borderColor: "rgba(121, 116, 126, 1) !important",
       },

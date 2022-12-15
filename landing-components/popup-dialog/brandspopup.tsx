@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { addvalidation } from "../add-validation/addvalidation";
 import React from "react";
@@ -106,6 +106,23 @@ const Brandspopup = () => {
                 style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
               }}
             />
+            <Button
+              onClick={submitHandler}
+              sx={{
+                ...styles.Button,
+                color: errors ? "White !important" : "black",
+                opacity: errors ? "0.4" : "",
+              }}
+              disabled={
+                errors?.firstName && errors?.lastName && errors?.email && errors?.companyName && errors?.brandWebsite
+                  ? false
+                  : true
+              }
+            >
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+                Get in touch
+              </Typography>
+            </Button>
           </Form>
         )}
       </Formik>

@@ -19,4 +19,12 @@ export const styles = {
     borderRadius: "5px",
     marginBottom: "24px",
   },
+  Button: {
+    backgroundColor: "black",
+    borderRadius: "666px",
+    padding: "10px 16px",
+    "&:hover": {
+      backgroundColor: "#1C1B1F",
+    },
+  },
 };

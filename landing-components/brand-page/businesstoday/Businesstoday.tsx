@@ -165,15 +165,30 @@ const Businesstoday = () => {
                         />
                       </Grid>
                     </Grid>
+                    <Button
+                      sx={{
+                        ...styles.Button,
+                        color: errors ? "White !important" : "black",
+                        opacity: errors ? "0.4" : "",
+                      }}
+                      onClick={formsubmission}
+                      disabled={
+                        errors?.firstName &&
+                        errors?.lastName &&
+                        errors?.email &&
+                        errors?.companyName &&
+                        errors?.brandWebsite
+                          ? true
+                          : false
+                      }
+                    >
+                      <Typography textTransform={"none"} fontSize={"22px"}>
+                        Schedule a call
+                      </Typography>
+                    </Button>
                   </Form>
                 )}
               </Formik>
-
-              <Button sx={styles.Button} onClick={formsubmission}>
-                <Typography textTransform={"none"} fontSize={"22px"}>
-                  Schedule a call
-                </Typography>
-              </Button>
             </Box>
           ) : (
             <Box style={{ textAlign: "center", alignItems: "center", padding: "140px" }}>

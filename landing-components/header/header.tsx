@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import {
-  Button,
-  Grid,
-  IconButton,
-  Dialog,
-  Typography,
-  useMediaQuery,
-  useTheme,
-  Box,
-} from "@mui/material";
+import { Button, Grid, IconButton, Dialog, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -205,14 +196,7 @@ const Header = () => {
                     </Button>
                   </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button
-                    onClick={submitHandler}
-                    style={{ backgroundColor: "black", borderRadius: "666px", padding: "10px 16px" }}
-                  >
-                    <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                      Get in touch
-                    </Typography>
-                  </Button>
+
                   <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

@@ -12,6 +12,7 @@ const Storefree = () => {
   const submitHandler = () => {
     console.log("clicked");
   };
+  console.log("errors?.firstName");
   return (
     <CustomContainer>
       <Box
@@ -190,14 +191,27 @@ const Storefree = () => {
                         />
                       </Grid>
                     </Grid>
+
+                    <Button
+                      sx={{
+                        ...styles.Button,
+                        color: errors ? "White !important" : "black",
+                        opacity: errors ? "0.4" : "",
+                      }}
+                      onClick={formsubmission}
+                      disabled={
+                        errors?.firstName && errors?.lastName && errors?.email && errors?.city && errors?.instagramUser
+                          ? false
+                          : true
+                      }
+                    >
+                      <Typography textTransform={"none"} fontSize={"22px"}>
+                        Get in touch
+                      </Typography>
+                    </Button>
                   </Form>
                 )}
               </Formik>
-              <Button sx={styles.Button} onClick={formsubmission}>
-                <Typography textTransform={"none"} fontSize={"22px"}>
-                  Get in touch
-                </Typography>
-              </Button>
             </Box>
           ) : (
             <Box style={{ textAlign: "center", alignItems: "center", padding: "140px" }}>

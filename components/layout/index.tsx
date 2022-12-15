@@ -2,9 +2,10 @@ import { Container, ContainerProps } from "@mui/material";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar";
 import React from "react";
-import { NextSeo, NextSeoProps } from "next-seo";
+import { NextSeo, NextSeoProps   } from "next-seo";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
+  storefrontName : string
 }
 export default function Layout(props: LayoutProps) {
   const { children, seo } = props;

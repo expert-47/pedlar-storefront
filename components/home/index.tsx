@@ -85,30 +85,12 @@ const gallery2 = [
   },
 ];
 
-export const Home = (props) => {
+export const Home = (props:any) => {
   const theme = useTheme();
 
 
   
 
-  // const data =   axios.get(`https://pedlar-dev.ts.r.appspot.com/user/${props?.slugValue}/details`)
-  // .then(res => {
-  //     console.log("responese..." , res)
-    
-  // })
-  // const address = `https://pedlar-dev.ts.r.appspot.com/user/${props?.slugValue}/details`;
-  // const fetcher = async (url) => await axios.get(url);
-  // const { data, error } = useSwr(address, fetcher.data);
-
-
-
-
-  // const data2  = useSwr(`https://pedlar-dev.ts.r.appspot.com/user/brandon-new-store/details`);
-
-// console.log("data" ,   data);
-// console.log("sucess" , data?.success);
-
-  // debugger;
   return (
 
 
@@ -136,6 +118,7 @@ export const Home = (props) => {
             },
           }}
           data={gallery1}
+          newAdditionData={props?.newAdditionData}
         />
         <Gallery
           data={gallery2}
@@ -149,6 +132,8 @@ export const Home = (props) => {
             marginTop: 40,
           }}
           columnSpacing={0}
+          newAdditionData={props?.newAdditionData?.length > 5 ? props?.newAdditionData.slice(5,10) : "null"}
+
         />
         <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles />
@@ -156,6 +141,5 @@ export const Home = (props) => {
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Grid>
-    // : "No Record "
   );
 };

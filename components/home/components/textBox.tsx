@@ -20,8 +20,9 @@ const TextBox = (props) => {
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
     >
       <Typography sx={styles.bannerText}>
-        "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out
-        directly from each brand. I hope you love what I've put together."
+     
+         {   props?.headerData?.storefrontDescription   }
+
       </Typography>
       <Grid container item xs={10} sm={10} md={10} lg={12} style={{ display: "flex", flexDirection: "column" }}>
         <Grid

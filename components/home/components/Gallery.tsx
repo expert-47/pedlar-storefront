@@ -7,8 +7,11 @@ interface Props {
   girdProps?: GridProps;
   data: any[];
   columnSpacing?: number;
+  newAdditionData?:any[];
 }
-const Gallery = ({ girdProps, data, columnSpacing = 10 }: Props) => {
+const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => {
+
+  
   return (
     <CustomGrid
       style={{
@@ -17,22 +20,38 @@ const Gallery = ({ girdProps, data, columnSpacing = 10 }: Props) => {
         alignItems: "center",
       }}
     >
-      <Grid container sm={12} columnSpacing={10} {...girdProps}>
+      <Grid container sm={12} columnSpacing={10} {...girdProps}  >
         <Grid container item xs={12} sm={12} md={6} lg={6} columnSpacing={columnSpacing || 10} rowSpacing={10}>
-          {data.slice(1, 5).map((item) => (
+          {newAdditionData?.slice(1,5).map((item , index) => (
             <Grid item xs={6} lg={6}>
-              <CardComponent name={item.name} type={item.type} price={item.price} image={item.imgPath} />
+              <CardComponent
+              key={index} 
+              
+              name={item?.title} type={item?.productType}  
+              
+              price={newAdditionData?.[index].priceRange?.maxVariantPrice?.currencyCode === "AUD" ? 
+              `A$${newAdditionData?.[index].priceRange?.maxVariantPrice?.amount}` : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
+            }
+              
+              image={item?.featuredImage?.transformedSrc}
+              />
             </Grid>
           ))}
         </Grid>
         <Grid container item xs={12} sm={12} md={6} lg={6}>
           <CardComponent
-            crossPrice={data[0].crossPrice}
-            name={data[0].name}
-            type={data[0].type}
-            image={data[0].imgPath}
-            price={data[0].price}
+           
+            name={newAdditionData?.[0].title }
+            type={
+              newAdditionData?.[0].productType
+            }
+            image={newAdditionData?.[0].featuredImage?.transformedSrc}
+            price={      newAdditionData?.[0].priceRange?.maxVariantPrice?.currencyCode === "AUD" ? 
+            `A$${newAdditionData?.[0].priceRange?.maxVariantPrice?.amount}` : newAdditionData?.[0].priceRange?.maxVariantPrice?.amount
+          }
           />
+           
+
         </Grid>
       </Grid>
     </CustomGrid>

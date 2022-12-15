@@ -24,7 +24,7 @@ export const styles = {
     maxWidth: "602px",
     zIndex: " 99",
     ["@media (min-width:1400px)"]: {
-      maxWidth: "746px",
+      maxWidth: "740px",
     },
     ["@media (max-width:1250px)"]: {
       maxWidth: "455px",

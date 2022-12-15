@@ -13,7 +13,11 @@ interface Props {
 
 const CardComponent = ({ name, type, price, image, crossPrice }: React.PropsWithChildren<Props>) => {
   return (
-    <Link href={"/product"}>
+    <Link 
+    href={{pathname:"/product" , 
+    query : slug
+  }}
+    >
       <Box
         style={{
           cursor: "pointer",

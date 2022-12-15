@@ -11,7 +11,6 @@ interface Props {
 }
 const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => {
 
-  // console.log("newAdditionData  gallery...." , newAdditionData?.[0].featuredImage?.transformedSrc);
   
   return (
     <CustomGrid

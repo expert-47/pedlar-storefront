@@ -128,7 +128,7 @@ const Howitswork = () => {
                       </Grid>
                       <Grid item xs={12} sm={12} md={4} lg={4} data-cy="nav-wrapper">
                         {Images.map((image, i) => {
-                          console.log(currentElementIndexInViewport);
+                       
                           if (currentElementIndexInViewport == i) {
                             return (
                               <img

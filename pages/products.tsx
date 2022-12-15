@@ -90,12 +90,9 @@ const Products = ({newAdditionData}:any) => {
 
   <link rel="icon" href="/favicon.ico" />;
 
-  // const router = useRouter();
-  
-  // const data = router.query;
-  // console.log("slug data ......" , data);
 
-  console.log("newAdditionData.. test products ........." , newAdditionData);
+
+
   return (
     <Layout>
       <Head>
@@ -188,12 +185,12 @@ export async function getServerSideProps(context:any) {
   
   const {slug} = context.query;
 
-  console.log("slug++++++++++++++++++++++++++" ,slug);
+  
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
-  console.log("res,........................" , res);
+ 
   const HeaderData = await res.json();
 
-  console.log("HeaderData*****************" , HeaderData);
+
 
 // products data 
 
@@ -261,12 +258,10 @@ const options = {
 
 };
 
-// console.log("HeaderData?.data?.shopify_collection_id..........." , HeaderData?.data?.shopify_collection_id );
 const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
 
 const collectionData = await res.json();
 
-// console.log("collectionData.............." , collectionData);
 return collectionData;
 
 } ;

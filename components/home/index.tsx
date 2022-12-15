@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState} from "react";
 import BannerImg from "./components/banner";
 import BrandListing from "./components/brandListing";
 import { Box, Grid, useTheme } from "@mui/material";
@@ -89,6 +89,19 @@ export const Home = (props:any) => {
   const theme = useTheme();
 
 
+
+
+let data = [];
+// what if we have 48 values 
+for(let i = 0 ; i<props?.newAdditionData?.length  ; i=i+5 ){
+
+  data.push(props?.newAdditionData.slice(i,i+5));
+
+}
+
+  
+
+
   
 
   return (
@@ -108,7 +121,28 @@ export const Home = (props:any) => {
         }}
       >
         <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
-        <Gallery
+        
+{
+  data?.map ((item , index)=>
+ 
+    <Gallery
+    girdProps={{
+      flexDirection: {
+        // lg: "row-reverse",
+        // md: "row-reverse",
+        // sm: "column-reverse",
+        // xs: "column-reverse",
+      },
+    }}
+    data={gallery1}
+    newAdditionData={item}
+    position = {index === 0 ? true : index % 2 === 0 ? true : false }
+    key={index}
+  />
+
+  )
+}
+        {/* <Gallery
           girdProps={{
             flexDirection: {
               lg: "row-reverse",
@@ -134,7 +168,7 @@ export const Home = (props:any) => {
           columnSpacing={0}
           newAdditionData={props?.newAdditionData?.length > 5 ? props?.newAdditionData.slice(5,10) : "null"}
 
-        />
+        /> */}
         <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles />
       </Box>

@@ -6,7 +6,8 @@ import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
 import Gallery from "components/home/components/Gallery";
-
+import { useRouter } from "next/router";
+import { useState , useEffect } from "react";
 
 const gallery1 = [
   {
@@ -84,12 +85,149 @@ const gallery2 = [
   },
 ];
 
-const Products = ({newAdditionData}:any) => {
+const Products = ({newAdditionData , slug , collectionId}:any) => {
+
+  const [productsData , setProductsData] = useState([{}]);
+  const [endCursorValue , setEndCursorValue] = useState("");
+
+
+  useEffect(() => { 
+     setProductsData(newAdditionData?.nodes) ;
+     setEndCursorValue(newAdditionData?.pageInfo?.endCursor)
+     ;}, []);
+
+
+
+  
   const theme = useTheme();
   const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
 
+  // const router = useRouter();
+  // const {slug} = router.query;
+  console.log("slug..... ,, id " , slug ,"id........" , collectionId);
+
+
+  let data = [];
+
+  for(let i = 0 ; i<productsData.length  ; i=i+5 ){
+
+    data.push(productsData.slice(i,i+5));
+  
+  }
+  let endCursor:string  = newAdditionData?.pageInfo?.endCursor;
+  endCursor=endCursor.toString();
+  // endCursor =endCursor.JSON.stringify();
+  if(endCursor.includes("=")){
+
+    endCursor=endCursor.slice(0,-2);
+    
+    console.log("endCursor" , endCursor);
+
+  }
+ 
+
+
+  const getPaginationData =async()=>{
+    if(endCursorValue.includes("=")){
+      setEndCursorValue(endCursorValue.slice(0,-2));
+    }
+    const requestBody = {
+      query: `query GetCollection($collectionId: ID!) {
+        collection(id: $collectionId) {
+          products(first: 2, reverse: true ,after: "${endCursorValue}")
+            {
+                nodes {
+                    id
+                    title
+                    productType
+                    vendor
+                    description
+                    totalInventory
+                    priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    featuredImage {
+              height
+              src
+              width
+              originalSrc
+              transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 400)
+            }
+                    createdAt
+                    publishedAt
+                }
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
+                }
+            }
+        }
+    }`,
+    variables: { collectionId : `gid://shopify/Collection/${collectionId}` }
+  
+  
+  };
+  const headers:any = {
+    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+      "Content-Type" : "application/json",
+      "Connection":"keep-alive",
+      "Accept-Encoding":"gzip, deflate, br",
+      "Accept":"*/*"
+  
+  };
+  const options = {
+    method: "POST",
+    headers : headers,
+    body: JSON.stringify(requestBody),
+
+  };
+
+  async function getResponse (){
+  const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
+
+  const collectionData = await res.json();
+
+ 
+  return  collectionData?.data?.collection?.products;
+    
+  }
+  
+  const data2 = await getResponse();
+  // setProductsData((productsData)=> {
+  //   let totalData = {productsData , data2};
+  //   return { totalData}; } );
+  const totalData=[...productsData,...data2.nodes];
+  setProductsData(totalData);
+  setEndCursorValue(data2?.pageInfo?.endCursor);
+
+  return   data2;
+
+
+  };  
+  
+// const api_res = getPaginationData().then(resp=>{
+
+//   setProductsData((productsData)=> {
+//   return { ... productsData , ...resp}; } );
+
+//   console.log("resp......////" , resp);
+  
+
+// });
+// console.log("newAdditionData?.pageInfo?.endCursor...." , newAdditionData?.pageInfo?.endCursor);
+
+console.log("productsData...,.,.,.,.,.,.,.," , productsData);
 
 
 
@@ -114,7 +252,27 @@ const Products = ({newAdditionData}:any) => {
         }}
       >
         <ProductHeader />
-        <Gallery
+        {
+  data?.map ((item , index)=>
+ 
+    <Gallery
+    girdProps={{
+      flexDirection: {
+        // lg: "row-reverse",
+        // md: "row-reverse",
+        // sm: "column-reverse",
+        // xs: "column-reverse",
+      },
+    }}
+    data={gallery1}
+    newAdditionData={item}
+    position = {index === 0 ? true : index % 2 === 0 ? true : false }
+    key={index}
+  />
+
+  )
+}
+        {/* <Gallery
           girdProps={{
             flexDirection: {
               lg: "row-reverse",
@@ -141,7 +299,7 @@ const Products = ({newAdditionData}:any) => {
           columnSpacing={0}
           newAdditionData={newAdditionData?.length > 5 ? newAdditionData.slice(5,10) : "null"}
 
-        />
+        /> */}
       </Box>
       <Grid
         style={{
@@ -157,6 +315,7 @@ const Products = ({newAdditionData}:any) => {
         </Text>
         <Button
           variant="outlined"
+          onClick={getPaginationData}
           style={{
             width: "15em",
             border: "2px solid black",
@@ -200,7 +359,7 @@ const getUserDetailByFetchAPICall = async () => {
   const requestBody = {
     query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-          products(first: 10, reverse: true) {
+          products(first: 2, reverse: true ) {
               nodes {
                   id
                   title
@@ -267,7 +426,7 @@ return collectionData;
 } ;
        
 let data=await getUserDetailByFetchAPICall();
-data = data?.data?.collection?.products?.nodes;
+data = data?.data?.collection?.products;
 
-  return { props : {  newAdditionData:data  } };
+  return { props : {  newAdditionData:data , slug , collectionId:HeaderData?.data?.collectionId } };
 }

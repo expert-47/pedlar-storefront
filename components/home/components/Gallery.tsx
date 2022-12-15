@@ -8,8 +8,9 @@ interface Props {
   data: any[];
   columnSpacing?: number;
   newAdditionData?:any[];
+  position:boolean;
 }
-const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => {
+const Gallery = ({ girdProps, position , newAdditionData,  columnSpacing = 10 }: Props) => {
 
   
   return (
@@ -20,7 +21,7 @@ const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => 
         alignItems: "center",
       }}
     >
-      <Grid container sm={12} columnSpacing={10} {...girdProps}  >
+      <Grid container sm={12} columnSpacing={10} direction={position === true ? "row-reverse" : "row"}  >
         <Grid container item xs={12} sm={12} md={6} lg={6} columnSpacing={columnSpacing || 10} rowSpacing={10}>
           {newAdditionData?.slice(1,5).map((item , index) => (
             <Grid item xs={6} lg={6}>
@@ -34,6 +35,7 @@ const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => 
             }
               
               image={item?.featuredImage?.transformedSrc}
+              
               />
             </Grid>
           ))}

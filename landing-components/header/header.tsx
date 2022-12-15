@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, Dialog, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
+import {
+  Button,
+  Grid,
+  IconButton,
+  Dialog,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  Box,
+} from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -34,7 +43,9 @@ const Header = () => {
   const openBrands = () => {
     router.push("/for-brands");
   };
-
+  const submitHandler = () => {
+    console.log("clicked");
+  };
   return (
     <AppBar elevation={0} sx={styles.header}>
       <CustomContainer>
@@ -194,7 +205,10 @@ const Header = () => {
                     </Button>
                   </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button style={{ backgroundColor: "black", borderRadius: "666px", padding: "10px 16px" }}>
+                  <Button
+                    onClick={submitHandler}
+                    style={{ backgroundColor: "black", borderRadius: "666px", padding: "10px 16px" }}
+                  >
                     <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
                       Get in touch
                     </Typography>

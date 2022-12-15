@@ -49,7 +49,7 @@ const Company = () => {
           item
           xs={12}
           sm={12}
-          md={10}
+          md={11}
           lg={8}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >

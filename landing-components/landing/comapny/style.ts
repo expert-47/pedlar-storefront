@@ -14,7 +14,8 @@ export const styles = {
     position: "relative",
   },
   CreatorButton: {
-    width: "auto",
+    width: {xs:"100%",sm: "auto"},
+    // width: "auto",
     backgroundColor: "#1C1B1F",
     color: "rgb(249, 246, 242)",
     padding: "20px 20px",

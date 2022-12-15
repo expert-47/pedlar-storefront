@@ -3,10 +3,15 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
+import { Field, Form, Formik } from "formik";
+import { addvalidation } from "../../add-validation/addvalidation";
 
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
   const formsubmission = () => setSubmitForm(false);
+  const submitHandler = () => {
+    console.log("clicked");
+  };
   return (
     <CustomContainer>
       <Box
@@ -29,94 +34,141 @@ const Businesstoday = () => {
                   Fill in the form below and we’ll get in touch with you to begin the process
                 </Typography>
               </Grid>
-              <Grid
-                container
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                gap={15}
-                style={{
-                  marginTop: "60px",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
+              <Formik
+                initialValues={{
+                  firstName: "",
+                  lastName: "",
+                  email: "",
+                  companyName: "",
+                  brandWebsite: "",
                 }}
+                validationSchema={addvalidation}
+                onSubmit={submitHandler}
               >
-                <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
-                  <TextField
-                    label="First Name"
-                    placeholder="Enter Here"
-                    required
-                    sx={styles.TextFeild}
-                    InputLabelProps={{
-                      style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
-                  <TextField
-                    label="Last Name"
-                    placeholder="Enter Here"
-                    required
-                    sx={styles.TextFeild}
-                    InputLabelProps={{
-                      style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
-                  <TextField
-                    label="Company Name"
-                    placeholder="Enter Here"
-                    required
-                    sx={styles.TextFeild}
-                    InputLabelProps={{
-                      style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
-                  <TextField
-                    label="Email Address"
-                    placeholder="Enter Here"
-                    required
-                    sx={styles.TextFeild}
-                    InputLabelProps={{
-                      style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
-                  <TextField
-                    label="Phone Number (+61)"
-                    placeholder="Enter Here"
-                    sx={styles.TextFeild}
-                    InputLabelProps={{
-                      style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
-                  <TextField
-                    label="Brand Website"
-                    placeholder="Enter Here"
-                    required
-                    sx={styles.TextFeild}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <Image src="/globe.svg" alt="insta" height={20} width={20} />
-                        </InputAdornment>
-                      ),
-                    }}
-                    InputLabelProps={{
-                      style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
-                    }}
-                  />
-                </Grid>
-              </Grid>
+                {({ values, errors, touched, handleChange, handleSubmit }) => (
+                  <Form onSubmit={handleSubmit}>
+                    <Grid
+                      container
+                      item
+                      xs={12}
+                      sm={12}
+                      md={12}
+                      lg={12}
+                      gap={15}
+                      style={{
+                        marginTop: "60px",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                        <Field
+                          as={TextField}
+                          type="text"
+                          name="firstName"
+                          label="First Name"
+                          placeholder="Enter Here"
+                          required
+                          value={values?.firstName}
+                          error={touched?.firstName && Boolean(errors?.firstName)}
+                          helperText={touched?.firstName && errors?.firstName}
+                          sx={styles.TextFeild}
+                          InputLabelProps={{
+                            style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                        <Field
+                          as={TextField}
+                          type="text"
+                          name="lastName"
+                          label="Last Name"
+                          placeholder="Enter Here"
+                          required
+                          value={values?.lastName}
+                          error={touched?.lastName && Boolean(errors?.lastName)}
+                          helperText={touched?.lastName && errors?.lastName}
+                          sx={styles.TextFeild}
+                          InputLabelProps={{
+                            style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                        <Field
+                          as={TextField}
+                          type="text"
+                          name="companyName"
+                          label="Company Name"
+                          placeholder="Enter Here"
+                          required
+                          value={values?.companyName}
+                          error={touched?.companyName && Boolean(errors?.companyName)}
+                          helperText={touched?.companyName && errors?.companyName}
+                          sx={styles.TextFeild}
+                          InputLabelProps={{
+                            style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                        <Field
+                          as={TextField}
+                          type="email"
+                          name="email"
+                          label="Email Address"
+                          placeholder="Enter Here"
+                          required
+                          value={values?.email}
+                          error={touched?.email && Boolean(errors?.email)}
+                          helperText={touched?.email && errors?.email}
+                          sx={styles.TextFeild}
+                          InputLabelProps={{
+                            style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                        <TextField
+                          label="Phone Number (+61)"
+                          placeholder="Enter Here"
+                          sx={styles.TextFeild}
+                          InputLabelProps={{
+                            style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+                          }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                        <Field
+                          as={TextField}
+                          type="url"
+                          name="brandWebsite"
+                          label="Brand Website"
+                          placeholder="Enter Here"
+                          required
+                          value={values?.brandWebsite}
+                          error={touched?.brandWebsite && Boolean(errors?.brandWebsite)}
+                          helperText={touched?.brandWebsite && errors?.brandWebsite}
+                          sx={styles.TextFeild}
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="start">
+                                <Image src="/globe.svg" alt="insta" height={20} width={20} />
+                              </InputAdornment>
+                            ),
+                          }}
+                          InputLabelProps={{
+                            style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
+                          }}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Form>
+                )}
+              </Formik>
+
               <Button sx={styles.Button} onClick={formsubmission}>
                 <Typography textTransform={"none"} fontSize={"22px"}>
                   Schedule a call

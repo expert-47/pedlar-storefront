@@ -3,7 +3,7 @@ export const styles = {
     backgroundColor: "#1c1b1f",
     borderRadius: "16px",
     padding: "30px",
-    position:'relative',
+    position: "relative",
   },
   ResponsMainBox: {
     backgroundColor: "#1c1b1f",
@@ -41,6 +41,7 @@ export const styles = {
   Respocirclecount: {
     height: "43px",
     width: "43px",
+    fontSize: "30px",
     borderRadius: "50%",
     border: "1px solid",
     backgroundColor: "transparent",

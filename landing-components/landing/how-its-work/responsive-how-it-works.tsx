@@ -3,7 +3,6 @@ import { styles } from "./style";
 import { Box, Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import Image from "next/image";
-//import { Scrollspy } from "@makotot/ghostui";
 import HomeSecImage1 from "../../../public/home-sec5-img1.png";
 import HomeSecImage2 from "../../../public/home-sec5-img2.png";
 import HomeSecImage3 from "../../../public/home-sec5-img3.png";
@@ -29,24 +28,36 @@ const Responsivehowitworks = () => {
               </Typography>
             </Grid>
             <Grid item xs={2.2} sm={1.8}>
-              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
+              <Typography
+                sx={styles.Respocirclecount}
+                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
+                fontWeight={600}
+              >
                 2
               </Typography>
             </Grid>
             <Grid item xs={2.2} sm={1.8}>
-              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
+              <Typography
+                sx={styles.Respocirclecount}
+                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
+                fontWeight={600}
+              >
                 3
               </Typography>
             </Grid>
             <Grid item xs={2.2} sm={1.8}>
-              <Typography sx={styles.Respocirclecount} fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }} fontWeight={600}>
+              <Typography
+                sx={styles.Respocirclecount}
+                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
+                fontWeight={600}
+              >
                 4
               </Typography>
             </Grid>
           </Grid>
           <Swiper modules={[Pagination]}>
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-              <Grid item xs={12} sm={8} sx={styles.ResponsText} style={{ textAlign: "left" }}>
+              <Grid item xs={12} sm={8} sx={styles.ResponsText} textAlign={{ xs: "center", sm: "left" }}>
                 <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
                   Top Aussie brands sync their store to the Pedlar platform
                 </Typography>
@@ -55,7 +66,7 @@ const Responsivehowitworks = () => {
                 <Image src={HomeSecImage1} alt="home-sec5-img1" style={{ borderRadius: "16px" }} />
               </Grid>
             </SwiperSlide>
-            <SwiperSlide id="setion2" style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
               <Grid item xs={12} sm={8} sx={styles.ResponsText} textAlign={{ xs: "center", sm: "left" }}>
                 <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
                   Creators select products from brands they love

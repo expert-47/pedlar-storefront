@@ -3,6 +3,9 @@ export const styles = {
     paddingTop: "141px",
     display: "flex",
     alignItems: "center",
+    ["@media (min-width:1400px)"]: {
+      paddingTop: "192px",
+    },
     ["@media (max-width:1250px)"]: {
       paddingTop: "112px",
     },
@@ -20,6 +23,9 @@ export const styles = {
     margin: "0 0 0 auto",
     maxWidth: "602px",
     zIndex: " 99",
+    ["@media (min-width:1400px)"]: {
+      maxWidth: "746px",
+    },
     ["@media (max-width:1250px)"]: {
       maxWidth: "455px",
     },

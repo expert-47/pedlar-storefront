@@ -37,7 +37,7 @@ const index = () => {
         </Box>
         <Box
           style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
-          top={{ xs: "933px", md: "627px", lg: "545px" }}
+          top={{ xs: "933px", md: "627px", lg: "1445px" }}
         >
           <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
         </Box>

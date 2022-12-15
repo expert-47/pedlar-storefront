@@ -20,7 +20,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
     <CustomGrid
       style={{
         display: "flex",
-        // justifyContent: "center",
         alignItems: "center",
       }}
     >

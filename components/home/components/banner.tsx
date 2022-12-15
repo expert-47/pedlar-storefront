@@ -28,7 +28,7 @@ const BannerImg = (props) => {
       >
         <Grid item xs={11.5} md={4} lg={4}>
           <img
-            // src="/hannah.png"
+           
             
             src={props?.HeaderData?.storefrontImageUrl ? props?.HeaderData?.storefrontImageUrl : "/hannah.png" }
             alt="headerimage"
@@ -38,10 +38,7 @@ const BannerImg = (props) => {
             }}
           ></img>
 
-          {/* <Image priority  src={props?.HeaderData?.storefrontImageUrl } alt="headerimage"  width={isMatch ? "100%" : "476px"} height={isMatch ? "415px" : "595px"} 
-          
-          
-          />  */}
+   
         </Grid>
         <Grid
           item

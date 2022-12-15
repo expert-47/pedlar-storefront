@@ -26,7 +26,7 @@ export default function index({ HeaderData , newAdditionData   }:any) {
   );
 }
 
-// This gets called on every request
+
 export async function getServerSideProps(context:any) {
   
   const { slug } = context.query;
@@ -98,7 +98,7 @@ const options = {
   method: "POST",
   headers : headers,
   body: JSON.stringify(requestBody),
-  // body: requestBody,
+ 
 
 
 };

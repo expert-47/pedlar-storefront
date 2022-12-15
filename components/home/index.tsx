@@ -118,7 +118,6 @@ export const Home = (props:any) => {
             },
           }}
           data={gallery1}
-          // newAdditionData={props?.newAdditionData.length > 5 ? props?.newAdditionData.slice(0,5): props?.newAdditionData}
           newAdditionData={props?.newAdditionData}
         />
         <Gallery
@@ -142,6 +141,5 @@ export const Home = (props:any) => {
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Grid>
-    // : "No Record "
   );
 };

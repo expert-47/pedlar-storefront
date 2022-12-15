@@ -40,7 +40,7 @@ const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => 
         </Grid>
         <Grid container item xs={12} sm={12} md={6} lg={6}>
           <CardComponent
-            // crossPrice={data[0].crossPrice}
+           
             name={newAdditionData?.[0].title }
             type={
               newAdditionData?.[0].productType
@@ -50,17 +50,7 @@ const Gallery = ({ girdProps, newAdditionData,  columnSpacing = 10 }: Props) => 
             `A$${newAdditionData?.[0].priceRange?.maxVariantPrice?.amount}` : newAdditionData?.[0].priceRange?.maxVariantPrice?.amount
           }
           />
-              {/* <CardComponent
-            // crossPrice={data[0].crossPrice}
-            name={newAdditionData?.[6].title}
-            type={
-              newAdditionData?.[6].productType
-            }
-            image={newAdditionData?.[6].featuredImage?.transformedSrc}
-            price={      newAdditionData?.[6].priceRange?.maxVariantPrice?.currencyCode === "AUD" ? 
-            `A$${newAdditionData?.[6].priceRange?.maxVariantPrice?.amount}` : newAdditionData?.[6].priceRange?.maxVariantPrice?.amount
-          }
-          /> */}
+           
 
         </Grid>
       </Grid>

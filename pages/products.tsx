@@ -6,7 +6,7 @@ import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
 import Gallery from "components/home/components/Gallery";
-// import { useRouter } from "next/router";
+
 
 const gallery1 = [
   {
@@ -192,7 +192,7 @@ export async function getServerSideProps(context:any) {
 
 
 
-// products data 
+
 
 const getUserDetailByFetchAPICall = async () => { 
 
@@ -253,7 +253,7 @@ const options = {
   method: "POST",
   headers : headers,
   body: JSON.stringify(requestBody),
-  // body: requestBody,
+ 
 
 
 };

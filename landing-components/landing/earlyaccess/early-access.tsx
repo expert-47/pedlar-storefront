@@ -50,7 +50,6 @@ const EarlyAcess = () => {
               lg={2}
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
-              {/* <Image src={ArrowRIghtBlack} alt="Arrow-RIght-Black" style={{ height: "77px", width: "50px" }} /> */}
               <ArrowForwardIcon style={{ height: "77px", width: "50px" }} />
             </Grid>
             <Grid

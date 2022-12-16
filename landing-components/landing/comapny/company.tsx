@@ -49,7 +49,7 @@ const Company = () => {
           item
           xs={12}
           sm={12}
-          md={10}
+          md={11}
           lg={8}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
@@ -149,11 +149,6 @@ const Company = () => {
                 </Button>
               </Box>
               {userType ? <Creatorpopup /> : <Brandspopup />}
-              <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
-                <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                  Get in touch
-                </Typography>
-              </Button>
               <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                 {
                   "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

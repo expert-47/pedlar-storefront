@@ -24,7 +24,7 @@ const Footer = () => {
           flexDirection={{ xs: "column-reverse", sm: "unset" }}
           paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Grid item xs={12} sm={5} md={5} lg={5} sx={styles.footerLogocol}>
+          <Grid item xs={12} sm={6} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="/">
               <Image src={footerLogo} alt="footer logo" />
             </Link>
@@ -44,13 +44,13 @@ const Footer = () => {
             container
             item
             xs={12}
-            sm={6}
+            sm={5}
             md={6}
             lg={6}
             sx={styles.footerMobcol}
             flexDirection={{ xs: "column-reverse", sm: "unset" }}
           >
-            <Grid item xs={12} sm={12} md={12} lg={7}>
+            <Grid item xs={12} sm={12} md={12} lg={6}>
               <Box marginBottom={{ xs: "50px", sm: "0px" }}>
                 <Link href="/faq" target="FAQs" sx={styles.footerLink}>
                   FAQs
@@ -69,7 +69,7 @@ const Footer = () => {
                 </Link>
               </Box>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={5}>
+            <Grid item xs={12} sm={12} md={12} lg={6}>
               <Box style={{ display: "flex", alignItems: "center", paddingBottom: "16px" }}>
                 <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} />
                 <Link href="https://www.instagram.com/pedlar.official/" target="blank" sx={styles.footersocial}>

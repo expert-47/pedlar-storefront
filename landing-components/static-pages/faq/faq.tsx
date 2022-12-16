@@ -49,13 +49,11 @@ const Faq = () => {
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
+                  <Typography sx={styles.acordianText}>How do I get paid my commision?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
-                    brands you love. Your storefront will be a place for your community to browse and shop your style.
-                    The best part: you'll earn 20% commision on all the sales you make.
+                    Pedlar will pay your commisions monthly to your nominated bank account.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -65,12 +63,11 @@ const Faq = () => {
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Do I get paid for being on Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>Who handles customer support?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Creators earn a 20% commission on all sales made on their Pedlar store. Brands only pay commision
-                    when a sale is made.
+                    Pedlar handles all customer support, including shipping queries, returns and all general enquires.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -80,11 +77,12 @@ const Faq = () => {
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does it cost to join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>Who controls my Pedlar store?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Nope! It's completely free for both Creators and Brands.
+                    Your Pedlar store is yours! Control what products are on your store. Control the personalisation of
+                    your store. Control how, where and when you post about your Pedlar store.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -94,12 +92,11 @@ const Faq = () => {
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
-                  <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>Can I add and remove products from my store?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Since Pedlar is an invite only platform, submit an application and our team will get back to you
-                    within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
+                    Yep, you can add or remove products whenever you want.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -114,11 +111,13 @@ const Faq = () => {
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does my store have its own unique URL?</Typography>
+                  <Typography sx={styles.acordianText}>
+                    What happens if there is a Brand I want on my store that isnt on Pedlar?
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Yep, when signing up you can choose your own unique URL.
+                    We're always keen to bring on new Brands. Let us know by reaching out to hello@pedlar.store
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -138,13 +137,15 @@ const Faq = () => {
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
+                  <Typography sx={styles.acordianText}>
+                    Will all of my stock be on Pedlar or can I select what I want to sell on Pedlar?
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
-                    brands you love. Your storefront will be a place for your community to browse and shop your style.
-                    The best part: you'll earn 20% commision on all the sales you make.
+                    You have the option of selecting what stock you want to sell through Pedlar. As part of the
+                    onboarding process, our team will work with you to include or exclude any products you do not want
+                    on Pedlar.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -154,12 +155,12 @@ const Faq = () => {
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Do I get paid for being on Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>When and how do I receive payment for sales?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Creators earn a 20% commission on all sales made on their Pedlar store. Brands only pay commision
-                    when a sale is made.
+                    Payment will be remitted directly to the brand’s nominated bank account 30 days after the sale is
+                    made. This allows for returns to be processed before payment is remitted.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -169,11 +170,15 @@ const Faq = () => {
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does it cost to join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>
+                    How does the post-purchase customer communications work?
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Nope! It's completely free for both Creators and Brands.
+                    When a purchase is made through Pedlar, we send the order confirmation email to the customer. Pedlar
+                    then takes care of any customer support that is required. If necessary, Pedlar will reach out to
+                    brands on behalf of customers.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -183,12 +188,12 @@ const Faq = () => {
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
-                  <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>Can Pedlar change or update my product information? </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Since Pedlar is an invite only platform, submit an application and our team will get back to you
-                    within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
+                    No, Pedlar is only able to read your information and cant make any changes. You retain all control
+                    over your products and pricing.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -203,11 +208,13 @@ const Faq = () => {
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does my store have its own unique URL?</Typography>
+                  <Typography sx={styles.acordianText}>
+                    What if there are particular Influencers and Creators I want to sell my products?
+                  </Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Yep, when signing up you can choose your own unique URL.
+                    We're always keen to bring on new Creators. Let us know by reaching out to hello@pedlar.store
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -227,13 +234,13 @@ const Faq = () => {
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
+                  <Typography sx={styles.acordianText}>Why would I use Pedlar?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
-                    brands you love. Your storefront will be a place for your community to browse and shop your style.
-                    The best part: you'll earn 20% commision on all the sales you make.
+                    Pedlar is an end-to-end platform that allows you to shop your favourite creators' or influencers'
+                    style and aesthetic. From inspiration to purchase, everything takes place in one place without
+                    having to jump across multiple platforms or websites.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -243,12 +250,12 @@ const Faq = () => {
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Do I get paid for being on Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>Who am I buying from?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Creators earn a 20% commission on all sales made on their Pedlar store. Brands only pay commision
-                    when a sale is made.
+                    At Pedlar you can buy items from many different brands. You are buying the items directly from the
+                    brands.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -258,11 +265,12 @@ const Faq = () => {
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does it cost to join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>Is Pedlar more expensive than the brands store?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Nope! It's completely free for both Creators and Brands.
+                    All products listed on Pedlar are priced the same as on the brands website. If a brand changes the
+                    price of their products, this will automatically update across Pedlar stores.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -272,12 +280,13 @@ const Faq = () => {
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
-                  <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>How do I return or exchange an order?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Since Pedlar is an invite only platform, submit an application and our team will get back to you
-                    within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
+                    Submit your order number and email address through our Returns form linked on every Pedlar store.
+                    Once you have submitted your return, we'll send through a pre-paid returns label then simply post
+                    your item(s).
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -292,11 +301,13 @@ const Faq = () => {
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does my store have its own unique URL?</Typography>
+                  <Typography sx={styles.acordianText}>Who will ship my order and can I track my order?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Yep, when signing up you can choose your own unique URL.
+                    All orders are shipped direct by the brand. When a purchase has been made, you will receive a
+                    confirmation from Pedlar. You will then be provided with a tracking number as you normally would
+                    when purchasing something online.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -316,13 +327,13 @@ const Faq = () => {
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
+                  <Typography sx={styles.acordianText}>What is Pedlar?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
-                    brands you love. Your storefront will be a place for your community to browse and shop your style.
-                    The best part: you'll earn 20% commision on all the sales you make.
+                    Pedlar is an e-commerce platform that allows creators and influencers to build and personalise
+                    digital storefronts to showcase and sell products from brands they love. Our end-to-end platform
+                    allows us to close the gap on the shopping journey.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -332,12 +343,14 @@ const Faq = () => {
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Do I get paid for being on Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>What does End-to-end mean?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Creators earn a 20% commission on all sales made on their Pedlar store. Brands only pay commision
-                    when a sale is made.
+                    End-to-end means that Pedlar provides a platform that covers the shopping journey from browsing to
+                    purchase. This means shoppers don't need to bounce around different websites or scour the internet
+                    looking for the product and/or brand an influencer was wearing - they can simply browse and shop
+                    their Pedlar store.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -347,11 +360,15 @@ const Faq = () => {
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does it cost to join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>What is Creator Commerce?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Nope! It's completely free for both Creators and Brands.
+                    Creator commerce is the point where commerce and the Creator Economy intersect. It is built off the
+                    premise that people trust people, not brands. Creator commerce highlights the shift in control and
+                    perception of Influencers and creators. No longer are these tools to be used by businesses. Instead,
+                    these are viable channels where a Creator's personal brand has become the epicentre of a surrounding
+                    communuty.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -361,12 +378,13 @@ const Faq = () => {
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
-                  <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
+                  <Typography sx={styles.acordianText}>I have a question who do I speak to?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Since Pedlar is an invite only platform, submit an application and our team will get back to you
-                    within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
+                    Pedlar customer support are responsible for answering all questions, whether they are specific to a
+                    product, an order, returns or a general enquiry. We can be reached by using the chat support on all
+                    Pedlar Storefronts, or you can reach out to hello@pedlar.store
                   </Typography>
                 </AccordionDetails>
               </Accordion>
@@ -381,11 +399,11 @@ const Faq = () => {
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >
-                  <Typography sx={styles.acordianText}>Does my store have its own unique URL?</Typography>
+                  <Typography sx={styles.acordianText}>I have a question that is not listed</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography sx={styles.acordianPara}>
-                    Yep, when signing up you can choose your own unique URL.
+                    For any other questions or comments please reach out to hello@pedlar.store
                   </Typography>
                 </AccordionDetails>
               </Accordion>

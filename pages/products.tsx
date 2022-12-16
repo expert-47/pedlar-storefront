@@ -1,12 +1,13 @@
 import Text from "components/customText";
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Button, useTheme, Divider, Box } from "@mui/material";
+import { Grid, Button, Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
 import Gallery from "components/home/components/Gallery";
 
+import { useState , useEffect } from "react";
 
 const gallery1 = [
   {
@@ -46,49 +47,138 @@ const gallery1 = [
     price: "$42",
   },
 ];
-const gallery2 = [
-  {
-    label: "Kasbah",
-    imgPath: "/grid-img7.png",
-    name: "19-69",
-    type: "KASBAH",
-    price: "$310",
-  },
-  {
-    label: "Purse",
-    imgPath: "/grid-img6.png",
-    name: "Ganni",
-    type: "Beaded Banana Purse",
-    price: "$525",
-  },
-  {
-    label: "Mask",
-    imgPath: "/grid-img3.png",
-    name: "Sisley Paris",
-    type: "Eye Contour Mask",
-    price: "$42",
-  },
-  {
-    label: "Fleece",
-    imgPath: "/grid-img4.png",
-    name: "Nike",
-    type: "High-Waisted Fleece Open",
-    price: "$975",
-  },
-  {
-    label: "Coco",
-    imgPath: "/grid-img8.png",
-    name: "Hunza G",
-    type: "Coco Bikini",
-    price: "$300",
-  },
-];
 
-const Products = ({newAdditionData}:any) => {
-  const theme = useTheme();
+
+const Products = ({newAdditionData  , collectionId}:any) => {
+
+  const [productsData , setProductsData] = useState([{}]);
+  const [endCursorValue , setEndCursorValue] = useState("");
+  const [hasNextPage , setHasNextPage] = useState(true);
+
+
+  useEffect(() => { 
+     setProductsData(newAdditionData?.nodes) ;
+     setEndCursorValue(newAdditionData?.pageInfo?.endCursor)
+     ;}, []);
+
+
+
+  
+  
   const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
+
+
+// making the chunks of 5 products 
+
+  const productsDataArray = [];
+
+  for(let i = 0 ; i<productsData.length  ; i=i+5 ){
+    productsDataArray.push(productsData.slice(i,i+5));
+  }
+
+
+
+
+ 
+
+
+  const getPaginationData =async()=>{
+    if(endCursorValue.includes("=")){
+      setEndCursorValue(endCursorValue.slice(0,-2));
+    }
+    const requestBody = {
+      query: `query GetCollection($collectionId: ID!) {
+        collection(id: $collectionId) {
+          products(first: 2, reverse: true ,after: "${endCursorValue}")
+            {
+                nodes {
+                    id
+                    title
+                    productType
+                    vendor
+                    description
+                    totalInventory
+                    priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    featuredImage {
+              height
+              src
+              width
+              originalSrc
+              transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 400)
+            }
+                    createdAt
+                    publishedAt
+                }
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
+                }
+            }
+        }
+    }`,
+    variables: { collectionId : `gid://shopify/Collection/${collectionId}` }
+  
+  
+  };
+  const headers:any = {
+    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+      "Content-Type" : "application/json",
+      "Connection":"keep-alive",
+      "Accept-Encoding":"gzip, deflate, br",
+      "Accept":"*/*"
+  
+  };
+  const options = {
+    method: "POST",
+    headers : headers,
+    body: JSON.stringify(requestBody),
+
+  };
+
+  async function getResponse (){
+  const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
+
+  const collectionData = await res.json();
+
+ 
+  return  collectionData?.data?.collection?.products;
+    
+  }
+
+  try {
+    const collectionDataProducts = await getResponse();
+   
+    const totalData=[...productsData,...collectionDataProducts.nodes];
+    setProductsData(totalData);
+    setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
+    setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
+  
+    return   collectionDataProducts;
+    
+  } catch (error) {
+    
+    console.log(error);
+    
+  }
+  
+ 
+
+
+  };  
+  
 
 
 
@@ -114,34 +204,27 @@ const Products = ({newAdditionData}:any) => {
         }}
       >
         <ProductHeader />
-        <Gallery
-          girdProps={{
-            flexDirection: {
-              lg: "row-reverse",
-              md: "row-reverse",
-              sm: "column-reverse",
-              xs: "column-reverse",
-            },
-          }}
-          data={gallery1}
-          newAdditionData={newAdditionData}
+        {
+  productsDataArray?.map ((item , index)=>
+ 
+    <Gallery
+    girdProps={{
+      flexDirection: {
+        // lg: "row-reverse",
+        // md: "row-reverse",
+        // sm: "column-reverse",
+        // xs: "column-reverse",
+      },
+    }}
+    data={gallery1}
+    newAdditionData={item}
+    position = {index === 0 ? true : index % 2 === 0 ? true : false }
+    key={index}
+  />
 
-        />
-        <Gallery
-          data={gallery2}
-          girdProps={{
-            flexDirection: {
-              lg: "row",
-              md: "row",
-              sm: "column-reverse",
-              xs: "column-reverse",
-            },
-            marginTop: 40,
-          }}
-          columnSpacing={0}
-          newAdditionData={newAdditionData?.length > 5 ? newAdditionData.slice(5,10) : "null"}
-
-        />
+  )
+}
+      
       </Box>
       <Grid
         style={{
@@ -153,24 +236,29 @@ const Products = ({newAdditionData}:any) => {
         }}
       >
         <Text fontSize="12px" fontWeight="600">
-          {"You've viewed 10 out of 100 products"}
+          {`You've viewed ${productsData.length} out of 100 products`}
         </Text>
-        <Button
-          variant="outlined"
-          style={{
-            width: "15em",
-            border: "2px solid black",
-            borderRadius: "30px",
-            backgroundColor: "white",
-            color: "#1E1E1E",
-            fontWeight: "600",
-            fontSize: "16px",
-            textTransform: "none",
-            marginTop: "10px",
-          }}
-        >
-          Load more
-        </Button>
+        {hasNextPage && (
+  <Button
+  variant="outlined"
+  onClick={getPaginationData}
+  style={{
+    width: "15em",
+    border: "2px solid black",
+    borderRadius: "30px",
+    backgroundColor: "white",
+    color: "#1E1E1E",
+    fontWeight: "600",
+    fontSize: "16px",
+    textTransform: "none",
+    marginTop: "10px",
+  }}
+>
+  Load more
+</Button>
+
+        )}
+      
       </Grid>
       <Divider className={cx(classes.footerDivider)} />
       <BaseFooter />
@@ -200,7 +288,7 @@ const getUserDetailByFetchAPICall = async () => {
   const requestBody = {
     query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-          products(first: 10, reverse: true) {
+          products(first: 2, reverse: true ) {
               nodes {
                   id
                   title
@@ -267,7 +355,7 @@ return collectionData;
 } ;
        
 let data=await getUserDetailByFetchAPICall();
-data = data?.data?.collection?.products?.nodes;
+data = data?.data?.collection?.products;
 
-  return { props : {  newAdditionData:data  } };
+  return { props : {  newAdditionData:data , slug , collectionId:HeaderData?.data?.collectionId } };
 }

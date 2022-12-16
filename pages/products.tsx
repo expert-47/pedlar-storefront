@@ -1,12 +1,12 @@
 import Text from "components/customText";
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Button, useTheme, Divider, Box } from "@mui/material";
+import { Grid, Button, Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
 import Gallery from "components/home/components/Gallery";
-import { useRouter } from "next/router";
+
 import { useState , useEffect } from "react";
 
 const gallery1 = [
@@ -47,48 +47,13 @@ const gallery1 = [
     price: "$42",
   },
 ];
-const gallery2 = [
-  {
-    label: "Kasbah",
-    imgPath: "/grid-img7.png",
-    name: "19-69",
-    type: "KASBAH",
-    price: "$310",
-  },
-  {
-    label: "Purse",
-    imgPath: "/grid-img6.png",
-    name: "Ganni",
-    type: "Beaded Banana Purse",
-    price: "$525",
-  },
-  {
-    label: "Mask",
-    imgPath: "/grid-img3.png",
-    name: "Sisley Paris",
-    type: "Eye Contour Mask",
-    price: "$42",
-  },
-  {
-    label: "Fleece",
-    imgPath: "/grid-img4.png",
-    name: "Nike",
-    type: "High-Waisted Fleece Open",
-    price: "$975",
-  },
-  {
-    label: "Coco",
-    imgPath: "/grid-img8.png",
-    name: "Hunza G",
-    type: "Coco Bikini",
-    price: "$300",
-  },
-];
 
-const Products = ({newAdditionData , slug , collectionId}:any) => {
+
+const Products = ({newAdditionData  , collectionId}:any) => {
 
   const [productsData , setProductsData] = useState([{}]);
   const [endCursorValue , setEndCursorValue] = useState("");
+  const [hasNextPage , setHasNextPage] = useState(true);
 
 
   useEffect(() => { 
@@ -99,33 +64,23 @@ const Products = ({newAdditionData , slug , collectionId}:any) => {
 
 
   
-  const theme = useTheme();
+  
   const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
 
-  // const router = useRouter();
-  // const {slug} = router.query;
-  console.log("slug..... ,, id " , slug ,"id........" , collectionId);
 
+// making the chunks of 5 products 
 
-  let data = [];
+  const productsDataArray = [];
 
   for(let i = 0 ; i<productsData.length  ; i=i+5 ){
-
-    data.push(productsData.slice(i,i+5));
-  
+    productsDataArray.push(productsData.slice(i,i+5));
   }
-  let endCursor:string  = newAdditionData?.pageInfo?.endCursor;
-  endCursor=endCursor.toString();
-  // endCursor =endCursor.JSON.stringify();
-  if(endCursor.includes("=")){
 
-    endCursor=endCursor.slice(0,-2);
-    
-    console.log("endCursor" , endCursor);
 
-  }
+
+
  
 
 
@@ -202,32 +157,29 @@ const Products = ({newAdditionData , slug , collectionId}:any) => {
   return  collectionData?.data?.collection?.products;
     
   }
-  
-  const data2 = await getResponse();
-  // setProductsData((productsData)=> {
-  //   let totalData = {productsData , data2};
-  //   return { totalData}; } );
-  const totalData=[...productsData,...data2.nodes];
-  setProductsData(totalData);
-  setEndCursorValue(data2?.pageInfo?.endCursor);
 
-  return   data2;
+  try {
+    const collectionDataProducts = await getResponse();
+   
+    const totalData=[...productsData,...collectionDataProducts.nodes];
+    setProductsData(totalData);
+    setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
+    setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
+  
+    return   collectionDataProducts;
+    
+  } catch (error) {
+    
+    console.log(error);
+    
+  }
+  
+ 
 
 
   };  
   
-// const api_res = getPaginationData().then(resp=>{
 
-//   setProductsData((productsData)=> {
-//   return { ... productsData , ...resp}; } );
-
-//   console.log("resp......////" , resp);
-  
-
-// });
-// console.log("newAdditionData?.pageInfo?.endCursor...." , newAdditionData?.pageInfo?.endCursor);
-
-console.log("productsData...,.,.,.,.,.,.,.," , productsData);
 
 
 
@@ -253,7 +205,7 @@ console.log("productsData...,.,.,.,.,.,.,.," , productsData);
       >
         <ProductHeader />
         {
-  data?.map ((item , index)=>
+  productsDataArray?.map ((item , index)=>
  
     <Gallery
     girdProps={{
@@ -272,34 +224,7 @@ console.log("productsData...,.,.,.,.,.,.,.," , productsData);
 
   )
 }
-        {/* <Gallery
-          girdProps={{
-            flexDirection: {
-              lg: "row-reverse",
-              md: "row-reverse",
-              sm: "column-reverse",
-              xs: "column-reverse",
-            },
-          }}
-          data={gallery1}
-          newAdditionData={newAdditionData}
-
-        />
-        <Gallery
-          data={gallery2}
-          girdProps={{
-            flexDirection: {
-              lg: "row",
-              md: "row",
-              sm: "column-reverse",
-              xs: "column-reverse",
-            },
-            marginTop: 40,
-          }}
-          columnSpacing={0}
-          newAdditionData={newAdditionData?.length > 5 ? newAdditionData.slice(5,10) : "null"}
-
-        /> */}
+      
       </Box>
       <Grid
         style={{
@@ -311,25 +236,29 @@ console.log("productsData...,.,.,.,.,.,.,.," , productsData);
         }}
       >
         <Text fontSize="12px" fontWeight="600">
-          {"You've viewed 10 out of 100 products"}
+          {`You've viewed ${productsData.length} out of 100 products`}
         </Text>
-        <Button
-          variant="outlined"
-          onClick={getPaginationData}
-          style={{
-            width: "15em",
-            border: "2px solid black",
-            borderRadius: "30px",
-            backgroundColor: "white",
-            color: "#1E1E1E",
-            fontWeight: "600",
-            fontSize: "16px",
-            textTransform: "none",
-            marginTop: "10px",
-          }}
-        >
-          Load more
-        </Button>
+        {hasNextPage && (
+  <Button
+  variant="outlined"
+  onClick={getPaginationData}
+  style={{
+    width: "15em",
+    border: "2px solid black",
+    borderRadius: "30px",
+    backgroundColor: "white",
+    color: "#1E1E1E",
+    fontWeight: "600",
+    fontSize: "16px",
+    textTransform: "none",
+    marginTop: "10px",
+  }}
+>
+  Load more
+</Button>
+
+        )}
+      
       </Grid>
       <Divider className={cx(classes.footerDivider)} />
       <BaseFooter />

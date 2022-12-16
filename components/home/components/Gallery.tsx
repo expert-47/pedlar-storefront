@@ -4,13 +4,13 @@ import CardComponent from "./cardComponent";
 import { CustomGrid } from "components/layout";
 
 interface Props {
-  girdProps?: GridProps;
+  
   data: any[];
   columnSpacing?: number;
   newAdditionData?:any[];
   position:boolean;
 }
-const Gallery = ({ girdProps, position , newAdditionData,  columnSpacing = 10 }: Props) => {
+const Gallery = ({  position , newAdditionData,  columnSpacing = 10 }: Props) => {
 
   
   return (
@@ -35,6 +35,7 @@ const Gallery = ({ girdProps, position , newAdditionData,  columnSpacing = 10 }:
             }
               
               image={item?.featuredImage?.transformedSrc}
+              smallImage={true}
               
               />
             </Grid>
@@ -51,6 +52,7 @@ const Gallery = ({ girdProps, position , newAdditionData,  columnSpacing = 10 }:
             price={      newAdditionData?.[0].priceRange?.maxVariantPrice?.currencyCode === "AUD" ? 
             `A$${newAdditionData?.[0].priceRange?.maxVariantPrice?.amount}` : newAdditionData?.[0].priceRange?.maxVariantPrice?.amount
           }
+          largeImage={true}
           />
            
 

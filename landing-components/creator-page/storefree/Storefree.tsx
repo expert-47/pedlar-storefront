@@ -10,9 +10,8 @@ const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
   const formsubmission = () => setSubmitForm(false);
   const submitHandler = () => {
-    console.log("clicked");
+    // console.log("errors.firstName");
   };
-  console.log("errors?.firstName");
   return (
     <CustomContainer>
       <Box
@@ -195,12 +194,13 @@ const Storefree = () => {
                     <Button
                       sx={{
                         ...styles.Button,
-                        color: errors ? "White !important" : "black",
-                        opacity: errors ? "0.4" : "",
+                        color: values ? "White !important" : "#1C1B1F",
+                        // opacity: errors ? "0.4" : "",
+                        backgroundColor: values ? "grey" : "#1C1B1F",
                       }}
                       onClick={formsubmission}
                       disabled={
-                        errors?.firstName && errors?.lastName && errors?.email && errors?.city && errors?.instagramUser
+                        values?.firstName && values?.lastName && values?.email && values?.city && values?.instagramUser
                           ? false
                           : true
                       }

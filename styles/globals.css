@@ -79,7 +79,7 @@
   transform: rotate(-90deg);
   position: absolute !important;
   transform-origin: 0 0;
-  left:0px;
+  left: 0px;
   bottom: 10px;
   width: 703px !important;
   z-index: 0;
@@ -104,11 +104,10 @@
     bottom: 3px;
     width: 959px !important;
   }
-  .marq-right{
+  .marq-right {
     width: 959px !important;
   }
 }
-
 
 @media screen and (max-width: 850px) {
   .marq-left {
@@ -143,7 +142,7 @@
   .marq-right {
     width: 1170px !important;
     bottom: 57px;
-    right: 32px
+    right: 32px;
   }
 }
 
@@ -157,9 +156,4 @@
     bottom: 92px;
     right: 32px;
   }
-}
-
-.css-1flewa0-MuiInputBase-root-MuiOutlinedInput-root,
-.css-a62vtt-MuiInputBase-root-MuiOutlinedInput-root{
-  font-size: 16px !important;
 }

@@ -36,13 +36,13 @@ const Banner = () => {
           >
             Followers love your style. Give them what they want with a personalised store of products from top brands.
           </Typography>
-          <Button sx={styles.Button}>
-            <ScrollLink to="StoreFreeForm" spy={true} smooth={true} offset={-100} duration={500}>
+          <ScrollLink to="StoreFreeForm" spy={true} smooth={true} offset={-100} duration={500}>
+            <Button sx={styles.Button}>
               <Typography textTransform={"none"} fontSize={"22px"}>
                 Get access - <span style={{ fontStyle: "italic", fontWeight: "400" }}>for free</span>
               </Typography>
-            </ScrollLink>
-          </Button>
+            </Button>
+          </ScrollLink>
         </Grid>
         <Grid sx={styles.brandImg}>
           <Image src={CreatorBanner} alt={"Creator banner"} priority placeholder="blur" />

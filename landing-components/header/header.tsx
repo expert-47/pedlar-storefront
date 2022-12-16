@@ -34,7 +34,9 @@ const Header = () => {
   const openBrands = () => {
     router.push("/for-brands");
   };
-
+  const submitHandler = () => {
+    console.log("clicked");
+  };
   return (
     <AppBar elevation={0} sx={styles.header}>
       <CustomContainer>
@@ -194,11 +196,7 @@ const Header = () => {
                     </Button>
                   </Box>
                   {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Button style={{ backgroundColor: "black", borderRadius: "666px", padding: "10px 16px" }}>
-                    <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                      Get in touch
-                    </Typography>
-                  </Button>
+
                   <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

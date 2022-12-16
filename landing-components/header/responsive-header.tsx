@@ -49,7 +49,7 @@ const ResponsiveHeader = () => {
   };
 
   const paperStyle = {
-    width: "auto",
+    width: {xs:"100%", sm:"50%", md: "auto"},
     boxShadow: "none",
     backgroundColor: "#f9f6f2",
   };
@@ -212,11 +212,6 @@ const ResponsiveHeader = () => {
                         </Button>
                       </Box>
                       {userType ? <Creatorpopup /> : <Brandspopup />}
-                      <Button style={{ backgroundColor: "black", borderRadius: "30px", padding: "10px" }}>
-                        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
-                          Get in touch
-                        </Typography>
-                      </Button>
                       <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
                         {
                           "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."

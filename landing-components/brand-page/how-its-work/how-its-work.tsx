@@ -104,6 +104,7 @@ const Howitswork = () => {
                                   {
                                     backgroundColor: currentElementIndexInViewport == key ? "white" : "tranparent",
                                     color: currentElementIndexInViewport == key ? "#1c1b1f" : "white",
+                                    opacity: currentElementIndexInViewport == key ? "" : "0.4",
                                   },
                                 ]}
                               >
@@ -114,7 +115,15 @@ const Howitswork = () => {
                                   {content.id}
                                 </Typography>
                               </Grid>
-                              <Grid item xs={9} sm={9} md={9} lg={10} style={{ padding: "0px 0 0 28px" }}>
+                              <Grid
+                                item
+                                xs={9}
+                                sm={9}
+                                md={11}
+                                lg={10}
+                                style={{ padding: "0px 0 0 28px" }}
+                                sx={{ opacity: currentElementIndexInViewport == key ? "" : "0.4" }}
+                              >
                                 <Typography
                                   fontSize={{ sx: "30px", sm: "30px", md: "40px", lg: "40px" }}
                                   fontWeight={600}

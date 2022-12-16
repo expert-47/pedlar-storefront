@@ -157,3 +157,11 @@
     right: 32px;
   }
 }
+
+.active .arrow {
+  background-color: red;
+}
+.demo{
+  display: none;
+}
+.active .demo{display: block;}

@@ -34,9 +34,6 @@ const Header = () => {
   const openBrands = () => {
     router.push("/for-brands");
   };
-  const submitHandler = () => {
-    console.log("clicked");
-  };
   return (
     <AppBar elevation={0} sx={styles.header}>
       <CustomContainer>

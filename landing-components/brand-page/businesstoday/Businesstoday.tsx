@@ -44,6 +44,8 @@ const Businesstoday = () => {
                 }}
                 validationSchema={addvalidation}
                 onSubmit={submitHandler}
+                dirty={true}
+                isValid={true}
               >
                 {({ values, errors, touched, handleChange, handleSubmit }) => (
                   <Form onSubmit={handleSubmit}>
@@ -168,18 +170,19 @@ const Businesstoday = () => {
                     <Button
                       sx={{
                         ...styles.Button,
-                        color: errors ? "White !important" : "black",
-                        opacity: errors ? "0.4" : "",
+                        color: values ? "White !important" : "#1C1B1F",
+                        // opacity: errors ? "0.4" : "0.9",
+                        background: values ? "grey" : "#1C1B1F",
                       }}
                       onClick={formsubmission}
                       disabled={
-                        errors?.firstName &&
-                        errors?.lastName &&
-                        errors?.email &&
-                        errors?.companyName &&
-                        errors?.brandWebsite
-                          ? true
-                          : false
+                        values?.firstName &&
+                        values?.lastName &&
+                        values?.email &&
+                        values?.companyName &&
+                        values?.brandWebsite
+                          ? false
+                          : true
                       }
                     >
                       <Typography textTransform={"none"} fontSize={"22px"}>

@@ -165,3 +165,182 @@
   display: none;
 }
 .active .demo{display: block;}
+  .hs5-ib-slider-box {
+    display: flex;
+    align-items: flex-start;
+    z-index: 4;
+    position: relative;
+    padding: 60px 20px 50px 20px;
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box {
+      padding: 60px 164px 68px 60px;
+    }
+  }
+  @media (min-width: 1400px) {
+    .hs5-ib-slider-box {
+      padding-right: 164px;
+      padding-bottom: 60px;
+    }
+  }
+  @media (max-width: 991px) {
+    .hs5-ib-slider-box {
+      flex-direction: column;
+      width: 80%;
+      height: auto;
+      padding: 60px 30px 60px 60px;
+    }
+  }
+  @media (max-width: 767px) {
+    .hs5-ib-slider-box {
+      flex-direction: column;
+      width: 100%;
+      height: auto;
+      padding: 30px 10px 30px 10px;
+    }
+    .hs5-ib-slider-box.hs5ibsb-brand-mv {
+      height: auto;
+    }
+    .hs5-ib-slider-box.hs5ibsb-creator-mv {
+      height: auto;
+    }
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left {
+    width: 61%;
+    height: 50vh;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 125px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+  @media (min-width: 1400px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left {
+      height: 75vh;
+      top: 150px;
+    }
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left {
+      height: 80vh;
+      top: 150px;
+    }
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .circle-count {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    background-color: rgb(249, 246, 242);
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left div {
+    color: #F9F6F2;
+    opacity: 0.6;
+    font-weight: 600 !important;
+  }
+  @media (max-width: 1440px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left div {
+      margin-bottom: 24px;
+    }
+  }
+  @media (max-width: 1199px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left div {
+      font-size: 30px !important;
+    }
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left div.MuiBox-root {
+      margin-top: 80px !important;
+    }
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left div {
+      margin-bottom: 0px;
+    }
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left div + div {
+      margin-bottom: 0px;
+    }
+  }
+  @media (max-width: 1399px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left  div + div {
+      margin-bottom: 0px;
+    }
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
+    display: none;
+    position: absolute;
+    right: -58%;
+    top: 0%;
+    height: 78vh;
+    border-radius: 16px;
+    width: 35%;
+  }
+  @media (min-width: 1400px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
+      height: 75vh;
+      top: 0%;
+      right: -72%;
+    }
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
+      height: 80vh;
+      top: 0%;
+      right: -72%;
+    }
+  }
+  @media (max-width: 1199px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
+      height: 72vh;
+    }
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .is-current .circle-count {
+    background-color: #F9F6F2;
+    color: #1C1B1F;
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .is-current div {
+    opacity: 1;
+    color: #F9F6F2;
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .is-current .hs5-ib-sbr-img {
+    display: block;
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-right {
+    padding-left: 36px;
+    width: 35%;
+    margin-left: auto;
+    visibility: hidden;
+  }
+  .hs5-ib-slider-box .hs5-ib-slider-box-right .hs5-ib-sbr-img {
+    border-radius: 8px;
+    height: auto;
+  }
+  @media (min-width: 1600px) {
+    .hs5-ib-slider-box .hs5-ib-slider-box-right .hs5-ib-sbr-img {
+      height: 80vh;
+    }
+  }
+
+  .hs5-ib-slider-box .hs5-ib-slider-box-left div.is-current{
+    opacity: 1;
+    color: #fff;
+  }
+
+  .is-current .css-oxsirv-MuiTypography-root{
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+  }
+
+@media screen and (max-width:1040px){
+  .hs5-ib-slider-box .hs5-ib-slider-box-left {
+    width: 64%;
+  }
+}

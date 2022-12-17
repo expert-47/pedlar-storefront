@@ -1,33 +1,37 @@
-import React, { useRef } from "react";
+import React from "react";
 import { styles } from "./style";
-import { Box, Grid, Typography, List, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
-import { Scrollspy } from "@makotot/ghostui";
-import Content from "./content.json";
-import Images from "./images.json";
+// import { Scrollspy } from "@makotot/ghostui";
+// import Content from "./content.json";
+// import Images from "./images.json";
 import Responsivehowitworks from "./responsive-how-it-works";
 import purpleGradient from "../../../public/purple-gradient.png";
+import Scrollspy from "react-scrollspy";
 import Image from "next/image";
+import firstStep from "../../../public/step1.png";
+import secondStep from "../../../public/step2.png";
+import thirdStep from "../../../public/step3.png";
+import fourthStep from "../../../public/step4.png";
 
 const Howitswork = () => {
   const theme = useTheme();
   const isResponsive = useMediaQuery("(max-width:1023px)");
 
-  const sectionRefs = [
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-    useRef<HTMLDivElement>(null),
-  ];
+  // const sectionRefs = [
+  //   useRef<HTMLDivElement>(null),
+  //   useRef<HTMLDivElement>(null),
+  //   useRef<HTMLDivElement>(null),
+  //   useRef<HTMLDivElement>(null),
+  // ];
   return (
     <CustomContainer>
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{
           marginTop: "105px",
-          display: "block",
           position: "relative",
-          overflow: "hidden",
+          overflow: "unset",
         }}
       >
         <Box sx={styles.MainBox}>
@@ -40,7 +44,7 @@ const Howitswork = () => {
             </>
           ) : (
             <>
-              <Grid sx={styles.Heading}>
+              {/* <Grid sx={styles.Heading}>
                 <Typography fontWeight={700} fontSize={{ xs: "40px", sm: "40px", md: "54px", lg: "54px" }}>
                   How it works
                 </Typography>
@@ -151,6 +155,97 @@ const Howitswork = () => {
                     </Grid>
                   )}
                 </Scrollspy>
+              </Box> */}
+              <Box sx={styles.homesec5}>
+                <Box style={{ position: "relative" }}>
+                  <Grid sx={styles.Heading}>
+                    <Typography fontWeight={700} fontSize={{ xs: "40px", sm: "40px", md: "54px", lg: "54px" }}>
+                      How it works
+                    </Typography>
+                  </Grid>
+                  <Box className="hs5-ib-slider-box">
+                    <Scrollspy
+                      items={["section-1", "section-2", "section-3", "section-4"]}
+                      className="hs5-ib-slider-box-left"
+                      currentClassName="is-current"
+                    >
+                      <Grid>
+                        <Box>
+                          <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
+                            <Typography sx={styles.number}>1</Typography>
+                            <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                              Top Aussie brands sync their store to the Pedlar platform{" "}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={firstStep} alt="Picture of the author" />
+                        </Box>
+                      </Grid>
+                      <Grid>
+                        <Box>
+                          <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
+                            <Typography sx={styles.number}>2</Typography>
+                            <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                              Creators select products from brands they love
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={secondStep} alt="step 2" />
+                        </Box>
+                      </Grid>
+                      <Grid>
+                        <Box>
+                          <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
+                            <Typography sx={styles.number}>3</Typography>
+                            <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                              Creators personalise their store to match their style
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={thirdStep} alt="Picture of the author" />
+                        </Box>
+                      </Grid>
+                      <Grid>
+                        <Box>
+                          <Box display={"flex"} alignItems={"flex-start"}>
+                            <Typography sx={styles.number}>4</Typography>
+                            <Typography fontSize={{ sm: "30px", md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                              Creators share their store with their followers and make sales
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={fourthStep} alt="Picture of the author" />
+                        </Box>
+                      </Grid>
+                    </Scrollspy>
+                    <div className="hs5-ib-slider-box-right">
+                      <Box id="section-1">
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={firstStep} alt="step1" />
+                        </Box>
+                      </Box>
+                      <Box id="section-2">
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={secondStep} alt="step2" />
+                        </Box>
+                      </Box>
+                      <Box id="section-3">
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={thirdStep} alt="step3" />
+                        </Box>
+                      </Box>
+                      <Box id="section-4">
+                        <Box className="hs5-ib-sbr-img">
+                          <Image src={fourthStep} alt="step4" />
+                        </Box>
+                      </Box>
+                    </div>
+                  </Box>
+                </Box>
               </Box>
             </>
           )}

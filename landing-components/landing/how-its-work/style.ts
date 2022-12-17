@@ -53,4 +53,24 @@ export const styles = {
   images: {
     width: "42%",
   },
+  number: {
+    color: "#fff",
+    fontSize: "22px",
+    width: "50px",
+    height: "50px",
+    border: "1px solid #fff",
+    borderRadius: "50%",
+    textAlign: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minWidth: "50px",
+  },
+  stickyText: {
+    lineHeight: "unset",
+    paddingLeft: "28px",
+  },
+  homesec5: {
+    paddingBottom: "160px",
+  },
 };

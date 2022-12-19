@@ -136,9 +136,10 @@ const Creatorpopup = () => {
                   ...styles.Button,
                   color: values ? "White !important" : "#1C1B1F",
                   // opacity: errors ? "0.4" : "0.9",
-                  background: values ? "grey" : "#1C1B1F",
+                  // background: values ? "grey" : "#1C1B1F",
                 }}
                 onClick={formsubmission}
+                className="demo"
                 disabled={
                   values?.firstName && values?.lastName && values?.email && values?.city && values?.instagramUser
                     ? false

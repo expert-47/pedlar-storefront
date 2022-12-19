@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { styles } from "./style";
 // import ArrowRIghtBlack from "../../../public/arrow-right-black.svg"
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import EastIcon from "@mui/icons-material/East";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
@@ -50,7 +51,7 @@ const EarlyAcess = () => {
               lg={2}
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
-              <ArrowForwardIcon style={{ height: "77px", width: "50px" }} />
+              <EastIcon style={{ height: "68px", width: "68px" }} />
             </Grid>
             <Grid
               container

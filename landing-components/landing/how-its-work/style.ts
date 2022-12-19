@@ -71,6 +71,9 @@ export const styles = {
     paddingLeft: "28px",
   },
   homesec5: {
-    paddingBottom: "160px",
+    paddingBottom: "162px",
+    ["@media (min-width:1400px)"]: {
+      paddingBottom: "0px",
+    },
   },
 };

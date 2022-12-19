@@ -172,7 +172,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
-                            <Typography sx={styles.number}>1</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              1
+                            </Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               Sync your Shopify store to Pedlar in two minutes
                             </Typography>
@@ -185,7 +187,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
-                            <Typography sx={styles.number}>2</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              2
+                            </Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               Creators add your products to their stores
                             </Typography>
@@ -198,7 +202,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
-                            <Typography sx={styles.number}>3</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              3
+                            </Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               When sales are made, you ship the products directly to customers
                             </Typography>
@@ -211,7 +217,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"}>
-                            <Typography sx={styles.number}>4</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              4
+                            </Typography>
                             <Typography fontSize={{ sm: "30px", md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               Only pay commision on sales made
                             </Typography>

@@ -172,7 +172,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number}>1</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              1
+                            </Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px", xl: "42px" }} sx={styles.stickyText}>
                               Top Aussie brands sync their store to the Pedlar platform{" "}
                             </Typography>
@@ -185,7 +187,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number}>2</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              2
+                            </Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px", xl: "42px" }} sx={styles.stickyText}>
                               Creators select products from brands they love
                             </Typography>
@@ -198,7 +202,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number}>3</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              3
+                            </Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px", xl: "42px" }} sx={styles.stickyText}>
                               Creators personalise their store to match their style
                             </Typography>
@@ -211,7 +217,9 @@ const Howitswork = () => {
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"}>
-                            <Typography sx={styles.number}>4</Typography>
+                            <Typography sx={styles.number} className="activeCount">
+                              4
+                            </Typography>
                             <Typography
                               fontSize={{ sm: "30px", md: "32px", lg: "38px", xl: "42px" }}
                               sx={styles.stickyText}

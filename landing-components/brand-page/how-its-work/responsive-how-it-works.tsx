@@ -17,8 +17,8 @@ const Responsivehowitworks = () => {
   return (
     <CustomContainer>
       <Box sx={styles.ResponsMainBox}>
-        <Grid container item xs={12} sm={12} style={{zIndex: "999", position: "relative"}}>
-          <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "center", sm: "left" }}>
+        <Grid container item xs={12} sm={12} style={{ zIndex: "999", position: "relative", justifyContent: "center" }}>
+          <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "center" }}>
             <Typography fontWeight={700} fontSize={{ xs: "30px", sm: "40px" }}>
               How it works
             </Typography>
@@ -79,50 +79,74 @@ const Responsivehowitworks = () => {
           </Grid>
           <Swiper modules={[Pagination]}>
             {updatedata === 1 && (
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <Grid item xs={12} sm={8} sx={styles.ResponsText} textAlign={{ xs: "center", sm: "left" }}>
+              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                   <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
                     Sync your Shopify store to Pedlar in two minutes
                   </Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image src={HomeSecImage1} alt="home-sec5-img1" style={{ borderRadius: "16px" }} />
+                  <Image
+                    src={HomeSecImage1}
+                    alt="home-sec5-img1"
+                    style={{ borderRadius: "16px" }}
+                    loading="lazy"
+                    placeholder="blur"
+                  />
                 </Grid>
               </SwiperSlide>
             )}
             {updatedata === 2 && (
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <Grid item xs={12} sm={8} sx={styles.ResponsText} textAlign={{ xs: "center", sm: "left" }}>
+              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                   <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
                     Creators add your products to their stores
                   </Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image src={HomeSecImage2} alt="home-sec5-img2" style={{ borderRadius: "16px" }} />
+                  <Image
+                    src={HomeSecImage2}
+                    alt="home-sec5-img2"
+                    style={{ borderRadius: "16px" }}
+                    loading="lazy"
+                    placeholder="blur"
+                  />
                 </Grid>
               </SwiperSlide>
             )}
             {updatedata === 3 && (
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <Grid item xs={12} sm={8} sx={styles.ResponsText} textAlign={{ xs: "center", sm: "left" }}>
+              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                   <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
                     When sales are made, you ship the products directly to customers
                   </Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image src={HomeSecImage3} alt="home-sec5-img3" style={{ borderRadius: "16px" }} />
+                  <Image
+                    src={HomeSecImage3}
+                    alt="home-sec5-img3"
+                    style={{ borderRadius: "16px" }}
+                    loading="lazy"
+                    placeholder="blur"
+                  />
                 </Grid>
               </SwiperSlide>
             )}
             {updatedata === 4 && (
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                <Grid item xs={12} sm={8} sx={styles.ResponsText} textAlign={{ xs: "center", sm: "left" }}>
+              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                   <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
                     Only pay commision on sales made
                   </Typography>
                 </Grid>
                 <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image src={HomeSecImage4} alt="home-sec5-img4" style={{ borderRadius: "16px" }} />
+                  <Image
+                    src={HomeSecImage4}
+                    alt="home-sec5-img4"
+                    style={{ borderRadius: "16px" }}
+                    loading="lazy"
+                    placeholder="blur"
+                  />
                 </Grid>
               </SwiperSlide>
             )}

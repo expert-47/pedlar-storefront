@@ -178,6 +178,9 @@
   .hs5-ib-slider-box {
     padding: 60px 164px 68px 60px;
   }
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
+    width: 50% !important;
+  }
 }
 @media (min-width: 1400px) {
   .hs5-ib-slider-box {
@@ -226,7 +229,7 @@
 @media (min-width: 1600px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left {
     height: 80vh;
-    top: 150px;
+    top: 116px;
   }
 }
 .hs5-ib-slider-box .hs5-ib-slider-box-left .circle-count {
@@ -267,7 +270,7 @@
 }
 @media (min-width: 1600px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left div.MuiBox-root {
-    margin-top: 32px !important;
+    margin-top: 68px !important;
   }
 }
 @media (min-width: 1600px) {

@@ -220,7 +220,7 @@
 @media (min-width: 1400px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left {
     height: 75vh;
-    top: 150px;
+    top: 130px;
   }
 }
 @media (min-width: 1600px) {
@@ -267,7 +267,7 @@
 }
 @media (min-width: 1600px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left div.MuiBox-root {
-    margin-top: 80px !important;
+    margin-top: 32px !important;
   }
 }
 @media (min-width: 1600px) {

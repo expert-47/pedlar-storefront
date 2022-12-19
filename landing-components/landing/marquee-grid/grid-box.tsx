@@ -63,6 +63,7 @@ const Gridbox = () => {
             lg={12}
             xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
+            style={{ display: "flex", alignItems: "flex-start" }}
           >
             <Grid item xs={12} sm={8} md={6} lg={5}>
               <Image src={firstGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />

@@ -19,10 +19,11 @@ SwiperCore.use([Virtual, Navigation, Pagination]);
 const Picturecarousel = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const islarge = useMediaQuery("(min-width:1400px)");
   return (
     <Box style={{ paddingTop: "100px" }}>
       <Swiper
-        slidesPerView={isMatch ? 1 : 3.5}
+        slidesPerView={isMatch ? 1 : islarge ? 5.5 : 3.5}
         centeredSlides={false}
         spaceBetween={30}
         autoplay={{

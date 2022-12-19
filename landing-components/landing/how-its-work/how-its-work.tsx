@@ -173,74 +173,77 @@ const Howitswork = () => {
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
                             <Typography sx={styles.number}>1</Typography>
-                            <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                            <Typography fontSize={{ md: "32px", lg: "38px", xl: "42px" }} sx={styles.stickyText}>
                               Top Aussie brands sync their store to the Pedlar platform{" "}
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={firstStep} alt="Picture of the author" />
+                          <Image src={firstStep} alt="Picture of the author" loading="lazy" placeholder="blur" />
                         </Box>
                       </Grid>
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
                             <Typography sx={styles.number}>2</Typography>
-                            <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                            <Typography fontSize={{ md: "32px", lg: "38px", xl: "42px" }} sx={styles.stickyText}>
                               Creators select products from brands they love
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={secondStep} alt="step 2" />
+                          <Image src={secondStep} alt="step 2" loading="lazy" placeholder="blur" />
                         </Box>
                       </Grid>
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
                             <Typography sx={styles.number}>3</Typography>
-                            <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                            <Typography fontSize={{ md: "32px", lg: "38px", xl: "42px" }} sx={styles.stickyText}>
                               Creators personalise their store to match their style
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={thirdStep} alt="Picture of the author" />
+                          <Image src={thirdStep} alt="Picture of the author" loading="lazy" placeholder="blur" />
                         </Box>
                       </Grid>
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"}>
                             <Typography sx={styles.number}>4</Typography>
-                            <Typography fontSize={{ sm: "30px", md: "32px", lg: "38px" }} sx={styles.stickyText}>
+                            <Typography
+                              fontSize={{ sm: "30px", md: "32px", lg: "38px", xl: "42px" }}
+                              sx={styles.stickyText}
+                            >
                               Creators share their store with their followers and make sales
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={fourthStep} alt="Picture of the author" />
+                          <Image src={fourthStep} alt="Picture of the author" loading="lazy" placeholder="blur" />
                         </Box>
                       </Grid>
                     </Scrollspy>
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={firstStep} alt="step1" />
+                          <Image src={firstStep} alt="step1" loading="lazy" placeholder="blur" />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={secondStep} alt="step2" />
+                          <Image src={secondStep} alt="step2" loading="lazy" placeholder="blur" />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={thirdStep} alt="step3" />
+                          <Image src={thirdStep} alt="step3" loading="lazy" placeholder="blur" />
                         </Box>
                       </Box>
                       <Box id="section-4">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={fourthStep} alt="step4" />
+                          <Image src={fourthStep} alt="step4" loading="lazy" placeholder="blur" />
                         </Box>
                       </Box>
                     </div>

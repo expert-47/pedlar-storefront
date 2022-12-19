@@ -171,7 +171,7 @@ const Howitswork = () => {
                     >
                       <Grid>
                         <Box>
-                          <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
+                          <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
                             <Typography sx={styles.number}>1</Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               Top Aussie brands sync their store to the Pedlar platform{" "}
@@ -184,7 +184,7 @@ const Howitswork = () => {
                       </Grid>
                       <Grid>
                         <Box>
-                          <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
+                          <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
                             <Typography sx={styles.number}>2</Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               Creators select products from brands they love
@@ -197,7 +197,7 @@ const Howitswork = () => {
                       </Grid>
                       <Grid>
                         <Box>
-                          <Box display={"flex"} alignItems={"flex-start"} mb={"40px"}>
+                          <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
                             <Typography sx={styles.number}>3</Typography>
                             <Typography fontSize={{ md: "32px", lg: "38px" }} sx={styles.stickyText}>
                               Creators personalise their store to match their style

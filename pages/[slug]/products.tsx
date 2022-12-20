@@ -121,7 +121,7 @@ const Products = ({newAdditionData  , collectionId}:any) => {
                     publishedAt
                 }
                 pageInfo {
-                    hasNextPage
+                    hasNextPage 
                     hasPreviousPage
                     startCursor
                     endCursor
@@ -271,10 +271,21 @@ export default Products;
 
 export async function getServerSideProps(context:any) {
 
+//  console.log("context..............///................." , context.query["slug"]  );
+
  
+// console.log("context..............///................." , context.resolvedUrl  );
 
   
-  const {slug} = context.query;
+  // const slug = context.query["slug"];
+
+  const { slug } = context.query;
+
+  
+  
+  console.log("prod..." , slug);
+
+  // console.log("`slug`..............///................." , slug);
 
   
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);

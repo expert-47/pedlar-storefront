@@ -49,9 +49,11 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
 
         <Link 
         href={{pathname:"/products" , 
-        query : slug
+        query : {slug:slug.slug}
       }}
-      // as={`/products/${slug}`}
+      
+      
+      as={`/${slug.slug}/products`}
         >
           <Grid
             container
@@ -65,9 +67,10 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
               cursor: "pointer",
               alignItems: "center",
             }}
+            
           >
             <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
-            <ArrowForwardIcon sx={styles.arrowIcon} />
+            <ArrowForwardIcon  sx={styles.arrowIcon} />
           </Grid>
         </Link>
       </Grid>

@@ -35,6 +35,7 @@ const Gallery = ({  position , newAdditionData,  columnSpacing = 10 }: Props) =>
                     : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
                 }
                 image={item?.featuredImage?.transformedSrc}
+                smallImage={true}
               />
             </Grid>
           ))}

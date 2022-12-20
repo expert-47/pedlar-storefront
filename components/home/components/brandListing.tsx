@@ -15,6 +15,8 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
   const { leftHeading, rightHeading } = props;
   const router = useRouter();
   const slug=router?.query;
+  
+  
 
   return (
     <CustomGrid
@@ -49,6 +51,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         href={{pathname:"/products" , 
         query : slug
       }}
+      // as={`/products/${slug}`}
         >
           <Grid
             container

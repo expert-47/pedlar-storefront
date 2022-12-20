@@ -270,6 +270,9 @@ export default Products;
 
 
 export async function getServerSideProps(context:any) {
+
+ 
+
   
   const {slug} = context.query;
 
@@ -288,7 +291,7 @@ const getUserDetailByFetchAPICall = async () => {
   const requestBody = {
     query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-          products(first: 2, reverse: true ) {
+          products(first: 5, reverse: true ) {
               nodes {
                   id
                   title
@@ -311,7 +314,7 @@ const getUserDetailByFetchAPICall = async () => {
             src
             width
             originalSrc
-            transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 400)
+            transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 500)
           }
                   createdAt
                   publishedAt

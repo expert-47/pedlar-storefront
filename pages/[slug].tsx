@@ -30,6 +30,8 @@ export default function index({ HeaderData , newAdditionData   }:any) {
 export async function getServerSideProps(context:any) {
   
   const { slug } = context.query;
+ 
+  
 
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
   

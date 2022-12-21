@@ -2,6 +2,9 @@
   padding: 0;
   margin: 0;
 }
+html {
+  scroll-behavior: smooth;
+}
 .Typewriter {
   padding: 1px;
   color: #1c1b1f;
@@ -361,19 +364,25 @@
   }
 }
 
-.maindemorow {
-  display: flex;
-}
-.demo2col {
-  width: 30%;
-}
 section {
-  height: 100vh;
+  padding-bottom: 100px;
 }
-.faq-current {
-  background-color: red;
-}
-.demo2col ul {
+.faq-sticky {
   position: sticky;
-  top: 117px;
+  top: 119px;
+}
+.faq-current .faqHide {
+  display: block;
+  position: absolute;
+  right: 110px;
+  margin-top: -20px;
+}
+@media screen and (max-width: 860px) {
+  .faq-current .faqHide {
+    right: 81px;
+  }
+}
+
+.faqHide {
+  display: none;
 }

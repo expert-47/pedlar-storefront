@@ -4,9 +4,11 @@ import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import Link from "@mui/material/Link";
 // import { Link as ScrollLink } from "react-scroll";
-// import EastIcon from "@mui/icons-material/East";
+import EastIcon from "@mui/icons-material/East";
 import Scrollspy from "react-scrollspy";
+
 const Faq = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -27,22 +29,49 @@ const Faq = () => {
         </Grid>
         <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.GridStyles} style={{ position: "relative" }}>
           <Grid item xs={12} sm={4} md={4} lg={4} sx={styles.tabList}>
-            <div className="demo2col ">
-              <Scrollspy items={["section-1", "section-2", "section-3"]} currentClassName="faq-current">
-                <li>
-                  <a href="#section-1">section 1</a>
-                </li>
-                <li>
-                  <a href="#section-2">section 2</a>
-                </li>
-                <li>
-                  <a href="#section-3">section 3</a>
-                </li>
+            <div className="faq-sticky">
+              <Scrollspy
+                items={["creator", "brand", "shopper", "general"]}
+                currentClassName="faq-current"
+                offset={-250}
+              >
+                <Box style={{ paddingBottom: "26px" }}>
+                  <Link href="#creator" sx={styles.faqLink}>
+                    Creator
+                  </Link>
+                  <Box className="faqHide">
+                    <EastIcon />
+                  </Box>
+                </Box>
+                <Box style={{ paddingBottom: "26px" }}>
+                  <Link href="#brand" sx={styles.faqLink}>
+                    Brand
+                  </Link>
+                  <Box className="faqHide">
+                    <EastIcon />
+                  </Box>
+                </Box>
+                <Box style={{ paddingBottom: "26px" }}>
+                  <Link href="#shopper" sx={styles.faqLink}>
+                    Shopper
+                  </Link>
+                  <Box className="faqHide">
+                    <EastIcon />
+                  </Box>
+                </Box>
+                <Box style={{ paddingBottom: "26px" }}>
+                  <Link href="#general" sx={styles.faqLink}>
+                    General
+                  </Link>
+                  <Box className="faqHide">
+                    <EastIcon />
+                  </Box>
+                </Box>
               </Scrollspy>
             </div>
           </Grid>
           <Grid item xs={12} sm={8} md={8} lg={8}>
-            <Box sx={styles.headingbox} id="section-1">
+            <Box sx={styles.scrollSection} id="creator">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Creator
               </Typography>
@@ -130,7 +159,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.headingbox} id="section-2">
+            <Box sx={styles.scrollSection} id="brand">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Brands
               </Typography>
@@ -227,7 +256,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.headingbox} id="section-3">
+            <Box sx={styles.scrollSection} id="shopper">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Shopper
               </Typography>
@@ -320,7 +349,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.headingbox} id="section-4">
+            <Box sx={styles.scrollSection} id="general">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 General
               </Typography>

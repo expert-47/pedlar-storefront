@@ -157,15 +157,19 @@
     right: 32px;
   }
 }
-
-.active .arrow {
-  background-color: red;
-}
 .demo {
   display: none;
 }
 .active .demo {
   display: block;
+  position: absolute;
+  right: 104px;
+  padding: 3px 0 0;
+}
+@media screen and (max-width: 900px) {
+  .active .demo {
+    right: 31px;
+  }
 }
 .hs5-ib-slider-box {
   display: flex;
@@ -176,13 +180,6 @@
 }
 .scrollFaq {
   display: flex;
-  justify-content: center;
-}
-@media (max-width: 600px) {
-  .scrollFaq {
-    display: flex;
-    justify-content: flex-start;
-  }
 }
 @media (min-width: 1600px) {
   .hs5-ib-slider-box {

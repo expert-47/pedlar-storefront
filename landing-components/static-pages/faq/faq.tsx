@@ -5,12 +5,13 @@ import { styles } from "./style";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Link as ScrollLink } from "react-scroll";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import EastIcon from "@mui/icons-material/East";
 const Faq = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
+
   return (
     <CustomContainer>
       <Box sx={styles.MainBox}>
@@ -24,9 +25,17 @@ const Faq = () => {
           </Typography>
         </Grid>
         <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.GridStyles} style={{ position: "relative" }}>
-          <Grid item xs={12} sm={4} md={4} lg={4}>
+          <Grid item xs={12} sm={4} md={4} lg={4} sx={styles.tabList}>
             <Box style={{ position: "sticky", top: "100px" }}>
-              <ScrollLink to="Creator" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
+              <ScrollLink
+                to="Creator"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="scrollFaq"
+              >
                 <Typography
                   className="text"
                   sx={styles.faqText}
@@ -37,10 +46,18 @@ const Faq = () => {
                   Creator
                 </Typography>
                 <Box className="demo">
-                  <ArrowRightAltIcon />
+                  <EastIcon />
                 </Box>
               </ScrollLink>
-              <ScrollLink to="Brands" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
+              <ScrollLink
+                to="Brands"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="scrollFaq"
+              >
                 <Typography
                   className="text"
                   sx={styles.faqText}
@@ -51,10 +68,18 @@ const Faq = () => {
                   Brand
                 </Typography>
                 <Box className="demo">
-                  <ArrowRightAltIcon />
+                  <EastIcon />
                 </Box>
               </ScrollLink>
-              <ScrollLink to="Shopper" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
+              <ScrollLink
+                to="Shopper"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="scrollFaq"
+              >
                 <Typography
                   className="text"
                   sx={styles.faqText}
@@ -65,10 +90,18 @@ const Faq = () => {
                   Shopper
                 </Typography>
                 <Box className="demo">
-                  <ArrowRightAltIcon />
+                  <EastIcon />
                 </Box>
               </ScrollLink>
-              <ScrollLink to="General" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
+              <ScrollLink
+                to="General"
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                offset={-100}
+                duration={500}
+                className="scrollFaq"
+              >
                 <Typography
                   className="text"
                   sx={styles.faqText}
@@ -79,7 +112,7 @@ const Faq = () => {
                   General
                 </Typography>
                 <Box className="demo">
-                  <ArrowRightAltIcon />
+                  <EastIcon />
                 </Box>
               </ScrollLink>
             </Box>

@@ -360,3 +360,20 @@
     width: 64%;
   }
 }
+
+.maindemorow {
+  display: flex;
+}
+.demo2col {
+  width: 30%;
+}
+section {
+  height: 100vh;
+}
+.faq-current {
+  background-color: red;
+}
+.demo2col ul {
+  position: sticky;
+  top: 117px;
+}

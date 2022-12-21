@@ -43,4 +43,15 @@ export const styles = {
     margin: "0 0 0 auto",
     maxWidth: "261px !important",
   },
+  faqLink: {
+    fontSize: "22px",
+    fontWeight: "600",
+    textDecoration: "none",
+    color: "#1C1B1F",
+    fontFamily: "Inter",
+    position: "relative",
+  },
+  scrollSection: {
+    paddingBottom: "70px",
+  },
 };

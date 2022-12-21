@@ -39,4 +39,8 @@ export const styles = {
     padding: "10px",
     zIndex: "5",
   },
+  tabList: {
+    margin: "0 0 0 auto",
+    maxWidth: "261px !important",
+  },
 };

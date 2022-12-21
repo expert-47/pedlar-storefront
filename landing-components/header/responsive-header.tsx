@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Typography, useTheme } from "@mui/material";
+import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Typography, useScrollTrigger, useTheme } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -29,6 +29,10 @@ const ResponsiveHeader = () => {
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 15,
+  });
 
   const openStorePage = () => {
     router.push("/");
@@ -54,7 +58,14 @@ const ResponsiveHeader = () => {
     backgroundColor: "#f9f6f2",
   };
   return (
-    <AppBar elevation={0} sx={styles.Respheader}>
+    <AppBar
+      elevation={0}
+      sx={{
+        ...styles.Respheader,
+        backgroundColor: trigger ? "#f9f6f2" : "transparent",
+        transition: trigger ? "0.2s" : "0.4s",
+      }}
+    >
       <Grid
         container
         item

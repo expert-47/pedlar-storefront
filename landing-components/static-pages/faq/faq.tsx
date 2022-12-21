@@ -4,13 +4,15 @@ import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Link as ScrollLink } from "react-scroll";
-import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+// import { Link as ScrollLink } from "react-scroll";
+// import EastIcon from "@mui/icons-material/East";
+import Scrollspy from "react-scrollspy";
 const Faq = () => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
+
   return (
     <CustomContainer>
       <Box sx={styles.MainBox}>
@@ -24,68 +26,23 @@ const Faq = () => {
           </Typography>
         </Grid>
         <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.GridStyles} style={{ position: "relative" }}>
-          <Grid item xs={12} sm={4} md={4} lg={4}>
-            <Box style={{ position: "sticky", top: "100px" }}>
-              <ScrollLink to="Creator" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
-                <Typography
-                  className="text"
-                  sx={styles.faqText}
-                  fontWeight={"600"}
-                  fontSize={"22px"}
-                  style={{ cursor: "pointer" }}
-                >
-                  Creator
-                </Typography>
-                <Box className="demo">
-                  <ArrowRightAltIcon />
-                </Box>
-              </ScrollLink>
-              <ScrollLink to="Brands" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
-                <Typography
-                  className="text"
-                  sx={styles.faqText}
-                  fontWeight={"600"}
-                  fontSize={"22px"}
-                  style={{ cursor: "pointer" }}
-                >
-                  Brand
-                </Typography>
-                <Box className="demo">
-                  <ArrowRightAltIcon />
-                </Box>
-              </ScrollLink>
-              <ScrollLink to="Shopper" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
-                <Typography
-                  className="text"
-                  sx={styles.faqText}
-                  fontWeight={"600"}
-                  fontSize={"22px"}
-                  style={{ cursor: "pointer" }}
-                >
-                  Shopper
-                </Typography>
-                <Box className="demo">
-                  <ArrowRightAltIcon />
-                </Box>
-              </ScrollLink>
-              <ScrollLink to="General" spy={true} smooth={true} offset={-100} duration={500} className="scrollFaq">
-                <Typography
-                  className="text"
-                  sx={styles.faqText}
-                  fontWeight={"600"}
-                  fontSize={"22px"}
-                  style={{ cursor: "pointer" }}
-                >
-                  General
-                </Typography>
-                <Box className="demo">
-                  <ArrowRightAltIcon />
-                </Box>
-              </ScrollLink>
-            </Box>
+          <Grid item xs={12} sm={4} md={4} lg={4} sx={styles.tabList}>
+            <div className="demo2col ">
+              <Scrollspy items={["section-1", "section-2", "section-3"]} currentClassName="faq-current">
+                <li>
+                  <a href="#section-1">section 1</a>
+                </li>
+                <li>
+                  <a href="#section-2">section 2</a>
+                </li>
+                <li>
+                  <a href="#section-3">section 3</a>
+                </li>
+              </Scrollspy>
+            </div>
           </Grid>
           <Grid item xs={12} sm={8} md={8} lg={8}>
-            <Box sx={styles.headingbox} id="Creator">
+            <Box sx={styles.headingbox} id="section-1">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Creator
               </Typography>
@@ -173,7 +130,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.headingbox} id="Brands">
+            <Box sx={styles.headingbox} id="section-2">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Brands
               </Typography>
@@ -270,7 +227,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.headingbox} id="Shopper">
+            <Box sx={styles.headingbox} id="section-3">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Shopper
               </Typography>
@@ -363,7 +320,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.headingbox} id="General">
+            <Box sx={styles.headingbox} id="section-4">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 General
               </Typography>

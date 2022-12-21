@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
-import { addvalidation } from "../../add-validation/addvalidation";
+import { brandvalidation } from "../../add-validation/brand-validation";
 
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
@@ -42,7 +42,7 @@ const Businesstoday = () => {
                   companyName: "",
                   brandWebsite: "",
                 }}
-                validationSchema={addvalidation}
+                validationSchema={brandvalidation}
                 onSubmit={submitHandler}
                 dirty={true}
                 isValid={true}
@@ -171,18 +171,22 @@ const Businesstoday = () => {
                       sx={{
                         ...styles.Button,
                         color: values ? "White !important" : "#1C1B1F",
-                        // opacity: errors ? "0.4" : "0.9",
-                        background: values ? "grey" : "#1C1B1F",
+                        backgroundColor: errors ? "#1C1B1F" : "",
                       }}
+                      variant="contained"
                       onClick={formsubmission}
                       disabled={
-                        values?.firstName &&
-                        values?.lastName &&
-                        values?.email &&
-                        values?.companyName &&
-                        values?.brandWebsite
-                          ? false
-                          : true
+                        Object.keys(errors).length > 0
+                          ? true
+                          : !(
+                              values?.firstName &&
+                              values?.lastName &&
+                              values?.email &&
+                              values?.companyName &&
+                              values?.brandWebsite
+                            )
+                          ? true
+                          : false
                       }
                     >
                       <Typography textTransform={"none"} fontSize={"22px"}>

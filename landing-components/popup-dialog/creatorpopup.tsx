@@ -1,14 +1,15 @@
 import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
-import { addvalidation } from "../add-validation/addvalidation";
+import { creatorvalidation } from "../add-validation/creator-validation";
 import Image from "next/image";
 import React, { useState } from "react";
 import { styles } from "./styles";
 
 const Creatorpopup = () => {
   const [submitform, setSubmitForm] = useState(true);
-  const formsubmission = () => setSubmitForm(false);
-
+  const formsubmission = () => {
+    setSubmitForm(false);
+  };
   const submitHandler = () => {
     console.log("clicked");
   };
@@ -24,7 +25,7 @@ const Creatorpopup = () => {
             city: "",
             instagramUser: "",
           }}
-          validationSchema={addvalidation}
+          validationSchema={creatorvalidation}
           onSubmit={submitHandler}
         >
           {({ values, errors, touched, handleSubmit }) => (
@@ -135,15 +136,16 @@ const Creatorpopup = () => {
                 sx={{
                   ...styles.Button,
                   color: values ? "White !important" : "#1C1B1F",
-                  // opacity: errors ? "0.4" : "0.9",
-                  background: values ? "grey" : "#1C1B1F",
+                  backgroundColor: errors ? "#1C1B1F" : "",
                 }}
+                variant="contained"
                 onClick={formsubmission}
-                className="demo"
                 disabled={
-                  values?.firstName && values?.lastName && values?.email && values?.city && values?.instagramUser
-                    ? false
-                    : true
+                  Object.keys(errors).length > 0
+                    ? true
+                    : !(values?.firstName && values?.lastName && values?.email && values?.city && values?.instagramUser)
+                    ? true
+                    : false
                 }
               >
                 <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>

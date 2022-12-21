@@ -30,7 +30,7 @@ const Banner = () => {
   return (
     <CustomContainer>
       <Box
-      sx={styles.MainBox}
+        sx={styles.MainBox}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid
@@ -40,7 +40,7 @@ const Banner = () => {
           md={12}
           lg={12}
           style={{ position: "relative" }}
-          marginY={{ xs: theme.spacing(96), sm: theme.spacing(96), md: theme.spacing(95), lg: theme.spacing(75) }}
+          marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isSmall ? (
             <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} priority />

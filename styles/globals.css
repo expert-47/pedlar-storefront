@@ -195,7 +195,6 @@ html {
 @media (min-width: 1400px) {
   .hs5-ib-slider-box {
     padding-right: 164px;
-    padding-bottom: 107px;
   }
 }
 @media (max-width: 991px) {
@@ -300,7 +299,7 @@ html {
   top: 0%;
   height: 78vh;
   border-radius: 16px;
-  width: 35%;
+  width: 37%;
 }
 @media (min-width: 1400px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {

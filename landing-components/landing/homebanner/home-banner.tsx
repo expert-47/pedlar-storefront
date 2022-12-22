@@ -53,7 +53,7 @@ const Banner = () => {
           )}
           <Grid sx={styles.bannerText}>
             <Typography
-              fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "48px", xl: "48px" }}
+              fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "48px", xl: "48px" }}
               fontWeight={"700"}
               lineHeight={"unset"}
               color={"#1C1B1F"}
@@ -74,12 +74,12 @@ const Banner = () => {
                 fontWeight={"700"}
                 color={"#1C1B1F"}
                 lineHeight={"unset"}
-                fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "48px", xl: "48px" }}
+                fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "48px", xl: "48px" }}
               >
                 in business
               </Typography>
             </Box>
-            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "22px" }}>
+            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px" }}>
               Simplified creator commerce. Sell directly to your followers through customisable storefronts.
             </Typography>
             <Grid>

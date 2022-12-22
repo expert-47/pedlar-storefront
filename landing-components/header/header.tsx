@@ -26,7 +26,7 @@ const Header = () => {
   const Scrolltrigger = useScrollTrigger({ threshold: 22, disableHysteresis: true });
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 20,
+    threshold: 22,
   });
 
   const openStorePage = () => {

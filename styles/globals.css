@@ -18,7 +18,7 @@ html {
 }
 @media screen and (max-width: 1199px) {
   .Typewriter {
-    font-size: 40px;
+    font-size: 38px;
   }
 }
 @media screen and (max-width: 899px) {
@@ -192,6 +192,11 @@ html {
     width: 56% !important;
   }
 }
+@media (max-width: 1440px) {
+  .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
+    width: 43% !important ;
+  }
+}
 @media (min-width: 1400px) {
   .hs5-ib-slider-box {
     padding-right: 164px;
@@ -264,7 +269,7 @@ html {
 }
 @media (max-width: 1440px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left div {
-    margin-bottom: 24px;
+    margin-bottom: 40px;
   }
 }
 @media (max-width: 1199px) {

@@ -9,11 +9,15 @@ export const styles = {
     margin: " 0 auto",
     width: "50%",
     paddingRight: "10px",
+    ["@media (max-width:850px)"]: {
+      width: "70%",
+      bottom: "3px !important",
+    },
     ["@media (min-width:1401px)"]: {
       width: "43%",
     },
     ["@media (max-width:1145px)"]: {
-      bottom: "-39px",
+      bottom: "5px",
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",

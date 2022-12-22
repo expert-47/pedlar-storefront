@@ -65,27 +65,31 @@ const Gridbox = () => {
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
             style={{ display: "flex", alignItems: "flex-start" }}
           >
-            <Grid item xs={12} sm={8} md={6} lg={5}>
+            <Grid item xs={12} sm={8} md={6} lg={4.8}>
               <Image src={firstGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
             </Grid>
-            <Grid container item xs={12} sm={3.55} md={2.65} lg={2.2} style={{ justifyContent: "space-between" }}>
+            <Grid container item xs={12} sm={3.55} md={2.65} lg={2.1} style={{ justifyContent: "space-between" }}>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
                 <Image src={secondGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
               </Grid>
-              <Grid item xs={5.8} sm={12} md={12} lg={12}>
+              <Grid item xs={5.8} sm={12} md={12} lg={12} marginTop={{ lg: "4px", md: "0px" }}>
                 <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4.5}>
+            <Grid item xs={12} sm={12} md={12} lg={4.6} marginLeft={{ xs: "0px", lg: "16px" }}>
               <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
+                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "24px" }}>
                     More money. Less problems
                   </Typography>
-                  <Typography sx={styles.gridinnerPara} fontWeight={"600"} fontSize={{ xs: "18px", lg: "22px" }}>
+                  <Typography
+                    sx={styles.gridinnerPara}
+                    fontWeight={"600"}
+                    fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                  >
                     Track performance overtime. Create value for creator, brands and shoppers.
                   </Typography>
                 </Box>
@@ -95,10 +99,14 @@ const Gridbox = () => {
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
+                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "24px" }}>
                     Simple and free
                   </Typography>
-                  <Typography sx={styles.gridinnerPara} fontWeight={"600"} fontSize={{ xs: "18px", lg: "22px" }}>
+                  <Typography
+                    sx={styles.gridinnerPara}
+                    fontWeight={"600"}
+                    fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                  >
                     Creators and brands get set up in under two minutes. Start selling instantly!
                   </Typography>
                 </Box>
@@ -108,10 +116,14 @@ const Gridbox = () => {
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"}>
+                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "24px" }}>
                     Business as usual
                   </Typography>
-                  <Typography sx={styles.gridinnerPara} fontWeight={"600"} fontSize={{ xs: "18px", lg: "22px" }}>
+                  <Typography
+                    sx={styles.gridinnerPara}
+                    fontWeight={"600"}
+                    fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                  >
                     Creators get paid more to do what they love. Brands integrate their Shopify then set and forget.
                   </Typography>
                 </Box>
@@ -121,7 +133,7 @@ const Gridbox = () => {
                   onClick={openPopup}
                   sx={styles.creator}
                   fontFamily={"Inter"}
-                  fontSize={{ xs: "18px", lg: "22px" }}
+                  fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
                   fontWeight={"600"}
                 >
                   Creators and Brands, Get Started →

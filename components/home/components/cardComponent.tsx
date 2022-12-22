@@ -9,12 +9,12 @@ interface Props {
   price: string;
   image?: string;
   crossPrice?: string;
-  smallImage?:boolean;
+ 
   
 
 }
 
-const CardComponent = ({ name, type, price, image, crossPrice , smallImage  }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({ name, type, price, image, crossPrice   }: React.PropsWithChildren<Props>) => {
   return (
     <Link 
     href={"/product"}>
@@ -26,10 +26,10 @@ const CardComponent = ({ name, type, price, image, crossPrice , smallImage  }: R
       >
         {image && (
           <Grid item xs={12} >
-            <img src={image}    width= {smallImage ? "216px" : "522px" } height={smallImage ? "224px" :"532px"} ></img>
+            <img src={image} width="343px" height={"343px"} style={{maxWidth:"100%" , maxHeight:"100%" , objectFit:"cover"}} ></img>
           </Grid>
         )}
-        <Grid>
+        <Grid xs={12}>
           <Typography
             style={{
               textTransform: "uppercase",

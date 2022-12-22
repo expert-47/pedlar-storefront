@@ -20,11 +20,19 @@ export const styles = {
     marginBottom: "24px",
   },
   Button: {
-    backgroundColor: "black",
+    backgroundColor: "#1C1B1F",
     borderRadius: "666px",
     padding: "10px 16px",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
+  },
+  BoxSelector: {
+    display: "flex",
+    backgroundColor: "transparent",
+    borderRadius: "10px",
+    border: "1px solid rgba(28, 27, 31, 0.64)",
+    marginBottom: "24px",
+    padding: "6px 5px",
   },
 };

@@ -4,13 +4,12 @@ import React, { useState } from "react";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
-import { addvalidation } from "../../add-validation/addvalidation";
+import { creatorvalidation } from "../../add-validation/creator-validation";
 
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
   const formsubmission = () => setSubmitForm(false);
   const submitHandler = () => {
-    // console.log("errors.firstName");
   };
   return (
     <CustomContainer>
@@ -60,7 +59,7 @@ const Storefree = () => {
                   city: "",
                   instagramUser: "",
                 }}
-                validationSchema={addvalidation}
+                validationSchema={creatorvalidation}
                 onSubmit={submitHandler}
               >
                 {({ values, errors, touched, handleChange, handleSubmit }) => (
@@ -195,14 +194,22 @@ const Storefree = () => {
                       sx={{
                         ...styles.Button,
                         color: values ? "White !important" : "#1C1B1F",
-                        // opacity: errors ? "0.4" : "",
-                        backgroundColor: values ? "grey" : "#1C1B1F",
+                        backgroundColor: errors ? "#1C1B1F" : "",
                       }}
+                      variant="contained"
                       onClick={formsubmission}
                       disabled={
-                        values?.firstName && values?.lastName && values?.email && values?.city && values?.instagramUser
-                          ? false
-                          : true
+                        Object.keys(errors).length > 0
+                          ? true
+                          : !(
+                              values?.firstName &&
+                              values?.lastName &&
+                              values?.email &&
+                              values?.city &&
+                              values?.instagramUser
+                            )
+                          ? true
+                          : false
                       }
                     >
                       <Typography textTransform={"none"} fontSize={"22px"}>

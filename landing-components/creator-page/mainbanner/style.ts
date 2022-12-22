@@ -4,16 +4,16 @@ export const styles = {
     display: "flex",
     alignItems: "center",
     ["@media (min-width:1400px)"]: {
-      paddingTop: "192px",
+      paddingTop: "185px",
     },
     ["@media (max-width:1250px)"]: {
-      paddingTop: "112px",
+      paddingTop: "100px",
     },
     ["@media (max-width:1160px)"]: {
       alignItems: "flex-start",
     },
     ["@media (max-width:800px)"]: {
-      paddingTop: "109px",
+      paddingTop: "100px",
     },
   },
   GridBox: {

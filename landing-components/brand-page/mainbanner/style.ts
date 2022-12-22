@@ -1,9 +1,9 @@
 export const styles = {
   MainBox: {
-    paddingTop: "102px",
+    paddingTop: "100px",
     display: "flex",
     ["@media (max-width:1199px)"]: {
-      paddingTop: "110px",
+      paddingTop: "100px",
     },
   },
   GridBox: {
@@ -13,10 +13,18 @@ export const styles = {
     backgroundColor: "white",
     position: "absolute",
     right: "0",
-    ["@media (min-width:1441px)"]: {
-      maxWidth: "740px",
+
+    ["@media (min-width:1400px)"]: {
+      maxWidth: "700px",
     },
     ["@media (max-width:994px)"]: {
+      position: "unset",
+      marginLeft: "auto",
+      marginTop: "-150px",
+      zIndex: "999",
+      maxWidth: "700px",
+    },
+    ["@media (max-width:1200px)"]: {
       position: "unset",
       marginLeft: "auto",
       marginTop: "-150px",

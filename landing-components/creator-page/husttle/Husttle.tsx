@@ -27,6 +27,7 @@ const Husttle = () => {
           <Typography
             textTransform={"none"}
             fontSize={{ xs: "48px", md: "54px" }}
+            textAlign={{ md: "center" }}
             sx={styles.heading}
             paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(50), lg: theme.spacing(60) }}
           >

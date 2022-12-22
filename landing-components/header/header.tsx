@@ -23,7 +23,11 @@ const Header = () => {
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
-  const Scrolltrigger = useScrollTrigger({ threshold: 10, disableHysteresis: true });
+  const Scrolltrigger = useScrollTrigger({ threshold: 22, disableHysteresis: true });
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 20,
+  });
 
   const openStorePage = () => {
     router.push("/");
@@ -35,7 +39,14 @@ const Header = () => {
     router.push("/for-brands");
   };
   return (
-    <AppBar elevation={0} sx={styles.header}>
+    <AppBar
+      elevation={0}
+      sx={{
+        ...styles.header,
+        backgroundColor: trigger ? "#f9f6f2" : "transparent",
+        // transition: trigger ? "0.2s" : "0.4s",
+      }}
+    >
       <CustomContainer>
         <Grid
           container
@@ -65,7 +76,7 @@ const Header = () => {
                     priority
                   />
                 ) : (
-                  <Box style={{ cursor: "pointer", marginTop: "65px", width: "85%" }}>
+                  <Box style={{ cursor: "pointer", marginTop: "70px", width: "85%" }}>
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}

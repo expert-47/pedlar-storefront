@@ -1,16 +1,16 @@
 import React from "react";
-import { Grid, GridProps } from "@mui/material";
+import { Grid } from "@mui/material";
 import CardComponent from "./cardComponent";
 import { CustomGrid } from "components/layout";
 
 interface Props {
   
-  data: any[];
+  // data: any[];
   columnSpacing?: number;
   newAdditionData?:any[];
-  position:boolean;
+  // position:boolean;
 }
-const Gallery = ({  position , newAdditionData,  columnSpacing = 10 }: Props) => {
+const Gallery = ({   newAdditionData,  columnSpacing = 10 }: Props) => {
 
   
   return (
@@ -21,12 +21,15 @@ const Gallery = ({  position , newAdditionData,  columnSpacing = 10 }: Props) =>
         alignItems: "center",
       }}
     >
-      <Grid container sm={12} columnSpacing={10} direction={position === true ? "row-reverse" : "row"}  >
-        <Grid container item xs={12} sm={12} md={6} lg={6} columnSpacing={columnSpacing || 10} rowSpacing={10}>
-          {newAdditionData?.slice(1, 5).map((item, index) => (
-            <Grid item xs={6} lg={6}>
+      
+
+        <Grid container item xs={12} sm={12} md={12} lg={12} columnSpacing={columnSpacing || 10} rowSpacing={10}>
+          {newAdditionData?.map((item, index) => (
+            <Grid item xs={5.9} sm={5.9} md={3.8} lg={3.8} xl={3.8}
+            key={item?.collectionId }
+            >
+             
               <CardComponent
-                key={index}
                 name={item?.title}
                 type={item?.productType}
                 price={
@@ -35,12 +38,12 @@ const Gallery = ({  position , newAdditionData,  columnSpacing = 10 }: Props) =>
                     : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
                 }
                 image={item?.featuredImage?.transformedSrc}
-                smallImage={true}
+               
               />
             </Grid>
           ))}
         </Grid>
-        <Grid container item xs={12} sm={12} md={6} lg={6}>
+        {/* <Grid container item xs={12} sm={12} md={6} lg={6}>
           <CardComponent
             name={newAdditionData?.[0].title}
             type={newAdditionData?.[0].productType}
@@ -51,8 +54,8 @@ const Gallery = ({  position , newAdditionData,  columnSpacing = 10 }: Props) =>
                 : newAdditionData?.[0].priceRange?.maxVariantPrice?.amount
             }
           />
-        </Grid>
-      </Grid>
+        </Grid> */}
+      {/* </Grid> */}
     </CustomGrid>
   );
 };

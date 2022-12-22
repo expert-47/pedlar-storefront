@@ -91,7 +91,7 @@ const Products = ({newAdditionData  , collectionId}:any) => {
     const requestBody = {
       query: `query GetCollection($collectionId: ID!) {
         collection(id: $collectionId) {
-          products(first: 2, reverse: true ,after: "${endCursorValue}")
+          products(first: 3, reverse: true ,after: "${endCursorValue}")
             {
                 nodes {
                     id
@@ -115,7 +115,7 @@ const Products = ({newAdditionData  , collectionId}:any) => {
               src
               width
               originalSrc
-              transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 400)
+              transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
             }
                     createdAt
                     publishedAt
@@ -204,26 +204,26 @@ const Products = ({newAdditionData  , collectionId}:any) => {
         }}
       >
         <ProductHeader />
-        {
-  productsDataArray?.map ((item , index)=>
+        {/* {
+  productsDataArray?.map ((item , index)=> */}
  
     <Gallery
-    girdProps={{
-      flexDirection: {
-        // lg: "row-reverse",
-        // md: "row-reverse",
-        // sm: "column-reverse",
-        // xs: "column-reverse",
-      },
-    }}
+    // girdProps={{
+    //   flexDirection: {
+    //     lg: "row-reverse",
+    //     md: "row-reverse",
+    //     sm: "column-reverse",
+    //     xs: "column-reverse",
+    //   },
+    // }}
     data={gallery1}
-    newAdditionData={item}
-    position = {index === 0 ? true : index % 2 === 0 ? true : false }
-    key={index}
+    newAdditionData={productsData}
+    // position = {index === 0 ? true : index % 2 === 0 ? true : false }
+    // key={index}
   />
 
-  )
-}
+{/* //   )
+// } */}
       
       </Box>
       <Grid
@@ -302,7 +302,7 @@ const getUserDetailByFetchAPICall = async () => {
   const requestBody = {
     query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-          products(first: 5, reverse: true ) {
+          products(first: 3, reverse: true ) {
               nodes {
                   id
                   title
@@ -325,7 +325,7 @@ const getUserDetailByFetchAPICall = async () => {
             src
             width
             originalSrc
-            transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 500)
+            transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
           }
                   createdAt
                   publishedAt

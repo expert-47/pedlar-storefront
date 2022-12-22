@@ -76,7 +76,7 @@ const Header = () => {
                     priority
                   />
                 ) : (
-                  <Box style={{ cursor: "pointer", marginTop: "90px", width: "85%" }}>
+                  <Box style={{ cursor: "pointer", marginTop: "70px", width: "85%" }}>
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}

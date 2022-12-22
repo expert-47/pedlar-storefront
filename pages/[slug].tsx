@@ -1,6 +1,5 @@
 import Layout from "components/layout";
 import { Home } from "components/home";
-import Get_Collection_Query from "../components/GraphQl_Quries"
 
 
 
@@ -69,7 +68,7 @@ const getUserDetailByFetchAPICall = async () => {
             src
             width
             originalSrc
-            transformedSrc(preferredContentType: WEBP, maxHeight: 500, maxWidth: 400)
+            transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
           }
                   createdAt
                   publishedAt

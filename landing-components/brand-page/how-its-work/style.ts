@@ -4,6 +4,7 @@ export const styles = {
     borderRadius: "16px",
     padding: "30px",
     position: "relative",
+    zIndex: "9",
   },
   ResponsMainBox: {
     backgroundColor: "#1c1b1f",
@@ -71,6 +72,9 @@ export const styles = {
     paddingLeft: "28px",
   },
   homesec5: {
-    paddingBottom: "160px",
+    paddingBottom: "200px",
+    ["@media (min-width:1600px)"]: {
+      paddingBottom: "81px",
+    },
   },
 };

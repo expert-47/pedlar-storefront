@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+
 import { Typography, Grid, Box } from "@mui/material";
 import Link from "next/link";
 interface Props {
@@ -26,7 +27,12 @@ const CardComponent = ({ name, type, price, image, crossPrice   }: React.PropsWi
       >
         {image && (
           <Grid item xs={12} >
-            <img src={image} width="343px" height={"343px"} style={{maxWidth:"100%" , maxHeight:"100%" , objectFit:"cover"}} ></img>
+            {/* <img src={image} width="343px" height={"343px"} style={{maxWidth:"100%" , maxHeight:"100%" , objectFit:"fill"}} ></img> */}
+
+            <Box component="img"
+            
+            src={image}  sx={{maxWidth:"100%" , maxHeight:"100%" , width:{xs:158 , sm:190 , md:344} , height:{xs:158 , sm:190 , md:344} }} ></Box>
+         
           </Grid>
         )}
         <Grid xs={12}>

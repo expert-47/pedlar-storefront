@@ -11,9 +11,14 @@ html {
   font-family: "Inter";
   font-weight: 700;
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1300px) {
   .Typewriter {
-    font-size: 48px !important;
+    font-size: 54px !important;
+  }
+}
+@media screen and (max-width: 1299px) {
+  .Typewriter {
+    font-size: 42px;
   }
 }
 @media screen and (max-width: 1199px) {
@@ -388,4 +393,7 @@ section {
 }
 .faqHide {
   display: none;
+}
+.creatorSubmit:hover {
+  box-shadow: unset !important;
 }

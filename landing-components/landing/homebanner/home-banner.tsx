@@ -18,7 +18,7 @@ import { CustomContainer } from "../../landinglayout";
 const Banner = () => {
   const isMedium = useMediaQuery("(max-width:850px)");
   const isSmall = useMediaQuery("(max-width:767px)");
-  const isdektop = useMediaQuery("(max-width:1400px)");
+  const isdektop = useMediaQuery("(max-width:1451px)");
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => setOpenDialog(false);
@@ -53,7 +53,8 @@ const Banner = () => {
           )}
           <Grid sx={styles.bannerText}>
             <Typography
-              fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "48px", xl: "48px" }}
+              sx={styles.fashionText}
+              fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "42px", xl: "54px" }}
               fontWeight={"700"}
               lineHeight={"unset"}
               color={"#1C1B1F"}
@@ -73,13 +74,14 @@ const Banner = () => {
               <Typography
                 fontWeight={"700"}
                 color={"#1C1B1F"}
+                sx={styles.fashionText}
                 lineHeight={"unset"}
-                fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "48px", xl: "48px" }}
+                fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "42px", xl: "54px" }}
               >
                 in business
               </Typography>
             </Box>
-            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px" }}>
+            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px", lg: "22px" }}>
               Simplified creator commerce. Sell directly to your followers through customisable storefronts.
             </Typography>
             <Grid>
@@ -143,7 +145,7 @@ const Banner = () => {
                       }}
                       onClick={onChangeCreator}
                     >
-                      I'm a creater
+                      I'm a creator
                     </Button>
                     <Button
                       style={{

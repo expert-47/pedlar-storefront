@@ -215,7 +215,7 @@ const Gridbox = () => {
                 }}
                 onClick={onChangeCreator}
               >
-                I'm a creater
+                I'm a creator
               </Button>
               <Button
                 style={{

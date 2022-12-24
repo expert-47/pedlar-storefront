@@ -1,4 +1,16 @@
-import { AppBar, Box, Button, Dialog, Drawer, Grid, IconButton, Slide, Typography, useScrollTrigger, useTheme } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Dialog,
+  Drawer,
+  Grid,
+  IconButton,
+  Slide,
+  Typography,
+  useScrollTrigger,
+  useTheme,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Image from "next/image";
@@ -53,7 +65,7 @@ const ResponsiveHeader = () => {
   };
 
   const paperStyle = {
-    width: {xs:"100%", sm:"50%", md: "auto"},
+    width: { xs: "100%", sm: "50%", md: "auto" },
     boxShadow: "none",
     backgroundColor: "#f9f6f2",
   };
@@ -200,7 +212,7 @@ const ResponsiveHeader = () => {
                           }}
                           onClick={onChangeCreator}
                         >
-                          I'm a creater
+                          I'm a creator
                         </Button>
                         <Button
                           style={{

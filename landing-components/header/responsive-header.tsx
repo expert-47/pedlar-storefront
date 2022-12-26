@@ -13,14 +13,14 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
 import { TransitionProps } from "@mui/material/transitions";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
-import headerlogo from "../../public/headerlogo.png";
+import Image from "next/image";
+import headerlogo from "../../public/header-logo.svg";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -108,8 +108,8 @@ const ResponsiveHeader = () => {
             }}
           >
             <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "32px" }}>
-              <img
-                src="/header-logo.svg"
+              <Image
+                src={headerlogo}
                 alt="header-logo"
                 style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer", paddingTop: "10px" }}
                 onClick={openStorePage}
@@ -181,15 +181,14 @@ const ResponsiveHeader = () => {
                         },
                       ]}
                     >
-                      <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                      <Grid
+                        container
+                        style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
+                      >
                         {userType ? (
-                          <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>
-                            Join the waitlist!
-                          </Typography>
+                          <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
                         ) : (
-                          <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>
-                            {"Let’s talk growth"}
-                          </Typography>
+                          <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
                         )}
                         <IconButton onClick={closePopup}>
                           <CloseIcon style={{ color: "black" }} />

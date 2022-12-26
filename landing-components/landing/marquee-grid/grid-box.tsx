@@ -30,7 +30,7 @@ const Gridbox = () => {
         paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{ position: "relative" }}
       >
-        <Marquee direction="right" speed={0.6} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
+        <Marquee direction="right" speed={0.9} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -142,7 +142,7 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="left" speed={40} gradient={false} style={{ overflow: "hidden" }}>
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -152,7 +152,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={0.6} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+        <Marquee direction="right" speed={0.9} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -187,11 +187,11 @@ const Gridbox = () => {
               },
             ]}
           >
-            <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
               {userType ? (
-                <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
               ) : (
-                <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+                <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
               )}
               <IconButton onClick={closePopup}>
                 <CloseIcon style={{ color: "black" }} />

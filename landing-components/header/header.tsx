@@ -9,7 +9,7 @@ import ResponsiveHeader from "./responsive-header";
 import { CustomContainer } from "../landinglayout";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
-import headerlogo from "../../public/headerlogo.png";
+import headerlogo from "../../public/header-logo.svg";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 const Header = () => {
@@ -152,11 +152,14 @@ const Header = () => {
                     },
                   ]}
                 >
-                  <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                  <Grid
+                    container
+                    style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
+                  >
                     {userType ? (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                      <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
                     ) : (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+                      <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
                     )}
                     <IconButton onClick={closePopup}>
                       <CloseIcon style={{ color: "black" }} />

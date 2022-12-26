@@ -7,7 +7,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
 import Image from "next/image";
 import mobileBanner from "../../../public/mobBanner.png";
-import desktopBanner from "../../../public/DesktopBanner.png";
+import desktopBanner from "../../../public/desktopBanner.png";
 import largeBanner from "../../../public/largeBanner.png";
 import tabBanner from "../../../public/TabletBanner.png";
 import { styles } from "./style";
@@ -117,11 +117,14 @@ const Banner = () => {
                     },
                   ]}
                 >
-                  <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                  <Grid
+                    container
+                    style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
+                  >
                     {userType ? (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                      <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
                     ) : (
-                      <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+                      <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
                     )}
                     <IconButton onClick={closePopup}>
                       <CloseIcon style={{ color: "black" }} />

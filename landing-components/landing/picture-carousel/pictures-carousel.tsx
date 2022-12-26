@@ -32,7 +32,7 @@ const Picturecarousel = () => {
         }}
         loop={true}
         modules={[Autoplay, Pagination, Navigation]}
-        style={{ backgroundColor: "transparent" }}
+        style={{ backgroundColor: "transparent", paddingBottom: "15px" }}
       >
         <SwiperSlide>
           <Box sx={styles.cardBox}>

@@ -18,7 +18,7 @@ const Banner = () => {
         sm={12}
         md={12}
         lg={12}
-        gap={50}
+        gap={10}
         sx={styles.MainBox}
         style={{ position: "relative" }}
         justifyContent={{ sm: "left" }}

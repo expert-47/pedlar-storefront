@@ -1,8 +1,6 @@
 import { Box, Button, Dialog, Grid, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./style";
-// import ArrowRIghtBlack from "../../../public/arrow-right-black.svg"
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import EastIcon from "@mui/icons-material/East";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,7 +8,6 @@ import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
-// import Image from "next/image";
 
 const EarlyAcess = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -101,13 +98,14 @@ const EarlyAcess = () => {
                       },
                     ]}
                   >
-                    <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+                    <Grid
+                      container
+                      style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
+                    >
                       {userType ? (
-                        <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                        <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
                       ) : (
-                        <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>
-                          {"Let’s talk growth"}
-                        </Typography>
+                        <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
                       )}
                       <IconButton onClick={closePopup}>
                         <CloseIcon style={{ color: "black" }} />

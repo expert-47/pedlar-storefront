@@ -77,7 +77,7 @@ html {
   transform-origin: 100% 75%;
   top: unset;
   right: 42px;
-  width: 703px !important;
+  width: 695px !important;
   z-index: 0;
   bottom: 55px;
 }
@@ -89,10 +89,25 @@ html {
   transform-origin: 0 0;
   left: 0px;
   bottom: 10px;
-  width: 703px !important;
+  width: 695px !important;
   z-index: 0;
 }
-
+@media screen and (min-width: 1600px) {
+  .marq-left {
+    bottom: 31px;
+  }
+  .marq-right {
+    bottom: 64px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .marq-left {
+    width: 727px !important;
+  }
+  .marq-right {
+    width: 727px !important;
+  }
+}
 @media screen and (max-width: 1210px) {
   .marq-left {
     /* bottom: -370px;
@@ -396,4 +411,8 @@ section {
 }
 .creatorSubmit:hover {
   box-shadow: unset !important;
+}
+.css-1nzzf8a-MuiFormHelperText-root.Mui-error {
+  position: absolute;
+  bottom: -18px;
 }

@@ -45,7 +45,7 @@ const getUserDetailByFetchAPICall = async () => {
   const requestBody = {
     query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-          products(first: 10, reverse: true) {
+          products(first: 6, reverse: true) {
               nodes {
                   id
                   title

@@ -255,7 +255,7 @@ export async function getServerSideProps(context: any) {
     const requestBody = {
       query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-          products(first: 3, reverse: true ) {
+          products(first: 18, reverse: true ) {
               nodes {
                   id
                   title

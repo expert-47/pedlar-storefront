@@ -25,7 +25,10 @@ export const styles = {
     zIndex: " 99",
     ["@media (min-width:1400px)"]: {
       maxWidth: "606px",
-      margin: "0 51px 0 auto",
+      margin: "0 3px 0 auto",
+    },
+    ["@media (min-width:1441px)"]: {
+      maxWidth: "671px",
     },
     ["@media (max-width:1250px)"]: {
       maxWidth: "455px",
@@ -75,6 +78,9 @@ export const styles = {
     ["@media (min-width:1440px)"]: {
       width: "700px",
       left: "-45px",
+    },
+    ["@media (min-width:1600px)"]: {
+      left: "0px",
     },
   },
 };

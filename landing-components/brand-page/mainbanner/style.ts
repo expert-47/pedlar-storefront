@@ -13,9 +13,11 @@ export const styles = {
     backgroundColor: "white",
     position: "absolute",
     right: "0",
-
     ["@media (min-width:1440px)"]: {
       maxWidth: "597px",
+    },
+    ["@media (min-width:1441px)"]: {
+      maxWidth: "700px",
     },
     ["@media (max-width:994px)"]: {
       position: "unset",

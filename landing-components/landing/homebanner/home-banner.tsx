@@ -20,13 +20,33 @@ const Banner = () => {
   const isSmall = useMediaQuery("(max-width:767px)");
   const isdektop = useMediaQuery("(max-width:1451px)");
   const [openDialog, setOpenDialog] = useState(false);
-  const openPopup = () => setOpenDialog(true);
-  const closePopup = () => setOpenDialog(false);
-  const handleClose = () => setOpenDialog(false);
+  const closePopup = () => {
+    setSuccessModalShow(true);
+    setOpenDialog(false);
+  };
+  const handleClose = () => {
+    setSuccessModalShow(true);
+    setOpenDialog(false);
+  };
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
+  const openPopup = (value: string) => {
+    if (value === "creator") {
+      setUserType(true);
+    }
+    if (value === "brand") {
+      setUserType(false);
+    }
+    setOpenDialog(true);
+  };
   const theme = useTheme();
+
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+  const isSecondModalActive = (value: boolean) => {
+    setSuccessModalShow(value);
+  };
+
   return (
     <CustomContainer>
       <Box
@@ -85,10 +105,10 @@ const Banner = () => {
               Simplified creator commerce. Sell directly to your followers through customisable storefronts.
             </Typography>
             <Grid>
-              <Button sx={styles.creator} onClick={openPopup}>
+              <Button sx={styles.creator} onClick={() => openPopup("creator")}>
                 I’m a creator
               </Button>
-              <Button sx={styles.brands} onClick={openPopup}>
+              <Button sx={styles.brands} onClick={() => openPopup("brand")}>
                 I’m a brand
               </Button>
               <Dialog
@@ -122,61 +142,73 @@ const Banner = () => {
                     style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
                   >
                     {userType ? (
-                      <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
+                      <Typography style={{ fontSize: "36px" }}>
+                        {sucessModalshow ? "Join the waitlist!" : null}
+                      </Typography>
                     ) : (
-                      <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
+                      <Typography style={{ fontSize: "36px" }}>
+                        {sucessModalshow ? "Let’s talk growth" : null}
+                      </Typography>
                     )}
                     <IconButton onClick={closePopup}>
                       <CloseIcon style={{ color: "black" }} />
                     </IconButton>
                   </Grid>
-                  <Box sx={styles.BoxSelector}>
-                    <Button
-                      style={{
-                        textTransform: "none",
-                        color: "#49454F",
-                        fontSize: "16px",
-                        borderRadius: "5px",
-                        padding: "2px 7px",
-                      }}
-                      sx={{
-                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                        fontWeight: userType == true ? "700" : "400",
-                        "&:hover": {
+                  {sucessModalshow ? (
+                    <Box sx={styles.BoxSelector}>
+                      <Button
+                        style={{
+                          textTransform: "none",
+                          color: "#49454F",
+                          fontSize: "16px",
+                          borderRadius: "5px",
+                          padding: "2px 7px",
+                        }}
+                        sx={{
                           backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                        },
-                      }}
-                      onClick={onChangeCreator}
-                    >
-                      I'm a creator
-                    </Button>
-                    <Button
-                      style={{
-                        textTransform: "none",
-                        color: "#49454F",
-                        fontSize: "16px",
-                        borderRadius: "5px",
-                        padding: "2px 7px",
-                      }}
-                      sx={{
-                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                        fontWeight: userType == false ? "700" : "400",
-
-                        "&:hover": {
+                          fontWeight: userType == true ? "700" : "400",
+                          "&:hover": {
+                            backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                          },
+                        }}
+                        onClick={onChangeCreator}
+                      >
+                        I'm a creator
+                      </Button>
+                      <Button
+                        style={{
+                          textTransform: "none",
+                          color: "#49454F",
+                          fontSize: "16px",
+                          borderRadius: "5px",
+                          padding: "2px 7px",
+                        }}
+                        sx={{
                           backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                        },
-                      }}
-                      onClick={onChangeBrand}
-                    >
-                      I'm a brand
-                    </Button>
-                  </Box>
-                  {userType ? <Creatorpopup /> : <Brandspopup />}
-                  <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
-                    {
-                      "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                    }
-                  </Typography>
+                          fontWeight: userType == false ? "700" : "400",
+
+                          "&:hover": {
+                            backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                          },
+                        }}
+                        onClick={onChangeBrand}
+                      >
+                        I'm a brand
+                      </Button>
+                    </Box>
+                  ) : null}
+                  {userType ? (
+                    <Creatorpopup isSecondModalActive={isSecondModalActive} />
+                  ) : (
+                    <Brandspopup isSecondModalActive={isSecondModalActive} />
+                  )}
+                  {sucessModalshow ? (
+                    <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                      {
+                        "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+                      }
+                    </Typography>
+                  ) : null}
                 </Grid>
               </Dialog>
             </Grid>

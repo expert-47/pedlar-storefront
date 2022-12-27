@@ -214,7 +214,7 @@ html {
 }
 @media (max-width: 1440px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
-    width: 43% !important ;
+    width: 39% !important ;
   }
 }
 @media (min-width: 1400px) {
@@ -415,4 +415,11 @@ section {
 .css-1nzzf8a-MuiFormHelperText-root.Mui-error {
   position: absolute;
   bottom: -18px;
+}
+
+@media screen and (max-width: 1440px) {
+  .mainChild {
+    margin: 0 auto;
+    max-width: 1350px;
+  }
 }

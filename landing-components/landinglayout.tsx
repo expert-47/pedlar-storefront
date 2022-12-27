@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ContainerProps } from "@mui/material";
+import { Container, ContainerProps, Box } from "@mui/material";
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import { NextSeo, NextSeoProps } from "next-seo";
@@ -26,7 +26,7 @@ export function CustomContainer(props: ContainerProps) {
 
   return (
     <Container maxWidth={"xl"} disableGutters {...props}>
-      {children}
+      <Box className="mainChild">{children}</Box>
     </Container>
   );
 }

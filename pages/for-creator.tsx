@@ -7,7 +7,7 @@ import Faq from "../landing-components/creator-page/faq/Faq";
 import Storefree from "../landing-components/creator-page/storefree/Storefree";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import bluemeshbrand from "../public/blue-mesh-brand.png";
+import bluemeshbrand from "../public/blueMesh-brand.png";
 import bluemeshbrands from "../public/blue-meshh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
 import Howitswork from "../landing-components/creator-page/how-its-work/how-its-work";

@@ -70,7 +70,7 @@ export const styles = {
     lineHeight: "unset",
     paddingLeft: "28px",
     margin: "0 auto 0 0",
-    maxWidth: "585px",
+    maxWidth: "549px",
   },
   homesec5: {
     paddingBottom: "250px",

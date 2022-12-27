@@ -14,8 +14,8 @@ export const styles = {
     position: "absolute",
     right: "0",
 
-    ["@media (min-width:1400px)"]: {
-      maxWidth: "700px",
+    ["@media (min-width:1440px)"]: {
+      maxWidth: "597px",
     },
     ["@media (max-width:994px)"]: {
       position: "unset",

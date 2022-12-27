@@ -5,10 +5,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { styles } from "./styles";
 
-const Creatorpopup = () => {
+const Creatorpopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
   const formsubmission = () => {
     setSubmitForm(false);
+    props?.isSecondModalActive(false);
   };
   const submitHandler = () => {
     console.log("clicked");

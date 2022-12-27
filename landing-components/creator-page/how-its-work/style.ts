@@ -70,6 +70,8 @@ export const styles = {
   stickyText: {
     lineHeight: "unset",
     paddingLeft: "28px",
+    margin: "0 auto 0 0",
+    maxWidth: "511px",
   },
   homesec5: {
     paddingBottom: "250px",

@@ -4,9 +4,12 @@ import { brandvalidation } from "../add-validation/brand-validation";
 import React, { useState } from "react";
 import { styles } from "./styles";
 
-const Brandspopup = () => {
+const Brandspopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
-  const formsubmission = () => setSubmitForm(false);
+  const formsubmission = () => {
+    setSubmitForm(false);
+    props?.isSecondModalActive(false);
+  };
 
   const submitHandler = () => {
     console.log("clicked");

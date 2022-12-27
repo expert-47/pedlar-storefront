@@ -72,8 +72,9 @@ export const styles = {
     ["@media (max-width:1160px)"]: {
       width: "95%",
     },
-    ["@media (min-width:1400px)"]: {
+    ["@media (min-width:1440px)"]: {
       width: "700px",
+      left: "-45px",
     },
   },
 };

@@ -7,11 +7,11 @@ const config: DefaultSeoProps = {
     url: "https://pedlar.store/",
     siteName: "pedlar",
   },
-  titleTemplate: "pedlar",
-  defaultTitle: "pedlar",
+  titleTemplate: "Pedlar",
+  defaultTitle: "Pedlar",
   additionalLinkTags: [
     {
-      rel: "icon",
+      rel: "favicon",
       href: "/pedlarIcon.png",
     },
     {

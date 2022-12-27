@@ -69,9 +69,11 @@ export const styles = {
   stickyText: {
     lineHeight: "unset",
     paddingLeft: "28px",
+    margin: "0 auto 0 0",
+    maxWidth: "585px",
   },
   homesec5: {
-    paddingBottom: "238px",
+    paddingBottom: "250px",
     ["@media (min-width:1400px)"]: {
       paddingBottom: "0px",
     },

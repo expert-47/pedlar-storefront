@@ -97,11 +97,11 @@ const Company = () => {
                 },
               ]}
             >
-              <Grid container style={{ alignItems: "center", justifyContent: "space-between" }}>
+              <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
                 {userType ? (
-                  <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>Join the waitlist!</Typography>
+                  <Typography style={{ fontSize: "36px" }}>Join the waitlist!</Typography>
                 ) : (
-                  <Typography style={{ fontSize: "36px", paddingBottom: "15px" }}>{"Let’s talk growth"}</Typography>
+                  <Typography style={{ fontSize: "36px" }}>{"Let’s talk growth"}</Typography>
                 )}
                 <IconButton onClick={closePopup}>
                   <CloseIcon style={{ color: "black" }} />
@@ -125,7 +125,7 @@ const Company = () => {
                   }}
                   onClick={onChangeCreator}
                 >
-                  I'm a creater
+                  I'm a creator
                 </Button>
                 <Button
                   style={{

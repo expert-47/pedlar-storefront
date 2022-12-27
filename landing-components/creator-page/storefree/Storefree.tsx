@@ -9,8 +9,7 @@ import { creatorvalidation } from "../../add-validation/creator-validation";
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
   const formsubmission = () => setSubmitForm(false);
-  const submitHandler = () => {
-  };
+  const submitHandler = () => {};
   return (
     <CustomContainer>
       <Box
@@ -79,7 +78,7 @@ const Storefree = () => {
                         alignItems: "center",
                       }}
                     >
-                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5} style={{ position: "relative" }}>
                         <Field
                           as={TextField}
                           type="text"
@@ -96,7 +95,7 @@ const Storefree = () => {
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5} style={{ position: "relative" }}>
                         <Field
                           as={TextField}
                           type="text"
@@ -113,7 +112,7 @@ const Storefree = () => {
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5} style={{ position: "relative" }}>
                         <Field
                           as={TextField}
                           type="email"
@@ -130,7 +129,7 @@ const Storefree = () => {
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5} style={{ position: "relative" }}>
                         <Field
                           as={TextField}
                           type="text"
@@ -147,7 +146,7 @@ const Storefree = () => {
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5} style={{ position: "relative" }}>
                         <Field
                           as={TextField}
                           type="text"
@@ -171,7 +170,7 @@ const Storefree = () => {
                           }}
                         />
                       </Grid>
-                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5}>
+                      <Grid item xs={12} sm={5.5} md={5.5} lg={4.5} style={{ position: "relative" }}>
                         <TextField
                           label="Tiktok Username"
                           placeholder="Enter Here"
@@ -195,7 +194,9 @@ const Storefree = () => {
                         ...styles.Button,
                         color: values ? "White !important" : "#1C1B1F",
                         backgroundColor: errors ? "#1C1B1F" : "",
+                        boxShadow: errors ? "unset" : "",
                       }}
+                      className="creatorSubmit"
                       variant="contained"
                       onClick={formsubmission}
                       disabled={

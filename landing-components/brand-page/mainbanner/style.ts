@@ -40,6 +40,12 @@ export const styles = {
     color: "#1c1b1f",
     fontWeight: "bold",
     fontFamily: "Inter",
+    margin: "0 auto 0 0",
+    maxWidth: "526px",
+    ["@media (max-width:600px)"]: {
+      maxWidth: "272px !important",
+      margin: "0 auto 0 0",
+    },
   },
   title: {
     color: "#1c1b1f",

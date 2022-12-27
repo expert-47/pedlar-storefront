@@ -116,7 +116,9 @@ const Brandspopup = () => {
                   ...styles.Button,
                   color: values ? "White !important" : "#1C1B1F",
                   backgroundColor: errors ? "#1C1B1F" : "",
+                  boxShadow: errors ? "unset" : "",
                 }}
+                className="creatorSubmit"
                 variant="contained"
                 onClick={formsubmission}
                 disabled={

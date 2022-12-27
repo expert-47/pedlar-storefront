@@ -2,19 +2,21 @@ export const styles = {
   MainBox: {
     paddingTop: "25px",
   },
+  fashionText: {
+    ["@media (min-width:1300px)"]: {
+      fontSize: "54px",
+    },
+  },
   bannerText: {
     position: "absolute",
     right: "0px",
     bottom: "36px",
     margin: " 0 auto",
-    width: "50%",
-    paddingRight: "10px",
+    width: "51%",
+    paddingRight: "2px",
     ["@media (max-width:850px)"]: {
       width: "70%",
       bottom: "3px !important",
-    },
-    ["@media (min-width:1401px)"]: {
-      width: "43%",
     },
     ["@media (max-width:1145px)"]: {
       bottom: "5px",
@@ -31,9 +33,10 @@ export const styles = {
       width: "100%",
       paddingTop: "20px",
     },
-    ["@media (min-width:1440px)"]: {
+    ["@media (min-width:1452px)"]: {
       right: "6px",
       width: "44%",
+      bottom: "31px",
     },
   },
   FirstPara: {
@@ -54,9 +57,10 @@ export const styles = {
     fontWeight: "600",
     padding: "15px 0",
     textTransform: " initial",
-    marginRight: "28px",
+    marginRight: "20px",
     zIndex: "4",
     position: "relative",
+    height: "70px",
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
@@ -79,6 +83,7 @@ export const styles = {
     padding: "15px 0",
     zIndex: "5",
     position: "relative",
+    height: "70px",
     textTransform: " initial",
     ["@media (max-width:600px)"]: {
       width: "100%",

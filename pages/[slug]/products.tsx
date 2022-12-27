@@ -7,7 +7,7 @@ import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
 import Gallery from "components/home/components/Gallery";
 
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const gallery1 = [
   {
@@ -48,45 +48,31 @@ const gallery1 = [
   },
 ];
 
+const Products = ({ newAdditionData, collectionId }: any) => {
+  const [productsData, setProductsData] = useState([{}]);
+  const [endCursorValue, setEndCursorValue] = useState("");
+  const [hasNextPage, setHasNextPage] = useState(true);
 
-const Products = ({newAdditionData  , collectionId}:any) => {
+  useEffect(() => {
+    setProductsData(newAdditionData?.nodes);
+    setEndCursorValue(newAdditionData?.pageInfo?.endCursor);
+  }, []);
 
-  const [productsData , setProductsData] = useState([{}]);
-  const [endCursorValue , setEndCursorValue] = useState("");
-  const [hasNextPage , setHasNextPage] = useState(true);
-
-
-  useEffect(() => { 
-     setProductsData(newAdditionData?.nodes) ;
-     setEndCursorValue(newAdditionData?.pageInfo?.endCursor)
-     ;}, []);
-
-
-
-  
-  
   const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
 
-
-// making the chunks of 5 products 
+  // making the chunks of 5 products
 
   const productsDataArray = [];
 
-  for(let i = 0 ; i<productsData.length  ; i=i+5 ){
-    productsDataArray.push(productsData.slice(i,i+5));
+  for (let i = 0; i < productsData.length; i = i + 5) {
+    productsDataArray.push(productsData.slice(i, i + 5));
   }
 
-
-
-
- 
-
-
-  const getPaginationData =async()=>{
-    if(endCursorValue.includes("=")){
-      setEndCursorValue(endCursorValue.slice(0,-2));
+  const getPaginationData = async () => {
+    if (endCursorValue.includes("=")) {
+      setEndCursorValue(endCursorValue.slice(0, -2));
     }
     const requestBody = {
       query: `query GetCollection($collectionId: ID!) {
@@ -129,59 +115,42 @@ const Products = ({newAdditionData  , collectionId}:any) => {
             }
         }
     }`,
-    variables: { collectionId : `gid://shopify/Collection/${collectionId}` }
-  
-  
+      variables: { collectionId: `gid://shopify/Collection/${collectionId}` },
+    };
+    const headers: any = {
+      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+      "Content-Type": "application/json",
+      Connection: "keep-alive",
+      "Accept-Encoding": "gzip, deflate, br",
+      Accept: "*/*",
+    };
+    const options = {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(requestBody),
+    };
+
+    async function getResponse() {
+      const res = await await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+
+      const collectionData = await res.json();
+
+      return collectionData?.data?.collection?.products;
+    }
+
+    try {
+      const collectionDataProducts = await getResponse();
+
+      const totalData = [...productsData, ...collectionDataProducts.nodes];
+      setProductsData(totalData);
+      setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
+      setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
+
+      return collectionDataProducts;
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const headers:any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-      "Content-Type" : "application/json",
-      "Connection":"keep-alive",
-      "Accept-Encoding":"gzip, deflate, br",
-      "Accept":"*/*"
-  
-  };
-  const options = {
-    method: "POST",
-    headers : headers,
-    body: JSON.stringify(requestBody),
-
-  };
-
-  async function getResponse (){
-  const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
-
-  const collectionData = await res.json();
-
- 
-  return  collectionData?.data?.collection?.products;
-    
-  }
-
-  try {
-    const collectionDataProducts = await getResponse();
-   
-    const totalData=[...productsData,...collectionDataProducts.nodes];
-    setProductsData(totalData);
-    setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
-    setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
-  
-    return   collectionDataProducts;
-    
-  } catch (error) {
-    
-    console.log(error);
-    
-  }
-  
- 
-
-
-  };  
-  
-
-
-
 
   return (
     <Layout>
@@ -206,25 +175,24 @@ const Products = ({newAdditionData  , collectionId}:any) => {
         <ProductHeader />
         {/* {
   productsDataArray?.map ((item , index)=> */}
- 
-    <Gallery
-    // girdProps={{
-    //   flexDirection: {
-    //     lg: "row-reverse",
-    //     md: "row-reverse",
-    //     sm: "column-reverse",
-    //     xs: "column-reverse",
-    //   },
-    // }}
-    data={gallery1}
-    newAdditionData={productsData}
-    // position = {index === 0 ? true : index % 2 === 0 ? true : false }
-    // key={index}
-  />
 
-{/* //   )
+        <Gallery
+          // girdProps={{
+          //   flexDirection: {
+          //     lg: "row-reverse",
+          //     md: "row-reverse",
+          //     sm: "column-reverse",
+          //     xs: "column-reverse",
+          //   },
+          // }}
+          data={gallery1}
+          newAdditionData={productsData}
+          // position = {index === 0 ? true : index % 2 === 0 ? true : false }
+          // key={index}
+        />
+
+        {/* //   )
 // } */}
-      
       </Box>
       <Grid
         style={{
@@ -239,26 +207,24 @@ const Products = ({newAdditionData  , collectionId}:any) => {
           {`You've viewed ${productsData.length} out of 100 products`}
         </Text>
         {hasNextPage && (
-  <Button
-  variant="outlined"
-  onClick={getPaginationData}
-  style={{
-    width: "15em",
-    border: "2px solid black",
-    borderRadius: "30px",
-    backgroundColor: "white",
-    color: "#1E1E1E",
-    fontWeight: "600",
-    fontSize: "16px",
-    textTransform: "none",
-    marginTop: "10px",
-  }}
->
-  Load more
-</Button>
-
+          <Button
+            variant="outlined"
+            onClick={getPaginationData}
+            style={{
+              width: "15em",
+              border: "2px solid black",
+              borderRadius: "30px",
+              backgroundColor: "white",
+              color: "#1E1E1E",
+              fontWeight: "600",
+              fontSize: "16px",
+              textTransform: "none",
+              marginTop: "10px",
+            }}
+          >
+            Load more
+          </Button>
         )}
-      
       </Grid>
       <Divider className={cx(classes.footerDivider)} />
       <BaseFooter />
@@ -268,39 +234,26 @@ const Products = ({newAdditionData  , collectionId}:any) => {
 
 export default Products;
 
+export async function getServerSideProps(context: any) {
+  //  console.log("context..............///................." , context.query["slug"]  );
 
-export async function getServerSideProps(context:any) {
+  // console.log("context..............///................." , context.resolvedUrl  );
 
-//  console.log("context..............///................." , context.query["slug"]  );
-
- 
-// console.log("context..............///................." , context.resolvedUrl  );
-
-  
   // const slug = context.query["slug"];
 
   const { slug } = context.query;
 
-  
-  
-  console.log("prod..." , slug);
+  console.log("prod...", slug);
 
   // console.log("`slug`..............///................." , slug);
 
-  
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
- 
+
   const HeaderData = await res.json();
 
-
-
-
-
-const getUserDetailByFetchAPICall = async () => { 
-
-
-  const requestBody = {
-    query: `query GetCollection($collectionId: ID!) {
+  const getUserDetailByFetchAPICall = async () => {
+    const requestBody = {
+      query: `query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
           products(first: 3, reverse: true ) {
               nodes {
@@ -339,37 +292,30 @@ const getUserDetailByFetchAPICall = async () => {
           }
       }
   }`,
-  variables: { collectionId : `gid://shopify/Collection/${HeaderData?.data?.collectionId}` }
+      variables: { collectionId: `gid://shopify/Collection/${HeaderData?.data?.collectionId}` },
+    };
+    const headers: any = {
+      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+      "Content-Type": "application/json",
+      Connection: "keep-alive",
+      "Accept-Encoding": "gzip, deflate, br",
+      Accept: "*/*",
+    };
+    const options = {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(requestBody),
+    };
 
+    const res = await await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-};
-const headers:any = {
-  "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type" : "application/json",
-    "Connection":"keep-alive",
-    "Accept-Encoding":"gzip, deflate, br",
-    "Accept":"*/*"
+    const collectionData = await res.json();
 
-};
-const options = {
-  method: "POST",
-  headers : headers,
-  body: JSON.stringify(requestBody),
- 
+    return collectionData;
+  };
 
+  let data = await getUserDetailByFetchAPICall();
+  data = data?.data?.collection?.products;
 
-};
-
-const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
-
-const collectionData = await res.json();
-
-return collectionData;
-
-} ;
-       
-let data=await getUserDetailByFetchAPICall();
-data = data?.data?.collection?.products;
-
-  return { props : {  newAdditionData:data , slug , collectionId:HeaderData?.data?.collectionId } };
+  return { props: { newAdditionData: data, slug, collectionId: HeaderData?.data?.collectionId } };
 }

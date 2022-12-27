@@ -9,6 +9,10 @@ export const styles = {
       borderRadius: "5px",
       fontSize: "16px",
     },
+    input: {
+      fontSize: "16px",
+      fontWeight: "400",
+    },
   },
   TextFeilds: {
     width: "100%",

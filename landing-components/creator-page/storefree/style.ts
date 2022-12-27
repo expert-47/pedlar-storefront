@@ -19,7 +19,7 @@ export const styles = {
     color: "#49454F",
     borderColor: "#49454F",
     borderRadius: "5px",
-    marginBottom: "24px",
+    marginBottom: "10px",
     ".MuiOutlinedInput-notchedOutline": {
       borderColor: "rgba(121, 116, 126, 1) !important",
       fontSize: "16px",
@@ -27,6 +27,10 @@ export const styles = {
       "&:hover": {
         borderColor: "rgba(121, 116, 126, 1) !important",
       },
+    },
+    input: {
+      fontSize: "16px",
+      fontWeight: "400",
     },
   },
   Button: {

@@ -4,9 +4,12 @@ import Text from "../../customText/index";
 import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 
 const TextBox = (props) => {
- 
+  const router = useRouter();
+  const slug=router?.query;
 
   const theme = useTheme();
   return (
@@ -53,7 +56,13 @@ const TextBox = (props) => {
 
           </Text>
         </Grid>
-        <Link href={"/products"}>
+        <Link   
+       href={{pathname:"/products" , 
+        query : {slug:slug.slug}
+      }}
+      as={`/${slug.slug}/products`}
+      
+      >
           <Grid
             style={{
               paddingTop: "20px",

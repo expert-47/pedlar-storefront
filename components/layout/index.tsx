@@ -6,14 +6,15 @@ import { NextSeo, NextSeoProps   } from "next-seo";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName : string
+  slug:string
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo } = props;
+  const { children, seo , storefrontName , slug } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        <Navbar storefrontName={props?.storefrontName} />
+        <Navbar storefrontName={storefrontName} slug={slug} />
       </header>
       <main style={{ paddingTop: "115px" }}>{children}</main>
       <footer>

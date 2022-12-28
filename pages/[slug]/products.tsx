@@ -6,49 +6,13 @@ import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import { useStyles } from "styles/home";
 import Gallery from "components/home/components/Gallery";
-
+import axios from "axios";
+import useSWR from "swr";
 import { useState, useEffect } from "react";
 
-const gallery1 = [
-  {
-    label: "Coat",
-    imgPath: "/grid-img1.png",
-    name: "Low Classic",
-    type: "Green Polyester Blazer",
-    price: "$365",
-    crossPrice: "$420",
-  },
-  {
-    label: "Veja",
-    imgPath: "/grid-img2.png",
-    name: "Veja X Marni",
-    type: "35s",
-    price: "$320",
-  },
-  {
-    label: "Mask",
-    imgPath: "/grid-img3.png",
-    name: "Sisley Paris",
-    type: "Eye Contour Mask",
-    price: "$42",
-  },
-  {
-    label: "Fleece",
-    imgPath: "/grid-img4.png",
-    name: "Nike",
-    type: "High-Waisted Fleece Open",
-    price: "$975",
-  },
-  {
-    label: "Earring",
-    imgPath: "/grid-img5.png",
-    name: "Matteau",
-    type: "Drop Earring Collection",
-    price: "$42",
-  },
-];
 
-const Products = ({ newAdditionData, collectionId }: any) => {
+
+const Products = ({ newAdditionData, collectionId , slug }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -151,9 +115,17 @@ const Products = ({ newAdditionData, collectionId }: any) => {
       console.log(error);
     }
   };
+  const address = `https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`;
+  const fetcher = async (url:any) => await axios.get(url).then((res) => res.data);
+  const { data} = useSWR(address, fetcher);
+  // console.log("data2d2d2" , data?.data?.storefrontName);
+
+  // const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
+  
+  // const HeaderData = await res.json();
 
   return (
-    <Layout>
+    <Layout storefrontName={data?.data?.storefrontName ? data?.data?.storefrontName  : ""} slug={slug}>
       <Head>
         <title>Pedlar</title>
         <meta property="og:image" content="url img" />
@@ -185,7 +157,7 @@ const Products = ({ newAdditionData, collectionId }: any) => {
           //     xs: "column-reverse",
           //   },
           // }}
-          data={gallery1}
+          // data={gallery1}
           newAdditionData={productsData}
           // position = {index === 0 ? true : index % 2 === 0 ? true : false }
           // key={index}

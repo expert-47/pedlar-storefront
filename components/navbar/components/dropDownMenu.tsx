@@ -80,7 +80,6 @@ const DropDownMenu = (props: Props) => {
                           <Grid></Grid>
                           <Grid paddingRight={60}>
                             {data
-                              .sort()
                               .slice(0, 28)
                               .map((item) => (
                                 <MenuItem>

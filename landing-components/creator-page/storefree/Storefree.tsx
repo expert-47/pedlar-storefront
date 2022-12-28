@@ -1,15 +1,30 @@
 import { Grid, Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../../add-validation/creator-validation";
+import emailjs from "@emailjs/browser";
 
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
-  const formsubmission = () => setSubmitForm(false);
+  // const formsubmission = () => setSubmitForm(false);
+  const form = useRef();
   const submitHandler = () => {};
+  const formsubmission = (e: any) => {
+    setSubmitForm(false);
+    e.preventDefault();
+
+    emailjs.sendForm("service_fdwg4bd", "template_z0yf6bf", form.current, "tGYXxDed0VbL-UjJ-").then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      },
+    );
+  };
   return (
     <CustomContainer>
       <Box
@@ -62,7 +77,7 @@ const Storefree = () => {
                 onSubmit={submitHandler}
               >
                 {({ values, errors, touched, handleChange, handleSubmit }) => (
-                  <Form onSubmit={handleSubmit}>
+                  <Form onSubmit={handleSubmit} ref={form}>
                     <Grid
                       container
                       item
@@ -174,6 +189,7 @@ const Storefree = () => {
                         <TextField
                           label="Tiktok Username"
                           placeholder="Enter Here"
+                          name="tiktokUser"
                           sx={styles.TextFeild}
                           InputProps={{
                             startAdornment: (
@@ -199,6 +215,7 @@ const Storefree = () => {
                       className="creatorSubmit"
                       variant="contained"
                       onClick={formsubmission}
+                      value="Send"
                       disabled={
                         Object.keys(errors).length > 0
                           ? true

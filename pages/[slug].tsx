@@ -3,7 +3,7 @@ import { Home } from "components/home";
 
 
 
-export default function index({ HeaderData , newAdditionData   }:any) {
+export default function index({ HeaderData , newAdditionData , slug  }:any) {
 
 
 
@@ -16,6 +16,7 @@ export default function index({ HeaderData , newAdditionData   }:any) {
         description: "Hi honeys! I've worked closely with some of my favorite brands to curate my own store!",
       }}
       storefrontName ={HeaderData?.data?.storefrontName}  
+      slug={slug}
     >
       <Home HeaderData={HeaderData?.data} newAdditionData={newAdditionData} /> 
      
@@ -116,5 +117,5 @@ return collectionData;
 let data=await getUserDetailByFetchAPICall();
 data = data?.data?.collection?.products?.nodes;
 
-  return { props : { HeaderData , newAdditionData:data  } };
+  return { props : { HeaderData , newAdditionData:data , slug:slug  } };
 }

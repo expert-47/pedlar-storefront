@@ -414,7 +414,9 @@ section {
   position: absolute;
   bottom: -18px;
 }
-
+.css-o4b71y-MuiAccordionSummary-content {
+  margin: 0 0 !important;
+}
 @media screen and (max-width: 1440px) {
   .mainChild {
     margin: 0 auto;

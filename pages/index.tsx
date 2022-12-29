@@ -12,6 +12,7 @@ import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.png";
 import orangepinkmesh from "../public/mesh-pink-orange.png";
+import orangeMesh from "../public/meshHome-gradient.png";
 
 // const styless = {
 //   paperContainer: {
@@ -56,9 +57,9 @@ const index = () => {
         </Box>
         <Box
           style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
-          top={{ xs: "933px", md: "627px", lg: "1445px" }}
+          top={{ xs: "2118px", sm: "422px", md: "422px", lg: "1655px" }}
         >
-          <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
+          <Image src={orangeMesh} alt="Oranges pink meshes" priority />
         </Box>
       </Box>
       <Banner />
@@ -68,6 +69,9 @@ const index = () => {
       <Howitswork />
       <EarlyAcess />
       <Faq />
+      <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0", bottom: "44px" }}>
+        <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
+      </Box>
     </Layout>
   );
 };

@@ -34,7 +34,7 @@ const brands = () => {
       <Faq />
       <Businesstoday />
       <Box
-        style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
+        style={{ position: "absolute", right: "0", width: "1783px", zIndex: "0" }}
         bottom={{ xs: "619px", sm: "0px", lg: "343px" }}
       >
         <Image src={orangebottom} alt="orange brand meshes" />

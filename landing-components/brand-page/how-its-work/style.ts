@@ -12,7 +12,7 @@ export const styles = {
     padding: "10px",
   },
   Heading: {
-    padding: "50px 0 0 60px",
+    padding: "50px 0 0 21px",
     color: "rgb(249, 246, 242)",
   },
   ResponsHeading: {

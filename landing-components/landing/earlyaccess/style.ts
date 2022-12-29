@@ -5,6 +5,7 @@ export const styles = {
     backgroundColor: "white",
     borderRadius: "15px",
     position: "relative",
+    zIndex: "9",
   },
   CreatorButton: {
     padding: "20px 16px",

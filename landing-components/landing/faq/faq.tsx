@@ -20,7 +20,7 @@ const Faq = () => {
   return (
     <CustomContainer>
       <Box
-        style={{ margin: isMatch ? "34px 0px" : "80px 0px" }}
+        style={{ margin: isMatch ? "34px 0px" : "80px 0px", zIndex: "9", position: "relative" }}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid

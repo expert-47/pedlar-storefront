@@ -4,6 +4,7 @@ export const styles = {
     borderRadius: "16px",
     padding: "30px",
     position: "relative",
+    zIndex: "9",
   },
   ResponsMainBox: {
     backgroundColor: "#1c1b1f",
@@ -11,7 +12,7 @@ export const styles = {
     padding: "10px",
   },
   Heading: {
-    padding: "50px 0 0 60px",
+    padding: "50px 0 0 21px",
     color: "rgb(249, 246, 242)",
   },
   ResponsHeading: {

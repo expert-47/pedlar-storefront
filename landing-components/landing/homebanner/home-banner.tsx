@@ -113,7 +113,11 @@ const Banner = () => {
               </Button>
               <Dialog
                 open={openDialog}
-                onClose={handleClose}
+                onClose={(handleClose, reason) => {
+                  if (reason !== "backdropClick") {
+                    onClose(handleClose, reason);
+                  }
+                }}
                 sx={{
                   ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
                     borderRadius: "16px",

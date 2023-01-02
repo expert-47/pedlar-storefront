@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "styles/home";
-// import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Typography, Button, Grid } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
@@ -8,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const Bar = () => {
   const theme = useTheme();
-  // const trigger = useScrollTrigger({ threshold: 710, disableHysteresis: true });
   const [stickybar, setStickyBar] = useState(true);
   const closePopup = () => setStickyBar(false);
 

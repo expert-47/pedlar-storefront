@@ -1,16 +1,31 @@
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { brandvalidation } from "../add-validation/brand-validation";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { styles } from "./styles";
+import emailjs from "@emailjs/browser";
 
 const Brandspopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
-  const formsubmission = () => {
+  // const formsubmission = () => {
+  //   setSubmitForm(false);
+  //   props?.isSecondModalActive(false);
+  // };
+  const form = useRef();
+  const formsubmission = (e: any) => {
     setSubmitForm(false);
     props?.isSecondModalActive(false);
-  };
+    e.preventDefault();
 
+    emailjs.sendForm("service_2y5c7s5", "template_bjrpdiw", form.current, "eE9W4Thiy_5GA_B4N").then(
+      (result) => {
+        console.log("success", result.text);
+      },
+      (error) => {
+        console.log("Faild...", error.text);
+      },
+    );
+  };
   const submitHandler = () => {
     console.log("clicked");
   };
@@ -30,7 +45,7 @@ const Brandspopup = (props: any) => {
           onSubmit={submitHandler}
         >
           {({ values, errors, touched, handleSubmit }) => (
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} ref={form}>
               <Field
                 as={TextField}
                 type="text"
@@ -124,6 +139,7 @@ const Brandspopup = (props: any) => {
                 className="creatorSubmit"
                 variant="contained"
                 onClick={formsubmission}
+                value="Send"
                 disabled={
                   Object.keys(errors).length > 0
                     ? true

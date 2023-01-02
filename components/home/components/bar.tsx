@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styles from "styles/home";
-// import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Typography, Button, Grid } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
@@ -8,7 +7,6 @@ import CloseIcon from "@mui/icons-material/Close";
 
 const Bar = () => {
   const theme = useTheme();
-  // const trigger = useScrollTrigger({ threshold: 710, disableHysteresis: true });
   const [stickybar, setStickyBar] = useState(true);
   const closePopup = () => setStickyBar(false);
 
@@ -21,7 +19,7 @@ const Bar = () => {
             alignItems: "center",
             justifyContent: "center",
             position: "sticky",
-            top: "100px",
+            top: "110px",
           }}
         >
           <Grid
@@ -43,7 +41,8 @@ const Bar = () => {
               md={10}
               lg={11}
               alignItems={"center"}
-              style={{ height: "104px", width: "1340px" }}
+              style={{ width: "1340px" }}
+              height={{ xs: "unset", lg: "104px" }}
               paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(25) }}
               paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
             >

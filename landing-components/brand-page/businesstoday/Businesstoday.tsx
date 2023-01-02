@@ -1,16 +1,29 @@
 import { Grid, Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { brandvalidation } from "../../add-validation/brand-validation";
-
+import emailjs from "@emailjs/browser";
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
-  const formsubmission = () => setSubmitForm(false);
+  const form = useRef();
   const submitHandler = () => {
     console.log("clicked");
+  };
+  const formsubmission = (e: any) => {
+    setSubmitForm(false);
+    e.preventDefault();
+
+    emailjs.sendForm("service_2y5c7s5", "template_k8u5oum", form.current, "eE9W4Thiy_5GA_B4N").then(
+      (result) => {
+        console.log("success", result.text);
+      },
+      (error) => {
+        console.log("Faild...", error.text);
+      },
+    );
   };
   return (
     <CustomContainer>
@@ -48,7 +61,7 @@ const Businesstoday = () => {
                 isValid={true}
               >
                 {({ values, errors, touched, handleChange, handleSubmit }) => (
-                  <Form onSubmit={handleSubmit}>
+                  <Form onSubmit={handleSubmit} ref={form}>
                     <Grid
                       container
                       item
@@ -136,6 +149,7 @@ const Businesstoday = () => {
                         <TextField
                           label="Phone Number (+61)"
                           placeholder="Enter Here"
+                          name="phoneNumber"
                           sx={styles.TextFeild}
                           InputLabelProps={{
                             style: { color: "#49454F", borderColor: "#49454F", fontSize: "16px", fontWeight: "400" },
@@ -177,6 +191,7 @@ const Businesstoday = () => {
                       className="creatorSubmit"
                       variant="contained"
                       onClick={formsubmission}
+                      value="Send"
                       disabled={
                         Object.keys(errors).length > 0
                           ? true

@@ -19,6 +19,9 @@ export const styles = {
     ["@media (min-width:1441px)"]: {
       maxWidth: "700px",
     },
+    ["@media (max-width:1280px)"]: {
+      maxWidth: "584px",
+    },
     ["@media (max-width:994px)"]: {
       position: "unset",
       marginLeft: "auto",

@@ -2,14 +2,30 @@ import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/m
 import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../add-validation/creator-validation";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { styles } from "./styles";
+import emailjs from "@emailjs/browser";
 
 const Creatorpopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
-  const formsubmission = () => {
+  const form = useRef();
+  // const formsubmission = () => {
+  //   setSubmitForm(false);
+  //   props?.isSecondModalActive(false);
+  // };
+  const formsubmission = (e: any) => {
     setSubmitForm(false);
     props?.isSecondModalActive(false);
+    e.preventDefault();
+
+    emailjs.sendForm("service_2y5c7s5", "template_bjrpdiw", form.current, "eE9W4Thiy_5GA_B4N").then(
+      (result) => {
+        console.log("success", result.text);
+      },
+      (error) => {
+        console.log("Faild...", error.text);
+      },
+    );
   };
   const submitHandler = () => {
     console.log("clicked");
@@ -30,7 +46,7 @@ const Creatorpopup = (props: any) => {
           onSubmit={submitHandler}
         >
           {({ values, errors, touched, handleSubmit }) => (
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} ref={form}>
               <Field
                 as={TextField}
                 type="text"
@@ -143,6 +159,7 @@ const Creatorpopup = (props: any) => {
                 className="creatorSubmit"
                 variant="contained"
                 onClick={formsubmission}
+                value="Send"
                 disabled={
                   Object.keys(errors).length > 0
                     ? true

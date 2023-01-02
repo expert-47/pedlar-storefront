@@ -6,7 +6,7 @@ import { styles } from "./style";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import MoraRuby from "../../../public/MoraRuby.png";
+import MoraRuby from "../../../public/demoo.png";
 import DebbiHeart from "../../../public/DebbiHeart.png";
 import JacobMax from "../../../public/JacobMax.png";
 import StephenDan from "../../../public/StephenDan.png";
@@ -23,7 +23,7 @@ const Picturecarousel = () => {
   return (
     <Box style={{ paddingTop: "100px" }}>
       <Swiper
-        slidesPerView={isMatch ? 1 : islarge ? 5.5 : 3.5}
+        slidesPerView={isMatch ? 1 : islarge ? 5.5 : 3.8}
         centeredSlides={false}
         spaceBetween={30}
         autoplay={{

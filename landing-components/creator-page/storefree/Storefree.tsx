@@ -9,19 +9,18 @@ import emailjs from "@emailjs/browser";
 
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
-  // const formsubmission = () => setSubmitForm(false);
   const form = useRef();
   const submitHandler = () => {};
   const formsubmission = (e: any) => {
     setSubmitForm(false);
     e.preventDefault();
 
-    emailjs.sendForm("service_fdwg4bd", "template_z0yf6bf", form.current, "tGYXxDed0VbL-UjJ-").then(
+    emailjs.sendForm("service_2y5c7s5", "template_bjrpdiw", form.current, "eE9W4Thiy_5GA_B4N").then(
       (result) => {
-        console.log(result.text);
+        console.log("success", result.text);
       },
       (error) => {
-        console.log(error.text);
+        console.log("Faild...", error.text);
       },
     );
   };

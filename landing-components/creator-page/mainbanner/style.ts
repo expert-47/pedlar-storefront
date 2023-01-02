@@ -30,8 +30,8 @@ export const styles = {
     ["@media (min-width:1441px)"]: {
       maxWidth: "671px",
     },
-    ["@media (max-width:1250px)"]: {
-      maxWidth: "455px",
+    ["@media (max-width:1300px)"]: {
+      maxWidth: "550px",
     },
     ["@media (max-width:1160px)"]: {
       margin: "300px 0 0 auto",
@@ -74,6 +74,12 @@ export const styles = {
     width: "656px",
     ["@media (max-width:1160px)"]: {
       width: "95%",
+    },
+    ["@media (max-width:1295px)"]: {
+      width: "600px",
+    },
+    ["@media (max-width:1024px)"]: {
+      width: "unset",
     },
     ["@media (min-width:1440px)"]: {
       width: "700px",

@@ -46,11 +46,15 @@ const Faq = () => {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography sx={styles.acordianText}>How do I build my store?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  How do I build my store?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  We'll send you a link once we accept your application. Select products from your favourite brands, customise your store to make it your own and share your unique URL with your followers. All done in less than two minutes!
+                  We'll send you a link once we accept your application. Select products from your favourite brands,
+                  customise your store to make it your own and share your unique URL with your followers. All done in
+                  less than two minutes!
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -60,11 +64,12 @@ const Faq = () => {
                 aria-controls="panel2bh-content"
                 id="panel2bh-header"
               >
-                <Typography sx={styles.acordianText}>Do I have to buy or manage inventory?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>Do I have to buy or manage inventory?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Nope, all inventory is held by the brands. This also means you don't have to worry about shipping and returns. 
+                  Nope, all inventory is held by the brands. This also means you don't have to worry about shipping and
+                  returns.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -74,11 +79,12 @@ const Faq = () => {
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"
               >
-                <Typography sx={styles.acordianText}>Where and how can I promote my Pedlar store?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>Where and how can I promote my Pedlar store?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  You can promote your Pedlar site wherever you want by sharing your unique URL. Popular places to start are link in bio on your social channels and LinkTree.
+                  You can promote your Pedlar site wherever you want by sharing your unique URL. Popular places to start
+                  are link in bio on your social channels and LinkTree.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -88,11 +94,13 @@ const Faq = () => {
                 aria-controls="panel4bh-content"
                 id="panel4bh-header"
               >
-                <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>Why should I set up a Pedlar store?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from brands you love. Your storefront will be a place for your community to browse and shop your style. The best part: you'll earn 20% commision on all the sales you make.
+                  Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
+                  brands you love. Your storefront will be a place for your community to browse and shop your style. The
+                  best part: you'll earn 20% commision on all the sales you make.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -107,11 +115,12 @@ const Faq = () => {
                 aria-controls="panel5bh-content"
                 id="panel5bh-header"
               >
-                <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>How can I join Pedlar?</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  Since Pedlar is an invite only platform, submit an application and our team will get back to you within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
+                  Since Pedlar is an invite only platform, submit an application and our team will get back to you
+                  within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!
                 </Typography>
               </AccordionDetails>
             </Accordion>

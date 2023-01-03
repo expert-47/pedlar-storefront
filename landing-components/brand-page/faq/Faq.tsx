@@ -46,11 +46,14 @@ const Faq = () => {
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
               >
-                <Typography sx={styles.acordianText}>How do I get my brand on Pedlar?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  How do I get my brand on Pedlar?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  It takes less than two minutes to get set up on Pedlar. We seamlessly integrate your Shopify store into our platform using a Shopify app.
+                  It takes less than two minutes to get set up on Pedlar. We seamlessly integrate your Shopify store
+                  into our platform using a Shopify app.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -60,11 +63,15 @@ const Faq = () => {
                 aria-controls="panel2bh-content"
                 id="panel2bh-header"
               >
-                <Typography sx={styles.acordianText}>Do I need to manually upload all my product images, descriptions, sizes, prices and other product information onto Pedlar?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  Do I need to manually upload all my product images, descriptions, sizes, prices and other product
+                  information onto Pedlar?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                  No. Once we have integrated your Shopify store with Pedlar, all inventory management is done automatically in real-time through APIs.
+                  No. Once we have integrated your Shopify store with Pedlar, all inventory management is done
+                  automatically in real-time through APIs.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -74,11 +81,15 @@ const Faq = () => {
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"
               >
-                <Typography sx={styles.acordianText}>What happens if there are changes to product prices, images and stock levels (e.g. product is sold out)?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  What happens if there are changes to product prices, images and stock levels (e.g. product is sold
+                  out)?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                All product information including prices, images and inventory levels are updated automatically on Pedlar. This means when changes are made on your Shopify store it is reflected on Pedlar in real time.
+                  All product information including prices, images and inventory levels are updated automatically on
+                  Pedlar. This means when changes are made on your Shopify store it is reflected on Pedlar in real time.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -88,11 +99,14 @@ const Faq = () => {
                 aria-controls="panel4bh-content"
                 id="panel4bh-header"
               >
-                <Typography sx={styles.acordianText}>How will I receive orders?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  How will I receive orders?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                You receive orders as soon as they are made and they will appear as normal on your Shopify store. All Pedlar orders are tagged from Pedlar so you'll know its an order from us.
+                  You receive orders as soon as they are made and they will appear as normal on your Shopify store. All
+                  Pedlar orders are tagged from Pedlar so you'll know its an order from us.
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -107,11 +121,15 @@ const Faq = () => {
                 aria-controls="panel5bh-content"
                 id="panel5bh-header"
               >
-                <Typography sx={styles.acordianText}>How does shipping and returns work?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  How does shipping and returns work?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
-                You (the brand) ships the order using your normal order fulfilment process. Pedlar is committed to adhering to your shipping and returns policy so it's business as usual for you. If Pedlar chooses to subsidise shipping and returns, Pedlar will absorb that cost.
+                  You (the brand) ships the order using your normal order fulfilment process. Pedlar is committed to
+                  adhering to your shipping and returns policy so it's business as usual for you. If Pedlar chooses to
+                  subsidise shipping and returns, Pedlar will absorb that cost.
                 </Typography>
               </AccordionDetails>
             </Accordion>

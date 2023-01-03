@@ -1,13 +1,14 @@
 import { Box, Button, Dialog, Grid, IconButton, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./style";
-import EastIcon from "@mui/icons-material/East";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
+import Image from "next/image";
+import rightArrow from "../../../public/right-arrow.svg";
 
 const EarlyAcess = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -33,6 +34,7 @@ const EarlyAcess = () => {
   };
   const theme = useTheme();
   const isMatch = useMediaQuery("(max-width:800px)");
+  const isTab = useMediaQuery("(max-width:767px)");
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
@@ -65,7 +67,7 @@ const EarlyAcess = () => {
               lg={2}
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
-              <EastIcon style={{ height: "68px", width: "68px" }} />
+              <Image src={rightArrow} style={{ height: "68px", width: "68px" }} />
             </Grid>
             <Grid
               container
@@ -74,24 +76,32 @@ const EarlyAcess = () => {
               sm={12}
               md={6}
               lg={5}
-              style={{ textAlign: isMatch ? "left" : "right", marginTop: isMatch ? "20px" : "0px" }}
+              style={{
+                textAlign: isMatch ? "left" : "right",
+                marginTop: isMatch ? "30px" : "0px",
+                justifyContent: isMatch ? "center" : "flex-end",
+              }}
             >
-              <Grid item xs={12} sm={4} md={6} lg={7}>
+              <Box style={{ display: isTab ? "unset" : "flex" }}>
                 <Button sx={styles.CreatorButton} onClick={() => openPopup("creator")}>
                   <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"}>
                     I’m a creator
                   </Typography>
                 </Button>
-              </Grid>
-              <Grid item xs={12} sm={4} md={6} lg={4}>
                 <Button sx={styles.BrandsButton} onClick={() => openPopup("brand")}>
                   <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"}>
                     I’m a brand
                   </Typography>
                 </Button>
+              </Box>
+              <Grid item xs={12} sm={5} md={6} lg={4}>
                 <Dialog
                   open={openDialog}
-                  onClose={handleClose}
+                  onClose={(handleClose, reason) => {
+                    if (reason !== "backdropClick") {
+                      onClose(handleClose, reason);
+                    }
+                  }}
                   sx={{
                     ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
                       borderRadius: "16px",

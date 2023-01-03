@@ -13,6 +13,8 @@ export const styles = {
     backgroundColor: "#1C1B1F",
     color: "rgb(249, 246, 242)",
     borderRadius: "666px",
+    width: "172px",
+    marginRight: "23px",
     zIndex: "4",
     "&:hover": {
       backgroundColor: "#1C1B1F",
@@ -20,6 +22,8 @@ export const styles = {
     ["@media (max-width:767px)"]: {
       marginBottom: "20px",
       width: "100%",
+      marginRight: "0px",
+      marginTop: "30px",
     },
   },
   BrandsButton: {
@@ -27,8 +31,8 @@ export const styles = {
     border: "1px solid",
     padding: "20px 16px",
     margin: "initial",
-    width: "auto",
     color: "rgb(28, 27, 31)",
+    width: "172px",
     zIndex: "4",
     borderRadius: "666px",
     ["@media (max-width:767px)"]: {

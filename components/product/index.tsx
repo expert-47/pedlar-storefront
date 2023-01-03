@@ -34,14 +34,13 @@ const properties = {
 
 const Cart = () => {
   const theme = useTheme();
-  const [expanded, setExpanded] = React.useState<string | false>('panel1');
+  const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
 
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
-      setExpanded(newExpanded ? panel : false);
-    };
-  
+  const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+
   const { classes, cx } = useStyles();
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];
   return (
@@ -104,7 +103,12 @@ const Cart = () => {
 
             <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">
               <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
-                <Grid>
+                <Grid
+                  style={{
+                    position: "sticky",
+                    top: "110px",
+                  }}
+                >
                   <Typography fontSize={"16px"} fontWeight={"600"}>
                     LOW CLASSIC
                   </Typography>
@@ -184,7 +188,9 @@ const Cart = () => {
         <Grid container spacing={4} sx={styles.bottomContainer}>
           <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
-              <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>You might like</Typography>
+              <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+                You might like
+              </Typography>
             </Grid>
             {[0, 0, 0, 0, 0].map((item, index) => {
               return (

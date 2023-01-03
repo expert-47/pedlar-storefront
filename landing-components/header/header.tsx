@@ -173,11 +173,11 @@ const Header = () => {
                     style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
                   >
                     {userType ? (
-                      <Typography style={{ fontSize: "36px" }}>
+                      <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
                         {sucessModalshow ? "Join the waitlist!" : null}
                       </Typography>
                     ) : (
-                      <Typography style={{ fontSize: "36px" }}>
+                      <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
                         {sucessModalshow ? "Let’s talk growth" : null}
                       </Typography>
                     )}
@@ -191,7 +191,6 @@ const Header = () => {
                         style={{
                           textTransform: "none",
                           color: "#49454F",
-                          fontSize: "16px",
                           borderRadius: "5px",
                           padding: "2px 7px",
                         }}
@@ -204,13 +203,13 @@ const Header = () => {
                         }}
                         onClick={onChangeCreator}
                       >
+                        <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
                         I'm a creator
                       </Button>
                       <Button
                         style={{
                           textTransform: "none",
                           color: "#49454F",
-                          fontSize: "16px",
                           borderRadius: "5px",
                           padding: "2px 7px",
                         }}

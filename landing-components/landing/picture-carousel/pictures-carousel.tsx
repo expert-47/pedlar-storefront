@@ -23,7 +23,7 @@ const Picturecarousel = () => {
   return (
     <Box style={{ paddingTop: "100px" }}>
       <Swiper
-        slidesPerView={isMatch ? 1 : islarge ? 5.5 : 3.8}
+        slidesPerView={isMatch ? 1.3 : islarge ? 5.5 : 3.8}
         centeredSlides={false}
         spaceBetween={30}
         autoplay={{
@@ -32,7 +32,7 @@ const Picturecarousel = () => {
         }}
         loop={true}
         modules={[Autoplay, Pagination, Navigation]}
-        style={{ backgroundColor: "transparent", paddingBottom: "15px" }}
+        style={{ backgroundColor: "transparent", paddingBottom: "15px", zIndex: "9", position: "relative" }}
       >
         <SwiperSlide>
           <Box sx={styles.cardBox}>

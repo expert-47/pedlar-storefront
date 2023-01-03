@@ -163,19 +163,22 @@ html {
   .marq-right {
     width: 1170px !important;
     bottom: 57px;
-    right: 32px;
+    right: 33px;
   }
 }
 
 @media screen and (max-width: 360px) {
   .marq-left {
-    bottom: 38px;
-    width: 1215px !important;
+    bottom: 11px;
+    width: 1256px !important;
   }
   .marq-right {
-    width: 1200px !important;
-    bottom: 92px;
+    width: 1255px !important;
+    bottom: 50px;
     right: 32px;
+  }
+  .marquee {
+    min-width: unset;
   }
 }
 .demo {

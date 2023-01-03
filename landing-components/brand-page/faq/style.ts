@@ -14,9 +14,9 @@ export const styles = {
     opacity: "0.64",
     color: " #1C1B1F",
     fontFamily: "Inter",
+    lineHeight: "normal",
     fontWight: "600",
     fontSize: "22px",
-    margin: "0 0",
   },
   acordianPara: {
     color: " rgb(28, 27, 31)",

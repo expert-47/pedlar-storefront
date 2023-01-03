@@ -14,24 +14,24 @@ import pinkMeshes from "../public/left-pink-meshes.png";
 import orangepinkmesh from "../public/mesh-pink-orange.png";
 import orangeMesh from "../public/meshHome-gradient.png";
 
-// const styless = {
-//   paperContainer: {
-//     backgroundImage: "url(../Grain-Texture.png) !important",
-//     backgroundPosition: "0 0",
-//     backgroundRepeat: "repeat",
-//     backgroundSize: "initial",
-//     content: `""`,
-//     height: " 100%",
-//     mixBlendMode: "overlay",
-//     opacity: ".6",
-//     position: " absolute",
-//     width: "100%",
-//     zIndex: "2",
-//     top: "0",
-//     right: "0",
-//     left: "0",
-//   },
-// };
+const styless = {
+  paperContainer: {
+    backgroundImage: "url(../Grain-Texture.png) !important",
+    backgroundPosition: "0 0",
+    backgroundRepeat: "repeat",
+    backgroundSize: "initial",
+    content: `""`,
+    height: " 100%",
+    mixBlendMode: "overlay",
+    opacity: ".6",
+    position: " absolute",
+    width: "100%",
+    zIndex: "2",
+    top: "0",
+    right: "0",
+    left: "0",
+  },
+};
 const index = () => {
   return (
     <Layout
@@ -41,7 +41,7 @@ const index = () => {
         description: process.env.NEXT_PUBLIC_LANDING_DESCRIPTION,
       }}
     >
-      {/* <Box sx={styless.paperContainer}></Box> */}
+      <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "relative" }}>
         <Box
           style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}

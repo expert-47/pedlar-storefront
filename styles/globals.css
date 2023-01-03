@@ -169,8 +169,8 @@ html {
 
 @media screen and (max-width: 360px) {
   .marq-left {
-    bottom: 38px;
-    width: 1215px !important;
+    bottom: 11px;
+    width: 1256px !important;
   }
   .marq-right {
     width: 1200px !important;

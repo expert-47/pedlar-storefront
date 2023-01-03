@@ -1,7 +1,5 @@
 export const styles = {
   MainBox: {
-    backgroundColor: "#1c1b1f",
-    borderRadius: "16px",
     padding: "30px",
     position: "relative",
     zIndex: "9",

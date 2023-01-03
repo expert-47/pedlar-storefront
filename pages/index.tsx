@@ -11,7 +11,6 @@ import Box from "@mui/material/Box";
 import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.png";
-import orangepinkmesh from "../public/mesh-pink-orange.png";
 import orangeMesh from "../public/meshHome-gradient.png";
 
 const styless = {
@@ -69,9 +68,6 @@ const index = () => {
       <Howitswork />
       <EarlyAcess />
       <Faq />
-      <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0", bottom: "44px" }}>
-        <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
-      </Box>
     </Layout>
   );
 };

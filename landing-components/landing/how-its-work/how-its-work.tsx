@@ -13,7 +13,7 @@ import firstStep from "../../../public/step1.png";
 import secondStep from "../../../public/step2.png";
 import thirdStep from "../../../public/step3.png";
 import fourthStep from "../../../public/step4.png";
-
+import orangepinkmesh from "../../../public/mesh-pink-orange.png";
 const Howitswork = () => {
   const theme = useTheme();
   const isResponsive = useMediaQuery("(max-width:1023px)");
@@ -26,6 +26,9 @@ const Howitswork = () => {
   // ];
   return (
     <CustomContainer>
+      <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0", bottom: "44px" }}>
+        <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
+      </Box>
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         marginX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}

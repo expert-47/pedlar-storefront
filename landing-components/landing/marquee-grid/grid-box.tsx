@@ -51,7 +51,7 @@ const Gridbox = () => {
         paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{ position: "relative" }}
       >
-        <Marquee direction="right" speed={0.9} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
+        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -60,7 +60,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="right" speed={45} gradient={false} style={{ overflow: "hidden" }}>
           <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
@@ -163,7 +163,7 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="left" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="left" speed={45} gradient={false} style={{ overflow: "hidden" }}>
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -173,7 +173,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={0.9} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}

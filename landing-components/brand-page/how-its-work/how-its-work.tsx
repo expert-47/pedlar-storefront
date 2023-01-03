@@ -28,16 +28,19 @@ const Howitswork = () => {
     <CustomContainer>
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        marginX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{
           marginTop: "105px",
           position: "relative",
           overflow: "unset",
+          backgroundColor: "#1c1b1f",
+          borderRadius: "16px",
         }}
       >
+        <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
+          <Image src={purpleGradient} alt="purple gradient" />
+        </Box>
         <Box sx={styles.MainBox}>
-          <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
-            <Image src={purpleGradient} alt="purple gradient" />
-          </Box>
           {isResponsive ? (
             <>
               <Responsivehowitworks />

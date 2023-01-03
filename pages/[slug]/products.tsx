@@ -11,11 +11,56 @@ import useSWR from "swr";
 import { useState, useEffect } from "react";
 
 
+const filterValuesForQuery :any = [];
 
 const Products = ({ newAdditionData, collectionId , slug }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
+  const[applyFiltersState , setApplyFiltersState] = useState(false);
+  // const [brandsNamesArray , setBrandsNamesArray] = useState([]);
+  // const [vendorsArrayNames , setVendorsNamesArray] = useState([]);
+  // const[productFiltersData , setProducsFiltersData] = useState([{}]);
+
+
+  // console.log("setApplyFiltersState11" , applyFiltersState);
+  
+  const setFiltersValue = (BrandsNames ,VendorsNames , applyFilters )=>{
+// debugger
+    // setBrandsNamesArray(BrandsNames);
+    // setVendorsNamesArray(VendorsNames);
+
+    if(BrandsNames?.length > 0 ){
+      console.log("BrandsNames length" , BrandsNames.length);
+      
+
+      
+      // filterValuesForQuery=[];
+      BrandsNames?.map((item )=>{
+      // const result = filterValuesForQuery.find(filterValuesForQuery => filterValuesForQuery.productVendor === item);
+      // console.log(result);
+        
+           
+          filterValuesForQuery.push({"productVendor" : item});
+        
+      });
+
+    }
+    if(VendorsNames?.length > 0){
+      // filterValuesForQuery=[];
+      VendorsNames?.map((item)=>{
+    
+        filterValuesForQuery.push({"productType" : item});
+        
+      });
+
+    }
+    if (applyFilters != applyFiltersState) {
+
+      setApplyFiltersState(applyFilters);
+    }
+
+  };
 
   useEffect(() => {
     setProductsData(newAdditionData?.nodes);
@@ -26,6 +71,92 @@ const Products = ({ newAdditionData, collectionId , slug }: any) => {
 
   <link rel="icon" href="/favicon.ico" />;
 
+
+
+  // getting the filtered data 
+
+
+  const getFilteredData = async () =>{
+    const requestBody = {
+      query: `query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
+        collection(id: $collectionId) {
+            products(first: 10, reverse: true, filters: $query) {
+                nodes {
+                    id
+                    title
+                    productType
+                    vendor
+                    description
+                    totalInventory
+                    priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    featuredImage {
+                      height
+                      src
+                      width
+                      originalSrc
+                      transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+                    }
+                    createdAt
+                    publishedAt
+                }
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
+                }
+            }
+        }
+    }`,
+      variables: { collectionId: `gid://shopify/Collection/${collectionId}` , "query":filterValuesForQuery },
+    };
+    const headers: any = {
+      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+      "Content-Type": "application/json",
+      Connection: "keep-alive",
+      "Accept-Encoding": "gzip, deflate, br",
+      Accept: "*/*",
+    };
+    const options = {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(requestBody),
+    };
+    let response = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+     response = await response.json();
+     console.log("filter response " , response?.data?.collection?.products);
+     setProductsData(response?.data?.collection?.products?.nodes);
+     setApplyFiltersState(false);
+     
+
+  };
+  
+
+  useEffect(()=>{
+    if(applyFiltersState){
+
+      getFilteredData();
+    }
+
+
+  },[applyFiltersState]);
+
+  // if (applyFiltersState === true){
+
+
+  //   console.log("filterValuesForQuery  final " , filterValuesForQuery);
+    
+  //   getFilteredData();
+  // }
   // making the chunks of 5 products
 
   const productsDataArray = [];
@@ -95,7 +226,7 @@ const Products = ({ newAdditionData, collectionId , slug }: any) => {
     };
 
     async function getResponse() {
-      const res = await await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+      const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
       const collectionData = await res.json();
 
@@ -144,7 +275,7 @@ const Products = ({ newAdditionData, collectionId , slug }: any) => {
           // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         }}
       >
-        <ProductHeader />
+        <ProductHeader setFiltersValue={setFiltersValue} />
         {/* {
   productsDataArray?.map ((item , index)=> */}
 

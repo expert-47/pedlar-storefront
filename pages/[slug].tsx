@@ -106,7 +106,7 @@ const options = {
 };
 
 
-const res = await (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
+const res =  (await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options));
 
 const collectionData = await res.json();
 

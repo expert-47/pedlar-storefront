@@ -21,6 +21,7 @@ export const styles = {
     opacity: "0.64",
     color: " rgb(28, 27, 31)",
     fontFamily: "Inter",
+    lineHeight: "normal",
     fontWight: "600",
     fontSize: "22px",
     margin: "0 0",

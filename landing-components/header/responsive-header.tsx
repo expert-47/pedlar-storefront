@@ -200,11 +200,11 @@ const ResponsiveHeader = () => {
                         style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
                       >
                         {userType ? (
-                          <Typography style={{ fontSize: "36px" }}>
+                          <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
                             {sucessModalshow ? "Join the waitlist!" : null}
                           </Typography>
                         ) : (
-                          <Typography style={{ fontSize: "36px" }}>
+                          <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
                             {sucessModalshow ? "Let’s talk growth" : null}
                           </Typography>
                         )}
@@ -214,46 +214,45 @@ const ResponsiveHeader = () => {
                       </Grid>
                       {sucessModalshow ? (
                         <Box sx={styles.BoxSelector}>
-                          <Button
-                            style={{
-                              textTransform: "none",
-                              color: "#49454F",
-                              fontSize: "16px",
-                              borderRadius: "5px",
-                              padding: "2px 7px",
-                            }}
-                            sx={{
+                        <Button
+                          style={{
+                            textTransform: "none",
+                            color: "#49454F",
+                            borderRadius: "5px",
+                            padding: "2px 7px",
+                          }}
+                          sx={{
+                            backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                            fontWeight: userType == true ? "700" : "400",
+                            "&:hover": {
                               backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                              fontWeight: userType == true ? "700" : "400",
-                              "&:hover": {
-                                backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                              },
-                            }}
-                            onClick={onChangeCreator}
-                          >
-                            I'm a creator
-                          </Button>
-                          <Button
-                            style={{
-                              textTransform: "none",
-                              color: "#49454F",
-                              fontSize: "16px",
-                              borderRadius: "5px",
-                              padding: "2px 7px",
-                            }}
-                            sx={{
-                              backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                              fontWeight: userType == false ? "700" : "400",
+                            },
+                          }}
+                          onClick={onChangeCreator}
+                        >
+                          <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
+                          I'm a creator
+                        </Button>
+                        <Button
+                          style={{
+                            textTransform: "none",
+                            color: "#49454F",
+                            borderRadius: "5px",
+                            padding: "2px 7px",
+                          }}
+                          sx={{
+                            backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                            fontWeight: userType == false ? "700" : "400",
 
-                              "&:hover": {
-                                backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                              },
-                            }}
-                            onClick={onChangeBrand}
-                          >
-                            I'm a brand
-                          </Button>
-                        </Box>
+                            "&:hover": {
+                              backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                            },
+                          }}
+                          onClick={onChangeBrand}
+                        >
+                          I'm a brand
+                        </Button>
+                      </Box>
                       ) : null}
                       {userType ? (
                         <Creatorpopup isSecondModalActive={isSecondModalActive} />

@@ -32,6 +32,10 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
+  RespLoginBox: {
+    borderRadius: "10px",
+    p: 25,
+  },
   BoxSelector: {
     display: "flex",
     backgroundColor: "transparent",

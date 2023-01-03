@@ -11,7 +11,24 @@ import bluemeshbrand from "../public/blueMesh-brand.png";
 import bluemeshbrands from "../public/blue-meshh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
 import Howitswork from "../landing-components/creator-page/how-its-work/how-its-work";
-
+const styless = {
+  paperContainer: {
+    backgroundImage: "url(../Grain-Texture.png) !important",
+    backgroundPosition: "0 0",
+    backgroundRepeat: "repeat",
+    backgroundSize: "initial",
+    content: `""`,
+    height: " 100%",
+    mixBlendMode: "overlay",
+    opacity: ".6",
+    position: " absolute",
+    width: "100%",
+    zIndex: "2",
+    top: "0",
+    right: "0",
+    left: "0",
+  },
+};
 const creator = () => {
   return (
     <Layout
@@ -21,6 +38,7 @@ const creator = () => {
         description: process.env.NEXT_PUBLIC_CREATOR_DESCRIPTION,
       }}
     >
+      <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
         <Image src={bluemeshbrands} alt="Orange meshes" />
       </Box>

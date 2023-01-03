@@ -70,7 +70,7 @@ const Banner = () => {
           sm={12}
           md={12}
           lg={12}
-          style={{ position: "relative" }}
+          style={{ position: "relative", zIndex: "9" }}
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isSmall ? (

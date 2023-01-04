@@ -55,3 +55,66 @@ export const getProductDetails = async () => {
 
   return collectionData;
 };
+
+export const getUserDetailByFetchAPICall = async (collectionID:number , numberofProducts : number) => {
+  const requestBody = {
+    query: `query GetCollection($collectionId: ID!) {
+    collection(id: $collectionId) {
+        products(first: ${numberofProducts}, reverse: true ) {
+            nodes {
+                id
+                title
+                productType
+                vendor
+                description
+                totalInventory
+                priceRange {
+                    maxVariantPrice {
+                        amount
+                        currencyCode
+                    }
+                    minVariantPrice {
+                        amount
+                        currencyCode
+                    }
+                }
+                featuredImage {
+          height
+          src
+          width
+          originalSrc
+          transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+        }
+                createdAt
+                publishedAt
+            }
+            pageInfo {
+                hasNextPage
+                hasPreviousPage
+                startCursor
+                endCursor
+            }
+        }
+    }
+}`,
+    variables: { collectionId: `gid://shopify/Collection/${collectionID}` },
+  };
+  const headers: any = {
+    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+    "Content-Type": "application/json",
+    Connection: "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br",
+    Accept: "*/*",
+  };
+  const options = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(requestBody),
+  };
+
+  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+
+  const collectionData = await res.json();
+
+  return collectionData;
+};

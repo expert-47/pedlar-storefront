@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Link from "next/link";
 import useSwr from "swr";
 
@@ -6,8 +6,8 @@ import { Stack } from "@mui/system";
 import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
 
-import SearchIcon from "@mui/icons-material/Search";
-import DropdownButton from "./components/dropdownButton";
+// import SearchIcon from "@mui/icons-material/Search";
+// import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
 import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
@@ -16,7 +16,7 @@ import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
-export default function Navbar(props) {
+export default function Navbar(props:any) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -52,23 +52,23 @@ export default function Navbar(props) {
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
-                  <Link href="/">
+                  <Link href={`/${props?.slug}`}>
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
                   <DropDownMenu
                     loading={!data}
                     type={"Brands"}
-                    data={data ? data.data.map((item) => item.vendor) : []}
+                    data={data ? data.data.map((item:any) => item.vendor) : []}
                   />
 
                   <DropDownMenu
                     loading={!shopList}
                     type={"Shop"}
-                    data={shopList ? shopList.data.map((item) => item.productType) : []}
+                    data={shopList ? shopList.data.map((item:any) => item.productType) : []}
                   />
 
-                  <Link href="faq">
+                  <Link href={`/${props?.slug}/faq`}>
                     <Button color="inherit" sx={styles.tabButton}>
                       FAQ
                     </Button>

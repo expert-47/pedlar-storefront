@@ -2,16 +2,17 @@ import { useState } from "react";
 
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Checkbox, Divider, Typography, CircularProgress } from "@mui/material";
+import { Button, Grid, useTheme, Typography, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
-import Text from "components/customText";
+
 import ListItemText from "@mui/material/ListItemText";
-import PedlarButton from "./pedlarButton";
-import ProductHeader from "components/home/components/productHeader";
+// import PedlarButton from "./pedlarButton";
+// import ProductHeader from "components/home/components/productHeader";
 import Link from "next/link";
 import { CustomContainer } from "components/layout";
+import { useRouter } from "next/router";
 
 interface Props {
   type: string;
@@ -24,6 +25,13 @@ const DropDownMenu = (props: Props) => {
   const [brands, setBrands] = useState(false);
   const [category, setCategory] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [dropdownOption, setdropdownOption] = useState(false);
+
+  const route = useRouter();
+  // const { asPath } = useRouter();
+
+  // console.log("asPath...,.,..,.,.,....,,.,.,.,,.," , asPath);
+  // console.log("route route?.query.slug...,.,..,.,.,....,,.,.,.,,.," , route?.query.slug);
 
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
@@ -31,13 +39,17 @@ const DropDownMenu = (props: Props) => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    setdropdownOption(false);
   };
-  const showBrands = () => {
-    setBrands((prv) => !prv);
-  };
-  const showCategory = () => {
-    setCategory((prv) => !prv);
-  };
+  // const showBrands = () => {
+  //   setBrands((prv) => !prv);
+  // };
+  // const showCategory = () => {
+  //   setCategory((prv) => !prv);
+  // };
+
+  console.log("drop state ..........", dropdownOption);
+
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -46,6 +58,7 @@ const DropDownMenu = (props: Props) => {
           {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
         </Button>
       </Grid>
+
       <Grid container display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <CustomContainer>
           <Menu
@@ -76,33 +89,73 @@ const DropDownMenu = (props: Props) => {
                           <CircularProgress color="inherit" />
                         </Grid>
                       ) : (
-                        <Grid display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
-                          <Grid></Grid>
+                        <Box>
+                          {/* display={"flex"} justifyContent={"space-between"} alignItems={"center"} */}
+                          {/* <Grid></Grid> */}
 
-                          <Grid paddingRight={60}>
-                            {data
-                              .slice(0, 28)
-                              .map((item , index) => (
-                                <Link key={"dropdown-"+index} href={"./product"} style={{cursor:"pointer"}} >
-                                  <Typography sx={styles.menuItems}>{item}</Typography>
-                                </Link>
-                              ))}
-                            <Link href="/">
-                              <ListItemText
-                                style={{
-                                  paddingTop: "4px",
-                                  paddingLeft: "16px",
-                                  color: "black",
-                                  fontWeight: "600",
-                                  fontSize: "12px",
-                                  textDecoration: "underline",
-                                }}
-                              >
-                                View all.....
-                              </ListItemText>
-                            </Link>
+                          <Grid container paddingRight={60}>
+                            <Grid item sm={6} md={6}></Grid>
+                            <Grid item sm={6} md={6} lg={6}>
+                              <Grid container>
+                                {dropdownOption
+                                  ? data.map((item, index) => (
+                                      <Grid key={"dropdown-" + index} item sm={2} md={3}>
+                                        {/* routePath ? routePath : */}
+                                        <Link
+                                          as={`${route?.query?.slug}/products`}
+                                          href={{
+                                            pathname: `${route?.query?.slug}/products`,
+                                            query: { dataType: type, itemValue: item },
+                                          }}
+                                        >
+                                          <a
+                                            style={{
+                                              cursor: "pointer",
+                                              textDecoration: "none !important",
+                                              color: "black",
+                                            }}
+                                          >
+                                            <Typography sx={styles.menuItems}>{item}</Typography>
+                                          </a>
+                                        </Link>
+                                      </Grid>
+                                    ))
+                                  : data.slice(0, 2).map((item, index) => (
+                                      <Grid key={"dropdown-" + index} item sm={2} md={3}>
+                                        <Link
+                                          as={`/${route?.query?.slug}/products`}
+                                          href={{
+                                            pathname: `/${route?.query?.slug}/products`,
+                                            query: { dataType: type, itemValue: item },
+                                          }}
+                                          style={{ cursor: "pointer" }}
+                                        >
+                                          <a style={{ cursor: "pointer", textDecoration: "none", color: "black" }}>
+                                            <Typography sx={styles.menuItems}>{item}</Typography>
+                                          </a>
+                                        </Link>
+                                      </Grid>
+                                    ))}
+                                {dropdownOption === false && data?.length > 2 && (
+                                  <Button onClick={() => setdropdownOption(true)}>
+                                    <ListItemText
+                                      style={{
+                                        paddingTop: "4px",
+                                        paddingLeft: "16px",
+                                        color: "black",
+                                        fontWeight: "600",
+                                        fontSize: "12px",
+                                        textDecoration: "underline",
+                                      }}
+                                    >
+                                      View all
+                                    </ListItemText>
+                                  </Button>
+                                )}
+                              </Grid>
+                            </Grid>
                           </Grid>
-                        </Grid>
+                        </Box>
                       )}
                     </Box>
                   </CustomContainer>

@@ -10,10 +10,31 @@ import axios from "axios";
 import useSWR from "swr";
 import { useState, useEffect } from "react";
 
+import { getUserDetailByFetchAPICall } from "api/grapgql";
+
+const filterValuesForQuery: any = [];
+
 const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
+  const [applyFiltersState, setApplyFiltersState] = useState(false);
+
+  const setFiltersValue = (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
+    if (BrandsNames?.length > 0) {
+      BrandsNames?.map((item: any) => {
+        filterValuesForQuery.push({ productVendor: item });
+      });
+    }
+    if (VendorsNames?.length > 0) {
+      VendorsNames?.map((item: any) => {
+        filterValuesForQuery.push({ productType: item });
+      });
+    }
+    if (applyFilters != applyFiltersState) {
+      setApplyFiltersState(applyFilters);
+    }
+  };
 
   useEffect(() => {
     setProductsData(newAdditionData?.nodes);
@@ -23,6 +44,76 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
+
+  // getting the filtered data
+
+  const getFilteredData = async () => {
+    const requestBody = {
+      query: `query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
+        collection(id: $collectionId) {
+            products(first: 10, reverse: true, filters: $query) {
+                nodes {
+                    id
+                    title
+                    productType
+                    vendor
+                    description
+                    totalInventory
+                    priceRange {
+                        maxVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                        minVariantPrice {
+                            amount
+                            currencyCode
+                        }
+                    }
+                    featuredImage {
+                      height
+                      src
+                      width
+                      originalSrc
+                      transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+                    }
+                    createdAt
+                    publishedAt
+                }
+                pageInfo {
+                    hasNextPage
+                    hasPreviousPage
+                    startCursor
+                    endCursor
+                }
+            }
+        }
+    }`,
+      variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: filterValuesForQuery },
+    };
+    const headers: any = {
+      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+      "Content-Type": "application/json",
+      Connection: "keep-alive",
+      "Accept-Encoding": "gzip, deflate, br",
+      Accept: "*/*",
+    };
+    const options = {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(requestBody),
+    };
+    let response = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+    response = await response.json();
+
+    setProductsData(response?.data?.collection?.products?.nodes);
+    setApplyFiltersState(false);
+  };
+
+  useEffect(() => {
+    if (applyFiltersState) {
+      getFilteredData();
+    }
+  }, [applyFiltersState]);
 
   // making the chunks of 5 products
 
@@ -93,7 +184,7 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
     };
 
     async function getResponse() {
-      const res = await await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+      const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
       const collectionData = await res.json();
 
@@ -116,11 +207,6 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const address = `https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`;
   const fetcher = async (url: any) => await axios.get(url).then((res) => res.data);
   const { data } = useSWR(address, fetcher);
-  // console.log("data2d2d2" , data?.data?.storefrontName);
-
-  // const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
-
-  // const HeaderData = await res.json();
 
   return (
     <Layout storefrontName={data?.data?.storefrontName ? data?.data?.storefrontName : ""} slug={slug}>
@@ -142,27 +228,9 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
           // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         }}
       >
-        <ProductHeader />
-        {/* {
-  productsDataArray?.map ((item , index)=> */}
+        <ProductHeader setFiltersValue={setFiltersValue} />
 
-        <Gallery
-          // girdProps={{
-          //   flexDirection: {
-          //     lg: "row-reverse",
-          //     md: "row-reverse",
-          //     sm: "column-reverse",
-          //     xs: "column-reverse",
-          //   },
-          // }}
-          // data={gallery1}
-          newAdditionData={productsData}
-          // position = {index === 0 ? true : index % 2 === 0 ? true : false }
-          // key={index}
-        />
-
-        {/* //   )
-// } */}
+        <Gallery newAdditionData={productsData} />
       </Box>
       <Grid
         style={{
@@ -205,86 +273,14 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
 export default Products;
 
 export async function getServerSideProps(context: any) {
-  //  console.log("context..............///................." , context.query["slug"]  );
-
-  // console.log("context..............///................." , context.resolvedUrl  );
-
-  // const slug = context.query["slug"];
-
   const { slug } = context.query;
-
-  console.log("prod...", slug);
-
-  // console.log("`slug`..............///................." , slug);
 
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
 
   const HeaderData = await res.json();
 
-  const getUserDetailByFetchAPICall = async () => {
-    const requestBody = {
-      query: `query GetCollection($collectionId: ID!) {
-      collection(id: $collectionId) {
-          products(first: 18, reverse: true ) {
-              nodes {
-                  id
-                  title
-                  productType
-                  vendor
-                  description
-                  totalInventory
-                  priceRange {
-                      maxVariantPrice {
-                          amount
-                          currencyCode
-                      }
-                      minVariantPrice {
-                          amount
-                          currencyCode
-                      }
-                  }
-                  featuredImage {
-            height
-            src
-            width
-            originalSrc
-            transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
-          }
-                  createdAt
-                  publishedAt
-              }
-              pageInfo {
-                  hasNextPage
-                  hasPreviousPage
-                  startCursor
-                  endCursor
-              }
-          }
-      }
-  }`,
-      variables: { collectionId: `gid://shopify/Collection/${HeaderData?.data?.collectionId}` },
-    };
-    const headers: any = {
-      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-      "Content-Type": "application/json",
-      Connection: "keep-alive",
-      "Accept-Encoding": "gzip, deflate, br",
-      Accept: "*/*",
-    };
-    const options = {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(requestBody),
-    };
-
-    const res = await await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
-
-    const collectionData = await res.json();
-
-    return collectionData;
-  };
-
-  let data = await getUserDetailByFetchAPICall();
+  const numberofProducts = 18;
+  let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
   data = data?.data?.collection?.products;
 
   return { props: { newAdditionData: data, slug, collectionId: HeaderData?.data?.collectionId } };

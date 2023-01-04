@@ -7,7 +7,7 @@ import { CustomGrid } from "components/layout";
 import DropdownButton from "components/navbar/components/dropdownButton";
 import { ResponsiveHeader } from "./responsiveHeader";
 
-const ProductHeader = () => {
+const ProductHeader = (props) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
@@ -43,8 +43,8 @@ const ProductHeader = () => {
         ) : (
           <Grid gap={3} columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
             {" "}
-            <DropdownButton type={"Brands"} data={data ? data.data.map((item) => item.vendor) : []} />
-            <DropdownButton type={"Category"} data={shopList ? shopList.data.map((item) => item.productType) : []} />
+            <DropdownButton type={"Brands"} setFiltersValue={props?.setFiltersValue} data={data ? data.data.map((item) => item.vendor) : []} />
+            <DropdownButton type={"Category"} setFiltersValue={props?.setFiltersValue}  data={shopList ? shopList.data.map((item) => item.productType) : []} />
           </Grid>
         )}
       </Grid>

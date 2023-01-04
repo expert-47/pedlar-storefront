@@ -1,24 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
 import { Typography, Grid, Box } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/router";
 interface Props {
   name: string;
   type: string;
   price: string;
   image?: string;
   crossPrice?: string;
- 
-  
-
+  id: string;
 }
 
-const CardComponent = ({ name, type, price, image, crossPrice   }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
+  let productId = id.split("gid://shopify/Product/")[1];
+  const route = useRouter();
+  console.log("route", route);
+
   return (
-    <Link 
-    href={"/product"}>
+    <Link href={`${route.asPath}/product/${productId}`}>
       <Box
         style={{
           cursor: "pointer",
@@ -26,13 +27,19 @@ const CardComponent = ({ name, type, price, image, crossPrice   }: React.PropsWi
         }}
       >
         {image && (
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             {/* <img src={image} width="343px" height={"343px"} style={{maxWidth:"100%" , maxHeight:"100%" , objectFit:"fill"}} ></img> */}
 
-            <Box component="img"
-            
-            src={image}  sx={{maxWidth:"100%" , maxHeight:"100%" , width:{xs:158 , sm:190 , md:344} , height:{xs:158 , sm:190 , md:344} }} ></Box>
-         
+            <Box
+              component="img"
+              src={image}
+              sx={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                width: { xs: 158, sm: 190, md: 344 },
+                height: { xs: 158, sm: 190, md: 344 },
+              }}
+            ></Box>
           </Grid>
         )}
         <Grid xs={12}>

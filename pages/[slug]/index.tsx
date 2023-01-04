@@ -3,6 +3,8 @@ import { Home } from "components/home";
 import { getUserDetailByFetchAPICall } from "api/grapgql";
 
 export default function index({ HeaderData, newAdditionData, slug }: any) {
+  console.log("newAdditionData", newAdditionData);
+
   return (
     <Layout
       seo={{
@@ -19,15 +21,13 @@ export default function index({ HeaderData, newAdditionData, slug }: any) {
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
-
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
 
   const HeaderData = await res.json();
 
- 
-  const numberofProducts  = 6;
+  const numberofProducts = 6;
 
-  let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId , numberofProducts);
+  let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
   data = data?.data?.collection?.products?.nodes;
 
   return { props: { HeaderData, newAdditionData: data, slug: slug } };

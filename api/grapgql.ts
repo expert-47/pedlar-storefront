@@ -1,6 +1,6 @@
 import { apiCall } from "./graphqlApi";
 
-export const getProductDetails = async () => {
+export const getProductDetails = async (productId: string) => {
   const requestBody = {
     query: `query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
         product(id: $productId) {
@@ -37,7 +37,7 @@ export const getProductDetails = async () => {
         }
     }`,
     variables: {
-      productId: "gid://shopify/Product/7609492340963",
+      productId: `gid://shopify/Product/${productId}`,
       selectedOptionInput: [
         {
           name: "Size",

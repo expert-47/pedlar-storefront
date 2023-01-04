@@ -2,14 +2,14 @@ import { Container, ContainerProps } from "@mui/material";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar";
 import React from "react";
-import { NextSeo, NextSeoProps   } from "next-seo";
+import { NextSeo, NextSeoProps } from "next-seo";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
-  storefrontName : string
-  slug:string
+  storefrontName: string;
+  slug: string;
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo , storefrontName , slug } = props;
+  const { children, seo, storefrontName, slug } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>

@@ -22,7 +22,6 @@ import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 
-
 const buttonStyle = {
   display: "none",
 };
@@ -34,9 +33,6 @@ const properties = {
 
 const Cart = (props) => {
   const { newAdditionData } = props;
-
-  console.log("propsData", newAdditionData);
-
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
@@ -93,15 +89,13 @@ const Cart = (props) => {
                   display: { xs: "none", sm: "block" },
                 }}
               >
-                {images.map((item) => (
-                  <ImageListItem sx={{ paddingBottom: "25px" }} key={item}>
-                    <img
-                      src={`${item}?w=164&h=164&fit=crop&auto=format`}
-                      srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                      loading="lazy"
-                    />
-                  </ImageListItem>
-                ))}
+                <ImageListItem sx={{ paddingBottom: "25px" }}>
+                  <img
+                    src={newAdditionData?.featuredImage?.url}
+                    // srcSet={`${item}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    loading="lazy"
+                  />
+                </ImageListItem>
               </ImageList>
             </Grid>
 
@@ -116,17 +110,15 @@ const Cart = (props) => {
                   <Typography fontSize={"16px"} fontWeight={"600"}>
                     LOW CLASSIC
                   </Typography>
-                  <Typography sx={styles.description}>
-                    Green Polyster <br></br> Blazer
-                  </Typography>
+                  <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
                     <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                      $365
+                      {`${newAdditionData?.priceRange?.minVariantPrice?.amount} ${newAdditionData?.priceRange?.minVariantPrice?.currencyCode}`}
                     </Typography>
                   </Grid>
 
-                  <Options></Options>
-                  <Action></Action>
+                  <Options newAdditionData={newAdditionData} />
+                  <Action newAdditionData={newAdditionData} />
 
                   <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
                   <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
@@ -141,17 +133,7 @@ const Cart = (props) => {
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>
-                          {/* {
-                            " Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
-                          }
-                          <br></br>
-                          <br></br>
-                          {
-                            "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
-                          } */}
-                          {newAdditionData?.description}
-                        </Typography>
+                        <Typography sx={styles.descriptionTypography}>{newAdditionData?.description}</Typography>
                       </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} elevation={0}>
@@ -200,7 +182,7 @@ const Cart = (props) => {
             {[0, 0, 0, 0, 0].map((item, index) => {
               return (
                 <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
-                  <img style={{ width: "95%", height: "70%" }} src="/grid-img3.png"></img>
+                  <img style={{ width: "95%", height: "70%" }} src={newAdditionData?.featuredImage?.url}></img>
                   <Typography variant="body1">SISLEY PARIS</Typography>
                   <Typography variant="subtitle2">Eye Contour Mask</Typography>
                   <Typography variant="subtitle2">$42</Typography>

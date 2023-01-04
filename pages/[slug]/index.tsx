@@ -2,6 +2,8 @@ import Layout from "components/layout";
 import { Home } from "components/home";
 
 export default function index({ HeaderData, newAdditionData, slug }: any) {
+  console.log("newAdditionData", newAdditionData);
+
   return (
     <Layout
       seo={{
@@ -18,10 +20,11 @@ export default function index({ HeaderData, newAdditionData, slug }: any) {
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
-
+  console.log("contextcontext", context);
   const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
 
   const HeaderData = await res.json();
+  console.log("headerData", HeaderData);
 
   // products data
 

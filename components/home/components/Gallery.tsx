@@ -4,15 +4,12 @@ import CardComponent from "./cardComponent";
 import { CustomGrid } from "components/layout";
 
 interface Props {
-  
   // data: any[];
   columnSpacing?: number;
-  newAdditionData?:any[];
+  newAdditionData?: any[];
   // position:boolean;
 }
-const Gallery = ({   newAdditionData,  columnSpacing = 10 }: Props) => {
-
-  
+const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
   return (
     <CustomGrid
       style={{
@@ -21,14 +18,10 @@ const Gallery = ({   newAdditionData,  columnSpacing = 10 }: Props) => {
         alignItems: "center",
       }}
     >
-      
-
-        <Grid container item xs={12} sm={12} md={12} lg={12} columnSpacing={columnSpacing || 10} rowSpacing={10}>
-          {newAdditionData?.map((item, index) => (
-            <Grid item xs={5.9} sm={5.9} md={3.8} lg={3.8} xl={3.8}
-            key={item?.collectionId }
-            >
-             
+      <Grid container item xs={12} sm={12} md={12} lg={12} columnSpacing={columnSpacing || 10} rowSpacing={10}>
+        {newAdditionData?.map((item: any, index: any) => {
+          return (
+            <Grid item xs={5.9} sm={5.9} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
               <CardComponent
                 name={item?.title}
                 type={item?.productType}
@@ -38,12 +31,13 @@ const Gallery = ({   newAdditionData,  columnSpacing = 10 }: Props) => {
                     : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
                 }
                 image={item?.featuredImage?.transformedSrc}
-               
+                id={item?.id}
               />
             </Grid>
-          ))}
-        </Grid>
-        {/* <Grid container item xs={12} sm={12} md={6} lg={6}>
+          );
+        })}
+      </Grid>
+      {/* <Grid container item xs={12} sm={12} md={6} lg={6}>
           <CardComponent
             name={newAdditionData?.[0].title}
             type={newAdditionData?.[0].productType}

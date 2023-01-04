@@ -34,8 +34,6 @@ const properties = {
 const Cart = (props) => {
   const { newAdditionData } = props;
 
-  console.log("propsData", newAdditionData);
-
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
@@ -140,17 +138,7 @@ const Cart = (props) => {
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>
-                          {/* {
-                            " Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."
-                          }
-                          <br></br>
-                          <br></br>
-                          {
-                            "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each  brand. I hope you love what I've put together."
-                          } */}
-                          {newAdditionData?.description}
-                        </Typography>
+                        <Typography sx={styles.descriptionTypography}>{newAdditionData?.description}</Typography>
                       </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} elevation={0}>

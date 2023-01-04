@@ -22,6 +22,7 @@ import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 
+
 const buttonStyle = {
   display: "none",
 };

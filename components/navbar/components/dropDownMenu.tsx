@@ -78,13 +78,14 @@ const DropDownMenu = (props: Props) => {
                       ) : (
                         <Grid display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
                           <Grid></Grid>
+
                           <Grid paddingRight={60}>
                             {data
                               .slice(0, 28)
-                              .map((item) => (
-                                <MenuItem>
+                              .map((item , index) => (
+                                <Link key={"dropdown-"+index} href={"./product"} style={{cursor:"pointer"}} >
                                   <Typography sx={styles.menuItems}>{item}</Typography>
-                                </MenuItem>
+                                </Link>
                               ))}
                             <Link href="/">
                               <ListItemText

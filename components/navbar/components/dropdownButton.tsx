@@ -7,19 +7,27 @@ import styles from "styles/navbar";
 import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import ListItemText from "@mui/material/ListItemText";
-import PedlarButton from "./pedlarButton";
-import ProductHeader from "components/home/components/productHeader";
+
+
 
 interface Props {
   type: string;
   data: string[];
+  setFiltersValue: any;
 }
+let BrandsNames: string[] = [];
+let VendorsNames: string[] = [];
+
+
 const DropdownButton = (props: Props) => {
   const theme = useTheme();
-  const { type = "Brands", data } = props;
-  // const [brands, setBrands] = useState(false);
-  // const [category, setCategory] = useState(false);
+  const { type = "Brands", data, setFiltersValue } = props;
+  
   const [anchorEl, setAnchorEl] = useState(null);
+
+  const [filterCheckBoxes, setFilterCheckBoxes] = useState({});
+
+ 
 
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
@@ -28,12 +36,56 @@ const DropdownButton = (props: Props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  // const showBrands = () => {
-  //   setBrands((prv) => !prv);
-  // };
-  // const showCategory = () => {
-  //   setCategory((prv) => !prv);
-  // };
+
+
+  const getCheckBoxValue = (e: any, text: string) => {
+    if (e.target.checked) {
+      if (type === "Brands" && !BrandsNames?.includes(text)) {
+        BrandsNames.push(text);
+
+     
+      }
+      if (!(type === "Brands") && !VendorsNames?.includes(text)) {
+        VendorsNames.push(text);
+      }
+    }
+    if (!e.target.checked) {
+      if (type === "Brands" && BrandsNames?.includes(text)) {
+        BrandsNames = BrandsNames.filter(function (item) {
+          return item !== text;
+        });
+      }
+      if (!(type === "Brands") && VendorsNames?.includes(text)) {
+        VendorsNames = VendorsNames.filter(function (item) {
+          return item !== text;
+        });
+      }
+ 
+    }
+
+   
+  };
+
+  
+
+  const applyFiltersMethod = () => {
+   
+
+    setFiltersValue(BrandsNames, VendorsNames, true);
+    setAnchorEl(null);
+  };
+
+  const resetFilters = () => {
+  
+    const obj = {};
+    data.forEach((_item, index) => {
+      obj["checkbox-" + index] = false;
+    });
+    setFilterCheckBoxes(obj);
+
+   
+  };
+  
 
   return (
     <>
@@ -81,12 +133,25 @@ const DropdownButton = (props: Props) => {
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
               <Box sx={styles.menuInnerContainer} style={{ display: "flex" }}>
-                {data.map((item) => (
-                  <MenuItem>
-                    <Checkbox sx={styles.menuCheck} />
-                    <ListItemText>{item}</ListItemText>
-                  </MenuItem>
-                ))}
+                {data.map((item, index) => {
+                  const checkboxKey: string = "checkbox-" + index;
+                  // debugger;
+                  return (
+                    <MenuItem key={index}>
+                      <Checkbox
+                        // id={"checkbox"+index}
+
+                        checked={filterCheckBoxes[checkboxKey] || false}
+                        sx={styles.menuCheck}
+                        onChange={(e) => getCheckBoxValue(e, item)}
+                        onClick={() => {
+                          setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
+                        }}
+                      />
+                      <ListItemText>{item}</ListItemText>
+                    </MenuItem>
+                  );
+                })}
               </Box>
             </Grid>
             <Grid
@@ -104,7 +169,7 @@ const DropdownButton = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button variant="contained" sx={styles.menuButton}>
+                <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod()}>
                   Apply
                 </Button>
               </Grid>
@@ -116,7 +181,7 @@ const DropdownButton = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button variant="outlined" sx={styles.outlinedButton}>
+                <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
                   Reset filters
                 </Button>
               </Grid>

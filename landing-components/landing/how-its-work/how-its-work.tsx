@@ -13,7 +13,7 @@ import firstStep from "../../../public/step1.png";
 import secondStep from "../../../public/step2.png";
 import thirdStep from "../../../public/step3.png";
 import fourthStep from "../../../public/step4.png";
-
+import orangepinkmesh from "../../../public/mesh-pink-orange.png";
 const Howitswork = () => {
   const theme = useTheme();
   const isResponsive = useMediaQuery("(max-width:1023px)");
@@ -26,18 +26,24 @@ const Howitswork = () => {
   // ];
   return (
     <CustomContainer>
+      <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0", bottom: "44px" }}>
+        <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
+      </Box>
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        marginX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{
           marginTop: "105px",
           position: "relative",
           overflow: "unset",
+          backgroundColor: "#1c1b1f",
+          borderRadius: "16px",
         }}
       >
+        <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
+          <Image src={purpleGradient} alt="purple gradient" />
+        </Box>
         <Box sx={styles.MainBox}>
-          <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
-            <Image src={purpleGradient} alt="purple gradient" />
-          </Box>
           {isResponsive ? (
             <>
               <Responsivehowitworks />

@@ -74,7 +74,7 @@ const ResponsiveHeader = () => {
   };
 
   const paperStyle = {
-    width: { xs: "100%", sm: "50%", md: "auto" },
+    width: { xs: "100%", sm: "50%", md: "35%" },
     boxShadow: "none",
     backgroundColor: "#f9f6f2",
   };
@@ -119,24 +119,22 @@ const ResponsiveHeader = () => {
               sx: paperStyle,
             }}
           >
-            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "32px" }}>
+            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
               <Box style={{ width: "192px", margin: "15px 0 0 19px" }}>
                 <Image
                   src={headerlogo}
                   alt="header-logo"
-                  style={{ height: "62px", width: "192px", paddingLeft: "18px", cursor: "pointer", paddingTop: "10px" }}
+                  style={{ height: "62px", width: "192px", cursor: "pointer", paddingTop: "10px" }}
                   onClick={openStorePage}
                 />
               </Box>
               <IconButton onClick={onCloseDrawer}>
-                <CloseIcon
-                  style={{ height: "40px", width: "40px", marginRight: "19px", color: "black", paddingTop: "10px" }}
-                />
+                <CloseIcon style={{ height: "35px", width: "35px", color: "black", marginTop: "-20px" }} />
               </IconButton>
             </Grid>
             <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
               <Grid>
-                <Grid sx={styles.ButtonR} onClick={openCreators}>
+                <Grid sx={styles.ResponButtonCreator} onClick={openCreators}>
                   <Typography
                     textTransform="none"
                     sx={{
@@ -150,7 +148,7 @@ const ResponsiveHeader = () => {
                 </Grid>
               </Grid>
               <Grid>
-                <Grid sx={styles.ButtonR} onClick={openBrands}>
+                <Grid sx={styles.ResponButtonBrands} onClick={openBrands}>
                   <Typography
                     textTransform="none"
                     sx={{
@@ -200,11 +198,11 @@ const ResponsiveHeader = () => {
                         style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
                       >
                         {userType ? (
-                          <Typography style={{ fontSize: "36px" }}>
+                          <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
                             {sucessModalshow ? "Join the waitlist!" : null}
                           </Typography>
                         ) : (
-                          <Typography style={{ fontSize: "36px" }}>
+                          <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
                             {sucessModalshow ? "Let’s talk growth" : null}
                           </Typography>
                         )}
@@ -218,7 +216,6 @@ const ResponsiveHeader = () => {
                             style={{
                               textTransform: "none",
                               color: "#49454F",
-                              fontSize: "16px",
                               borderRadius: "5px",
                               padding: "2px 7px",
                             }}
@@ -231,13 +228,13 @@ const ResponsiveHeader = () => {
                             }}
                             onClick={onChangeCreator}
                           >
+                            <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
                             I'm a creator
                           </Button>
                           <Button
                             style={{
                               textTransform: "none",
                               color: "#49454F",
-                              fontSize: "16px",
                               borderRadius: "5px",
                               padding: "2px 7px",
                             }}

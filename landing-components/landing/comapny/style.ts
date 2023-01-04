@@ -12,10 +12,10 @@ export const styles = {
     lineHeight: "unset",
     zIndex: "2",
     position: "relative",
+    width: "102%",
   },
   CreatorButton: {
-    width: {xs:"100%",sm: "auto"},
-    // width: "auto",
+    width: { xs: "100%", sm: "auto" },
     backgroundColor: "#1C1B1F",
     color: "rgb(249, 246, 242)",
     padding: "20px 20px",
@@ -29,6 +29,10 @@ export const styles = {
   LoginBox: {
     backgroundColor: "#f9f6f2",
     width: "500px",
+    borderRadius: "10px",
+    p: 25,
+  },
+  RespLoginBox: {
     borderRadius: "10px",
     p: 25,
   },

@@ -247,16 +247,16 @@ const Products = ({ newAdditionData, collectionId , slug }: any) => {
     }
   };
   const address = `https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`;
-  const fetcher = async (url:any) => await axios.get(url).then((res) => res.data);
-  const { data} = useSWR(address, fetcher);
+  const fetcher = async (url: any) => await axios.get(url).then((res) => res.data);
+  const { data } = useSWR(address, fetcher);
   // console.log("data2d2d2" , data?.data?.storefrontName);
 
   // const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
-  
+
   // const HeaderData = await res.json();
 
   return (
-    <Layout storefrontName={data?.data?.storefrontName ? data?.data?.storefrontName  : ""} slug={slug}>
+    <Layout storefrontName={data?.data?.storefrontName ? data?.data?.storefrontName : ""} slug={slug}>
       <Head>
         <title>Pedlar</title>
         <meta property="og:image" content="url img" />

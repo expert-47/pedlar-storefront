@@ -1,4 +1,4 @@
-import { Typography, Grid, Dialog, IconButton, Button } from "@mui/material";
+import { Typography, Grid, Dialog, IconButton, Button, Slide, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -13,8 +13,19 @@ import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
+import { TransitionProps } from "@mui/material/transitions";
+
+const Transition = React.forwardRef(function Transition(
+  props: TransitionProps & {
+    children: React.ReactElement;
+  },
+  ref: React.Ref<unknown>,
+) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const Gridbox = () => {
+  const popupScreen = useMediaQuery("(min-width:600px)");
   const [openDialog, setOpenDialog] = useState(false);
   const openPopup = () => setOpenDialog(true);
   const closePopup = () => {
@@ -40,7 +51,7 @@ const Gridbox = () => {
         paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{ position: "relative" }}
       >
-        <Marquee direction="right" speed={0.9} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
+        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -49,7 +60,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="right" speed={45} gradient={false} style={{ overflow: "hidden" }}>
           <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
@@ -152,7 +163,7 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="left" speed={40} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="left" speed={45} gradient={false} style={{ overflow: "hidden" }}>
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -162,7 +173,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={0.9} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
@@ -171,103 +182,197 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Dialog
-          open={openDialog}
-          onClose={(handleClose, reason) => {
-            if (reason !== "backdropClick") {
-              onClose(handleClose, reason);
-            }
-          }}
-          sx={{
-            ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
-              borderRadius: "16px",
-            },
-          }}
-        >
-          <Grid
-            container
-            item
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            sx={[
-              styles.LoginBox,
-              {
-                overflow: "scroll",
-                "&::-webkit-scrollbar": {
-                  display: "none",
-                },
+        {popupScreen ? (
+          <Dialog
+            open={openDialog}
+            onClose={(handleClose, reason) => {
+              if (reason !== "backdropClick") {
+                onClose(handleClose, reason);
+              }
+            }}
+            sx={{
+              ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+                borderRadius: "16px",
               },
-            ]}
+            }}
           >
-            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
-              {userType ? (
-                <Typography style={{ fontSize: "36px" }}>{sucessModalshow ? "Join the waitlist!" : null}</Typography>
-              ) : (
-                <Typography style={{ fontSize: "36px" }}>{sucessModalshow ? "Let’s talk growth" : null}</Typography>
-              )}
-              <IconButton onClick={closePopup}>
-                <CloseIcon style={{ color: "black" }} />
-              </IconButton>
-            </Grid>
-            {sucessModalshow ? (
-              <Box sx={styles.BoxSelector}>
-                <Button
-                  style={{
-                    textTransform: "none",
-                    color: "#49454F",
-                    fontSize: "16px",
-                    borderRadius: "5px",
-                    padding: "2px 7px",
-                  }}
-                  sx={{
-                    backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                    fontWeight: userType == true ? "700" : "400",
-                    "&:hover": {
-                      backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                    },
-                  }}
-                  onClick={onChangeCreator}
-                >
-                  I'm a creator
-                </Button>
-                <Button
-                  style={{
-                    textTransform: "none",
-                    color: "#49454F",
-                    fontSize: "16px",
-                    borderRadius: "5px",
-                    padding: "2px 7px",
-                  }}
-                  sx={{
-                    backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                    fontWeight: userType == false ? "700" : "400",
-
-                    "&:hover": {
-                      backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                    },
-                  }}
-                  onClick={onChangeBrand}
-                >
-                  I'm a brand
-                </Button>
-              </Box>
-            ) : null}
-            {userType ? (
-              <Creatorpopup isSecondModalActive={isSecondModalActive} />
-            ) : (
-              <Brandspopup isSecondModalActive={isSecondModalActive} />
-            )}
-            {sucessModalshow ? (
-              <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              sx={[
+                styles.LoginBox,
                 {
-                  "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                }
-              </Typography>
-            ) : null}
-          </Grid>
-        </Dialog>
+                  overflow: "scroll",
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                },
+              ]}
+            >
+              <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
+                {userType ? (
+                  <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
+                    {sucessModalshow ? "Join the waitlist!" : null}
+                  </Typography>
+                ) : (
+                  <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
+                    {sucessModalshow ? "Let’s talk growth" : null}
+                  </Typography>
+                )}
+                <IconButton onClick={closePopup}>
+                  <CloseIcon style={{ color: "black" }} />
+                </IconButton>
+              </Grid>
+              {sucessModalshow ? (
+                <Box sx={styles.BoxSelector}>
+                  <Button
+                    style={{
+                      textTransform: "none",
+                      color: "#49454F",
+                      borderRadius: "5px",
+                      padding: "2px 7px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                      fontWeight: userType == true ? "700" : "400",
+                      "&:hover": {
+                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                      },
+                    }}
+                    onClick={onChangeCreator}
+                  >
+                    <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
+                    I'm a creator
+                  </Button>
+                  <Button
+                    style={{
+                      textTransform: "none",
+                      color: "#49454F",
+                      borderRadius: "5px",
+                      padding: "2px 7px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                      fontWeight: userType == false ? "700" : "400",
+
+                      "&:hover": {
+                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                      },
+                    }}
+                    onClick={onChangeBrand}
+                  >
+                    I'm a brand
+                  </Button>
+                </Box>
+              ) : null}
+              {userType ? (
+                <Creatorpopup isSecondModalActive={isSecondModalActive} />
+              ) : (
+                <Brandspopup isSecondModalActive={isSecondModalActive} />
+              )}
+              {sucessModalshow ? (
+                <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                  {
+                    "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+                  }
+                </Typography>
+              ) : null}
+            </Grid>
+          </Dialog>
+        ) : (
+          <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              sx={[
+                styles.RespLoginBox,
+                {
+                  overflow: "scroll",
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                },
+              ]}
+            >
+              <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
+                {userType ? (
+                  <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
+                    {sucessModalshow ? "Join the waitlist!" : null}
+                  </Typography>
+                ) : (
+                  <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
+                    {sucessModalshow ? "Let’s talk growth" : null}
+                  </Typography>
+                )}
+                <IconButton onClick={closePopup}>
+                  <CloseIcon style={{ color: "black" }} />
+                </IconButton>
+              </Grid>
+              {sucessModalshow ? (
+                <Box sx={styles.BoxSelector}>
+                  <Button
+                    style={{
+                      textTransform: "none",
+                      color: "#49454F",
+                      borderRadius: "5px",
+                      padding: "2px 7px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                      fontWeight: userType == true ? "700" : "400",
+                      "&:hover": {
+                        backgroundColor: userType == true ? "#d0bcff" : "transparent",
+                      },
+                    }}
+                    onClick={onChangeCreator}
+                  >
+                    <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
+                    I'm a creator
+                  </Button>
+                  <Button
+                    style={{
+                      textTransform: "none",
+                      color: "#49454F",
+                      borderRadius: "5px",
+                      padding: "2px 7px",
+                    }}
+                    sx={{
+                      backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                      fontWeight: userType == false ? "700" : "400",
+
+                      "&:hover": {
+                        backgroundColor: userType == false ? "#d0bcff" : "transparent",
+                      },
+                    }}
+                    onClick={onChangeBrand}
+                  >
+                    I'm a brand
+                  </Button>
+                </Box>
+              ) : null}
+              {userType ? (
+                <Creatorpopup isSecondModalActive={isSecondModalActive} />
+              ) : (
+                <Brandspopup isSecondModalActive={isSecondModalActive} />
+              )}
+              {sucessModalshow ? (
+                <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                  {
+                    "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
+                  }
+                </Typography>
+              ) : null}
+            </Grid>
+          </Dialog>
+        )}
       </Grid>
     </CustomContainer>
   );

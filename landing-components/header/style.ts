@@ -36,9 +36,14 @@ export const styles = {
       display: "inline-block",
     },
   },
-  ButtonR: {
-    color: "Black",
+  ResponButtonCreator: {
+    color: "rgb(28, 27, 31)",
     paddingLeft: "20px",
+  },
+  ResponButtonBrands: {
+    color: "rgb(28, 27, 31)",
+    paddingLeft: "20px",
+    marginTop: "20px",
   },
   ButtonRTypo: {
     fontSize: "22px",

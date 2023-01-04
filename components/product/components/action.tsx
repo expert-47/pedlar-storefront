@@ -2,7 +2,10 @@ import React from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
 
-const Action = () => {
+const Action = (props) => {
+  const { newAdditionData } = props;
+  console.log("AcT", newAdditionData);
+
   return (
     <Grid
       item

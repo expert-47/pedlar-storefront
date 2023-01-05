@@ -40,6 +40,7 @@ const Cart = (props) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
+  console.log("something");
 
   const { classes, cx } = useStyles();
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];

@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import useSwr from "swr";
 
@@ -16,7 +16,7 @@ import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 
-export default function Navbar(props:any) {
+export default function Navbar(props: any) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -59,13 +59,13 @@ export default function Navbar(props:any) {
                   <DropDownMenu
                     loading={!data}
                     type={"Brands"}
-                    data={data ? data.data.map((item:any) => item.vendor) : []}
+                    data={data ? data.data.map((item: any) => item.vendor) : []}
                   />
 
                   <DropDownMenu
                     loading={!shopList}
                     type={"Shop"}
-                    data={shopList ? shopList.data.map((item:any) => item.productType) : []}
+                    data={shopList ? shopList.data.map((item: any) => item.productType) : []}
                   />
 
                   <Link href={`/${props?.slug}/faq`}>

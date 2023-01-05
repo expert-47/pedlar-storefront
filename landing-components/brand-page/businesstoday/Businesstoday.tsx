@@ -9,9 +9,7 @@ import emailjs from "@emailjs/browser";
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
   const form = useRef();
-  const submitHandler = () => {
-    console.log("clicked");
-  };
+  const submitHandler = () => {};
   const formsubmission = (e: any) => {
     setSubmitForm(false);
     e.preventDefault();

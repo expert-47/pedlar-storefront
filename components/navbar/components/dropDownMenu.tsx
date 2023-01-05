@@ -28,11 +28,6 @@ const DropDownMenu = (props: Props) => {
   const [dropdownOption, setdropdownOption] = useState(false);
 
   const route = useRouter();
-  // const { asPath } = useRouter();
-
-  // console.log("asPath...,.,..,.,.,....,,.,.,.,,.," , asPath);
-  // console.log("route route?.query.slug...,.,..,.,.,....,,.,.,.,,.," , route?.query.slug);
-
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -47,8 +42,6 @@ const DropDownMenu = (props: Props) => {
   // const showCategory = () => {
   //   setCategory((prv) => !prv);
   // };
-
-  console.log("drop state ..........", dropdownOption);
 
   return (
     <>

@@ -37,8 +37,6 @@ const Cart = (props) => {
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
 
-  console.log("newAdditionDatadotdor", newAdditionData);
-
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };

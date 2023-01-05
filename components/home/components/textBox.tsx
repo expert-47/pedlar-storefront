@@ -9,8 +9,8 @@ import { useRouter } from "next/router";
 const TextBox = (props) => {
   const router = useRouter();
   const slug = router?.query;
-
   const theme = useTheme();
+
   return (
     <Box
       style={{

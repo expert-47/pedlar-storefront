@@ -37,19 +37,6 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           );
         })}
       </Grid>
-      {/* <Grid container item xs={12} sm={12} md={6} lg={6}>
-          <CardComponent
-            name={newAdditionData?.[0].title}
-            type={newAdditionData?.[0].productType}
-            image={newAdditionData?.[0].featuredImage?.transformedSrc}
-            price={
-              newAdditionData?.[0].priceRange?.maxVariantPrice?.currencyCode === "AUD"
-                ? `A$${newAdditionData?.[0].priceRange?.maxVariantPrice?.amount}`
-                : newAdditionData?.[0].priceRange?.maxVariantPrice?.amount
-            }
-          />
-        </Grid> */}
-      {/* </Grid> */}
     </CustomGrid>
   );
 };

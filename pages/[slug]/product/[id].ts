@@ -5,5 +5,7 @@ export default Cart;
 export async function getServerSideProps(context: any) {
   let data = await getProductDetails(context?.query.id);
 
+
+  console.log("data......................." , data);
   return { props: { newAdditionData: data?.data?.product || [] } };
 }

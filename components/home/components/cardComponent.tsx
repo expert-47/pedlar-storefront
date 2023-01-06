@@ -14,8 +14,11 @@ interface Props {
 }
 
 const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
+
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
+  // console.log("idss" , id ,"productIdsss" , productId );
+  // console.log("productIdsss" , productId);
   
 
   return (

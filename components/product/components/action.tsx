@@ -1,11 +1,88 @@
 import React from "react";
 import { Grid } from "@mui/material";
 import Button from "@mui/material/Button";
+import { addToCart } from "api/grapgql";
+import { useRouter } from "next/router";
+import { useEffect , useState} from "react";
+import { getVariantBySelectedOptions , addToCartLineItem } from "api/grapgql";
+import { getCartProducts } from "api/grapgql";
 
 const Action = (props) => {
-  const { newAdditionData } = props;
-  console.log("AcT", newAdditionData);
+  const { newAdditionData , changeLoaderState } = props;
+  const [cartData , setCartData] = useState([]);
 
+  const router = useRouter();
+ 
+
+  useEffect(()=>{
+   const res= getVariantBySelectedOptions(newAdditionData?.id);
+   console.log("ress" , res?.data?.product?.variantBySelectedOptions);
+
+  },[]);
+
+  useEffect(()=>{
+
+    
+    if(typeof window !== "undefined" ){
+      const cartID = localStorage.getItem("cartID");
+     
+      
+    
+        const res =  getCartProducts(cartID).then((response)=>{
+          console.log("resss" , response?.data?.cart?.lines?.nodes[0].merchandise);
+          // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
+          setCartData(response?.data?.cart?.lines?.nodes);
+
+        });
+
+      // }
+      
+    }
+    console.log("cartData" , cartData);
+    
+    
+    },[]);
+  // console.log("slug" , router.query.slug);
+const slugValue = router.query.slug;
+
+  const addToCartButton = async () => {
+    changeLoaderState(true);
+    const createdCartID  = localStorage.getItem("cartID");
+
+    
+    if(createdCartID === null ||  createdCartID === undefined){
+  
+       const addToCartResponse = await addToCart(newAdditionData?.variantBySelectedOptions?.id , slugValue ).then((res)=>{
+        console.log("addToCartResponse", res);
+        localStorage.setItem("cartID" , res?.data?.cartCreate?.cart?.id);
+        changeLoaderState(false);
+       });
+   
+    }
+   
+    else{
+
+      const addCartLineItemResponse = await addToCartLineItem(createdCartID , newAdditionData?.variantBySelectedOptions?.id ).then((res)=>{
+        changeLoaderState(false);
+        console.log("createdCartID" , createdCartID );
+
+        console.log("addCartLineItemResponse" , res?.data);
+      });
+      
+    }
+    cartData.map((item )=>{
+      if(item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id){
+        console.log("ffff");
+       
+        
+      }
+    });
+   
+  };
+
+
+  console.log("newAdditionData action page" , newAdditionData);
+  
   return (
     <Grid
       item
@@ -26,6 +103,9 @@ const Action = (props) => {
             fontWeight: "600",
             fontSize: "16px",
             textTransform: "none",
+          }}
+          onClick={() => {
+            addToCartButton();
           }}
         >
           Add to cart

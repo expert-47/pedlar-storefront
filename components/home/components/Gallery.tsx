@@ -10,6 +10,9 @@ interface Props {
   // position:boolean;
 }
 const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
+
+  console.log("newAdditionData card component" , newAdditionData);
+  
   return (
     <CustomGrid
       style={{

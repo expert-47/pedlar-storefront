@@ -19,6 +19,7 @@ function Options(props) {
   const handleChange2 = (event: any) => {
     setColor(event?.target?.value);
   };
+
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} gap={22} sx={styles.container}>
       <Grid item xs={12} sm={12} md={5.6} lg={5.6} sx={{}}>

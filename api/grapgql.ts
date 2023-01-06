@@ -1,7 +1,6 @@
-import { apiCall } from "./graphqlApi";
+import { apiCall, checkoutApiCalls } from "./graphqlApi";
 
 export const getProductDetails = async (productId: string) => {
-  console.log("productId /////////////////////////////" , productId);
   const requestBody = {
     query: `query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
       product(id: $productId) {
@@ -39,7 +38,6 @@ export const getProductDetails = async (productId: string) => {
   }`,
     variables: {
       productId: `gid://shopify/Product/${productId}`,
-      // productId: `${productId}`,
 
       selectedOptionInput: [
         {
@@ -122,11 +120,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
   return collectionData;
 };
 
-
-export const addToCart = async (  merchandiseId , value) => {
-
-  console.log("merchandiseId" , merchandiseId , "value" , value);
-  
+export const addToCart = async (merchandiseId, value) => {
   const requestBody = {
     query: `mutation createCart($input: CartInput) {
       cartCreate(input: $input) {
@@ -143,23 +137,21 @@ export const addToCart = async (  merchandiseId , value) => {
       }
   }`,
     variables: {
-      
-        "input": {
-            "attributes": [
-                {
-                    "key": "id",
-                    "value": `${value}`
-                }
-            ],
-            "lines": [
-                  {
-                      "merchandiseId": `${merchandiseId}`,
-                      "quantity": 1
-                  }
-            ]
-        }
-    
-  },
+      input: {
+        attributes: [
+          {
+            key: "id",
+            value: `${value}`,
+          },
+        ],
+        lines: [
+          {
+            merchandiseId: `${merchandiseId}`,
+            quantity: 1,
+          },
+        ],
+      },
+    },
   };
   const headers: any = {
     "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
@@ -173,24 +165,18 @@ export const addToCart = async (  merchandiseId , value) => {
     headers: headers,
     body: JSON.stringify(requestBody),
   };
-try {
-  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+  try {
+    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-  const addToCartApiResponse = await res.json();
+    const addToCartApiResponse = await res.json();
 
-  return addToCartApiResponse;
-} catch (error) {
-  return undefined;
-}
- 
+    return addToCartApiResponse;
+  } catch (error) {
+    return undefined;
+  }
 };
 
-export const addToCartLineItem = async (  cartID , merchandiseId) => {
-
-  // console.log("merchandiseId" , merchandiseId , "value" , value);
-
-
-  
+export const addToCartLineItem = async (cartID, merchandiseId) => {
   const requestBody = {
     query: `mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
   cartLinesAdd(cartId: $cartId, lines: $lines) {
@@ -211,16 +197,12 @@ export const addToCartLineItem = async (  cartID , merchandiseId) => {
   }
 }`,
     variables: {
-      
-      
-        "cartId": `${cartID}`,
-        "lines": {
-          "merchandiseId":`${merchandiseId}`,
-          "quantity": 1
-        }
-      
-    
-  },
+      cartId: `${cartID}`,
+      lines: {
+        merchandiseId: `${merchandiseId}`,
+        quantity: 1,
+      },
+    },
   };
   const headers: any = {
     "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
@@ -234,23 +216,18 @@ export const addToCartLineItem = async (  cartID , merchandiseId) => {
     headers: headers,
     body: JSON.stringify(requestBody),
   };
-try {
-  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+  try {
+    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-  const addToCartApiResponse = await res.json();
+    const addToCartApiResponse = await res.json();
 
-  return addToCartApiResponse;
-} catch (error) {
-  return undefined;
-}
- 
+    return addToCartApiResponse;
+  } catch (error) {
+    return undefined;
+  }
 };
 
-
-export const getCartProducts = async ( cartid) => {
-
-
-  
+export const getCartProducts = async (cartid) => {
   const requestBody = {
     query: `query getCart($id: ID!) {
       cart(id: $id) {
@@ -274,7 +251,7 @@ export const getCartProducts = async ( cartid) => {
           }
       }
   }`,
-    variables: { id: `${cartid}`},
+    variables: { id: `${cartid}` },
   };
   const headers: any = {
     "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
@@ -288,22 +265,18 @@ export const getCartProducts = async ( cartid) => {
     headers: headers,
     body: JSON.stringify(requestBody),
   };
-try {
-  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+  try {
+    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-  const getCartProductResponse = await res.json();
+    const getCartProductResponse = await res.json();
 
-  return getCartProductResponse;
-} catch (error) {
-  return undefined;
-}
- 
+    return getCartProductResponse;
+  } catch (error) {
+    return undefined;
+  }
 };
 
-export const getVariantBySelectedOptions = async ( productID) => {
-
-
-  
+export const getVariantBySelectedOptions = async (productID) => {
   const requestBody = {
     query: `query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
       product(id: $productId) {
@@ -314,20 +287,18 @@ export const getVariantBySelectedOptions = async ( productID) => {
           }
       }
   }`,
-    variables: { 
-      
-      "productId": `${productID}`,
-      "selectedOptionInput": [
-          {
-              "name": "Size",
-              "value": "4 US / 4 AU / 35 EU"
-          },
-          {
-              "name": "Color",
-              "value": "Black"
-          }
-      ]
-    
+    variables: {
+      productId: `${productID}`,
+      selectedOptionInput: [
+        {
+          name: "Size",
+          value: "4 US / 4 AU / 35 EU",
+        },
+        {
+          name: "Color",
+          value: "Black",
+        },
+      ],
     },
   };
   const headers: any = {
@@ -342,16 +313,30 @@ export const getVariantBySelectedOptions = async ( productID) => {
     headers: headers,
     body: JSON.stringify(requestBody),
   };
-try {
-  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+  try {
+    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-  const getVariantResponse = await res.json();
+    const getVariantResponse = await res.json();
 
-  return getVariantResponse;
-} catch (error) {
-  return undefined;
-}
- 
+    return getVariantResponse;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const checkoutCartDetails = async (checkoutId: any) => {
+  const requestBody = {
+    query: `query getCart($id: ID!) {
+      cart(id: $id) {
+          id
+          checkoutUrl
+      }
+  }`,
+    variables: { id: checkoutId },
+  };
+  const collectCheck = await checkoutApiCalls(requestBody);
+
+  return collectCheck;
 };
 
 export const updateCartLineItem = async ( createdCartID , cartLineid ) => {

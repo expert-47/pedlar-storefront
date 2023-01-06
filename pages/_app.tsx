@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }: any) {
     Crisp.setZIndex(9999);
     Crisp.load();
   });
+  console.log("abc");
   return (
     <SWRConfig
       value={{

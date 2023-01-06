@@ -1,7 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Divider, Grid, Typography } from "@mui/material";
 import { Slide } from "react-slideshow-image";
+import Link from "next/link";
 
 import "react-slideshow-image/dist/styles.css";
 
@@ -21,6 +23,7 @@ import styles from "styles/product";
 import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { getStoreName } from "utils/getPathName";
 
 const buttonStyle = {
   display: "none",
@@ -32,18 +35,21 @@ const properties = {
 };
 
 const Cart = (props) => {
-  const { newAdditionData } = props;
+  const { newAdditionData, HeaderData, newAdditionData2 } = props;
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
+  const route = useRouter();
+  let path = getStoreName(route);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
   const { classes, cx } = useStyles();
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];
+
   return (
-    <Layout>
+    <Layout storefrontName={HeaderData?.data?.storefrontName}>
       <CustomContainer>
         <Box sx={styles.mainContainer}>
           <Grid container item md={11} lg={9} xl={9}>
@@ -178,14 +184,27 @@ const Cart = (props) => {
                 You might like
               </Typography>
             </Grid>
-            {[0, 0, 0, 0, 0].map((item, index) => {
+            {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
+              let productId = item?.id?.split("gid://shopify/Product/")[1];
               return (
-                <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
-                  <img style={{ width: "95%", height: "70%" }} src={newAdditionData?.featuredImage?.url}></img>
-                  <Typography variant="body1">SISLEY PARIS</Typography>
-                  <Typography variant="subtitle2">Eye Contour Mask</Typography>
-                  <Typography variant="subtitle2">$42</Typography>
-                </Grid>
+                <Link href={{ pathname: `${path}/product/${productId}` }}>
+                  <Grid
+                    key={index}
+                    item
+                    xs={6}
+                    sm={6}
+                    md={2.4}
+                    lg={2.4}
+                    paddingLeft="10px"
+                    paddingBottom="50px"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    <img style={{ width: "95%", height: "70%" }} src={item?.featuredImage?.transformedSrc}></img>
+                    <Typography variant="body1">SISLEY PARIS</Typography>
+                    <Typography variant="subtitle2">Eye Contour Mask</Typography>
+                    <Typography variant="subtitle2">$42</Typography>
+                  </Grid>
+                </Link>
               );
             })}
           </Grid>

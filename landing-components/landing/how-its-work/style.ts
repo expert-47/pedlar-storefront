@@ -4,8 +4,7 @@ export const styles = {
     position: "relative",
   },
   ResponsMainBox: {
-    borderRadius: "16px",
-    padding: "10px",
+    borderRadius: "15px",
   },
   Heading: {
     padding: "50px 0 0 21px",
@@ -22,7 +21,7 @@ export const styles = {
   },
   ResponsText: {
     color: "rgb(249, 246, 242)",
-    paddingTop: "30px",
+    paddingTop: "25px",
   },
   circlecount: {
     width: "45px",
@@ -36,9 +35,9 @@ export const styles = {
     color: "rgba(249, 246, 242, 1)",
   },
   Respocirclecount: {
-    height: "43px",
-    width: "43px",
-    fontSize: "30px",
+    height: { xs: "35px", sm: "50px" },
+    width: { xs: "35px", sm: "50px" },
+    fontSize: { xs: "25px", sm: "30px" },
     borderRadius: "50%",
     border: "1px solid",
     backgroundColor: "transparent",

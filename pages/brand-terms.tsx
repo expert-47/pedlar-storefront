@@ -1,6 +1,6 @@
 import React from "react";
-import BrandTerms from "../../landing-components/static-pages/brandterms/brand-terms";
-import Layout from "../..//landing-components/landinglayout";
+import BrandTerms from "../landing-components/static-pages/brandterms/brand-terms";
+import Layout from "../landing-components/landinglayout";
 
 const brandterms = () => {
   return (

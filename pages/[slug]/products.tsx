@@ -20,11 +20,8 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
   const [applyFiltersState, setApplyFiltersState] = useState(false);
-  
 
   const route = useRouter();
-
-  
 
   const setFiltersValue = (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
     if (BrandsNames?.length > 0) {
@@ -43,34 +40,25 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   };
 
   useEffect(() => {
-
-    if(!(((route.query.dataType === "Brands") || (route.query.dataType === "Shop") ))){
+    if (!(route.query.dataType === "Brands" || route.query.dataType === "Shop")) {
       setProductsData(newAdditionData?.nodes);
       setEndCursorValue(newAdditionData?.pageInfo?.endCursor);
     }
-    
- 
-    if((route.query.dataType === "Brands") || (route.query.dataType === "Shop") ){
-    
-      
-      if(route.query.dataType === "Brands"){
 
+    if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
+      if (route.query.dataType === "Brands") {
         filterValuesForQuery.push({ productVendor: route?.query.itemValue });
       }
-      if(route.query.dataType === "Shop"){
+      if (route.query.dataType === "Shop") {
         filterValuesForQuery.push({ productType: route?.query.itemValue });
-
       }
       getFilteredData();
     }
-
   }, []);
 
   const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
-
-  // getting the filtered data
 
   const getFilteredData = async () => {
     const requestBody = {
@@ -234,7 +222,7 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const { data } = useSWR(address, fetcher);
 
   return (
-    <Layout storefrontName={data?.data?.storefrontName ? data?.data?.storefrontName : ""} slug={slug}>
+    <Layout storefrontName={data?.data?.storefrontName} slug={slug}>
       <Head>
         <title>Pedlar</title>
         <meta property="og:image" content="url img" />
@@ -308,5 +296,11 @@ export async function getServerSideProps(context: any) {
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
   data = data?.data?.collection?.products;
 
-  return { props: { newAdditionData: data, slug, collectionId: HeaderData?.data?.collectionId } };
+  return {
+    props: {
+      newAdditionData: data,
+      slug,
+      collectionId: HeaderData?.data?.collectionId,
+    },
+  };
 }

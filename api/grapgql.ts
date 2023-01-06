@@ -59,7 +59,7 @@ export const getProductDetails = async (productId: string) => {
   return collectionData;
 };
 
-export const getUserDetailByFetchAPICall = async (collectionID:number , numberofProducts : number) => {
+export const getUserDetailByFetchAPICall = async (collectionID: number, numberofProducts: number) => {
   const requestBody = {
     query: `query GetCollection($collectionId: ID!) {
     collection(id: $collectionId) {
@@ -115,7 +115,7 @@ export const getUserDetailByFetchAPICall = async (collectionID:number , numberof
     body: JSON.stringify(requestBody),
   };
 
-  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+  const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
   const collectionData = await res.json();
 

@@ -1,7 +1,10 @@
 import React , {useEffect , useState} from "react";
+
+import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Divider, Grid, Typography } from "@mui/material";
 import { Slide } from "react-slideshow-image";
+import Link from "next/link";
 
 import "react-slideshow-image/dist/styles.css";
 
@@ -23,6 +26,7 @@ import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 import CircularIndeterminate from "components/muiLoader";
 // import { getCartProducts } from "api/grapgql";
+import { getStoreName } from "utils/getPathName";
 
 const buttonStyle = {
   display: "none",
@@ -38,19 +42,17 @@ const properties = {
 // }
 
 const Cart = (props) => {
-  const { newAdditionData } = props;
+  const { newAdditionData, HeaderData, newAdditionData2 } = props;
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [loaderState , setLoaderState ] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
-  // const [cartid , setCartid]  = useState<string | null>("");
-
-  // const [cartData , setCartData] = useState([]);
+  const route = useRouter();
+  let path = getStoreName(route);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-
   const { classes, cx } = useStyles();
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];
 
@@ -228,17 +230,31 @@ const Cart = (props) => {
                   You might like
                 </Typography>
               </Grid>
-              {[0, 0, 0, 0, 0].map((item, index) => {
-                return (
-                  <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
-                    <img style={{ width: "95%", height: "70%" }} src={newAdditionData?.featuredImage?.url}></img>
+              {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
+              let productId = item?.id?.split("gid://shopify/Product/")[1];
+              return (
+                <Link href={{ pathname: `${path}/product/${productId}` }}>
+                  <Grid
+                    key={index}
+                    item
+                    xs={6}
+                    sm={6}
+                    md={2.4}
+                    lg={2.4}
+                    paddingLeft="10px"
+                    paddingBottom="50px"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    <img style={{ width: "95%", height: "70%" }} src={item?.featuredImage?.transformedSrc}></img>
                     <Typography variant="body1">SISLEY PARIS</Typography>
                     <Typography variant="subtitle2">Eye Contour Mask</Typography>
                     <Typography variant="subtitle2">$42</Typography>
                   </Grid>
-                );
-              })}
+                </Link>
+              );
+            })}
             </Grid>
+         
           </Grid>
         </CustomContainer>
         <Divider className={cx(classes.footerDivider)} />

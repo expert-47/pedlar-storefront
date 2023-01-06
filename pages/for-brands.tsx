@@ -1,16 +1,16 @@
 import React from "react";
-import Faq from "../../landing-components/brand-page/faq/Faq";
-import Banner from "../../landing-components/brand-page/mainbanner/Banner";
-import Layout from "../../landing-components/landinglayout";
-import Pointofpurchase from "../../landing-components/brand-page/pointofpurchase/Pointofpurchase";
-import Influncerheading from "../../landing-components/brand-page/influncerheading/Influncerheading";
-import Businesstoday from "../../landing-components/brand-page/businesstoday/Businesstoday";
+import Faq from "../landing-components/brand-page/faq/Faq";
+import Banner from "../landing-components/brand-page/mainbanner/Banner";
+import Layout from "../landing-components/landinglayout";
+import Pointofpurchase from "../landing-components/brand-page/pointofpurchase/Pointofpurchase";
+import Influncerheading from "../landing-components/brand-page/influncerheading/Influncerheading";
+import Businesstoday from "../landing-components/brand-page/businesstoday/Businesstoday";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import orangetop from "../../public/top-mesh.png";
-import orangebottom from "../../public/bottom-mesh.png";
-import Picturecarousel from "../../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../../landing-components/brand-page/how-its-work/how-its-work";
+import orangetop from "../public/top-mesh.png";
+import orangebottom from "../public/bottom-mesh.png";
+import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
+import Howitswork from "../landing-components/brand-page/how-its-work/how-its-work";
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",

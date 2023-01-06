@@ -31,38 +31,8 @@ export const Home = (props: any) => {
       >
         <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
 
-        <Gallery
-          newAdditionData={props?.newAdditionData}
-          // position = {index === 0 ? true : index % 2 === 0 ? true : false }
-        />
+        <Gallery newAdditionData={props?.newAdditionData} />
 
-        {/* <Gallery
-          girdProps={{
-            flexDirection: {
-              lg: "row-reverse",
-              md: "row-reverse",
-              sm: "column-reverse",
-              xs: "column-reverse",
-            },
-          }}
-          data={gallery1}
-          newAdditionData={props?.newAdditionData}
-        />
-        <Gallery
-          data={gallery2}
-          girdProps={{
-            flexDirection: {
-              lg: "row",
-              md: "row",
-              sm: "column-reverse",
-              xs: "column-reverse",
-            },
-            marginTop: 40,
-          }}
-          columnSpacing={0}
-          newAdditionData={props?.newAdditionData?.length > 5 ? props?.newAdditionData.slice(5,10) : "null"}
-
-        /> */}
         <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles />
       </Box>

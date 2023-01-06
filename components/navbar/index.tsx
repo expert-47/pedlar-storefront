@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import useSwr from "swr";
 
@@ -15,8 +15,9 @@ import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } fr
 import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
+import { useRouter } from "next/router";
 
-export default function Navbar(props:any) {
+export default function Navbar(props: any) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
@@ -27,6 +28,8 @@ export default function Navbar(props:any) {
   };
   const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
   const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
+  const route = useRouter();
+  let path = route.asPath.split("/")[1];
 
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
@@ -46,29 +49,29 @@ export default function Navbar(props:any) {
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
-                  <Link href={`/${props?.slug}`}>
+                  <Link href={`/${path}`}>
                     <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
                   </Link>
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
-                  <Link href={`/${props?.slug}`}>
+                  <Link href={`/${path}`}>
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
                   <DropDownMenu
                     loading={!data}
                     type={"Brands"}
-                    data={data ? data.data.map((item:any) => item.vendor) : []}
+                    data={data ? data.data.map((item: any) => item.vendor) : []}
                   />
 
                   <DropDownMenu
                     loading={!shopList}
                     type={"Shop"}
-                    data={shopList ? shopList.data.map((item:any) => item.productType) : []}
+                    data={shopList ? shopList.data.map((item: any) => item.productType) : []}
                   />
 
-                  <Link href={`/${props?.slug}/faq`}>
+                  <Link href={`/${path}/faq`}>
                     <Button color="inherit" sx={styles.tabButton}>
                       FAQ
                     </Button>

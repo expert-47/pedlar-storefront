@@ -70,7 +70,7 @@ const slugValue = router.query.slug;
       });
       
     }
-    cartData.map((item )=>{
+    cartData?.map((item )=>{
       if(item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id){
         console.log("ffff");
        

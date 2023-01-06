@@ -1,15 +1,15 @@
 import React from "react";
-import Banner from "../../landing-components/creator-page/mainbanner/Banner";
-import Husttle from "../../landing-components/creator-page/husttle/Husttle";
-import Layout from "../../landing-components/landinglayout";
-import Company from "../../landing-components/creator-page/comapny/Company";
-import Faq from "../../landing-components/creator-page/faq/Faq";
-import Storefree from "../../landing-components/creator-page/storefree/Storefree";
+import Banner from "../landing-components/creator-page/mainbanner/Banner";
+import Husttle from "../landing-components/creator-page/husttle/Husttle";
+import Layout from "../landing-components/landinglayout";
+import Company from "../landing-components/creator-page/comapny/Company";
+import Faq from "../landing-components/creator-page/faq/Faq";
+import Storefree from "../landing-components/creator-page/storefree/Storefree";
 import Box from "@mui/material/Box";
 import Image from "next/image";
-import bluemeshbrands from "../../public/blue-meshh.png";
-import Picturecarousel from "../../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../../landing-components/creator-page/how-its-work/how-its-work";
+import bluemeshbrands from "../public/blue-meshh.png";
+import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
+import Howitswork from "../landing-components/creator-page/how-its-work/how-its-work";
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",

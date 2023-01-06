@@ -16,10 +16,11 @@ interface Props {
 const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
-  
+  let path = route.asPath.split("/")[1];
 
   return (
-    <Link href={`${route.asPath}/product/${productId}`}>
+    <Link href={{ pathname: `/${path}/product/${productId}` }}>
+      {/* {`${route.asPath}/product/${productId}`} */}
       <Box
         style={{
           cursor: "pointer",

@@ -20,11 +20,8 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
   const [applyFiltersState, setApplyFiltersState] = useState(false);
-  
 
   const route = useRouter();
-
-  
 
   const setFiltersValue = (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
     if (BrandsNames?.length > 0) {
@@ -43,27 +40,20 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   };
 
   useEffect(() => {
-
-    if(!(((route.query.dataType === "Brands") || (route.query.dataType === "Shop") ))){
+    if (!(route.query.dataType === "Brands" || route.query.dataType === "Shop")) {
       setProductsData(newAdditionData?.nodes);
       setEndCursorValue(newAdditionData?.pageInfo?.endCursor);
     }
-    
- 
-    if((route.query.dataType === "Brands") || (route.query.dataType === "Shop") ){
-    
-      
-      if(route.query.dataType === "Brands"){
 
+    if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
+      if (route.query.dataType === "Brands") {
         filterValuesForQuery.push({ productVendor: route?.query.itemValue });
       }
-      if(route.query.dataType === "Shop"){
+      if (route.query.dataType === "Shop") {
         filterValuesForQuery.push({ productType: route?.query.itemValue });
-
       }
       getFilteredData();
     }
-
   }, []);
 
   const { classes, cx } = useStyles();
@@ -308,5 +298,11 @@ export async function getServerSideProps(context: any) {
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
   data = data?.data?.collection?.products;
 
-  return { props: { newAdditionData: data, slug, collectionId: HeaderData?.data?.collectionId } };
+  return {
+    props: {
+      newAdditionData: data,
+      slug,
+      collectionId: HeaderData?.data?.collectionId,
+    },
+  };
 }

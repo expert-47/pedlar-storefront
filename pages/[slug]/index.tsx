@@ -20,20 +20,6 @@ export default function index({ HeaderData, newAdditionData, slug }: any) {
       ) : (
         <Custom404 />
       )}
-
-      {/* <Layout
-      seo={{
-        title: "Pedlar | " + HeaderData?.data?.storefrontName,
-        description: "Hi honeys! I've worked closely with some of my favorite brands to curate my own store!",
-      }}
-      storefrontName={HeaderData?.data?.storefrontName}
-      slug={slug}
-    >
-      
-      <Home HeaderData={HeaderData?.data} newAdditionData={newAdditionData} /> 
-      
-     
-    </Layout> */}
     </>
   );
 }

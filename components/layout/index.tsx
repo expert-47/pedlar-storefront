@@ -7,14 +7,15 @@ interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
   slug: string;
+  productsPage:boolean;
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo, storefrontName, slug } = props;
+  const { children, seo, storefrontName, slug , productsPage } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        <Navbar storefrontName={storefrontName} slug={slug} />
+        <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} />
       </header>
       <main style={{ paddingTop: "115px" }}>{children}</main>
       <footer>

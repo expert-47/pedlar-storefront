@@ -69,7 +69,7 @@ const Gridbox = () => {
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "48px", sm: "54px", xs: "30px" }}
-            fontWeight={"700"}
+            fontWeight={"600"}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
             paddingBottom={{ md: "100px", xs: "50px" }}
           >

@@ -91,7 +91,11 @@ const Responsivehowitworks = () => {
           >
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Sync your Shopify store to Pedlar in two minutes
                 </Typography>
               </Grid>
@@ -107,7 +111,11 @@ const Responsivehowitworks = () => {
             </SwiperSlide>
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Creators add your products to their stores
                 </Typography>
               </Grid>
@@ -123,7 +131,11 @@ const Responsivehowitworks = () => {
             </SwiperSlide>
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   When sales are made, you ship the products directly to customers
                 </Typography>
               </Grid>
@@ -139,7 +151,11 @@ const Responsivehowitworks = () => {
             </SwiperSlide>
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Only pay commision on sales made
                 </Typography>
               </Grid>

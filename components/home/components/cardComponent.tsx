@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Typography, Grid, Box } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { getStoreName } from "utils/getPathName";
 interface Props {
   name: string;
   type: string;
@@ -16,9 +17,10 @@ interface Props {
 const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
+  let path = getStoreName(route);
 
   return (
-    <Link href={`${route.asPath}/product/${productId}`}>
+    <Link href={{ pathname: `${path}/product/${productId}` }}>
       <Box
         style={{
           cursor: "pointer",

@@ -5,9 +5,44 @@ import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
 import { data } from "components/checkoutOrder/data";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getCartProducts } from "api/grapgql";
+import { checkoutCartDetails } from "../../api/grapgql";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
+  const [cartid, setCartid] = useState<string | null>("");
+
+  const [cartData, setCartData] = useState([]);
+
+  const [checkoutData, setCheckoutData] = useState();
+  const apiForCheckout = async () => {
+    if (typeof window !== "undefined") {
+      const createdCartID = localStorage.getItem("cartID");
+      let response = await checkoutCartDetails(createdCartID);
+      window.open(response?.data?.cart?.checkoutUrl);
+    }
+  };
+
+  // useEffect(() => {
+  //   apiForCheckout();
+  // }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const cartID = localStorage.getItem("cartID");
+
+      setCartid(cartID);
+
+      const res = getCartProducts(cartID).then((response) => {
+        // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
+        setCartData(response?.data?.cart?.lines?.nodes);
+      });
+
+      // }
+    }
+  }, []);
+  // getting cart products
 
   const paperStyle = {
     color: "black",
@@ -45,7 +80,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography sx={styles.cartDrawerTypo}>Cart (3)</Typography>
+          <Typography sx={styles.cartDrawerTypo}>Cart ({cartData?.length})</Typography>
           <CloseIcon
             onClick={() => {
               toggleDrawer(false);
@@ -63,9 +98,22 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           paddingY={"40px"}
           sx={styles.cartDrawerSlider}
         >
-          {data.map((item) => (
-            <CheckoutOrder image={item.image} name={item.name} price={item.price} />
-          ))}
+          {/* {data.map((item) => ( */}
+
+          {cartData?.map((item, index) => {
+            return (
+              <CheckoutOrder
+                key={index}
+                image={item?.merchandise?.image?.url}
+                name={item?.merchandise?.title}
+                price={"default = 50$"}
+                quantity={item?.quantity}
+              />
+            );
+          })}
+          {/* <CheckoutOrder image={cartData?.image?.url} name={cartData?.title} price={"default = 50$"}  /> */}
+          {/* price={item.price} */}
+          {/* // ))} */}
         </Grid>
       </Grid>
 
@@ -92,9 +140,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           </Grid>
           <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
-        <Link href="/checkout">
-          <Button sx={styles.checkoutButton}>Checkout</Button>
-        </Link>
+
+        <Button
+          // href={checkoutData?.data?.cart?.checkoutUrl}
+          // disabled={cartData?.length > 0 ? false : true}
+          sx={styles.checkoutButton}
+          onClick={apiForCheckout}
+        >
+          Checkout
+        </Button>
+
+        {/* <Link href="/checkout">
+          <Button sx={styles.checkoutButton} >Checkout</Button>
+        </Link> */}
       </Grid>
     </Drawer>
   );

@@ -9,10 +9,6 @@ import emailjs from "@emailjs/browser";
 const Creatorpopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
   const form = useRef();
-  // const formsubmission = () => {
-  //   setSubmitForm(false);
-  //   props?.isSecondModalActive(false);
-  // };
   const formsubmission = (e: any) => {
     setSubmitForm(false);
     props?.isSecondModalActive(false);

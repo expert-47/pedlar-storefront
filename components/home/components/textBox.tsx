@@ -10,8 +10,8 @@ import Image from "next/image";
 const TextBox = (props) => {
   const router = useRouter();
   const slug = router?.query;
-
   const theme = useTheme();
+
   return (
     <Box
       style={{

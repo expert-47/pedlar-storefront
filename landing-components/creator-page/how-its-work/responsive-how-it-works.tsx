@@ -36,7 +36,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 1 ? "white" : "tranparent",
                   color: updatedata === 1 ? "#1c1b1f" : "white",
                 }}
-                
                 fontWeight={600}
               >
                 1
@@ -86,70 +85,86 @@ const Responsivehowitworks = () => {
               setUpdateData(index.activeIndex + 1);
             }}
           >
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                  <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
-                    Select products from your favourite brands
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image
-                    src={HomeSecImage1}
-                    alt="home-sec5-img1"
-                    style={{ borderRadius: "16px" }}
-                    loading="lazy"
-                    placeholder="blur"
-                  />
-                </Grid>
-              </SwiperSlide>
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                  <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
-                    Personalise your store to represent your aesthetic
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image
-                    src={HomeSecImage2}
-                    alt="home-sec5-img2"
-                    style={{ borderRadius: "16px" }}
-                    loading="lazy"
-                    placeholder="blur"
-                  />
-                </Grid>
-              </SwiperSlide>
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                  <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
-                    Share with your community, wherever they are
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image
-                    src={HomeSecImage3}
-                    alt="home-sec5-img3"
-                    style={{ borderRadius: "16px" }}
-                    loading="lazy"
-                    placeholder="blur"
-                  />
-                </Grid>
-              </SwiperSlide>
-              <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                  <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
-                    Sit back and earn. Pedlar handles customer support, shipping and inventory
-                  </Typography>
-                </Grid>
-                <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
-                  <Image
-                    src={HomeSecImage4}
-                    alt="home-sec5-img4"
-                    style={{ borderRadius: "16px" }}
-                    loading="lazy"
-                    placeholder="blur"
-                  />
-                </Grid>
-              </SwiperSlide>
+            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
+                  Select products from your favourite brands
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+                <Image
+                  src={HomeSecImage1}
+                  alt="home-sec5-img1"
+                  style={{ borderRadius: "16px" }}
+                  loading="lazy"
+                  placeholder="blur"
+                />
+              </Grid>
+            </SwiperSlide>
+            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
+                  Personalise your store to represent your aesthetic
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+                <Image
+                  src={HomeSecImage2}
+                  alt="home-sec5-img2"
+                  style={{ borderRadius: "16px" }}
+                  loading="lazy"
+                  placeholder="blur"
+                />
+              </Grid>
+            </SwiperSlide>
+            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
+                  Share with your community, wherever they are
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+                <Image
+                  src={HomeSecImage3}
+                  alt="home-sec5-img3"
+                  style={{ borderRadius: "16px" }}
+                  loading="lazy"
+                  placeholder="blur"
+                />
+              </Grid>
+            </SwiperSlide>
+            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
+                  Sit back and earn. Pedlar handles customer support, shipping and inventory
+                </Typography>
+              </Grid>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+                <Image
+                  src={HomeSecImage4}
+                  alt="home-sec5-img4"
+                  style={{ borderRadius: "16px" }}
+                  loading="lazy"
+                  placeholder="blur"
+                />
+              </Grid>
+            </SwiperSlide>
           </Swiper>
         </Grid>
       </Box>

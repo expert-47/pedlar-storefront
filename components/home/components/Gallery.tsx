@@ -9,7 +9,7 @@ interface Props {
   newAdditionData?: any[];
   // position:boolean;
 }
-const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
+const Gallery = ({ newAdditionData, columnSpacing = 10, storefrontName }: Props) => {
   return (
     <CustomGrid
       style={{
@@ -32,6 +32,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                 }
                 image={item?.featuredImage?.transformedSrc}
                 id={item?.id}
+                storefrontName={storefrontName}
               />
             </Grid>
           );

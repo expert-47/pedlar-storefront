@@ -8,8 +8,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import styles from "styles/product";
 
 function Options(props) {
-  const [size, setSize] = useState();
-  const [color, setColor] = useState();
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
 
   const { newAdditionData } = props;
 
@@ -33,7 +33,7 @@ function Options(props) {
           >
             {newAdditionData?.options[0]?.values?.map((val: any, index: any) => {
               return (
-                <MenuItem key={index} value={val}>
+                <MenuItem key={index} value={size}>
                   {val}
                 </MenuItem>
               );
@@ -54,7 +54,7 @@ function Options(props) {
           >
             {newAdditionData?.options[1]?.values?.map((val: any, index: any) => {
               return (
-                <MenuItem key={index} value={val}>
+                <MenuItem key={index} value={color}>
                   {val}
                 </MenuItem>
               );

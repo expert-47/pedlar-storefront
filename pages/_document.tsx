@@ -1,6 +1,5 @@
 // pages/_document.ts
 
-import { withEmotionCache } from "./_app";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
@@ -23,4 +22,4 @@ class MyDocument extends Document {
   }
 }
 
-export default withEmotionCache(MyDocument);
+export default MyDocument;

@@ -15,11 +15,9 @@ interface Props {
 }
 
 const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
-
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
   let path = getStoreName(route);
-  console.log("path", path);
 
   return (
     <Link href={{ pathname: `${path}/product/${productId}` }}>

@@ -1,9 +1,10 @@
+import { useState, useEffect } from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
-import { getUserDetailByFetchAPICall } from "api/grapgql";
+import { getUserDetailByFetchAPICall, checkoutCartDetails } from "api/grapgql";
 import Custom404 from "../404";
 
-export default function index({ HeaderData, newAdditionData, slug }: any) {
+export default function index({ HeaderData, newAdditionData, slug, response }: any) {
   return (
     <>
       {HeaderData?.data?.storefrontName ? (
@@ -35,5 +36,11 @@ export async function getServerSideProps(context: any) {
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
   data = data?.data?.collection?.products?.nodes;
 
-  return { props: { HeaderData: HeaderData ? HeaderData : [], newAdditionData: data ? data : [], slug: slug || [] } };
+  return {
+    props: {
+      HeaderData: HeaderData ? HeaderData : [],
+      newAdditionData: data ? data : [],
+      slug: slug || [],
+    },
+  };
 }

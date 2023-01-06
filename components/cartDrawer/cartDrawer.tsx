@@ -5,42 +5,44 @@ import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
 import { data } from "components/checkoutOrder/data";
 import Link from "next/link";
-import { useEffect , useState } from "react";
+import { useEffect, useState } from "react";
 import { getCartProducts } from "api/grapgql";
+import { checkoutCartDetails } from "../../api/grapgql";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
-  const [cartid , setCartid]  = useState<string | null>("");
+  const [cartid, setCartid] = useState<string | null>("");
 
-  const [cartData , setCartData] = useState([]);
-  
+  const [cartData, setCartData] = useState([]);
 
-  useEffect(()=>{
+  const [checkoutData, setCheckoutData] = useState();
+  const apiForCheckout = async () => {
+    if (typeof window !== "undefined") {
+      const createdCartID = localStorage.getItem("cartID");
+      let response = await checkoutCartDetails(createdCartID);
+      window.open(response?.data?.cart?.checkoutUrl);
+    }
+  };
 
-    // const res =  getCartProducts(cartid);
-    // console.log("resss" , res);
-    if(typeof window !== "undefined" ){
+  // useEffect(() => {
+  //   apiForCheckout();
+  // }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
       const cartID = localStorage.getItem("cartID");
-     
-      setCartid(cartID);
-      // if(cartID){
-    
-        const res =  getCartProducts(cartID).then((response)=>{
-          console.log("resss" , response?.data?.cart?.lines?.nodes[0].merchandise);
-          // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
-          setCartData(response?.data?.cart?.lines?.nodes);
 
-        });
+      setCartid(cartID);
+
+      const res = getCartProducts(cartID).then((response) => {
+        // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
+        setCartData(response?.data?.cart?.lines?.nodes);
+      });
 
       // }
-      
     }
-    console.log("cartData" , cartData);
-    
-    
-    },[]);
-  // getting cart products 
-  console.log("cartData" , cartData);
+  }, []);
+  // getting cart products
 
   const paperStyle = {
     color: "black",
@@ -98,15 +100,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         >
           {/* {data.map((item) => ( */}
 
-
-          {cartData?.map((item , index)=>{
+          {cartData?.map((item, index) => {
             return (
-            <CheckoutOrder  key={index} image={item?.merchandise?.image?.url} name={item?.merchandise?.title}  price={"default = 50$"} quantity={item?.quantity} />
-
+              <CheckoutOrder
+                key={index}
+                image={item?.merchandise?.image?.url}
+                name={item?.merchandise?.title}
+                price={"default = 50$"}
+                quantity={item?.quantity}
+              />
             );
           })}
-            {/* <CheckoutOrder image={cartData?.image?.url} name={cartData?.title} price={"default = 50$"}  /> */}
-            {/* price={item.price} */}
+          {/* <CheckoutOrder image={cartData?.image?.url} name={cartData?.title} price={"default = 50$"}  /> */}
+          {/* price={item.price} */}
           {/* // ))} */}
         </Grid>
       </Grid>
@@ -134,9 +140,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           </Grid>
           <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
-        <Link href="/checkout">
-          <Button sx={styles.checkoutButton} disabled={cartData?.length > 0 ? false : true}>Checkout</Button>
-        </Link>
+
+        <Button
+          // href={checkoutData?.data?.cart?.checkoutUrl}
+          // disabled={cartData?.length > 0 ? false : true}
+          sx={styles.checkoutButton}
+          onClick={apiForCheckout}
+        >
+          Checkout
+        </Button>
+
+        {/* <Link href="/checkout">
+          <Button sx={styles.checkoutButton} >Checkout</Button>
+        </Link> */}
       </Grid>
     </Drawer>
   );

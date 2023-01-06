@@ -10,6 +10,7 @@ interface Props {
   name: string;
   price: string;
   image: string;
+  quantity:number;
 }
 
 const CheckoutOrder = (props: Props) => {
@@ -29,9 +30,10 @@ const CheckoutOrder = (props: Props) => {
             width: "130px",
             height: "130px",
             cursor: "pointer",
+            marginRight:"10px",
           }}
         >
-          <img src={props.image} />
+          <img src={props?.image} width="130px" height={"130px"}  />
           {/* <Image src={props.image} width={130} height={130} layout="responsive" objectFit="fill"></Image> */}
         </Box>
         <Box
@@ -58,7 +60,7 @@ const CheckoutOrder = (props: Props) => {
               }}
             >
               <RemoveIcon sx={styles.addRemoveIcon} />
-              <Typography sx={styles.addRemoveText}>1</Typography>
+              <Typography sx={styles.addRemoveText}>{props?.quantity}</Typography>
               <AddIcon sx={styles.addRemoveIcon} />
             </Box>
             <Button sx={styles.removeButton}>Remove</Button>

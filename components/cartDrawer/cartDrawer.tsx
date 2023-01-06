@@ -5,9 +5,42 @@ import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
 import { data } from "components/checkoutOrder/data";
 import Link from "next/link";
+import { useEffect , useState } from "react";
+import { getCartProducts } from "api/grapgql";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
+  const [cartid , setCartid]  = useState<string | null>("");
+
+  const [cartData , setCartData] = useState([]);
+  
+
+  useEffect(()=>{
+
+    // const res =  getCartProducts(cartid);
+    // console.log("resss" , res);
+    if(typeof window !== "undefined" ){
+      const cartID = localStorage.getItem("cartID");
+     
+      setCartid(cartID);
+      // if(cartID){
+    
+        const res =  getCartProducts(cartID).then((response)=>{
+          console.log("resss" , response?.data?.cart?.lines?.nodes[0].merchandise);
+          // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
+          setCartData(response?.data?.cart?.lines?.nodes);
+
+        });
+
+      // }
+      
+    }
+    console.log("cartData" , cartData);
+    
+    
+    },[]);
+  // getting cart products 
+  console.log("cartData" , cartData);
 
   const paperStyle = {
     color: "black",
@@ -45,7 +78,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography sx={styles.cartDrawerTypo}>Cart (3)</Typography>
+          <Typography sx={styles.cartDrawerTypo}>Cart ({cartData?.length})</Typography>
           <CloseIcon
             onClick={() => {
               toggleDrawer(false);
@@ -63,9 +96,18 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           paddingY={"40px"}
           sx={styles.cartDrawerSlider}
         >
-          {data.map((item) => (
-            <CheckoutOrder image={item.image} name={item.name} price={item.price} />
-          ))}
+          {/* {data.map((item) => ( */}
+
+
+          {cartData?.map((item , index)=>{
+            return (
+            <CheckoutOrder key={index} image={item?.merchandise?.image?.url} name={item?.merchandise?.title}  price={"default = 50$"} quantity={item?.quantity} />
+
+            );
+          })}
+            {/* <CheckoutOrder image={cartData?.image?.url} name={cartData?.title} price={"default = 50$"}  /> */}
+            {/* price={item.price} */}
+          {/* // ))} */}
         </Grid>
       </Grid>
 

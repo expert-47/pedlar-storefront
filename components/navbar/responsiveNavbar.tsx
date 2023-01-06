@@ -7,7 +7,14 @@ import PedlarDrawer from "./components/padlarDrawer";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";
 
-export const ResponsiveNavbar = () => {
+interface Props {
+  storefrontName: string;
+
+}
+
+export const ResponsiveNavbar = (props : Props) => {
+
+  const {storefrontName } = props;
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
   const [openCart, toggleCart] = useState(false);
@@ -32,7 +39,7 @@ export const ResponsiveNavbar = () => {
           <Link href="/">
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
-          <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
+          <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
         <IconButton onClick={onClickCart} sx={styles.shoppingCartIcon}>
           <img src="/cart.png" height="19.48px" width="19.48px" />

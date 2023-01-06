@@ -44,7 +44,7 @@ export default function Navbar(props: any) {
 
         <CustomContainer>
           {!isMatch ? (
-            <ResponsiveNavbar />
+            <ResponsiveNavbar storefrontName={props?.storefrontName} />
           ) : (
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>

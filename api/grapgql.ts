@@ -338,3 +338,63 @@ export const checkoutCartDetails = async (checkoutId: any) => {
 
   return collectCheck;
 };
+
+export const updateCartLineItem = async ( createdCartID , cartLineid ) => {
+
+
+  
+  const requestBody = {
+    query: `mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+      cartLinesUpdate(cartId: $cartId, lines: $lines) {
+        cart {
+          id
+          lines(first: 20) {
+                nodes {
+                    id
+                    quantity
+                }
+          }
+    
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }`,
+    variables: { 
+      
+      "cartId": `${createdCartID}`,
+      "lines": {
+        "id": `${cartLineid}`,
+        "quantity": 2
+      }
+    
+    },
+  };
+  const headers: any = {
+    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+    "Content-Type": "application/json",
+    Connection: "keep-alive",
+    "Accept-Encoding": "gzip, deflate, br",
+    Accept: "*/*",
+  };
+  const options = {
+    method: "POST",
+    headers: headers,
+    body: JSON.stringify(requestBody),
+  };
+try {
+  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+
+  const updateCartResponse = await res.json();
+
+  return updateCartResponse;
+} catch (error) {
+  return undefined;
+}
+ 
+};
+
+
+

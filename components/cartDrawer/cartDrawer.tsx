@@ -20,14 +20,13 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     if (typeof window !== "undefined") {
       const createdCartID = localStorage.getItem("cartID");
       let response = await checkoutCartDetails(createdCartID);
-
-      setCheckoutData(response);
+      window.open(response?.data?.cart?.checkoutUrl);
     }
   };
 
-  useEffect(() => {
-    apiForCheckout();
-  }, []);
+  // useEffect(() => {
+  //   apiForCheckout();
+  // }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -141,11 +140,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           </Grid>
           <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
-        <Link href="/">
-          <Button href={checkoutData?.data?.cart?.checkoutUrl} sx={styles.checkoutButton} target="_blank">
-            Checkout
-          </Button>
-        </Link>
+
+        <Button
+          // href={checkoutData?.data?.cart?.checkoutUrl}
+          // disabled={cartData?.length > 0 ? false : true}
+          sx={styles.checkoutButton}
+          onClick={apiForCheckout}
+        >
+          Checkout
+        </Button>
+
+        {/* <Link href="/checkout">
+          <Button sx={styles.checkoutButton} >Checkout</Button>
+        </Link> */}
       </Grid>
     </Drawer>
   );

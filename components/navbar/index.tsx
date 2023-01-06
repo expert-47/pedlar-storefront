@@ -59,7 +59,11 @@ export default function Navbar(props: any) {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-                  <DropDownMenu
+
+                {
+                  props?.productsPage === true ? null :  (
+                    <>
+                    <DropDownMenu
                     loading={!data}
                     type={"Brands"}
                     data={data ? data.data.map((item: any) => item.vendor) : []}
@@ -70,6 +74,10 @@ export default function Navbar(props: any) {
                     type={"Shop"}
                     data={shopList ? shopList.data.map((item: any) => item.productType) : []}
                   />
+                  </>
+                  )
+                }
+                  
 
                   <Link href={`/${path}/faq`}>
                     <Button color="inherit" sx={styles.tabButton}>

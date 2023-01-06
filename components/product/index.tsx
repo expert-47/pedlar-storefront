@@ -181,7 +181,7 @@ const Cart = (props) => {
             {[0, 0, 0, 0, 0].map((item, index) => {
               return (
                 <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
-                  <Image width={"211"} height={199} src={newAdditionData?.featuredImage?.url} />
+                  <img style={{ width: "95%", height: "70%" }} src={newAdditionData?.featuredImage?.url}></img>
                   <Typography variant="body1">SISLEY PARIS</Typography>
                   <Typography variant="subtitle2">Eye Contour Mask</Typography>
                   <Typography variant="subtitle2">$42</Typography>

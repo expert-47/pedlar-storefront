@@ -5,11 +5,14 @@ import { addToCart } from "api/grapgql";
 import { useRouter } from "next/router";
 import { useEffect , useState} from "react";
 import { getVariantBySelectedOptions , addToCartLineItem } from "api/grapgql";
-import { getCartProducts } from "api/grapgql";
+import { getCartProducts , updateCartLineItem} from "api/grapgql";
+import { debug } from "console";
 
 const Action = (props) => {
   const { newAdditionData , changeLoaderState } = props;
   const [cartData , setCartData] = useState([]);
+  const [updateCartState , setUpdateCartState] = useState(false);
+  const [cartLineid , setCartLineid] = useState("");
 
   const router = useRouter();
  
@@ -57,26 +60,60 @@ const slugValue = router.query.slug;
         localStorage.setItem("cartID" , res?.data?.cartCreate?.cart?.id);
         changeLoaderState(false);
        });
+       debugger;
    
     }
    
-    else{
+    if  (!(createdCartID === null ||  createdCartID === undefined)){
 
-      const addCartLineItemResponse = await addToCartLineItem(createdCartID , newAdditionData?.variantBySelectedOptions?.id ).then((res)=>{
+
+     
+
+      cartData?.some((item )=>{
+
+        if(item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id){
+        const updateCartResponse =  updateCartLineItem(createdCartID , item?.id ).then((res)=>{
+   console.log("resmm" , res);
+          setUpdateCartState(true);
         changeLoaderState(false);
-        console.log("createdCartID" , createdCartID );
 
-        console.log("addCartLineItemResponse" , res?.data);
+          return true;
+          });
+
+          // setCartLineid(item?.id);
+         debugger;
+          
+        }
+        else if (!(item?.merchandise?.id !== newAdditionData?.variantBySelectedOptions?.id)){
+          debugger;
+          const addCartLineItemResponse =  addToCartLineItem(createdCartID , newAdditionData?.variantBySelectedOptions?.id ).then((res)=>{
+            changeLoaderState(false);
+            console.log("createdCartID" , createdCartID );
+    
+            console.log("addCartLineItemResponse" , res?.data);
+            return true;
+          });
+        }
+        
       });
+      // if(updateCartState === true){
+      //   const updateCartResponse = await updateCartLineItem(createdCartID , cartLineid );
+      //   debugger
+      // }
+      // if(updateCartState === false){
+      //   debugger;
+      //   const addCartLineItemResponse = await addToCartLineItem(createdCartID , newAdditionData?.variantBySelectedOptions?.id ).then((res)=>{
+      //     changeLoaderState(false);
+      //     console.log("createdCartID" , createdCartID );
+  
+      //     console.log("addCartLineItemResponse" , res?.data);
+      //   });
+      // }
+
+     
       
     }
-    cartData?.map((item )=>{
-      if(item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id){
-        console.log("ffff");
-       
-        
-      }
-    });
+ 
    
   };
 

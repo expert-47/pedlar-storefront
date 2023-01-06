@@ -4,7 +4,7 @@ import Layout from "components/layout";
 import { Grid, Button, Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
 import axios from "axios";
 import useSWR from "swr";
@@ -55,8 +55,6 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
       getFilteredData();
     }
   }, []);
-
-  const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
 
@@ -277,7 +275,7 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
           </Button>
         )}
       </Grid>
-      <Divider className={cx(classes.footerDivider)} />
+      <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>
   );

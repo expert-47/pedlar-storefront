@@ -1,8 +1,4 @@
-import { makeStyles } from "tss-react/mui";
-export const useStyles = makeStyles({
-  name: "ComponentFooter",
-  uniqId: "footerComponent",
-})((theme) => ({
+export const styles = {
   container: {
     display: "flex",
     justifyContent: "space-between",
@@ -11,19 +7,19 @@ export const useStyles = makeStyles({
     paddingBottom: "4px",
     paddingRight: "30px",
     alignItems: "center",
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: "primary.main",
   },
   footerImage: {
     height: "24px",
     width: "35px",
     padding: "2px",
+    paddingLeft: "4px",
     lineHeight: "16px",
   },
   footerText: {
     fontWeight: "400",
     lineHeight: "16px",
     letterSpacing: "0.4px",
-    color: theme.palette.primary.contrastText,
+    color: "primary.contrastText",
   },
-}));
-export const style = {};
+};

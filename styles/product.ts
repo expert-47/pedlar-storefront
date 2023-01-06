@@ -96,6 +96,11 @@ const styles = {
     textAlign: "center",
   },
   text: { paddingBottom: "20px" },
+  footerDivider: {
+    marginTop: "50px",
+    marginBottom: "10px",
+    height: "1px",
+  },
 };
 
 export default styles;

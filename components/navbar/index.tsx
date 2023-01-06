@@ -5,7 +5,7 @@ import useSwr from "swr";
 import { Stack } from "@mui/system";
 import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
-
+import Image from "next/image";
 // import SearchIcon from "@mui/icons-material/Search";
 // import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
@@ -49,8 +49,14 @@ export default function Navbar(props: any) {
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
-                  <Link href={`/${path}`}>
-                    <img src="/pedlar.png" alt="No Image Found" style={{ height: "25px", cursor: "pointer" }} />
+                  <Link href={`/${props?.slug}`}>
+                    <Image
+                      src="/pedlar.png"
+                      alt="No Image Found"
+                      height="22px"
+                      width="68px"
+                      style={{ cursor: "pointer" }}
+                    />
                   </Link>
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
@@ -59,25 +65,21 @@ export default function Navbar(props: any) {
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
-
-                {
-                  props?.productsPage === true ? null :  (
+                  {props?.productsPage === true ? null : (
                     <>
-                    <DropDownMenu
-                    loading={!data}
-                    type={"Brands"}
-                    data={data ? data.data.map((item: any) => item.vendor) : []}
-                  />
+                      <DropDownMenu
+                        loading={!data}
+                        type={"Brands"}
+                        data={data ? data.data.map((item: any) => item.vendor) : []}
+                      />
 
-                  <DropDownMenu
-                    loading={!shopList}
-                    type={"Shop"}
-                    data={shopList ? shopList.data.map((item: any) => item.productType) : []}
-                  />
-                  </>
-                  )
-                }
-                  
+                      <DropDownMenu
+                        loading={!shopList}
+                        type={"Shop"}
+                        data={shopList ? shopList.data.map((item: any) => item.productType) : []}
+                      />
+                    </>
+                  )}
 
                   <Link href={`/${path}/faq`}>
                     <Button color="inherit" sx={styles.tabButton}>
@@ -85,10 +87,10 @@ export default function Navbar(props: any) {
                     </Button>
                   </Link>
                   <IconButton sx={styles.iconColor}>
-                    <img src="/search.png" height="19.48px" width="19.48px" />
+                    <Image src="/search.png" height="19.48px" width="19.48px" />
                   </IconButton>
                   <IconButton sx={styles.iconColor}>
-                    <img src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
+                    <Image src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
                   </IconButton>
                 </Stack>
                 <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />

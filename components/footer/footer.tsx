@@ -3,11 +3,10 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Divider, useTheme } from "@mui/material";
 import { useState } from "react";
-import { useStyles } from "styles/footer";
+import { styles } from "styles/footer";
 import Text from "components/customText";
 import Image from "next/image";
 const Footer = () => {
-  const { classes, cx } = useStyles();
   const [date] = useState(new Date());
   const theme = useTheme();
 
@@ -18,7 +17,7 @@ const Footer = () => {
         container
         direction={{ xs: "column-reverse", lg: "row", md: "column-reverse" }}
         justifyContent={{ lg: "space-between", sm: "center", md: "center" }}
-        className={cx(classes.container)}
+        sx={styles.container}
       >
         <Grid
           item
@@ -36,7 +35,7 @@ const Footer = () => {
             paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
             paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Text fontSize="16px" className={cx(classes.footerText)}>
+            <Text fontSize="16px" sx={styles.footerText}>
               &copy; {`${date.getFullYear()} pedlar PTY/LTD.`}
             </Text>
           </Grid>
@@ -44,7 +43,7 @@ const Footer = () => {
             paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
             paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Text fontSize="16px" className={cx(classes.footerText)}>
+            <Text fontSize="16px" sx={styles.footerText}>
               Powered by <img src="/pedlar.png" style={{ marginBottom: "-4px", height: "16px" }} />
             </Text>
           </Grid>
@@ -59,12 +58,12 @@ const Footer = () => {
           paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
           paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
-          <Image src="/amex.png" className={cx(classes.footerImage)} width="35px" height="24px" />
-          <Image src="/applePay.png" className={cx(classes.footerImage)} width="35px" height="24px" />
-          <Image src="/mastercard.png" className={cx(classes.footerImage)} width="35px" height="24px" />
-          <Image src="/paypal.png" className={cx(classes.footerImage)} width="35px" height="24px" />
-          <Image src="/shopPay.png" className={cx(classes.footerImage)} width="35px" height="24px" />
-          <Image src="/visa.png" className={cx(classes.footerImage)} width="35px" height="24px" />
+          <Image src="/amex.png" style={styles.footerImage} width="35px" height="24px" />
+          <Image src="/applePay.png" style={styles.footerImage} width="35px" height="24px" />
+          <Image src="/mastercard.png" style={styles.footerImage} width="35px" height="24px" />
+          <Image src="/paypal.png" style={styles.footerImage} width="35px" height="24px" />
+          <Image src="/shopPay.png" style={styles.footerImage} width="35px" height="24px" />
+          <Image src="/visa.png" style={styles.footerImage} width="35px" height="24px" />
         </Grid>
       </Grid>
     </Box>

@@ -18,7 +18,6 @@ import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
-import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 
@@ -42,7 +41,6 @@ const Cart = (props) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-  const { classes, cx } = useStyles();
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];
   return (
     <Layout>
@@ -183,7 +181,7 @@ const Cart = (props) => {
             {[0, 0, 0, 0, 0].map((item, index) => {
               return (
                 <Grid key={index} item xs={6} sm={6} md={2.4} lg={2.4} paddingLeft="10px" paddingBottom="50px">
-                  <img style={{ width: "95%", height: "70%" }} src={newAdditionData?.featuredImage?.url}></img>
+                  <Image width={"211"} height={199} src={newAdditionData?.featuredImage?.url} />
                   <Typography variant="body1">SISLEY PARIS</Typography>
                   <Typography variant="subtitle2">Eye Contour Mask</Typography>
                   <Typography variant="subtitle2">$42</Typography>
@@ -193,7 +191,7 @@ const Cart = (props) => {
           </Grid>
         </Grid>
       </CustomContainer>
-      <Divider className={cx(classes.footerDivider)} />
+      <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>
   );

@@ -4,7 +4,7 @@ import Layout from "components/layout";
 import { Grid, Button, Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
-import { useStyles } from "styles/home";
+import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
 import axios from "axios";
 import useSWR from "swr";
@@ -20,11 +20,8 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
   const [applyFiltersState, setApplyFiltersState] = useState(false);
-  
 
   const route = useRouter();
-
-  
 
   const setFiltersValue = (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
     if (BrandsNames?.length > 0) {
@@ -43,30 +40,21 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   };
 
   useEffect(() => {
-
-    if(!(((route.query.dataType === "Brands") || (route.query.dataType === "Shop") ))){
+    if (!(route.query.dataType === "Brands" || route.query.dataType === "Shop")) {
       setProductsData(newAdditionData?.nodes);
       setEndCursorValue(newAdditionData?.pageInfo?.endCursor);
     }
-    
- 
-    if((route.query.dataType === "Brands") || (route.query.dataType === "Shop") ){
-    
-      
-      if(route.query.dataType === "Brands"){
 
+    if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
+      if (route.query.dataType === "Brands") {
         filterValuesForQuery.push({ productVendor: route?.query.itemValue });
       }
-      if(route.query.dataType === "Shop"){
+      if (route.query.dataType === "Shop") {
         filterValuesForQuery.push({ productType: route?.query.itemValue });
-
       }
       getFilteredData();
     }
-
   }, []);
-
-  const { classes, cx } = useStyles();
 
   <link rel="icon" href="/favicon.ico" />;
 
@@ -289,7 +277,7 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
           </Button>
         )}
       </Grid>
-      <Divider className={cx(classes.footerDivider)} />
+      <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>
   );

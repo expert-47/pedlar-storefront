@@ -24,7 +24,7 @@ const Responsivehowitworks = () => {
       <Box sx={styles.ResponsMainBox}>
         <Grid container item xs={12} sm={12} style={{ zIndex: "999", position: "relative", justifyContent: "center" }}>
           <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "center" }}>
-            <Typography fontWeight={700} fontSize={{ xs: "30px", sm: "40px" }}>
+            <Typography fontWeight={700} fontSize={{ xs: "40px", sm: "40px" }}>
               How it works
             </Typography>
           </Grid>
@@ -36,7 +36,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 1 ? "white" : "tranparent",
                   color: updatedata === 1 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px" }}
                 fontWeight={600}
               >
                 1
@@ -49,7 +48,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 2 ? "white" : "tranparent",
                   color: updatedata === 2 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
                 fontWeight={600}
               >
                 2
@@ -62,7 +60,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 3 ? "white" : "tranparent",
                   color: updatedata === 3 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
                 fontWeight={600}
               >
                 3
@@ -75,7 +72,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 4 ? "white" : "tranparent",
                   color: updatedata === 4 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
                 fontWeight={600}
               >
                 4
@@ -91,11 +87,15 @@ const Responsivehowitworks = () => {
           >
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Top Aussie brands sync their store to the Pedlar platform
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
                 <Image
                   src={HomeSecImage1}
                   alt="home-sec5-img1"
@@ -108,11 +108,15 @@ const Responsivehowitworks = () => {
 
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Creators select products from brands they love
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
                 <Image
                   src={HomeSecImage2}
                   alt="home-sec5-img2"
@@ -125,11 +129,15 @@ const Responsivehowitworks = () => {
 
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Creators personalise their store to match their style
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
                 <Image
                   src={HomeSecImage3}
                   alt="home-sec5-img3"
@@ -142,11 +150,15 @@ const Responsivehowitworks = () => {
 
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography fontSize={{ xs: "30px", sm: "40px" }} fontWeight={600} style={{ lineHeight: "normal" }}>
+                <Typography
+                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontWeight={600}
+                  lineHeight={{ xs: "30px", sm: "50px" }}
+                >
                   Creators share their store with their followers and make sales
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "40px" }}>
+              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
                 <Image
                   src={HomeSecImage4}
                   alt="home-sec5-img4"

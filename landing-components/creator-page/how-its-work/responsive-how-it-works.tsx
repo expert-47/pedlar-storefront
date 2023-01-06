@@ -36,7 +36,7 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 1 ? "white" : "tranparent",
                   color: updatedata === 1 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px" }}
+                
                 fontWeight={600}
               >
                 1
@@ -49,7 +49,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 2 ? "white" : "tranparent",
                   color: updatedata === 2 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
                 fontWeight={600}
               >
                 2
@@ -62,7 +61,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 3 ? "white" : "tranparent",
                   color: updatedata === 3 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
                 fontWeight={600}
               >
                 3
@@ -75,7 +73,6 @@ const Responsivehowitworks = () => {
                   backgroundColor: updatedata === 4 ? "white" : "tranparent",
                   color: updatedata === 4 ? "#1c1b1f" : "white",
                 }}
-                fontSize={{ sx: "30px", sm: "30px", md: "30px", lg: "30px" }}
                 fontWeight={600}
               >
                 4

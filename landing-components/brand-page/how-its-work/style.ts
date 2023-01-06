@@ -5,9 +5,7 @@ export const styles = {
     zIndex: "9",
   },
   ResponsMainBox: {
-    backgroundColor: "#1c1b1f",
     borderRadius: "16px",
-    padding: "10px",
   },
   Heading: {
     padding: "50px 0 0 21px",
@@ -38,8 +36,9 @@ export const styles = {
     color: "rgba(249, 246, 242, 1)",
   },
   Respocirclecount: {
-    height: "43px",
-    width: "43px",
+    height: { xs: "35px", sm: "50px" },
+    width: { xs: "35px", sm: "50px" },
+    fontSize: { xs: "25px", sm: "30px" },
     borderRadius: "50%",
     border: "1px solid",
     backgroundColor: "transparent",
@@ -47,7 +46,6 @@ export const styles = {
     alignItems: "center",
     justifyContent: "center",
     color: "rgba(249, 246, 242, 1)",
-    fontSize: "30px",
   },
   images: {
     width: "42%",

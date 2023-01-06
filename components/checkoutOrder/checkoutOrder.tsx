@@ -11,6 +11,7 @@ interface Props {
   price: string;
   image: string;
   quantity:number;
+  
 }
 
 const CheckoutOrder = (props: Props) => {

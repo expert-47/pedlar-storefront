@@ -101,7 +101,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
 
           {cartData?.map((item , index)=>{
             return (
-            <CheckoutOrder key={index} image={item?.merchandise?.image?.url} name={item?.merchandise?.title}  price={"default = 50$"} quantity={item?.quantity} />
+            <CheckoutOrder  key={index} image={item?.merchandise?.image?.url} name={item?.merchandise?.title}  price={"default = 50$"} quantity={item?.quantity} />
 
             );
           })}
@@ -135,7 +135,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           <Typography sx={styles.paymentTotal}>$320</Typography>
         </Grid>
         <Link href="/checkout">
-          <Button sx={styles.checkoutButton}>Checkout</Button>
+          <Button sx={styles.checkoutButton} disabled={cartData?.length > 0 ? false : true}>Checkout</Button>
         </Link>
       </Grid>
     </Drawer>

@@ -222,7 +222,7 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const { data } = useSWR(address, fetcher);
 
   return (
-    <Layout storefrontName={data?.data?.storefrontName} slug={slug}>
+    <Layout storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
       <Head>
         <title>Pedlar</title>
         <meta property="og:image" content="url img" />

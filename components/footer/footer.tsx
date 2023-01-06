@@ -5,7 +5,7 @@ import { Divider, useTheme } from "@mui/material";
 import { useState } from "react";
 import { useStyles } from "styles/footer";
 import Text from "components/customText";
-
+import Image from "next/image";
 const Footer = () => {
   const { classes, cx } = useStyles();
   const [date] = useState(new Date());
@@ -59,12 +59,12 @@ const Footer = () => {
           paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
           paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
-          <img src="/amex.png" className={cx(classes.footerImage)}></img>
-          <img src="/applePay.png" className={cx(classes.footerImage)}></img>
-          <img src="/mastercard.png" className={cx(classes.footerImage)}></img>
-          <img src="/paypal.png" className={cx(classes.footerImage)}></img>
-          <img src="/shopPay.png" className={cx(classes.footerImage)}></img>
-          <img src="/visa.png" className={cx(classes.footerImage)}></img>
+          <Image src="/amex.png" className={cx(classes.footerImage)} width="35px" height="24px" />
+          <Image src="/applePay.png" className={cx(classes.footerImage)} width="35px" height="24px" />
+          <Image src="/mastercard.png" className={cx(classes.footerImage)} width="35px" height="24px" />
+          <Image src="/paypal.png" className={cx(classes.footerImage)} width="35px" height="24px" />
+          <Image src="/shopPay.png" className={cx(classes.footerImage)} width="35px" height="24px" />
+          <Image src="/visa.png" className={cx(classes.footerImage)} width="35px" height="24px" />
         </Grid>
       </Grid>
     </Box>

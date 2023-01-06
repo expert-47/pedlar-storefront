@@ -35,7 +35,7 @@ export const ResponsiveNavbar = () => {
           <Typography sx={styles.responsiveTypography}>Hannah Juneva</Typography>
         </Grid>
         <IconButton onClick={onClickCart} sx={styles.shoppingCartIcon}>
-          <img src="/cart.png" height="19.48px" width="19.48px" />
+          <Image src="/cart.png" height="19.48px" width="19.48px" />
         </IconButton>
         <CartDrawer openDrawer={openCart} toggleDrawer={toggleCart} />
       </Toolbar>

@@ -432,3 +432,31 @@ section {
     max-width: 1350px;
   }
 }
+
+.css-xf64eu-MuiButtonBase-root-MuiButton-root:hover {
+  background-color: #000000 !important;
+}
+
+.css-rg85wt-MuiButtonBase-root-MuiButton-root:hover {
+  border-color: #000000 !important;
+}
+
+@media screen and (max-width: 320px) {
+  .css-gj4fys {
+    height: 225px !important;
+    width: 280px !important;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+  .css-gj4fys {
+    height: 158px !important;
+    width: 183px !important;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 770px) {
+  .css-gj4fys {
+    height: 120px !important;
+    width: 119px !important;
+  }
+}

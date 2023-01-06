@@ -13,7 +13,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import RemoveIcon from "@mui/icons-material/Remove";
-
+import Image from "next/image";
 import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";

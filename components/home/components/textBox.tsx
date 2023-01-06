@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const TextBox = (props) => {
   const router = useRouter();
@@ -35,7 +36,7 @@ const TextBox = (props) => {
             alignItems: "center",
           }}
         >
-          <img src="/instagram.png" height="16px" width="16px" />
+          <Image src="/instagram.png" height="16px" width="16px" />
           <Text fontSize={"18px"} sx={styles.boxtext}>
             {props?.headerData?.instagramLink ? props?.headerData?.instagramLink : "  "}
           </Text>
@@ -48,7 +49,7 @@ const TextBox = (props) => {
             alignItems: "center",
           }}
         >
-          <img src="/tiktok.png" height="16px" width="16px" />
+          <Image src="/tiktok.png" height="16px" width="16px" />
           <Text fontSize={"18px"} sx={styles.boxtext}>
             {props?.headerData?.tiktokLink ? props?.headerData?.tiktokLink : "  "}
           </Text>

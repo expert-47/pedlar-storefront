@@ -188,8 +188,9 @@ const styles = {
     cursor: "pointer",
   },
   gridtag1typo1: {
-    fontSize: "34px",
-    fontWeight: "bold",
+    fontSize: "22px",
+    fontWeight: "700",
+    font: "inter",
     color: "primary.dark",
   },
   gridtag1typo2: {

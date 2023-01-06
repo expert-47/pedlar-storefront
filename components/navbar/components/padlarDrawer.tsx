@@ -20,7 +20,6 @@ import Link from "next/link";
 
 import React, { useEffect, useState } from "react";
 import useSwr from "swr";
-
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -28,6 +27,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
+import Image from "next/image";
 
 export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
@@ -87,12 +87,12 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           <CloseIcon onClick={onClickDrawer} />
           <Grid item xs={10} sm={10} md={10} style={{ display: "flex", textAlign: "center", justifyContent: "center" }}>
             <Link href="/">
-              <img src="/pedlar.png" alt="No Image Found" style={{ width: "70px", height: "30px" }} />
+              <Image src="/pedlar.png" alt="No Image Found" width="70px" height="30px" />
             </Link>
             <Typography style={{ fontSize: "22px", fontWeight: "400", paddingLeft: "5px" }}>Hannah Juneva</Typography>
           </Grid>
           <IconButton sx={styles.shoppingCartIcon}>
-            <img src="/cart.png" height="19.48px" width="19.48px" />
+            <Image src="/cart.png" height="19.48px" width="19.48px" />
           </IconButton>
         </Grid>
         <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>

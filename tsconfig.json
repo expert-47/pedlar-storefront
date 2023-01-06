@@ -20,7 +20,8 @@
       "services/*": ["./services/*"],
       "styles/*": ["./styles/*"],
       "utils/*": ["./utils/*"],
-      "images/*": ["./public/images/*"]
+      "images/*": ["./public/images/*"],
+      "store/*": ["./store/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,

@@ -5,18 +5,15 @@ import { ThemeProvider } from "@mui/material";
 import { SWRConfig } from "swr";
 import { Crisp } from "crisp-sdk-web";
 
-import { createEmotionSsrAdvancedApproach } from "tss-react/nextJs";
-
 import { DefaultSeo } from "next-seo";
 import SEO from "../utils/next-seo.config";
 import { Fragment, useEffect } from "react";
-
-const { EmotionCacheProvider, withEmotionCache } = createEmotionSsrAdvancedApproach({ key: "css" });
-export { withEmotionCache };
+import { Provider } from "react-redux";
 
 import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
+import { store } from "store/index";
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -31,20 +28,21 @@ function MyApp({ Component, pageProps }: any) {
     Crisp.load();
   });
   return (
-    <SWRConfig
-      value={{
-        fetcher: (resource) => Axios.get(resource).then((r) => r.data),
-      }}
-    >
-      <Fragment>
-        <DefaultSeo {...SEO} />
-        <EmotionCacheProvider>
+    <Provider store={store}>
+      <SWRConfig
+        value={{
+          fetcher: (resource) => Axios.get(resource).then((r) => r.data),
+        }}
+      >
+        <Fragment>
+          <DefaultSeo {...SEO} />
+
           <ThemeProvider theme={theme}>
             <Component {...pageProps} />
           </ThemeProvider>
-        </EmotionCacheProvider>
-      </Fragment>
-    </SWRConfig>
+        </Fragment>
+      </SWRConfig>
+    </Provider>
   );
 }
 

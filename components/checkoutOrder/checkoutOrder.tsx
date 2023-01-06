@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
@@ -10,11 +10,21 @@ interface Props {
   name: string;
   price: string;
   image: string;
-  quantity:number;
-  
+  quantity: number;
 }
 
 const CheckoutOrder = (props: Props) => {
+  const [numbers, setNumbers] = useState(0);
+
+  const incQuantityHandler = () => {
+    setNumbers(numbers + 1);
+  };
+
+  const decQuantityHandler = () => {
+    if (numbers > 0) {
+      setNumbers(numbers - 1);
+    }
+  };
   return (
     <Box
       style={{
@@ -31,10 +41,10 @@ const CheckoutOrder = (props: Props) => {
             width: "130px",
             height: "130px",
             cursor: "pointer",
-            marginRight:"10px",
+            marginRight: "10px",
           }}
         >
-          <img src={props?.image} width="130px" height={"130px"}  />
+          <img src={props?.image} width="130px" height={"130px"} />
           {/* <Image src={props.image} width={130} height={130} layout="responsive" objectFit="fill"></Image> */}
         </Box>
         <Box
@@ -60,9 +70,9 @@ const CheckoutOrder = (props: Props) => {
                 justifyContent: "space-between",
               }}
             >
-              <RemoveIcon sx={styles.addRemoveIcon} />
-              <Typography sx={styles.addRemoveText}>{props?.quantity}</Typography>
-              <AddIcon sx={styles.addRemoveIcon} />
+              <RemoveIcon sx={styles.addRemoveIcon} onClick={decQuantityHandler} />
+              <Typography sx={styles.addRemoveText}>{numbers}</Typography>
+              <AddIcon sx={styles.addRemoveIcon} onClick={incQuantityHandler} />
             </Box>
             <Button sx={styles.removeButton}>Remove</Button>
           </Box>

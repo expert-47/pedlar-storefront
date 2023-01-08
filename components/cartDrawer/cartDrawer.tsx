@@ -16,6 +16,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   const [cartData, setCartData] = useState([]);
 
   const [checkoutData, setCheckoutData] = useState();
+  
   const apiForCheckout = async () => {
     if (typeof window !== "undefined") {
       const createdCartID = localStorage.getItem("cartID");

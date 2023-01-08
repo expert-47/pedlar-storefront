@@ -94,6 +94,9 @@ const styles = {
     textTransform: "none",
     fontWeight: "600",
     fontSize: "16px",
+    "& hover": {
+      backgroundColor: "#000000",
+    },
   },
 
   outlinedButton: {

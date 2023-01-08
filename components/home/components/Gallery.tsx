@@ -18,7 +18,17 @@ const Gallery = ({ newAdditionData, columnSpacing = 10, storefrontName }: Props)
         alignItems: "center",
       }}
     >
-      <Grid container item xs={12} sm={12} md={12} lg={12} columnSpacing={columnSpacing || 10} rowSpacing={10}>
+      <Grid
+        container
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        sx={{ justifyContent: "center", padding: "2px" }}
+        columnSpacing={columnSpacing || 10}
+        rowSpacing={10}
+      >
         {newAdditionData?.map((item: any, index: any) => {
           return (
             <Grid item xs={5.9} sm={5.9} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>

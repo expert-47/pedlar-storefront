@@ -99,7 +99,7 @@ const Bar = () => {
               md={10}
               lg={11}
               alignItems={"center"}
-              style={{ height: "104px", width: "1340px" }}
+              style={{ width: "1340px" }}
               paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(25) }}
               paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
             >

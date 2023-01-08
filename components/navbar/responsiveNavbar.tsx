@@ -42,7 +42,7 @@ export const ResponsiveNavbar = (props : Props) => {
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
         <IconButton onClick={onClickCart} sx={styles.shoppingCartIcon}>
-          <img src="/cart.png" height="19.48px" width="19.48px" />
+          <Image src="/cart.png" height="19.48px" width="19.48px" />
         </IconButton>
         <CartDrawer openDrawer={openCart} toggleDrawer={toggleCart} />
       </Toolbar>

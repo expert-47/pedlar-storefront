@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Box, Collapse, Grid, MenuItem, useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
+import styles from "styles/navbar";
 
 interface Props {
   open: boolean;
@@ -12,7 +13,6 @@ const PadlarCollapseView = (props: Props) => {
   const theme = useTheme();
   const { open, data } = props;
 
-  const { classes, cx } = useStyles();
   return (
     <Grid
       container
@@ -29,8 +29,8 @@ const PadlarCollapseView = (props: Props) => {
     >
       <CustomContainer>
         <Collapse in={open} timeout={100}>
-          <Grid className={cx(classes.menuContainer)}>
-            <Box className={cx(classes.menuInnerContainer)}>
+          <Grid sx={styles.menuContainer}>
+            <Box sx={styles.menuInnerContainer}>
               {data.slice(0, 30).map((item, index) => (
                 <MenuItem
                   key={index}
@@ -39,7 +39,7 @@ const PadlarCollapseView = (props: Props) => {
                   {item}
                 </MenuItem>
               ))}
-              <MenuItem className={cx(classes.menuItem)}>
+              <MenuItem sx={styles.menuItem}>
                 <Link href="/">
                   <a>View all</a>
                 </Link>

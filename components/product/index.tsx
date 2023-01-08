@@ -16,12 +16,11 @@ import AddIcon from "@mui/icons-material/Add";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import RemoveIcon from "@mui/icons-material/Remove";
-
+import Image from "next/image";
 import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
-import { useStyles } from "styles/home";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 import CircularIndeterminate from "components/muiLoader";
@@ -48,7 +47,6 @@ const Cart = (props) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-  const { classes, cx } = useStyles();
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];
 
   const changeLoaderState = (value: boolean) => {
@@ -212,7 +210,7 @@ const Cart = (props) => {
               </Grid>
             </Grid>
           </CustomContainer>
-          <Divider className={cx(classes.footerDivider)} />
+          <Divider sx={styles.footerDivider} />
           <BaseFooter />
         </Layout>
       ) : (

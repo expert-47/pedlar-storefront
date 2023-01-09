@@ -89,10 +89,10 @@ const DropDownMenu = (props: Props) => {
                           <Grid container paddingRight={60}>
                             <Grid item sm={6} md={6}></Grid>
                             <Grid item sm={6} md={6} lg={6}>
-                              <Grid container>
+                              <Grid container lg={12}>
                                 {dropdownOption
                                   ? data.map((item, index) => (
-                                      <Grid key={"dropdown-" + index} item sm={2} md={3}>
+                                      <Grid key={"dropdown-" + index} item sm={2} md={3} lg={4}>
                                         {/* routePath ? routePath : */}
                                         <Link
                                           as={`${route?.query?.slug}/products`}
@@ -114,7 +114,7 @@ const DropDownMenu = (props: Props) => {
                                       </Grid>
                                     ))
                                   : data.slice(0, 2).map((item, index) => (
-                                      <Grid key={"dropdown-" + index} item sm={2} md={3}>
+                                      <Grid key={"dropdown-" + index} item sm={4} md={4} lg={4}>
                                         <Link
                                           as={`/${route?.query?.slug}/products`}
                                           href={{
@@ -133,8 +133,8 @@ const DropDownMenu = (props: Props) => {
                                   <Button onClick={() => setdropdownOption(true)}>
                                     <ListItemText
                                       style={{
-                                        paddingTop: "4px",
-                                        paddingLeft: "16px",
+                                        // paddingTop: "4px",
+                                        paddingLeft: "19px",
                                         color: "black",
                                         fontWeight: "600",
                                         fontSize: "12px",

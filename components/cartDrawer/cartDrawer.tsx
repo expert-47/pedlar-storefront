@@ -25,24 +25,23 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     }
   };
 
-  // useEffect(() => {
-  //   apiForCheckout();
-  // }, []);
+
 
   useEffect(() => {
+
     if (typeof window !== "undefined") {
       const cartID = localStorage.getItem("cartID");
 
       setCartid(cartID);
 
-      const res = getCartProducts(cartID).then((response) => {
+       getCartProducts(cartID).then((response) => {
         // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
         setCartData(response?.data?.cart?.lines?.nodes);
       });
 
       // }
     }
-  }, []);
+  }, [openDrawer , toggleDrawer]);
   // getting cart products
 
   const paperStyle = {

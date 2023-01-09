@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
-import { Divider, Grid, Typography } from "@mui/material";
+import { Alert, Divider, Grid, Typography } from "@mui/material";
 import { Slide } from "react-slideshow-image";
 import Link from "next/link";
 
@@ -25,6 +25,14 @@ import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 import CircularIndeterminate from "components/muiLoader";
 import { getStoreName } from "utils/getPathName";
+import {
+  addToCart,
+  updateCartLineItem,
+  addToCartLineItem,
+  getCartProducts,
+  getVariantBySelectedOptions,
+  checkoutCartDetails,
+} from "api/grapgql";
 
 const buttonStyle = {
   display: "none",
@@ -40,18 +48,166 @@ const Cart = (props) => {
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [loaderState, setLoaderState] = useState(false);
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [cartData, setCartData] = useState<any>([]);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [buttonLoaderState, setButtonLoaderState] = useState(false);
+  const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
+
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
   const route = useRouter();
+  const slugValue = route.query.slug;
+
   let path = getStoreName(route);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
+
   const images = ["/grid-img1.png", "/grid-img1.png", "/grid-img1.png", "/grid-img1.png"];
 
-  const changeLoaderState = (value: boolean) => {
-    setLoaderState(value);
+  useEffect(() => {
+    setError(false);
+  }, [color, size]);
+
+  useEffect(() => {
+    setSize(newAdditionData?.options[0]?.values[0]);
+    setColor(newAdditionData?.options[1]?.values[0]);
+
+    if (typeof window !== "undefined") {
+      const cartID = localStorage.getItem("cartID");
+
+      getCartProducts(cartID).then((response) => {
+        setCartData(response?.data?.cart?.lines?.nodes);
+      });
+    }
+  }, []);
+
+  // for setting the size of the product
+  const setSizeValue = (value: string) => {
+    setSize(value);
+    console.log("size== " + value);
   };
+  // for setting the color of product
+  const setColorValue = (value: string) => {
+    setColor(value);
+    console.log("size== " + value);
+  };
+
+  // add to cart method
+
+  const addToCartButton = async () => {
+    const quantity = 1;
+    // setButtonLoaderState(true);
+    const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+
+    const varientData = variant?.data.product?.variantBySelectedOptions;
+
+  
+
+    if (varientData?.quantityAvailable === 0) {
+      setError(true);
+      setErrorMessage("This Item is Currently out of Stock");
+      setButtonLoaderState(false);
+    } else {
+      const createdCartID = localStorage.getItem("cartID");
+
+      if (!createdCartID) {
+        await addToCart(varientData?.id, slugValue, quantity).then((res) => {
+          localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
+          setButtonLoaderState(false);
+        });
+      }
+
+      if (createdCartID) {
+        const data1 = cartData?.find((item: any) => item?.merchandise?.id === varientData?.id);
+        
+     
+        if (data1) {
+          if (varientData?.quantityAvailable === data1?.quantity) {
+  
+            setError(true);
+            setErrorMessage("This Item is Currently out of Stock");
+            setButtonLoaderState(false);
+          }
+          else{
+                   const quantity = 2;
+
+            updateCartLineItem(createdCartID, data1?.id, quantity).then((res) => {
+              setButtonLoaderState(false);
+              console.log("res", res);
+            });
+          }
+         
+        } else {
+          addToCartLineItem(createdCartID, varientData?.id, quantity).then((res) => {
+            setButtonLoaderState(false);
+          });
+        }
+      }
+    }
+  };
+
+  const BuyNowHandler = async () => {
+    const quantity = 1;
+
+    setBuyNowLoaderState(true);
+    const createdCartID = localStorage.getItem("cartID");
+
+    const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+    console.log("variant...", variant);
+    const varientData = variant?.data.product?.variantBySelectedOptions;
+
+    if (varientData?.quantityAvailable === 0) {
+      setError(true);
+      setErrorMessage("This Item is Currently out of Stock");
+      setBuyNowLoaderState(false);
+    } else {
+      if (!createdCartID) {
+        await addToCart(varientData?.id, slugValue, quantity).then(async (res) => {
+          console.log("addToCartResponse", res);
+          localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
+
+          const response = await checkoutCartDetails(localStorage.getItem("cartID"));
+          setBuyNowLoaderState(false);
+
+          window.open(response?.data?.cart?.checkoutUrl);
+        });
+      } else {
+        try {
+          const data1 = cartData?.find((item: any) => item?.merchandise?.id === varientData?.id);
+          if (data1) {
+          if (varientData?.quantityAvailable === data1?.quantity) { 
+            setError(true);
+            setErrorMessage("This Item is Currently out of Stock");
+            setBuyNowLoaderState(false);
+
+          }
+          else{
+            await updateCartLineItem(createdCartID, data1?.id, quantity);
+            const response = await checkoutCartDetails(createdCartID);
+            setBuyNowLoaderState(false);
+
+            window.open(response?.data?.cart?.checkoutUrl);
+          }
+
+          
+          } else {
+            await addToCartLineItem(createdCartID, varientData?.id, quantity);
+            const response = await checkoutCartDetails(createdCartID);
+            setBuyNowLoaderState(false);
+
+            window.open(response?.data?.cart?.checkoutUrl);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+  };
+
   return (
     <>
       {loaderState === false ? (
@@ -122,8 +278,21 @@ const Cart = (props) => {
                         </Typography>
                       </Grid>
 
-                      <Options newAdditionData={newAdditionData} />
-                      <Action newAdditionData={newAdditionData} changeLoaderState={changeLoaderState} />
+                      <Options
+                        newAdditionData={newAdditionData}
+                        size={size}
+                        color={color}
+                        setSizeValue={setSizeValue}
+                        setColorValue={setColorValue}
+                      />
+                      {error ? <Alert severity="error">{errorMessage}</Alert> : null}
+
+                      <Action
+                        addToCartButton={addToCartButton}
+                        buttonLoaderState={buttonLoaderState}
+                        BuyNowHandler={BuyNowHandler}
+                        buyNowLoaderState={buyNowLoaderState}
+                      />
 
                       <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
                       <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
@@ -187,7 +356,7 @@ const Cart = (props) => {
                 {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
                   let productId = item?.id?.split("gid://shopify/Product/")[1];
                   return (
-                    <Link href={{ pathname: `${path}/product/${productId}` }}>
+                    <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
                       <Grid
                         key={index}
                         item

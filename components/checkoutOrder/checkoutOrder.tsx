@@ -5,27 +5,52 @@ import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
+import { updateCartLineItem } from "api/grapgql";
+import CircularIndeterminate from "components/muiLoader";
 
 interface Props {
   name: string;
   price: string;
   image: string;
   quantity: number;
+  itemData : any;
 }
 
 const CheckoutOrder = (props: Props) => {
-  const [numbers, setNumbers] = useState(0);
+  const [productCount, setProductCount] = useState(props?.quantity);
 
   const incQuantityHandler = () => {
-    setNumbers(numbers + 1);
+    const createdCartID = localStorage.getItem("cartID");
+   
+  if(props?.itemData?.merchandise?.quantityAvailable === props?.quantity){
+      console.log("limit full");
+  }
+  else {
+    updateCartLineItem(createdCartID, props?.itemData?.id, productCount).then((res) => {
+    
+      console.log("res", res);
+    });
+  }
+
   };
 
-  const decQuantityHandler = () => {
-    if (numbers > 0) {
-      setNumbers(numbers - 1);
-    }
-  };
+  // const decQuantityHandler = () => {
+  //   if (numbers > 0) {
+  //     setNumbers(numbers - 1);
+  //   }
+  // };
+
+
+
+  
+
+
+
   return (
+    <>
+    {
+      
+    }
     <Box
       style={{
         display: "flex",
@@ -70,8 +95,8 @@ const CheckoutOrder = (props: Props) => {
                 justifyContent: "space-between",
               }}
             >
-              <RemoveIcon sx={styles.addRemoveIcon} onClick={decQuantityHandler} />
-              <Typography sx={styles.addRemoveText}>{numbers}</Typography>
+              <RemoveIcon   sx={styles.addRemoveIcon}  />
+              <Typography sx={styles.addRemoveText}>{props?.quantity}</Typography>
               <AddIcon sx={styles.addRemoveIcon} onClick={incQuantityHandler} />
             </Box>
             <Button sx={styles.removeButton}>Remove</Button>
@@ -80,7 +105,8 @@ const CheckoutOrder = (props: Props) => {
       </Box>
       <Divider sx={styles.divider} />
     </Box>
+    </>
   );
 };
-
+// component={"button"} disabled={props?.itemData?.quantityAvailable === props?.itemData?.quantity ? true : false} 
 export default CheckoutOrder;

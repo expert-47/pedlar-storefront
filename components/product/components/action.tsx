@@ -1,151 +1,74 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import Button from "@mui/material/Button";
-import { addToCart } from "api/grapgql";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { getVariantBySelectedOptions, addToCartLineItem } from "api/grapgql";
-import { getCartProducts, updateCartLineItem } from "api/grapgql";
-import { checkoutCartDetails } from "api/grapgql";
+// import Button from "@mui/material/Button";
+// import { addToCart } from "api/grapgql";
+// import { useRouter } from "next/router";
+// import { useEffect, useState } from "react";
+// import { getVariantBySelectedOptions, addToCartLineItem } from "api/grapgql";
+// import { getCartProducts, updateCartLineItem } from "api/grapgql";
+// import { checkoutCartDetails } from "api/grapgql";
+import LoadingButton from "@mui/lab/LoadingButton";
 
+const Action = (props: any) => {
+  const { addToCartButton, buttonLoaderState, BuyNowHandler , buyNowLoaderState} = props;
 
-const Action = (props) => {
-  const { newAdditionData, changeLoaderState } = props;
-  const [cartData, setCartData] = useState<any>([]);
-  const [updateCartState, setUpdateCartState] = useState(false);
-  const [cartLineid, setCartLineid] = useState("");
+  // const [cartData, setCartData] = useState<any>([]);
+  // const [updateCartState, setUpdateCartState] = useState(false);
+  // const [cartLineid, setCartLineid] = useState("");
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  useEffect(() => {
-    const res = getVariantBySelectedOptions(newAdditionData?.id);
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const cartID = localStorage.getItem("cartID");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const cartID = localStorage.getItem("cartID");
+  //     getCartProducts(cartID).then((response) => {
+  //       // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
+  //       setCartData(response?.data?.cart?.lines?.nodes);
+  //     });
 
-      getCartProducts(cartID).then((response) => {
-        // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
-        setCartData(response?.data?.cart?.lines?.nodes);
-      });
+  //     // }
+  //   }
+  // }, []);
+  // const slugValue = router.query.slug;
 
-      // }
-    }
-  }, []);
-  const slugValue = router.query.slug;
+  // const BuyNowHandler = async () => {
+  //   const createdCartID = localStorage.getItem("cartID");
 
-  const addToCartButton = async () => {
-    changeLoaderState(true);
+  //   if (!createdCartID) {
+  //     await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(async (res) => {
+  //       console.log("addToCartResponse", res);
+  //       localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
+  //       // changeLoaderState(false);
 
-    const createdCartID = localStorage.getItem("cartID");
+  //       let response = await checkoutCartDetails(localStorage.getItem("cartID"));
+  //       changeLoaderState(false);
 
-    if (!createdCartID) {
-      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then((res) => {
-       
-        localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
-        changeLoaderState(false);
-      });
-    }
+  //       window.open(response?.data?.cart?.checkoutUrl);
+  //     });
+  //   } else {
+  //     try {
+  //       const data1 = cartData?.find(
+  //         (item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id,
+  //       );
+  //       if (data1) {
+  //         await updateCartLineItem(createdCartID, data1?.id);
+  //         const response = await checkoutCartDetails(createdCartID);
+  //         changeLoaderState(false);
 
-    if (createdCartID) {
-      const data1 = cartData?.find(
-        (item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id,
-      );
+  //         window.open(response?.data?.cart?.checkoutUrl);
+  //       } else {
+  //         await addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id);
+  //         const response = await checkoutCartDetails(createdCartID);
+  //         changeLoaderState(false);
 
-      if (data1) {
-        updateCartLineItem(createdCartID, data1?.id).then((res) => {
-        
-          setUpdateCartState(true);
-          changeLoaderState(false);
-        });
-      } else {
-        addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id).then((res) => {
-          changeLoaderState(false);
-         
-
-        });
-      }
-      // cartData?.some((item) => {
-      //   if (item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id) {
-      //    updateCartLineItem(createdCartID, item?.id).then((res) => {
-      //       console.log("resmm", res);
-      //       setUpdateCartState(true);
-      //       changeLoaderState(false);
-
-      //       return true;
-      //     });
-
-      //     // setCartLineid(item?.id);
-      //   } else if (!(item?.merchandise?.id !== newAdditionData?.variantBySelectedOptions?.id)) {
-      //      addToCartLineItem(
-      //       createdCartID,
-      //       newAdditionData?.variantBySelectedOptions?.id,
-      //     ).then((res) => {
-      //       changeLoaderState(false);
-      //       console.log("createdCartID", createdCartID);
-
-      //       console.log("addCartLineItemResponse", res?.data);
-      //       return true;
-      //     });
-      //   }
-      // });
-      // if(updateCartState === true){
-      //   const updateCartResponse = await updateCartLineItem(createdCartID , cartLineid );
-      //   debugger
-      // }
-      // if(updateCartState === false){
-      //   debugger;
-      //   const addCartLineItemResponse = await addToCartLineItem(createdCartID , newAdditionData?.variantBySelectedOptions?.id ).then((res)=>{
-      //     changeLoaderState(false);
-      //     console.log("createdCartID" , createdCartID );
-
-      //     console.log("addCartLineItemResponse" , res?.data);
-      //   });
-      // }
-    }
-  };
-
-  const BuyNowHandler = async () => {
-    changeLoaderState(true);
-
-    const createdCartID = localStorage.getItem("cartID");
-    // changeLoaderState(true);
-
-    if (!createdCartID) {
-      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(async (res) => {
-        console.log("addToCartResponse", res);
-        localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
-        // changeLoaderState(false);
-
-        let response = await checkoutCartDetails(localStorage.getItem("cartID"));
-        changeLoaderState(false);
-
-        window.open(response?.data?.cart?.checkoutUrl);
-      });
-    } else {
-      try {
-        const data1 = cartData?.find(
-          (item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id,
-        );
-        if (data1) {
-          await updateCartLineItem(createdCartID, data1?.id);
-          const response = await checkoutCartDetails(createdCartID);
-          changeLoaderState(false);
-
-          window.open(response?.data?.cart?.checkoutUrl);
-        } else {
-          await addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id);
-          const response = await checkoutCartDetails(createdCartID);
-          changeLoaderState(false);
-
-          window.open(response?.data?.cart?.checkoutUrl);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
+  //         window.open(response?.data?.cart?.checkoutUrl);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
 
   return (
     <Grid
@@ -156,7 +79,7 @@ const Action = (props) => {
       sx={{ paddingTop: "30px", display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ width: "100%" }}>
-        <Button
+        <LoadingButton
           variant="contained"
           sx={{
             backgroundColor: "#1C1B1F",
@@ -168,15 +91,14 @@ const Action = (props) => {
             fontSize: "16px",
             textTransform: "none",
           }}
-          onClick={() => {
-            addToCartButton();
-          }}
+          onClick={addToCartButton}
+          loading={buttonLoaderState}
         >
           Add to cart
-        </Button>
+        </LoadingButton>
       </Grid>
       <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ paddingTop: "20px", width: "100%" }}>
-        <Button
+        <LoadingButton
           variant="outlined"
           sx={{
             color: "black",
@@ -192,9 +114,10 @@ const Action = (props) => {
             },
           }}
           onClick={() => BuyNowHandler()}
+          loading={buyNowLoaderState}
         >
           Buy now
-        </Button>
+        </LoadingButton>
       </Grid>
     </Grid>
   );

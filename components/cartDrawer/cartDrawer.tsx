@@ -3,24 +3,23 @@ import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
-import { data } from "components/checkoutOrder/data";
-import Link from "next/link";
+
 import { useEffect, useState } from "react";
 import { getCartProducts } from "api/grapgql";
 import { checkoutCartDetails } from "../../api/grapgql";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
-  const [cartid, setCartid] = useState<string | null>("");
+ 
 
   const [cartData, setCartData] = useState([]);
 
-  const [checkoutData, setCheckoutData] = useState();
+ 
   
   const apiForCheckout = async () => {
     if (typeof window !== "undefined") {
       const createdCartID = localStorage.getItem("cartID");
-      let response = await checkoutCartDetails(createdCartID);
+      const response = await checkoutCartDetails(createdCartID);
       window.open(response?.data?.cart?.checkoutUrl);
     }
   };
@@ -32,10 +31,12 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     if (typeof window !== "undefined") {
       const cartID = localStorage.getItem("cartID");
 
-      setCartid(cartID);
+    
 
        getCartProducts(cartID).then((response) => {
         // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
+
+
         setCartData(response?.data?.cart?.lines?.nodes);
       });
 
@@ -100,20 +101,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         >
           {/* {data.map((item) => ( */}
 
-          {cartData?.map((item, index) => {
+          {cartData?.map((item : any, index) => {
             return (
               <CheckoutOrder
                 key={index}
                 image={item?.merchandise?.image?.url}
                 name={item?.merchandise?.title}
                 price={"default = 50$"}
-                quantity={item?.quantity}
+                quantity={item.quantity}
+                itemData={item}
               />
             );
           })}
-          {/* <CheckoutOrder image={cartData?.image?.url} name={cartData?.title} price={"default = 50$"}  /> */}
-          {/* price={item.price} */}
-          {/* // ))} */}
+      
         </Grid>
       </Grid>
 

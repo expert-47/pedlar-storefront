@@ -110,7 +110,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
   return res || {};
 };
 
-export const addToCart = async (merchandiseId, value) => {
+export const addToCart = async (merchandiseId, value , quantity) => {
   console.log("merchandiseId", merchandiseId);
 
   const requestBody = {
@@ -140,7 +140,7 @@ export const addToCart = async (merchandiseId, value) => {
         lines: [
           {
             merchandiseId: `${merchandiseId}`,
-            quantity: 1,
+            quantity: quantity,
           },
         ],
       },
@@ -156,7 +156,7 @@ export const addToCart = async (merchandiseId, value) => {
   }
 };
 
-export const addToCartLineItem = async (cartID, merchandiseId) => {
+export const addToCartLineItem = async (cartID, merchandiseId, quantity) => {
   const requestBody = {
     query: gql`
       mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
@@ -181,7 +181,7 @@ export const addToCartLineItem = async (cartID, merchandiseId) => {
       cartId: `${cartID}`,
       lines: {
         merchandiseId: `${merchandiseId}`,
-        quantity: 1,
+        quantity: quantity,
       },
     },
   };
@@ -233,7 +233,7 @@ export const getCartProducts = async (cartid) => {
   }
 };
 
-export const getVariantBySelectedOptions = async (productID) => {
+export const getVariantBySelectedOptions = async (productID,size,color) => {
   const requestBody = {
     query: gql`
       query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
@@ -251,11 +251,11 @@ export const getVariantBySelectedOptions = async (productID) => {
       selectedOptionInput: [
         {
           name: "Size",
-          value: "4 US / 4 AU / 35 EU",
+          value:size,
         },
         {
           name: "Color",
-          value: "Black",
+          value: color,
         },
       ],
     },
@@ -287,7 +287,7 @@ export const checkoutCartDetails = async (checkoutId: any) => {
   return collectCheck;
 };
 
-export const updateCartLineItem = async (createdCartID, cartLineid) => {
+export const updateCartLineItem = async (createdCartID, cartLineid , quantity) => {
   const requestBody = {
     query: gql`
       mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
@@ -312,7 +312,7 @@ export const updateCartLineItem = async (createdCartID, cartLineid) => {
       cartId: `${createdCartID}`,
       lines: {
         id: `${cartLineid}`,
-        quantity: 2,
+        quantity: quantity,
       },
     },
   };
@@ -325,3 +325,21 @@ export const updateCartLineItem = async (createdCartID, cartLineid) => {
     return undefined;
   }
 };
+export const getCuratedBrands = async (  ) => {
+
+
+  
+try {
+  const res =  await fetch("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors?sortKey=random");
+
+  const updateCartResponse = await res.json();
+
+  return updateCartResponse;
+} catch (error) {
+  return undefined;
+}
+ 
+};
+
+
+

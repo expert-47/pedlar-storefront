@@ -460,3 +460,16 @@ section {
     width: 119px !important;
   }
 }
+
+/* @media screen and (min-width: 680px) {
+  .css-1jbk5a2 {
+    -webkit-flex-basis: 49.166667%;
+    -ms-flex-preferred-size: 49.166667%;
+    flex-basis: 49.166667%;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    max-width: 33.166667%;
+  }
+} */

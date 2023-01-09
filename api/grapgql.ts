@@ -1,9 +1,11 @@
-import { apiCall, checkoutApiCalls } from "./graphqlApi";
+import { gql } from "@apollo/client";
+import { client } from "./graphql/client";
 
 export const getProductDetails = async (productId: string) => {
   const requestBody = {
-    query: `query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
-      product(id: $productId) {
+    query: gql`
+      query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
+        product(id: $productId) {
           id
           title
           productType
@@ -11,31 +13,32 @@ export const getProductDetails = async (productId: string) => {
           description
           totalInventory
           priceRange {
-              maxVariantPrice {
-                  amount
-                  currencyCode
-              }
-              minVariantPrice {
-                  amount
-                  currencyCode
-              }
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+            minVariantPrice {
+              amount
+              currencyCode
+            }
           }
           options {
-              id
-              name
-              values
+            id
+            name
+            values
           }
           variantBySelectedOptions(selectedOptions: $selectedOptionInput) {
-              id
-              title
+            id
+            title
           }
           featuredImage {
-              url
+            url
           }
           createdAt
           publishedAt
+        }
       }
-  }`,
+    `,
     variables: {
       productId: `gid://shopify/Product/${productId}`,
 
@@ -52,14 +55,15 @@ export const getProductDetails = async (productId: string) => {
     },
   };
 
-  const collectionData = await apiCall(requestBody);
+  const collectionData = await client.query({ query: requestBody.query, variables: requestBody.variables });
+  console.log("collectionData", collectionData);
 
-  return collectionData;
+  return collectionData || {};
 };
 
 export const getUserDetailByFetchAPICall = async (collectionID: number, numberofProducts: number) => {
   const requestBody = {
-    query: `query GetCollection($collectionId: ID!) {
+    query: gql`query GetCollection($collectionId: ID!) {
     collection(id: $collectionId) {
         products(first: ${numberofProducts}, reverse: true ) {
             nodes {
@@ -100,42 +104,31 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
 }`,
     variables: { collectionId: `gid://shopify/Collection/${collectionID}` },
   };
-  const headers: any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type": "application/json",
-    Connection: "keep-alive",
-    "Accept-Encoding": "gzip, deflate, br",
-    Accept: "*/*",
-  };
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  };
 
-  const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+  const res = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
-  const collectionData = await res.json();
-
-  return collectionData;
+  return res || {};
 };
 
 export const addToCart = async (merchandiseId, value) => {
+  console.log("merchandiseId", merchandiseId);
+
   const requestBody = {
-    query: `mutation createCart($input: CartInput) {
-      cartCreate(input: $input) {
-        cart {
-          id
-          lines(first: 10) {
+    query: gql`
+      mutation createCart($input: CartInput) {
+        cartCreate(input: $input) {
+          cart {
+            id
+            lines(first: 10) {
               nodes {
-                  id
-                  quantity
-  
+                id
+                quantity
               }
+            }
           }
         }
       }
-  }`,
+    `,
     variables: {
       input: {
         attributes: [
@@ -153,24 +146,11 @@ export const addToCart = async (merchandiseId, value) => {
       },
     },
   };
-  const headers: any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type": "application/json",
-    Connection: "keep-alive",
-    "Accept-Encoding": "gzip, deflate, br",
-    Accept: "*/*",
-  };
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  };
+
   try {
-    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
+    const res = await client.mutate({ mutation: requestBody.query, variables: requestBody.variables });
 
-    const addToCartApiResponse = await res.json();
-
-    return addToCartApiResponse;
+    return res;
   } catch (error) {
     return undefined;
   }
@@ -178,24 +158,25 @@ export const addToCart = async (merchandiseId, value) => {
 
 export const addToCartLineItem = async (cartID, merchandiseId) => {
   const requestBody = {
-    query: `mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
-  cartLinesAdd(cartId: $cartId, lines: $lines) {
-    cart {
-      id
-      lines(first: 20) {
-            nodes {
+    query: gql`
+      mutation cartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+        cartLinesAdd(cartId: $cartId, lines: $lines) {
+          cart {
+            id
+            lines(first: 20) {
+              nodes {
                 id
                 quantity
+              }
             }
+          }
+          userErrors {
+            field
+            message
+          }
+        }
       }
-
-    }
-    userErrors {
-      field
-      message
-    }
-  }
-}`,
+    `,
     variables: {
       cartId: `${cartID}`,
       lines: {
@@ -204,22 +185,9 @@ export const addToCartLineItem = async (cartID, merchandiseId) => {
       },
     },
   };
-  const headers: any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type": "application/json",
-    Connection: "keep-alive",
-    "Accept-Encoding": "gzip, deflate, br",
-    Accept: "*/*",
-  };
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  };
-  try {
-    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-    const addToCartApiResponse = await res.json();
+  try {
+    const addToCartApiResponse = await client.mutate({ mutation: requestBody.query, variables: requestBody.variables });
 
     return addToCartApiResponse;
   } catch (error) {
@@ -229,46 +197,35 @@ export const addToCartLineItem = async (cartID, merchandiseId) => {
 
 export const getCartProducts = async (cartid) => {
   const requestBody = {
-    query: `query getCart($id: ID!) {
-      cart(id: $id) {
+    query: gql`
+      query getCart($id: ID!) {
+        cart(id: $id) {
           id
           lines(first: 20) {
-              nodes {
+            nodes {
+              id
+              quantity
+              merchandise {
+                ... on ProductVariant {
                   id
-                  quantity
-                  merchandise {
-                      ... on ProductVariant {
-                          id
-                          currentlyNotInStock
-                          image {
-                              url
-                          }
-                          quantityAvailable
-                          title
-                      }
+                  currentlyNotInStock
+                  image {
+                    url
                   }
+                  quantityAvailable
+                  title
+                }
               }
+            }
           }
+        }
       }
-  }`,
+    `,
     variables: { id: `${cartid}` },
   };
-  const headers: any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type": "application/json",
-    Connection: "keep-alive",
-    "Accept-Encoding": "gzip, deflate, br",
-    Accept: "*/*",
-  };
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  };
-  try {
-    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-    const getCartProductResponse = await res.json();
+  try {
+    const getCartProductResponse = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
     return getCartProductResponse;
   } catch (error) {
@@ -278,15 +235,17 @@ export const getCartProducts = async (cartid) => {
 
 export const getVariantBySelectedOptions = async (productID) => {
   const requestBody = {
-    query: `query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
-      product(id: $productId) {
+    query: gql`
+      query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
+        product(id: $productId) {
           variantBySelectedOptions(selectedOptions: $selectedOptionInput) {
-              id
-              title,
-              quantityAvailable
+            id
+            title
+            quantityAvailable
           }
+        }
       }
-  }`,
+    `,
     variables: {
       productId: `${productID}`,
       selectedOptionInput: [
@@ -301,22 +260,9 @@ export const getVariantBySelectedOptions = async (productID) => {
       ],
     },
   };
-  const headers: any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type": "application/json",
-    Connection: "keep-alive",
-    "Accept-Encoding": "gzip, deflate, br",
-    Accept: "*/*",
-  };
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  };
-  try {
-    const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-    const getVariantResponse = await res.json();
+  try {
+    const getVariantResponse = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
     return getVariantResponse;
   } catch (error) {
@@ -326,75 +272,56 @@ export const getVariantBySelectedOptions = async (productID) => {
 
 export const checkoutCartDetails = async (checkoutId: any) => {
   const requestBody = {
-    query: `query getCart($id: ID!) {
-      cart(id: $id) {
+    query: gql`
+      query getCart($id: ID!) {
+        cart(id: $id) {
           id
           checkoutUrl
+        }
       }
-  }`,
+    `,
     variables: { id: checkoutId },
   };
-  const collectCheck = await checkoutApiCalls(requestBody);
+  const collectCheck = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
   return collectCheck;
 };
 
-export const updateCartLineItem = async ( createdCartID , cartLineid ) => {
-
-
-  
+export const updateCartLineItem = async (createdCartID, cartLineid) => {
   const requestBody = {
-    query: `mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
-      cartLinesUpdate(cartId: $cartId, lines: $lines) {
-        cart {
-          id
-          lines(first: 20) {
-                nodes {
-                    id
-                    quantity
-                }
+    query: gql`
+      mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+        cartLinesUpdate(cartId: $cartId, lines: $lines) {
+          cart {
+            id
+            lines(first: 20) {
+              nodes {
+                id
+                quantity
+              }
+            }
           }
-    
-        }
-        userErrors {
-          field
-          message
+          userErrors {
+            field
+            message
+          }
         }
       }
-    }`,
-    variables: { 
-      
-      "cartId": `${createdCartID}`,
-      "lines": {
-        "id": `${cartLineid}`,
-        "quantity": 2
-      }
-    
+    `,
+    variables: {
+      cartId: `${createdCartID}`,
+      lines: {
+        id: `${cartLineid}`,
+        quantity: 2,
+      },
     },
   };
-  const headers: any = {
-    "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-    "Content-Type": "application/json",
-    Connection: "keep-alive",
-    "Accept-Encoding": "gzip, deflate, br",
-    Accept: "*/*",
-  };
-  const options = {
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(requestBody),
-  };
-try {
-  const res =  await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
 
-  const updateCartResponse = await res.json();
+  try {
+    const res = await client.mutate({ mutation: requestBody.query, variables: requestBody.variables });
 
-  return updateCartResponse;
-} catch (error) {
-  return undefined;
-}
- 
+    return res;
+  } catch (error) {
+    return undefined;
+  }
 };
-
-
-

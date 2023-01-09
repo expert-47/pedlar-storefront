@@ -93,39 +93,30 @@ const Action = (props) => {
   const BuyNowHandler = async () => {
     // changeLoaderState(true);
 
-    
     const createdCartID = localStorage.getItem("cartID");
     // changeLoaderState(true);
 
-    if (!createdCartID) {
-     
-      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(
-        async (res) => {
-          console.log("addToCartResponse", res);
-          localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
-          // changeLoaderState(false);
-         
+    if (true) {
+      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(async (res) => {
+        console.log("addToCartResponse", res);
+        localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
+        // changeLoaderState(false);
 
-          let response = await checkoutCartDetails(localStorage.getItem("cartID"));
+        let response = await checkoutCartDetails(localStorage.getItem("cartID"));
 
-          window.open(response?.data?.cart?.checkoutUrl);
-          
-        },
-      );
-    }
-    else  {
+        //   window.open(response?.data?.cart?.checkoutUrl);
+      });
+    } else {
       try {
-       
-        const data1 = cartData?.find((item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id);
+        const data1 = cartData?.find(
+          (item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id,
+        );
         if (data1) {
           await updateCartLineItem(createdCartID, data1?.id);
           const response = await checkoutCartDetails(createdCartID);
           window.open(response?.data?.cart?.checkoutUrl);
         } else {
-          await addToCartLineItem(
-            createdCartID,
-            newAdditionData?.variantBySelectedOptions?.id,
-          );
+          await addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id);
           const response = await checkoutCartDetails(createdCartID);
           window.open(response?.data?.cart?.checkoutUrl);
         }

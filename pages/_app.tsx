@@ -14,6 +14,8 @@ import Router from "next/router";
 import NProgress from "nprogress"; //nprogress module
 import "nprogress/nprogress.css"; //styles of nprogress
 import { store } from "store/index";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "api/graphql/client";
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -29,19 +31,21 @@ function MyApp({ Component, pageProps }: any) {
   });
   return (
     <Provider store={store}>
-      <SWRConfig
-        value={{
-          fetcher: (resource) => Axios.get(resource).then((r) => r.data),
-        }}
-      >
-        <Fragment>
-          <DefaultSeo {...SEO} />
+      <ApolloProvider client={client}>
+        <SWRConfig
+          value={{
+            fetcher: (resource) => Axios.get(resource).then((r) => r.data),
+          }}
+        >
+          <Fragment>
+            <DefaultSeo {...SEO} />
 
-          <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Fragment>
-      </SWRConfig>
+            <ThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </Fragment>
+        </SWRConfig>
+      </ApolloProvider>
     </Provider>
   );
 }

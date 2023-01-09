@@ -62,6 +62,7 @@ const styles = {
   menuItems: {
     fontWeight: "500",
     fontSize: "14px",
+    paddingTop: "8px",
   },
   menu: {
     backgroundImage:

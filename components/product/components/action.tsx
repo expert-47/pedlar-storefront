@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { getVariantBySelectedOptions, addToCartLineItem } from "api/grapgql";
 import { getCartProducts, updateCartLineItem } from "api/grapgql";
 import { checkoutCartDetails } from "api/grapgql";
-import { debug } from "console";
+
 
 const Action = (props) => {
   const { newAdditionData, changeLoaderState } = props;
@@ -25,7 +25,7 @@ const Action = (props) => {
     if (typeof window !== "undefined") {
       const cartID = localStorage.getItem("cartID");
 
-      const res = getCartProducts(cartID).then((response) => {
+      getCartProducts(cartID).then((response) => {
         // setCartData(response?.data?.cart?.lines?.nodes[0].merchandise);
         setCartData(response?.data?.cart?.lines?.nodes);
       });
@@ -37,43 +37,59 @@ const Action = (props) => {
 
   const addToCartButton = async () => {
     changeLoaderState(true);
+
     const createdCartID = localStorage.getItem("cartID");
 
-    if (createdCartID === null || createdCartID === undefined) {
-      const addToCartResponse = await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(
-        (res) => {
-          console.log("addToCartResponse", res);
-          localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
-          changeLoaderState(false);
-        },
-      );
+    if (!createdCartID) {
+      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then((res) => {
+       
+        localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
+        changeLoaderState(false);
+      });
     }
 
-    if (!(createdCartID === null || createdCartID === undefined)) {
-      cartData?.some((item) => {
-        if (item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id) {
-          const updateCartResponse = updateCartLineItem(createdCartID, item?.id).then((res) => {
-            console.log("resmm", res);
-            setUpdateCartState(true);
-            changeLoaderState(false);
+    if (createdCartID) {
+      const data1 = cartData?.find(
+        (item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id,
+      );
 
-            return true;
-          });
+      if (data1) {
+        updateCartLineItem(createdCartID, data1?.id).then((res) => {
+        
+          setUpdateCartState(true);
+          changeLoaderState(false);
+        });
+      } else {
+        addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id).then((res) => {
+          changeLoaderState(false);
+         
 
-          // setCartLineid(item?.id);
-        } else if (!(item?.merchandise?.id !== newAdditionData?.variantBySelectedOptions?.id)) {
-          const addCartLineItemResponse = addToCartLineItem(
-            createdCartID,
-            newAdditionData?.variantBySelectedOptions?.id,
-          ).then((res) => {
-            changeLoaderState(false);
-            console.log("createdCartID", createdCartID);
+        });
+      }
+      // cartData?.some((item) => {
+      //   if (item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id) {
+      //    updateCartLineItem(createdCartID, item?.id).then((res) => {
+      //       console.log("resmm", res);
+      //       setUpdateCartState(true);
+      //       changeLoaderState(false);
 
-            console.log("addCartLineItemResponse", res?.data);
-            return true;
-          });
-        }
-      });
+      //       return true;
+      //     });
+
+      //     // setCartLineid(item?.id);
+      //   } else if (!(item?.merchandise?.id !== newAdditionData?.variantBySelectedOptions?.id)) {
+      //      addToCartLineItem(
+      //       createdCartID,
+      //       newAdditionData?.variantBySelectedOptions?.id,
+      //     ).then((res) => {
+      //       changeLoaderState(false);
+      //       console.log("createdCartID", createdCartID);
+
+      //       console.log("addCartLineItemResponse", res?.data);
+      //       return true;
+      //     });
+      //   }
+      // });
       // if(updateCartState === true){
       //   const updateCartResponse = await updateCartLineItem(createdCartID , cartLineid );
       //   debugger
@@ -91,42 +107,38 @@ const Action = (props) => {
   };
 
   const BuyNowHandler = async () => {
-    // changeLoaderState(true);
+    changeLoaderState(true);
 
-    
     const createdCartID = localStorage.getItem("cartID");
     // changeLoaderState(true);
 
     if (!createdCartID) {
-     
-      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(
-        async (res) => {
-          console.log("addToCartResponse", res);
-          localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
-          // changeLoaderState(false);
-         
+      await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then(async (res) => {
+        console.log("addToCartResponse", res);
+        localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
+        // changeLoaderState(false);
 
-          let response = await checkoutCartDetails(localStorage.getItem("cartID"));
+        let response = await checkoutCartDetails(localStorage.getItem("cartID"));
+        changeLoaderState(false);
 
-          window.open(response?.data?.cart?.checkoutUrl);
-          
-        },
-      );
-    }
-    else  {
+        window.open(response?.data?.cart?.checkoutUrl);
+      });
+    } else {
       try {
-       
-        const data1 = cartData?.find((item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id);
+        const data1 = cartData?.find(
+          (item: any) => item?.merchandise?.id === newAdditionData?.variantBySelectedOptions?.id,
+        );
         if (data1) {
           await updateCartLineItem(createdCartID, data1?.id);
           const response = await checkoutCartDetails(createdCartID);
+          changeLoaderState(false);
+
           window.open(response?.data?.cart?.checkoutUrl);
         } else {
-          await addToCartLineItem(
-            createdCartID,
-            newAdditionData?.variantBySelectedOptions?.id,
-          );
+          await addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id);
           const response = await checkoutCartDetails(createdCartID);
+          changeLoaderState(false);
+
           window.open(response?.data?.cart?.checkoutUrl);
         }
       } catch (error) {

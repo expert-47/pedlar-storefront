@@ -8,7 +8,6 @@ import { getVariantBySelectedOptions, addToCartLineItem } from "api/grapgql";
 import { getCartProducts, updateCartLineItem } from "api/grapgql";
 import { checkoutCartDetails } from "api/grapgql";
 
-
 const Action = (props) => {
   const { newAdditionData, changeLoaderState } = props;
   const [cartData, setCartData] = useState<any>([]);
@@ -42,7 +41,6 @@ const Action = (props) => {
 
     if (!createdCartID) {
       await addToCart(newAdditionData?.variantBySelectedOptions?.id, slugValue).then((res) => {
-       
         localStorage.setItem("cartID", res?.data?.cartCreate?.cart?.id);
         changeLoaderState(false);
       });
@@ -55,15 +53,12 @@ const Action = (props) => {
 
       if (data1) {
         updateCartLineItem(createdCartID, data1?.id).then((res) => {
-        
           setUpdateCartState(true);
           changeLoaderState(false);
         });
       } else {
         addToCartLineItem(createdCartID, newAdditionData?.variantBySelectedOptions?.id).then((res) => {
           changeLoaderState(false);
-         
-
         });
       }
       // cartData?.some((item) => {

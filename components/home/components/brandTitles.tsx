@@ -4,7 +4,7 @@ import { CustomGrid } from "components/layout";
 import { brands } from "./data";
 import styles from "styles/home";
 import Image from "next/image";
-const BrandTitles = (props: GridProps) => {
+const BrandTitles = (props:any) => {
   return (
     <>
       <CustomGrid
@@ -15,7 +15,7 @@ const BrandTitles = (props: GridProps) => {
         }}
       >
         <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props} style={{ justifyContent: "space-between" }}>
-          {brands.map((item) => (
+          {props?.curatedBrandsResponse?.map((item:any , index:number) => (
             <>
               <Box
                 sx={styles.brandImage}
@@ -27,7 +27,7 @@ const BrandTitles = (props: GridProps) => {
                   alignItems: "center",
                 }}
               >
-                <img src={item} alt="bordergrid" />
+                <img src={item?.logo_url} alt={"image" + index} />
               </Box>
             </>
           ))}

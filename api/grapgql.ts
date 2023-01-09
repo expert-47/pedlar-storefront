@@ -395,6 +395,21 @@ try {
 }
  
 };
+export const getCuratedBrands = async (  ) => {
+
+
+  
+try {
+  const res =  await fetch("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors?sortKey=random");
+
+  const updateCartResponse = await res.json();
+
+  return updateCartResponse;
+} catch (error) {
+  return undefined;
+}
+ 
+};
 
 
 

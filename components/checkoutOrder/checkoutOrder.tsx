@@ -6,6 +6,8 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
 import { updateCartLineItem } from "api/grapgql";
+import { Alert } from "@mui/material";
+
 import CircularIndeterminate from "components/muiLoader";
 
 interface Props {
@@ -14,16 +16,21 @@ interface Props {
   image: string;
   quantity: number;
   itemData : any;
+  CurrencyCode:string;
 }
 
 const CheckoutOrder = (props: Props) => {
   const [productCount, setProductCount] = useState(props?.quantity);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const incQuantityHandler = () => {
     const createdCartID = localStorage.getItem("cartID");
+    setError(false);
    
   if(props?.itemData?.merchandise?.quantityAvailable === props?.quantity){
-      console.log("limit full");
+    setError(true);
+    setErrorMessage("This Item is Currently out of Stock");
   }
   else {
     updateCartLineItem(createdCartID, props?.itemData?.id, productCount).then((res) => {
@@ -33,6 +40,12 @@ const CheckoutOrder = (props: Props) => {
   }
 
   };
+  const productDecrementHandler =(quantity : number)=>{
+
+    console.log("qunatity" , quantity);
+    const createdCartID = localStorage.getItem("cartID");
+    setError(false);
+  };
 
   // const decQuantityHandler = () => {
   //   if (numbers > 0) {
@@ -40,7 +53,10 @@ const CheckoutOrder = (props: Props) => {
   //   }
   // };
 
-
+  const handleAlertClose = () => {
+		setError(false);
+		setErrorMessage("");
+	};
 
   
 
@@ -76,7 +92,9 @@ const CheckoutOrder = (props: Props) => {
           style={{ marginBottom: "5px", cursor: "pointer", display: "flex", flexDirection: "column", width: "100%" }}
         >
           <Typography sx={styles.brandName}>{props.name}</Typography>
-          <Typography sx={styles.productPrice}>{props.price}</Typography>
+          <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "A$" : ""} ${props?.price}`}</Typography>
+          {error ? <Alert onClose={handleAlertClose} severity="error">{errorMessage}</Alert> : null}
+        
           <Box
             style={{
               display: "flex",
@@ -95,11 +113,12 @@ const CheckoutOrder = (props: Props) => {
                 justifyContent: "space-between",
               }}
             >
-              <RemoveIcon   sx={styles.addRemoveIcon}  />
+              <RemoveIcon   sx={styles.addRemoveIcon} onClick={()=>productDecrementHandler(props?.quantity)}  />
+
               <Typography sx={styles.addRemoveText}>{props?.quantity}</Typography>
               <AddIcon sx={styles.addRemoveIcon} onClick={incQuantityHandler} />
             </Box>
-            <Button sx={styles.removeButton}>Remove</Button>
+            <Button sx={styles.removeButton} >Remove</Button>
           </Box>
         </Box>
       </Box>
@@ -108,5 +127,5 @@ const CheckoutOrder = (props: Props) => {
     </>
   );
 };
-// component={"button"} disabled={props?.itemData?.quantityAvailable === props?.itemData?.quantity ? true : false} 
+
 export default CheckoutOrder;

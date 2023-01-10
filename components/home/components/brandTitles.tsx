@@ -4,7 +4,12 @@ import { CustomGrid } from "components/layout";
 import { brands } from "./data";
 import styles from "styles/home";
 import Image from "next/image";
-const BrandTitles = (props:any) => {
+import { useRouter } from "next/router";
+import Link from "next/link";
+
+const BrandTitles = (props: any) => {
+  const route = useRouter();
+
   return (
     <>
       <CustomGrid
@@ -15,7 +20,7 @@ const BrandTitles = (props:any) => {
         }}
       >
         <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props} style={{ justifyContent: "space-between" }}>
-          {props?.curatedBrandsResponse?.map((item:any , index:number) => (
+          {props?.curatedBrandsResponse?.map((item: any, index: number) => (
             <>
               <Box
                 sx={styles.brandImage}
@@ -27,7 +32,15 @@ const BrandTitles = (props:any) => {
                   alignItems: "center",
                 }}
               >
-                <img src={item?.logo_url} alt={"image" + index} />
+                <Link
+                  as={`${route?.query?.slug}/products`}
+                  href={{
+                    pathname: `${route?.query?.slug}/products`,
+                    query: { dataType: "Brands", itemValue: item?.vendor},
+                  }}
+                >
+                  <img src={item?.logo_url} alt={"image" + index} />
+                </Link>
               </Box>
             </>
           ))}

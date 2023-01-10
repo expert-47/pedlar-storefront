@@ -214,6 +214,11 @@ export const getCartProducts = async (cartid) => {
                   }
                   quantityAvailable
                   title
+                  price{
+                    amount
+                    currencyCode
+
+                }
                 }
               }
             }

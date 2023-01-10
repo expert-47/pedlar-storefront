@@ -16,7 +16,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   const cartId = useSelector((data) => data.app.cartId);
   const cartProducts = useSelector((data) => data.app.products);
   const dispatch = useDispatch();
-  const [totalPrice, setTotalPrice] = useState();
+  const [totalPrice, setTotalPrice] = useState("");
 
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
@@ -29,28 +29,34 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
-        if (cartProducts?.length > 0) {
-          console.log("cartProducts", cartProducts);
-
-          if (cartProducts?.length == 1) {
-            let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
-            setTotalPrice(price);
-            return;
-          }
-          const price = cartProducts.reduce((total, item) => {
-            return typeof total == "object"
-              ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
-                  Number(item?.merchandise.price?.amount) * Number(item.quantity)
-              : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
-          });
-          console.log("price", price);
-
-          setTotalPrice(price);
-        }
+        
       } catch (error) {}
     }
   };
+useEffect(()=>{
 
+  if (cartProducts?.length > 0) {
+    console.log("cartProducts", cartProducts);
+
+    if (cartProducts?.length == 1) {
+      let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
+      setTotalPrice(price);
+      return;
+    }
+    const price = cartProducts.reduce((total, item) => {
+      return typeof total == "object"
+        ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
+            Number(item?.merchandise.price?.amount) * Number(item.quantity)
+        : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
+    });
+    console.log("price", price);
+
+    setTotalPrice(price);
+  }else{
+    setTotalPrice("");
+
+  }
+},[cartProducts])
   useEffect(() => {
     getCartList();
   }, [openDrawer, toggleDrawer]);

@@ -71,8 +71,11 @@ const Cart = (props) => {
   };
 
   useEffect(() => {
-    setError(false);
-  }, [color, size]);
+    setTimeout(() => {
+      setError(false);
+      
+    }, 1500);
+  }, [error]);
 
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0]);

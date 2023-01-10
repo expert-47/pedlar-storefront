@@ -7,61 +7,56 @@ import styles from "styles/checkout";
 import { useEffect, useState } from "react";
 import { getCartProducts } from "api/grapgql";
 import { checkoutCartDetails } from "../../api/grapgql";
+import { addProductToCart } from "store/slice/appSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
- 
 
-  const [cartData, setCartData] = useState([]);
-  const [totalPrice , setTotalPrice]=useState();
+  const cartId = useSelector((data) => data.app.cartId);
+  const cartProducts = useSelector((data) => data.app.products);
+  const dispatch = useDispatch();
+  const [totalPrice, setTotalPrice] = useState();
 
- 
-  
   const apiForCheckout = async () => {
-    if (typeof window !== "undefined") {
-      const createdCartID = localStorage.getItem("cartID");
-      const response = await checkoutCartDetails(createdCartID);
-      window.open(response?.data?.cart?.checkoutUrl);
+    const response = await checkoutCartDetails(cartId);
+    window.open(response?.data?.cart?.checkoutUrl);
+  };
+
+  const getCartList = async () => {
+    if (cartId) {
+      try {
+        let response = await getCartProducts(cartId);
+        let cartProducts = response?.data?.cart?.lines?.nodes || [];
+        dispatch(addProductToCart(cartProducts));
+        if (cartProducts?.length > 0) {
+          console.log("cartProducts", cartProducts);
+
+          if (cartProducts?.length == 1) {
+            let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
+            setTotalPrice(price);
+            return;
+          }
+          const price = cartProducts.reduce((total, item) => {
+            return typeof total == "object"
+              ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
+                  Number(item?.merchandise.price?.amount) * Number(item.quantity)
+              : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
+          });
+          console.log("price", price);
+
+          setTotalPrice(price);
+        }
+      } catch (error) {}
     }
   };
 
-
-
   useEffect(() => {
-
-    if (typeof window !== "undefined") {
-      const cartID = localStorage.getItem("cartID");
-
-    
-
-       getCartProducts(cartID).then((response) => {
-
-        setCartData(response?.data?.cart?.lines?.nodes);
-      });
-
-    }
-    
-  }, [openDrawer , toggleDrawer]);
+    getCartList();
+  }, [openDrawer, toggleDrawer]);
   // getting cart products
 
-  useEffect(()=>{
-    if(cartData?.length > 0){
-    const  price = cartData.reduce((total,item)=>{
-  
-      return typeof(total) =="object"? (Number(total.merchandise?.price?.amount)  * Number(total.quantity)) + (Number(item?.merchandise.price?.amount) * Number(item.quantity)):total+( Number(item?.merchandise.price?.amount) * Number(item.quantity));
-
-    });
-
-    setTotalPrice(price);
-
-    }
-
-   
-
-  });
-
- 
-  
+  useEffect(() => {});
 
   const paperStyle = {
     color: "black",
@@ -99,7 +94,9 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography sx={styles.cartDrawerTypo}>{cartData?.length > 0 ? `Cart(${cartData?.length})` : "Cart (0)"}</Typography>
+          <Typography sx={styles.cartDrawerTypo}>
+            {cartProducts?.length ? `Cart(${cartProducts?.length || ""})` : "Cart"}
+          </Typography>
           <CloseIcon
             onClick={() => {
               toggleDrawer(false);
@@ -119,21 +116,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         >
           {/* {data.map((item) => ( */}
 
-          {cartData?.map((item : any, index) => {
-           
+          {cartProducts?.map((item: any, index) => {
             return (
               <CheckoutOrder
                 key={index}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}
-                CurrencyCode= {item?.merchandise?.price?.currencyCode || "$"}
+                CurrencyCode={item?.merchandise?.price?.currencyCode || "$"}
                 quantity={item?.quantity}
                 itemData={item}
               />
             );
           })}
-      
         </Grid>
       </Grid>
 
@@ -158,10 +153,8 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
               Incl. VAT & Taxes
             </Typography>
           </Grid>
-        
-          <Typography sx={styles.paymentTotal}>
-          A${totalPrice ? totalPrice : ""}
-          </Typography>
+
+          <Typography sx={styles.paymentTotal}>{totalPrice ? `A$${totalPrice}` : ""}</Typography>
         </Grid>
 
         <Button

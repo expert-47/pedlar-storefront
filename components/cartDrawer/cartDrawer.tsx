@@ -99,7 +99,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography sx={styles.cartDrawerTypo}>{`Cart(${cartData?.length})`}</Typography>
+          <Typography sx={styles.cartDrawerTypo}>{cartData?.length > 0 ? `Cart(${cartData?.length})` : "Cart (0)"}</Typography>
           <CloseIcon
             onClick={() => {
               toggleDrawer(false);

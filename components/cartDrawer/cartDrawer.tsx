@@ -22,6 +22,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     const response = await checkoutCartDetails(cartId);
     dispatch(clearCart({}));
     window.open(response?.data?.cart?.checkoutUrl);
+    toggleDrawer(false);
   };
 
   const getCartList = async () => {

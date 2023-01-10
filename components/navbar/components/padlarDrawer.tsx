@@ -28,10 +28,12 @@ import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
-export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
-  const { openDrawer, toggleDrawer } = props;
+export const PedlarDrawer = (props: { openDrawer: boolean;storefrontName:string; toggleDrawer: (value: boolean) => void }) => {
+  const { openDrawer, toggleDrawer , storefrontName } = props;
   const theme = useTheme();
+const route = useRouter();
 
   const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
   const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
@@ -89,7 +91,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
             <Link href="/">
               <Image src="/pedlar.png" alt="No Image Found" width="70px" height="30px" />
             </Link>
-            <Typography style={{ fontSize: "22px", fontWeight: "400", paddingLeft: "5px" }}>Hannah Juneva</Typography>
+            <Typography style={{ fontSize: "22px", fontWeight: "400", paddingLeft: "5px" }}>{storefrontName ? storefrontName : ""}</Typography>
           </Grid>
           <IconButton sx={styles.shoppingCartIcon}>
             <Image src="/cart.png" height="19.48px" width="19.48px" />
@@ -110,7 +112,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
           </Box>
         </Grid>
         <ListItemText sx={styles.drawerText}>
-          <Link href="/">
+          <Link href={`/${route.query.slug}`}>
             <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               Home
             </ListItem>
@@ -131,7 +133,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
                     ) : (
                       data.data
                         .map((item) => item.vendor)
-                        .sort()
+                        
                         .slice(0, 28)
                         .map((item) => (
                           <Grid
@@ -172,7 +174,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
                     ) : (
                       shopList.data
                         .map((item) => item.productType)
-                        .sort()
+                        
                         .slice(0, 28)
                         .map((item) => (
                           <Grid
@@ -198,7 +200,7 @@ export const PedlarDrawer = (props: { openDrawer: boolean; toggleDrawer: (value:
               </List>
             </Collapse>
           </List>
-          <Link href="faq">
+          <Link href={`/${route.query.slug}/faq`}>
             <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               FAQ
             </ListItem>

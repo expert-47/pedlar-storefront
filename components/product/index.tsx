@@ -211,7 +211,7 @@ const Cart = (props) => {
   return (
     <>
       {loaderState === false ? (
-        <Layout storefrontName={HeaderData?.data?.storefrontName}>
+        <Layout slug={slugValue} storefrontName={HeaderData?.data?.storefrontName}>
           <CustomContainer>
             <Box sx={styles.mainContainer}>
               <Grid container item md={11} lg={9} xl={9}>

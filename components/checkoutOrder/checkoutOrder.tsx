@@ -7,9 +7,7 @@ import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
 import { getCartProducts, updateCartLineItem } from "api/grapgql";
 import { Alert } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
 
-import CircularIndeterminate from "components/muiLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "store/slice/appSlice";
 
@@ -43,6 +41,12 @@ const CheckoutOrder = (props: Props) => {
       await getCartList();
       setLoadingButtonState(false);
     }
+  };
+  const removeItem = async () => {
+    setLoadingButtonState(true);
+    await updateCartLineItem(cartId, props?.itemData?.id, 0);
+    await getCartList();
+    setLoadingButtonState(false);
   };
   const getCartList = async () => {
     if (cartId) {
@@ -81,26 +85,17 @@ const CheckoutOrder = (props: Props) => {
             flexDirection: "column",
           }}
         >
-          <LoadingButton
-            loading={loadingButtonState}
-            sx={{
-              color: "black",
-              borderRadius: "25px",
+          <Box
+            style={{
+              display: "flex",
               width: "100%",
-              height: "46px",
-              borderColor: "black",
-              fontSize: "16px",
-              fontWeight: "600",
-              textTransform: "none",
-              "&:hover": {
-                borderColor: "black",
-              },
-              "& .css-62e83j-MuiCircularProgress-root": {
-                width: "50px !important",
-                height: "50px !important",
-              },
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              height: "130px",
+              backgroundColor: "#D7D8D9",
             }}
-          />
+          ></Box>
           <Divider sx={styles.divider} />
         </Box>
       ) : (
@@ -173,7 +168,9 @@ const CheckoutOrder = (props: Props) => {
                   <Typography sx={styles.addRemoveText}>{productCount}</Typography>
                   <AddIcon sx={styles.addRemoveIcon} onClick={() => incQuantityHandler(productCount)} />
                 </Box>
-                <Button sx={styles.removeButton}>Remove</Button>
+                <Button onClick={removeItem} sx={styles.removeButton}>
+                  Remove
+                </Button>
               </Box>
             </Box>
           </Box>

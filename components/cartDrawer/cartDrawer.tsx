@@ -10,13 +10,10 @@ import { checkoutCartDetails } from "../../api/grapgql";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
   const { openDrawer, toggleDrawer } = props;
- 
 
   const [cartData, setCartData] = useState([]);
-  const [totalPrice , setTotalPrice]=useState();
+  const [totalPrice, setTotalPrice] = useState();
 
- 
-  
   const apiForCheckout = async () => {
     if (typeof window !== "undefined") {
       const createdCartID = localStorage.getItem("cartID");
@@ -25,43 +22,25 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     }
   };
 
-
-
   useEffect(() => {
-
     if (typeof window !== "undefined") {
       const cartID = localStorage.getItem("cartID");
 
-    
-
-       getCartProducts(cartID).then((response) => {
-
+      getCartProducts(cartID).then((response) => {
         setCartData(response?.data?.cart?.lines?.nodes);
       });
-
     }
-    
-  }, [openDrawer , toggleDrawer]);
+  }, [openDrawer, toggleDrawer]);
   // getting cart products
 
-  useEffect(()=>{
+  useEffect(() => {
     // if(cartData?.length > 0){
     // const  price = cartData.reduce((total,item)=>{
-  
     //   return typeof(total) =="object"? (Number(total.merchandise?.price?.amount)  * Number(total.quantity)) + (Number(item?.merchandise.price?.amount) * Number(item.quantity)):total+( Number(item?.merchandise.price?.amount) * Number(item.quantity));
-
     // });
-
     // setTotalPrice(price);
-
     // }
-
-   
-
   });
-
- 
-  
 
   const paperStyle = {
     color: "black",
@@ -99,7 +78,9 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography sx={styles.cartDrawerTypo}>{`Cart(${cartData?.length})`}</Typography>
+          <Typography sx={styles.cartDrawerTypo}>
+            {cartData?.length ? `Cart(${cartData?.length || ""})` : "Cart"}
+          </Typography>
           <CloseIcon
             onClick={() => {
               toggleDrawer(false);
@@ -119,21 +100,19 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         >
           {/* {data.map((item) => ( */}
 
-          {cartData?.map((item : any, index) => {
-           
+          {cartData?.map((item: any, index) => {
             return (
               <CheckoutOrder
                 key={index}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}
-                CurrencyCode= {item?.merchandise?.price?.currencyCode || "$"}
+                CurrencyCode={item?.merchandise?.price?.currencyCode || "$"}
                 quantity={item?.quantity}
                 itemData={item}
               />
             );
           })}
-      
         </Grid>
       </Grid>
 
@@ -158,10 +137,8 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
               Incl. VAT & Taxes
             </Typography>
           </Grid>
-        
-          <Typography sx={styles.paymentTotal}>
-          A${totalPrice ? totalPrice : ""}
-          </Typography>
+
+          <Typography sx={styles.paymentTotal}>{totalPrice ? `A$${totalPrice}` : ""}</Typography>
         </Grid>
 
         <Button

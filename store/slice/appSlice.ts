@@ -20,7 +20,7 @@ const AppState = createSlice({
         products: action.payload,
       };
     },
-    updateItem: (state, action) => {
+    updateCartId: (state, action) => {
       return {
         ...state,
         cartId: action.payload,
@@ -29,5 +29,5 @@ const AppState = createSlice({
   },
 });
 
-export const { addProductToCart } = AppState.actions;
+export const { addProductToCart, updateCartId } = AppState.actions;
 export default AppState.reducer;

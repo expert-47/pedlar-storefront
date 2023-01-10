@@ -30,7 +30,7 @@ export const ResponsiveNavbar = (props : Props) => {
   return (
     <React.Fragment>
       <Toolbar>
-        <PedlarDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
+        <PedlarDrawer openDrawer={openDrawer} storefrontName={storefrontName} toggleDrawer={toggleDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>
             {" "}

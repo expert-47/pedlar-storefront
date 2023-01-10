@@ -7,7 +7,7 @@ import styles from "styles/checkout";
 import { useEffect, useState } from "react";
 import { getCartProducts } from "api/grapgql";
 import { checkoutCartDetails } from "../../api/grapgql";
-import { addProductToCart } from "store/slice/appSlice";
+import { addProductToCart, clearCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
@@ -20,6 +20,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
 
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
+    dispatch(clearCart({}));
     window.open(response?.data?.cart?.checkoutUrl);
   };
 
@@ -29,38 +30,36 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
-        
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
-useEffect(()=>{
+  useEffect(() => {
+    if (cartProducts?.length > 0) {
+      console.log("cartProducts", cartProducts);
 
-  if (cartProducts?.length > 0) {
-    console.log("cartProducts", cartProducts);
+      if (cartProducts?.length == 1) {
+        let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
+        setTotalPrice(price);
+        return;
+      }
+      const price = cartProducts.reduce((total, item) => {
+        return typeof total == "object"
+          ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
+              Number(item?.merchandise.price?.amount) * Number(item.quantity)
+          : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
+      });
+      console.log("price", price);
 
-    if (cartProducts?.length == 1) {
-      let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
       setTotalPrice(price);
-      return;
+    } else {
+      setTotalPrice("");
     }
-    const price = cartProducts.reduce((total, item) => {
-      return typeof total == "object"
-        ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
-            Number(item?.merchandise.price?.amount) * Number(item.quantity)
-        : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
-    });
-    console.log("price", price);
-
-    setTotalPrice(price);
-  }else{
-    setTotalPrice("");
-
-  }
-},[cartProducts])
+  }, [cartProducts]);
   useEffect(() => {
     getCartList();
   }, [openDrawer, toggleDrawer]);
-  // getting cart products
 
   useEffect(() => {});
 

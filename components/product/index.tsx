@@ -73,7 +73,6 @@ const Cart = (props) => {
   useEffect(() => {
     setTimeout(() => {
       setError(false);
-      
     }, 1500);
   }, [error]);
 
@@ -88,12 +87,10 @@ const Cart = (props) => {
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
-    console.log("size== " + value);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
-    console.log("size== " + value);
   };
 
   // add to cart method

@@ -29,34 +29,28 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
-        
       } catch (error) {}
     }
   };
-useEffect(()=>{
+  useEffect(() => {
+    if (cartProducts?.length > 0) {
+      if (cartProducts?.length == 1) {
+        let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
+        setTotalPrice(price);
+        return;
+      }
+      const price = cartProducts.reduce((total, item) => {
+        return typeof total == "object"
+          ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
+              Number(item?.merchandise.price?.amount) * Number(item.quantity)
+          : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
+      });
 
-  if (cartProducts?.length > 0) {
-    console.log("cartProducts", cartProducts);
-
-    if (cartProducts?.length == 1) {
-      let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
       setTotalPrice(price);
-      return;
+    } else {
+      setTotalPrice("");
     }
-    const price = cartProducts.reduce((total, item) => {
-      return typeof total == "object"
-        ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
-            Number(item?.merchandise.price?.amount) * Number(item.quantity)
-        : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
-    });
-    console.log("price", price);
-
-    setTotalPrice(price);
-  }else{
-    setTotalPrice("");
-
-  }
-},[cartProducts])
+  }, [cartProducts]);
   useEffect(() => {
     getCartList();
   }, [openDrawer, toggleDrawer]);

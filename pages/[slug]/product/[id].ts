@@ -12,7 +12,6 @@ export async function getServerSideProps(context: any) {
   response = response?.data?.collection?.products?.nodes;
 
   let data = await getProductDetails(context?.query?.id);
-  console.log("");
 
   return {
     props: {

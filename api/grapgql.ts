@@ -56,7 +56,6 @@ export const getProductDetails = async (productId: string) => {
   };
 
   const collectionData = await client.query({ query: requestBody.query, variables: requestBody.variables });
-  console.log("collectionData", collectionData);
 
   return collectionData || {};
 };
@@ -110,9 +109,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
   return res || {};
 };
 
-export const addToCart = async (merchandiseId, value , quantity) => {
-  console.log("merchandiseId", merchandiseId);
-
+export const addToCart = async (merchandiseId, value, quantity) => {
   const requestBody = {
     query: gql`
       mutation createCart($input: CartInput) {
@@ -214,11 +211,10 @@ export const getCartProducts = async (cartid) => {
                   }
                   quantityAvailable
                   title
-                  price{
+                  price {
                     amount
                     currencyCode
-
-                }
+                  }
                 }
               }
             }
@@ -238,7 +234,7 @@ export const getCartProducts = async (cartid) => {
   }
 };
 
-export const getVariantBySelectedOptions = async (productID,size,color) => {
+export const getVariantBySelectedOptions = async (productID, size, color) => {
   const requestBody = {
     query: gql`
       query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
@@ -256,7 +252,7 @@ export const getVariantBySelectedOptions = async (productID,size,color) => {
       selectedOptionInput: [
         {
           name: "Size",
-          value:size,
+          value: size,
         },
         {
           name: "Color",
@@ -292,7 +288,7 @@ export const checkoutCartDetails = async (checkoutId: any) => {
   return collectCheck;
 };
 
-export const updateCartLineItem = async (createdCartID, cartLineid , quantity) => {
+export const updateCartLineItem = async (createdCartID, cartLineid, quantity) => {
   const requestBody = {
     query: gql`
       mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
@@ -330,21 +326,14 @@ export const updateCartLineItem = async (createdCartID, cartLineid , quantity) =
     return undefined;
   }
 };
-export const getCuratedBrands = async (  ) => {
+export const getCuratedBrands = async () => {
+  try {
+    const res = await fetch("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors?sortKey=random");
 
+    const updateCartResponse = await res.json();
 
-  
-try {
-  const res =  await fetch("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors?sortKey=random");
-
-  const updateCartResponse = await res.json();
-
-  return updateCartResponse;
-} catch (error) {
-  return undefined;
-}
- 
+    return updateCartResponse;
+  } catch (error) {
+    return undefined;
+  }
 };
-
-
-

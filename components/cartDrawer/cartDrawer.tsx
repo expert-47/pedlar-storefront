@@ -45,16 +45,16 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   // getting cart products
 
   useEffect(()=>{
-    // if(cartData?.length > 0){
-    // const  price = cartData.reduce((total,item)=>{
+    if(cartData?.length > 0){
+    const  price = cartData.reduce((total,item)=>{
   
-    //   return typeof(total) =="object"? (Number(total.merchandise?.price?.amount)  * Number(total.quantity)) + (Number(item?.merchandise.price?.amount) * Number(item.quantity)):total+( Number(item?.merchandise.price?.amount) * Number(item.quantity));
+      return typeof(total) =="object"? (Number(total.merchandise?.price?.amount)  * Number(total.quantity)) + (Number(item?.merchandise.price?.amount) * Number(item.quantity)):total+( Number(item?.merchandise.price?.amount) * Number(item.quantity));
 
-    // });
+    });
 
-    // setTotalPrice(price);
+    setTotalPrice(price);
 
-    // }
+    }
 
    
 

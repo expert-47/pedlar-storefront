@@ -10,16 +10,18 @@ import Image from "next/image";
 // import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
-import { AppBar, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
+import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
 
 import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 export default function Navbar(props: any) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
+  const cartProducts = useSelector((data) => data.app.products);
 
   const [openDrawer, toggleDrawer] = useState(false);
 
@@ -89,9 +91,11 @@ export default function Navbar(props: any) {
                   <IconButton sx={styles.iconColor}>
                     <Image src="/search.png" height="19.48px" width="19.48px" />
                   </IconButton>
-                  <IconButton sx={styles.iconColor}>
-                    <Image src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
-                  </IconButton>
+                  <Badge badgeContent={cartProducts.length} color="secondary">
+                    <IconButton sx={styles.iconColor}>
+                      <Image src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
+                    </IconButton>
+                  </Badge>
                 </Stack>
                 <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
               </Toolbar>

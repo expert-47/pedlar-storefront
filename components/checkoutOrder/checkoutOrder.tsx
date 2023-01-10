@@ -1,112 +1,188 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
-import { updateCartLineItem } from "api/grapgql";
-import CircularIndeterminate from "components/muiLoader";
+import { getCartProducts, updateCartLineItem } from "api/grapgql";
+import { Alert } from "@mui/material";
+
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart } from "store/slice/appSlice";
 
 interface Props {
   name: string;
   price: string;
   image: string;
   quantity: number;
-  itemData : any;
+  itemData: any;
+  CurrencyCode: string;
 }
 
 const CheckoutOrder = (props: Props) => {
   const [productCount, setProductCount] = useState(props?.quantity);
+  const [error, setError] = useState(false);
+  const [loadingButtonState, setLoadingButtonState] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const cartId = useSelector((data) => data.app.cartId);
+  const cartProducts = useSelector((data) => data.app.products);
+  const dispatch = useDispatch();
+  const incQuantityHandler = async (quantity: number) => {
+    setLoadingButtonState(true);
+    setError(false);
 
-  const incQuantityHandler = () => {
-    const createdCartID = localStorage.getItem("cartID");
-   
-  if(props?.itemData?.merchandise?.quantityAvailable === props?.quantity){
-      console.log("limit full");
-  }
-  else {
-    updateCartLineItem(createdCartID, props?.itemData?.id, productCount).then((res) => {
-    
-      console.log("res", res);
-    });
-  }
+    if (props?.itemData?.merchandise?.quantityAvailable === productCount) {
+      setError(true);
+      setErrorMessage("This Item is Currently out of Stock");
+      setLoadingButtonState(false);
+    } else {
+      await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
+      setProductCount(quantity + 1);
+      await getCartList();
+      setLoadingButtonState(false);
+    }
+  };
+  const removeItem = async () => {
+    setLoadingButtonState(true);
+    await updateCartLineItem(cartId, props?.itemData?.id, 0);
+    await getCartList();
+    setLoadingButtonState(false);
 
   };
+  const getCartList = async () => {
+    if (cartId) {
+      try {
+        let response = await getCartProducts(cartId);
 
-  // const decQuantityHandler = () => {
-  //   if (numbers > 0) {
-  //     setNumbers(numbers - 1);
-  //   }
-  // };
+        dispatch(addProductToCart(response?.data?.cart?.lines?.nodes || []));
+      } catch (error) {}
+    }
+  };
+  const productDecrementHandler = async (quantity: number) => {
+    setError(false);
 
+    setLoadingButtonState(true);
 
+    await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
+    setProductCount(quantity - 1);
 
-  
+    await getCartList();
+    setLoadingButtonState(false);
+  };
 
-
+  const handleAlertClose = () => {
+    setError(false);
+    setErrorMessage("");
+  };
+  useEffect(() => {
+    setProductCount(productCount);
+  }, [productCount]);
 
   return (
     <>
-    {
-      
-    }
-    <Box
-      style={{
-        display: "flex",
-        width: "100%",
-        flexDirection: "column",
-      }}
-    >
-      <Box
-        style={{ display: "flex", width: "100%", justifyContent: "center", alignItems: "center", flexDirection: "row" }}
-      >
+      {loadingButtonState ? (
         <Box
           style={{
-            width: "130px",
-            height: "130px",
-            cursor: "pointer",
-            marginRight: "10px",
+            display: "flex",
+            width: "100%",
+            flexDirection: "column",
           }}
         >
-          <img src={props?.image} width="130px" height={"130px"} />
-          {/* <Image src={props.image} width={130} height={130} layout="responsive" objectFit="fill"></Image> */}
-        </Box>
-        <Box
-          style={{ marginBottom: "5px", cursor: "pointer", display: "flex", flexDirection: "column", width: "100%" }}
-        >
-          <Typography sx={styles.brandName}>{props.name}</Typography>
-          <Typography sx={styles.productPrice}>{props.price}</Typography>
           <Box
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              height: "130px",
+              backgroundColor: "#D7D8D9",
             }}
-            marginTop={"15px"}
+          ></Box>
+          <Divider sx={styles.divider} />
+        </Box>
+      ) : (
+        <Box
+          style={{
+            display: "flex",
+            width: "100%",
+            flexDirection: "column",
+          }}
+        >
+          <Box
+            style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
           >
             <Box
-              component="span"
-              sx={{
-                borderRadius: "3px",
-                border: "1px solid #DDDDDD",
-                width: "85px",
-                height: "25px",
-                display: "flex",
-                justifyContent: "space-between",
+              style={{
+                width: "130px",
+                height: "130px",
+                cursor: "pointer",
+                marginRight: "10px",
               }}
             >
-              <RemoveIcon   sx={styles.addRemoveIcon}  />
-              <Typography sx={styles.addRemoveText}>{props?.quantity}</Typography>
-              <AddIcon sx={styles.addRemoveIcon} onClick={incQuantityHandler} />
+              <img src={props?.image} width="130px" height={"130px"} />
+              {/* <Image src={props.image} width={130} height={130} layout="responsive" objectFit="fill"></Image> */}
             </Box>
-            <Button sx={styles.removeButton}>Remove</Button>
+            <Box
+              style={{
+                marginBottom: "5px",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
+              <Typography sx={styles.brandName}>{props.name}</Typography>
+              <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "A$" : ""} ${
+                props?.price
+              }`}</Typography>
+              {error ? (
+                <Alert onClose={handleAlertClose} severity="error">
+                  {errorMessage}
+                </Alert>
+              ) : null}
+
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+                marginTop={"15px"}
+              >
+                <Box
+                  component="span"
+                  sx={{
+                    borderRadius: "3px",
+                    border: "1px solid #DDDDDD",
+                    width: "85px",
+                    height: "25px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <RemoveIcon sx={styles.addRemoveIcon} onClick={() => productDecrementHandler(props?.quantity)} />
+
+                  <Typography sx={styles.addRemoveText}>{productCount}</Typography>
+                  <AddIcon sx={styles.addRemoveIcon} onClick={() => incQuantityHandler(productCount)} />
+                </Box>
+                <Button onClick={removeItem} sx={styles.removeButton}>
+                  Remove
+                </Button>
+              </Box>
+            </Box>
           </Box>
+          <Divider sx={styles.divider} />
         </Box>
-      </Box>
-      <Divider sx={styles.divider} />
-    </Box>
+      )}
     </>
   );
 };
-// component={"button"} disabled={props?.itemData?.quantityAvailable === props?.itemData?.quantity ? true : false} 
+
 export default CheckoutOrder;

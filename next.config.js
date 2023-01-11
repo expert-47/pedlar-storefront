@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com", "storage.googleapis.com"],
+    domains: ["res.cloudinary.com", "storage.googleapis.com", "cdn.shopify.com"],
   },
   eslint: {
     ignoreDuringBuilds: true,

@@ -6,6 +6,7 @@ import styles from "styles/home";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import PedlarImage from "components/pedlarImage";
 
 const BrandTitles = (props: any) => {
   const route = useRouter();
@@ -17,6 +18,7 @@ const BrandTitles = (props: any) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          zIndex: "0",
         }}
       >
         <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props} style={{ justifyContent: "space-between" }}>
@@ -30,16 +32,18 @@ const BrandTitles = (props: any) => {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  zIndex: "-1",
                 }}
               >
                 <Link
                   as={`${route?.query?.slug}/products`}
                   href={{
                     pathname: `${route?.query?.slug}/products`,
-                    query: { dataType: "Brands", itemValue: item?.vendor},
+                    query: { dataType: "Brands", itemValue: item?.vendor },
                   }}
                 >
-                  <img src={item?.logo_url} alt={"image" + index} />
+                  {/* <img src={item?.logo_url} alt={"image" + index} /> */}
+                  <PedlarImage src={item?.logo_url} alt={"image" + index} height={200} width={200} quality="1" />
                 </Link>
               </Box>
             </>

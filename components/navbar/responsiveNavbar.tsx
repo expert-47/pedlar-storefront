@@ -9,12 +9,10 @@ import { Box } from "@mui/system";
 
 interface Props {
   storefrontName: string;
-
 }
 
-export const ResponsiveNavbar = (props : Props) => {
-
-  const {storefrontName } = props;
+export const ResponsiveNavbar = (props: Props) => {
+  const { storefrontName } = props;
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
   const [openCart, toggleCart] = useState(false);
@@ -41,7 +39,7 @@ export const ResponsiveNavbar = (props : Props) => {
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
-        <IconButton onClick={onClickCart} sx={styles.shoppingCartIcon}>
+        <IconButton onClick={onClickCart} sx={styles.iconColor}>
           <Image src="/cart.png" height="19.48px" width="19.48px" />
         </IconButton>
         <CartDrawer openDrawer={openCart} toggleDrawer={toggleCart} />

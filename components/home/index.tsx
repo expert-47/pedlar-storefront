@@ -34,7 +34,7 @@ export const Home = (props: any) => {
         <Gallery newAdditionData={props?.newAdditionData} />
 
         <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
-        <BrandTitles curatedBrandsResponse = {props?.curatedBrandsResponse} />
+        <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />
       </Box>
       <Divider sx={styles.footerDivider} />
       <BaseFooter />

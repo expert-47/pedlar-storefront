@@ -7,10 +7,13 @@ const PedlarImage = (props: ImageProps) => {
   return (
     <Image
       {...props}
-      src={error ? "/noImage.jpeg" : props.src}
+      src={!error ? props.src : "/noImage.jpeg"}
       onError={() => {
         setError(true);
       }}
+      loading="lazy"
+      placeholder="blur"
+      blurDataURL="/noImage.jpeg"
     />
   );
 };

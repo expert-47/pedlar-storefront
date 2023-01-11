@@ -9,14 +9,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { any, string } from "prop-types";
 
-
 const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
   const theme = useTheme();
   const { leftHeading, rightHeading } = props;
   const router = useRouter();
-  const slug=router?.query;
-  
-  
+  const slug = router?.query;
 
   return (
     <CustomGrid
@@ -47,14 +44,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
 
-        <Link 
-        href={{pathname:"/products" , 
-        query : {slug:slug.slug}
-      }}
-      
-      
-      as={`/${slug.slug}/products`}
-        >
+        <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid
             container
             item
@@ -67,10 +57,9 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
               cursor: "pointer",
               alignItems: "center",
             }}
-            
           >
             <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
-            <ArrowForwardIcon  sx={styles.arrowIcon} />
+            <ArrowForwardIcon sx={styles.arrowIcon} />
           </Grid>
         </Link>
       </Grid>

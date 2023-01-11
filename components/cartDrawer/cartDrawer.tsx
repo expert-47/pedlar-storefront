@@ -51,7 +51,6 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
               Number(item?.merchandise.price?.amount) * Number(item.quantity)
           : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
       });
-      console.log("price", price);
 
       setTotalPrice(price);
     } else {

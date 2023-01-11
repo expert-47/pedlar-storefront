@@ -7,7 +7,6 @@ import TextBox from "./textBox";
 const BannerImg = (props) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
-  console.log(props, "propssss");
   return (
     <CustomContainer
       style={{

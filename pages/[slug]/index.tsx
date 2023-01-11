@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
 import { getUserDetailByFetchAPICall, checkoutCartDetails } from "api/grapgql";
@@ -17,7 +17,11 @@ export default function index({ HeaderData, newAdditionData, slug, curatedBrands
           storefrontName={HeaderData?.data?.storefrontName}
           slug={slug}
         >
-          <Home HeaderData={HeaderData?.data} newAdditionData={newAdditionData} curatedBrandsResponse={curatedBrandsResponse} />
+          <Home
+            HeaderData={HeaderData?.data}
+            newAdditionData={newAdditionData}
+            curatedBrandsResponse={curatedBrandsResponse}
+          />
         </Layout>
       ) : (
         <Custom404 />
@@ -39,14 +43,13 @@ export async function getServerSideProps(context: any) {
 
   let curatedBrandsResponse = await getCuratedBrands();
 
-       curatedBrandsResponse= curatedBrandsResponse?.data;
+  curatedBrandsResponse = curatedBrandsResponse?.data;
   return {
     props: {
       HeaderData: HeaderData ? HeaderData : [],
       newAdditionData: data ? data : [],
       slug: slug || [],
-      curatedBrandsResponse : curatedBrandsResponse || [],
-
+      curatedBrandsResponse: curatedBrandsResponse || [],
     },
   };
 }

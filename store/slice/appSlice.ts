@@ -26,8 +26,16 @@ const AppState = createSlice({
         cartId: action.payload,
       };
     },
+    clearCart: (state, action) => {
+      return {
+        ...state,
+        cartId: "",
+        products:[]
+      };
+    },
   },
+  
 });
 
-export const { addProductToCart, updateCartId } = AppState.actions;
+export const { addProductToCart, updateCartId ,clearCart} = AppState.actions;
 export default AppState.reducer;

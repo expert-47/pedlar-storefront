@@ -7,7 +7,7 @@ import styles from "styles/checkout";
 import { useEffect, useState } from "react";
 import { getCartProducts } from "api/grapgql";
 import { checkoutCartDetails } from "../../api/grapgql";
-import { addProductToCart } from "store/slice/appSlice";
+import { addProductToCart, clearCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
@@ -20,7 +20,9 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
 
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
+    dispatch(clearCart({}));
     window.open(response?.data?.cart?.checkoutUrl);
+    toggleDrawer(false);
   };
 
   const getCartList = async () => {
@@ -29,11 +31,15 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   useEffect(() => {
     if (cartProducts?.length > 0) {
+      console.log("cartProducts", cartProducts);
+
       if (cartProducts?.length == 1) {
         let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
         setTotalPrice(price);
@@ -45,6 +51,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
               Number(item?.merchandise.price?.amount) * Number(item.quantity)
           : total + Number(item?.merchandise.price?.amount) * Number(item.quantity);
       });
+      console.log("price", price);
 
       setTotalPrice(price);
     } else {
@@ -54,7 +61,6 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   useEffect(() => {
     getCartList();
   }, [openDrawer, toggleDrawer]);
-  // getting cart products
 
   useEffect(() => {});
 

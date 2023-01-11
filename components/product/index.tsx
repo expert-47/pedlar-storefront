@@ -79,7 +79,7 @@ const Cart = (props) => {
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0]);
     setColor(newAdditionData?.options[1]?.values[0]);
-  }, []);
+  }, [route]);
 
   useEffect(() => {
     getCartList();

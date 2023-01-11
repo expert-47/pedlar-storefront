@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 import { getUserDetailByFetchAPICall } from "api/grapgql";
 
-const filterValuesForQuery: any = [];
+let filterValuesForQuery: any = [];
 
 const Products = ({ newAdditionData, collectionId, slug }: any) => {
   const [productsData, setProductsData] = useState([{}]);
@@ -23,29 +23,36 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
 
   const route = useRouter();
 
-  const setFiltersValue = (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
+  const setFiltersValue = async (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
     if (BrandsNames?.length > 0) {
       BrandsNames?.map((item: any) => {
         filterValuesForQuery.push({ productVendor: item });
       });
+      BrandsNames = [];
     }
     if (VendorsNames?.length > 0) {
       VendorsNames?.map((item: any) => {
         filterValuesForQuery.push({ productType: item });
       });
+      VendorsNames = [];
     }
+
     if (applyFilters != applyFiltersState) {
       setApplyFiltersState(applyFilters);
+      getFilteredData().then((res) => {
+        filterValuesForQuery = [];
+      });
     }
   };
 
   useEffect(() => {
-    if (!(route.query.dataType === "Brands" || route.query.dataType === "Shop")) {
+    if (!(route.query.dataType === "Brands") && !(route.query.dataType === "Shop")) {
       setProductsData(newAdditionData?.nodes);
       setEndCursorValue(newAdditionData?.pageInfo?.endCursor);
     }
 
     if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
+      filterValuesForQuery = [];
       if (route.query.dataType === "Brands") {
         filterValuesForQuery.push({ productVendor: route?.query.itemValue });
       }
@@ -120,11 +127,11 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
     setApplyFiltersState(false);
   };
 
-  useEffect(() => {
-    if (applyFiltersState) {
-      getFilteredData();
-    }
-  }, [applyFiltersState]);
+  // useEffect(() => {
+  //   if (applyFiltersState) {
+  //     getFilteredData();
+  //   }
+  // }, [applyFiltersState]);
 
   // making the chunks of 5 products
 

@@ -8,8 +8,6 @@ import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import ListItemText from "@mui/material/ListItemText";
 
-
-
 interface Props {
   type: string;
   data: string[];
@@ -18,16 +16,13 @@ interface Props {
 let BrandsNames: string[] = [];
 let VendorsNames: string[] = [];
 
-
 const DropdownButton = (props: Props) => {
   const theme = useTheme();
   const { type = "Brands", data, setFiltersValue } = props;
-  
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [filterCheckBoxes, setFilterCheckBoxes] = useState({});
-
- 
 
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
@@ -37,13 +32,10 @@ const DropdownButton = (props: Props) => {
     setAnchorEl(null);
   };
 
-
   const getCheckBoxValue = (e: any, text: string) => {
     if (e.target.checked) {
       if (type === "Brands" && !BrandsNames?.includes(text)) {
         BrandsNames.push(text);
-
-     
       }
       if (!(type === "Brands") && !VendorsNames?.includes(text)) {
         VendorsNames.push(text);
@@ -60,32 +52,26 @@ const DropdownButton = (props: Props) => {
           return item !== text;
         });
       }
- 
     }
-
-   
   };
 
-  
-
   const applyFiltersMethod = () => {
-   
-
     setFiltersValue(BrandsNames, VendorsNames, true);
     setAnchorEl(null);
   };
 
   const resetFilters = () => {
-  
+    if (type === "Brands") {
+      BrandsNames = [];
+    } else {
+      VendorsNames = [];
+    }
     const obj = {};
     data.forEach((_item, index) => {
       obj["checkbox-" + index] = false;
     });
     setFilterCheckBoxes(obj);
-
-   
   };
-  
 
   return (
     <>

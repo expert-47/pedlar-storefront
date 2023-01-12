@@ -43,7 +43,7 @@ const BrandTitles = (props: any) => {
                   }}
                 >
                   {/* <img src={item?.logo_url} alt={"image" + index} /> */}
-                  <PedlarImage src={item?.logo_url} alt={"image" + index} height={200} width={200} quality="1" />
+                  <PedlarImage src={item?.logo_url} alt={"image" + index} height={200} width={200} />
                 </Link>
               </Box>
             </>

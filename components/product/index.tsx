@@ -5,7 +5,6 @@ import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography } from "@mui/material";
 import { Slide } from "react-slideshow-image";
 import Link from "next/link";
-import PedlarImage from "components/pedlarImage";
 
 import "react-slideshow-image/dist/styles.css";
 
@@ -23,6 +22,7 @@ import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
+import PedlarImage from "components/pedlarImage";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import { getStoreName } from "utils/getPathName";
@@ -355,7 +355,9 @@ const Cart = (props) => {
                     paddingBottom="50px"
                     sx={{ cursor: "pointer" }}
                   >
-                    <img style={{ width: "95%", height: "70%" }} src={item?.featuredImage?.transformedSrc}></img>
+                    <Box sx={{ width: 190, height: 180 }}>
+                      <PedlarImage src={item?.featuredImage?.transformedSrc} />
+                    </Box>
                     <Typography variant="body1">SISLEY PARIS</Typography>
                     <Typography variant="subtitle2">Eye Contour Mask</Typography>
                     <Typography variant="subtitle2">$42</Typography>

@@ -1,8 +1,9 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import { CustomContainer } from "../../layout";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme, Box } from "@mui/material";
 import TextBox from "./textBox";
+import PedlarImage from "components/pedlarImage";
 
 const BannerImg = (props) => {
   const theme = useTheme();
@@ -24,14 +25,12 @@ const BannerImg = (props) => {
         lg={11}
       >
         <Grid item xs={11.5} md={4} lg={4}>
-          <img
-            src={props?.HeaderData?.storefrontImageUrl ? props?.HeaderData?.storefrontImageUrl : "/hannah.png"}
-            alt="headerimage"
-            style={{
-              width: isMatch ? "100%" : "476px",
-              height: isMatch ? "415px" : "595px",
-            }}
-          ></img>
+          <Box sx={{ width: isMatch ? "100%" : 476, height: isMatch ? 415 : 595 }}>
+            <PedlarImage
+              src={props?.HeaderData?.storefrontImageUrl ? props?.HeaderData?.storefrontImageUrl : "/hannah.png"}
+              alt="headerimage"
+            />
+          </Box>
         </Grid>
         <Grid
           item

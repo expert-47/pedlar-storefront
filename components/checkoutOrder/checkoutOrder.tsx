@@ -10,6 +10,7 @@ import { Alert } from "@mui/material";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "store/slice/appSlice";
+import PedlarImage from "components/pedlarImage";
 
 interface Props {
   name: string;
@@ -48,7 +49,6 @@ const CheckoutOrder = (props: Props) => {
     await updateCartLineItem(cartId, props?.itemData?.id, 0);
     await getCartList();
     setLoadingButtonState(false);
-
   };
   const getCartList = async () => {
     if (cartId) {
@@ -127,8 +127,9 @@ const CheckoutOrder = (props: Props) => {
                 marginRight: "10px",
               }}
             >
-              <img src={props?.image} width="130px" height={"130px"} />
-              {/* <Image src={props.image} width={130} height={130} layout="responsive" objectFit="fill"></Image> */}
+              <Box sx={{ width: 130, height: 130 }}>
+                <PedlarImage src={props.image} />
+              </Box>
             </Box>
             <Box
               style={{

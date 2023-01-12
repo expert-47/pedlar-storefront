@@ -16,20 +16,6 @@ export default function Custom404() {
           <Typography sx={{ fontSize: "25px" }}>404 &nbsp; </Typography>
           <Typography sx={{ fontSize: "25px", fontWeight: "200" }}>| This page could not be found</Typography>
         </Grid>
-
-        {/* <Link href="/">
-          <Button
-            style={{
-              backgroundColor: "#1c1b1f",
-              fontWeight: "600",
-              borderRadius: "40px",
-              padding: "20px",
-              color: "white",
-            }}
-          >
-            Go back home
-          </Button>
-        </Link> */}
       </Box>
     </>
   );

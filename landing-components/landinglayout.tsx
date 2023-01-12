@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Container, ContainerProps, Box } from "@mui/material";
 import Header from "./header/header";
 import Footer from "./footer/footer";
@@ -7,6 +7,9 @@ import { NextSeo, NextSeoProps } from "next-seo";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
 }
+export function Loading() {
+  return <p>Loading...</p>;
+}
 
 const Layout = (props: LayoutProps) => {
   const { children, seo } = props;
@@ -14,9 +17,11 @@ const Layout = (props: LayoutProps) => {
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <NextSeo {...seo} />
-      <Header />
-      {children}
-      <Footer />
+      <Suspense fallback={<Loading />}>
+        <Header />
+        {children}
+        <Footer />
+      </Suspense>
     </Container>
   );
 };

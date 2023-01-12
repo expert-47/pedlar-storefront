@@ -1,23 +1,28 @@
 import { Container, ContainerProps } from "@mui/material";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar";
-import React from "react";
+import React, { Suspense } from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
   slug: string;
-  productsPage:boolean;
+  productsPage: boolean;
+}
+export function Loading() {
+  return <p>Loading...</p>;
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo, storefrontName, slug , productsPage } = props;
+  const { children, seo, storefrontName, slug, productsPage } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
         <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} />
       </header>
-      <main style={{ paddingTop: "115px" }}>{children}</main>
+      <Suspense fallback={<Loading />}>
+        <main style={{ paddingTop: "115px" }}>{children}</main>
+      </Suspense>
       <footer>
         <Footer />
       </footer>

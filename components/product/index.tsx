@@ -5,6 +5,7 @@ import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography } from "@mui/material";
 import { Slide } from "react-slideshow-image";
 import Link from "next/link";
+import PedlarImage from "components/pedlarImage";
 
 import "react-slideshow-image/dist/styles.css";
 
@@ -47,6 +48,7 @@ const properties = {
 
 const Cart = (props) => {
   const { newAdditionData, HeaderData, newAdditionData2 } = props;
+  console.log("this is just testing", newAdditionData?.featuredImage?.url);
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
@@ -229,11 +231,12 @@ const Cart = (props) => {
                 }}
               >
                 <ImageListItem sx={{ paddingBottom: "25px" }}>
-                  <img
+                  {/* <img
                     src={newAdditionData?.featuredImage?.url}
                     srcSet={newAdditionData?.featuredImage?.url}
                     loading="lazy"
-                  />
+                  /> */}
+                  <PedlarImage src={newAdditionData?.featuredImage?.url} width={500} height={500} />
                 </ImageListItem>
               </ImageList>
             </Grid>

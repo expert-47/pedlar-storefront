@@ -42,7 +42,6 @@ const Gallery = ({ newAdditionData, columnSpacing = 10, storefrontName }: Props)
                 }
                 image={item?.featuredImage?.transformedSrc}
                 id={item?.id}
-                storefrontName={storefrontName}
               />
             </Grid>
           );

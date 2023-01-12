@@ -5,6 +5,7 @@ import { Typography, Grid, Box } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { getStoreName } from "utils/getPathName";
+import PedlarImage from "components/pedlarImage";
 interface Props {
   name: string;
   type: string;
@@ -29,18 +30,16 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
       >
         {image && (
           <Grid item xs={12}>
-            {/* <img src={image} width="343px" height={"343px"} style={{maxWidth:"100%" , maxHeight:"100%" , objectFit:"fill"}} ></img> */}
-
             <Box
-              component="img"
-              src={image}
               sx={{
                 maxWidth: "100%",
                 maxHeight: "100%",
                 width: { xs: 158, sm: 190, md: 344 },
                 height: { xs: 158, sm: 190, md: 344 },
               }}
-            ></Box>
+            >
+              <PedlarImage src={image} />
+            </Box>
           </Grid>
         )}
         <Grid xs={12}>

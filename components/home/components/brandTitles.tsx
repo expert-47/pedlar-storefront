@@ -42,8 +42,7 @@ const BrandTitles = (props: any) => {
                     query: { dataType: "Brands", itemValue: item?.vendor },
                   }}
                 >
-                  {/* <img src={item?.logo_url} alt={"image" + index} /> */}
-                  <PedlarImage src={item?.logo_url} alt={"image" + index} height={200} width={200} />
+                  <PedlarImage src={item?.logo_url} alt={"image" + index} quality="1" />
                 </Link>
               </Box>
             </>

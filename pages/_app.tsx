@@ -16,6 +16,8 @@ import "nprogress/nprogress.css"; //styles of nprogress
 import { store } from "store/index";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
+import Script from "next/script";
+import Head from "next/head";
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());

@@ -30,7 +30,6 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
       >
         {image && (
           <Grid item xs={12}>
-            {/* <img src={image} width="343px" height={"343px"} style={{maxWidth:"100%" , maxHeight:"100%" , objectFit:"fill"}} ></img> */}
             <Box
               sx={{
                 maxWidth: "100%",
@@ -41,16 +40,6 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
             >
               <PedlarImage src={image} />
             </Box>
-            {/* <Box
-              component="img"
-              src={image}
-              sx={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                width: { xs: 158, sm: 190, md: 344 },
-                height: { xs: 158, sm: 190, md: 344 },
-              }}
-            ></Box> */}
           </Grid>
         )}
         <Grid xs={12}>

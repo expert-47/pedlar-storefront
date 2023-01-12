@@ -85,7 +85,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     backgroundSize: "contain",
-    height: " 400px",
+    height: "200px",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
   },

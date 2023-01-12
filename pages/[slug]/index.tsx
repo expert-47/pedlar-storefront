@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
-import { getUserDetailByFetchAPICall, checkoutCartDetails } from "api/grapgql";
+import { getUserDetailByFetchAPICall } from "api/grapgql";
 import Custom404 from "../404";
 import { getCuratedBrands } from "api/grapgql";
 

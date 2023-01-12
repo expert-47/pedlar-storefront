@@ -5,8 +5,8 @@ import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
 
 import { useEffect, useState } from "react";
-import { getCartProducts } from "api/grapgql";
-import { checkoutCartDetails } from "../../api/grapgql";
+import { getCartProducts } from "api/graphql/grapgql";
+import { checkoutCartDetails } from "../../api/graphql/grapgql";
 import { addProductToCart, clearCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 

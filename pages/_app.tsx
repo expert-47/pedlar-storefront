@@ -10,16 +10,10 @@ import SEO from "../utils/next-seo.config";
 import { Fragment, useEffect } from "react";
 import { Provider } from "react-redux";
 
-import Router from "next/router";
-import NProgress from "nprogress"; //nprogress module
-import "nprogress/nprogress.css"; //styles of nprogress
 import { store } from "store/index";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
-//Binding events.
-Router.events.on("routeChangeStart", () => NProgress.start());
-Router.events.on("routeChangeComplete", () => NProgress.done());
-Router.events.on("routeChangeError", () => NProgress.done());
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }: any) {
   useEffect(() => {
@@ -41,6 +35,8 @@ function MyApp({ Component, pageProps }: any) {
             <DefaultSeo {...SEO} />
 
             <ThemeProvider theme={theme}>
+              <NextNProgress color="#29D" startPosition={0.1} height={3} showOnShallow={true} />
+
               <Component {...pageProps} />
             </ThemeProvider>
           </Fragment>

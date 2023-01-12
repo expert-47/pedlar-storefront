@@ -7,7 +7,6 @@ import { CustomGrid } from "components/layout";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { any, string } from "prop-types";
 
 const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
   const theme = useTheme();

@@ -6,17 +6,16 @@ import { Stack } from "@mui/system";
 import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
-// import SearchIcon from "@mui/icons-material/Search";
-// import DropdownButton from "./components/dropdownButton";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
-import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme } from "@mui/material";
+import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme, Box } from "@mui/material";
 
 import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import PedlarImage from "components/pedlarImage";
 
 export default function Navbar(props: any) {
   const theme = useTheme();
@@ -52,13 +51,9 @@ export default function Navbar(props: any) {
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href={`/${props?.slug}`}>
-                    <Image
-                      src="/pedlar.png"
-                      alt="No Image Found"
-                      height="22px"
-                      width="68px"
-                      style={{ cursor: "pointer" }}
-                    />
+                    <Box sx={{ height: 22, width: 68, cursor: "pointer" }}>
+                      <PedlarImage src="/pedlar.png" alt="No Image Found" />
+                    </Box>
                   </Link>
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>

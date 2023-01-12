@@ -11,6 +11,7 @@ import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
+import PedlarImage from "components/pedlarImage";
 
 const Header = () => {
   const theme = useTheme();
@@ -78,15 +79,9 @@ const Header = () => {
             <>
               <Grid item xs={12} sm={12} md={12} lg={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
-                  <Image
-                    src={headerlogo}
-                    alt="pedlar-logo"
-                    height={75}
-                    width={230}
-                    onClick={openStorePage}
-                    style={{ cursor: "pointer" }}
-                    priority
-                  />
+                  <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
+                    <PedlarImage src={headerlogo} alt="pedlar-logo" />
+                  </Box>
                 ) : (
                   <Box style={{ cursor: "pointer", marginTop: "59px", width: "82%" }}>
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />

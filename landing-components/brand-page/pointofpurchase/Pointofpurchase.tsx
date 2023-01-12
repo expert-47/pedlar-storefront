@@ -3,11 +3,12 @@ import { Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
-import Image from "next/image";
 import SalesBrand from "../../../public/sales-brand1.png";
 import SetForgot from "../../../public/set-forgot.png";
 import FreeJoin from "../../../public/free-join.png";
 import PropleTrustPeople from "../../../public/people-trust-people.png";
+import PedlarImage from "components/pedlarImage";
+import { Box } from "@mui/system";
 
 const Pointofpurchase = () => {
   const theme = useTheme();
@@ -36,7 +37,9 @@ const Pointofpurchase = () => {
         >
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Image src={SalesBrand} alt="hassle1" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
+              <Box sx={{ height: 69, width: 69 }}>
+                <PedlarImage src={SalesBrand} alt="hassle1" zIndex={0} />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
@@ -51,7 +54,9 @@ const Pointofpurchase = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Image src={SetForgot} alt="hassle1" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
+              <Box sx={{ height: 69, width: 69 }}>
+                <PedlarImage src={SetForgot} alt="hassle1" zIndex={0} />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
@@ -66,7 +71,9 @@ const Pointofpurchase = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Image src={FreeJoin} alt="hassle1" height={"69px"} width={"69px"} loading="lazy" placeholder="blur" />
+              <Box sx={{ height: 69, width: 69 }}>
+                <PedlarImage src={FreeJoin} alt="hassle1" zIndex={0} />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
@@ -81,14 +88,9 @@ const Pointofpurchase = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Image
-                src={PropleTrustPeople}
-                alt="hassle1"
-                height={"69px"}
-                width={"69px"}
-                loading="lazy"
-                placeholder="blur"
-              />
+              <Box sx={{ height: 69, width: 69 }}>
+                <PedlarImage src={PropleTrustPeople} alt="hassle1" zIndex={0} />
+              </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
               <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>

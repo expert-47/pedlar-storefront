@@ -203,7 +203,7 @@ const Cart = (props) => {
               lg={6}
               sx={{
                 display: "flex",
-                alignItems: "center",
+
                 justifyContent: isMatch ? "center" : "start",
                 textAlign: "center",
                 paddingTop: "26px",
@@ -224,19 +224,21 @@ const Cart = (props) => {
               <ImageList
                 cols={1}
                 sx={{
-                  height: "240vh",
+                  maxHeight: "240vh",
                   scrollbarWidth: "none",
                   "&::-webkit-scrollbar": { display: "none" },
                   display: { xs: "none", sm: "block" },
                 }}
               >
                 <ImageListItem sx={{ paddingBottom: "25px" }}>
-                  {/* <img
-                    src={newAdditionData?.featuredImage?.url}
-                    srcSet={newAdditionData?.featuredImage?.url}
-                    loading="lazy"
-                  /> */}
-                  <PedlarImage src={newAdditionData?.featuredImage?.url} width={500} height={500} />
+                  <Box
+                    sx={{
+                      width: 400,
+                      height: 400,
+                    }}
+                  >
+                    <PedlarImage src={newAdditionData?.featuredImage?.url} />
+                  </Box>
                 </ImageListItem>
               </ImageList>
             </Grid>

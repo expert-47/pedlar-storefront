@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { client } from "./graphql/client";
+import { client } from "./client";
 
 export const getProductDetails = async (productId: string) => {
   const requestBody = {
@@ -54,10 +54,13 @@ export const getProductDetails = async (productId: string) => {
       ],
     },
   };
+  try {
+    const collectionData = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
-  const collectionData = await client.query({ query: requestBody.query, variables: requestBody.variables });
-
-  return collectionData || {};
+    return collectionData || {};
+  } catch (error) {
+    return {};
+  }
 };
 
 export const getUserDetailByFetchAPICall = async (collectionID: number, numberofProducts: number) => {
@@ -103,10 +106,13 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
 }`,
     variables: { collectionId: `gid://shopify/Collection/${collectionID}` },
   };
+  try {
+    const res = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
-  const res = await client.query({ query: requestBody.query, variables: requestBody.variables });
-
-  return res || {};
+    return res || {};
+  } catch (error) {
+    return {};
+  }
 };
 
 export const addToCart = async (merchandiseId, value, quantity) => {
@@ -283,9 +289,13 @@ export const checkoutCartDetails = async (checkoutId: any) => {
     `,
     variables: { id: checkoutId },
   };
-  const collectCheck = await client.query({ query: requestBody.query, variables: requestBody.variables });
+  try {
+    const collectCheck = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
-  return collectCheck;
+    return collectCheck;
+  } catch (error) {
+    return {};
+  }
 };
 
 export const updateCartLineItem = async (createdCartID, cartLineid, quantity) => {
@@ -326,14 +336,111 @@ export const updateCartLineItem = async (createdCartID, cartLineid, quantity) =>
     return undefined;
   }
 };
-export const getCuratedBrands = async () => {
+
+export const getFilteredProducts = async (collectionId, filterValuesForQuery) => {
+  const requestBody = {
+    query: gql`
+      query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
+        collection(id: $collectionId) {
+          products(first: 10, reverse: true, filters: $query) {
+            nodes {
+              id
+              title
+              productType
+              vendor
+              description
+              totalInventory
+              priceRange {
+                maxVariantPrice {
+                  amount
+                  currencyCode
+                }
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+              featuredImage {
+                height
+                src
+                width
+                originalSrc
+                transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+              }
+              createdAt
+              publishedAt
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+              startCursor
+              endCursor
+            }
+          }
+        }
+      }
+    `,
+    variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: filterValuesForQuery },
+  };
+
   try {
-    const res = await fetch("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors?sortKey=random");
+    const getVariantResponse = await client.query({ query: requestBody.query, variables: requestBody.variables });
 
-    const updateCartResponse = await res.json();
-
-    return updateCartResponse;
+    return getVariantResponse;
   } catch (error) {
     return undefined;
+  }
+};
+
+export const getPaginationProducts = async (endCursorValue, collectionId) => {
+  const requestBody = {
+    query: gql`query GetCollection($collectionId: ID!) {
+      collection(id: $collectionId) {
+        products(first: 3, reverse: true ,after: "${endCursorValue}")
+          {
+              nodes {
+                  id
+                  title
+                  productType
+                  vendor
+                  description
+                  totalInventory
+                  priceRange {
+                      maxVariantPrice {
+                          amount
+                          currencyCode
+                      }
+                      minVariantPrice {
+                          amount
+                          currencyCode
+                      }
+                  }
+                  featuredImage {
+            height
+            src
+            width
+            originalSrc
+            transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+          }
+                  createdAt
+                  publishedAt
+              }
+              pageInfo {
+                  hasNextPage
+                  hasPreviousPage
+                  startCursor
+                  endCursor
+              }
+          }
+      }
+  }`,
+    variables: { collectionId: `gid://shopify/Collection/${collectionId}` },
+  };
+
+  try {
+    const collectionDataProducts = await client.query({ query: requestBody.query, variables: requestBody.variables });
+    return collectionDataProducts?.data?.collection?.products;
+  } catch (error) {
+    console.log(error);
   }
 };

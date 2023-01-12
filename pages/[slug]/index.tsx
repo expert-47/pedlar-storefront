@@ -1,9 +1,10 @@
 import React from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
-import { getUserDetailByFetchAPICall } from "api/grapgql";
+import { getUserDetailByFetchAPICall, checkoutCartDetails } from "api/graphql/grapgql";
 import Custom404 from "../404";
-import { getCuratedBrands } from "api/grapgql";
+import { getCuratedBrands } from "api/restApi/getCuratedBrands";
+import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ HeaderData, newAdditionData, slug, curatedBrandsResponse }: any) {
   return (
@@ -32,24 +33,21 @@ export default function index({ HeaderData, newAdditionData, slug, curatedBrands
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
-  const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
-
-  const HeaderData = await res.json();
+  const HeaderData = await getUserDetail(slug);
 
   const numberofProducts = 6;
 
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
-  data = data?.data?.collection?.products?.nodes;
+  let userData = data?.data?.collection?.products?.nodes || [];
 
   let curatedBrandsResponse = await getCuratedBrands();
 
-  curatedBrandsResponse = curatedBrandsResponse?.data;
   return {
     props: {
       HeaderData: HeaderData ? HeaderData : [],
-      newAdditionData: data ? data : [],
+      newAdditionData: userData ? userData : [],
       slug: slug || [],
-      curatedBrandsResponse: curatedBrandsResponse || [],
+      curatedBrandsResponse: curatedBrandsResponse?.data || [],
     },
   };
 }

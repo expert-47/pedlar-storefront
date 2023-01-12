@@ -1,8 +1,8 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "styles/checkout";
+import PedlarImage from "components/pedlarImage";
 
 const CheckoutHeader = () => {
   return (
@@ -12,7 +12,9 @@ const CheckoutHeader = () => {
       </Grid>
       <Grid item xs={6} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Link href="/">
-          <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} style={{ cursor: "pointer" }} />
+          <Box sx={{ width: 68, height: 22, cursor: "pointer" }}>
+            <PedlarImage src="/pedlar.png" alt="No Image Found" />
+          </Box>
         </Link>
         <Typography variant="h5" component="div" sx={styles.headerText2}>
           Hannah Juneva

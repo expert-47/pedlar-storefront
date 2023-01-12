@@ -33,25 +33,21 @@ export default function index({ HeaderData, newAdditionData, slug, curatedBrands
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
-  const res = await getUserDetail(slug);
-  console.log("res", res);
-
-  const HeaderData = await res;
+  const HeaderData = await getUserDetail(slug);
 
   const numberofProducts = 6;
 
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
-  data = data?.data?.collection?.products?.nodes || [];
+  let userData = data?.data?.collection?.products?.nodes || [];
 
   let curatedBrandsResponse = await getCuratedBrands();
 
-  curatedBrandsResponse = curatedBrandsResponse?.data;
   return {
     props: {
       HeaderData: HeaderData ? HeaderData : [],
-      newAdditionData: data ? data : [],
+      newAdditionData: userData ? userData : [],
       slug: slug || [],
-      curatedBrandsResponse: curatedBrandsResponse || [],
+      curatedBrandsResponse: curatedBrandsResponse?.data || [],
     },
   };
 }

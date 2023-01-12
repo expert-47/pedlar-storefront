@@ -14,8 +14,10 @@ import { store } from "store/index";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
 import NextNProgress from "nextjs-progressbar";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: any) {
+  const route = useRouter();
   useEffect(() => {
     Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
       autoload: false,
@@ -23,6 +25,7 @@ function MyApp({ Component, pageProps }: any) {
     Crisp.setZIndex(9999);
     Crisp.load();
   });
+
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
@@ -35,7 +38,7 @@ function MyApp({ Component, pageProps }: any) {
             <DefaultSeo {...SEO} />
 
             <ThemeProvider theme={theme}>
-              <NextNProgress color="#29D" startPosition={0.1} height={3} showOnShallow={true} />
+              <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
               <Component {...pageProps} />
             </ThemeProvider>

@@ -168,11 +168,11 @@ export async function getServerSideProps(context: any) {
 
   const numberofProducts = 18;
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
-  data = data?.data?.collection?.products;
+  let userData = data?.data?.collection?.products || [];
 
   return {
     props: {
-      newAdditionData: data,
+      newAdditionData: userData,
       slug,
       collectionId: HeaderData?.data?.collectionId,
       userData: HeaderData,

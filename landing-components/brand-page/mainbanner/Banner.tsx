@@ -1,9 +1,10 @@
 import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, Box } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import Image from "next/image";
 import BrandBanner from "../../../public/forbrand-sec1-img1.png";
+import PedlarImage from "components/pedlarImage";
 import { useTheme } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
 
@@ -25,7 +26,9 @@ const Banner = () => {
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid sx={styles.GridImg}>
-          <Image src={BrandBanner} alt={"brand banner"} style={{ borderRadius: "10px" }} priority placeholder="blur" />
+          <Box sx={{ width: "100%", height: { xs: 250, md: 580 } }}>
+            <PedlarImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} />
+          </Box>
         </Grid>
         <Grid sx={styles.GridBox} style={{ justifyContent: "flex-end" }} padding={{ xs: "20px", sm: "40px" }}>
           <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "54px", md: "64px" }} sx={styles.heading}>

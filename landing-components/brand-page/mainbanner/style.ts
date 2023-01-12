@@ -73,5 +73,6 @@ export const styles = {
   },
   GridImg: {
     maxWidth: " 669px",
+    width: "100%",
   },
 };

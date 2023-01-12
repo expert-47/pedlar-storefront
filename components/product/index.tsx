@@ -22,6 +22,7 @@ import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
+import PedlarImage from "components/pedlarImage";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import { getStoreName } from "utils/getPathName";
@@ -47,6 +48,7 @@ const properties = {
 
 const Cart = (props) => {
   const { newAdditionData, HeaderData, newAdditionData2 } = props;
+  console.log("this is just testing", newAdditionData?.featuredImage?.url);
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
@@ -201,7 +203,7 @@ const Cart = (props) => {
               lg={6}
               sx={{
                 display: "flex",
-                alignItems: "center",
+
                 justifyContent: isMatch ? "center" : "start",
                 textAlign: "center",
                 paddingTop: "26px",
@@ -222,18 +224,21 @@ const Cart = (props) => {
               <ImageList
                 cols={1}
                 sx={{
-                  height: "240vh",
+                  maxHeight: "240vh",
                   scrollbarWidth: "none",
                   "&::-webkit-scrollbar": { display: "none" },
                   display: { xs: "none", sm: "block" },
                 }}
               >
                 <ImageListItem sx={{ paddingBottom: "25px" }}>
-                  <img
-                    src={newAdditionData?.featuredImage?.url}
-                    srcSet={newAdditionData?.featuredImage?.url}
-                    loading="lazy"
-                  />
+                  <Box
+                    sx={{
+                      width: 400,
+                      height: 400,
+                    }}
+                  >
+                    <PedlarImage src={newAdditionData?.featuredImage?.url} />
+                  </Box>
                 </ImageListItem>
               </ImageList>
             </Grid>
@@ -350,7 +355,9 @@ const Cart = (props) => {
                     paddingBottom="50px"
                     sx={{ cursor: "pointer" }}
                   >
-                    <img style={{ width: "95%", height: "70%" }} src={item?.featuredImage?.transformedSrc}></img>
+                    <Box sx={{ width: 190, height: 180 }}>
+                      <PedlarImage src={item?.featuredImage?.transformedSrc} />
+                    </Box>
                     <Typography variant="body1">SISLEY PARIS</Typography>
                     <Typography variant="subtitle2">Eye Contour Mask</Typography>
                     <Typography variant="subtitle2">$42</Typography>

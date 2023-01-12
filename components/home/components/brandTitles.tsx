@@ -1,9 +1,7 @@
 import React from "react";
 import { Box, Grid, GridProps } from "@mui/material";
 import { CustomGrid } from "components/layout";
-import { brands } from "./data";
 import styles from "styles/home";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import PedlarImage from "components/pedlarImage";

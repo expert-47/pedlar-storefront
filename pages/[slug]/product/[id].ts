@@ -6,18 +6,26 @@ export default Cart;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
 
-  const HeaderData = await getUserDetail(slug);
-  const numberofProducts = 6;
-  let response = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
-  response = response?.data?.collection?.products?.nodes;
+  const headerData = await getUserDetail(slug);
+  if (headerData?.data) {
+    const numberofProducts = 6;
+    let response = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    response = response?.data?.collection?.products?.nodes;
 
-  let data = await getProductDetails(context?.query?.id);
+    let data = await getProductDetails(context?.query?.id);
 
-  return {
-    props: {
-      HeaderData: HeaderData ? HeaderData : [],
-      newAdditionData: data?.data?.product || [],
-      newAdditionData2: response ? response : [],
-    },
-  };
+    return {
+      props: {
+        HeaderData: headerData ? headerData : [],
+        newAdditionData: data?.data?.product || [],
+        newAdditionData2: response ? response : [],
+      },
+    };
+  } else {
+    return {
+      props: {
+        error: true,
+      },
+    };
+  }
 }

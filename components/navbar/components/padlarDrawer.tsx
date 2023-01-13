@@ -103,7 +103,7 @@ export const PedlarDrawer = (props: {
             <Image src="/cart.png" height="19.48px" width="19.48px" />
           </IconButton>
         </Grid>
-        <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>
+        {/* <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>
           <Box
             style={{
               padding: "5px",
@@ -116,7 +116,8 @@ export const PedlarDrawer = (props: {
             <SearchIcon style={{ color: "rgba(0,0,0,0.3)", padding: "2px" }} sx={styles.drawerIcon} />
             <InputBase placeholder="Search store" type="text" aria-label="search icons"></InputBase>
           </Box>
-        </Grid>
+        </Grid> */}
+        <Grid style={{ paddingTop: "10px" }}></Grid>
         <ListItemText sx={styles.drawerText}>
           <Link href={`/${route.query.slug}`}>
             <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>

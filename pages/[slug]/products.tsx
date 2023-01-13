@@ -15,7 +15,7 @@ import { getUserDetail } from "api/restApi/getUserDetail";
 
 let filterValuesForQuery: any = [];
 
-const Products = ({ newAdditionData, collectionId, slug, userData: data }: any) => {
+const Products = ({ newAdditionData, collectionId, slug, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -92,7 +92,7 @@ const Products = ({ newAdditionData, collectionId, slug, userData: data }: any) 
   };
 
   return (
-    <Layout storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
+    <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
       <Head>
         <title>Pedlar</title>
         <meta property="og:image" content="url img" />
@@ -158,18 +158,25 @@ export default Products;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
 
-  const HeaderData = await getUserDetail(slug);
+  const headerData = await getUserDetail(slug);
+  if (headerData?.data) {
+    const numberofProducts = 18;
+    let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    let userData = data?.data?.collection?.products || [];
 
-  const numberofProducts = 18;
-  let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
-  let userData = data?.data?.collection?.products || [];
-
-  return {
-    props: {
-      newAdditionData: userData,
-      slug,
-      collectionId: HeaderData?.data?.collectionId,
-      userData: HeaderData,
-    },
-  };
+    return {
+      props: {
+        newAdditionData: userData,
+        slug,
+        collectionId: HeaderData?.data?.collectionId,
+        userData: HeaderData,
+      },
+    };
+  } else {
+    return {
+      props: {
+        error: true,
+      },
+    };
+  }
 }

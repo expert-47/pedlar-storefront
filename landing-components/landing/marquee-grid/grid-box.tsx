@@ -14,6 +14,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
 import { TransitionProps } from "@mui/material/transitions";
+import PedlarImage from "components/pedlarImage";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -37,6 +38,7 @@ const Gridbox = () => {
 
     setOpenDialog(false);
   };
+  console.log("");
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);
@@ -87,14 +89,14 @@ const Gridbox = () => {
             style={{ display: "flex", alignItems: "flex-start" }}
           >
             <Grid item xs={12} sm={8} md={6} lg={4.8}>
-              <Image src={firstGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
+              <PedlarImage src={firstGrid} alt="Picture of the author" layout="intrinsic" objectFit="contain" />
             </Grid>
             <Grid container item xs={12} sm={3.55} md={2.65} lg={2.1} style={{ justifyContent: "space-between" }}>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
-                <Image src={secondGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
+                <PedlarImage src={secondGrid} alt="Picture of the author" layout="intrinsic" objectFit="contain" />
               </Grid>
               <Grid item xs={5.8} sm={12} md={12} lg={12} marginTop={{ lg: "4px", md: "0px" }}>
-                <Image src={thirdGrid} alt="Picture of the author" loading="lazy" placeholder="blur" />
+                <PedlarImage src={thirdGrid} alt="Picture of the author" layout="intrinsic" objectFit="contain" />
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4.6} marginLeft={{ xs: "0px", lg: "16px" }}>

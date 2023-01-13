@@ -15,6 +15,7 @@ import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
 import { CustomContainer } from "../../landinglayout";
 import { TransitionProps } from "@mui/material/transitions";
+import PedlarImage from "components/pedlarImage";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {

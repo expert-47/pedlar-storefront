@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
-import Image from "next/image";
 import BrandBanner from "../../../public/forbrand-sec1-img1.png";
 import PedlarImage from "components/pedlarImage";
 import { useTheme } from "@mui/material";

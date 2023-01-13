@@ -38,7 +38,6 @@ const Gridbox = () => {
 
     setOpenDialog(false);
   };
-  console.log("");
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const [userType, setUserType] = useState(true);
   const onChangeCreator = () => setUserType(true);

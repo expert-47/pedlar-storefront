@@ -27,7 +27,7 @@ const BannerImg = (props) => {
         <Grid item xs={11.5} md={4} lg={4}>
           <Box sx={{ width: isMatch ? "100%" : 476, height: isMatch ? 415 : 595 }}>
             <PedlarImage
-              src={props?.HeaderData?.storefrontImageUrl ? props?.HeaderData?.storefrontImageUrl : "/hannah.png"}
+              src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"
             />
           </Box>
@@ -41,7 +41,7 @@ const BannerImg = (props) => {
           marginLeft={{ lg: "-4%", md: "-4%" }}
           marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
         >
-          <TextBox headerData={props?.HeaderData} />
+          <TextBox headerData={props?.headerData} />
         </Grid>
       </Grid>
     </CustomContainer>

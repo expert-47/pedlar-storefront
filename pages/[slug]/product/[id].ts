@@ -16,7 +16,7 @@ export async function getServerSideProps(context: any) {
 
     return {
       props: {
-        HeaderData: headerData ? headerData : [],
+        headerData: headerData ? headerData : [],
         newAdditionData: data?.data?.product || [],
         newAdditionData2: response ? response : [],
       },

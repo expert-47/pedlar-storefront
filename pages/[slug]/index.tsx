@@ -48,5 +48,9 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
-  return { error: true };
+  return {
+    props: {
+      error: true,
+    },
+  };
 }

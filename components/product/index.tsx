@@ -73,15 +73,13 @@ const Cart = (props) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setError(false);
-    }, 1500);
-  }, [error]);
-
-  useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0]);
     setColor(newAdditionData?.options[1]?.values[0]);
   }, [route]);
+
+  useEffect(() => {
+    setError(false);
+  }, [cartProducts]);
 
   useEffect(() => {
     getCartList();
@@ -116,7 +114,7 @@ const Cart = (props) => {
 
       if (varientData?.quantityAvailable === 0) {
         setError(true);
-        setErrorMessage("This Item is Currently out of Stock");
+        setErrorMessage("This item is currently out of stock");
       } else {
         if (typeof cartId == "string" && cartId != "") {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
@@ -124,7 +122,7 @@ const Cart = (props) => {
           if (data1) {
             if (varientData?.quantityAvailable === data1?.quantity) {
               setError(true);
-              setErrorMessage("This Item is Currently out of Stock");
+              setErrorMessage("This item is currently out of stock");
             } else {
               const quantity = data1.quantity + 1;
 
@@ -155,7 +153,7 @@ const Cart = (props) => {
       const varientData = variant?.data.product?.variantBySelectedOptions;
       if (varientData?.quantityAvailable === 0) {
         setError(true);
-        setErrorMessage("This Item is Currently out of Stock");
+        setErrorMessage("This item is currently out of stock");
       } else {
         if (!cartId) {
           let res = await addToCart(varientData?.id, slugValue, quantity);
@@ -169,7 +167,7 @@ const Cart = (props) => {
           if (data1) {
             if (varientData?.quantityAvailable === data1?.quantity) {
               setError(true);
-              setErrorMessage("This Item is Currently out of Stock");
+              setErrorMessage("This item is currently out of stock");
             } else {
               await updateCartLineItem(cartId, data1?.id, quantity);
               const response = await checkoutCartDetails(cartId);
@@ -269,7 +267,13 @@ const Cart = (props) => {
                     setColorValue={setColorValue}
                   />
                   {error ? (
-                    <Alert sx={{ marginTop: 20 }} severity="error">
+                    <Alert
+                      onClose={() => {
+                        setError(false);
+                      }}
+                      sx={{ marginTop: 10 }}
+                      severity="error"
+                    >
                       {errorMessage}
                     </Alert>
                   ) : null}

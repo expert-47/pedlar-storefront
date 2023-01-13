@@ -34,7 +34,7 @@ export const ResponsiveNavbar = (props: Props) => {
           <Box sx={styles.menuIcon}>
             <Image src="/menuIcon.png" alt="No Image Found" onClick={onClickDrawer} width={20} height={15} />
           </Box>
-          <Link href="/">
+          <Link href={`/${props?.slugs}`}>
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>

@@ -1,4 +1,4 @@
-import { Grid, Toolbar, Typography, useTheme, IconButton } from "@mui/material";
+import { Grid, Toolbar, Typography, useTheme, IconButton, Badge } from "@mui/material";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "styles/navbar";
@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import PedlarDrawer from "./components/padlarDrawer";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";
+import { useSelector } from "react-redux";
 
 interface Props {
   storefrontName: string;
@@ -16,7 +17,7 @@ export const ResponsiveNavbar = (props: Props) => {
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
   const [openCart, toggleCart] = useState(false);
-
+  const cartProducts = useSelector((data) => data.app.products);
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
@@ -27,11 +28,10 @@ export const ResponsiveNavbar = (props: Props) => {
 
   return (
     <React.Fragment>
-      <Toolbar>
+      <Toolbar sx={{ paddingTop: 4 }}>
         <PedlarDrawer openDrawer={openDrawer} storefrontName={storefrontName} toggleDrawer={toggleDrawer} />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>
-            {" "}
             <Image src="/menuIcon.png" alt="No Image Found" onClick={onClickDrawer} width={20} height={15} />
           </Box>
           <Link href="/">
@@ -39,9 +39,11 @@ export const ResponsiveNavbar = (props: Props) => {
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
-        <IconButton onClick={onClickCart} sx={styles.iconColor}>
-          <Image src="/cart.png" height="19.48px" width="19.48px" />
-        </IconButton>
+        <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }}>
+          <IconButton onClick={onClickCart} sx={styles.iconColor}>
+            <Image src="/cart.png" height="19.48px" width="19.48px" />
+          </IconButton>
+        </Badge>
         <CartDrawer openDrawer={openCart} toggleDrawer={toggleCart} />
       </Toolbar>
     </React.Fragment>

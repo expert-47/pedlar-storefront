@@ -72,12 +72,6 @@ const Products = ({ newAdditionData, collectionId, slug, userData: data }: any) 
     setApplyFiltersState(false);
   };
 
-  const productsDataArray = [];
-
-  for (let i = 0; i < productsData.length; i = i + 5) {
-    productsDataArray.push(productsData.slice(i, i + 5));
-  }
-
   const getPaginationData = async () => {
     if (endCursorValue.includes("=")) {
       setEndCursorValue(endCursorValue.slice(0, -2));

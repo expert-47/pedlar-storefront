@@ -385,7 +385,6 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
 
   try {
     const getVariantResponse = await client.query({ query: requestBody.query, variables: requestBody.variables });
-
     return getVariantResponse;
   } catch (error) {
     return undefined;

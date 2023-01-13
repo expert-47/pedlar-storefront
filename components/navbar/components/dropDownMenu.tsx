@@ -4,12 +4,10 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Typography, CircularProgress } from "@mui/material";
+import { Button, Grid, Typography, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
 
 import ListItemText from "@mui/material/ListItemText";
-// import PedlarButton from "./pedlarButton";
-// import ProductHeader from "components/home/components/productHeader";
 import Link from "next/link";
 import { CustomContainer } from "components/layout";
 import { useRouter } from "next/router";
@@ -20,10 +18,7 @@ interface Props {
   loading: boolean;
 }
 const DropDownMenu = (props: Props) => {
-  const theme = useTheme();
   const { type = "Brands", data, loading } = props;
-  const [brands, setBrands] = useState(false);
-  const [category, setCategory] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const [dropdownOption, setdropdownOption] = useState(false);
 
@@ -36,13 +31,6 @@ const DropDownMenu = (props: Props) => {
     setAnchorEl(null);
     setdropdownOption(false);
   };
-  // const showBrands = () => {
-  //   setBrands((prv) => !prv);
-  // };
-  // const showCategory = () => {
-  //   setCategory((prv) => !prv);
-  // };
-
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -83,36 +71,34 @@ const DropDownMenu = (props: Props) => {
                         </Grid>
                       ) : (
                         <Box>
-                          {/* display={"flex"} justifyContent={"space-between"} alignItems={"center"} */}
-                          {/* <Grid></Grid> */}
-
                           <Grid container paddingRight={60}>
                             <Grid item sm={6} md={6}></Grid>
                             <Grid item sm={6} md={6} lg={6}>
                               <Grid container lg={12}>
                                 {dropdownOption
-                                  ? data.map((item, index) => (
-                                      <Grid key={"dropdown-" + index} item sm={2} md={3} lg={4}>
-                                        {/* routePath ? routePath : */}
-                                        <Link
-                                          as={`${route?.query?.slug}/products`}
-                                          href={{
-                                            pathname: `${route?.query?.slug}/products`,
-                                            query: { dataType: type, itemValue: item },
-                                          }}
-                                        >
-                                          <a
-                                            style={{
-                                              cursor: "pointer",
-                                              textDecoration: "none !important",
-                                              color: "black",
+                                  ? data.map((item, index) => {
+                                      return (
+                                        <Grid key={"dropdown-" + index} item sm={2} md={3} lg={4}>
+                                          <Link
+                                            as={`${route?.query?.slug}/products`}
+                                            href={{
+                                              pathname: `${route?.query?.slug}/products`,
+                                              query: { dataType: type, itemValue: item },
                                             }}
                                           >
-                                            <Typography sx={styles.menuItems}>{item}</Typography>
-                                          </a>
-                                        </Link>
-                                      </Grid>
-                                    ))
+                                            <a
+                                              style={{
+                                                cursor: "pointer",
+                                                textDecoration: "none !important",
+                                                color: "black",
+                                              }}
+                                            >
+                                              <Typography sx={styles.menuItems}>{item}</Typography>
+                                            </a>
+                                          </Link>
+                                        </Grid>
+                                      );
+                                    })
                                   : data.slice(0, 2).map((item, index) => (
                                       <Grid key={"dropdown-" + index} item sm={4} md={4} lg={4}>
                                         <Link
@@ -133,7 +119,6 @@ const DropDownMenu = (props: Props) => {
                                   <Button onClick={() => setdropdownOption(true)}>
                                     <ListItemText
                                       style={{
-                                        // paddingTop: "4px",
                                         paddingLeft: "19px",
                                         color: "black",
                                         fontWeight: "600",

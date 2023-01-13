@@ -6,20 +6,20 @@ import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
 import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
-export default function index({ HeaderData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
   return (
     <>
       <Layout
         error={error}
         seo={{
-          title: "Pedlar | " + HeaderData?.data?.storefrontName,
+          title: "Pedlar | " + headerData?.data?.storefrontName,
           description: "Hi honeys! I've worked closely with some of my favorite brands to curate my own store!",
         }}
-        storefrontName={HeaderData?.data?.storefrontName}
+        storefrontName={headerData?.data?.storefrontName}
         slug={slug}
       >
         <Home
-          HeaderData={HeaderData?.data}
+          headerData={headerData?.data}
           newAdditionData={newAdditionData}
           curatedBrandsResponse={curatedBrandsResponse}
         />

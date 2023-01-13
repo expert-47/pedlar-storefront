@@ -35,7 +35,7 @@ const CheckoutOrder = (props: Props) => {
 
     if (props?.itemData?.merchandise?.quantityAvailable === productCount) {
       setError(true);
-      setErrorMessage("This Item is Currently out of Stock");
+      setErrorMessage("This item is currently out of stock");
       setLoadingButtonState(false);
     } else {
       await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
@@ -144,11 +144,6 @@ const CheckoutOrder = (props: Props) => {
               <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "A$" : ""} ${
                 props?.price
               }`}</Typography>
-              {error ? (
-                <Alert onClose={handleAlertClose} severity="error">
-                  {errorMessage}
-                </Alert>
-              ) : null}
 
               <Box
                 style={{
@@ -179,6 +174,11 @@ const CheckoutOrder = (props: Props) => {
               </Box>
             </Box>
           </Box>
+          {error ? (
+            <Alert onClose={handleAlertClose} sx={{ marginTop: 5, marginBottom: 10 }} severity="error">
+              {errorMessage}
+            </Alert>
+          ) : null}
           <Divider sx={styles.divider} />
         </Box>
       )}

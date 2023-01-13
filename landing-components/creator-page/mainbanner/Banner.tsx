@@ -1,11 +1,11 @@
 import React from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography, Button, Box } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
-import Image from "next/image";
 import CreatorBanner from "../../../public/creator-benner.png";
 import { useTheme } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
+import PedlarImage from "components/pedlarImage";
 
 const Banner = () => {
   const theme = useTheme();
@@ -45,7 +45,14 @@ const Banner = () => {
           </ScrollLink>
         </Grid>
         <Grid sx={styles.brandImg}>
-          <Image src={CreatorBanner} alt={"Creator banner"} priority placeholder="blur" />
+          <PedlarImage
+            zIndex={0}
+            style={{ borderRadius: "0 10px 10px 0" }}
+            src={CreatorBanner}
+            alt={"Creator banner"}
+            layout="intrinsic"
+            objectFit="contain"
+          />
         </Grid>
       </Grid>
     </CustomContainer>

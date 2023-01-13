@@ -10,7 +10,6 @@ import firstStep from "../../../public/step1.png";
 import secondStep from "../../../public/work1.png";
 import thirdStep from "../../../public/work4.png";
 import fourthStep from "../../../public/cartList.png";
-import PedlarImage from "components/pedlarImage";
 
 const Howitswork = () => {
   const theme = useTheme();
@@ -65,10 +64,6 @@ const Howitswork = () => {
                         </Box>
                         <Box className="hs5-ib-sbr-img">
                           <Image src={firstStep} alt="Picture of the author" />
-                          {/* <PedlarImage src={firstStep} alt="Picture of the author" /> */}
-                          {/* <Box sx={{ height: 700, width: 400, borderRadius: "16px" }}>
-                            <PedlarImage src={firstStep} alt="Picture of the author" />
-                          </Box> */}
                         </Box>
                       </Grid>
                       <Grid>

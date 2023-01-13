@@ -6,16 +6,16 @@ import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
-import axios from "axios";
-import useSWR from "swr";
+
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import { getUserDetailByFetchAPICall } from "api/grapgql";
+import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import { getUserDetail } from "api/restApi/getUserDetail";
 
 let filterValuesForQuery: any = [];
 
-const Products = ({ newAdditionData, collectionId, slug }: any) => {
+const Products = ({ newAdditionData, collectionId, slug, userData: data }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -66,74 +66,11 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
   <link rel="icon" href="/favicon.ico" />;
 
   const getFilteredData = async () => {
-    const requestBody = {
-      query: `query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
-        collection(id: $collectionId) {
-            products(first: 10, reverse: true, filters: $query) {
-                nodes {
-                    id
-                    title
-                    productType
-                    vendor
-                    description
-                    totalInventory
-                    priceRange {
-                        maxVariantPrice {
-                            amount
-                            currencyCode
-                        }
-                        minVariantPrice {
-                            amount
-                            currencyCode
-                        }
-                    }
-                    featuredImage {
-                      height
-                      src
-                      width
-                      originalSrc
-                      transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
-                    }
-                    createdAt
-                    publishedAt
-                }
-                pageInfo {
-                    hasNextPage
-                    hasPreviousPage
-                    startCursor
-                    endCursor
-                }
-            }
-        }
-    }`,
-      variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: filterValuesForQuery },
-    };
-    const headers: any = {
-      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-      "Content-Type": "application/json",
-      Connection: "keep-alive",
-      "Accept-Encoding": "gzip, deflate, br",
-      Accept: "*/*",
-    };
-    const options = {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(requestBody),
-    };
-    let response = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
-    response = await response.json();
+    const response = getFilteredProducts(collectionId, filterValuesForQuery);
 
     setProductsData(response?.data?.collection?.products?.nodes);
     setApplyFiltersState(false);
   };
-
-  // useEffect(() => {
-  //   if (applyFiltersState) {
-  //     getFilteredData();
-  //   }
-  // }, [applyFiltersState]);
-
-  // making the chunks of 5 products
 
   const productsDataArray = [];
 
@@ -145,72 +82,9 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
     if (endCursorValue.includes("=")) {
       setEndCursorValue(endCursorValue.slice(0, -2));
     }
-    const requestBody = {
-      query: `query GetCollection($collectionId: ID!) {
-        collection(id: $collectionId) {
-          products(first: 3, reverse: true ,after: "${endCursorValue}")
-            {
-                nodes {
-                    id
-                    title
-                    productType
-                    vendor
-                    description
-                    totalInventory
-                    priceRange {
-                        maxVariantPrice {
-                            amount
-                            currencyCode
-                        }
-                        minVariantPrice {
-                            amount
-                            currencyCode
-                        }
-                    }
-                    featuredImage {
-              height
-              src
-              width
-              originalSrc
-              transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
-            }
-                    createdAt
-                    publishedAt
-                }
-                pageInfo {
-                    hasNextPage 
-                    hasPreviousPage
-                    startCursor
-                    endCursor
-                }
-            }
-        }
-    }`,
-      variables: { collectionId: `gid://shopify/Collection/${collectionId}` },
-    };
-    const headers: any = {
-      "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
-      "Content-Type": "application/json",
-      Connection: "keep-alive",
-      "Accept-Encoding": "gzip, deflate, br",
-      Accept: "*/*",
-    };
-    const options = {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(requestBody),
-    };
-
-    async function getResponse() {
-      const res = await fetch("https://pedlar-development.myshopify.com/api/2022-10/graphql.json", options);
-
-      const collectionData = await res.json();
-
-      return collectionData?.data?.collection?.products;
-    }
 
     try {
-      const collectionDataProducts = await getResponse();
+      const collectionDataProducts = await getPaginationProducts(endCursorValue, collectionId);
 
       const totalData = [...productsData, ...collectionDataProducts.nodes];
       setProductsData(totalData);
@@ -222,9 +96,6 @@ const Products = ({ newAdditionData, collectionId, slug }: any) => {
       console.log(error);
     }
   };
-  const address = `https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`;
-  const fetcher = async (url: any) => await axios.get(url).then((res) => res.data);
-  const { data } = useSWR(address, fetcher);
 
   return (
     <Layout storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
@@ -293,19 +164,18 @@ export default Products;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
 
-  const res = await fetch(`https://pedlar-dev.ts.r.appspot.com/user/${slug}/details`);
-
-  const HeaderData = await res.json();
+  const HeaderData = await getUserDetail(slug);
 
   const numberofProducts = 18;
   let data = await getUserDetailByFetchAPICall(HeaderData?.data?.collectionId, numberofProducts);
-  data = data?.data?.collection?.products;
+  let userData = data?.data?.collection?.products || [];
 
   return {
     props: {
-      newAdditionData: data,
+      newAdditionData: userData,
       slug,
       collectionId: HeaderData?.data?.collectionId,
+      userData: HeaderData,
     },
   };
 }

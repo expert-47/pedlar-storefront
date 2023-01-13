@@ -33,7 +33,7 @@ import {
   getCartProducts,
   getVariantBySelectedOptions,
   checkoutCartDetails,
-} from "api/grapgql";
+} from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId } from "store/slice/appSlice";
 

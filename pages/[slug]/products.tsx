@@ -168,8 +168,8 @@ export async function getServerSideProps(context: any) {
       props: {
         newAdditionData: userData,
         slug,
-        collectionId: HeaderData?.data?.collectionId,
-        userData: HeaderData,
+        collectionId: headerData?.data?.collectionId,
+        userData: headerData,
       },
     };
   } else {

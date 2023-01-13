@@ -47,8 +47,8 @@ const properties = {
 };
 
 const Cart = (props) => {
-  const { newAdditionData, HeaderData, newAdditionData2 } = props;
-  console.log("this is just testing", newAdditionData?.featuredImage?.url);
+  const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
+
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
@@ -191,7 +191,7 @@ const Cart = (props) => {
   };
 
   return (
-    <Layout slug={slugValue} storefrontName={HeaderData?.data?.storefrontName}>
+    <Layout error={apiError} slug={slugValue} storefrontName={headerData?.data?.storefrontName}>
       <CustomContainer>
         <Box sx={styles.mainContainer}>
           <Grid container item md={11} lg={9} xl={9}>

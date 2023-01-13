@@ -7,7 +7,7 @@ import { Grid } from "@mui/material";
 // import { getVariantBySelectedOptions, addToCartLineItem } from "api/grapgql";
 // import { getCartProducts, updateCartLineItem } from "api/grapgql";
 // import { checkoutCartDetails } from "api/grapgql";
-import LoadingButton from "@mui/lab/LoadingButton";
+import LoadingButton from "components/LoadingButton";
 
 const Action = (props: any) => {
   const { addToCartButton, buttonLoaderState, BuyNowHandler, buyNowLoaderState } = props;
@@ -22,7 +22,6 @@ const Action = (props: any) => {
     >
       <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ width: "100%" }}>
         <LoadingButton
-          variant="contained"
           sx={{
             backgroundColor: "#1C1B1F",
             color: "white",
@@ -32,6 +31,10 @@ const Action = (props: any) => {
             fontWeight: "600",
             fontSize: "16px",
             textTransform: "none",
+            "&:hover": {
+              borderColor: "black",
+              backgroundColor: "#1C1B1F",
+            },
           }}
           onClick={addToCartButton}
           loading={buttonLoaderState}

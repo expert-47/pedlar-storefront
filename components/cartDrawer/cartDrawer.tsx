@@ -68,13 +68,15 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     width: {
       lg: "25%",
       md: "30%",
+      sm: "100%",
+      xs: "100%",
     },
     height: "100%",
     display: "flex",
     flexDirection: "column",
     backgroundColor: "white",
     justifyContent: "space-between",
-    padding: "20px",
+
     maxHeight: "100%",
   };
 
@@ -87,7 +89,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         sx: paperStyle,
       }}
     >
-      <Grid container>
+      <Grid container sx={{ padding: "20px" }}>
         <Grid
           container
           item
@@ -146,6 +148,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
         direction={"column"}
         justifyContent={"flex-end"}
         alignItems={"flex-end"}
+        sx={{ paddingRight: "20px", paddingLeft: "20px" }}
       >
         <Grid
           container

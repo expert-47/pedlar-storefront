@@ -20,7 +20,7 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
-      <BannerImg HeaderData={props?.HeaderData} />
+      <BannerImg headerData={props?.headerData} />
       <Divider sx={styles.bannerDivider} />
       <Bar />
       <Box

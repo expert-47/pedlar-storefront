@@ -35,7 +35,7 @@ export const PedlarDrawer = (props: {
   storefrontName: string;
   toggleDrawer: (value: boolean) => void;
 }) => {
-  const { openDrawer, toggleDrawer, storefrontName } = props;
+  const { type = "Brands", openDrawer, toggleDrawer, storefrontName } = props;
   const theme = useTheme();
   const route = useRouter();
 
@@ -49,6 +49,7 @@ export const PedlarDrawer = (props: {
     flexDirection: "column",
     backgroundColor: "white",
   };
+  const [viewAll, setViewAll] = useState(data?.data?.map((item) => item));
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
@@ -141,7 +142,6 @@ export const PedlarDrawer = (props: {
                       data.data
                         .map((item) => item.vendor)
 
-                        .slice(0, 28)
                         .map((item) => (
                           <Grid
                             key={item}
@@ -149,18 +149,29 @@ export const PedlarDrawer = (props: {
                             xs={5.5}
                             sm={5.5}
                             style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                            onClick={() => toggleDrawer(false)}
                           >
-                            {item}
+                            <Link
+                              as={`/${route?.query?.slug}/products`}
+                              href={{
+                                pathname: `/${route?.query?.slug}/products`,
+                                query: { dataType: type, itemValue: item },
+                              }}
+                              style={{ cursor: "pointer" }}
+                            >
+                              {viewAll ? item : item}
+                            </Link>
                           </Grid>
                         ))
                     )}
-                    <Link href="/">
+
+                    <Button onClick={() => setViewAll(data?.data?.length)}>
                       <ListItemText
                         style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
                       >
                         View all.....
                       </ListItemText>
-                    </Link>
+                    </Button>
                   </Grid>
                 </ListItem>
               </List>
@@ -182,7 +193,7 @@ export const PedlarDrawer = (props: {
                       shopList.data
                         .map((item) => item.productType)
 
-                        .slice(0, 28)
+                        .slice(0, 2)
                         .map((item) => (
                           <Grid
                             key={item}

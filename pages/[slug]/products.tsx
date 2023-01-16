@@ -26,6 +26,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
   const setFiltersValue = async (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
     if (BrandsNames?.length > 0) {
       BrandsNames?.map((item: any) => {
+        // console.log("filterValuesForQuery", item);
         filterValuesForQuery.push({ productVendor: item });
       });
       BrandsNames = [];
@@ -45,6 +46,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
     }
   };
 
+  // console.log("filterValuesForQuery", filterValuesForQuery);
   useEffect(() => {
     if (!(route.query.dataType === "Brands") && !(route.query.dataType === "Shop")) {
       setProductsData(newAdditionData?.nodes);

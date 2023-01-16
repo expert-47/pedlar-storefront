@@ -38,8 +38,6 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   };
   useEffect(() => {
     if (cartProducts?.length > 0) {
-      console.log("cartProducts", cartProducts);
-
       if (cartProducts?.length == 1) {
         let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
         setTotalPrice(price);

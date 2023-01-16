@@ -15,7 +15,7 @@ import { getUserDetail } from "api/restApi/getUserDetail";
 
 let filterValuesForQuery: any = [];
 
-const Products = ({ newAdditionData, collectionId, slug, userData: data, error }: any) => {
+const Products = ({ newAdditionData, slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -66,7 +66,8 @@ const Products = ({ newAdditionData, collectionId, slug, userData: data, error }
   <link rel="icon" href="/favicon.ico" />;
 
   const getFilteredData = async () => {
-    const response = getFilteredProducts(collectionId, filterValuesForQuery);
+    const response = await getFilteredProducts(collectionId, filterValuesForQuery);
+    console.log("resss", response);
 
     setProductsData(response?.data?.collection?.products?.nodes);
     setApplyFiltersState(false);
@@ -125,7 +126,7 @@ const Products = ({ newAdditionData, collectionId, slug, userData: data, error }
         }}
       >
         <Text fontSize="12px" fontWeight="600">
-          {`You've viewed ${productsData.length} out of 100 products`}
+          {`You've viewed ${productsData?.length} out of 100 products`}
         </Text>
         {hasNextPage && (
           <Button
@@ -159,11 +160,11 @@ export async function getServerSideProps(context: any) {
   const { slug } = context.query;
 
   const headerData = await getUserDetail(slug);
+
   if (headerData?.data) {
     const numberofProducts = 18;
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products || [];
-
     return {
       props: {
         newAdditionData: userData,

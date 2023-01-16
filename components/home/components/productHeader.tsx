@@ -43,8 +43,16 @@ const ProductHeader = (props) => {
         ) : (
           <Grid gap={3} columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
             {" "}
-            <DropdownButton type={"Brands"} setFiltersValue={props?.setFiltersValue} data={data ? data.data.map((item) => item.vendor) : []} />
-            <DropdownButton type={"Category"} setFiltersValue={props?.setFiltersValue}  data={shopList ? shopList.data.map((item) => item.productType) : []} />
+            <DropdownButton
+              type={"Brands"}
+              setFiltersValue={props?.setFiltersValue}
+              data={data ? data.data.map((item) => item.vendor) : []}
+            />
+            <DropdownButton
+              type={"Category"}
+              setFiltersValue={props?.setFiltersValue}
+              data={shopList ? shopList.data.map((item) => item.productType) : []}
+            />
           </Grid>
         )}
       </Grid>

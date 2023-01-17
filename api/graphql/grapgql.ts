@@ -342,7 +342,7 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
     query: gql`
       query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
         collection(id: $collectionId) {
-          products(first: 10, reverse: true, filters: $query) {
+          products(first: 18, reverse: true, filters: $query) {
             nodes {
               id
               title

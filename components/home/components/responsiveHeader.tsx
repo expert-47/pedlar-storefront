@@ -33,7 +33,8 @@ interface Props {
   data: string[];
   setFiltersValue: any;
 }
-
+let BrandsNames: string[] = [];
+let VendorsNames: string[] = [];
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
   const { type = "Brands", data, setFiltersValue } = props;
@@ -51,6 +52,8 @@ export const ResponsiveHeader = (props: Props) => {
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
+
+  console.log("setFiltersValue", setFiltersValue);
   const [open, setOpen] = React.useState(false);
   const [opens, setOpens] = React.useState(false);
   const [filterCheckBoxes, setFilterCheckBoxes] = React.useState({});
@@ -75,8 +78,6 @@ export const ResponsiveHeader = (props: Props) => {
   //   setOpens(false);
   // };
 
-  let BrandsNames: string[] = [];
-  let VendorsNames: string[] = [];
   const getCheckBoxValue = (e: any, text: string) => {
     if (e.target.checked) {
       if (type === "Brands" && !BrandsNames?.includes(text)) {
@@ -98,6 +99,7 @@ export const ResponsiveHeader = (props: Props) => {
         });
       }
     }
+    console.log("brands");
   };
 
   const applyFiltersMethod = () => {
@@ -118,6 +120,8 @@ export const ResponsiveHeader = (props: Props) => {
       obj["checkbox-" + index] = false;
     });
     setFilterCheckBoxes(obj);
+    setFiltersValue(BrandsNames, VendorsNames, true);
+
     setOpen(false);
   };
   return (

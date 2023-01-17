@@ -14,7 +14,7 @@ import {
   Divider,
 } from "@mui/material";
 import Link from "next/link";
-
+import { useRouter } from "next/router";
 import React from "react";
 import useSwr from "swr";
 
@@ -29,14 +29,16 @@ import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 
 interface Props {
+  type: string;
   data: string[];
+  setFiltersValue: any;
 }
 
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
-  const { data } = props;
+  const { type = "Brands", data, setFiltersValue } = props;
   const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
-
+  const route = useRouter();
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -51,16 +53,73 @@ export const ResponsiveHeader = (props: Props) => {
   };
   const [open, setOpen] = React.useState(false);
   const [opens, setOpens] = React.useState(false);
-
-  const handleClick = () => {
+  const [filterCheckBoxes, setFilterCheckBoxes] = React.useState({});
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event: any) => {
     setOpen(!open);
     setOpens(false);
+    setAnchorEl(event.currentTarget);
   };
-  const handleClicks = () => {
+  const handleClicks = (event: any) => {
     setOpens(!opens);
     setOpen(false);
+    setAnchorEl(event.currentTarget);
   };
 
+  const openMenu = Boolean(anchorEl);
+  // const handleClick = (event: any) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  //   setOpens(false);
+  // };
+
+  let BrandsNames: string[] = [];
+  let VendorsNames: string[] = [];
+  const getCheckBoxValue = (e: any, text: string) => {
+    if (e.target.checked) {
+      if (type === "Brands" && !BrandsNames?.includes(text)) {
+        BrandsNames.push(text);
+      }
+      if (!(type === "Brands") && !VendorsNames?.includes(text)) {
+        VendorsNames.push(text);
+      }
+    }
+    if (!e.target.checked) {
+      if (type === "Brands" && BrandsNames?.includes(text)) {
+        BrandsNames = BrandsNames.filter(function (item) {
+          return item !== text;
+        });
+      }
+      if (!(type === "Brands") && VendorsNames?.includes(text)) {
+        VendorsNames = VendorsNames.filter(function (item) {
+          return item !== text;
+        });
+      }
+    }
+  };
+
+  const applyFiltersMethod = () => {
+    setFiltersValue(BrandsNames, VendorsNames, true);
+    setOpens(false);
+    setOpen(false);
+    setAnchorEl(null);
+  };
+
+  const resetFilters = () => {
+    if (type === "Brands") {
+      BrandsNames = [];
+    } else {
+      VendorsNames = [];
+    }
+    const obj = {};
+    data.forEach((_item, index) => {
+      obj["checkbox-" + index] = false;
+    });
+    setFilterCheckBoxes(obj);
+    setOpen(false);
+  };
   return (
     <React.Fragment>
       <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex", paddingTop: "12px" }}>
@@ -83,7 +142,7 @@ export const ResponsiveHeader = (props: Props) => {
             onClick={handleClicks}
             style={{ fontSize: "16px", color: "#1C1B1Fe3", fontWeight: "600", padding: "unset" }}
           >
-            <Grid style={{ borderBottom: opens ? "solid black 1.5px" : "none", textTransform: "none" }}>Category</Grid>{" "}
+            <Grid style={{ borderBottom: opens ? "solid black 1.5px" : "none", textTransform: "none" }}>Category</Grid>
             {opens ? (
               <ExpandLess style={{ transform: "scale(0.8)" }} />
             ) : (
@@ -104,18 +163,29 @@ export const ResponsiveHeader = (props: Props) => {
           md={12}
         >
           <Grid gap={20} sx={styles.menuInnerContainer}>
-            {data.map((item) => (
-              <Grid style={{ display: "flex" }}>
-                <Grid>
-                  <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />
+            {data.map((item, index) => {
+              const checkboxKey: string = "checkbox-" + index;
+              return (
+                <Grid style={{ display: "flex" }}>
+                  <Grid>
+                    <Checkbox
+                      style={{ padding: "2px" }}
+                      sx={styles.menuCheck}
+                      checked={filterCheckBoxes[checkboxKey] || false}
+                      onChange={(e) => getCheckBoxValue(e, item)}
+                      onClick={() => {
+                        setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
+                      }}
+                    />
+                  </Grid>
+                  <Grid>
+                    <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
+                      {item}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid>
-                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
-                    {item}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
+              );
+            })}
           </Grid>
           <Grid
             xs={12}
@@ -125,7 +195,7 @@ export const ResponsiveHeader = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
             paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Button variant="contained" sx={styles.menuButton}>
+            <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod()}>
               Apply
             </Button>
           </Grid>
@@ -137,9 +207,16 @@ export const ResponsiveHeader = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
             paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Button variant="outlined" sx={styles.outlinedButton}>
-              Reset filters
-            </Button>
+            <Link
+              as={`/${route?.query?.slug}/products`}
+              href={{
+                pathname: `/${route?.query?.slug}/products`,
+              }}
+            >
+              <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters()}>
+                Reset filters
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </Collapse>
@@ -176,7 +253,7 @@ export const ResponsiveHeader = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
             paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Button variant="contained" sx={styles.menuButton}>
+            <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod()}>
               Apply
             </Button>
           </Grid>
@@ -188,9 +265,16 @@ export const ResponsiveHeader = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
             paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            <Button variant="outlined" sx={styles.outlinedButton}>
-              Reset filters
-            </Button>
+            <Link
+              as={`/${route?.query?.slug}/products`}
+              href={{
+                pathname: `/${route?.query?.slug}/products`,
+              }}
+            >
+              <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters()}>
+                Reset filters
+              </Button>
+            </Link>
           </Grid>
         </Grid>
       </Collapse>

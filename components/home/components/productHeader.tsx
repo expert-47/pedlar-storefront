@@ -15,12 +15,13 @@ const ProductHeader = (props) => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
   return (
     <CustomGrid>
       <Grid
@@ -38,11 +39,14 @@ const ProductHeader = (props) => {
 
         {!isMatch ? (
           <>
-            <ResponsiveHeader data={data ? data.data.map((item) => item.vendor) : []} />
+            <ResponsiveHeader
+              type={"Brands"}
+              setFiltersValue={props?.setFiltersValue}
+              data={data ? data.data.map((item) => item.vendor) : []}
+            />
           </>
         ) : (
           <Grid gap={3} columns={{ xs: 12, md: 12 }} item style={{ display: "flex" }}>
-            {" "}
             <DropdownButton
               type={"Brands"}
               setFiltersValue={props?.setFiltersValue}

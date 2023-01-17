@@ -71,6 +71,7 @@ const DropdownButton = (props: Props) => {
       obj["checkbox-" + index] = false;
     });
     setFilterCheckBoxes(obj);
+    setFiltersValue(BrandsNames, VendorsNames, true);
   };
 
   return (

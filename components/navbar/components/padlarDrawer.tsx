@@ -29,6 +29,7 @@ import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { truncate } from "fs";
 
 export const PedlarDrawer = (props: {
   openDrawer: boolean;
@@ -49,7 +50,10 @@ export const PedlarDrawer = (props: {
     flexDirection: "column",
     backgroundColor: "white",
   };
-  const [viewAll, setViewAll] = useState(data?.data?.map((item) => item));
+  const [viewAll, setViewAll] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
+
+  console.log("dddddd", viewAll);
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
@@ -62,6 +66,10 @@ export const PedlarDrawer = (props: {
   };
   const handleClicks = () => {
     setOpens(!opens);
+  };
+  const brandsNameHanlder = () => {
+    setViewAll(data?.data?.map((item) => item?.vendor)?.map((items) => items));
+    setIsClicked(true);
   };
   return (
     <Drawer
@@ -140,8 +148,8 @@ export const PedlarDrawer = (props: {
                       <CircularProgress color="inherit" />
                     ) : (
                       data.data
-                        .map((item) => item.vendor)
 
+                        .map((item) => item.vendor)
                         .map((item) => (
                           <Grid
                             key={item}
@@ -159,13 +167,13 @@ export const PedlarDrawer = (props: {
                               }}
                               style={{ cursor: "pointer" }}
                             >
-                              {viewAll ? item : item}
+                              {item}
                             </Link>
                           </Grid>
                         ))
                     )}
 
-                    <Button onClick={() => setViewAll(data?.data?.length)}>
+                    <Button onClick={brandsNameHanlder}>
                       <ListItemText
                         style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
                       >

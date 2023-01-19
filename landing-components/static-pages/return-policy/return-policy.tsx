@@ -1,6 +1,6 @@
 import React from "react";
 import { CustomContainer } from "../../landinglayout";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button, Grid } from "@mui/material";
 import { styles } from "./style";
 
 const ReturnPolicy = () => {
@@ -15,6 +15,17 @@ const ReturnPolicy = () => {
         >
           Pedlar Shipping and Returns Policy (Shoppers)
         </Typography>
+        <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"400"} sx={{ paddingBottom: "30px" }}>
+          We want you to be completely satisfied with your purchases; if for any you change your mind, we’re happy to
+          refund all full priced items.
+        </Typography>
+        <Grid container xs={12} sm={12} md={12} lg={12} sx={{ paddingBottom: "60px" }}>
+          <Button sx={{ width: "345px" }}>
+            <Typography textTransform="none" sx={styles.startReturnTypo}>
+              Start Return
+            </Typography>
+          </Button>
+        </Grid>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Shipping
         </Typography>

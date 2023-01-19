@@ -8,4 +8,18 @@ export const styles = {
   spacing: {
     paddingBottom: "20px",
   },
+  startReturnTypo: {
+    fontSize: "16px",
+    fontWeight: "600",
+    padding: "15px 5px",
+    textAlign: "center",
+    width: "100%",
+    color: "white",
+    backgroundColor: "#1C1B1F",
+    border: "1.5px solid",
+    borderRadius: "32px",
+    "&:hover": {
+      backgroundColor: "#1C1B1F",
+    },
+  },
 };

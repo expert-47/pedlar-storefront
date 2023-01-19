@@ -11,8 +11,7 @@ export const styles = {
   startReturnTypo: {
     fontSize: "16px",
     fontWeight: "600",
-    padding: "15px 20px",
-
+    padding: "15px 5px",
     textAlign: "center",
     width: "100%",
     color: "white",

@@ -5,7 +5,8 @@ import { CustomContainer } from "../../landinglayout";
 import Image from "next/image";
 import HomeSecImage1 from "../../../public/home-sec5-img1.png";
 import HomeSecImage2 from "../../../public/home-sec5-img2.png";
-import HomeSecImage3 from "../../../public/home-sec5-img3.png";
+// import HomeSecImage3 from "../../../public/home-sec5-img3.png";
+import thirdStep from "../../../public/step3.png";
 import HomeSecImage4 from "../../../public/home-sec5-img4.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
@@ -139,7 +140,7 @@ const Responsivehowitworks = () => {
               </Grid>
               <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
                 <Image
-                  src={HomeSecImage3}
+                  src={thirdStep}
                   alt="home-sec5-img3"
                   style={{ borderRadius: "16px" }}
                   loading="lazy"

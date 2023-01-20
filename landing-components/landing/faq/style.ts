@@ -2,7 +2,7 @@ export const styles = {
   faqText: {
     color: " #1C1B1F",
     fontFamily: "Inter",
-    lineHeight: "unset",
+    lineHeight: "normal",
     paddingBottom: "40px",
   },
   acordianText: {

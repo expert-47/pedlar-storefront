@@ -72,7 +72,7 @@ const Gridbox = () => {
             fontSize={{ lg: "54px", md: "52px", sm: "54px", xs: "30px" }}
             fontWeight={"700"}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
-            paddingBottom={{ md: "60px", xs: "50px" }}
+            paddingBottom={{ xs: "50px" }}
           >
             Build personalised storefronts to sell the brands you love directly to your audience
           </Typography>
@@ -294,7 +294,7 @@ const Gridbox = () => {
                 <Brandspopup isSecondModalActive={isSecondModalActive} />
               )}
               {sucessModalshow ? (
-                <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                   {
                     "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                   }
@@ -383,7 +383,7 @@ const Gridbox = () => {
                 <Brandspopup isSecondModalActive={isSecondModalActive} />
               )}
               {sucessModalshow ? (
-                <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                   {
                     "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                   }

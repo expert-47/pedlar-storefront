@@ -38,7 +38,7 @@ const Banner = () => {
           </Typography>
           <ScrollLink to="StoreFreeForm" spy={true} smooth={true} offset={-100} duration={500}>
             <Button sx={styles.Button}>
-              <Typography textTransform={"none"} fontSize={"22px"}>
+              <Typography textTransform={"none"} fontSize={"22px"} lineHeight={"normal"}>
                 Get access - <span style={{ fontStyle: "italic", fontWeight: "400" }}>for free</span>
               </Typography>
             </Button>

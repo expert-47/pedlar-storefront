@@ -89,9 +89,9 @@ const Responsivehowitworks = () => {
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                 <Typography
-                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontSize={{ xs: "30px", sm: "40px" }}
                   fontWeight={600}
-                  lineHeight={{ xs: "30px", sm: "50px" }}
+                  lineHeight={{ xs: "normal", sm: "50px" }}
                 >
                   Top Aussie brands sync their store to the Pedlar platform
                 </Typography>
@@ -110,7 +110,7 @@ const Responsivehowitworks = () => {
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                 <Typography
-                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontSize={{ xs: "30px", sm: "40px" }}
                   fontWeight={600}
                   lineHeight={{ xs: "30px", sm: "50px" }}
                 >
@@ -131,7 +131,7 @@ const Responsivehowitworks = () => {
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                 <Typography
-                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontSize={{ xs: "30px", sm: "40px" }}
                   fontWeight={600}
                   lineHeight={{ xs: "30px", sm: "50px" }}
                 >
@@ -152,7 +152,7 @@ const Responsivehowitworks = () => {
             <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
               <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
                 <Typography
-                  fontSize={{ xs: "25px", sm: "40px" }}
+                  fontSize={{ xs: "30px", sm: "40px" }}
                   fontWeight={600}
                   lineHeight={{ xs: "30px", sm: "50px" }}
                 >

@@ -229,7 +229,7 @@ const Businesstoday = () => {
               </Grid>
             </Box>
           )}
-          <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "#49454F" }}>
+          <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "rgb(73,69,79)" }}>
             <Typography textTransform={"none"} fontSize={"16px"} fontWeight={400}>
               We will communicate with you about the information requested and other Pedlar services.
             </Typography>

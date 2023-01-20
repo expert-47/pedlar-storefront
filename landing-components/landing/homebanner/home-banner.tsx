@@ -87,7 +87,7 @@ const Banner = () => {
               sx={styles.fashionText}
               fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "42px", xl: "54px" }}
               fontWeight={"700"}
-              lineHeight={"unset"}
+              lineHeight={"normal"}
               color={"#1C1B1F"}
             >
               We put fashion
@@ -112,7 +112,7 @@ const Banner = () => {
                 in business
               </Typography>
             </Box>
-            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px", lg: "22px" }}>
+            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px", lg: "22px" }} fontWeight={600}>
               Simplified creator commerce. Sell directly to your followers through customisable storefronts.
             </Typography>
             <Grid>
@@ -218,7 +218,7 @@ const Banner = () => {
                       <Brandspopup isSecondModalActive={isSecondModalActive} />
                     )}
                     {sucessModalshow ? (
-                      <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                      <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                         {
                           "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                         }
@@ -310,7 +310,7 @@ const Banner = () => {
                       <Brandspopup isSecondModalActive={isSecondModalActive} />
                     )}
                     {sucessModalshow ? (
-                      <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                      <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                         {
                           "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                         }

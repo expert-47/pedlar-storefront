@@ -122,13 +122,13 @@ const Gridbox = () => {
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "24px" }}>
+                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
                     More money. Less problems
                   </Typography>
                   <Typography
                     sx={styles.gridinnerPara}
                     fontWeight={"600"}
-                    fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                    fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
                   >
                     Track performance overtime. Create value for creator, brands and shoppers.
                   </Typography>
@@ -139,13 +139,13 @@ const Gridbox = () => {
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "24px" }}>
+                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
                     Simple and free
                   </Typography>
                   <Typography
                     sx={styles.gridinnerPara}
                     fontWeight={"600"}
-                    fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                    fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
                   >
                     Creators and brands get set up in under two minutes. Start selling instantly!
                   </Typography>
@@ -156,13 +156,13 @@ const Gridbox = () => {
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
                 <Box style={{ marginLeft: "10px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "24px" }}>
+                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
                     Business as usual
                   </Typography>
                   <Typography
                     sx={styles.gridinnerPara}
                     fontWeight={"600"}
-                    fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                    fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
                   >
                     Creators get paid more to do what they love. Brands integrate their Shopify then set and forget.
                   </Typography>

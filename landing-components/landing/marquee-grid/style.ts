@@ -2,15 +2,15 @@ export const styles = {
   mainGrid: {
     background: "#FFFFFF",
     borderRadius: "16px",
-    padding: "40px 0",
+    padding: "50px 0",
     width: "100%",
     position: "relative",
     zIndex: "3",
   },
   gridboxText: {
     color: "#1C1B1F",
-    lineHeight: { lg: "74px", md: "62px", sm: "64px", xs: "40px" },
-    margin: "0 auto 0 0",
+    lineHeight: { lg: "64px", md: "62px", sm: "64px", xs: "40px" },
+    // margin: "0 auto 0 0",
     // maxWidth: "1130px",
   },
   gridinnerPara: {

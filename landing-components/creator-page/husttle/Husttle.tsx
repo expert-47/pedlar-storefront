@@ -51,12 +51,12 @@ const Husttle = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
                 20% Commission
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
                 A cut above the rest. Earn more for selling products you love.
               </Typography>
             </Grid>
@@ -68,12 +68,12 @@ const Husttle = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
                 Curate and customise
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
                 Make it your business. Create a storefront and showcase your personal aesthetic and style.
               </Typography>
             </Grid>
@@ -85,12 +85,12 @@ const Husttle = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
                 Simple and free
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
                 Setup your store in two minutes and start selling instantly. Never pay to use Pedlar.
               </Typography>
             </Grid>
@@ -102,12 +102,12 @@ const Husttle = () => {
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"}>
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
                 No hassle
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"}>
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
                 Pedlar handles all the customer support, shipping and inventory.
               </Typography>
             </Grid>

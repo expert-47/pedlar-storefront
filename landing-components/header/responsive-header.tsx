@@ -258,7 +258,7 @@ const ResponsiveHeader = () => {
                         <Brandspopup isSecondModalActive={isSecondModalActive} />
                       )}
                       {sucessModalshow ? (
-                        <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                        <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                           {
                             "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                           }

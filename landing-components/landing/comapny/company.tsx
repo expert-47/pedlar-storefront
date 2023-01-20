@@ -94,7 +94,7 @@ const Company = () => {
           paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Button sx={styles.CreatorButton} onClick={() => openPopup("creator")}>
-            <Typography textTransform="none" fontSize={"22px"}>
+            <Typography textTransform="none" fontSize={"22px"} lineHeight={"normal"}>
               I’m a creator
             </Typography>
           </Button>
@@ -194,7 +194,7 @@ const Company = () => {
                   <Brandspopup isSecondModalActive={isSecondModalActive} />
                 )}
                 {sucessModalshow ? (
-                  <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                  <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }
@@ -286,7 +286,7 @@ const Company = () => {
                   <Brandspopup isSecondModalActive={isSecondModalActive} />
                 )}
                 {sucessModalshow ? (
-                  <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                  <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                     {
                       "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                     }

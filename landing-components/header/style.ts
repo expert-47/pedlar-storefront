@@ -48,6 +48,7 @@ export const styles = {
   ButtonRTypo: {
     fontSize: "22px",
     fontWeight: "600",
+    lineHeight: "normal",
   },
   LoginButton: {
     fontSize: "16px",

@@ -54,6 +54,7 @@ export const styles = {
     whiteSpace: "nowrap",
     cursor: "pointer",
     fontSize: "22px",
+    lineHeight: "normal",
     fontWeight: "600",
     padding: "15px 0",
     textTransform: " initial",

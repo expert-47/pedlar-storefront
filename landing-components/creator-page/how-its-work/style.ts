@@ -5,7 +5,7 @@ export const styles = {
     zIndex: "9",
   },
   ResponsMainBox: {
-    borderRadius: "16px",
+    borderRadius: "15px",
   },
   Heading: {
     padding: "50px 0 0 21px",

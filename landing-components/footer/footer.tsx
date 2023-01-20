@@ -28,7 +28,7 @@ const Footer = () => {
             <Link href="/">
               <Image src={footerLogo} alt="footer logo" />
             </Link>
-            <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"500"} paddingTop={"40px"}>
+            <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"600"} paddingTop={"40px"}>
               We’re always here to help.
             </Typography>
             <Typography

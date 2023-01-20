@@ -65,7 +65,7 @@ const EarlyAcess = () => {
             paddingY={{ xs: theme.spacing(40), md: theme.spacing(40), lg: theme.spacing(55) }}
           >
             <Grid item xs={12} sm={12} md={4} lg={5}>
-              <Typography fontSize={{ md: "54px", xs: "48px" }} fontWeight={"700"} lineHeight={"unset"}>
+              <Typography fontSize={{ md: "54px", xs: "48px" }} fontWeight={"700"} lineHeight={"normal"}>
                 Get early access
               </Typography>
             </Grid>
@@ -94,12 +94,12 @@ const EarlyAcess = () => {
             >
               <Box style={{ display: isTab ? "unset" : "flex" }}>
                 <Button sx={styles.CreatorButton} onClick={() => openPopup("creator")}>
-                  <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"}>
+                  <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
                     I’m a creator
                   </Typography>
                 </Button>
                 <Button sx={styles.BrandsButton} onClick={() => openPopup("brand")}>
-                  <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"}>
+                  <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
                     I’m a brand
                   </Typography>
                 </Button>
@@ -201,7 +201,7 @@ const EarlyAcess = () => {
                         <Brandspopup isSecondModalActive={isSecondModalActive} />
                       )}
                       {sucessModalshow ? (
-                        <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                        <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                           {
                             "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                           }
@@ -293,7 +293,7 @@ const EarlyAcess = () => {
                         <Brandspopup isSecondModalActive={isSecondModalActive} />
                       )}
                       {sucessModalshow ? (
-                        <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
+                        <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
                           {
                             "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
                           }

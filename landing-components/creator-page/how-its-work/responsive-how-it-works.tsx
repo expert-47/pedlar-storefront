@@ -28,7 +28,7 @@ const Responsivehowitworks = () => {
               How it works
             </Typography>
           </Grid>
-          <Grid container gap={1} item xs={12} sm={6} style={{ justifyContent: "space-between", marginTop: "20px" }}>
+          <Grid container item xs={12} sm={6} style={{ justifyContent: "space-between", marginTop: "20px" }}>
             <Grid item xs={2.2} sm={1.8} onClick={() => slideTo(0)}>
               <Typography
                 sx={{

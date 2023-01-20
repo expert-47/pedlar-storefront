@@ -69,10 +69,10 @@ const Gridbox = () => {
         <Box sx={styles.mainGrid}>
           <Typography
             sx={styles.gridboxText}
-            fontSize={{ lg: "64px", md: "52px", sm: "54px", xs: "30px" }}
+            fontSize={{ lg: "54px", md: "52px", sm: "54px", xs: "30px" }}
             fontWeight={"700"}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
-            paddingBottom={{ md: "100px", xs: "50px" }}
+            paddingBottom={{ md: "60px", xs: "50px" }}
           >
             Build personalised storefronts to sell the brands you love directly to your audience
           </Typography>

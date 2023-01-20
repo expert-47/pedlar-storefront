@@ -69,8 +69,8 @@ const Gridbox = () => {
         <Box sx={styles.mainGrid}>
           <Typography
             sx={styles.gridboxText}
-            fontSize={{ lg: "54px", md: "48px", sm: "54px", xs: "30px" }}
-            fontWeight={"600"}
+            fontSize={{ lg: "64px", md: "52px", sm: "54px", xs: "30px" }}
+            fontWeight={"700"}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
             paddingBottom={{ md: "100px", xs: "50px" }}
           >
@@ -88,14 +88,32 @@ const Gridbox = () => {
             style={{ display: "flex", alignItems: "flex-start" }}
           >
             <Grid item xs={12} sm={8} md={6} lg={4.8}>
-              <PedlarImage src={firstGrid} alt="Picture of the author" layout="intrinsic" objectFit="contain" />
+              <PedlarImage
+                src={firstGrid}
+                alt="Picture of the author"
+                layout="intrinsic"
+                objectFit="contain"
+                style={{ borderRadius: "8px" }}
+              />
             </Grid>
             <Grid container item xs={12} sm={3.55} md={2.65} lg={2.1} style={{ justifyContent: "space-between" }}>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
-                <PedlarImage src={secondGrid} alt="Picture of the author" layout="intrinsic" objectFit="contain" />
+                <PedlarImage
+                  src={secondGrid}
+                  alt="Picture of the author"
+                  layout="intrinsic"
+                  objectFit="contain"
+                  style={{ borderRadius: "8px" }}
+                />
               </Grid>
               <Grid item xs={5.8} sm={12} md={12} lg={12} marginTop={{ lg: "4px", md: "0px" }}>
-                <PedlarImage src={thirdGrid} alt="Picture of the author" layout="intrinsic" objectFit="contain" />
+                <PedlarImage
+                  src={thirdGrid}
+                  alt="Picture of the author"
+                  layout="intrinsic"
+                  objectFit="contain"
+                  style={{ borderRadius: "8px" }}
+                />
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={4.6} marginLeft={{ xs: "0px", lg: "16px" }}>

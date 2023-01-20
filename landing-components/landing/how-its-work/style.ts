@@ -1,6 +1,6 @@
 export const styles = {
   MainBox: {
-    padding: "30px",
+    paddingTop: "30px",
     position: "relative",
   },
   ResponsMainBox: {

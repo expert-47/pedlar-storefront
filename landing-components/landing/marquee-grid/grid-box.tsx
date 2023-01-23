@@ -88,7 +88,7 @@ const Gridbox = () => {
             style={{ display: "flex", alignItems: "flex-start" }}
             justifyContent={{ lg: "space-around" }}
           >
-            <Grid item xs={12} sm={8} md={6} lg={4.3}>
+            <Grid item xs={12} sm={8} md={6} lg={4.1}>
               <PedlarImage
                 src={firstGrid}
                 alt="Picture of the author"
@@ -97,7 +97,15 @@ const Gridbox = () => {
                 style={{ borderRadius: "8px" }}
               />
             </Grid>
-            <Grid container item xs={12} sm={3.55} md={2.65} lg={1.9} style={{ justifyContent: "space-between" }}>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={3.55}
+              md={2.65}
+              lg={1.9}
+              style={{ justifyContent: "space-between",  }}
+            >
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
                 <PedlarImage
                   src={secondGrid}

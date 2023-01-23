@@ -9,9 +9,10 @@ import {
   Slide,
   Typography,
   useScrollTrigger,
+  SwipeableDrawer,
   useTheme,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+// import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -21,6 +22,8 @@ import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
 import Image from "next/image";
 import headerlogo from "../../public/header-logo.svg";
+import MenuIcon from "../../public/menu-icon.png";
+import PedlarImage from "components/pedlarImage";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -81,6 +84,7 @@ const ResponsiveHeader = () => {
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
+
   return (
     <AppBar
       elevation={0}
@@ -98,7 +102,7 @@ const ResponsiveHeader = () => {
         md={12}
         lg={12}
         sx={styles.RespoMainGrid}
-        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
           <Image
@@ -175,7 +179,31 @@ const ResponsiveHeader = () => {
                       Log in
                     </Typography>
                   </Button>
-                  <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+                  <SwipeableDrawer
+                    ModalProps={{ keepMounted: true }}
+                    anchor="bottom"
+                    sx={{ height: "150px" }}
+                    open={openDialog}
+                    onClose={handleClose}
+                    PaperProps={{
+                      sx: {
+                        // Since overflow is visible here and not 'auto' or 'scroll', the scrolling needs to happen in a nested div
+                        overflow: "visible",
+                        height: `calc(90% - 13px)`,
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 50,
+                        height: 4,
+                        backgroundColor: "#bdbdbd",
+                        borderRadius: 3,
+                        position: "absolute",
+                        left: "calc(50% - 20px)",
+                        top: 8,
+                      }}
+                    />
                     <Grid
                       container
                       item
@@ -207,7 +235,7 @@ const ResponsiveHeader = () => {
                           </Typography>
                         )}
                         <IconButton onClick={closePopup}>
-                          <CloseIcon style={{ color: "black" }} />
+                          <CloseIcon style={{ color: "black", height: "14px", width: "14px" }} />
                         </IconButton>
                       </Grid>
                       {sucessModalshow ? (
@@ -265,14 +293,23 @@ const ResponsiveHeader = () => {
                         </Typography>
                       ) : null}
                     </Grid>
-                  </Dialog>
+                  </SwipeableDrawer>
                 </Grid>
               </Grid>
             </Grid>
           </Drawer>
-          <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
-            <MenuIcon />
-          </IconButton>
+
+          {/* <MenuIcon /> */}
+          <Box
+            style={{
+              height: "30px",
+              width: "30px",
+              color: "black",
+            }}
+            onClick={onClickDrawer}
+          >
+            <PedlarImage src={MenuIcon} alt="Menu Icon" />
+          </Box>
         </Grid>
       </Grid>
     </AppBar>

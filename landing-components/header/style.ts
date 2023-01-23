@@ -4,7 +4,7 @@ export const styles = {
     display: "flex",
     flexDirection: "row",
     paddingTop: "10px",
-    paddingBottom: "10px",
+    paddingBottom: "15px",
     // backgroundColor: "#f9f6f2",
     alignItems: "center",
   },
@@ -28,9 +28,8 @@ export const styles = {
     alignItems: "center",
   },
   Button: {
-    color: "Black",
-    fontSize: "16px",
-    fontWeight: "600",
+    color: "rgb(28, 27, 31)",
+    lineHeight: "normal",
     cursor: "pointer",
     "&:active": {
       display: "inline-block",
@@ -68,7 +67,7 @@ export const styles = {
     margin: "0px 0px 0px 10px",
     textAlign: "center",
     width: "100%",
-    color: "white",
+    color: "rgb(249, 246, 242)",
     backgroundColor: "#1C1B1F",
     border: "1.5px solid",
     borderRadius: "25px",
@@ -77,24 +76,25 @@ export const styles = {
     },
   },
   Login1: {
-    width: "90%",
+    width: "88%",
     color: "black",
     border: "1.5px solid",
     borderRadius: "35px",
     fontSize: "16px",
     fontWeight: "600",
-    padding: "15px",
+    padding: "22px",
   },
+
   GetAccess1: {
-    width: "90%",
+    width: "88%",
     color: "white",
     background: "#1c1b1f",
     border: "1.5px solid",
     borderRadius: "35px",
     fontSize: "16px",
     fontWeight: "600",
-    padding: "15px",
-    marginTop: "25px",
+    padding: "22px",
+    marginTop: "40px",
     marginBottom: "20px",
     "&:hover": {
       backgroundColor: "#1c1b1f",
@@ -109,6 +109,7 @@ export const styles = {
   RespLoginBox: {
     borderRadius: "10px",
     p: 25,
+    height: "200px",
   },
   TextFeild: {
     width: "100%",

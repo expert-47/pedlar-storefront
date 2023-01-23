@@ -12,7 +12,7 @@ export const styles = {
     lineHeight: "normal",
     fontWight: "600",
     fontSize: "22px",
-    margin: "0 0",
+
   },
   acordianPara: {
     color: " rgb(28, 27, 31)",

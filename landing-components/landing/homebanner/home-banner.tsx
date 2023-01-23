@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, Dialog, IconButton, Slide } from "@mui/material";
+import { Box, Grid, Typography, Dialog, IconButton, Slide, SwipeableDrawer } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
@@ -74,7 +74,7 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} priority />
+            <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }} priority />
           ) : isMedium ? (
             <Image src={tabBanner} alt="tab banner" priority />
           ) : isdektop ? (
@@ -227,7 +227,31 @@ const Banner = () => {
                   </Grid>
                 </Dialog>
               ) : (
-                <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+                <SwipeableDrawer
+                  ModalProps={{ keepMounted: true }}
+                  anchor="bottom"
+                  sx={{ height: "150px" }}
+                  open={openDialog}
+                  onClose={handleClose}
+                  PaperProps={{
+                    sx: {
+                      // Since overflow is visible here and not 'auto' or 'scroll', the scrolling needs to happen in a nested div
+                      overflow: "visible",
+                      height: `calc(90% - 13px)`,
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 50,
+                      height: 4,
+                      backgroundColor: "#bdbdbd",
+                      borderRadius: 3,
+                      position: "absolute",
+                      left: "calc(50% - 20px)",
+                      top: 8,
+                    }}
+                  />
                   <Grid
                     container
                     item
@@ -259,7 +283,7 @@ const Banner = () => {
                         </Typography>
                       )}
                       <IconButton onClick={closePopup}>
-                        <CloseIcon style={{ color: "black" }} />
+                        <CloseIcon style={{ color: "black", height: "14px", width: "14px" }} />
                       </IconButton>
                     </Grid>
                     {sucessModalshow ? (
@@ -317,7 +341,7 @@ const Banner = () => {
                       </Typography>
                     ) : null}
                   </Grid>
-                </Dialog>
+                </SwipeableDrawer>
               )}
             </Grid>
           </Grid>

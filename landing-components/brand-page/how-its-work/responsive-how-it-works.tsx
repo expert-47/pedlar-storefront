@@ -24,7 +24,7 @@ const Responsivehowitworks = () => {
       <Box sx={styles.ResponsMainBox}>
         <Grid container item xs={12} sm={12} style={{ zIndex: "999", position: "relative", justifyContent: "center" }}>
           <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "center" }}>
-            <Typography fontWeight={700} fontSize={{ xs: "35px", sm: "40px" }}>
+            <Typography fontWeight={700} fontSize={{ xs: "48px", sm: "48px" }}>
               How it works
             </Typography>
           </Grid>

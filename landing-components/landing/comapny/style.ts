@@ -1,15 +1,15 @@
 export const styles = {
   heading: {
-    marginTop: "45px",
+    marginTop: "100px",
     color: "#1C1B1F",
-    lineHeight: "unset",
+    lineHeight: "normal",
     zIndex: "2",
     position: "relative",
   },
   Typography: {
-    color: "rgba(28, 27, 31, 0.64)",
-    marginBottom: "40px",
-    lineHeight: "unset",
+    color: "rgba(28, 27, 31, 0.70)",
+    marginBottom: "50px",
+    lineHeight: "normal",
     zIndex: "2",
     position: "relative",
     width: "102%",

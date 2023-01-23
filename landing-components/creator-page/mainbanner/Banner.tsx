@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography, Button, Box } from "@mui/material";
+import { Grid, Typography, Button } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import CreatorBanner from "../../../public/creator-benner.png";
@@ -18,13 +18,22 @@ const Banner = () => {
         sm={12}
         md={12}
         lg={12}
-        gap={10}
+        gap={5}
         sx={styles.MainBox}
         style={{ position: "relative" }}
         justifyContent={{ sm: "left" }}
         paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
       >
-        <Grid sx={styles.GridBox} padding={{ sm: "40px 40px", xs: "20px 20px" }} style={{ justifyContent: "flex-end" }}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={styles.GridBox}
+          padding={{ sm: "40px 40px", xs: "20px 20px" }}
+          style={{ justifyContent: "flex-end" }}
+        >
           <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "64px" }} sx={styles.heading}>
             Give your audience what they want
           </Typography>
@@ -44,7 +53,7 @@ const Banner = () => {
             </Button>
           </ScrollLink>
         </Grid>
-        <Grid sx={styles.brandImg}>
+        <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.brandImg}>
           <PedlarImage
             zIndex={0}
             style={{ borderRadius: "0 10px 10px 0" }}

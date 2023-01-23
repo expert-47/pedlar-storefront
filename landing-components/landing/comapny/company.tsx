@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Dialog, IconButton, Box, Slide, useMediaQuery } from "@mui/material";
+import { Grid, Typography, Button, Dialog, IconButton, Box, Slide, useMediaQuery, SwipeableDrawer } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";
@@ -53,7 +53,7 @@ const Company = () => {
         md={12}
         lg={12}
         style={{ display: "flex", flexDirection: "column" }}
-        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(50) }}
       >
         <Grid
           item
@@ -77,7 +77,7 @@ const Company = () => {
           xs={12}
           sm={12}
           md={11}
-          lg={8}
+          lg={10}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Typography fontSize={{ xs: "30px", sm: "40px" }} sx={styles.Typography}>
@@ -203,7 +203,31 @@ const Company = () => {
               </Grid>
             </Dialog>
           ) : (
-            <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+            <SwipeableDrawer
+              ModalProps={{ keepMounted: true }}
+              anchor="bottom"
+              sx={{ height: "150px" }}
+              open={openDialog}
+              onClose={handleClose}
+              PaperProps={{
+                sx: {
+                  // Since overflow is visible here and not 'auto' or 'scroll', the scrolling needs to happen in a nested div
+                  overflow: "visible",
+                  height: `calc(90% - 13px)`,
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  width: 50,
+                  height: 4,
+                  backgroundColor: "#bdbdbd",
+                  borderRadius: 3,
+                  position: "absolute",
+                  left: "calc(50% - 20px)",
+                  top: 8,
+                }}
+              />
               <Grid
                 container
                 item
@@ -235,7 +259,7 @@ const Company = () => {
                     </Typography>
                   )}
                   <IconButton onClick={closePopup}>
-                    <CloseIcon style={{ color: "black" }} />
+                    <CloseIcon style={{ color: "black", height: "14px", width: "14px" }} />
                   </IconButton>
                 </Grid>
                 {sucessModalshow ? (
@@ -293,7 +317,7 @@ const Company = () => {
                   </Typography>
                 ) : null}
               </Grid>
-            </Dialog>
+            </SwipeableDrawer>
           )}
         </Grid>
       </Grid>

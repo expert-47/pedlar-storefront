@@ -35,9 +35,11 @@ export const styles = {
     color: "rgba(249, 246, 242, 1)",
   },
   Respocirclecount: {
-    height: { xs: "35px", sm: "50px" },
-    width: { xs: "35px", sm: "50px" },
-    fontSize: { xs: "25px", sm: "30px" },
+    // height: { xs: "35px", sm: "50px" },
+    // width: { xs: "35px", sm: "50px" },
+    width: "45px",
+    height: "45px",
+    fontSize: { xs: "22px", sm: "30px" },
     borderRadius: "50%",
     border: "1px solid",
     backgroundColor: "transparent",
@@ -63,10 +65,10 @@ export const styles = {
     minWidth: "50px",
   },
   stickyText: {
-    lineHeight: "unset",
+    lineHeight: "normal",
     paddingLeft: "28px",
     margin: "0 auto 0 0",
-    maxWidth: "549px",
+    maxWidth: "600px",
   },
   homesec5: {
     paddingBottom: "250px",

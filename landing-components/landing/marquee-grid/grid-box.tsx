@@ -1,4 +1,4 @@
-import { Typography, Grid, Dialog, IconButton, Button, Slide, useMediaQuery } from "@mui/material";
+import { Typography, Grid, Dialog, IconButton, Button, Slide, useMediaQuery, SwipeableDrawer } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -58,21 +58,23 @@ const Gridbox = () => {
             fontSize={{ xs: "24px", sm: "36px" }}
             style={{ wordSpacing: "18px", paddingLeft: "30px" }}
           >
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         <Marquee direction="right" speed={45} gradient={false} style={{ overflow: "hidden" }}>
           <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Box sx={styles.mainGrid}>
+        <Box sx={styles.mainGrid} paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(15) }}>
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "52px", sm: "54px", xs: "30px" }}
             fontWeight={"700"}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
-            paddingBottom={{ xs: "50px" }}
+            paddingBottom={{ xs: "55px" }}
           >
             Build personalised storefronts to sell the brands you love directly to your audience
           </Typography>
@@ -86,8 +88,9 @@ const Gridbox = () => {
             xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
             style={{ display: "flex", alignItems: "flex-start" }}
+            justifyContent={{ lg: "space-around" }}
           >
-            <Grid item xs={12} sm={8} md={6} lg={4.8}>
+            <Grid item xs={12} sm={8} md={6} lg={4.1}>
               <PedlarImage
                 src={firstGrid}
                 alt="Picture of the author"
@@ -96,7 +99,7 @@ const Gridbox = () => {
                 style={{ borderRadius: "8px" }}
               />
             </Grid>
-            <Grid container item xs={12} sm={3.55} md={2.65} lg={2.1} style={{ justifyContent: "space-between" }}>
+            <Grid container item xs={12} sm={3.55} md={2.65} lg={1.9} style={{ justifyContent: "space-between" }}>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
                 <PedlarImage
                   src={secondGrid}
@@ -116,12 +119,12 @@ const Gridbox = () => {
                 />
               </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={12} lg={4.6} marginLeft={{ xs: "0px", lg: "16px" }}>
-              <Grid style={{ display: "flex", alignItems: "flex-start", marginBottom: "13px" }}>
+            <Grid item xs={12} sm={12} md={12} lg={5.5} style={{ backgroundColor: "" }}>
+              <Grid style={{ display: "flex", marginBottom: "13px" }}>
                 <Box marginTop={"7px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
-                <Box style={{ marginLeft: "10px" }}>
+                <Box>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
                     More money. Less problems
                   </Typography>
@@ -130,7 +133,7 @@ const Gridbox = () => {
                     fontWeight={"600"}
                     fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
                   >
-                    Track performance overtime. Create value for creator, brands and shoppers.
+                    Track performance overtime. Create value for creators, brands and shoppers.
                   </Typography>
                 </Box>
               </Grid>
@@ -138,7 +141,7 @@ const Gridbox = () => {
                 <Box marginTop={"7px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
-                <Box style={{ marginLeft: "10px" }}>
+                <Box>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
                     Simple and free
                   </Typography>
@@ -155,7 +158,7 @@ const Gridbox = () => {
                 <Box marginTop={"7px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
-                <Box style={{ marginLeft: "10px" }}>
+                <Box style={{ marginLeft: "7px" }}>
                   <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
                     Business as usual
                   </Typography>
@@ -168,12 +171,12 @@ const Gridbox = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid style={{ paddingLeft: "25px" }}>
+              <Grid paddingLeft={{ xs: "20px", sm: "45px", md: "55px", lg: "25px" }}>
                 <Typography
                   onClick={openPopup}
                   sx={styles.creator}
                   fontFamily={"Inter"}
-                  fontSize={{ xs: "18px", lg: "22px", xl: "24px" }}
+                  fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
                   fontWeight={"600"}
                 >
                   Creators and Brands, Get Started →
@@ -182,23 +185,24 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="left" speed={45} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="left" speed={45} gradient={false}>
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
             sx={styles.marqueebottom}
             marginTop={{ xs: "-12px", sm: "-18px" }}
           >
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+        <Marquee direction="right" speed={1.3} gradient={false} className="marq-right">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
             style={{ wordSpacing: "18px", paddingLeft: "30px" }}
           >
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         {popupScreen ? (
@@ -303,7 +307,31 @@ const Gridbox = () => {
             </Grid>
           </Dialog>
         ) : (
-          <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+          <SwipeableDrawer
+            ModalProps={{ keepMounted: true }}
+            anchor="bottom"
+            sx={{ height: "150px" }}
+            open={openDialog}
+            onClose={handleClose}
+            PaperProps={{
+              sx: {
+                // Since overflow is visible here and not 'auto' or 'scroll', the scrolling needs to happen in a nested div
+                overflow: "visible",
+                height: `calc(90% - 13px)`,
+              },
+            }}
+          >
+            <Box
+              sx={{
+                width: 50,
+                height: 4,
+                backgroundColor: "#bdbdbd",
+                borderRadius: 3,
+                position: "absolute",
+                left: "calc(50% - 20px)",
+                top: 8,
+              }}
+            />
             <Grid
               container
               item
@@ -332,7 +360,7 @@ const Gridbox = () => {
                   </Typography>
                 )}
                 <IconButton onClick={closePopup}>
-                  <CloseIcon style={{ color: "black" }} />
+                  <CloseIcon style={{ color: "black", height: "14px", width: "14px" }} />
                 </IconButton>
               </Grid>
               {sucessModalshow ? (
@@ -390,7 +418,7 @@ const Gridbox = () => {
                 </Typography>
               ) : null}
             </Grid>
-          </Dialog>
+          </SwipeableDrawer>
         )}
       </Grid>
     </CustomContainer>

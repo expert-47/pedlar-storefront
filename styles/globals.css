@@ -75,8 +75,7 @@ html {
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  top: unset;
-  right: 42px;
+  right: 12px;
   width: 695px !important;
   z-index: 0;
   bottom: 55px;
@@ -94,10 +93,10 @@ html {
 }
 @media screen and (min-width: 1600px) {
   .marq-left {
-    bottom: 31px;
+    bottom: 0px;
   }
   .marq-right {
-    bottom: 64px;
+    bottom: 55px;
   }
 }
 @media screen and (min-width: 1400px) {
@@ -207,10 +206,10 @@ html {
 }
 @media (min-width: 1600px) {
   .hs5-ib-slider-box {
-    padding: 60px 44px 68px 37px;
+    padding: 30px 44px 68px 37px;
   }
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
-    width: 56% !important;
+    width: 54% !important;
   }
 }
 @media (max-width: 1440px) {
@@ -461,6 +460,9 @@ section {
   }
 }
 
+.css-1nt95lj-MuiButtonBase-root-MuiButton-root.Mui-disabled{
+  background-color: #a4a4a5;
+}
 /* @media screen and (min-width: 680px) {
   .css-1jbk5a2 {
     -webkit-flex-basis: 49.166667%;
@@ -473,3 +475,4 @@ section {
     max-width: 33.166667%;
   }
 } */
+

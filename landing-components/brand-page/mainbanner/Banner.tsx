@@ -25,7 +25,7 @@ const Banner = () => {
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid sx={styles.GridImg}>
-          <Box sx={{ width: "100%", height: { xs: 250, md: 580 } }}>
+          <Box sx={{ width: "100%", height: { xs: 330, md: 580 } }}>
             <PedlarImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} />
           </Box>
         </Grid>

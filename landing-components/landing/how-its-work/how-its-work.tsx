@@ -60,7 +60,7 @@ const Howitswork = () => {
                             <Typography sx={styles.number} className="activeCount">
                               1
                             </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "42px" }} sx={styles.stickyText}>
+                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
                               Top Aussie brands sync their store to the Pedlar platform{" "}
                             </Typography>
                           </Box>
@@ -75,7 +75,7 @@ const Howitswork = () => {
                             <Typography sx={styles.number} className="activeCount">
                               2
                             </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "42px" }} sx={styles.stickyText}>
+                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
                               Creators select products from brands they love
                             </Typography>
                           </Box>
@@ -90,7 +90,7 @@ const Howitswork = () => {
                             <Typography sx={styles.number} className="activeCount">
                               3
                             </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "42px" }} sx={styles.stickyText}>
+                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
                               Creators personalise their store to match their style
                             </Typography>
                           </Box>
@@ -106,7 +106,7 @@ const Howitswork = () => {
                               4
                             </Typography>
                             <Typography
-                              fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "42px" }}
+                              fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "40px" }}
                               sx={styles.stickyText}
                             >
                               Creators share their store with their followers and make sales

@@ -17,6 +17,7 @@ export const styles = {
     color: "#1C1B1E",
     fontFamily: "Inter",
     opacity: "0.64",
+    lineHeight: "normal",
   },
   gridinnereText: {
     color: "#1C1B1E",
@@ -25,6 +26,7 @@ export const styles = {
     color: "#8652FF",
     textDecoration: "none",
     cursor: "pointer",
+    lineHeight: "normal",
   },
   marqueetop: {
     color: "rgb(28, 27, 31)",

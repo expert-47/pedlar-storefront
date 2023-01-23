@@ -229,28 +229,11 @@ const EarlyAcess = () => {
                       height: 4,
                       backgroundColor: "#bdbdbd",
                       borderRadius: 3,
-                      position: "absolute",
-                      left: "calc(50% - 20px)",
-                      top: 8,
+                      alignSelf: "center",
+                      marginTop: 8,
                     }}
                   />
-                  <Grid
-                    container
-                    item
-                    xs={12}
-                    sm={12}
-                    md={12}
-                    lg={12}
-                    sx={[
-                      styles.RespLoginBox,
-                      {
-                        overflow: "scroll",
-                        "&::-webkit-scrollbar": {
-                          display: "none",
-                        },
-                      },
-                    ]}
-                  >
+                  <Box sx={styles.RespBox}>
                     <Grid
                       container
                       style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
@@ -310,6 +293,24 @@ const EarlyAcess = () => {
                         </Button>
                       </Box>
                     ) : null}
+                  </Box>
+                  <Grid
+                    container
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    lg={12}
+                    sx={[
+                      styles.RespLoginBox,
+                      {
+                        overflow: "scroll",
+                        "&::-webkit-scrollbar": {
+                          display: "none",
+                        },
+                      },
+                    ]}
+                  >
                     {userType ? (
                       <Creatorpopup isSecondModalActive={isSecondModalActive} />
                     ) : (

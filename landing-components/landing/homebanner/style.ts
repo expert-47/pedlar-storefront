@@ -82,7 +82,7 @@ export const styles = {
     fontSize: "22px",
     fontWeight: "600",
     padding: "10px 20px",
-    marginLeft: "20px",
+    marginLeft: { xs: "0px", lg: "20px" },
     zIndex: "5",
     position: "relative",
     height: "70px",

@@ -66,7 +66,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Box sx={styles.mainGrid} paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(15) }}>
+        <Box sx={styles.mainGrid} paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(15) }}>
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "52px", sm: "54px", xs: "30px" }}
@@ -85,7 +85,8 @@ const Gridbox = () => {
             lg={12}
             xs={12}
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
-            style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-around" }}
+            style={{ display: "flex", alignItems: "flex-start" }}
+            justifyContent={{ lg: "space-around" }}
           >
             <Grid item xs={12} sm={8} md={6} lg={4.3}>
               <PedlarImage

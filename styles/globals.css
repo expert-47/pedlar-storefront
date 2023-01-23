@@ -207,10 +207,10 @@ html {
 }
 @media (min-width: 1600px) {
   .hs5-ib-slider-box {
-    padding: 60px 44px 68px 37px;
+    padding: 30px 44px 68px 37px;
   }
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
-    width: 56% !important;
+    width: 54% !important;
   }
 }
 @media (max-width: 1440px) {

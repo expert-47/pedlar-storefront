@@ -63,10 +63,10 @@ export const styles = {
     minWidth: "50px",
   },
   stickyText: {
-    lineHeight: "unset",
+    lineHeight: "normal",
     paddingLeft: "28px",
     margin: "0 auto 0 0",
-    maxWidth: "549px",
+    maxWidth: "600px",
   },
   homesec5: {
     paddingBottom: "250px",

@@ -18,29 +18,49 @@ const Faq = () => {
   return (
     <CustomContainer>
       <Box sx={styles.MainBox}>
-        <Grid item xs={12} sm={12} md={12} lg={12}>
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{
+            paddingTop: "13px",
+            paddingLeft: { xs: "0px", lg: "15px" },
+          }}
+        >
           <Typography
-            sx={styles.faqText}
+            sx={styles.faqTextmain}
             fontWeight={"700"}
-            fontSize={{ xs: "48px", sm: "48px", md: "64px", lg: "64px" }}
+            fontSize={{ xs: "48px", sm: "64px", md: "64px", lg: "64px" }}
           >
             Frequently Asked Questions
           </Typography>
         </Grid>
         <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.GridStyles} style={{ position: "relative" }}>
-          <Grid item xs={12} sm={4} md={4} lg={4} sx={styles.tabList}>
+          <Grid
+            item
+            xs={12}
+            sm={4}
+            md={4}
+            lg={4}
+            sx={{
+              ...styles.tabList,
+              paddingTop: { xs: "0px", lg: "0px" },
+            }}
+          >
             <div className="faq-sticky">
               <Scrollspy
                 items={["creator", "brand", "shopper", "general"]}
                 currentClassName="faq-current"
-                offset={-250}
+                offset={-500}
               >
                 <Box style={{ paddingBottom: "26px" }}>
                   <Link href="#creator" sx={styles.faqLink}>
                     Creator
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon />
+                    <EastIcon sx={{ width: "100%", marginRight: { xs: "65px", lg: "40px" }, marginTop: "-4px" }} />
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
@@ -48,7 +68,7 @@ const Faq = () => {
                     Brand
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon />
+                    <EastIcon sx={{ width: "100%", marginRight: { sm: "65px", lg: "40px" }, marginTop: "-4px" }} />
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
@@ -56,7 +76,7 @@ const Faq = () => {
                     Shopper
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon />
+                    <EastIcon sx={{ width: "100%", marginRight: "40px", marginTop: "-4px" }} />
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
@@ -64,7 +84,7 @@ const Faq = () => {
                     General
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon />
+                    <EastIcon sx={{ width: "100%", marginRight: "40px", marginTop: "-4px" }} />
                   </Box>
                 </Box>
               </Scrollspy>

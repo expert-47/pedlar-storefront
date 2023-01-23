@@ -394,8 +394,16 @@ section {
 }
 .faq-sticky {
   position: sticky;
-  top: 119px;
+  top: 167px;
 }
+
+@media screen and (max-width: 780px) {
+  .faq-sticky {
+    margin-top: -55px;
+    padding-bottom: 100px;
+  }
+}
+
 .faq-current .faqHide {
   display: block;
   position: absolute;

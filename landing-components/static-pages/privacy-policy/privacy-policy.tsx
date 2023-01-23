@@ -217,7 +217,7 @@ const PrivacyPolicy = () => {
           take notice of any changes. The current version will be posted on our website and a copy may be obtained by
           contacting our Customer Service team.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           General
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>

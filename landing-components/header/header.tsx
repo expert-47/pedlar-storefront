@@ -226,11 +226,14 @@ const Header = () => {
                     <Brandspopup isSecondModalActive={isSecondModalActive} />
                   )}
                   {sucessModalshow ? (
-                    <Typography style={{ paddingTop: "10px", textAlign: "center", color: "rgb(73,69,79)" }}>
-                      {
-                        "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                      }
-                    </Typography>
+                    <>
+                      <Typography style={{ paddingTop: "10px", color: "rgb(73,69,79)" }}>
+                        {"We will communicate with you about the information requested and other Pedlar services."}
+                      </Typography>
+                      <Typography style={{ color: "rgb(73,69,79)" }}>
+                        {" The use of your information is governed by Pedlar’s Privacy Policy."}
+                      </Typography>
+                    </>
                   ) : null}
                 </Grid>
               </Dialog>

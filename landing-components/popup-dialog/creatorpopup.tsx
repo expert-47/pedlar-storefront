@@ -152,7 +152,6 @@ const Creatorpopup = (props: any) => {
                   backgroundColor: errors ? "#1C1B1F" : "",
                   boxShadow: errors ? "unset" : "",
                 }}
-                className="creatorSubmit"
                 variant="contained"
                 onClick={formsubmission}
                 value="Send"

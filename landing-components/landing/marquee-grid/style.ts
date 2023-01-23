@@ -57,7 +57,7 @@ export const styles = {
   },
   RespLoginBox: {
     borderRadius: "10px",
-    paddingBottom: "300px",
+    paddingBottom: "30px",
     px: 25,
   },
   BoxSelector: {

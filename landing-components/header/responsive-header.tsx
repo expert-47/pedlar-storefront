@@ -21,6 +21,7 @@ import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
 import Image from "next/image";
 import headerlogo from "../../public/header-logo.svg";
+// import MenuIcon from "../../public/menu-icon.png";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -272,6 +273,7 @@ const ResponsiveHeader = () => {
           </Drawer>
           <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
             <MenuIcon />
+            {/* <Image src={MenuIcon} alt="Menu Icon" /> */}
           </IconButton>
         </Grid>
       </Grid>

@@ -26,6 +26,7 @@ export const styles = {
     color: "#8652FF",
     textDecoration: "none",
     cursor: "pointer",
+    lineHeight: "normal",
   },
   marqueetop: {
     color: "rgb(28, 27, 31)",

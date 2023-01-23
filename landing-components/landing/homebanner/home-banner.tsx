@@ -74,7 +74,7 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%", borderRadius: "27px" }} priority />
+            <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }} priority />
           ) : isMedium ? (
             <Image src={tabBanner} alt="tab banner" priority />
           ) : isdektop ? (

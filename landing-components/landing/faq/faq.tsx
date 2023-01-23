@@ -56,6 +56,10 @@ const Faq = () => {
                 expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
                 <Typography sx={styles.acordianText}>Why should I set up a Pedlar store?</Typography>
               </AccordionSummary>
@@ -72,6 +76,10 @@ const Faq = () => {
                 expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel2bh-content"
                 id="panel2bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
                 <Typography sx={styles.acordianText}>Do I get paid for being on Pedlar?</Typography>
               </AccordionSummary>
@@ -87,6 +95,10 @@ const Faq = () => {
                 expandIcon={expanded === "panel3" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
                 <Typography sx={styles.acordianText}>Does it cost to join Pedlar?</Typography>
               </AccordionSummary>
@@ -101,6 +113,10 @@ const Faq = () => {
                 expandIcon={expanded === "panel4" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel4bh-content"
                 id="panel4bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
                 <Typography sx={styles.acordianText}>How can I join Pedlar?</Typography>
               </AccordionSummary>
@@ -121,6 +137,10 @@ const Faq = () => {
                 expandIcon={expanded === "panel5" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel5bh-content"
                 id="panel5bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
                 <Typography sx={styles.acordianText}>Does my store have its own unique URL?</Typography>
               </AccordionSummary>

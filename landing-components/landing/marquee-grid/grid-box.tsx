@@ -68,7 +68,10 @@ const Gridbox = () => {
             Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Box sx={styles.mainGrid} paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(15) }}>
+        <Box
+          sx={styles.mainGrid}
+          // paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(15) }}
+        >
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "52px", sm: "54px", xs: "30px" }}

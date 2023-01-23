@@ -17,6 +17,7 @@ export const styles = {
     color: "#1C1B1E",
     fontFamily: "Inter",
     opacity: "0.64",
+    lineHeight: "normal",
   },
   gridinnereText: {
     color: "#1C1B1E",

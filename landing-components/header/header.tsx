@@ -83,7 +83,7 @@ const Header = () => {
                     <PedlarImage src={headerlogo} alt="pedlar-logo" />
                   </Box>
                 ) : (
-                  <Box style={{ cursor: "pointer", marginTop: "59px", width: "82%" }}>
+                  <Box sx={{ height: 85, width: 300, marginTop: "43px", cursor: "pointer" }}>
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}
@@ -92,6 +92,8 @@ const Header = () => {
                 <Grid onClick={openCreators}>
                   <Typography
                     textTransform="none"
+                    fontSize={"16px"}
+                    fontWeight={600}
                     sx={{
                       ...styles.Button,
                       textDecorationLine: router.pathname == "/for-creator" && "underline",
@@ -104,6 +106,8 @@ const Header = () => {
                 <Grid onClick={openBrands}>
                   <Typography
                     textTransform="none"
+                    fontSize={"16px"}
+                    fontWeight={600}
                     sx={{
                       ...styles.Button,
                       textDecorationLine: router.pathname == "/for-brands" && "underline",
@@ -114,14 +118,7 @@ const Header = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={3.5}
-                style={{ textAlign: "right", display: "flex", justifyContent: "flex-end" }}
-              >
+              <Grid item xs={12} sm={12} md={12} lg={3.5} style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button onClick={openPopup}>
                   <Typography textTransform="none" sx={styles.LoginButton}>
                     Log in
@@ -133,6 +130,7 @@ const Header = () => {
                   </Typography>
                 </Button>
               </Grid>
+
               <Dialog
                 open={openDialog}
                 onClose={(handleClose, reason) => {

@@ -53,7 +53,7 @@ const Company = () => {
         md={12}
         lg={12}
         style={{ display: "flex", flexDirection: "column" }}
-        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(50) }}
       >
         <Grid
           item
@@ -77,7 +77,7 @@ const Company = () => {
           xs={12}
           sm={12}
           md={11}
-          lg={8}
+          lg={10}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Typography fontSize={{ xs: "30px", sm: "40px" }} sx={styles.Typography}>

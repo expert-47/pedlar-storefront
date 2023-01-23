@@ -98,7 +98,7 @@ const ResponsiveHeader = () => {
         md={12}
         lg={12}
         sx={styles.RespoMainGrid}
-        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
           <Image

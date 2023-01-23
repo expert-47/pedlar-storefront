@@ -38,16 +38,16 @@ export const styles = {
   spacing: {
     paddingBottom: "20px",
   },
-  haedingOne: {
+  headingOne: {
     paddingLeft: "20px",
     paddingBottom: "10px",
   },
-  haedingTwo: {
+  headingTwo: {
     paddingLeft: "40px",
     paddingBottom: "10px",
   },
-  haedingThree: {
-    paddingLeft: "50px",
+  headingThree: {
+    paddingLeft: "55px",
     paddingBottom: "10px",
   },
 };

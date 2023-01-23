@@ -71,7 +71,7 @@ const Footer = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={6}>
               <Box style={{ display: "flex", alignItems: "center", paddingBottom: "16px" }}>
-                <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} />
+                <InstagramIcon style={{ color: "rgb(249, 246, 242)", fontSize: "32px" }} />
                 <Link href="https://www.instagram.com/pedlar.official/" target="blank" sx={styles.footersocial}>
                   Instagram
                 </Link>

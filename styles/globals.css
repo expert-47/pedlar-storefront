@@ -75,7 +75,7 @@ html {
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  right: 12px;
+  right: 40px;
   width: 695px !important;
   z-index: 0;
   bottom: 55px;
@@ -460,9 +460,6 @@ section {
   }
 }
 
-.css-1nt95lj-MuiButtonBase-root-MuiButton-root.Mui-disabled{
-  background-color: #a4a4a5;
-}
 /* @media screen and (min-width: 680px) {
   .css-1jbk5a2 {
     -webkit-flex-basis: 49.166667%;
@@ -475,4 +472,3 @@ section {
     max-width: 33.166667%;
   }
 } */
-

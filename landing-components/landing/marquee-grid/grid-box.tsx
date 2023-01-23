@@ -58,12 +58,14 @@ const Gridbox = () => {
             fontSize={{ xs: "24px", sm: "36px" }}
             style={{ wordSpacing: "18px", paddingLeft: "30px" }}
           >
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         <Marquee direction="right" speed={45} gradient={false} style={{ overflow: "hidden" }}>
           <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar
           </Typography>
         </Marquee>
         <Box sx={styles.mainGrid} paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(15) }}>
@@ -97,15 +99,7 @@ const Gridbox = () => {
                 style={{ borderRadius: "8px" }}
               />
             </Grid>
-            <Grid
-              container
-              item
-              xs={12}
-              sm={3.55}
-              md={2.65}
-              lg={1.9}
-              style={{ justifyContent: "space-between",  }}
-            >
+            <Grid container item xs={12} sm={3.55} md={2.65} lg={1.9} style={{ justifyContent: "space-between" }}>
               <Grid item xs={5.8} sm={12} md={12} lg={12}>
                 <PedlarImage
                   src={secondGrid}
@@ -191,23 +185,24 @@ const Gridbox = () => {
             </Grid>
           </Grid>
         </Box>
-        <Marquee direction="left" speed={45} gradient={false} style={{ overflow: "hidden" }}>
+        <Marquee direction="left" speed={45} gradient={false}>
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
             sx={styles.marqueebottom}
             marginTop={{ xs: "-12px", sm: "-18px" }}
           >
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
-        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-right">
+        <Marquee direction="right" speed={1.3} gradient={false} className="marq-right">
           <Typography
             fontWeight={"700"}
             fontSize={{ xs: "24px", sm: "36px" }}
             style={{ wordSpacing: "18px", paddingLeft: "30px" }}
           >
-            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
         {popupScreen ? (

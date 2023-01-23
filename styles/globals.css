@@ -75,8 +75,7 @@ html {
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  top: unset;
-  right: 42px;
+  right: 12px;
   width: 695px !important;
   z-index: 0;
   bottom: 55px;
@@ -94,10 +93,10 @@ html {
 }
 @media screen and (min-width: 1600px) {
   .marq-left {
-    bottom: 31px;
+    bottom: 0px;
   }
   .marq-right {
-    bottom: 64px;
+    bottom: 55px;
   }
 }
 @media screen and (min-width: 1400px) {

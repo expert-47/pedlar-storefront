@@ -1,10 +1,41 @@
 export const styles = {
   MainBox: {
-    padding: "30px",
+    padding: "16px", //padding:"35px"
     paddingTop: "150px",
     paddingBottom: "75px",
-    width: "75%",
+    width: "89%", //width:"79%"
+    ["@media (max-width:1600px)"]: {
+      padding: "35px",
+      paddingTop: "152px",
+      paddingBottom: " 75px",
+      width: "80%",
+    },
+    ["@media (max-width:1025px)"]: {
+      padding: "51px",
+      paddingTop: "152px",
+      paddingBottom: "75px",
+      width: "74%",
+    },
+    ["@media (max-width:768px)"]: {
+      padding: "34px",
+      paddingTop: "152px",
+      paddingBottom: "75px",
+      width: " 74%",
+    },
+    ["@media (max-width:425px)"]: {
+      padding: "17px",
+      paddingTop: "152px",
+      paddingBottom: "75px",
+      width: " 88%",
+    },
+    ["@media (max-width:325px)"]: {
+      padding: "16px",
+      paddingTop: "152px",
+      paddingBottom: "75px",
+      width: " 89%",
+    },
   },
+
   spacing: {
     paddingBottom: "20px",
   },

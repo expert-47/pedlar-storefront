@@ -184,6 +184,7 @@ const Businesstoday = () => {
                         ...styles.Button,
                         color: values ? "White !important" : "#1C1B1F",
                         backgroundColor: errors ? "#1C1B1F" : "",
+                        // opacity: errors ? "1" : "0.9",
                         boxShadow: errors ? "unset" : "",
                       }}
                       className="creatorSubmit"

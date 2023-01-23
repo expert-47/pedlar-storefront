@@ -76,24 +76,25 @@ export const styles = {
     },
   },
   Login1: {
-    width: "90%",
+    width: "88%",
     color: "black",
     border: "1.5px solid",
     borderRadius: "35px",
     fontSize: "16px",
     fontWeight: "600",
-    padding: "15px",
+    padding: "22px",
   },
+
   GetAccess1: {
-    width: "90%",
+    width: "88%",
     color: "white",
     background: "#1c1b1f",
     border: "1.5px solid",
     borderRadius: "35px",
     fontSize: "16px",
     fontWeight: "600",
-    padding: "15px",
-    marginTop: "25px",
+    padding: "22px",
+    marginTop: "40px",
     marginBottom: "20px",
     "&:hover": {
       backgroundColor: "#1c1b1f",
@@ -108,6 +109,7 @@ export const styles = {
   RespLoginBox: {
     borderRadius: "10px",
     p: 25,
+    height: "200px",
   },
   TextFeild: {
     width: "100%",

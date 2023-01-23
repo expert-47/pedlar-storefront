@@ -37,7 +37,7 @@ const Pointofpurchase = () => {
         >
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={SalesBrand} alt="hassle1" zIndex={0} />
               </Box>
             </Grid>
@@ -54,7 +54,7 @@ const Pointofpurchase = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={SetForgot} alt="hassle1" zIndex={0} />
               </Box>
             </Grid>
@@ -71,7 +71,7 @@ const Pointofpurchase = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={FreeJoin} alt="hassle1" zIndex={0} />
               </Box>
             </Grid>
@@ -88,7 +88,7 @@ const Pointofpurchase = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={PropleTrustPeople} alt="hassle1" zIndex={0} />
               </Box>
             </Grid>

@@ -460,6 +460,9 @@ section {
   }
 }
 
+.css-1nt95lj-MuiButtonBase-root-MuiButton-root.Mui-disabled{
+  background-color: #a4a4a5;
+}
 /* @media screen and (min-width: 680px) {
   .css-1jbk5a2 {
     -webkit-flex-basis: 49.166667%;
@@ -472,3 +475,4 @@ section {
     max-width: 33.166667%;
   }
 } */
+

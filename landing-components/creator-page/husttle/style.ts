@@ -2,8 +2,8 @@ export const styles = {
   GridBox: {
     backgroundColor: "White",
     borderRadius: "15px",
-    padding: "30px",
-    marginBottom: "16px",
+    padding: "20px 30px 30px",
+    minHeight: "250px",
   },
   heading: {
     fontWeight: "700",

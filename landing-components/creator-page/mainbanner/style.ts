@@ -28,7 +28,7 @@ export const styles = {
       margin: "0 3px 0 auto",
     },
     ["@media (min-width:1441px)"]: {
-      maxWidth: "671px",
+      maxWidth: "600px",
     },
     ["@media (max-width:1300px)"]: {
       maxWidth: "550px",
@@ -64,7 +64,8 @@ export const styles = {
       backgroundColor: "#1C1B1F",
     },
     ["@media (max-width:700px)"]: {
-      padding: "15px",
+      padding: "20px 16px",
+      margin: "10px 0px 0px"
     },
   },
   brandImg: {

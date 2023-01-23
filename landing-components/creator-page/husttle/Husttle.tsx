@@ -3,7 +3,6 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
-import Image from "next/image";
 import HassleIcon1 from "../../../public/hassle-icon1.png";
 import HassleIcon2 from "../../../public/hassle-icon2.png";
 import HassleIcon3 from "../../../public/hassle-icon3.png";
@@ -46,7 +45,7 @@ const Husttle = () => {
         >
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={HassleIcon1} alt="hassle1" zIndex={0} />
               </Box>
             </Grid>
@@ -63,7 +62,7 @@ const Husttle = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={HassleIcon2} alt="hassle2" zIndex={0} />
               </Box>
             </Grid>
@@ -80,7 +79,7 @@ const Husttle = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={HassleIcon3} alt="hassle3" zIndex={0} />
               </Box>
             </Grid>
@@ -97,7 +96,7 @@ const Husttle = () => {
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
-              <Box sx={{ height: 69, width: 69 }}>
+              <Box sx={{ height: 79, width: 79 }}>
                 <PedlarImage src={HassleIcon4} alt="hassle4" zIndex={0} />
               </Box>
             </Grid>

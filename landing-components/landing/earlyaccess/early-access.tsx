@@ -1,4 +1,4 @@
-import { Box, Button, Dialog, Grid, IconButton, Slide, Typography } from "@mui/material";
+import { Box, Button, Dialog, Grid, IconButton, Slide, SwipeableDrawer, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
@@ -209,7 +209,31 @@ const EarlyAcess = () => {
                   </Grid>
                 </Dialog>
               ) : (
-                <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
+                <SwipeableDrawer
+                  ModalProps={{ keepMounted: true }}
+                  anchor="bottom"
+                  sx={{ height: "150px" }}
+                  open={openDialog}
+                  onClose={handleClose}
+                  PaperProps={{
+                    sx: {
+                      // Since overflow is visible here and not 'auto' or 'scroll', the scrolling needs to happen in a nested div
+                      overflow: "visible",
+                      height: `calc(90% - 13px)`,
+                    },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 50,
+                      height: 4,
+                      backgroundColor: "#bdbdbd",
+                      borderRadius: 3,
+                      position: "absolute",
+                      left: "calc(50% - 20px)",
+                      top: 8,
+                    }}
+                  />
                   <Grid
                     container
                     item
@@ -241,7 +265,7 @@ const EarlyAcess = () => {
                         </Typography>
                       )}
                       <IconButton onClick={closePopup}>
-                        <CloseIcon style={{ color: "black" }} />
+                        <CloseIcon style={{ color: "black", height: "14px", width: "14px" }} />
                       </IconButton>
                     </Grid>
                     {sucessModalshow ? (
@@ -299,7 +323,7 @@ const EarlyAcess = () => {
                       </Typography>
                     ) : null}
                   </Grid>
-                </Dialog>
+                </SwipeableDrawer>
               )}
             </Grid>
           </Grid>

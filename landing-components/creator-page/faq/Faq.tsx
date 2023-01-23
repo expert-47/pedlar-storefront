@@ -31,7 +31,7 @@ const Faq = () => {
           style={{ justifyContent: "space-between", marginTop: "100px" }}
           paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
-          <Grid item xs={12} sm={12} md={5} lg={4}>
+          <Grid item xs={12} sm={12} md={5} lg={3.5}>
             <Typography sx={styles.faqText}>Frequently Asked Questions</Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -45,6 +45,10 @@ const Faq = () => {
                 expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel1bh-content"
                 id="panel1bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
                 <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
                   How do I build my store?
@@ -63,8 +67,14 @@ const Faq = () => {
                 expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel2bh-content"
                 id="panel2bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
-                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>Do I have to buy or manage inventory?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  Do I have to buy or manage inventory?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
@@ -78,8 +88,14 @@ const Faq = () => {
                 expandIcon={expanded === "panel3" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel3bh-content"
                 id="panel3bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
-                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>Where and how can I promote my Pedlar store?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  Where and how can I promote my Pedlar store?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
@@ -93,8 +109,14 @@ const Faq = () => {
                 expandIcon={expanded === "panel4" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel4bh-content"
                 id="panel4bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
-                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>Why should I set up a Pedlar store?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  Why should I set up a Pedlar store?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>
@@ -114,8 +136,14 @@ const Faq = () => {
                 expandIcon={expanded === "panel5" ? <RemoveIcon /> : <AddIcon />}
                 aria-controls="panel5bh-content"
                 id="panel5bh-header"
+                sx={{
+                  marginTop: "8px",
+                  marginBottom: "8px",
+                }}
               >
-                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>How can I join Pedlar?</Typography>
+                <Typography sx={styles.acordianText} margin={{ xs: "10px 0px" }}>
+                  How can I join Pedlar?
+                </Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Typography sx={styles.acordianPara}>

@@ -20,7 +20,7 @@ const Company = () => {
         paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(40), lg: theme.spacing(60) }}
       >
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography style={{ fontSize: isTab ? "46px" : "54px" }} sx={styles.heading}>
+          <Typography fontWeight={700} style={{ fontSize: isTab ? "48px" : "54px" }} sx={styles.heading}>
             You're in good company
           </Typography>
         </Grid>

@@ -24,82 +24,82 @@ const CreatorTerms = () => {
           Conditions will be the Agreement governing the relationship between you and Pedlar and you agree to be bound
           by these Terms and Conditions.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={{ paddingBottom: "20px" }}>
           1. Definitions and Interpretation
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={{ paddingBottom: "20px" }}>
           1.1 Definitions
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
           The following terms in these Terms and Conditions have the meanings set out below, unless otherwise indicated:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (1) <b>Agreement</b> means the agreement comprising:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (a) these Terms and Conditions
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (2) <b>Confidential Information</b> means all information disclosed (including inadvertently) by a party
           (Discloser) in connection with the Agreement, all information disclosed by a third party that the Discloser is
           required to keep confidential, including (without limitation):
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (a) information which, either orally or in writing, is designated or indicated as being the proprietary or
           confidential information of the Discloser or a third party to whom the Discloser owes an obligation of
           confidentiality;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (b) Information derived partly or wholly from the information, including (without limitation) any calculation,
           conclusion, summary, computer modelling; and
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (c) trade secrets or information that is capable of protection at law or equity as confidential information,
           and the parties agree that the terms of the Agreement are jointly owned Confidential Information;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (3) <b>Force Majeure Event</b> means any of the following causes provided that they are outside the reasonable
           control of the affected party and could not have been prevented or avoided by that party taking all reasonable
           steps:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (a) act of God, earthquake, cyclone, fire, explosion, flood, landslide, lightning, storm, tempest, drought or
           meteor;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (b) war (declared or undeclared), invasion, act of a foreign enemy, hostilities between nations, civil
           insurrection or militarily usurped power;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (c) act of public enemy, sabotage or malicious damage, terrorism or civil unrest;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (d) ionising radiation or contamination by radioactivity from any nuclear waste or from combustion of nuclear
           fuel;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (e) confiscation, nationalisation, requisition, expropriation, prohibition, embargo, restraint or damage to
           property by or under the order of any government or government authority (except where such arises out of a
           failure by a party to comply with any Law)
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (f) health crisis or pandemic or any nature; or
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (g) strikes, blockades, lock out or other industrial disputes other than an industrial dispute that only
           involves the party’s personnel.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (4) <b>GST</b> means Goods and Services Tax as defined in the A New Tax System (Goods and Services Tax) Act
           1999 (Cth);
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (5) <b>Information</b> has the meaning given to that term in cl 8.1;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (6) <b>Instagram</b> means the Instagram application;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (7) <b>IPR</b> or <b> Intellectual Property Rights</b> means all patents, rights to inventions, utility
           models, copyright and related rights, trade marks, service marks, trade, business and domain names, rights in
           trade dress or get-up, rights in goodwill or to sue for passing off, unfair competition rights, design rights,
@@ -107,40 +107,40 @@ const CreatorTerms = () => {
           know-how and trade secrets) and any other intellectual property rights of any kind whether registrable or not
           in any country, including any renewals or extensions thereof;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (8) <b>Jurisdiction</b> means any of the following:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (a) the State of New South Wales and the Commonwealth of Australia – if your residential address is anywhere
           else in the world.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (9) <b>Law</b> means any applicable statute, regulation, by-law, ordinance or subordinate legislation in force
           from time to time in the Jurisdiction applicable to the Agreement;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (10) <b>Materials</b> means material in any form, including drawings, reports, specifications, images, photos,
           videos and media in Graphics Interchange Format and other proprietary media types (howsoever constituted) and
           other documents provided by you in connection with the Agreement;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (11) <b>Payment</b> has the meaning given to that term in clause 5.1;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (12) <b>Pedlar Store</b> means any storefront on the Pedlar Platform;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (13) <b>Privacy Policy</b> means Pedlar’s Privacy Policy available at{" "}
           <a href="http://pedlar.store/ ">http://pedlar.store/</a> privacy policy;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (14) <b>Schedule</b> means the Schedule to this document;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (15) <b>Taxes</b> means GST, VAT or any sales tax that may apply in the Jurisdiction to the provision of the
           Agreement;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (16) <b>Terms and Conditions</b>means this document;
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -149,130 +149,130 @@ const CreatorTerms = () => {
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
           In the Agreement:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           (1) reference to:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (a) one gender includes the others;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (b) the singular includes the plural and the plural includes the singular;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (c) a person includes a body corporate;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (d) a party includes the party’s executors, administrators, successors and permitted assigns;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (e) a thing includes the whole and each part of it separately;
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (f) a statute, regulation, code or other law or a provision of any of them includes:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingThree}>
           (i) any amendment or replacement of it; and
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingThree}>
           (ii) another regulation or other statutory instrument made under it, or made under it as amended or replaced;
           and
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (g) dollars means Australian dollars unless otherwise stated in the Quote.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (2) “Including” and similar expressions are not words of limitation.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (3) Where a word or expression is given a particular meaning, other parts of speech and grammatical forms of
           that word or expression have a corresponding meaning.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (4) Headings and any table of contents or index are for convenience only and do not form part of this
           Agreement or affect its interpretation.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (5) A provision of this Agreement must not be construed to the disadvantage of a party merely because that
           party was responsible for the preparation of the Agreement or the inclusion of the provision in the Agreement.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>2. Application of these Terms and Conditions</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (1) These Terms and Conditions apply to any Pedlar Store for the provision of services offered by Pedlar to
           you through through the Pedlar Platform.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (2) Pedlar may, at any time, and at its sole discretion, modify these Terms and Conditions.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (3) If you use the Pedlar Platform, will provide notice to you of these modifications
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (4) Your use of the Pedlar Platform following any modification to the Terms and Conditions will be subject to
           the most current current version of the Terms and Conditions.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>3. Payment</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>3.1 Payment</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           You will be paid up to 20% commission on the total sale price items sold on your Pedlar Store.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>3.2 Payment Method</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           All payments made by Pedlar to you will be to your nominated bank account or Paypal account using the details
           provided by you when registering for the Pedlar Platform or such other payment method allowable and nominated
           by Pedlar. It is your responsibility to ensure that these details have been provided and are correct. Pedlar
           does not bear any responsibility for payments made to an incorrect bank details or Paypal account or other
           account.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>3.3 Taxes</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           Pedlar will pay an additional amount for Taxes if this is applicable to you in the relevant Jurisdiction.
           Pedlar may also, from time to time, deduct withholding tax or any similar type of tax from amounts payable
           under cl 4.1 if required by any Law.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>3.4 Time for Payment</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           You will be paid 30 days after the sale is made subject to you not being in breach of this Agreement.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>4. Materials and Intellectual Property Rights (IPR)</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>4.1 Property in Posts</b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           All Materials produced by you in connection with your Pedlar Storefront and all IPR in those Materials will
           remain your property and not become the property of Pedlar.
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           <b>5. Confidential Information </b>
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingOne}>
           You acknowledge that:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (1) you may be provided with brand Materials by Pedlar to assist you in providing the Services; and
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingTwo}>
           (2) if you are provided with brand Materials, you agree that those brand Materials are provided to you on the
           basis that:
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingThree}>
           (a) you will keep the brand Materials strictly confidential and only disclose brand Materials: when compelled
           by any Law, at which point you will advise Pedlar of this; and
         </Typography>
-        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
+        <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.haedingThree}>
           (b) you will take all reasonable steps to keep the brand Materials secure.
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>

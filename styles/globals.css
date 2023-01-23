@@ -414,8 +414,8 @@ section {
 }
 @media screen and (max-width: 600px) {
   .creatorSubmit {
-    width: 100%;
-    margin: 30px auto !important;
+    /* width: 100%; */
+    /* margin: 30px auto !important; */
   }
 }
 .css-1nzzf8a-MuiFormHelperText-root.Mui-error {

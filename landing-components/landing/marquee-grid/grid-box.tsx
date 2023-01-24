@@ -129,8 +129,13 @@ const Gridbox = () => {
                 <Box marginTop={"5px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
-                <Box paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "2px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
+                <Box paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "10px", xl: "2px" }}>
+                  <Typography
+                    sx={styles.gridinnereText}
+                    fontWeight={"600"}
+                    fontSize={{ xs: "22px", xl: "22px" }}
+                    marginBottom={"10px"}
+                  >
                     More money. Less problems
                   </Typography>
                   <Typography
@@ -149,8 +154,13 @@ const Gridbox = () => {
                 <Box marginTop={"5px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
-                <Box paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "2px", xl: "2px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
+                <Box paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "10px", xl: "2px" }}>
+                  <Typography
+                    sx={styles.gridinnereText}
+                    fontWeight={"600"}
+                    fontSize={{ xs: "22px", xl: "22px" }}
+                    marginBottom={"10px"}
+                  >
                     Simple and free
                   </Typography>
                   <Typography
@@ -169,8 +179,13 @@ const Gridbox = () => {
                 <Box marginTop={"5px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
                 </Box>
-                <Box paddingLeft={{ xs: "5px", sm: "6px", md: "0px", lg: "8px", xl: "2px" }}>
-                  <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={{ xs: "22px", xl: "22px" }}>
+                <Box paddingLeft={{ xs: "5px", sm: "6px", md: "0px", lg: "13px", xl: "8px" }}>
+                  <Typography
+                    sx={styles.gridinnereText}
+                    fontWeight={"600"}
+                    fontSize={{ xs: "22px", xl: "22px" }}
+                    marginBottom={"10px"}
+                  >
                     Business as usual
                   </Typography>
                   <Typography
@@ -182,7 +197,7 @@ const Gridbox = () => {
                   </Typography>
                 </Box>
               </Box>
-              <Box paddingLeft={{ xs: "20px", sm: "40px", md: "46px", lg: "20px", xl: "25px" }}>
+              <Box paddingLeft={{ xs: "20px", sm: "40px", md: "46px", lg: "30px", xl: "35px" }}>
                 <Typography
                   onClick={openPopup}
                   sx={styles.creator}

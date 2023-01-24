@@ -46,13 +46,13 @@ const index = () => {
           <Image src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
         </Box>
         <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "512px", lg: "57px" }}>
-          <Image src={pinkMeshes} alt="pink meshes" priority quality={50} />
+          <Image src={pinkMeshes} alt="pink meshes" quality={50} />
         </Box>
         <Box
           style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
           top={{ xs: "2118px", sm: "422px", md: "422px", lg: "1655px" }}
         >
-          <Image src={orangeMesh} alt="Oranges pink meshes" priority quality={50} />
+          <Image src={orangeMesh} alt="Oranges pink meshes" quality={50} />
         </Box>
       </Box>
       <Banner />

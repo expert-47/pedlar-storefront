@@ -13,6 +13,7 @@ import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
+import PedlarImage from "components/pedlarImage";
 
 const Gridbox = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");
@@ -58,7 +59,7 @@ const Gridbox = () => {
           </Typography>
         </Marquee>
 
-        <Box sx={styles.mainGrid} height={{ xs: "1100px", sm: "1100px", md: "950px", lg: "600px", xl: "600px" }}>
+        <Box sx={styles.mainGrid} height={{ xs: "1250px", sm: "1100px", md: "950px", lg: "620px", xl: "620px" }}>
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "54px", sm: "54px", xs: "30px" }}
@@ -91,10 +92,12 @@ const Gridbox = () => {
               justifyContent={{ xs: "space-around", lg: "space-around" }}
             >
               <Grid item xs={12} sm={8} md={6.5} lg={8.2} xl={8.2}>
-                <Image src={firstGrid} alt="First Image" />
+                <Box sx={{ width: "100%", height: { lg: "450px", sm: "400px", xs: "260px" } }}>
+                  <PedlarImage src={firstGrid} alt="First Image" style={{ borderRadius: "8px" }} />
+                </Box>
               </Grid>
               <Grid
-                gap={12}
+                gap={10}
                 item
                 xs={12}
                 sm={3.4}
@@ -104,12 +107,24 @@ const Gridbox = () => {
                 style={{ display: "flex" }}
                 flexDirection={{ sm: "column" }}
               >
-                <Grid item xs={5.9} sm={12} md={12} lg={12} xl={12}>
-                  <Image src={secondGrid} alt="Second Image" />
-                </Grid>
-                <Grid item xs={5.9} sm={12} md={12} lg={12} xl={12}>
-                  <Image src={thirdGrid} alt="Second Image" />
-                </Grid>
+                <Box
+                  sx={{
+                    width: { xs: "100%", sm: "100%", md: "50%", lg: "100%" },
+                    height: { lg: "50%", sm: "50%", xs: "125px" },
+                    marginTop: { xs: "20px", sm: "0px" },
+                  }}
+                >
+                  <PedlarImage src={secondGrid} alt="Second Image" style={{ borderRadius: "8px" }} />
+                </Box>
+                <Box
+                  sx={{
+                    width: { xs: "100%", sm: "100%", md: "50%", lg: "100%" },
+                    height: { lg: "50%", sm: "50%", xs: "125px" },
+                    marginTop: { xs: "20px", sm: "0px" },
+                  }}
+                >
+                  <PedlarImage src={thirdGrid} alt="Second Image" style={{ borderRadius: "8px" }} />
+                </Box>
               </Grid>
             </Grid>
             <Grid
@@ -120,11 +135,11 @@ const Gridbox = () => {
               md={12}
               lg={4.6}
               xl={5.4}
-              marginTop={{ xs: "15px", sm: "15px", md: "0px" }}
+              marginTop={{ xs: "20px", sm: "20px", md: "0px" }}
             >
               <Box
                 style={{ display: "flex", justifyContent: "space-around" }}
-                marginBottom={{ xs: "15px", sm: "15px", md: "20px", lg: "-70px" }}
+                marginBottom={{ xs: "22px", sm: "22px", md: "20px", lg: "-70px" }}
               >
                 <Box marginTop={"5px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
@@ -149,7 +164,7 @@ const Gridbox = () => {
               </Box>
               <Box
                 style={{ display: "flex", justifyContent: "space-around" }}
-                marginBottom={{ xs: "15px", sm: "15px", md: "20px", lg: "-70px" }}
+                marginBottom={{ xs: "22px", sm: "22px", md: "20px", lg: "-70px" }}
               >
                 <Box marginTop={"5px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />
@@ -174,7 +189,7 @@ const Gridbox = () => {
               </Box>
               <Box
                 style={{ display: "flex", justifyContent: "space-around" }}
-                marginBottom={{ xs: "15px", sm: "15px", md: "20px", lg: "-70px" }}
+                marginBottom={{ xs: "22px", sm: "22px", md: "20px", lg: "-70px" }}
               >
                 <Box marginTop={"5px"} width={"46px"}>
                   <Image src={glow} alt="Glow Star" loading="lazy" />

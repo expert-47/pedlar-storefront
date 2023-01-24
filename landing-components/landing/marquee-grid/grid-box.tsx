@@ -92,7 +92,7 @@ const Gridbox = () => {
               xl={6.2}
               justifyContent={{ xs: "space-around", lg: "space-around" }}
             >
-              <Grid item xs={12} sm={8} md={6.5} lg={8} >
+              <Grid item xs={12} sm={8} md={6.5} lg={8}>
                 <Box sx={{ width: "100%", height: { lg: "450px", sm: "400px", xs: "260px" } }}>
                   <PedlarImage src={firstGrid} alt="First Image" style={{ borderRadius: "8px" }} />
                 </Box>
@@ -152,7 +152,7 @@ const Gridbox = () => {
                 description="Creators get paid more to do what they love. Brands integrate their Shopify then set and forget."
               />
 
-              <Box paddingLeft={{ xs: "20px", sm: "40px", md: "46px", lg: "25px", xl: "30px" }}>
+              <Box paddingLeft={{ xs: "30px", sm: "30px", md: "30px", lg: "40px", xl: "40px" }}>
                 <Typography
                   onClick={openPopup}
                   sx={styles.creator}

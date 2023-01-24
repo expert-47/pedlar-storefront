@@ -23,10 +23,10 @@ export const styles = {
       width: " 74%",
     },
     ["@media (max-width:425px)"]: {
-      padding: "17px",
+      padding: "16px",
       paddingTop: "152px",
       paddingBottom: "75px",
-      width: " 88%",
+      width: " 91%",
     },
     ["@media (max-width:325px)"]: {
       padding: "16px",

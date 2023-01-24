@@ -75,10 +75,10 @@ html {
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  right: 45px;
-  width: 695px !important;
+  right: 40px;
+  width: 680px !important;
   z-index: 0;
-  bottom: 55px;
+  bottom: 40px;
 }
 .marq-left {
   color: rgb(28, 27, 31);
@@ -88,98 +88,58 @@ html {
   transform-origin: 0 0;
   left: 0px;
   bottom: 10px;
-  width: 695px !important;
+  width: 660px !important;
   z-index: 0;
 }
-@media screen and (min-width: 1600px) {
-  .marq-left {
-    bottom: 0px;
-  }
-  .marq-right {
-    bottom: 55px;
-  }
-}
-@media screen and (min-width: 1400px) {
-  .marq-left {
-    width: 698px !important;
-  }
-  .marq-right {
-    width: 698px !important;
-  }
-}
-@media screen and (max-width: 1210px) {
-  .marq-left {
-    bottom: 8px;
-    width: 823px !important;
-  }
-  .marq-right {
-    transform-origin: 100% 88%;
-    right: 43px;
-    width: 821px !important;
-    bottom: 64px;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .marq-left {
-    bottom: 3px;
-    width: 959px !important;
-  }
-  .marq-right {
-    width: 959px !important;
-  }
-}
 
-@media screen and (max-width: 850px) {
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
   .marq-left {
-    bottom: 2px;
-    width: 1075px !important;
-  }
-  .marq-right {
-    right: 45px;
-    width: 1075px !important;
-    bottom: 56px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .marq-right {
-    right: 47px;
-    width: 1047px !important;
-    bottom: 45px;
-  }
-  .marq-left {
-    bottom: 8px;
-    width: 1035px !important;
+    width: 1150px !important;
     left: 2px;
   }
+  .marq-right {
+    width: 1150px !important;
+    right: 30px;
+  }
 }
-
-@media screen and (max-width: 425px) {
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
   .marq-left {
-    bottom: 15px;
-    width: 1170px !important;
+    width: 1150px !important;
   }
   .marq-right {
-    width: 1170px !important;
-    bottom: 57px;
-    right: 33px;
+    width: 1150px !important;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .marq-left {
+    width: 1150px !important;
+  }
+  .marq-right {
+    width: 1150px !important;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .marq-left {
+    width: 1000px !important;
+  }
+  .marq-right {
+    width: 1000px !important;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .marq-left {
+    width: 670px !important;
+  }
+  .marq-right {
+    width: 670px !important;
   }
 }
 
-@media screen and (max-width: 360px) {
-  .marq-left {
-    bottom: 11px;
-    width: 1256px !important;
-  }
-  .marq-right {
-    width: 1255px !important;
-    bottom: 50px;
-    right: 32px;
-  }
-  .marquee {
-    min-width: unset;
-  }
-}
 .demo {
   display: none;
 }

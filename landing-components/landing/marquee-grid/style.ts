@@ -21,6 +21,7 @@ export const styles = {
   },
   gridinnereText: {
     color: "#1C1B1E",
+    lineHeight: "normal"
   },
   creator: {
     color: "#8652FF",

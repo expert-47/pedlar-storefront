@@ -23,7 +23,7 @@ const Picturecarousel = () => {
   return (
     <Box style={{ paddingTop: "100px" }}>
       <Swiper
-        slidesPerView={isMatch ? 1.2 : islarge ? 5.3 : 4.3}
+        slidesPerView={isMatch ? 1.2 : islarge ? 5.4 : 3.4}
         centeredSlides={false}
         spaceBetween={30}
         autoplay={{

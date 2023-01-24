@@ -16,6 +16,13 @@ export const styles = {
     fontFamily: "Inter",
     lineHeight: "unset",
     paddingBottom: "27px",
+    ["@media (max-width:2600px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+      marginLeft: "-5px",
+    },
     ["@media (max-width:1600px)"]: {
       color: " #1C1B1F",
       fontFamily: "Inter",
@@ -86,6 +93,12 @@ export const styles = {
     margin: "0 0 0 auto",
     maxWidth: "261px !important",
     marginLeft: "0px",
+    ["@media (max-width:2600px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+
+      marginLeft: "160px",
+    },
     ["@media (max-width:1600px)"]: {
       margin: "0 0 0 auto",
       maxWidth: "261px !important",
@@ -127,6 +140,11 @@ export const styles = {
     width: "100%",
     marginRight: "27px",
     marginTop: "-4px",
+    ["@media (max-width:2600px)"]: {
+      width: "100%",
+      marginRight: "35px",
+      marginTop: "-4px",
+    },
     ["@media (max-width:1600px)"]: {
       width: "100%",
       marginRight: "27px",

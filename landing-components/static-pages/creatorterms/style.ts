@@ -4,7 +4,13 @@ export const styles = {
     paddingTop: "150px",
     paddingBottom: "75px",
     width: "75%",
-    ["@media (max-width:1600px)"]: {
+    ["@media (max-width:2600px)"]: {
+      padding: "27px",
+      paddingTop: "163px",
+      paddingBottom: " 75px",
+      width: "78%",
+    },
+    ["@media (max-width:1500px)"]: {
       padding: "35px",
       paddingTop: "163px",
       paddingBottom: " 75px",

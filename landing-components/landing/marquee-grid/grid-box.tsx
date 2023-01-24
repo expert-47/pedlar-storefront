@@ -1,4 +1,4 @@
-import { Typography, Grid, Dialog, IconButton, Button, Slide, useMediaQuery, SwipeableDrawer } from "@mui/material";
+import { Typography, Grid, Dialog, IconButton, Button, useMediaQuery, SwipeableDrawer } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -13,17 +13,6 @@ import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
-import { TransitionProps } from "@mui/material/transitions";
-import PedlarImage from "components/pedlarImage";
-
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const Gridbox = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");
@@ -99,7 +88,7 @@ const Gridbox = () => {
               md={12}
               lg={7.3}
               xl={6.5}
-              justifyContent={{ sm: "space-around", lg: "space-around" }}
+              justifyContent={{ xs: "space-around", lg: "space-around" }}
             >
               <Grid item xs={12} sm={8} md={6.5} lg={8.2} xl={8.2}>
                 <Image src={firstGrid} alt="First Image" />
@@ -123,7 +112,16 @@ const Gridbox = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid container item xs={12} sm={12} md={12} lg={4.6} xl={5.4}>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={12}
+              lg={4.6}
+              xl={5.4}
+              marginTop={{ xs: "15px", sm: "15px", md: "0px" }}
+            >
               <Box
                 style={{ display: "flex", justifyContent: "space-around" }}
                 marginBottom={{ xs: "15px", sm: "15px", md: "20px", lg: "-70px" }}

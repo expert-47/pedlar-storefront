@@ -4,6 +4,7 @@ export const styles = {
     display: "block",
     textDecoration: "none",
     fontSize: "22px",
+    fontWeight: "600",
     paddingBottom: "16px",
     letterSpacing: "-0.03em",
     color: "rgb(249, 246, 242)",

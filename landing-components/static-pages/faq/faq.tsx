@@ -60,7 +60,7 @@ const Faq = () => {
                     Creator
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon sx={{ width: "100%", marginRight: { xs: "65px", lg: "40px" }, marginTop: "-4px" }} />
+                    <EastIcon sx={styles.eastIconStyle} />
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
@@ -68,7 +68,7 @@ const Faq = () => {
                     Brand
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon sx={{ width: "100%", marginRight: { sm: "65px", lg: "40px" }, marginTop: "-4px" }} />
+                    <EastIcon sx={styles.eastIconStyle} />
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
@@ -76,7 +76,7 @@ const Faq = () => {
                     Shopper
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon sx={{ width: "100%", marginRight: "40px", marginTop: "-4px" }} />
+                    <EastIcon sx={styles.eastIconStyle} />
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
@@ -84,7 +84,7 @@ const Faq = () => {
                     General
                   </Link>
                   <Box className="faqHide">
-                    <EastIcon sx={{ width: "100%", marginRight: "40px", marginTop: "-4px" }} />
+                    <EastIcon sx={styles.eastIconStyle} />
                   </Box>
                 </Box>
               </Scrollspy>

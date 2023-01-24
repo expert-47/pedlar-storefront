@@ -18,6 +18,7 @@ export const styles = {
     fontFamily: "Inter",
     opacity: "0.64",
     lineHeight: "normal",
+    letterSpacing:"normal"
   },
   gridinnereText: {
     color: "#1C1B1E",

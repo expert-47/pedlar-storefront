@@ -3,17 +3,16 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
 import { useTheme } from "@mui/material";
-import Image from "next/image";
 import firstGrid from "../../../public/firstGrid.png";
 import secondGrid from "../../../public/secondGrid.png";
 import thirdGrid from "../../../public/thirdGrid.png";
-import glow from "../../../public/glow.svg";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
 import PedlarImage from "components/pedlarImage";
+import TextBox from "./textBox";
 
 const Gridbox = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");
@@ -41,6 +40,8 @@ const Gridbox = () => {
       <Grid
         paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         style={{ position: "relative" }}
+        container
+        xs={12}
       >
         <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
           <Typography
@@ -81,17 +82,17 @@ const Gridbox = () => {
             paddingX={{ xs: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30), xl: theme.spacing(45) }}
           >
             <Grid
-              gap={3}
+              gap={{ lg: 13, md: 3 }}
               container
               item
               xs={12}
               sm={12}
               md={12}
               lg={7.3}
-              xl={6.5}
+              xl={6.2}
               justifyContent={{ xs: "space-around", lg: "space-around" }}
             >
-              <Grid item xs={12} sm={8} md={6.5} lg={8.2} xl={8.2}>
+              <Grid item xs={12} sm={8} md={6.5} lg={8} >
                 <Box sx={{ width: "100%", height: { lg: "450px", sm: "400px", xs: "260px" } }}>
                   <PedlarImage src={firstGrid} alt="First Image" style={{ borderRadius: "8px" }} />
                 </Box>
@@ -120,7 +121,7 @@ const Gridbox = () => {
                   sx={{
                     width: { xs: "100%", sm: "100%", md: "50%", lg: "100%" },
                     height: { lg: "50%", sm: "50%", xs: "125px" },
-                    marginTop: { xs: "20px", sm: "0px" },
+                    marginTop: { xs: "20px", sm: "0px", lg: "10px" },
                   }}
                 >
                   <PedlarImage src={thirdGrid} alt="Second Image" style={{ borderRadius: "8px" }} />
@@ -128,91 +129,30 @@ const Gridbox = () => {
               </Grid>
             </Grid>
             <Grid
-              container
               item
               xs={12}
               sm={12}
               md={12}
               lg={4.6}
-              xl={5.4}
-              marginTop={{ xs: "20px", sm: "20px", md: "0px" }}
+              xl={5.7}
+              marginTop={{ xs: "20px", sm: "20px", md: "20px", lg: "0px" }}
+              paddingLeft={{ sm: "0px", lg: "15px" }}
             >
-              <Box
-                style={{ display: "flex", justifyContent: "space-around" }}
-                marginBottom={{ xs: "22px", sm: "22px", md: "20px", lg: "-70px" }}
-              >
-                <Box marginTop={"5px"} width={"46px"}>
-                  <Image src={glow} alt="Glow Star" loading="lazy" />
-                </Box>
-                <Box paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "10px", xl: "2px" }}>
-                  <Typography
-                    sx={styles.gridinnereText}
-                    fontWeight={"600"}
-                    fontSize={{ xs: "22px", xl: "22px" }}
-                    marginBottom={"10px"}
-                  >
-                    More money. Less problems
-                  </Typography>
-                  <Typography
-                    sx={styles.gridinnerPara}
-                    fontWeight={"600"}
-                    fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
-                  >
-                    Track performance overtime. Create value for creators, brands and shoppers.
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                style={{ display: "flex", justifyContent: "space-around" }}
-                marginBottom={{ xs: "22px", sm: "22px", md: "20px", lg: "-70px" }}
-              >
-                <Box marginTop={"5px"} width={"46px"}>
-                  <Image src={glow} alt="Glow Star" loading="lazy" />
-                </Box>
-                <Box paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "10px", xl: "2px" }}>
-                  <Typography
-                    sx={styles.gridinnereText}
-                    fontWeight={"600"}
-                    fontSize={{ xs: "22px", xl: "22px" }}
-                    marginBottom={"10px"}
-                  >
-                    Simple and free
-                  </Typography>
-                  <Typography
-                    sx={styles.gridinnerPara}
-                    fontWeight={"600"}
-                    fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
-                  >
-                    Creators and brands get set up in under two minutes. Start selling instantly!
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                style={{ display: "flex", justifyContent: "space-around" }}
-                marginBottom={{ xs: "22px", sm: "22px", md: "20px", lg: "-70px" }}
-              >
-                <Box marginTop={"5px"} width={"46px"}>
-                  <Image src={glow} alt="Glow Star" loading="lazy" />
-                </Box>
-                <Box paddingLeft={{ xs: "5px", sm: "6px", md: "0px", lg: "13px", xl: "8px" }}>
-                  <Typography
-                    sx={styles.gridinnereText}
-                    fontWeight={"600"}
-                    fontSize={{ xs: "22px", xl: "22px" }}
-                    marginBottom={"10px"}
-                  >
-                    Business as usual
-                  </Typography>
-                  <Typography
-                    sx={styles.gridinnerPara}
-                    fontWeight={"600"}
-                    fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
-                  >
-                    Creators get paid more to do what they love. Brands integrate their Shopify then set and forget.
-                  </Typography>
-                </Box>
-              </Box>
-              <Box paddingLeft={{ xs: "20px", sm: "40px", md: "46px", lg: "30px", xl: "35px" }}>
+              <TextBox
+                title="More money. Less problems"
+                description="Track performance over time. Create value for creators, brands and shoppers."
+              />
+
+              <TextBox
+                title="Simple and free"
+                description="Creators and brands get set up in under two minutes. Start selling instantly!"
+              />
+              <TextBox
+                title="Business as usual"
+                description="Creators get paid more to do what they love. Brands integrate their Shopify then set and forget."
+              />
+
+              <Box paddingLeft={{ xs: "20px", sm: "40px", md: "46px", lg: "25px", xl: "30px" }}>
                 <Typography
                   onClick={openPopup}
                   sx={styles.creator}

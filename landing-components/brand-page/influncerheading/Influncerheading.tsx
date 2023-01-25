@@ -19,7 +19,7 @@ const Influncerheading = () => {
         <Typography
           fontSize={{ xs: "48px", sm: "54px" }}
           sx={styles.heading}
-          width={{ xs: "100%", sm: "85%", md: "60%" }}
+          width="95%"
           paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           Work with the world’s most talented influencers

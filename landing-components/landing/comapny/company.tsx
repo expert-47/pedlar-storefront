@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Dialog, IconButton, Box, Slide, useMediaQuery, SwipeableDrawer } from "@mui/material";
+import { Grid, Typography, Button, Dialog, IconButton, Box, useMediaQuery, SwipeableDrawer } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import CloseIcon from "@mui/icons-material/Close";

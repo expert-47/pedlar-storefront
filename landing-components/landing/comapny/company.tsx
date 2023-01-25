@@ -52,6 +52,7 @@ const Company = () => {
         sm={12}
         md={12}
         lg={12}
+        xl={12}
         style={{ display: "flex", flexDirection: "column" }}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(50) }}
       >
@@ -77,7 +78,8 @@ const Company = () => {
           xs={12}
           sm={12}
           md={11}
-          lg={10}
+          lg={9}
+          xl={10}
           paddingX={{ xs: theme.spacing(0), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
         >
           <Typography fontSize={{ xs: "30px", sm: "40px" }} sx={styles.Typography}>
@@ -195,9 +197,7 @@ const Company = () => {
                 )}
                 {sucessModalshow ? (
                   <>
-                    <Typography
-                      style={{ paddingTop: "10px", color: "rgb(73,69,79)" }}
-                    >
+                    <Typography style={{ paddingTop: "10px", color: "rgb(73,69,79)" }}>
                       {"We will communicate with you about the information requested and other Pedlar services."}
                     </Typography>
                     <Typography style={{ color: "rgb(73,69,79)" }}>
@@ -317,12 +317,10 @@ const Company = () => {
                 )}
                 {sucessModalshow ? (
                   <>
-                    <Typography
-                      style={{ paddingTop: "10px", color: "rgb(73,69,79)" }}
-                    >
+                    <Typography style={{ paddingTop: "10px", color: "rgb(73,69,79)" }}>
                       {"We will communicate with you about the information requested and other Pedlar services."}
                     </Typography>
-                    <Typography style={{ color: "rgb(73,69,79)" }} >
+                    <Typography style={{ color: "rgb(73,69,79)" }}>
                       {" The use of your information is governed by Pedlar’s Privacy Policy."}
                     </Typography>
                   </>

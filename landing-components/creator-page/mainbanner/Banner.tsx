@@ -24,7 +24,7 @@ const Banner = () => {
       <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.brandImg}>
         <Box
           sx={{
-            width: { xs: "95%", sm: "705px", md: "660px", lg: "660px", xl: "980px" },
+            width: { xs: "95%", sm: "705px", md: "660px", lg: "45%", xl: "45%" },
             height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
           }}
         >

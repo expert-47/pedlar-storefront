@@ -6,16 +6,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
-import { TransitionProps } from "@mui/material/transitions";
-
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const Company = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");

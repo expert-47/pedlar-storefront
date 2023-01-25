@@ -1,6 +1,6 @@
 export const styles = {
   MainBox: {
-    paddingTop: "25px",
+    paddingTop: "37px",
   },
   fashionText: {
     ["@media (min-width:1300px)"]: {

@@ -17,7 +17,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
-import { TransitionProps } from "@mui/material/transitions";
 import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
 import Image from "next/image";
@@ -25,14 +24,7 @@ import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
 import PedlarImage from "components/pedlarImage";
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+
 const ResponsiveHeader = () => {
   const router = useRouter();
   const theme = useTheme();

@@ -16,6 +16,47 @@ export const styles = {
     fontFamily: "Inter",
     lineHeight: "unset",
     paddingBottom: "27px",
+    ["@media (max-width:2600px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+      marginLeft: "-5px",
+    },
+    ["@media (max-width:1600px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+    },
+    ["@media (max-width:1025px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+      paddingLeft: "35px",
+    },
+    ["@media (max-width:768px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+      marginLeft: "-18px",
+    },
+    ["@media (max-width:425px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+      paddingRight: "68px",
+      paddingLeft: "18px",
+    },
+    ["@media (max-width:325px)"]: {
+      color: " #1C1B1F",
+      fontFamily: "Inter",
+      lineHeight: "unset",
+      paddingBottom: "27px",
+    },
   },
   faqText: {
     color: " #1C1B1F",
@@ -51,6 +92,41 @@ export const styles = {
   tabList: {
     margin: "0 0 0 auto",
     maxWidth: "261px !important",
+    marginLeft: "0px",
+    ["@media (max-width:2600px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+
+      marginLeft: "160px",
+    },
+    ["@media (max-width:1600px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+      paddingLeft: "5px",
+    },
+    ["@media (max-width:1025px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+      paddingLeft: "85px",
+    },
+    ["@media (max-width:768px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+      paddingLeft: "18px",
+      paddingTop: "53px",
+    },
+    ["@media (max-width:425px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+      marginLeft: "-17px",
+      marginTop: "-60px",
+    },
+    ["@media (max-width:325px)"]: {
+      margin: "0 0 0 auto",
+      maxWidth: "261px !important",
+      marginLeft: "-18px",
+      marginTop: "-60px",
+    },
   },
   faqLink: {
     fontSize: "22px",
@@ -59,6 +135,41 @@ export const styles = {
     color: "#1C1B1F",
     fontFamily: "Inter",
     position: "relative",
+  },
+  eastIconStyle: {
+    width: "100%",
+    marginRight: "27px",
+    marginTop: "-4px",
+    ["@media (max-width:2600px)"]: {
+      width: "100%",
+      marginRight: "35px",
+      marginTop: "-4px",
+    },
+    ["@media (max-width:1600px)"]: {
+      width: "100%",
+      marginRight: "27px",
+      marginTop: "-4px",
+    },
+    ["@media (max-width:1025px)"]: {
+      width: "100%",
+      paddingLeft: "130px",
+      marginTop: "-4px",
+    },
+    ["@media (max-width:768px)"]: {
+      width: "100%",
+      paddingLeft: "30px",
+      marginTop: "-4px",
+    },
+    ["@media (max-width:425px)"]: {
+      width: "100%",
+      marginRight: "87px",
+      marginTop: "-4px",
+    },
+    ["@media (max-width:325px)"]: {
+      width: "100%",
+      marginRight: "90px",
+      marginTop: "-4px",
+    },
   },
   scrollSection: {
     paddingTop: "0px",

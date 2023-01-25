@@ -18,15 +18,14 @@ const Gridtext = ({ title, description, style }: Props) => {
         <PedlarImage src={glow} alt="Glow Star" objectFit="contain" />
       </Box>
       <Box width={"100%"} paddingLeft={{ xs: "5px", sm: "0px", md: "0px", lg: "10px", xl: "10px" }}>
-        <Typography
-          sx={styles.gridinnereText}
-          fontWeight={"600"}
-          fontSize={"22px"}
-          paddingBottom={"5px"}
-        >
+        <Typography sx={styles.gridinnereText} fontWeight={"600"} fontSize={"22px"} paddingBottom={"5px"}>
           {title}
         </Typography>
-        <Typography sx={styles.gridinnerPara} fontWeight={"600"} fontSize={{ xs: "18px", lg: "22px",  }}>
+        <Typography
+          sx={styles.gridinnerPara}
+          fontWeight={"600"}
+          fontSize={{ xs: "18px", sm: "18px", md: "18px", lg: "22px" }}
+        >
           {description}
         </Typography>
       </Box>

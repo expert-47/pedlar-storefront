@@ -29,7 +29,7 @@ const Banner = () => {
           <Box
             sx={{
               width: { xs: "100%", sm: "620px", md: "950px", lg: "650px", xl: "820px" },
-              height: { xs: 330, sm: 570, md: 670 },
+              height: { xs: 330, sm: 570, md: 670, lg: 570 },
             }}
             paddingLeft={{ xl: "30px" }}
           >

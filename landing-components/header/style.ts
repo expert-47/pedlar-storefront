@@ -5,7 +5,6 @@ export const styles = {
     flexDirection: "row",
     paddingTop: "10px",
     paddingBottom: "15px",
-    // backgroundColor: "#f9f6f2",
     alignItems: "center",
   },
   Respheader: {

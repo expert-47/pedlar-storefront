@@ -14,8 +14,8 @@ const Pointofpurchase = () => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid container item xs={12} sm={12} md={12} lg={12} sx={styles.MainGrid}>
-        <Grid item xs={12} sm={12} md={12} lg={10}>
+      <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} sx={styles.MainGrid}>
+        <Grid item xs={12} sm={12} md={12} lg={10} xl={9}>
           <Typography
             textTransform={"none"}
             fontSize={{ xs: "48px", md: "54px" }}

@@ -137,6 +137,7 @@ const Gridbox = () => {
               xl={5.7}
               marginTop={{ xs: "20px", sm: "20px", md: "20px", lg: "0px" }}
               paddingLeft={{ sm: "0px", lg: "15px" }}
+              fontSize={{ xs: "18px", sm: "18px", md: "18px", lg: "22px" }}
             >
               <TextBox
                 title="More money. Less problems"

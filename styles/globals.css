@@ -95,11 +95,11 @@ html {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .marq-left {
-    width: 1250px !important;
-    left: 2px;
+    width: 1310px !important;
+    left: -2px;
   }
   .marq-right {
-    width: 1250px !important;
+    width: 1310px !important;
     right: 30px;
   }
 }
@@ -381,7 +381,6 @@ section {
   box-shadow: unset !important;
 }
 @media screen and (max-width: 600px) {
-
 }
 .css-1nzzf8a-MuiFormHelperText-root.Mui-error {
   position: absolute;
@@ -425,15 +424,10 @@ section {
   }
 }
 
-/* @media screen and (min-width: 680px) {
-  .css-1jbk5a2 {
-    -webkit-flex-basis: 49.166667%;
-    -ms-flex-preferred-size: 49.166667%;
-    flex-basis: 49.166667%;
-    -webkit-box-flex: 0;
-    -webkit-flex-grow: 0;
-    -ms-flex-positive: 0;
-    flex-grow: 0;
-    max-width: 33.166667%;
-  }
-} */
+.css-1nt95lj-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+  background-color: #a4a4a5;
+}
+
+.css-o2z3qx-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+  background-color: #a4a4a5;
+}

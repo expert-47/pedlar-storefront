@@ -7,12 +7,14 @@ export const styles = {
     position: "relative",
   },
   Typography: {
-    color: "rgba(28, 27, 31, 0.70)",
+    color: "rgba(28, 27, 31)",
     marginBottom: "50px",
     lineHeight: "normal",
+    letterSpacing: "normal",
     zIndex: "2",
     position: "relative",
-    width: "102%",
+    width: "100%",
+    opacity: "0.64",
   },
   CreatorButton: {
     width: { xs: "100%", sm: "auto" },

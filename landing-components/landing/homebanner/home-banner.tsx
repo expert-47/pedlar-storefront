@@ -14,16 +14,7 @@ import { styles } from "./style";
 import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
 import { CustomContainer } from "../../landinglayout";
-import { TransitionProps } from "@mui/material/transitions";
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 
 const Banner = () => {
   const isMedium = useMediaQuery("(max-width:850px)");

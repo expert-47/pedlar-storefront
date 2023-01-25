@@ -9,16 +9,7 @@ import Creatorpopup from "../../popup-dialog/creatorpopup";
 import Brandspopup from "../../popup-dialog/brandspopup";
 import Image from "next/image";
 import rightArrow from "../../../public/right-arrow.svg";
-import { TransitionProps } from "@mui/material/transitions";
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 const EarlyAcess = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");
   const [openDialog, setOpenDialog] = useState(false);

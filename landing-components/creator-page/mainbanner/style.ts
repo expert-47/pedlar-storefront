@@ -1,44 +1,43 @@
 export const styles = {
   MainBox: {
-    paddingTop: "141px",
+    paddingTop: "100px",
     display: "flex",
     alignItems: "center",
-    ["@media (min-width:1400px)"]: {
-      paddingTop: "185px",
-    },
-    ["@media (max-width:1250px)"]: {
-      paddingTop: "100px",
-    },
-    ["@media (max-width:1160px)"]: {
-      alignItems: "flex-start",
-    },
-    ["@media (max-width:800px)"]: {
-      paddingTop: "100px",
-    },
   },
   GridBox: {
-    width: "100%",
+    position: "absolute",
     borderRadius: "20px",
     backgroundColor: "white",
-    margin: "0 0 0 auto",
-    maxWidth: "602px",
     zIndex: " 99",
-    ["@media (min-width:1400px)"]: {
-      maxWidth: "606px",
-      margin: "0 3px 0 auto",
+    /* Extra small devices (phones, 600px and down) */
+    ["@media (max-width: 600px)"]: {
+      // maxWidth: "665px",
+      width: "90%",
+      top: "370px",
+      left: "18px",
     },
-    ["@media (min-width:1441px)"]: {
+    /* Medium devices (landscape tablets, 768px and up) */
+    ["@media (min-width: 768px)"]: {
       maxWidth: "600px",
+      top: "520px",
+      left: "140px",
     },
-    ["@media (max-width:1300px)"]: {
-      maxWidth: "550px",
+    /* Large devices (laptops/desktops, 992px and up) */
+    ["@media (min-width: 992px)"]: {
+      maxWidth: "600px",
+      top: "525px",
+      left: "370px",
     },
-    ["@media (max-width:1160px)"]: {
-      margin: "300px 0 0 auto",
-      maxWidth: "602px",
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    ["@media (min-width: 1200px)"]: {
+      maxWidth: "605px",
+      top: "160px",
+      left: "710px",
     },
-    ["@media (max-width:700px)"]: {
-      margin: "200px 0 0 auto",
+    ["@media (min-width: 1536px)"]: {
+      maxWidth: "580px",
+      top: "160px",
+      left: "1095px",
     },
   },
   heading: {
@@ -64,30 +63,10 @@ export const styles = {
       backgroundColor: "#1C1B1F",
     },
     ["@media (max-width:700px)"]: {
-      padding: "20px 16px",
-      margin: "10px 0px 0px"
+      padding: "15px",
     },
   },
   brandImg: {
-    position: "absolute",
-    left: "0px",
-    objectFit: "cover",
-    width: "656px",
-    ["@media (max-width:1160px)"]: {
-      width: "95%",
-    },
-    ["@media (max-width:1295px)"]: {
-      width: "600px",
-    },
-    ["@media (max-width:1024px)"]: {
-      width: "unset",
-    },
-    ["@media (min-width:1440px)"]: {
-      width: "700px",
-      left: "-45px",
-    },
-    ["@media (min-width:1600px)"]: {
-      left: "0px",
-    },
+    // position: "relative",
   },
 };

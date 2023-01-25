@@ -24,7 +24,6 @@ const Picturecarousel = () => {
 
   return (
     <Box style={{ paddingTop: "100px" }}>
-      <Typography style={{ paddingLeft: "25px" }}>{isMatch ? 1.2 : islarge ? 4.8 : 3.6}</Typography>
       <Swiper
         slidesPerView={isMatch ? 1.2 : islarge ? 4.8 : 3.6}
         centeredSlides={false}

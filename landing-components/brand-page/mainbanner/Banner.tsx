@@ -28,10 +28,10 @@ const Banner = () => {
         <Grid sx={styles.GridImg}>
           <Box
             sx={{
-              width: { xs: "100%", sm: "100%", md: "950px", lg: "650px", xl: "820px" },
-              height: { xs: 330, md: 580 },
+              width: { xs: "100%", sm: "620px", md: "950px", lg: "650px", xl: "820px" },
+              height: { xs: 330, sm: 570, md: 670 },
             }}
-            paddingLeft={{xl:"30px"}}
+            paddingLeft={{ xl: "30px" }}
           >
             <PedlarImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} />
           </Box>

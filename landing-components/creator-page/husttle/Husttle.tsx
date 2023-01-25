@@ -20,7 +20,7 @@ const Husttle = () => {
         sm={12}
         md={12}
         lg={12}
-        paddingTop={{ xs: "400px", sm: "350px", md: "120px" }}
+        paddingTop={{ xs: "400px", sm: "350px", md: "350px",lg:"120px" }}
         style={{ zIndex: "999", position: "relative" }}
       >
         <Grid item xs={12} sm={12} md={12} lg={12}>

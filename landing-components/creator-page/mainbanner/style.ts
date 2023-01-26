@@ -18,7 +18,7 @@ export const styles = {
     zIndex: " 99",
     top: { xs: "370px", sm: "520px", md: "520px", lg: "0", xl: "0px" },
     width: { xs: "90%", sm: "600px", md: "600px", lg: "605px", xl: "580px" },
-    right: { xs: "15px", sm: "20px", md: "5%", lg: "100px", xl: "45px" },
+    right: { xs: "15px", sm: "20px", md: "5%", lg: "45px", xl: "45px" },
   },
   heading: {
     lineHeight: "1",

@@ -83,7 +83,7 @@ const Header = () => {
                     <PedlarImage src={headerlogo} alt="pedlar-logo" />
                   </Box>
                 ) : (
-                  <Box sx={{ height: 85, width: 300, marginTop: "43px", cursor: "pointer" }}>
+                  <Box sx={{ height: 85, width: { md: 220, lg: 300 }, marginTop: "43px", cursor: "pointer" }}>
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}

@@ -1,22 +1,27 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
-import { CustomContainer } from "../../landinglayout";
+
 import { styles } from "./style";
 import CreatorBanner from "../../../public/creatorbanner.png";
 import { Link as ScrollLink } from "react-scroll";
 import PedlarImage from "components/pedlarImage";
+import { CustomContainer } from "components/layout";
 
 const Banner = () => {
   return (
-    <Box sx={styles.MainBox}>
+    <CustomContainer sx={styles.MainBox}>
       <Box
         sx={{
           width: { xs: "95%", sm: "705px", md: "660px", lg: "45%", xl: "45%" },
           height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
+          position: "absolute",
+          left: 0,
+          top: "100px",
         }}
       >
         <PedlarImage zIndex={0} style={{ borderRadius: "0 20px 20px 0" }} src={CreatorBanner} alt={"Creator banner"} />
       </Box>
+
       <Box sx={styles.GridBox}>
         <Grid item xs={12} sm={12} md={12} lg={12} padding={{ sm: "40px 40px", xs: "20px 20px" }}>
           <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "64px" }} sx={styles.heading}>
@@ -39,7 +44,7 @@ const Banner = () => {
           </ScrollLink>
         </Grid>
       </Box>
-    </Box>
+    </CustomContainer>
   );
 };
 

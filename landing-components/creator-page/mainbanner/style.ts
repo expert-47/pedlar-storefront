@@ -1,15 +1,16 @@
-import { SxProps } from "@mui/material";
-
-export const styles: SxProps = {
+export const styles = {
   MainBox: {
-    paddingTop: "100px",
+    paddingTop: { xs: "100px", lg: "150px" },
     display: "flex",
     alignItems: "center",
     flexDirection: "row",
-
-    justifyContent: "space-between",
+    alignContent: "center",
+    justifyContent: "flex-end",
+    height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
+    marginBottom: "100px",
   },
   GridBox: {
+    alignSelf: "center",
     position: { xs: "absolute", lg: "relative" },
     borderRadius: "20px",
     display: "flex",
@@ -17,7 +18,7 @@ export const styles: SxProps = {
     zIndex: " 99",
     top: { xs: "370px", sm: "520px", md: "520px", lg: "0", xl: "0px" },
     width: { xs: "90%", sm: "600px", md: "600px", lg: "605px", xl: "580px" },
-    right: { xs: "15px", sm: "20px", md: "5%", lg: "100px", xl: "100px" },
+    right: { xs: "15px", sm: "20px", md: "5%", lg: "100px", xl: "45px" },
   },
   heading: {
     lineHeight: "1",

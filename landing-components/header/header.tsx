@@ -32,7 +32,7 @@ const Header = () => {
 
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
-  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const Scrolltrigger = useScrollTrigger({ threshold: 22, disableHysteresis: true });
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -69,7 +69,7 @@ const Header = () => {
           md={12}
           lg={12}
           sx={styles.MainGrid}
-          paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+          paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(15), lg: theme.spacing(35) }}
         >
           {isMatch ? (
             <>
@@ -77,7 +77,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Grid item xs={12} sm={12} md={12} lg={3.5}>
+              <Grid item xs={12} sm={12} md={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
                   <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
                     <PedlarImage src={headerlogo} alt="pedlar-logo" />
@@ -88,7 +88,7 @@ const Header = () => {
                   </Box>
                 )}
               </Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={5} gap={40} style={{ justifyContent: "center" }}>
+              <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid onClick={openCreators}>
                   <Typography
                     textTransform="none"
@@ -118,7 +118,7 @@ const Header = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={12} md={12} lg={3.5} style={{ display: "flex", justifyContent: "flex-end" }}>
+              <Grid item xs={12} sm={12} md={3.5} style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button onClick={openPopup}>
                   <Typography textTransform="none" sx={styles.LoginButton}>
                     Log in

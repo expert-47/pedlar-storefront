@@ -10,6 +10,8 @@ import thirdStep from "../../../public/step3.png";
 import HomeSecImage4 from "../../../public/home-sec5-img4.png";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
+import PedlarImage from "components/pedlarImage";
+import SliderCard from "./SliderCard";
 
 const Responsivehowitworks = () => {
   const [updatedata, setUpdateData] = useState(1);
@@ -91,88 +93,23 @@ const Responsivehowitworks = () => {
               setUpdateData(index.activeIndex + 1);
             }}
           >
-            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography
-                  fontSize={{ xs: "30px", sm: "40px" }}
-                  fontWeight={600}
-                  lineHeight={{ xs: "normal", sm: "50px" }}
-                >
-                  Top Aussie brands sync their store to the Pedlar platform
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
-                <Image
-                  src={HomeSecImage1}
-                  alt="home-sec5-img1"
-                  style={{ borderRadius: "16px" }}
-                  loading="lazy"
-                  placeholder="blur"
-                />
-              </Grid>
+            <SwiperSlide>
+              <SliderCard title="Top Aussie brands sync their store to the Pedlar platform" image={HomeSecImage1} />
             </SwiperSlide>
 
-            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography
-                  fontSize={{ xs: "30px", sm: "40px" }}
-                  fontWeight={600}
-                  lineHeight={{ xs: "30px", sm: "50px" }}
-                >
-                  Creators select products from brands they love
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
-                <Image
-                  src={HomeSecImage2}
-                  alt="home-sec5-img2"
-                  style={{ borderRadius: "16px" }}
-                  loading="lazy"
-                  placeholder="blur"
-                />
-              </Grid>
+            <SwiperSlide>
+              <SliderCard title="Creators select products from brands they love" image={HomeSecImage2} />
             </SwiperSlide>
 
-            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography
-                  fontSize={{ xs: "30px", sm: "40px" }}
-                  fontWeight={600}
-                  lineHeight={{ xs: "30px", sm: "50px" }}
-                >
-                  Creators personalise their store to match their style
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
-                <Image
-                  src={thirdStep}
-                  alt="home-sec5-img3"
-                  style={{ borderRadius: "16px" }}
-                  loading="lazy"
-                  placeholder="blur"
-                />
-              </Grid>
+            <SwiperSlide>
+              <SliderCard title="Creators personalise their store to match their style" image={thirdStep} />
             </SwiperSlide>
 
-            <SwiperSlide style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <Grid item xs={12} sm={12} sx={styles.ResponsText} textAlign={{ xs: "center" }}>
-                <Typography
-                  fontSize={{ xs: "30px", sm: "40px" }}
-                  fontWeight={600}
-                  lineHeight={{ xs: "30px", sm: "50px" }}
-                >
-                  Creators share their store with their followers and make sales
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} style={{ paddingTop: "30px" }}>
-                <Image
-                  src={HomeSecImage4}
-                  alt="home-sec5-img4"
-                  style={{ borderRadius: "16px" }}
-                  loading="lazy"
-                  placeholder="blur"
-                />
-              </Grid>
+            <SwiperSlide>
+              <SliderCard
+                title="Creators share their store with their followers and make sales"
+                image={HomeSecImage4}
+              />
             </SwiperSlide>
           </Swiper>
         </Grid>

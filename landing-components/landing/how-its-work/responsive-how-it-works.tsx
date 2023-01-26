@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { styles } from "./style";
 import { Box, Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../../landinglayout";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import HomeSecImage1 from "../../../public/home-sec5-img1.png";
 import HomeSecImage2 from "../../../public/home-sec5-img2.png";
 // import HomeSecImage3 from "../../../public/home-sec5-img3.png";
@@ -13,7 +13,17 @@ import { Navigation } from "swiper";
 import PedlarImage from "components/pedlarImage";
 import SliderCard from "./SliderCard";
 
-const Responsivehowitworks = () => {
+interface Props {
+  title1: string;
+  title2: string;
+  title3: string;
+  title4: string;
+  image1: StaticImageData;
+  image2: StaticImageData;
+  image3: StaticImageData;
+  image4: StaticImageData;
+}
+const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, image3, image4 }: Props) => {
   const [updatedata, setUpdateData] = useState(1);
   const ref = useRef();
   const [swiper, setSwiper] = useState(null);
@@ -94,22 +104,19 @@ const Responsivehowitworks = () => {
             }}
           >
             <SwiperSlide>
-              <SliderCard title="Top Aussie brands sync their store to the Pedlar platform" image={HomeSecImage1} />
+              <SliderCard title={title1} image={image1} />
             </SwiperSlide>
 
             <SwiperSlide>
-              <SliderCard title="Creators select products from brands they love" image={HomeSecImage2} />
+              <SliderCard title={title2} image={image2} />
             </SwiperSlide>
 
             <SwiperSlide>
-              <SliderCard title="Creators personalise their store to match their style" image={thirdStep} />
+              <SliderCard title={title3} image={image3} />
             </SwiperSlide>
 
             <SwiperSlide>
-              <SliderCard
-                title="Creators share their store with their followers and make sales"
-                image={HomeSecImage4}
-              />
+              <SliderCard title={title4} image={image4} />
             </SwiperSlide>
           </Swiper>
         </Grid>

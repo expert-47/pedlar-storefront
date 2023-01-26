@@ -5,14 +5,21 @@ import { CustomContainer } from "../../landinglayout";
 import Responsivehowitworks from "./responsive-how-it-works";
 import purpleGradient from "../../../public/purple-gradient.png";
 import Scrollspy from "react-scrollspy";
-import Image from "next/image";
-import firstStep from "../../../public/step1.png";
-import secondStep from "../../../public/step2.png";
-import thirdStep from "../../../public/step3.png";
-import fourthStep from "../../../public/step4.png";
+import Image, { StaticImageData } from "next/image";
+
 import orangepinkmesh from "../../../public/mesh-pink-orange.png";
 import PedlarImage from "components/pedlarImage";
-const Howitswork = () => {
+interface Props {
+  title1: string;
+  title2: string;
+  title3: string;
+  title4: string;
+  image1: StaticImageData;
+  image2: StaticImageData;
+  image3: StaticImageData;
+  image4: StaticImageData;
+}
+const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, image4 }: Props) => {
   const theme = useTheme();
   const isResponsive = useMediaQuery("(max-width:1023px)");
 
@@ -38,7 +45,16 @@ const Howitswork = () => {
         <Box sx={styles.MainBox}>
           {isResponsive ? (
             <>
-              <Responsivehowitworks />
+              <Responsivehowitworks
+                title1={title1}
+                title2={title2}
+                title3={title3}
+                title4={title4}
+                image1={image1}
+                image2={image2}
+                image3={image3}
+                image4={image4}
+              />
             </>
           ) : (
             <>
@@ -62,13 +78,13 @@ const Howitswork = () => {
                               1
                             </Typography>
                             <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              Top Aussie brands sync their store to the Pedlar platform{" "}
+                              {title1}
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
                           <PedlarImage
-                            src={firstStep}
+                            src={image1}
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="fill"
@@ -82,17 +98,12 @@ const Howitswork = () => {
                               2
                             </Typography>
                             <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              Creators select products from brands they love
+                              {title2}
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
-                            src={secondStep}
-                            alt="step 2"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="fill"
-                          />
+                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Grid>
                       <Grid>
@@ -102,13 +113,13 @@ const Howitswork = () => {
                               3
                             </Typography>
                             <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              Creators personalise their store to match their style
+                              {title3}
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
                           <PedlarImage
-                            src={thirdStep}
+                            src={image3}
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="fill"
@@ -125,13 +136,13 @@ const Howitswork = () => {
                               fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "40px" }}
                               sx={styles.stickyText}
                             >
-                              Creators share their store with their followers and make sales
+                              {title4}
                             </Typography>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
                           <PedlarImage
-                            src={fourthStep}
+                            src={image4}
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="fill"
@@ -142,22 +153,22 @@ const Howitswork = () => {
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={firstStep} alt="step1" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image1} alt="step1" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={secondStep} alt="step2" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image2} alt="step2" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={thirdStep} alt="step3" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image3} alt="step3" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-4">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={fourthStep} alt="step4" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image4} alt="step4" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                     </div>

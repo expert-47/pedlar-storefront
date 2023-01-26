@@ -9,7 +9,12 @@ import Box from "@mui/material/Box";
 import Image from "next/image";
 import bluemeshbrands from "../public/blue-meshh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/creator-page/how-its-work/how-its-work";
+
+import firstStep from "../public/work1.png";
+import secondStep from "../public/work2.png";
+import thirdStep from "../public/work3.png";
+import fourthStep from "../public/work4.png";
+import Howitswork from "../landing-components/landing/how-its-work/how-its-work";
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",
@@ -43,7 +48,17 @@ const creator = () => {
       </Box>
       <Banner />
       <Husttle />
-      <Howitswork />
+
+      <Howitswork
+        title1="Select products from your favourite brands"
+        title2="Personalise your store to represent your aesthetic "
+        title3="Share with your community, wherever they are  "
+        title4="Sit back and earn. Pedlar handles customer support, shipping and inventory   "
+        image1={firstStep}
+        image2={secondStep}
+        image3={thirdStep}
+        image4={fourthStep}
+      />
       <Company />
       <Picturecarousel />
       <Faq />

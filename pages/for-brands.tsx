@@ -10,7 +10,13 @@ import Image from "next/image";
 import orangetop from "../public/top-mesh.png";
 import orangebottom from "../public/bottom-mesh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/brand-page/how-its-work/how-its-work";
+
+import firstStep from "../public/step1.png";
+import secondStep from "../public/work1.png";
+import thirdStep from "../public/work4.png";
+import fourthStep from "../public/cartList.png";
+import Howitswork from "../landing-components/landing/how-its-work/how-its-work";
+
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",
@@ -46,7 +52,16 @@ const brands = () => {
       </Box>
       <Banner />
       <Pointofpurchase />
-      <Howitswork />
+      <Howitswork
+        title1="Sync your Shopify store to Pedlar in two minutes"
+        title2="Creators add your products to their stores"
+        title3="When sales are made, you ship the products directly to customers"
+        title4="Only pay commission on sales made"
+        image1={firstStep}
+        image2={secondStep}
+        image3={thirdStep}
+        image4={fourthStep}
+      />
       <Influncerheading />
       <Picturecarousel />
       <Faq />

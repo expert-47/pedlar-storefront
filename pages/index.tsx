@@ -12,7 +12,10 @@ import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.png";
 import orangeMesh from "../public/meshHome-gradient.png";
-
+import firstStep from "../public/step1.png";
+import secondStep from "../public/step2.png";
+import thirdStep from "../public/step3.png";
+import fourthStep from "../public/step4.png";
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",
@@ -59,7 +62,16 @@ const index = () => {
       <Gridbox />
       <Company />
       <Picturecarousel />
-      <Howitswork />
+      <Howitswork
+        title1="Top Aussie brands sync their store to the Pedlar platform"
+        title2="Creators select products from brands they love"
+        title3="Creators personalise their store to match their style "
+        title4="Creators share their store with their followers and make sales"
+        image1={firstStep}
+        image2={secondStep}
+        image3={thirdStep}
+        image4={fourthStep}
+      />
       <EarlyAcess />
       <Faq />
     </Layout>

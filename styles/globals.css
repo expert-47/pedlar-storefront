@@ -292,7 +292,7 @@ html {
 }
 @media (min-width: 1020px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
-    top: -17%;
+    top: 0%;
     width: 280px !important;
     height: 80vh !important;
     right: -65%;
@@ -300,9 +300,9 @@ html {
 }
 @media (min-width: 1400px) {
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
-    top: -0%;
+    top: 0%;
     right: -72%;
-    width: 24vw !important;
+    width: 370px !important;
     height: 80vh !important;
   }
 }
@@ -310,7 +310,7 @@ html {
   .hs5-ib-slider-box .hs5-ib-slider-box-left .hs5-ib-sbr-img {
     top: -17%;
     right: -72%;
-    width: 24vw !important;
+    width: 370px !important;
     height: 80vh !important;
   }
 }

@@ -1,44 +1,24 @@
 export const styles = {
   MainBox: {
-    paddingTop: "100px",
+    paddingTop: { xs: "100px", lg: "150px" },
     display: "flex",
     alignItems: "center",
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "flex-end",
+    height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
+    marginBottom: "100px",
   },
   GridBox: {
-    position: "absolute",
+    alignSelf: "center",
+    position: { xs: "absolute", lg: "relative" },
     borderRadius: "20px",
+    display: "flex",
     backgroundColor: "white",
     zIndex: " 99",
-    /* Extra small devices (phones, 600px and down) */
-    ["@media (max-width: 600px)"]: {
-      // maxWidth: "665px",
-      width: "90%",
-      top: "370px",
-      left: "18px",
-    },
-    /* Medium devices (landscape tablets, 768px and up) */
-    ["@media (min-width: 768px)"]: {
-      maxWidth: "600px",
-      top: "520px",
-      left: "140px",
-    },
-    /* Large devices (laptops/desktops, 992px and up) */
-    ["@media (min-width: 992px)"]: {
-      maxWidth: "600px",
-      top: "525px",
-      left: "370px",
-    },
-    /* Extra large devices (large laptops and desktops, 1200px and up) */
-    ["@media (min-width: 1200px)"]: {
-      maxWidth: "605px",
-      top: "160px",
-      left: "710px",
-    },
-    ["@media (min-width: 1536px)"]: {
-      maxWidth: "580px",
-      top: "160px",
-      left: "1095px",
-    },
+    top: { xs: "370px", sm: "520px", md: "520px", lg: "0", xl: "0px" },
+    width: { xs: "90%", sm: "600px", md: "600px", lg: "605px", xl: "580px" },
+    right: { xs: "15px", sm: "20px", md: "5%", lg: "45px", xl: "45px" },
   },
   heading: {
     lineHeight: "1",

@@ -8,36 +8,17 @@ import PedlarImage from "components/pedlarImage";
 
 const Banner = () => {
   return (
-    <Grid
-      container
-      item
-      xs={12}
-      sm={12}
-      md={12}
-      lg={12}
-      gap={5}
-      sx={styles.MainBox}
-      // style={{ position: "relative" }}
-      justifyContent={{ sm: "left" }}
-      // paddingX={{ xs: theme.spacing(15), sm: theme.spacing(20), md: theme.spacing(20), lg: theme.spacing(30) }}
-    >
-      <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.brandImg}>
-        <Box
-          sx={{
-            width: { xs: "95%", sm: "705px", md: "660px", lg: "45%", xl: "45%" },
-            height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
-          }}
-        >
-          <PedlarImage
-            zIndex={0}
-            style={{ borderRadius: "0 20px 20px 0" }}
-            src={CreatorBanner}
-            alt={"Creator banner"}
-          />
-        </Box>
-      </Grid>
-      <CustomContainer>
-        <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.GridBox} padding={{ sm: "40px 40px", xs: "20px 20px" }}>
+    <Box sx={styles.MainBox}>
+      <Box
+        sx={{
+          width: { xs: "95%", sm: "705px", md: "660px", lg: "45%", xl: "45%" },
+          height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
+        }}
+      >
+        <PedlarImage zIndex={0} style={{ borderRadius: "0 20px 20px 0" }} src={CreatorBanner} alt={"Creator banner"} />
+      </Box>
+      <Box sx={styles.GridBox}>
+        <Grid item xs={12} sm={12} md={12} lg={12} padding={{ sm: "40px 40px", xs: "20px 20px" }}>
           <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "64px" }} sx={styles.heading}>
             Give your audience what they want
           </Typography>
@@ -57,8 +38,8 @@ const Banner = () => {
             </Button>
           </ScrollLink>
         </Grid>
-      </CustomContainer>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

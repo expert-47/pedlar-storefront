@@ -142,22 +142,22 @@ const Howitswork = () => {
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={firstStep} alt="step1" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={firstStep} alt="step1" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={secondStep} alt="step2" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={secondStep} alt="step2" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={thirdStep} alt="step3" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={thirdStep} alt="step3" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-4">
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={fourthStep} alt="step4" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={fourthStep} alt="step4" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                     </div>

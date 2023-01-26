@@ -22,6 +22,7 @@ export const styles = {
   ResponsText: {
     color: "rgb(249, 246, 242)",
     paddingTop: "25px",
+    height: "150px",
   },
   circlecount: {
     width: "45px",
@@ -75,5 +76,11 @@ export const styles = {
     ["@media (min-width:1400px)"]: {
       paddingBottom: "89px",
     },
+  },
+  imageSize: {
+    paddingTop: "30px",
+    height: { xs: "580px", sm: "953px" },
+    width: { xs: "100%", sm: "440px" },
+    paddingBottom: "30px",
   },
 };

@@ -11,6 +11,7 @@ import secondStep from "../../../public/step2.png";
 import thirdStep from "../../../public/step3.png";
 import fourthStep from "../../../public/step4.png";
 import orangepinkmesh from "../../../public/mesh-pink-orange.png";
+import PedlarImage from "components/pedlarImage";
 const Howitswork = () => {
   const theme = useTheme();
   const isResponsive = useMediaQuery("(max-width:1023px)");
@@ -32,7 +33,7 @@ const Howitswork = () => {
         }}
       >
         <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
-          <Image src={purpleGradient} alt="purple gradient" style={{ borderRadius: "16px" }} />
+          <PedlarImage src={purpleGradient} alt="purple gradient" style={{ borderRadius: "16px" }} />
         </Box>
         <Box sx={styles.MainBox}>
           {isResponsive ? (
@@ -66,7 +67,12 @@ const Howitswork = () => {
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={firstStep} alt="Picture of the author" loading="lazy" placeholder="blur" />
+                          <PedlarImage
+                            src={firstStep}
+                            alt="Picture of the author"
+                            style={{ borderRadius: "16px" }}
+                            objectFit="fill"
+                          />
                         </Box>
                       </Grid>
                       <Grid>
@@ -81,7 +87,12 @@ const Howitswork = () => {
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={secondStep} alt="step 2" loading="lazy" placeholder="blur" />
+                          <PedlarImage
+                            src={secondStep}
+                            alt="step 2"
+                            style={{ borderRadius: "16px" }}
+                            objectFit="fill"
+                          />
                         </Box>
                       </Grid>
                       <Grid>
@@ -96,7 +107,12 @@ const Howitswork = () => {
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={thirdStep} alt="Picture of the author" loading="lazy" placeholder="blur" />
+                          <PedlarImage
+                            src={thirdStep}
+                            alt="Picture of the author"
+                            style={{ borderRadius: "16px" }}
+                            objectFit="fill"
+                          />
                         </Box>
                       </Grid>
                       <Grid>
@@ -114,29 +130,34 @@ const Howitswork = () => {
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={fourthStep} alt="Picture of the author" loading="lazy" placeholder="blur" />
+                          <PedlarImage
+                            src={fourthStep}
+                            alt="Picture of the author"
+                            style={{ borderRadius: "16px" }}
+                            objectFit="fill"
+                          />
                         </Box>
                       </Grid>
                     </Scrollspy>
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={firstStep} alt="step1" loading="lazy" placeholder="blur" />
+                          <Image src={firstStep} alt="step1" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={secondStep} alt="step2" loading="lazy" placeholder="blur" />
+                          <Image src={secondStep} alt="step2" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={thirdStep} alt="step3" loading="lazy" placeholder="blur" />
+                          <Image src={thirdStep} alt="step3" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                       <Box id="section-4">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={fourthStep} alt="step4" loading="lazy" placeholder="blur" />
+                          <Image src={fourthStep} alt="step4" style={{ borderRadius: "16px" }} objectFit="fill" />
                         </Box>
                       </Box>
                     </div>

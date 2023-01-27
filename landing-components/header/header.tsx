@@ -80,10 +80,10 @@ const Header = () => {
               <Grid item xs={12} sm={12} md={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
                   <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
-                    <PedlarImage src={headerlogo} alt="pedlar-logo" />
+                    <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" />
                   </Box>
                 ) : (
-                  <Box sx={{ height: 85, width: { md: 220, lg: 300 }, marginTop: "43px", cursor: "pointer" }}>
+                  <Box sx={{ height: 85, width: { md: 220, xl: 300 }, marginTop: "43px", cursor: "pointer" }}>
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}

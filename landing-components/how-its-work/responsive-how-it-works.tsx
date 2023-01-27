@@ -35,7 +35,7 @@ const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, 
   return (
     <CustomContainer>
       <Box sx={styles.ResponsMainBox}>
-        <Grid container item xs={12} sm={12} style={{ zIndex: "999", position: "relative", justifyContent: "center" }}>
+        <Grid container item xs={12} sm={12} style={{ zIndex: "999", position: "relative" }}>
           <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "center" }}>
             <Typography
               fontWeight={700}
@@ -102,6 +102,7 @@ const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, 
             onSlideChange={(index) => {
               setUpdateData(index.activeIndex + 1);
             }}
+            spaceBetween={1}
           >
             <SwiperSlide>
               <SliderCard title={title1} image={image1} />

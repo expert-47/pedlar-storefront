@@ -22,14 +22,7 @@ const SliderCard = ({ title, image }: Props) => {
         </Typography>
       </Box>
       <Box sx={styles.imageSize}>
-        <PedlarImage
-          src={image}
-          alt="Sticky Section Images"
-          style={{ borderRadius: "16px" }}
-          loading="lazy"
-          placeholder="blur"
-          objectFit="fill"
-        />
+        <PedlarImage src={image} alt="Sticky Section Images" style={{ borderRadius: "16px" }} />
       </Box>
     </Box>
   );

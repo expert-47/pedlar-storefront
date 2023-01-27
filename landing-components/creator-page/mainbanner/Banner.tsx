@@ -12,7 +12,7 @@ const Banner = () => {
     <CustomContainer sx={styles.MainBox}>
       <Box
         sx={{
-          width: { xs: "95%", sm: "705px", md: "660px", lg: "45%", xl: "45%" },
+          width: { xs: "95%", sm: "705px", md: "660px", lg: "48%", xl: "42%" },
           height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
           position: "absolute",
           left: 0,

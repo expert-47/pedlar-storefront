@@ -6,7 +6,7 @@ export const styles = {
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "flex-end",
-    height: { xs: "355px", sm: "580px", md: "600px", lg: "560px", xl: "585px" },
+    height: { xs: "355px", sm: "580px", md: "600px", lg: "auto", xl: "auto" },
     marginBottom: "100px",
   },
   GridBox: {
@@ -16,9 +16,9 @@ export const styles = {
     display: "flex",
     backgroundColor: "white",
     zIndex: " 99",
-    top: { xs: "370px", sm: "520px", md: "520px", lg: "0", xl: "0px" },
+    top: { xs: "370px", sm: "520px", md: "520px", lg: "0px", xl: "0px" },
     width: { xs: "90%", sm: "600px", md: "600px", lg: "605px", xl: "580px" },
-    right: { xs: "15px", sm: "20px", md: "5%", lg: "45px", xl: "45px" },
+    right: { xs: "15px", sm: "20px", md: "5%", lg: "85px", xl: "45px" },
   },
   heading: {
     lineHeight: "1",

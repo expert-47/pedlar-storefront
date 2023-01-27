@@ -40,7 +40,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
         }}
       >
         <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
-          <PedlarImage src={purpleGradient} alt="purple gradient" style={{ borderRadius: "16px" }} />
+          <PedlarImage src={purpleGradient} alt="purple gradient" layout="intrinsic" style={{ borderRadius: "16px" }} />
         </Box>
         <Box sx={styles.MainBox}>
           {isResponsive ? (
@@ -87,7 +87,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             src={image1}
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
-                            objectFit="fill"
+                            objectFit="contain"
                           />
                         </Box>
                       </Grid>
@@ -103,7 +103,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Grid>
                       <Grid>
@@ -122,7 +122,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             src={image3}
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
-                            objectFit="fill"
+                            objectFit="contain"
                           />
                         </Box>
                       </Grid>
@@ -145,7 +145,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             src={image4}
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
-                            objectFit="fill"
+                            objectFit="contain"
                           />
                         </Box>
                       </Grid>
@@ -153,22 +153,22 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image1} alt="step1" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image1} alt="step1" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image2} alt="step2" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image2} alt="step2" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image3} alt="step3" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image3} alt="step3" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Box>
                       <Box id="section-4">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image4} alt="step4" style={{ borderRadius: "16px" }} objectFit="fill" />
+                          <Image src={image4} alt="step4" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Box>
                     </div>

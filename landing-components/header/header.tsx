@@ -63,11 +63,6 @@ const Header = () => {
       <CustomContainer>
         <Grid
           container
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
           sx={styles.MainGrid}
           paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(15), lg: theme.spacing(35) }}
         >
@@ -134,9 +129,9 @@ const Header = () => {
               <Dialog
                 open={openDialog}
                 onClose={(handleClose, reason) => {
-                  if (reason !== "backdropClick") {
-                    onClose(handleClose, reason);
-                  }
+                  // if (reason !== "backdropClick") {
+                  //   onClose(handleClose, reason);
+                  // }
                 }}
                 sx={{
                   ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {

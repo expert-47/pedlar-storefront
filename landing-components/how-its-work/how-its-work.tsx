@@ -39,8 +39,26 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
           borderRadius: "16px",
         }}
       >
-        <Box style={{ position: "absolute", right: " 0", top: "0", zIndex: "0" }}>
-          <PedlarImage src={purpleGradient} alt="purple gradient" layout="intrinsic" style={{ borderRadius: "16px" }} />
+        <Box
+          sx={{
+            position: "absolute",
+            right: " 0",
+            top: "0",
+            zIndex: "0",
+            height: isResponsive ? 950 : "unset",
+            width: isResponsive ? "100%" : "unset",
+          }}
+        >
+          {isResponsive ? (
+            <PedlarImage src={purpleGradient} alt="purple gradient" layout={"fill"} style={{ borderRadius: "16px" }} />
+          ) : (
+            <PedlarImage
+              src={purpleGradient}
+              alt="purple gradient"
+              layout={"intrinsic"}
+              style={{ borderRadius: "16px" }}
+            />
+          )}
         </Box>
         <Box sx={styles.MainBox}>
           {isResponsive ? (

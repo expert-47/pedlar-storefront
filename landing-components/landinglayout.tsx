@@ -26,7 +26,7 @@ export function CustomContainer(props: ContainerProps) {
 
   return (
     <Container maxWidth={"xl"} disableGutters {...props}>
-      <Box className="mainChild">{children}</Box>
+      {children}
     </Container>
   );
 }

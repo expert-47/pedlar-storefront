@@ -2,11 +2,11 @@ import React from "react";
 import Banner from "../landing-components/landing/homebanner/home-banner";
 import Company from "../landing-components/landing/comapny/company";
 import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
-import Faq from "../landing-components/landing/faq/faq";
+import Faq from "../landing-components/faq/faq";
 import Layout from "../landing-components/landinglayout";
 import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/landing/how-its-work/how-its-work";
+import Howitswork from "../landing-components/how-its-work/how-its-work";
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
@@ -16,6 +16,7 @@ import firstStep from "../public/step1.png";
 import secondStep from "../public/step2.png";
 import thirdStep from "../public/step3.png";
 import fourthStep from "../public/step4.png";
+
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",
@@ -73,7 +74,22 @@ const index = () => {
         image4={fourthStep}
       />
       <EarlyAcess />
-      <Faq />
+      <Faq
+        question1="Why should I set up a Pedlar store?"
+        question2="Do I get paid for being on Pedlar?"
+        question3="Does it cost to join Pedlar?"
+        question4="How can I join Pedlar?"
+        question5="Does my store have its own unique URL?"
+        answer1="Pedlar stores are a quick and risk-free way to set up your own digital store and sell products from
+                  brands you love. Your storefront will be a place for your community to browse and shop your style. The
+                  best part: you'll earn 20% commision on all the sales you make."
+        answer2="Creators earn a 20% commission on all sales made on their Pedlar store. Brands only pay commision when
+                  a sale is made."
+        answer3="Nope! It's completely free for both Creators and Brands."
+        answer4="Since Pedlar is an invite only platform, submit an application and our team will get back to you
+                  within 24 hours. Pedlar is excited to partner with Creators with all types of aesthetic and style!"
+        answer5="Yep, when signing up you can choose your own unique URL."
+      />
     </Layout>
   );
 };

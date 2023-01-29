@@ -64,7 +64,7 @@ const Header = () => {
         <Grid
           container
           sx={styles.MainGrid}
-          paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(15), lg: theme.spacing(35) }}
+          paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         >
           {isMatch ? (
             <>

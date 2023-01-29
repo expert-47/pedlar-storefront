@@ -25,7 +25,14 @@ export function CustomContainer(props: ContainerProps) {
   const { children } = props;
 
   return (
-    <Container maxWidth={"xl"} disableGutters {...props}>
+    <Container
+      maxWidth={"xl"}
+      sx={{
+        paddingX: { sx: 0, sm: 5, md: 30, lg: 45, xl: 0 },
+      }}
+      disableGutters
+      {...props}
+    >
       {children}
     </Container>
   );

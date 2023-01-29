@@ -30,7 +30,6 @@ const BottomSheet = ({
   const [userType, setUserType] = useState(user_type);
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
-  console.log("user_type", user_type);
 
   useEffect(() => {
     setUserType(user_type);

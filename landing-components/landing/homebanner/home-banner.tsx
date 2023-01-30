@@ -71,10 +71,10 @@ const Banner = () => {
           ) : (
             <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" />
           )}
-          <Grid sx={styles.bannerText}>
+          <Box sx={styles.bannerText}>
             <Typography
               sx={styles.fashionText}
-              fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "42px", xl: "54px" }}
+              fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
               fontWeight={"700"}
               lineHeight={"normal"}
               color={"#1C1B1F"}
@@ -96,7 +96,7 @@ const Banner = () => {
                 color={"#1C1B1F"}
                 sx={styles.fashionText}
                 lineHeight={"unset"}
-                fontSize={{ xs: "34px", sm: "42px", md: "38px", lg: "42px", xl: "54px" }}
+                fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
               >
                 in business
               </Typography>
@@ -133,7 +133,7 @@ const Banner = () => {
                 />
               )}
             </Grid>
-          </Grid>
+          </Box>
         </Grid>
       </Box>
     </CustomContainer>

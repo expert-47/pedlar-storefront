@@ -9,17 +9,17 @@ export const styles = {
   },
   bannerText: {
     position: "absolute",
-    right: "0px",
+    right: "-10px",
     bottom: "36px",
     margin: " 0 auto",
-    width: "51%",
+    width: "52%",
     paddingRight: "2px",
     ["@media (max-width:850px)"]: {
       width: "70%",
       bottom: "3px !important",
     },
     ["@media (max-width:1145px)"]: {
-      bottom: "5px",
+      bottom: "-67px",
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",
@@ -82,7 +82,7 @@ export const styles = {
     fontSize: "22px",
     fontWeight: "600",
     padding: "10px 20px",
-    marginLeft: { xs: "0px", lg: "20px" },
+    marginLeft: { xs: "20px", md: "20px" },
     zIndex: "5",
     position: "relative",
     height: "70px",
@@ -130,7 +130,7 @@ export const styles = {
   animateRow: {
     alignItems: "center",
     ["@media (max-width:800px)"]: {
-      flexDirection: "column",
+      flexDirection: "row",
       alignItems: "flex-start",
     },
   },

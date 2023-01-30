@@ -1,13 +1,23 @@
-env: standard
-runtime: nodejs16
-instance_class: F1
+# env: standard
+# runtime: nodejs16
+# instance_class: F1
+# service: storefront-ui
+# inbound_services:
+#   - warmup
+# automatic_scaling:
+#   min_idle_instances: 1
+#   min_instances: 1
+# handlers:
+#   - url: /.*
+#     secure: always
+#     script: auto
+env: flex
+runtime: nodejs
 service: storefront-ui
-inbound_services:
-  - warmup
 automatic_scaling:
-  min_idle_instances: 1
-  min_instances: 1
-handlers:
-  - url: /.*
-    secure: always
-    script: auto
+  min_num_instances: 1
+  cool_down_period_sec: 180
+cpu_utilization:
+  target_utilization: 0.9
+resources:
+  memory_gb: 2.3

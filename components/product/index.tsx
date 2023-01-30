@@ -183,9 +183,17 @@ const Cart = (props) => {
         }
       }
     } catch (error) {
+      console.log("error");
     } finally {
       setBuyNowLoaderState(false);
     }
+  };
+
+  // clear error when user click You Might Like
+
+  const ClearErrors = () => {
+    setError(false);
+    setErrorMessage("");
   };
 
   return (
@@ -358,6 +366,7 @@ const Cart = (props) => {
                     paddingLeft="10px"
                     paddingBottom="50px"
                     sx={{ cursor: "pointer" }}
+                    onClick={ClearErrors}
                   >
                     <Box sx={{ width: 190, height: 180 }}>
                       <PedlarImage src={item?.featuredImage?.transformedSrc} />

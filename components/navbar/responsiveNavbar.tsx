@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 
 interface Props {
   storefrontName: string;
+  slug: string;
 }
 
 export const ResponsiveNavbar = (props: Props) => {
@@ -29,7 +30,12 @@ export const ResponsiveNavbar = (props: Props) => {
   return (
     <React.Fragment>
       <Toolbar sx={{ paddingTop: 4 }}>
-        <PedlarDrawer openDrawer={openDrawer} storefrontName={storefrontName} toggleDrawer={toggleDrawer} />
+        <PedlarDrawer
+          openDrawer={openDrawer}
+          storefrontName={storefrontName}
+          toggleDrawer={toggleDrawer}
+          slug={props?.slugs}
+        />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>
             <Image src="/menuIcon.png" alt="No Image Found" onClick={onClickDrawer} width={20} height={15} />

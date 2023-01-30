@@ -15,10 +15,11 @@ import {
   Box,
   IconButton,
   CircularProgress,
+  Badge,
 } from "@mui/material";
 import Link from "next/link";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useSwr from "swr";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -30,13 +31,15 @@ import styles from "styles/navbar";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { truncate } from "fs";
+import { useSelector } from "react-redux";
 
 export const PedlarDrawer = (props: {
   openDrawer: boolean;
   storefrontName: string;
   toggleDrawer: (value: boolean) => void;
+  slug: string;
 }) => {
-  const { type = "Brands", openDrawer, toggleDrawer, storefrontName } = props;
+  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, slug } = props;
   const theme = useTheme();
   const route = useRouter();
 
@@ -52,6 +55,7 @@ export const PedlarDrawer = (props: {
   };
   const [viewAll, setViewAll] = useState("");
   const [isClicked, setIsClicked] = useState(false);
+  const cartProducts = useSelector((data) => data.app.products);
 
   console.log("dddddd", viewAll);
 
@@ -99,18 +103,30 @@ export const PedlarDrawer = (props: {
           md={12}
           style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
         >
-          <CloseIcon onClick={onClickDrawer} />
-          <Grid item xs={10} sm={10} md={10} style={{ display: "flex", textAlign: "center", justifyContent: "center" }}>
-            <Link href="/">
-              <Image src="/pedlar.png" alt="No Image Found" width="70px" height="30px" />
-            </Link>
-            <Typography style={{ fontSize: "22px", fontWeight: "400", paddingLeft: "5px" }}>
-              {storefrontName ? storefrontName : ""}
-            </Typography>
+          <Grid xs={1.5}>
+            <CloseIcon onClick={onClickDrawer} sx={{ paddingLeft: "8px" }} />
           </Grid>
-          <IconButton sx={styles.shoppingCartIcon}>
-            <Image src="/cart.png" height="19.48px" width="19.48px" />
-          </IconButton>
+          <Grid item xs={9} sm={9} md={9} style={{ display: "flex", textAlign: "center", justifyContent: "center" }}>
+            <Grid item xs={6}>
+              <Box sx={{ float: "right" }}>
+                <Link href={`/${props?.slug}`}>
+                  <Image src="/pedlar.png" alt="No Image Found" width="75px" height="32px" />
+                </Link>
+              </Box>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography fontSize={20} fontWeight={400} style={{ paddingLeft: "5px", display: "flex" }}>
+                {storefrontName ? storefrontName : ""}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid xs={1.5}>
+            <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }}>
+              <IconButton sx={styles.iconColor}>
+                <Image src="/cart.png" height="19.48px" width="19.48px" />
+              </IconButton>
+            </Badge>
+          </Grid>
         </Grid>
         {/* <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>
           <Box

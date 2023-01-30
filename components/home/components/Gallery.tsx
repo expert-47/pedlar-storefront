@@ -25,13 +25,13 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
         sm={12}
         md={12}
         lg={12}
-        sx={{ justifyContent: "center", padding: "2px" }}
+        sx={{ justifyContent: "center", padding: "1px" }}
         columnSpacing={columnSpacing || 10}
         rowSpacing={10}
       >
         {newAdditionData?.map((item: any, index: any) => {
           return (
-            <Grid item xs={5.9} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
+            <Grid item xs={5.9} sm={3.99} md={3.99} lg={3.99} xl={3.99} key={item?.collectionId}>
               <CardComponent
                 name={item?.title}
                 type={item?.productType}

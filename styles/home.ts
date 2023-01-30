@@ -74,8 +74,8 @@ const styles = {
     color: "primary.dark",
   },
   gridtag1typo2: {
-    fontSize: "16px",
-    fontWeight: "600",
+    // fontSize: "16px",
+    // fontWeight: "600",
     color: "primary.dark",
   },
   arrowIcon: {
@@ -107,6 +107,7 @@ const styles = {
     color: "primary.dark",
     fontWeight: "600",
     paddingLeft: "8px",
+    width: "90%",
   },
   baseFootTypopara: {
     fontSize: "20px",

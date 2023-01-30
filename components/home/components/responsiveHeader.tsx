@@ -57,6 +57,8 @@ export const ResponsiveHeader = (props: Props) => {
   const [open, setOpen] = React.useState(false);
   const [opens, setOpens] = React.useState(false);
   const [filterCheckBoxes, setFilterCheckBoxes] = React.useState({});
+  const [filterCheckBoxesCategory, setFilterCheckBoxesCategory] = React.useState({});
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event: any) => {
     setOpen(!open);
@@ -99,7 +101,17 @@ export const ResponsiveHeader = (props: Props) => {
         });
       }
     }
-    console.log("brands");
+  };
+
+  const getCheckBoxValueCategories = (e: any, text: string) => {
+    if (e.target.checked) {
+      VendorsNames.push(text);
+    }
+    if (!e.target.checked) {
+      VendorsNames = VendorsNames.filter(function (item) {
+        return item !== text;
+      });
+    }
   };
 
   const applyFiltersMethod = () => {
@@ -124,6 +136,18 @@ export const ResponsiveHeader = (props: Props) => {
 
     setOpen(false);
   };
+  const resetFilterOfCategory = () => {
+    VendorsNames = [];
+
+    const obj = {};
+    shopList.data.forEach((_item, index) => {
+      obj["checkbox-" + index] = false;
+    });
+    setFilterCheckBoxesCategory(obj);
+    setFiltersValue(BrandsNames, VendorsNames, true);
+  };
+
+  console.log("VendorsNames", VendorsNames);
   return (
     <React.Fragment>
       <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex", paddingTop: "12px" }}>
@@ -170,7 +194,7 @@ export const ResponsiveHeader = (props: Props) => {
             {data.map((item, index) => {
               const checkboxKey: string = "checkbox-" + index;
               return (
-                <Grid style={{ display: "flex" }}>
+                <Grid style={{ display: "flex" }} key={"checkBox-" + index}>
                   <Grid>
                     <Checkbox
                       style={{ padding: "2px" }}
@@ -236,18 +260,32 @@ export const ResponsiveHeader = (props: Props) => {
           md={12}
         >
           <Grid gap={20} sx={styles.menuInnerContainer}>
-            {(shopList ? shopList.data.map((item) => item.productType) : []).map((item) => (
-              <Grid style={{ display: "flex" }}>
-                <Grid>
-                  <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} />
+            {(shopList ? shopList.data.map((item) => item.productType) : []).map((item, index) => {
+              const checkboxKey: string = "checkbox-" + index;
+              return (
+                <Grid style={{ display: "flex" }} key={"checkBoxx" + index}>
+                  <Grid>
+                    <Checkbox
+                      style={{ padding: "2px" }}
+                      sx={styles.menuCheck}
+                      checked={filterCheckBoxesCategory[checkboxKey] || false}
+                      onChange={(e) => getCheckBoxValueCategories(e, item)}
+                      onClick={() => {
+                        setFilterCheckBoxesCategory({
+                          ...filterCheckBoxesCategory,
+                          [checkboxKey]: !filterCheckBoxesCategory[checkboxKey],
+                        });
+                      }}
+                    />
+                  </Grid>
+                  <Grid>
+                    <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
+                      {item}
+                    </Typography>
+                  </Grid>
                 </Grid>
-                <Grid>
-                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
-                    {item}
-                  </Typography>
-                </Grid>
-              </Grid>
-            ))}
+              );
+            })}
           </Grid>
           <Grid
             xs={12}
@@ -275,7 +313,7 @@ export const ResponsiveHeader = (props: Props) => {
                 pathname: `/${route?.query?.slug}/products`,
               }}
             >
-              <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters()}>
+              <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilterOfCategory()}>
                 Reset filters
               </Button>
             </Link>

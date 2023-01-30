@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "styles/home";
 import Grid from "@mui/material/Grid";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -32,12 +32,12 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
       >
         <Grid
-          container
+          // container
           item
           xs={7}
-          sm={9}
-          md={9}
-          lg={9}
+          sm={8}
+          md={8}
+          lg={8}
           justifyContent={{ xs: "flex-start", md: "flex-start", lg: "flex-start" }}
         >
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
@@ -45,20 +45,33 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
 
         <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid
-            container
+            // container
             item
             xs={5}
-            sm={3}
-            md={3}
-            lg={3}
-            justifyContent={{ xs: "flex-end", sm: "flex-end", md: "flex-end", lg: "flex-end" }}
+            sm={4}
+            md={4}
+            lg={4}
             style={{
               cursor: "pointer",
               alignItems: "center",
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              flexWrap: "nowrap",
             }}
           >
-            <Typography sx={styles.gridtag1typo2}>{rightHeading}</Typography>
+            {/* <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "flex-end",
+              }}
+            > */}
+            <Typography fontSize={15} fontWeight={500} sx={styles.gridtag1typo2}>
+              {rightHeading}
+            </Typography>
             <ArrowForwardIcon sx={styles.arrowIcon} />
+            {/* </Box> */}
           </Grid>
         </Link>
       </Grid>

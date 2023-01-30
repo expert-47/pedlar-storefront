@@ -7,7 +7,7 @@ import { useTheme } from "@mui/material";
 import mobileBanner from "../../../public/mobBanner.png";
 import desktopBanner from "../../../public/desktopBanner.png";
 import largeBanner from "../../../public/largeBanner.png";
-import tabBanner from "../../../public/TabletBanner.png";
+import mediumBanner from "../../../public/TabletBanner.png";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
@@ -15,8 +15,8 @@ import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 import PedlarImage from "components/pedlarImage";
 
 const Banner = () => {
-  const isMedium = useMediaQuery("(max-width:850px)");
   const isSmall = useMediaQuery("(max-width:767px)");
+  const isMedium = useMediaQuery("(max-width:850px)");
   const isdektop = useMediaQuery("(max-width:1451px)");
   const popupScreen = useMediaQuery("(min-width:600px)");
   const [openDialog, setOpenDialog] = useState(false);
@@ -65,7 +65,7 @@ const Banner = () => {
           {isSmall ? (
             <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }} />
           ) : isMedium ? (
-            <PedlarImage layout="intrinsic" src={tabBanner} alt="tab banner" />
+            <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" />
           ) : isdektop ? (
             <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" />
           ) : (

@@ -28,7 +28,7 @@ export function CustomContainer(props: ContainerProps) {
     <Container
       maxWidth={"xl"}
       sx={{
-        paddingX: { sx: 0, sm: 5, md: 30, lg: 0, xl: 0 },
+        paddingX: { sx: 0, sm: 5, md: 30, lg: 40, xl: 0 },
       }}
       disableGutters
       {...props}

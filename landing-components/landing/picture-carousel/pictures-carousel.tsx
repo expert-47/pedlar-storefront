@@ -12,7 +12,7 @@ import JacobMax from "../../../public/JacobMax.png";
 import StephenDan from "../../../public/StephenDan.png";
 import Shadow from "../../../public/Shadow.png";
 import Lauren from "../../../public/Lauren.png";
-import PedlarImage from "components/pedlarImage";
+import Image from "next/image";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
@@ -37,97 +37,85 @@ const Picturecarousel = () => {
       >
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={MoraRuby} alt="Mora Ruby" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={MoraRuby} alt="Mora Ruby" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Mora Ruby</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={DebbiHeart} alt="Debbi Heart" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={DebbiHeart} alt="Debbi Heart" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Debbi Heart</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={JacobMax} alt="JacobMax" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={JacobMax} alt="JacobMax" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Jacob Max</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={StephenDan} alt="Stephen" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={StephenDan} alt="Stephen" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Stephen Dan</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={Shadow} alt="Shadow" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={Shadow} alt="Shadow" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Shadow</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={Lauren} alt="Lauren" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={Lauren} alt="Lauren" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Lauren</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={MoraRuby} alt="Mora Ruby" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={MoraRuby} alt="Mora Ruby" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Mora Ruby</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={DebbiHeart} alt="Debbi Heart" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={DebbiHeart} alt="Debbi Heart" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Debbi Heart</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={JacobMax} alt="JacobMax" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={JacobMax} alt="JacobMax" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Jacob Max</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={StephenDan} alt="Stephen" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={StephenDan} alt="Stephen" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Stephen Dan</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={Shadow} alt="Shadow" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={Shadow} alt="Shadow" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Shadow</Typography>
           </Box>
         </SwiperSlide>
         <SwiperSlide>
           <Box sx={styles.cardBox}>
-            <Box style={{ height: 300, width: 300, contain: "layout" }}>
-              <PedlarImage src={Lauren} alt="Lauren" loading="lazy" placeholder="blur" />
-            </Box>
+            <Image src={Lauren} alt="Lauren" loading="lazy" placeholder="blur" />
+
             <Typography sx={styles.cardText}>Lauren</Typography>
           </Box>
         </SwiperSlide>

@@ -3,7 +3,6 @@ import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button, Grid, IconButton, Dialog, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import ResponsiveHeader from "./responsive-header";
 import { CustomContainer } from "../landinglayout";
@@ -78,7 +77,17 @@ const Header = () => {
                     <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" />
                   </Box>
                 ) : (
-                  <Box sx={{ height: 85, width: { md: 220, lg: 300, xl: 300 }, marginTop: "48px", cursor: "pointer" }}>
+                  <Box
+                    sx={{
+                      height: { md: 75, lg: 98 },
+                      width: { md: 230, lg: 300 },
+                      marginTop: { lg: 60 },
+                      cursor: "pointer",
+                      position: { md: "absolute", lg: "relative" },
+                      left: { md: 40, lg: 0 },
+                      bottom: { md: 0 },
+                    }}
+                  >
                     <PedlarImage src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
                   </Box>
                 )}

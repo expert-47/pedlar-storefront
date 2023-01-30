@@ -6,6 +6,7 @@ import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { brandvalidation } from "../../add-validation/brand-validation";
 import emailjs from "@emailjs/browser";
+import PedlarImage from "components/pedlarImage";
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
   const form = useRef();
@@ -169,7 +170,14 @@ const Businesstoday = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Image src="/globe.svg" alt="insta" height={20} width={20} />
+                                <Box
+                                  style={{
+                                    height: 20,
+                                    width: 20,
+                                  }}
+                                >
+                                  <PedlarImage layout="fill" src="/globe.svg" alt="insta" />
+                                </Box>
                               </InputAdornment>
                             ),
                           }}

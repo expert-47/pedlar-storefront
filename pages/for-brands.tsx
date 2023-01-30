@@ -15,6 +15,7 @@ import firstStep from "../public/step1.png";
 import secondStep from "../public/work1.png";
 import thirdStep from "../public/work4.png";
 import fourthStep from "../public/cartList.png";
+import PedlarImage from "components/pedlarImage";
 
 const styless = {
   paperContainer: {
@@ -46,7 +47,7 @@ const brands = () => {
       <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "relative" }}>
         <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
-          <Image src={orangetop} alt="Orange meshes" />
+          <PedlarImage layout="intrinsic" src={orangetop} alt="Orange meshes" />
         </Box>
       </Box>
       <Banner />
@@ -80,7 +81,7 @@ const brands = () => {
         style={{ position: "absolute", right: "0", width: "1783px", zIndex: "0" }}
         bottom={{ xs: "619px", sm: "0px", lg: "343px" }}
       >
-        <Image src={orangebottom} alt="orange brand meshes" />
+        <PedlarImage layout="intrinsic" src={orangebottom} alt="orange brand meshes" />
       </Box>
     </Layout>
   );

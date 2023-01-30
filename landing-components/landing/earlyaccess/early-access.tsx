@@ -11,6 +11,7 @@ import Image from "next/image";
 import rightArrow from "../../../public/right-arrow.svg";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
+import PedlarImage from "components/pedlarImage";
 
 const EarlyAcess = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");
@@ -70,7 +71,9 @@ const EarlyAcess = () => {
               lg={1}
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
-              <Image src={rightArrow} style={{ height: "68px", width: "68px" }} />
+              <Box style={{ height: 47, width: 50 }}>
+                <PedlarImage src={rightArrow} style={{ height: "68px", width: "68px" }} />
+              </Box>
             </Grid>
             <Grid
               container

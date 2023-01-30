@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, ContainerProps, Box } from "@mui/material";
+import { Container, ContainerProps } from "@mui/material";
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import { NextSeo, NextSeoProps } from "next-seo";
@@ -28,7 +28,7 @@ export function CustomContainer(props: ContainerProps) {
     <Container
       maxWidth={"xl"}
       sx={{
-        paddingX: { sx: 0, sm: 5, md: 30, lg: 45, xl: 0 },
+        paddingX: { sx: 0, sm: 5, md: 30, lg: 0, xl: 0 },
       }}
       disableGutters
       {...props}

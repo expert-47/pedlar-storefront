@@ -97,15 +97,16 @@ const ResponsiveHeader = () => {
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
-          <Image
-            src={headerlogo}
-            alt="pedlar-logo"
-            height={75}
-            width={230}
-            onClick={openStorePage}
-            style={{ cursor: "pointer" }}
-            priority
-          />
+          <Box style={{ height: 70, width: 230 }}>
+            <PedlarImage
+              src={headerlogo}
+              alt="pedlar-logo"
+              height={75}
+              width={230}
+              onClick={openStorePage}
+              style={{ cursor: "pointer" }}
+            />
+          </Box>
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>
           <Drawer
@@ -116,11 +117,11 @@ const ResponsiveHeader = () => {
             }}
           >
             <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
-              <Box style={{ width: "192px", margin: "15px 0 0 19px" }}>
-                <Image
+              <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }}>
+                <PedlarImage
                   src={headerlogo}
                   alt="header-logo"
-                  style={{ height: "62px", width: "192px", cursor: "pointer", paddingTop: "10px" }}
+                  style={{ cursor: "pointer", paddingTop: "10px" }}
                   onClick={openStorePage}
                 />
               </Box>

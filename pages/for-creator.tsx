@@ -6,7 +6,6 @@ import Company from "../landing-components/creator-page/comapny/Company";
 import Faq from "../landing-components/faq/faq";
 import Storefree from "../landing-components/creator-page/storefree/Storefree";
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import bluemeshbrands from "../public/blue-meshh.png";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
 import Howitswork from "../landing-components/how-its-work/how-its-work";
@@ -14,6 +13,8 @@ import firstStep from "../public/work1.png";
 import secondStep from "../public/work2.png";
 import thirdStep from "../public/work3.png";
 import fourthStep from "../public/work4.png";
+import PedlarImage from "components/pedlarImage";
+import bluemeshbrand from "../public/blueMesh-brand.png";
 
 const styless = {
   paperContainer: {
@@ -44,11 +45,16 @@ const creator = () => {
     >
       <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
-        <Image src={bluemeshbrands} alt="Orange meshes" />
+        <PedlarImage layout="intrinsic" src={bluemeshbrands} alt="Orange meshes" />
+      </Box>
+      <Box
+        style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
+        bottom={{ xs: "640px", sm: "350px" }}
+      >
+        <PedlarImage layout="intrinsic" src={bluemeshbrand} alt="orang brand meshes" />
       </Box>
       <Banner />
       <Husttle />
-
       <Howitswork
         title1="Select products from your favourite brands"
         title2="Personalise your store to represent your aesthetic "

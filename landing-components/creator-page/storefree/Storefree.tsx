@@ -6,6 +6,7 @@ import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../../add-validation/creator-validation";
 import emailjs from "@emailjs/browser";
+import PedlarImage from "components/pedlarImage";
 
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
@@ -178,7 +179,14 @@ const Storefree = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Image src="/insta-icon.svg" alt="insta" height={20} width={20} />
+                                <Box
+                                  style={{
+                                    height: 20,
+                                    width: 20,
+                                  }}
+                                >
+                                  <PedlarImage layout="fill" src="/insta-icon.svg" alt="insta" />
+                                </Box>
                               </InputAdornment>
                             ),
                           }}
@@ -193,7 +201,14 @@ const Storefree = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Image src="/tiktok-icon.svg" alt="insta" height={20} width={20} />
+                                <Box
+                                  style={{
+                                    height: 20,
+                                    width: 20,
+                                  }}
+                                >
+                                  <PedlarImage layout="fill" src="/tiktok-icon.svg" alt="insta" />
+                                </Box>
                               </InputAdornment>
                             ),
                           }}

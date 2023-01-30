@@ -78,8 +78,8 @@ const Header = () => {
                     <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" />
                   </Box>
                 ) : (
-                  <Box sx={{ height: 85, width: { md: 220, xl: 300 }, marginTop: "43px", cursor: "pointer" }}>
-                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
+                  <Box sx={{ height: 85, width: { md: 220, lg: 300, xl: 300 }, marginTop: "48px", cursor: "pointer" }}>
+                    <PedlarImage src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
                   </Box>
                 )}
               </Grid>

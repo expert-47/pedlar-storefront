@@ -8,7 +8,6 @@ import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
 import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
 import Howitswork from "../landing-components/how-its-work/how-its-work";
 import Box from "@mui/material/Box";
-import Image from "next/image";
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.png";
 import orangeMesh from "../public/meshHome-gradient.png";
@@ -16,6 +15,7 @@ import firstStep from "../public/step1.png";
 import secondStep from "../public/step2.png";
 import thirdStep from "../public/step3.png";
 import fourthStep from "../public/step4.png";
+import PedlarImage from "components/pedlarImage";
 
 const styless = {
   paperContainer: {
@@ -47,16 +47,16 @@ const index = () => {
       <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "relative" }}>
         <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "1051px" }}>
-          <Image src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
+          <PedlarImage layout="intrinsic" src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
         </Box>
         <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "512px", lg: "57px" }}>
-          <Image src={pinkMeshes} alt="pink meshes" quality={50} />
+          <PedlarImage layout="intrinsic" src={pinkMeshes} alt="pink meshes" quality={50} />
         </Box>
         <Box
           style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
           top={{ xs: "2118px", sm: "422px", md: "422px", lg: "1655px" }}
         >
-          <Image src={orangeMesh} alt="Oranges pink meshes" quality={50} />
+          <PedlarImage layout="intrinsic" src={orangeMesh} alt="Oranges pink meshes" quality={50} />
         </Box>
       </Box>
       <Banner />

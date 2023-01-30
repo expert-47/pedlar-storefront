@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
-import Image from "next/image";
 import footerLogo from "../../public/footer-logo.svg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
 import { CustomContainer } from "../landinglayout";
 import { useTheme } from "@mui/material";
+import PedlarImage from "components/pedlarImage";
 
 const Footer = () => {
   const theme = useTheme();
@@ -26,7 +26,14 @@ const Footer = () => {
         >
           <Grid item xs={12} sm={6} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="/">
-              <Image src={footerLogo} alt="footer logo" />
+              <Box
+                style={{
+                  height: 69,
+                  width: 213,
+                }}
+              >
+                <PedlarImage src={footerLogo} alt="footer logo" />
+              </Box>
             </Link>
             <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"600"} paddingTop={"40px"}>
               We’re always here to help.

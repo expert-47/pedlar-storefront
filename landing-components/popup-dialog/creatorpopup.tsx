@@ -5,6 +5,9 @@ import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { styles } from "./styles";
 import emailjs from "@emailjs/browser";
+import PedlarImage from "components/pedlarImage";
+import InstaIcon from "../../public/insta-icon.svg";
+import TiktokIcon from "../../public/tiktok-icon.svg";
 
 const Creatorpopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
@@ -125,7 +128,15 @@ const Creatorpopup = (props: any) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Image src="/insta-icon.svg" alt="insta" height={20} width={20} />
+                      <Box
+                        style={{
+                          height: 20,
+                          width: 20,
+                          contain: "layout",
+                        }}
+                      >
+                        <PedlarImage src={InstaIcon} alt="insta" />
+                      </Box>
                     </InputAdornment>
                   ),
                 }}
@@ -137,7 +148,15 @@ const Creatorpopup = (props: any) => {
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
-                      <Image src="/tiktok-icon.svg" alt="insta" height={20} width={20} />
+                      <Box
+                        style={{
+                          height: 20,
+                          width: 20,
+                          contain: "layout",
+                        }}
+                      >
+                        <PedlarImage src={TiktokIcon} alt="Tiktok" />
+                      </Box>
                     </InputAdornment>
                   ),
                 }}

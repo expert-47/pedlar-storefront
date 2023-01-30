@@ -1,21 +1,18 @@
-import { Box, Grid, Typography, Dialog, IconButton, Slide, SwipeableDrawer } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
-import CloseIcon from "@mui/icons-material/Close";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
-import Image from "next/image";
 import mobileBanner from "../../../public/mobBanner.png";
 import desktopBanner from "../../../public/desktopBanner.png";
 import largeBanner from "../../../public/largeBanner.png";
 import tabBanner from "../../../public/TabletBanner.png";
 import { styles } from "./style";
-import Creatorpopup from "../../popup-dialog/creatorpopup";
-import Brandspopup from "../../popup-dialog/brandspopup";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
+import PedlarImage from "components/pedlarImage";
 
 const Banner = () => {
   const isMedium = useMediaQuery("(max-width:850px)");
@@ -66,13 +63,13 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <Image src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }} priority />
+            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }} />
           ) : isMedium ? (
-            <Image src={tabBanner} alt="tab banner" priority />
+            <PedlarImage layout="intrinsic" src={tabBanner} alt="tab banner" />
           ) : isdektop ? (
-            <Image src={desktopBanner} alt="desktop banner" priority placeholder="blur" />
+            <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" />
           ) : (
-            <Image src={largeBanner} alt="Large banner" priority placeholder="blur" />
+            <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" />
           )}
           <Grid sx={styles.bannerText}>
             <Typography

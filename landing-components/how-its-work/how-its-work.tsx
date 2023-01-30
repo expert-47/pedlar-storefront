@@ -26,7 +26,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
   return (
     <CustomContainer>
       <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0", bottom: "44px" }}>
-        <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
+        <PedlarImage src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
       </Box>
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}

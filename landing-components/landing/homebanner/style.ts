@@ -82,7 +82,7 @@ export const styles = {
     fontSize: "22px",
     fontWeight: "600",
     padding: "10px 20px",
-    marginLeft: { xs: "20px", md: "20px" },
+    marginLeft: { sm: "20px", md: "20px" },
     zIndex: "5",
     position: "relative",
     height: "70px",
@@ -130,7 +130,7 @@ export const styles = {
   animateRow: {
     alignItems: "center",
     ["@media (max-width:800px)"]: {
-      flexDirection: "row",
+      flexDirection: "column",
       alignItems: "flex-start",
     },
   },

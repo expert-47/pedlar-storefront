@@ -13,7 +13,7 @@ const SliderCard = ({ title, image }: Props) => {
   return (
     <Box
       sx={{
-        justifyContent: "flex-start",
+        justifyContent: "center",
       }}
     >
       <Box sx={styles.ResponsText}>
@@ -21,7 +21,7 @@ const SliderCard = ({ title, image }: Props) => {
           fontSize={{ xs: "30px", sm: "40px" }}
           fontWeight={600}
           lineHeight="normal"
-          textAlign={{ xs: "left" }}
+          textAlign={{ xs: "center", sm: "left" }}
         >
           {title}
         </Typography>

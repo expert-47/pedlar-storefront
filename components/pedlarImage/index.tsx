@@ -22,7 +22,7 @@ const PedlarImage = (props: props) => {
         onError={() => {
           setError(true);
         }}
-        loading="lazy"
+        // loading="lazy"
         placeholder="blur"
         blurDataURL="/loaderShim.png"
       />

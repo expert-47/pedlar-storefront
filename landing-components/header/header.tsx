@@ -11,6 +11,7 @@ import Brandspopup from "../popup-dialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import PedlarImage from "components/pedlarImage";
+import Image from "next/image";
 
 const Header = () => {
   const theme = useTheme();
@@ -81,14 +82,14 @@ const Header = () => {
                     sx={{
                       height: { md: 75, lg: 98 },
                       width: { md: 230, lg: 300 },
-                      marginTop: { lg: 60 },
+                      marginTop: { lg: 50 },
                       cursor: "pointer",
                       position: { md: "absolute", lg: "relative" },
                       left: { md: 40, lg: 0 },
                       bottom: { md: 0 },
                     }}
                   >
-                    <PedlarImage src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
+                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
                   </Box>
                 )}
               </Grid>

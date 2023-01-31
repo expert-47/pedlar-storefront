@@ -19,7 +19,7 @@ const Banner = () => {
           top: "100px",
         }}
       >
-        <PedlarImage zIndex={0} style={{ borderRadius: "0 20px 20px 0" }} src={CreatorBanner} alt={"Creator banner"} />
+        <PedlarImage zIndex={0} style={{ borderRadius: "0 20px 20px 0" }} src={CreatorBanner} alt={"Creator banner"} priority />
       </Box>
 
       <Box sx={styles.GridBox}>

@@ -33,7 +33,7 @@ const Banner = () => {
             }}
             paddingLeft={{ xl: "30px" }}
           >
-            <PedlarImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} />
+            <PedlarImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} priority />
           </Box>
         </Grid>
       </CustomContainer>

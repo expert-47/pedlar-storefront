@@ -23,7 +23,6 @@ const Header = () => {
   };
   const handleClose = () => {
     setSuccessModalShow(true);
-
     setOpenDialog(false);
   };
   const onChangeBrand = () => setUserType(false);
@@ -75,7 +74,7 @@ const Header = () => {
               <Grid item xs={12} sm={12} md={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
                   <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
-                    <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" />
+                    <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" priority />
                   </Box>
                 ) : (
                   <Box
@@ -89,7 +88,7 @@ const Header = () => {
                       bottom: { md: 0 },
                     }}
                   >
-                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} />
+                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}
               </Grid>

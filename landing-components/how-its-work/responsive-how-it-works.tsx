@@ -2,15 +2,9 @@ import React, { useRef, useState } from "react";
 import { styles } from "./style";
 import { Box, Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../landinglayout";
-import Image, { StaticImageData } from "next/image";
-import HomeSecImage1 from "../../../public/home-sec5-img1.png";
-import HomeSecImage2 from "../../../public/home-sec5-img2.png";
-// import HomeSecImage3 from "../../../public/home-sec5-img3.png";
-import thirdStep from "../../../public/step3.png";
-import HomeSecImage4 from "../../../public/home-sec5-img4.png";
+import { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import PedlarImage from "components/pedlarImage";
 import SliderCard from "./SliderCard";
 
 interface Props {
@@ -36,7 +30,7 @@ const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, 
     <CustomContainer>
       <Box sx={styles.ResponsMainBox}>
         <Grid container item xs={12} sm={12} style={{ zIndex: "999", position: "relative" }}>
-          <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "center" }}>
+          <Grid item xs={12} sm={12} sx={styles.ResponsHeading} textAlign={{ xs: "left" }}>
             <Typography
               fontWeight={700}
               fontSize={{ xs: "48px", sm: "48px" }}

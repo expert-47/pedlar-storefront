@@ -29,8 +29,6 @@ const Banner = () => {
     setOpenDialog(false);
   };
   const [userType, setUserType] = useState(true);
-  const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
   const openPopup = (value: string) => {
     if (value === "creator") {
       setUserType(true);
@@ -63,13 +61,13 @@ const Banner = () => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isSmall ? (
-            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }} />
+            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" style={{ width: "100%" }}  />
           ) : isMedium ? (
-            <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" />
+            <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner"  />
           ) : isdektop ? (
-            <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" />
+            <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner"  />
           ) : (
-            <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" />
+            <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner"  />
           )}
           <Box sx={styles.bannerText}>
             <Typography

@@ -94,13 +94,8 @@ const ResponsiveHeader = () => {
             }}
           >
             <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
-              <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }}>
-                <PedlarImage
-                  src={headerlogo}
-                  alt="header-logo"
-                  style={{ cursor: "pointer", paddingTop: "10px" }}
-                  onClick={openStorePage}
-                />
+              <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }} onClick={openStorePage}>
+                <PedlarImage src={headerlogo} alt="header-logo" style={{ cursor: "pointer", paddingTop: "10px" }} />
               </Box>
               <IconButton onClick={onCloseDrawer}>
                 <CloseIcon style={{ height: "35px", width: "35px", color: "black", marginTop: "-20px" }} />

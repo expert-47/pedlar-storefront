@@ -1,27 +1,24 @@
-import { Box, Grid, Typography, Dialog, IconButton, SwipeableDrawer } from "@mui/material";
+import { Box, Grid, Typography, IconButton, SwipeableDrawer } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useEffect, useState } from "react";
-
 import CloseIcon from "@mui/icons-material/Close";
-
 import { styles } from "./styles";
 import Creatorpopup from "landing-components/popup-dialog/creatorpopup";
 import Brandspopup from "landing-components/popup-dialog/brandspopup";
 
 interface Props {
   openDialog: boolean;
-
   handleClose: () => void;
   setOpenDialog: (value: boolean) => void;
   closePopup: () => void;
-  isSecondModalActive: boolean;
+  isSecondModalActive: any;
   sucessModalshow: boolean;
   userType?: boolean;
 }
+
 const BottomSheet = ({
   handleClose,
   openDialog,
-  setOpenDialog,
   closePopup,
   isSecondModalActive,
   sucessModalshow,

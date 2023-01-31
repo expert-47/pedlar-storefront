@@ -1,7 +1,7 @@
 import React from "react";
 import Image, { ImageProps } from "next/image";
 import { useState } from "react";
-import { Box, SxProps } from "@mui/material";
+import { Box } from "@mui/material";
 
 interface props extends ImageProps {
   zIndex?: number;

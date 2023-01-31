@@ -12,7 +12,7 @@ interface Props {
   handleClose: () => void;
   setOpenDialog: (value: boolean) => void;
   closePopup: () => void;
-  isSecondModalActive: boolean;
+  isSecondModalActive: any;
   sucessModalshow: boolean;
   userType?: boolean;
 }

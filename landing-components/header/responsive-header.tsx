@@ -1,25 +1,9 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Dialog,
-  Drawer,
-  Grid,
-  IconButton,
-  Slide,
-  Typography,
-  useScrollTrigger,
-  SwipeableDrawer,
-  useTheme,
-} from "@mui/material";
+import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
-import Creatorpopup from "../popup-dialog/creatorpopup";
-import Brandspopup from "../popup-dialog/brandspopup";
-import Image from "next/image";
 import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
 import PedlarImage from "components/pedlarImage";
@@ -97,15 +81,8 @@ const ResponsiveHeader = () => {
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
-          <Box style={{ height: 70, width: 230 }}>
-            <PedlarImage
-              src={headerlogo}
-              alt="pedlar-logo"
-              height={75}
-              width={230}
-              onClick={openStorePage}
-              style={{ cursor: "pointer" }}
-            />
+          <Box style={{ height: 70, width: 230 }} onClick={openStorePage}>
+            <PedlarImage src={headerlogo} alt="pedlar-logo" height={75} width={230} style={{ cursor: "pointer" }} />
           </Box>
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>

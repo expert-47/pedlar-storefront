@@ -6,9 +6,9 @@ import Responsivehowitworks from "./responsive-how-it-works";
 import purpleGradient from "../../public/purple-gradient.png";
 import Scrollspy from "react-scrollspy";
 import Image, { StaticImageData } from "next/image";
-
 import orangepinkmesh from "../../public/mesh-pink-orange.png";
 import PedlarImage from "components/pedlarImage";
+
 interface Props {
   title1: string;
   title2: string;

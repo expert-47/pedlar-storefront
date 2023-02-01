@@ -27,10 +27,10 @@ export const Home = (props: any) => {
       {/* <HomepagePopup /> */}
       <Bar />
       <Box
-        sx={{
-          paddingLeft: { xs: theme.spacing(20), sm: theme.spacing(40), md: theme.spacing(80), lg: theme.spacing(40) },
-          paddingRight: { xs: theme.spacing(20), sm: theme.spacing(40), md: theme.spacing(80), lg: theme.spacing(40) },
-        }}
+      // sx={{
+      //   paddingLeft: { xs: theme.spacing(20), sm: theme.spacing(40), md: theme.spacing(10), lg: theme.spacing(5) },
+      //   paddingRight: { xs: theme.spacing(20), sm: theme.spacing(40), md: theme.spacing(80), lg: theme.spacing(5) },
+      // }}
       >
         <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
 

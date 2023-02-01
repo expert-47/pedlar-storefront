@@ -6,6 +6,7 @@ import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { brandvalidation } from "../../add-validation/brand-validation";
 import emailjs from "@emailjs/browser";
+import PedlarImage from "components/pedlarImage";
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
   const form = useRef();
@@ -169,7 +170,14 @@ const Businesstoday = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Image src="/globe.svg" alt="insta" height={20} width={20} />
+                                <Box
+                                  style={{
+                                    height: 20,
+                                    width: 20,
+                                  }}
+                                >
+                                  <PedlarImage layout="fill" src="/globe.svg" alt="insta" />
+                                </Box>
                               </InputAdornment>
                             ),
                           }}
@@ -184,6 +192,7 @@ const Businesstoday = () => {
                         ...styles.Button,
                         color: values ? "White !important" : "#1C1B1F",
                         backgroundColor: errors ? "#1C1B1F" : "",
+                        // opacity: errors ? "1" : "0.9",
                         boxShadow: errors ? "unset" : "",
                       }}
                       className="creatorSubmit"
@@ -229,7 +238,7 @@ const Businesstoday = () => {
               </Grid>
             </Box>
           )}
-          <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "#49454F" }}>
+          <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "rgb(73,69,79)" }}>
             <Typography textTransform={"none"} fontSize={"16px"} fontWeight={400}>
               We will communicate with you about the information requested and other Pedlar services.
             </Typography>

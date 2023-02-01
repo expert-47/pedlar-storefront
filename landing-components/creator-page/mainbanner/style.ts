@@ -1,45 +1,24 @@
 export const styles = {
   MainBox: {
-    paddingTop: "141px",
+    paddingTop: { xs: "100px", lg: "150px" },
     display: "flex",
     alignItems: "center",
-    ["@media (min-width:1400px)"]: {
-      paddingTop: "185px",
-    },
-    ["@media (max-width:1250px)"]: {
-      paddingTop: "100px",
-    },
-    ["@media (max-width:1160px)"]: {
-      alignItems: "flex-start",
-    },
-    ["@media (max-width:800px)"]: {
-      paddingTop: "100px",
-    },
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "flex-end",
+    height: { xs: "355px", sm: "580px", md: "600px", lg: "auto", xl: "650px" },
+    marginBottom: "100px",
   },
   GridBox: {
-    width: "100%",
+    alignSelf: "center",
+    position: { xs: "absolute", lg: "relative" },
     borderRadius: "20px",
+    display: "flex",
     backgroundColor: "white",
-    margin: "0 0 0 auto",
-    maxWidth: "602px",
     zIndex: " 99",
-    ["@media (min-width:1400px)"]: {
-      maxWidth: "606px",
-      margin: "0 3px 0 auto",
-    },
-    ["@media (min-width:1441px)"]: {
-      maxWidth: "671px",
-    },
-    ["@media (max-width:1300px)"]: {
-      maxWidth: "550px",
-    },
-    ["@media (max-width:1160px)"]: {
-      margin: "300px 0 0 auto",
-      maxWidth: "602px",
-    },
-    ["@media (max-width:700px)"]: {
-      margin: "200px 0 0 auto",
-    },
+    top: { xs: "370px", sm: "520px", md: "520px", lg: "0px", xl: "0px" },
+    width: { xs: "90%", sm: "600px", md: "600px", lg: "605px", xl: "580px" },
+    right: { xs: "15px", sm: "20px", md: "5%", lg: "85px", xl: "45px" },
   },
   heading: {
     lineHeight: "1",
@@ -68,25 +47,6 @@ export const styles = {
     },
   },
   brandImg: {
-    position: "absolute",
-    left: "0px",
-    objectFit: "cover",
-    width: "656px",
-    ["@media (max-width:1160px)"]: {
-      width: "95%",
-    },
-    ["@media (max-width:1295px)"]: {
-      width: "600px",
-    },
-    ["@media (max-width:1024px)"]: {
-      width: "unset",
-    },
-    ["@media (min-width:1440px)"]: {
-      width: "700px",
-      left: "-45px",
-    },
-    ["@media (min-width:1600px)"]: {
-      left: "0px",
-    },
+    // position: "relative",
   },
 };

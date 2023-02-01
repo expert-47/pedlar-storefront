@@ -1,12 +1,12 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "@mui/material/Link";
-import Image from "next/image";
 import footerLogo from "../../public/footer-logo.svg";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
 import { CustomContainer } from "../landinglayout";
 import { useTheme } from "@mui/material";
+import PedlarImage from "components/pedlarImage";
 
 const Footer = () => {
   const theme = useTheme();
@@ -26,9 +26,16 @@ const Footer = () => {
         >
           <Grid item xs={12} sm={6} md={5} lg={5} sx={styles.footerLogocol}>
             <Link href="/">
-              <Image src={footerLogo} alt="footer logo" />
+              <Box
+                style={{
+                  height: 69,
+                  width: 213,
+                }}
+              >
+                <PedlarImage src={footerLogo} alt="footer logo" />
+              </Box>
             </Link>
-            <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"500"} paddingTop={"40px"}>
+            <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"600"} paddingTop={"40px"}>
               We’re always here to help.
             </Typography>
             <Typography
@@ -71,7 +78,7 @@ const Footer = () => {
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={6}>
               <Box style={{ display: "flex", alignItems: "center", paddingBottom: "16px" }}>
-                <InstagramIcon style={{ color: "#fff", fontSize: "32px" }} />
+                <InstagramIcon style={{ color: "rgb(249, 246, 242)", fontSize: "32px" }} />
                 <Link href="https://www.instagram.com/pedlar.official/" target="blank" sx={styles.footersocial}>
                   Instagram
                 </Link>

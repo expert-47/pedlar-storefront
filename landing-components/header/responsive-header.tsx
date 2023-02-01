@@ -1,35 +1,14 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Dialog,
-  Drawer,
-  Grid,
-  IconButton,
-  Slide,
-  Typography,
-  useScrollTrigger,
-  useTheme,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
+// import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { styles } from "./style";
-import { TransitionProps } from "@mui/material/transitions";
-import Creatorpopup from "../popup-dialog/creatorpopup";
-import Brandspopup from "../popup-dialog/brandspopup";
-import Image from "next/image";
 import headerlogo from "../../public/header-logo.svg";
+import MenuIcon from "../../public/menu-icon.png";
+import PedlarImage from "components/pedlarImage";
+import BottomSheet from "landing-components/BottomSheet";
 
-const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement;
-  },
-  ref: React.Ref<unknown>,
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
 const ResponsiveHeader = () => {
   const router = useRouter();
   const theme = useTheme();
@@ -81,6 +60,7 @@ const ResponsiveHeader = () => {
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
+
   return (
     <AppBar
       elevation={0}
@@ -98,18 +78,12 @@ const ResponsiveHeader = () => {
         md={12}
         lg={12}
         sx={styles.RespoMainGrid}
-        paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+        paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
-          <Image
-            src={headerlogo}
-            alt="pedlar-logo"
-            height={75}
-            width={230}
-            onClick={openStorePage}
-            style={{ cursor: "pointer" }}
-            priority
-          />
+          <Box style={{ height: 70, width: 230 }} onClick={openStorePage}>
+            <PedlarImage src={headerlogo} alt="pedlar-logo" height={75} width={230} style={{ cursor: "pointer" }} />
+          </Box>
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>
           <Drawer
@@ -120,13 +94,8 @@ const ResponsiveHeader = () => {
             }}
           >
             <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
-              <Box style={{ width: "192px", margin: "15px 0 0 19px" }}>
-                <Image
-                  src={headerlogo}
-                  alt="header-logo"
-                  style={{ height: "62px", width: "192px", cursor: "pointer", paddingTop: "10px" }}
-                  onClick={openStorePage}
-                />
+              <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }} onClick={openStorePage}>
+                <PedlarImage src={headerlogo} alt="header-logo" style={{ cursor: "pointer", paddingTop: "10px" }} />
               </Box>
               <IconButton onClick={onCloseDrawer}>
                 <CloseIcon style={{ height: "35px", width: "35px", color: "black", marginTop: "-20px" }} />
@@ -175,104 +144,32 @@ const ResponsiveHeader = () => {
                       Log in
                     </Typography>
                   </Button>
-                  <Dialog fullScreen open={openDialog} onClose={handleClose} TransitionComponent={Transition}>
-                    <Grid
-                      container
-                      item
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      lg={12}
-                      sx={[
-                        styles.RespLoginBox,
-                        {
-                          overflow: "scroll",
-                          "&::-webkit-scrollbar": {
-                            display: "none",
-                          },
-                        },
-                      ]}
-                    >
-                      <Grid
-                        container
-                        style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}
-                      >
-                        {userType ? (
-                          <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
-                            {sucessModalshow ? "Join the waitlist!" : null}
-                          </Typography>
-                        ) : (
-                          <Typography fontSize={{ xs: "22px", sm: "22px", md: "36px", lg: "36px" }}>
-                            {sucessModalshow ? "Let’s talk growth" : null}
-                          </Typography>
-                        )}
-                        <IconButton onClick={closePopup}>
-                          <CloseIcon style={{ color: "black" }} />
-                        </IconButton>
-                      </Grid>
-                      {sucessModalshow ? (
-                        <Box sx={styles.BoxSelector}>
-                          <Button
-                            style={{
-                              textTransform: "none",
-                              color: "#49454F",
-                              borderRadius: "5px",
-                              padding: "2px 7px",
-                            }}
-                            sx={{
-                              backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                              fontWeight: userType == true ? "700" : "400",
-                              "&:hover": {
-                                backgroundColor: userType == true ? "#d0bcff" : "transparent",
-                              },
-                            }}
-                            onClick={onChangeCreator}
-                          >
-                            <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
-                            I'm a creator
-                          </Button>
-                          <Button
-                            style={{
-                              textTransform: "none",
-                              color: "#49454F",
-                              borderRadius: "5px",
-                              padding: "2px 7px",
-                            }}
-                            sx={{
-                              backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                              fontWeight: userType == false ? "700" : "400",
 
-                              "&:hover": {
-                                backgroundColor: userType == false ? "#d0bcff" : "transparent",
-                              },
-                            }}
-                            onClick={onChangeBrand}
-                          >
-                            I'm a brand
-                          </Button>
-                        </Box>
-                      ) : null}
-                      {userType ? (
-                        <Creatorpopup isSecondModalActive={isSecondModalActive} />
-                      ) : (
-                        <Brandspopup isSecondModalActive={isSecondModalActive} />
-                      )}
-                      {sucessModalshow ? (
-                        <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {
-                            "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                          }
-                        </Typography>
-                      ) : null}
-                    </Grid>
-                  </Dialog>
+                  <BottomSheet
+                    handleClose={handleClose}
+                    openDialog={openDialog}
+                    setOpenDialog={setOpenDialog}
+                    closePopup={closePopup}
+                    isSecondModalActive={isSecondModalActive}
+                    sucessModalshow={sucessModalshow}
+                    userType={userType}
+                  />
                 </Grid>
               </Grid>
             </Grid>
           </Drawer>
-          <IconButton aria-label="Drawer" onClick={onClickDrawer} style={{ color: "black", paddingRight: "40px" }}>
-            <MenuIcon />
-          </IconButton>
+
+          {/* <MenuIcon /> */}
+          <Box
+            style={{
+              height: "30px",
+              width: "30px",
+              color: "black",
+            }}
+            onClick={onClickDrawer}
+          >
+            <PedlarImage src={MenuIcon} alt="Menu Icon" />
+          </Box>
         </Grid>
       </Grid>
     </AppBar>

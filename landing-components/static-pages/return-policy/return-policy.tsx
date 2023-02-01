@@ -1,6 +1,6 @@
 import React from "react";
 import { CustomContainer } from "../../landinglayout";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button, Grid } from "@mui/material";
 import { styles } from "./style";
 
 const ReturnPolicy = () => {
@@ -11,10 +11,11 @@ const ReturnPolicy = () => {
           textTransform={"none"}
           fontSize={{ xs: "48px", sm: "64px", md: "64px", lg: "64px" }}
           fontWeight={"700"}
-          style={{ lineHeight: "normal", paddingBottom: "60px" }}
+          style={{ lineHeight: "normal", paddingBottom: "60px", paddingTop: "11px" }}
         >
           Pedlar Shipping and Returns Policy (Shoppers)
         </Typography>
+
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Shipping
         </Typography>
@@ -27,7 +28,7 @@ const ReturnPolicy = () => {
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
           We ask the brands on Pedlar to dispatch items within 48 hours. Please reach out to our team at
-          mailto:hello@pedlar.store if you have any queries relating to the shipment of your order.
+          hello@pedlar.store if you have any queries relating to the shipment of your order.
         </Typography>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Delivery Timings

@@ -9,17 +9,17 @@ export const styles = {
   },
   bannerText: {
     position: "absolute",
-    right: "0px",
+    right: "-10px",
     bottom: "36px",
     margin: " 0 auto",
-    width: "51%",
+    width: "52%",
     paddingRight: "2px",
     ["@media (max-width:850px)"]: {
       width: "70%",
       bottom: "3px !important",
     },
     ["@media (max-width:1145px)"]: {
-      bottom: "5px",
+      bottom: "-67px",
     },
     ["@media (max-width:960px)"]: {
       bottom: " -48px",
@@ -34,15 +34,16 @@ export const styles = {
       paddingTop: "20px",
     },
     ["@media (min-width:1452px)"]: {
-      right: "6px",
+      right: "-15px",
       width: "44%",
-      bottom: "31px",
+      bottom: "15px",
     },
   },
   FirstPara: {
     opacity: "0.64",
-    padding: "10px 0 22px 0px",
+    padding: "20px 0 30px 0px",
     color: " #1C1B1F",
+    lineHeight: "normal",
   },
   creator: {
     background: "#1C1B1F",
@@ -54,10 +55,10 @@ export const styles = {
     whiteSpace: "nowrap",
     cursor: "pointer",
     fontSize: "22px",
+    lineHeight: "normal",
     fontWeight: "600",
-    padding: "15px 0",
+    padding: "10px 20px",
     textTransform: " initial",
-    marginRight: "20px",
     zIndex: "4",
     position: "relative",
     height: "70px",
@@ -80,7 +81,8 @@ export const styles = {
     cursor: "pointer",
     fontSize: "22px",
     fontWeight: "600",
-    padding: "15px 0",
+    padding: "10px 20px",
+    marginLeft: { sm: "20px", md: "20px" },
     zIndex: "5",
     position: "relative",
     height: "70px",
@@ -95,9 +97,14 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
+  RespBox: {
+    borderRadius: "10px",
+    px: 25,
+  },
   RespLoginBox: {
     borderRadius: "10px",
-    p: 25,
+    paddingBottom: "30px",
+    px: 25,
   },
   TextFeild: {
     width: "100%",
@@ -118,6 +125,7 @@ export const styles = {
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
     padding: "6px 5px",
+    width: "188px",
   },
   animateRow: {
     alignItems: "center",

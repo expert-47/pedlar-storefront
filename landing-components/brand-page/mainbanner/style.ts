@@ -2,9 +2,6 @@ export const styles = {
   MainBox: {
     paddingTop: "100px",
     display: "flex",
-    ["@media (max-width:1199px)"]: {
-      paddingTop: "100px",
-    },
   },
   GridBox: {
     width: "100%",
@@ -17,7 +14,7 @@ export const styles = {
       maxWidth: "597px",
     },
     ["@media (min-width:1441px)"]: {
-      maxWidth: "700px",
+      maxWidth: "690px",
     },
     ["@media (max-width:1280px)"]: {
       maxWidth: "584px",
@@ -34,7 +31,7 @@ export const styles = {
       marginLeft: "auto",
       marginTop: "-150px",
       zIndex: "999",
-      maxWidth: "700px",
+      maxWidth: "600px",
     },
     ["@media (max-width:767px)"]: {
       marginTop: "0",
@@ -45,7 +42,7 @@ export const styles = {
     color: "#1c1b1f",
     fontWeight: "bold",
     fontFamily: "Inter",
-    margin: "0 auto 0 0",
+    // margin: "0 auto 0 0",
     maxWidth: "526px",
     ["@media (max-width:600px)"]: {
       maxWidth: "272px !important",
@@ -71,8 +68,5 @@ export const styles = {
       width: "100%",
     },
   },
-  GridImg: {
-    maxWidth: " 669px",
-    width: "100%",
-  },
+  GridImg: {},
 };

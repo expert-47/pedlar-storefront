@@ -4,13 +4,15 @@ export const styles = {
     display: "block",
     textDecoration: "none",
     fontSize: "22px",
-    paddingBottom: "16px",
     fontWeight: "600",
+    paddingBottom: "16px",
+    letterSpacing: "-0.03em",
+    color: "rgb(249, 246, 242)",
   },
   footerText: {
     fontFamily: "Inter",
     paddingBottom: "18px",
-    color: "#fff",
+    color: "rgb(249, 246, 242)",
   },
   footersocial: {
     fontFamily: "Inter",

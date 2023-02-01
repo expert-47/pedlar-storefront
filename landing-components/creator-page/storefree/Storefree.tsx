@@ -6,6 +6,7 @@ import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../../add-validation/creator-validation";
 import emailjs from "@emailjs/browser";
+import PedlarImage from "components/pedlarImage";
 
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
@@ -178,7 +179,14 @@ const Storefree = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Image src="/insta-icon.svg" alt="insta" height={20} width={20} />
+                                <Box
+                                  style={{
+                                    height: 20,
+                                    width: 20,
+                                  }}
+                                >
+                                  <PedlarImage layout="fill" src="/insta-icon.svg" alt="insta" />
+                                </Box>
                               </InputAdornment>
                             ),
                           }}
@@ -193,7 +201,14 @@ const Storefree = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Image src="/tiktok-icon.svg" alt="insta" height={20} width={20} />
+                                <Box
+                                  style={{
+                                    height: 20,
+                                    width: 20,
+                                  }}
+                                >
+                                  <PedlarImage layout="fill" src="/tiktok-icon.svg" alt="insta" />
+                                </Box>
                               </InputAdornment>
                             ),
                           }}
@@ -254,7 +269,7 @@ const Storefree = () => {
               </Grid>
             </Box>
           )}
-          <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "#49454F" }}>
+          <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "rgb(73,69,79)" }}>
             <Typography textTransform={"none"} fontSize={"16px"} fontWeight={400}>
               We will communicate with you about the information requested and other Pedlar services.
             </Typography>

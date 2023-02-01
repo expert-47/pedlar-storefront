@@ -45,9 +45,14 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
+  RespBox: {
+    borderRadius: "10px",
+    px: 25,
+  },
   RespLoginBox: {
     borderRadius: "10px",
-    p: 25,
+    paddingBottom: "30px",
+    px: 25,
   },
   TextFeild: {
     width: "100%",
@@ -68,5 +73,6 @@ export const styles = {
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
     padding: "6px 5px",
+    width: "188px",
   },
 };

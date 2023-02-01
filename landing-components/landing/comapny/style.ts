@@ -1,18 +1,20 @@
 export const styles = {
   heading: {
-    marginTop: "45px",
+    marginTop: "100px",
     color: "#1C1B1F",
-    lineHeight: "unset",
+    lineHeight: "normal",
     zIndex: "2",
     position: "relative",
   },
   Typography: {
-    color: "rgba(28, 27, 31, 0.64)",
-    marginBottom: "40px",
-    lineHeight: "unset",
+    color: "rgba(28, 27, 31)",
+    marginBottom: "50px",
+    lineHeight: "normal",
+    letterSpacing: "normal",
     zIndex: "2",
     position: "relative",
-    width: "102%",
+    width: "100%",
+    opacity: "0.64",
   },
   CreatorButton: {
     width: { xs: "100%", sm: "auto" },
@@ -32,9 +34,14 @@ export const styles = {
     borderRadius: "10px",
     p: 25,
   },
+  RespBox: {
+    borderRadius: "10px",
+    px: 25,
+  },
   RespLoginBox: {
     borderRadius: "10px",
-    p: 25,
+    paddingBottom: "30px",
+    px: 25,
   },
   BoxSelector: {
     display: "flex",
@@ -43,5 +50,6 @@ export const styles = {
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
     padding: "6px 5px",
+    width: "188px",
   },
 };

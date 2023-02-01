@@ -12,11 +12,11 @@ const config: DefaultSeoProps = {
   additionalLinkTags: [
     {
       rel: "favicon",
-      href: "/pedlarIcon.png",
+      href: "/new-favicon.ico",
     },
     {
       rel: "apple-touch-icon",
-      href: "/pedlarIcon.png",
+      href: "/new-favicon.ico",
       sizes: "76x76",
     },
   ],

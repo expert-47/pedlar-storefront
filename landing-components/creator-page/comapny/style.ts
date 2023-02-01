@@ -2,9 +2,17 @@ export const styles = {
   heading: {
     marginTop: "30px",
     color: "#1C1B1F",
-    fontWeight: "700",
+    lineHeight: "normal",
+    paddingBottom: "40px",
   },
   Typography: {
-    color: "rgba(28, 27, 31, 0.64)",
+    color: "rgba(28, 27, 31)",
+    marginBottom: "50px",
+    lineHeight: "normal",
+    letterSpacing: "normal",
+    zIndex: "2",
+    position: "relative",
+    width: "100%",
+    opacity: "0.64",
   },
 };

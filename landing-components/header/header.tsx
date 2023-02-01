@@ -3,7 +3,6 @@ import { styles } from "./style";
 import CloseIcon from "@mui/icons-material/Close";
 import { Button, Grid, IconButton, Dialog, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import ResponsiveHeader from "./responsive-header";
 import { CustomContainer } from "../landinglayout";
@@ -12,6 +11,7 @@ import Brandspopup from "../popup-dialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import PedlarImage from "components/pedlarImage";
+import Image from "next/image";
 
 const Header = () => {
   const theme = useTheme();
@@ -23,7 +23,6 @@ const Header = () => {
   };
   const handleClose = () => {
     setSuccessModalShow(true);
-
     setOpenDialog(false);
   };
   const onChangeBrand = () => setUserType(false);
@@ -32,7 +31,7 @@ const Header = () => {
 
   const onChangeCreator = () => setUserType(true);
   const [openDialog, setOpenDialog] = useState(false);
-  const isMatch = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const Scrolltrigger = useScrollTrigger({ threshold: 22, disableHysteresis: true });
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -63,13 +62,8 @@ const Header = () => {
       <CustomContainer>
         <Grid
           container
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
           sx={styles.MainGrid}
-          paddingX={{ xs: theme.spacing(30), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
+          paddingX={{ xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) }}
         >
           {isMatch ? (
             <>
@@ -77,21 +71,33 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Grid item xs={12} sm={12} md={12} lg={3.5}>
+              <Grid item xs={12} sm={12} md={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
                   <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
-                    <PedlarImage src={headerlogo} alt="pedlar-logo" />
+                    <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" priority />
                   </Box>
                 ) : (
-                  <Box style={{ cursor: "pointer", marginTop: "59px", width: "82%" }}>
+                  <Box
+                    sx={{
+                      height: { md: 75, lg: 98 },
+                      width: { md: 230, lg: 300 },
+                      marginTop: { lg: 50 },
+                      cursor: "pointer",
+                      position: { md: "absolute", lg: "relative" },
+                      left: { md: 40, lg: 0 },
+                      bottom: { md: 0 },
+                    }}
+                  >
                     <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}
               </Grid>
-              <Grid container item xs={12} sm={12} md={12} lg={5} gap={40} style={{ justifyContent: "center" }}>
+              <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid onClick={openCreators}>
                   <Typography
                     textTransform="none"
+                    fontSize={"16px"}
+                    fontWeight={600}
                     sx={{
                       ...styles.Button,
                       textDecorationLine: router.pathname == "/for-creator" && "underline",
@@ -104,6 +110,8 @@ const Header = () => {
                 <Grid onClick={openBrands}>
                   <Typography
                     textTransform="none"
+                    fontSize={"16px"}
+                    fontWeight={600}
                     sx={{
                       ...styles.Button,
                       textDecorationLine: router.pathname == "/for-brands" && "underline",
@@ -114,14 +122,7 @@ const Header = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={12}
-                lg={3.5}
-                style={{ textAlign: "right", display: "flex", justifyContent: "flex-end" }}
-              >
+              <Grid item xs={12} sm={12} md={3.5} style={{ display: "flex", justifyContent: "flex-end" }}>
                 <Button onClick={openPopup}>
                   <Typography textTransform="none" sx={styles.LoginButton}>
                     Log in
@@ -133,12 +134,13 @@ const Header = () => {
                   </Typography>
                 </Button>
               </Grid>
+
               <Dialog
                 open={openDialog}
                 onClose={(handleClose, reason) => {
-                  if (reason !== "backdropClick") {
-                    onClose(handleClose, reason);
-                  }
+                  // if (reason !== "backdropClick") {
+                  //   onClose(handleClose, reason);
+                  // }
                 }}
                 sx={{
                   ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
@@ -228,11 +230,14 @@ const Header = () => {
                     <Brandspopup isSecondModalActive={isSecondModalActive} />
                   )}
                   {sucessModalshow ? (
-                    <Typography style={{ paddingTop: "10px", textAlign: "center" }}>
-                      {
-                        "We will communicate with you about the information requested and other Pedlar services. The use of your information is governed by Pedlar’s Privacy Policy."
-                      }
-                    </Typography>
+                    <>
+                      <Typography style={{ paddingTop: "10px", color: "rgb(73,69,79)" }}>
+                        {"We will communicate with you about the information requested and other Pedlar services."}
+                      </Typography>
+                      <Typography style={{ color: "rgb(73,69,79)" }}>
+                        {" The use of your information is governed by Pedlar’s Privacy Policy."}
+                      </Typography>
+                    </>
                   ) : null}
                 </Grid>
               </Dialog>

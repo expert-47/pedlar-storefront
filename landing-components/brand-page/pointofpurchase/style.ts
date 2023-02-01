@@ -1,12 +1,12 @@
 export const styles = {
   MainGrid: {
-    paddingTop: "97px",
+    paddingTop: "50px",
   },
   GridBox: {
     backgroundColor: "White",
     borderRadius: "15px",
-    padding: "30px",
-    marginBottom: "16px",
+    padding: "20px 30px 30px",
+    minHeight: "250px",
   },
   heading: {
     paddingLeft: "60px",

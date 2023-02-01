@@ -8,6 +8,7 @@ import Divider from "@mui/material/Divider";
 import styles from "styles/home";
 import BrandTitles from "./components/brandTitles";
 import Gallery from "./components/Gallery";
+import HomepagePopup from "components/popups/homepagePopup";
 
 export const Home = (props: any) => {
   const theme = useTheme();
@@ -21,7 +22,9 @@ export const Home = (props: any) => {
   return (
     <Grid>
       <BannerImg headerData={props?.headerData} />
+
       <Divider sx={styles.bannerDivider} />
+      {/* <HomepagePopup /> */}
       <Bar />
       <Box
         sx={{

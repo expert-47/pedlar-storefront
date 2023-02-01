@@ -37,9 +37,9 @@ export default function Navbar(props: any) {
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={"14px"} fontWeight={"600"}>
-            FREE Returns - FREE Shipping - All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping -
-            All Orders Shipped Directly From The Brand - FREE Returns - FREE Shipping - All Orders Shipped Directly From
-            The Brand -
+            FREE Returns • FREE Shipping • All Orders Shipped Directly From The Brand • FREE Returns • FREE Shipping •
+            All Orders Shipped Directly From The Brand • FREE Returns • FREE Shipping • All Orders Shipped Directly From
+            The Brand •
           </Typography>
         </Marquee>
 

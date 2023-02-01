@@ -38,6 +38,19 @@ const styles = {
       backgroundColor: "primary.dark",
     },
   },
+  shopAllbutton: {
+    width: "150px",
+    backgroundColor: "primary.dark",
+    color: "primary.main",
+    borderRadius: "666px",
+    fontWeight: "600",
+    textTransform: "none",
+    padding: "10px 32.5px",
+    fontSize: "16px",
+    "&:hover": {
+      backgroundColor: "primary.dark",
+    },
+  },
   mainbargrid: {
     // display: "flex",
     backgroundColor: "primary.dark",

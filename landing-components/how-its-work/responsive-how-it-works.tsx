@@ -98,7 +98,7 @@ const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, 
             }}
             spaceBetween={1}
           >
-            <SwiperSlide>
+            <SwiperSlide style={{ backgroundColor: "red" }}>
               <SliderCard title={title1} image={image1} />
             </SwiperSlide>
 

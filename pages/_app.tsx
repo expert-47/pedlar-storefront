@@ -14,10 +14,8 @@ import { store } from "store/index";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
 import NextNProgress from "nextjs-progressbar";
-import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }: any) {
-  const route = useRouter();
   useEffect(() => {
     Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
       autoload: false,

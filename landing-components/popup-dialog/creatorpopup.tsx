@@ -1,7 +1,6 @@
 import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../add-validation/creator-validation";
-import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { styles } from "./styles";
 import emailjs from "@emailjs/browser";

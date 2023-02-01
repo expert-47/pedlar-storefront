@@ -125,8 +125,7 @@ export const styles = {
     border: "1px solid rgba(28, 27, 31, 0.64)",
     marginBottom: "24px",
     padding: "10px 10px",
-
-    maxWidth: "65%",
+    maxWidth: "230px",
   },
   animateRow: {
     alignItems: "center",

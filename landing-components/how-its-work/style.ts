@@ -80,7 +80,7 @@ export const styles = {
   imageSize: {
     paddingTop: "30px",
     height: { xs: "700px", sm: "810px", md: "800px" },
-    width: { xs: "320px", sm: "375px", md: "400px" },
+    width: { xs: "100%", sm: "375px", md: "400px" },
     paddingBottom: "30px",
   },
 };

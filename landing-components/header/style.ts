@@ -3,8 +3,6 @@ export const styles = {
     height: "100px",
     display: "flex",
     flexDirection: "row",
-    paddingTop: "10px",
-    paddingBottom: "15px",
     alignItems: "center",
   },
   Respheader: {

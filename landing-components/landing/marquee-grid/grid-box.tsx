@@ -1,4 +1,4 @@
-import { Typography, Grid, Dialog, IconButton, Button, useMediaQuery, SwipeableDrawer } from "@mui/material";
+import { Typography, Grid, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import Marquee from "react-fast-marquee";
@@ -8,9 +8,6 @@ import secondGrid from "../../../public/secondGrid.png";
 import thirdGrid from "../../../public/thirdGrid.png";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";
-import CloseIcon from "@mui/icons-material/Close";
-import Creatorpopup from "../../popup-dialog/creatorpopup";
-import Brandspopup from "../../popup-dialog/brandspopup";
 import PedlarImage from "components/pedlarImage";
 import TextBox from "./textBox";
 import BottomSheet from "landing-components/BottomSheet";
@@ -31,8 +28,6 @@ const Gridbox = () => {
   };
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const [userType, setUserType] = useState(true);
-  const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };

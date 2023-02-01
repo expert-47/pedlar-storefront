@@ -22,6 +22,7 @@ const SliderCard = ({ title, image }: Props) => {
           fontWeight={600}
           lineHeight="normal"
           textAlign={{ xs: "center", sm: "left" }}
+          width={{ xs: "100%", sm: "70%", md: "100%" }}
         >
           {title}
         </Typography>

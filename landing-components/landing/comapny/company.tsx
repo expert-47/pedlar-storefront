@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { Grid, Typography, Button, Dialog, IconButton, Box, useMediaQuery, SwipeableDrawer } from "@mui/material";
+import { Grid, Typography, Button, useMediaQuery } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
-import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
-import Creatorpopup from "../../popup-dialog/creatorpopup";
-import Brandspopup from "../../popup-dialog/brandspopup";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
@@ -13,15 +10,13 @@ const Company = () => {
   const popupScreen = useMediaQuery("(min-width:600px)");
   const [openDialog, setOpenDialog] = useState(false);
   const [userType, setUserType] = useState(true);
-  // const openPopup = () => setOpenDialog(true);
   const openPopup = (value: string) => {
     if (value == "creator") {
       setUserType(true);
     }
     setOpenDialog(true);
   };
-  const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
+
   const handleClose = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
@@ -85,7 +80,7 @@ const Company = () => {
           sm={4}
           md={3}
           lg={2.5}
-          paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(0), md: theme.spacing(20), lg: theme.spacing(20) }}
         >
           <Button sx={styles.CreatorButton} onClick={() => openPopup("creator")}>
             <Typography textTransform="none" fontSize={"22px"} lineHeight={"normal"}>

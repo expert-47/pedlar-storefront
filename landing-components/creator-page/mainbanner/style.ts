@@ -11,7 +11,7 @@ export const styles = {
   },
   GridBox: {
     alignSelf: "center",
-    position: { xs: "absolute", lg: "relative",  },
+    position: { xs: "absolute", lg: "relative" },
     borderRadius: "20px",
     display: "flex",
     backgroundColor: "white",

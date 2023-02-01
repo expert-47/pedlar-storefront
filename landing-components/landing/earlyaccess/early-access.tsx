@@ -1,13 +1,9 @@
-import { Box, Button, Dialog, Grid, IconButton, Slide, SwipeableDrawer, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
-import CloseIcon from "@mui/icons-material/Close";
 import { useTheme } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Creatorpopup from "../../popup-dialog/creatorpopup";
-import Brandspopup from "../../popup-dialog/brandspopup";
-import Image from "next/image";
 import rightArrow from "../../../public/right-arrow.svg";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
@@ -25,8 +21,6 @@ const EarlyAcess = () => {
     setOpenDialog(false);
   };
   const [userType, setUserType] = useState(true);
-  const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
   const openPopup = (value: string) => {
     if (value === "creator") {
       setUserType(true);
@@ -85,7 +79,7 @@ const EarlyAcess = () => {
               style={{
                 textAlign: isMatch ? "left" : "right",
                 marginTop: isMatch ? "30px" : "0px",
-                justifyContent: isMatch ? "center" : "flex-end",
+                justifyContent: isMatch ? "flex-start" : "flex-end",
               }}
             >
               <Box style={{ display: isTab ? "unset" : "flex" }}>

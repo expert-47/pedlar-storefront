@@ -1,22 +1,17 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
+import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
-import Typography from "@mui/material/Typography";
+import { IconButton } from "@mui/material";
+import DialogTitle from "@mui/material/DialogTitle";
+import Link from "next/link";
+import styles from "styles/home";
+import { useRouter } from "next/router";
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
-  },
-  "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
-  },
-}));
+const BootstrapDialog = styled(Dialog)(() => ({}));
 
 export interface DialogTitleProps {
   id: string;
@@ -24,71 +19,116 @@ export interface DialogTitleProps {
   onClose: () => void;
 }
 
-function BootstrapDialogTitle(props: DialogTitleProps) {
-  const { children, onClose, ...other } = props;
-
-  return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: "absolute",
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
-  );
-}
-
-const HomepagePopup = () => {
+export default function HomepagePopup() {
   const [open, setOpen] = React.useState(false);
+  const router = useRouter();
+  const slug = router?.query;
 
-  const handleClickOpen = () => {
+  useEffect(() => {
     setOpen(true);
-  };
+  }, []);
+
   const handleClose = () => {
     setOpen(false);
+    document.body.style.overflow = "unset";
   };
+
+  function BootstrapDialogTitle(props: DialogTitleProps) {
+    const { children, onClose, ...other } = props;
+
+    return (
+      <DialogTitle sx={{}} {...other}>
+        {children}
+        {onClose ? (
+          <IconButton
+            aria-label="close"
+            onClick={onClose}
+            sx={{
+              position: "absolute",
+              right: 0,
+              top: 0,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        ) : null}
+      </DialogTitle>
+    );
+  }
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button>
-      <BootstrapDialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Modal title
-        </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget
-            quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
-          <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet
-            rutrum faucibus dolor auctor.
-          </Typography>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl
-            consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
-        </DialogActions>
+      {/* {desktop view} */}
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        sx={{
+          display: { xs: "none", sm: "block" },
+          fontFamily: "Inter",
+          "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
+            overflowY: "hidden !important",
+          },
+        }}
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle>
+        <Box>
+          <Grid container>
+            <Grid item xs={6} sx={{ marginTop: "-32px" }}>
+              <img src="/popImg.jpg" style={{ position: "relative", height: "100%" }} />
+              <img
+                src="/pedlarWhite.png"
+                style={{ position: "absolute", bottom: "20px", left: "20px", color: "white" }}
+              />
+            </Grid>
+            <Grid item xs={6} sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}>
+              <Box sx={{ marginLeft: "3rem" }}>
+                <Box sx={{ fontSize: "20px", marginTop: "3rem", fontWeight: "bold" }}>Free shipping &</Box>
+                <Box sx={{ fontSize: "20px", fontWeight: "bold" }}>returns!</Box>
+                <Box sx={{ fontSize: "15px", paddingTop: "1.5rem" }}>
+                  Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
+                  shopping. No catches, no hidden fees.
+                </Box>
+                <Box sx={{ marginTop: "3rem" }}>
+                  <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+                    <Button sx={styles.shopbutton}>Shop now</Button>
+                  </Link>
+                </Box>
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </BootstrapDialog>
+      {/* {mobile view} */}
+      <BootstrapDialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+        sx={{ display: { xs: "block", sm: "none" }, fontFamily: "Inter" }}
+      >
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle>
+        <Box>
+          <Box sx={{ padding: "2rem" }}>
+            <Box sx={{ fontSize: "24px", fontWeight: "bold" }}>Free shipping &</Box>
+            <Box sx={{ fontSize: "24px", fontWeight: "bold" }}> returns!</Box>
+            <Box sx={{ paddingTop: "1.5rem" }}>
+              Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
+              shopping. No catches, no hidden fees.
+            </Box>
+            <Box sx={{ marginTop: "3rem", marginBottom: "1rem" }}>
+              <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+                <Button sx={styles.shopbutton}>Shop now</Button>
+              </Link>
+            </Box>
+          </Box>
+          <Box>
+            {/* <img src="/popImg.jpg" style={{ width: "100%" }} /> */}
+            <img src="/popImg.jpg" style={{ position: "relative", width: "100%" }} />
+            <img src="/pedlarWhite.png" style={{ position: "absolute", top: "160%", left: "20px", color: "white" }} />
+          </Box>
+        </Box>
       </BootstrapDialog>
     </div>
   );
-};
-
-export default HomepagePopup;
+}

@@ -24,7 +24,7 @@ export const Home = (props: any) => {
       <BannerImg headerData={props?.headerData} />
 
       <Divider sx={styles.bannerDivider} />
-      {/* <HomepagePopup /> */}
+      <HomepagePopup />
       <Bar />
       <Box
       // sx={{

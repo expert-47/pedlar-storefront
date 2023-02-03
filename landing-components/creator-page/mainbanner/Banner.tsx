@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
-
 import { styles } from "./style";
 import CreatorBanner from "../../../public/creatorbanner.png";
 import { Link as ScrollLink } from "react-scroll";
@@ -19,7 +18,13 @@ const Banner = () => {
           top: "100px",
         }}
       >
-        <PedlarImage zIndex={0} style={{ borderRadius: "0 20px 20px 0" }} src={CreatorBanner} alt={"Creator banner"} priority />
+        <PedlarImage
+          zIndex={0}
+          style={{ borderRadius: "0 20px 20px 0" }}
+          src={CreatorBanner}
+          alt={"Creator banner"}
+          priority
+        />
       </Box>
 
       <Box sx={styles.GridBox}>
@@ -35,7 +40,7 @@ const Banner = () => {
           >
             Followers love your style. Give them what they want with a personalised store of products from top brands.
           </Typography>
-          <ScrollLink to="StoreFreeForm" spy={true} smooth={true} offset={-100} duration={500}>
+          <ScrollLink to="StoreFreeForm" spy={true} smooth={true} offset={-150} duration={500}>
             <Button sx={styles.Button}>
               <Typography textTransform={"none"} fontSize={"22px"} lineHeight={"normal"}>
                 Get access - <span style={{ fontStyle: "italic", fontWeight: "400" }}>for free</span>

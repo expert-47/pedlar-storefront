@@ -8,7 +8,7 @@ import Storefree from "../../landing-components/creator-page/storefree/Storefree
 import Box from "@mui/material/Box";
 import Image from "next/image";
 import bluemeshbrands from "../../public/blue-meshh.png";
-import Picturecarousel from "../../landing-components/landing/picture-carousel/pictures-carousel";
+import Picturecarousel from "../../landing-components/picture-carousel/pictures-carousel";
 import Howitswork from "landing-components/how-its-work/how-its-work";
 import firstStep from "../../public/work1.png";
 import secondStep from "../../public/work2.png";

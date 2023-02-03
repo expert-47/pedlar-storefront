@@ -6,6 +6,8 @@ import { Field, Form, Formik } from "formik";
 import { brandvalidation } from "../../add-validation/brand-validation";
 import emailjs from "@emailjs/browser";
 import PedlarImage from "components/pedlarImage";
+import LanguageIcon from "@mui/icons-material/Language";
+
 const Businesstoday = () => {
   const [submitform, setSubmitForm] = useState(true);
   const form = useRef();
@@ -168,15 +170,8 @@ const Businesstoday = () => {
                           sx={styles.TextFeild}
                           InputProps={{
                             startAdornment: (
-                              <InputAdornment position="start">
-                                <Box
-                                  style={{
-                                    height: 20,
-                                    width: 20,
-                                  }}
-                                >
-                                  <PedlarImage layout="fill" src="/globe.svg" alt="insta" />
-                                </Box>
+                              <InputAdornment position="start" sx={{ color: "#1C1B1F" }}>
+                                <LanguageIcon />
                               </InputAdornment>
                             ),
                           }}
@@ -191,7 +186,6 @@ const Businesstoday = () => {
                         ...styles.Button,
                         color: values ? "White !important" : "#1C1B1F",
                         backgroundColor: errors ? "#1C1B1F" : "",
-                        // opacity: errors ? "1" : "0.9",
                         boxShadow: errors ? "unset" : "",
                       }}
                       className="creatorSubmit"

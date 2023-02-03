@@ -1,28 +1,63 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
-import { CustomContainer } from "../../landinglayout";
+import { Box, Grid, Typography } from "@mui/material";
+import { CustomContainer } from "../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
-import SalesBrand from "../../../public/sales-brand1.png";
-import SetForgot from "../../../public/set-forgot.png";
-import FreeJoin from "../../../public/free-join.png";
-import PropleTrustPeople from "../../../public/people-trust-people.png";
 import PedlarImage from "components/pedlarImage";
-import { Box } from "@mui/system";
+import { StaticImageData } from "next/image";
 
-const Pointofpurchase = () => {
+interface Props {
+  heading: string;
+  icon1: StaticImageData;
+  icon2: StaticImageData;
+  icon3: StaticImageData;
+  icon4: StaticImageData;
+  title1: string;
+  title2: string;
+  title3: string;
+  title4: string;
+  para1: string;
+  para2: string;
+  para3: string;
+  para4: string;
+}
+
+const CardBox = ({
+  heading,
+  icon1,
+  icon2,
+  icon3,
+  icon4,
+  title1,
+  title2,
+  title3,
+  title4,
+  para1,
+  para2,
+  para3,
+  para4,
+}: Props) => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} sx={styles.MainGrid}>
-        <Grid item xs={12} sm={12} md={12} lg={10} xl={9}>
+      <Grid
+        container
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        paddingTop={{ xs: "400px", sm: "350px", md: "350px", lg: "120px" }}
+        style={{ position: "relative" }}
+      >
+        <Grid item xs={12} sm={12} md={12} lg={10.5} xl={8.5}>
           <Typography
             textTransform={"none"}
             fontSize={{ xs: "48px", md: "54px" }}
             sx={styles.heading}
-            paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(50), lg: theme.spacing(60) }}
+            paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(50), lg: theme.spacing(50) }}
           >
-            Create moments of inspiration closer to the point of purchase
+            {heading}
           </Typography>
         </Grid>
         <Grid
@@ -38,68 +73,68 @@ const Pointofpurchase = () => {
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={SalesBrand} alt="hassle1" zIndex={0} />
+                <PedlarImage src={icon1} alt="hassle1" zIndex={0} />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
-                Increase Sales and Brand Exposure
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
+                {title1}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} style={{ lineHeight: "normal" }}>
-                Let our creators promote and sell your products for you.
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
+                {para1}
               </Typography>
             </Grid>
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={SetForgot} alt="hassle1" zIndex={0} />
+                <PedlarImage src={icon2} alt="hassle2" zIndex={0} />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
-                Set and forget
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
+                {title2}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} style={{ lineHeight: "normal" }}>
-                All stock easily integrated in under two minutes. Fulfil orders as normal.
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
+                {para2}
               </Typography>
             </Grid>
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={FreeJoin} alt="hassle1" zIndex={0} />
+                <PedlarImage src={icon3} alt="hassle3" zIndex={0} />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
-                Free to join, only pay commission on sales
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
+                {title3}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} style={{ lineHeight: "normal" }}>
-                Free, forever. Only pay commission on sales creators make.
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
+                {para3}
               </Typography>
             </Grid>
           </Grid>
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={PropleTrustPeople} alt="hassle1" zIndex={0} />
+                <PedlarImage src={icon4} alt="hassle4" zIndex={0} />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
-              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} style={{ lineHeight: "normal" }}>
-                People trust people
+              <Typography textTransform={"none"} fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
+                {title4}
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.para}>
-              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} style={{ lineHeight: "normal" }}>
-                Deepen existing creator relationships or find new, lucrative partnerships.
+              <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} lineHeight={"normal"}>
+                {para4}
               </Typography>
             </Grid>
           </Grid>
@@ -109,4 +144,4 @@ const Pointofpurchase = () => {
   );
 };
 
-export default Pointofpurchase;
+export default CardBox;

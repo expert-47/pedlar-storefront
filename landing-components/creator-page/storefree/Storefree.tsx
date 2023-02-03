@@ -6,6 +6,7 @@ import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../../add-validation/creator-validation";
 import emailjs from "@emailjs/browser";
 import PedlarImage from "components/pedlarImage";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Storefree = () => {
   const [submitform, setSubmitForm] = useState(true);
@@ -178,14 +179,7 @@ const Storefree = () => {
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
-                                <Box
-                                  style={{
-                                    height: 20,
-                                    width: 20,
-                                  }}
-                                >
-                                  <PedlarImage layout="fill" src="/insta-icon.svg" alt="insta" />
-                                </Box>
+                                <InstagramIcon />
                               </InputAdornment>
                             ),
                           }}

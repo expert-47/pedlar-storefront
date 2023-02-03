@@ -6,12 +6,12 @@ import { styles } from "./style";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import MoraRuby from "../../../public/demoo.png";
-import DebbiHeart from "../../../public/DebbiHeart.png";
-import JacobMax from "../../../public/JacobMax.png";
-import StephenDan from "../../../public/StephenDan.png";
-import Shadow from "../../../public/Shadow.png";
-import Lauren from "../../../public/Lauren.png";
+import MoraRuby from "../../public/demoo.png";
+import DebbiHeart from "../../public/DebbiHeart.png";
+import JacobMax from "../../public/JacobMax.png";
+import StephenDan from "../../public/StephenDan.png";
+import Shadow from "../../public/Shadow.png";
+import Lauren from "../../public/Lauren.png";
 import Image from "next/image";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);

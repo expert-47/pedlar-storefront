@@ -1,5 +1,4 @@
 import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
-// import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -24,10 +23,7 @@ const ResponsiveHeader = () => {
 
     setOpenDialog(false);
   };
-  // const handleClose = () => setOpenDialog(false);
   const [userType, setUserType] = useState(true);
-  const onChangeCreator = () => setUserType(true);
-  const onChangeBrand = () => setUserType(false);
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const trigger = useScrollTrigger({
     disableHysteresis: true,

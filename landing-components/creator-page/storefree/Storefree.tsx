@@ -1,5 +1,4 @@
 import { Grid, Box, Typography, TextField, InputAdornment, Button } from "@mui/material";
-import Image from "next/image";
 import React, { useState, useRef } from "react";
 import { CustomContainer } from "../../landinglayout";
 import { styles } from "./style";

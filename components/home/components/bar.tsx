@@ -20,6 +20,7 @@ const Bar = () => {
             justifyContent: "center",
             position: "sticky",
             top: "110px",
+            zIndex: "100",
           }}
         >
           <Grid

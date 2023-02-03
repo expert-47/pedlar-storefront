@@ -5,7 +5,7 @@ import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
 import Faq from "../landing-components/faq/faq";
 import Layout from "../landing-components/landinglayout";
 import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
-import Picturecarousel from "../landing-components/landing/picture-carousel/pictures-carousel";
+import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
 import Howitswork from "../landing-components/how-its-work/how-its-work";
 import Box from "@mui/material/Box";
 import orangeMeshes from "../public/orange-meshes.png";

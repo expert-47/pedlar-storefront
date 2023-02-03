@@ -8,7 +8,7 @@ import Box from "@mui/material/Box";
 import Image from "next/image";
 import orangetop from "../../public/top-mesh.png";
 import orangebottom from "../../public/bottom-mesh.png";
-import Picturecarousel from "../../landing-components/landing/picture-carousel/pictures-carousel";
+import Picturecarousel from "../../landing-components/picture-carousel/pictures-carousel";
 
 import Howitswork from "landing-components/how-its-work/how-its-work";
 import Faq from "landing-components/faq/faq";

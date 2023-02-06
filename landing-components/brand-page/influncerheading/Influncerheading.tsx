@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import { useTheme } from "@mui/material";
@@ -8,23 +8,23 @@ const Influncerheading = () => {
   const theme = useTheme();
   return (
     <CustomContainer>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        paddingX={{ xs: theme.spacing(15), md: theme.spacing(20), lg: theme.spacing(30) }}
+      <Box
+        paddingX={{
+          xs: theme.spacing(15),
+          sm: theme.spacing(30),
+          md: theme.spacing(50),
+          lg: theme.spacing(90),
+          xl: theme.spacing(100),
+        }}
       >
         <Typography
           fontSize={{ xs: "48px", sm: "54px" }}
           sx={styles.heading}
-          width="95%"
-          paddingX={{ xs: theme.spacing(5), sm: theme.spacing(25), md: theme.spacing(20), lg: theme.spacing(30) }}
+          width={{ xs: "100%", sm: "100%", md: "65%", lg: "70%" }}
         >
-          Work with the world’s most talented influencers
+          {"Work with the world’s most talented influencers"}
         </Typography>
-      </Grid>
+      </Box>
     </CustomContainer>
   );
 };

@@ -22,7 +22,7 @@ const Influncerheading = () => {
           sx={styles.heading}
           width={{ xs: "100%", sm: "100%", md: "65%", lg: "70%" }}
         >
-          Work with the world’s most talented influencers
+          {"Work with the world’s most talented influencers"}
         </Typography>
       </Box>
     </CustomContainer>

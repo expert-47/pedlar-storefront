@@ -160,7 +160,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
             </Typography>
           </Grid>
 
-          <Typography sx={styles.paymentTotal}>{totalPrice ? `A$${totalPrice}` : ""}</Typography>
+          <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
         </Grid>
 
         <Button

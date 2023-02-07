@@ -43,7 +43,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                   type={item?.productType}
                   price={
                     newAdditionData?.[index].priceRange?.maxVariantPrice?.currencyCode === "AUD"
-                      ? `A$${newAdditionData?.[index].priceRange?.maxVariantPrice?.amount}`
+                      ? `$${newAdditionData?.[index].priceRange?.maxVariantPrice?.amount}`
                       : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
                   }
                   image={item?.featuredImage?.transformedSrc}

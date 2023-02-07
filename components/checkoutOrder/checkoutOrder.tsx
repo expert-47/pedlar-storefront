@@ -141,7 +141,7 @@ const CheckoutOrder = (props: Props) => {
               }}
             >
               <Typography sx={styles.brandName}>{props.name}</Typography>
-              <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "A$" : ""} ${
+              <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "$" : ""} ${
                 props?.price
               }`}</Typography>
 

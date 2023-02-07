@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../../landing-components/brand-page/mainbanner/Banner";
 import Layout from "../../landing-components/landinglayout";
-import Pointofpurchase from "../../landing-components/brand-page/pointofpurchase/Pointofpurchase";
 import Influncerheading from "../../landing-components/brand-page/influncerheading/Influncerheading";
 import Businesstoday from "../../landing-components/brand-page/businesstoday/Businesstoday";
 import Box from "@mui/material/Box";
@@ -12,10 +11,15 @@ import Picturecarousel from "../../landing-components/picture-carousel/pictures-
 
 import Howitswork from "landing-components/how-its-work/how-its-work";
 import Faq from "landing-components/faq/faq";
-import firstStep from "../../public/step1.png";
-import secondStep from "../../public/step1.png";
-import thirdStep from "../../public/step1.png";
-import fourthStep from "../../public/step1.png";
+import firstStep from "public/step1.png";
+import secondStep from "public/step1.png";
+import thirdStep from "public/step1.png";
+import fourthStep from "public/step1.png";
+import SalesBrand from "public/sales-brand1.png";
+import SetForgot from "public/set-forgot.png";
+import FreeJoin from "public/free-join.png";
+import PropleTrustPeople from "public/people-trust-people.png";
+import CardBox from "landing-components/card-box/card-box";
 
 const styless = {
   paperContainer: {
@@ -51,7 +55,21 @@ const brands = () => {
         </Box>
       </Box>
       <Banner />
-      <Pointofpurchase />
+      <CardBox
+        heading=" Create moments of inspiration closer to the point of purchase"
+        icon1={SalesBrand}
+        title1="Increase Sales and Brand Exposure"
+        para1="Let our creators promote and sell your products for you."
+        icon2={SetForgot}
+        title2="Set and forget"
+        para2="All stock easily integrated in under two minutes. Fulfil orders as normal."
+        icon3={FreeJoin}
+        title3="Free to join, only pay commission on sales"
+        para3="Free, forever. Only pay commission on sales creators make."
+        icon4={PropleTrustPeople}
+        title4="People trust people"
+        para4="Deepen existing creator relationships or find new, lucrative partnerships."
+      />
       <Howitswork
         title1="Sync your Shopify store to Pedlar in two minutes"
         title2="Creators add your products to their stores"

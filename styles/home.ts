@@ -124,6 +124,7 @@ const styles = {
     paddingTop: "6px",
     fontWeight: "600",
     color: "success.dark",
+    cursor: "pointer",
   },
   bankingicons: {
     width: "34px",

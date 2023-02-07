@@ -7,6 +7,7 @@ import styles from "styles/navbar";
 import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import ListItemText from "@mui/material/ListItemText";
+// import ProductHeader from "components/home/components/productHeader";
 
 interface Props {
   type: string;
@@ -23,7 +24,6 @@ const DropdownButton = (props: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [filterCheckBoxes, setFilterCheckBoxes] = useState({});
-  let count = 0;
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -73,12 +73,14 @@ const DropdownButton = (props: Props) => {
     setFilterCheckBoxes(obj);
     setFiltersValue(BrandsNames, VendorsNames, true);
   };
+  console.log("type", type);
 
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Button sx={styles.tabButton} onClick={handleClick}>
           <Box style={{ borderBottom: openMenu ? "solid #1C1B1F 1px" : "none" }}>{type}</Box>
+          {type === "Brands" ? <Box sx={{ color: "purple" }}>{`(${BrandsNames.length})`}</Box> : null}
           {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
         </Button>
       </Grid>
@@ -110,7 +112,6 @@ const DropdownButton = (props: Props) => {
             paddingX={{ xs: theme.spacing(10), md: theme.spacing(0), lg: theme.spacing(40) }}
             paddingY={{ md: theme.spacing(10), lg: theme.spacing(10) }}
           >
-            {/* <ProductHeader /> */}
             <Grid
               container
               display={"flex"}
@@ -122,18 +123,19 @@ const DropdownButton = (props: Props) => {
               <Box sx={styles.menuInnerContainer} style={{ display: "flex" }}>
                 {data.map((item, index) => {
                   const checkboxKey: string = "checkbox-" + index;
-                  // debugger;
                   return (
-                    <MenuItem key={index}>
+                    <MenuItem
+                      key={index}
+                      onClick={() => {
+                        setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
+                      }}
+                    >
                       <Checkbox
                         // id={"checkbox"+index}
 
                         checked={filterCheckBoxes[checkboxKey] || false}
                         sx={styles.menuCheck}
                         onChange={(e) => getCheckBoxValue(e, item)}
-                        onClick={() => {
-                          setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
-                        }}
                       />
                       <ListItemText>{item}</ListItemText>
                     </MenuItem>

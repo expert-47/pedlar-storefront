@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "../../landing-components/creator-page/mainbanner/Banner";
-import Husttle from "../../landing-components/creator-page/husttle/Husttle";
 import Layout from "../../landing-components/landinglayout";
 import Company from "../../landing-components/creator-page/comapny/Company";
 
@@ -15,6 +14,12 @@ import secondStep from "../../public/work2.png";
 import thirdStep from "../../public/work3.png";
 import fourthStep from "../../public/work4.png";
 import Faq from "landing-components/faq/faq";
+import HassleIcon1 from "public/hassle-icon1.png";
+import HassleIcon2 from "public/hassle-icon2.png";
+import HassleIcon3 from "public/hassle-icon3.png";
+import HassleIcon4 from "public/hassle-icon4.png";
+import CardBox from "landing-components/card-box/card-box";
+
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",
@@ -47,7 +52,21 @@ const creator = () => {
         <Image src={bluemeshbrands} alt="Orange meshes" />
       </Box>
       <Banner />
-      <Husttle />
+      <CardBox
+        heading="A side-hustle without the hassle"
+        icon1={HassleIcon1}
+        title1="20% Commission"
+        para1="A cut above the rest. Earn more for selling products you love."
+        icon2={HassleIcon2}
+        title2="Curate and customise"
+        para2="Make it your business. Create a storefront and showcase your personal aesthetic and style."
+        icon3={HassleIcon3}
+        title3="Simple and free"
+        para3="Setup your store in two minutes and start selling instantly. Never pay to use Pedlar."
+        icon4={HassleIcon4}
+        title4="No hassle"
+        para4="Pedlar handles all the customer support, shipping and inventory."
+      />
       <Howitswork
         title1="Select products from your favourite brands"
         title2="Personalise your store to represent your aesthetic "

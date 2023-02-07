@@ -88,10 +88,13 @@ export const PedlarDrawer = (props: {
         style={{ backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" }}
         gradient={false}
       >
-        <Typography style={{ fontSize: "14px", fontWeight: "600" }}>
-          FREE Returns • FREE Shipping • All Orders Shipped Directly From The Brand • FREE Returns • FREE Shipping • All
-          Orders Shipped Directly From The Brand • FREE Returns • FREE Shipping • All Orders Shipped Directly From The
-          Brand •
+        <Typography fontSize={"14px"} fontWeight={"600"}>
+          FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
+          Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
+          Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
+          Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
+          Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
+          Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
         </Typography>
       </Marquee>
       <List sx={styles.drawerList}>

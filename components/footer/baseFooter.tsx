@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { Typography, useTheme } from "@mui/material";
 import styles from "styles/home";
 import { CustomGrid } from "components/layout";
+import Link from "next/link";
 
 const BaseFooter = () => {
   const theme = useTheme();
@@ -27,10 +28,14 @@ const BaseFooter = () => {
       >
         <Grid item xs={12} sm={12} md={7.5} lg={7}>
           <Typography sx={styles.baseFootTypoheading}>Help & Support</Typography>
-          <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
+          <Link href="/return-policy">
+            <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
+          </Link>
           <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
           <Typography sx={styles.baseFootTypotext}>Terms & Condition</Typography>
-          <Typography sx={styles.baseFootTypotext}>Privacy Policy</Typography>
+          <Link href="/privacy-policy">
+            <Typography sx={styles.baseFootTypotext}>Privacy Policy</Typography>
+          </Link>
         </Grid>
 
         <Grid

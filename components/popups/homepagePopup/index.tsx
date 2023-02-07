@@ -123,7 +123,6 @@ export default function HomepagePopup() {
             </Box>
           </Box>
           <Box>
-            {/* <img src="/popImg.jpg" style={{ width: "100%" }} /> */}
             <img src="/popImg.jpg" style={{ position: "relative", width: "100%" }} />
             <img src="/pedlarWhite.png" style={{ position: "absolute", top: "160%", left: "20px", color: "white" }} />
           </Box>

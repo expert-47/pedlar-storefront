@@ -2,6 +2,7 @@ import React from "react";
 import { CustomContainer } from "../../landinglayout";
 import { Typography, Box, Button, Grid } from "@mui/material";
 import { styles } from "./style";
+import Link from "next/link";
 
 const ReturnPolicy = () => {
   return (
@@ -16,6 +17,13 @@ const ReturnPolicy = () => {
           Pedlar Shipping and Returns Policy (Shoppers)
         </Typography>
 
+        <Typography textTransform={"none"} fontSize={"20px"} fontWeight={"400"} sx={styles.spacing}>
+          We want you to be completely satisfied with your purchased; if for any you change your mind, we're happy to
+          refund all full priced items
+        </Typography>
+        <Link href="/return-form">
+          <Button sx={styles.returnbutton}>Start Return</Button>
+        </Link>
         <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>
           Shipping
         </Typography>

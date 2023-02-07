@@ -59,4 +59,19 @@ export const styles = {
       backgroundColor: "#1C1B1F",
     },
   },
+  returnbutton: {
+    width: "300px",
+    backgroundColor: "primary.dark",
+    color: "primary.main",
+    borderRadius: "666px",
+    fontWeight: "600",
+    textTransform: "none",
+    padding: "10px 32.5px",
+    marginTop: "20px",
+    marginBottom: "50px",
+    fontSize: "16px",
+    "&:hover": {
+      backgroundColor: "primary.dark",
+    },
+  },
 };

@@ -23,7 +23,7 @@ const DropdownButton = (props: Props) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [filterCheckBoxes, setFilterCheckBoxes] = useState({});
-
+  let count = 0;
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -169,7 +169,7 @@ const DropdownButton = (props: Props) => {
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
                 <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
-                  Reset filters
+                  Clear all
                 </Button>
               </Grid>
             </Grid>

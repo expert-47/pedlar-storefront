@@ -35,6 +35,8 @@ const styless = {
     left: "0",
   },
 };
+console.log("");
+
 const index = () => {
   return (
     <Layout

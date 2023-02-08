@@ -26,7 +26,8 @@ const styles = {
     fontWeight: "700",
   },
   shopbutton: {
-    width: "150px",
+    width: "197px",
+    height: "46px",
     backgroundColor: "primary.dark",
     color: "primary.main",
     borderRadius: "666px",

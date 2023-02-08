@@ -60,7 +60,8 @@ export const styles = {
     },
   },
   returnbutton: {
-    width: "300px",
+    width: "335px",
+    height: "46px",
     backgroundColor: "primary.dark",
     color: "primary.main",
     borderRadius: "666px",

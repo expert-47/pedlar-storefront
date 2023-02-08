@@ -59,7 +59,8 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           <Grid>
             <Button
               sx={{
-                width: { xs: "100%", sm: "150px" },
+                width: { xs: "335px", sm: "156px" },
+                height: "46px",
                 backgroundColor: "primary.dark",
                 color: "primary.main",
                 borderRadius: "666px",

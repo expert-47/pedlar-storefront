@@ -5,11 +5,14 @@ import Dialog from "@mui/material/Dialog";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
-import { IconButton } from "@mui/material";
+import { DialogContent, IconButton, Modal } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
 import Link from "next/link";
 import styles from "styles/home";
 import { useRouter } from "next/router";
+import PedlarImage from "components/pedlarImage";
+import popImg from "../../../public/popImg.jpg";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 const BootstrapDialog = styled(Dialog)(() => ({}));
 
@@ -20,15 +23,17 @@ export interface DialogTitleProps {
 }
 
 export default function HomepagePopup() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const router = useRouter();
   const slug = router?.query;
 
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+  // useEffect(() => {
+  //   setOpen(true);
+  //   // document.body.style.overflow = "hidden";
+  // }, []);
 
   const handleClose = () => {
+    console.log("BC");
     setOpen(false);
     document.body.style.overflow = "unset";
   };
@@ -60,30 +65,60 @@ export default function HomepagePopup() {
   return (
     <div>
       {/* {desktop view} */}
-      <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-        sx={{
-          display: { xs: "none", sm: "block" },
-          fontFamily: "Inter",
-          "& .css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
-            overflowY: "hidden !important",
-          },
-        }}
-      >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle>
-        <Box>
-          <Grid container>
-            <Grid item xs={6} sx={{ marginTop: "-32px" }}>
-              <img src="/popImg.jpg" style={{ position: "relative", height: "100%" }} />
+      {open && (
+        <Modal
+          open={true}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          sx={{
+            overflowY: "hidden",
+            justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
+            maxHeight: "100%",
+
+            border: 0,
+            borderColor: "white",
+            "&:focus": {
+              outline: "none",
+            },
+            outline: "none",
+            fontFamily: "inter",
+          }}
+        >
+          <Box
+            sx={{
+              width: "42%",
+              flexDirection: "row",
+              display: "flex",
+              height: "454px",
+              backgroundColor: "white",
+              outline: "none",
+              maxHeight: "464px",
+            }}
+          >
+            <Box
+              sx={{
+                width: "60%",
+                height: "100%",
+                position: "relative",
+              }}
+            >
+              <img src="/popImg.jpg" style={{ height: "456px", width: "100%" }} />
+
               <img
                 src="/pedlarWhite.png"
                 style={{ position: "absolute", bottom: "20px", left: "20px", color: "white" }}
               />
-            </Grid>
-            <Grid item xs={6} sx={{ paddingLeft: "3rem", paddingRight: "3rem" }}>
-              <Box sx={{ marginLeft: "3rem" }}>
+            </Box>
+            <Box sx={{ paddingLeft: "3rem", paddingRight: "1rem", width: "40%" }}>
+              {/* <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle> */}
+              <Box sx={{ textAlign: "right", marginTop: "1rem", cursor: "pointer" }}>
+                <CloseOutlinedIcon onClick={() => handleClose()} />
+              </Box>
+
+              <Box>
                 <Box sx={{ fontSize: "20px", marginTop: "3rem", fontWeight: "bold" }}>Free shipping &</Box>
                 <Box sx={{ fontSize: "20px", fontWeight: "bold" }}>returns!</Box>
                 <Box sx={{ fontSize: "15px", paddingTop: "1.5rem" }}>
@@ -96,10 +131,10 @@ export default function HomepagePopup() {
                   </Link>
                 </Box>
               </Box>
-            </Grid>
-          </Grid>
-        </Box>
-      </BootstrapDialog>
+            </Box>
+          </Box>
+        </Modal>
+      )}
       {/* {mobile view} */}
       <BootstrapDialog
         onClose={handleClose}

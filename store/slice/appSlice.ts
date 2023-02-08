@@ -8,6 +8,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
   cartId: "",
+  showDilog: true,
 };
 
 const AppState = createSlice({
@@ -30,12 +31,17 @@ const AppState = createSlice({
       return {
         ...state,
         cartId: "",
-        products:[]
+        products: [],
+      };
+    },
+    toggleDialog: (state, action) => {
+      return {
+        ...state,
+        showDilog: false,
       };
     },
   },
-  
 });
 
-export const { addProductToCart, updateCartId ,clearCart} = AppState.actions;
+export const { addProductToCart, updateCartId, clearCart, toggleDialog } = AppState.actions;
 export default AppState.reducer;

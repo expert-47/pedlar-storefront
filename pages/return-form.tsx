@@ -232,7 +232,6 @@ const ReturnForm = () => {
                       <Box sx={{ color: "red" }}>
                         <ErrorMessage component="div" name="Phone_Number" />
                       </Box>
-                      {/* {errors.pNumber && touched.pNumber ? <div>{errors.pNumber}</div> : null} */}
                     </Box>
                   </Box>
                 </Box>
@@ -244,13 +243,14 @@ const ReturnForm = () => {
                   <Button
                     type="submit"
                     href="thankyou-return"
-                    disabled={
-                      Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
-                    }
+                    // disabled={
+                    //   Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
+                    // }
+                    disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                     sx={{
                       width: "400px",
-                      backgroundColor: "primary.dark",
-                      color: "primary.main",
+                      backgroundColor: errors ? "#1C1B1F" : "",
+                      color: errors ? "white !important" : "",
                       borderRadius: "666px",
                       fontWeight: "600",
                       textTransform: "none",
@@ -259,7 +259,7 @@ const ReturnForm = () => {
                       marginBottom: "50px",
                       fontSize: "16px",
                       "&:hover": {
-                        backgroundColor: "primary.dark",
+                        backgroundColor: "#1C1B1F",
                       },
                     }}
                   >

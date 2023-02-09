@@ -5,7 +5,6 @@ import { styles } from "./style";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Link from "@mui/material/Link";
-// import { Link as ScrollLink } from "react-scroll";
 import EastIcon from "@mui/icons-material/East";
 import Scrollspy from "react-scrollspy";
 
@@ -184,13 +183,13 @@ const Faq = () => {
                 Brands
               </Typography>
               <Accordion
-                expanded={expanded === "panel1"}
-                onChange={handleChange("panel1")}
+                expanded={expanded === "panel6"}
+                onChange={handleChange("panel6")}
                 sx={styles.acordianMain}
                 style={{ borderRadius: "unset" }}
               >
                 <AccordionSummary
-                  expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel6" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
@@ -206,9 +205,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel7"} onChange={handleChange("panel7")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel7" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
@@ -221,9 +220,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel8"} onChange={handleChange("panel8")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel3" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel8" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
@@ -239,9 +238,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel9"} onChange={handleChange("panel9")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel4" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel9" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
@@ -255,13 +254,13 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
               <Accordion
-                expanded={expanded === "panel5"}
-                onChange={handleChange("panel5")}
+                expanded={expanded === "panel10"}
+                onChange={handleChange("panel10")}
                 sx={styles.acordianMain}
                 style={{ borderBottom: "1px solid rgb(28, 27, 31)", borderRadius: "unset" }}
               >
                 <AccordionSummary
-                  expandIcon={expanded === "panel5" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel10" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >
@@ -281,13 +280,13 @@ const Faq = () => {
                 Shopper
               </Typography>
               <Accordion
-                expanded={expanded === "panel1"}
-                onChange={handleChange("panel1")}
+                expanded={expanded === "panel11"}
+                onChange={handleChange("panel11")}
                 sx={styles.acordianMain}
                 style={{ borderRadius: "unset" }}
               >
                 <AccordionSummary
-                  expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel11" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
@@ -301,9 +300,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel12"} onChange={handleChange("panel12")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel12" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
@@ -316,9 +315,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel13"} onChange={handleChange("panel13")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel3" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel13" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
@@ -331,9 +330,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel14"} onChange={handleChange("panel14")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel4" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel14" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
@@ -348,13 +347,13 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
               <Accordion
-                expanded={expanded === "panel5"}
-                onChange={handleChange("panel5")}
+                expanded={expanded === "panel15"}
+                onChange={handleChange("panel15")}
                 sx={styles.acordianMain}
                 style={{ borderBottom: "1px solid rgb(28, 27, 31)", borderRadius: "unset" }}
               >
                 <AccordionSummary
-                  expandIcon={expanded === "panel5" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel15" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >
@@ -374,13 +373,13 @@ const Faq = () => {
                 General
               </Typography>
               <Accordion
-                expanded={expanded === "panel1"}
-                onChange={handleChange("panel1")}
+                expanded={expanded === "panel16"}
+                onChange={handleChange("panel16")}
                 sx={styles.acordianMain}
                 style={{ borderRadius: "unset" }}
               >
                 <AccordionSummary
-                  expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel16" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel1bh-content"
                   id="panel1bh-header"
                 >
@@ -394,9 +393,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel17"} onChange={handleChange("panel17")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel17" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel2bh-content"
                   id="panel2bh-header"
                 >
@@ -411,9 +410,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel18"} onChange={handleChange("panel18")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel3" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel18" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel3bh-content"
                   id="panel3bh-header"
                 >
@@ -429,9 +428,9 @@ const Faq = () => {
                   </Typography>
                 </AccordionDetails>
               </Accordion>
-              <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")} sx={styles.acordianMain}>
+              <Accordion expanded={expanded === "panel19"} onChange={handleChange("panel19")} sx={styles.acordianMain}>
                 <AccordionSummary
-                  expandIcon={expanded === "panel4" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel19" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel4bh-content"
                   id="panel4bh-header"
                 >
@@ -446,13 +445,13 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
               <Accordion
-                expanded={expanded === "panel5"}
-                onChange={handleChange("panel5")}
+                expanded={expanded === "panel20"}
+                onChange={handleChange("panel20")}
                 sx={styles.acordianMain}
                 style={{ borderBottom: "1px solid rgb(28, 27, 31)", borderRadius: "unset" }}
               >
                 <AccordionSummary
-                  expandIcon={expanded === "panel5" ? <RemoveIcon /> : <AddIcon />}
+                  expandIcon={expanded === "panel20" ? <RemoveIcon /> : <AddIcon />}
                   aria-controls="panel5bh-content"
                   id="panel5bh-header"
                 >

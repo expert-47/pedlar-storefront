@@ -4,8 +4,11 @@ import { Typography, useTheme } from "@mui/material";
 import styles from "styles/home";
 import { CustomGrid } from "components/layout";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const BaseFooter = () => {
+  const route = useRouter();
+  let path = route.asPath.split("/")[1];
   const theme = useTheme();
 
   return (
@@ -28,14 +31,16 @@ const BaseFooter = () => {
       >
         <Grid item xs={12} sm={12} md={7.5} lg={7}>
           <Typography sx={styles.baseFootTypoheading}>Help & Support</Typography>
-          <Link href="/return-policy">
+          <Link href={`/${path}/return-policy`}>
             <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
           </Link>
-          <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
-          <Link href="/terms-and-conditions">
+          <Link href={`/${path}/frequently-ask-question`}>
+            <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
+          </Link>
+          <Link href={`/${path}/terms-and-condition`}>
             <Typography sx={styles.baseFootTypotext}>Terms & Condition</Typography>
           </Link>
-          <Link href="/privacy-policy">
+          <Link href={`/${path}/privacy-policy`}>
             <Typography sx={styles.baseFootTypotext}>Privacy Policy</Typography>
           </Link>
         </Grid>

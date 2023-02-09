@@ -1,6 +1,5 @@
 export const styles = {
   MainBox: {
-    paddingTop: "150px",
     paddingBottom: "75px",
     paddingLeft: "16px",
   },
@@ -174,5 +173,10 @@ export const styles = {
   scrollSection: {
     paddingTop: "0px",
     paddingBottom: "70px",
+  },
+  footerDivider: {
+    marginTop: "50px",
+    marginBottom: "10px",
+    height: "1px",
   },
 };

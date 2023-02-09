@@ -31,7 +31,9 @@ const BaseFooter = () => {
           <Link href="/return-policy">
             <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
           </Link>
-          <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
+          <Link href="/frequently-ask-question">
+            <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
+          </Link>
           <Link href="/terms-and-condition">
             <Typography sx={styles.baseFootTypotext}>Terms & Condition</Typography>
           </Link>

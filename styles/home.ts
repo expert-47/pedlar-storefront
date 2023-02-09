@@ -39,6 +39,22 @@ const styles = {
       backgroundColor: "primary.dark",
     },
   },
+  startreturnbtn: {
+    width: "335px",
+    height: "46px",
+    backgroundColor: "primary.dark",
+    color: "primary.main",
+    borderRadius: "666px",
+    fontWeight: "600",
+    textTransform: "none",
+    padding: "10px 32.5px",
+    fontSize: "16px",
+    marginTop: "30px",
+    lineHeight: "20px",
+    "&:hover": {
+      backgroundColor: "primary.dark",
+    },
+  },
 
   mainbargrid: {
     // display: "flex",

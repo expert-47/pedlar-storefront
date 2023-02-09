@@ -50,7 +50,7 @@ const Faq = () => {
           >
             <div className="faq-sticky">
               <Scrollspy
-                items={["creator", "brand", "shopper", "general"]}
+                items={["creator", "return", "orders", "general"]}
                 currentClassName="faq-current"
                 offset={-500}
               >
@@ -63,7 +63,7 @@ const Faq = () => {
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
-                  <Link href="#brand" sx={styles.faqLink}>
+                  <Link href="#return" sx={styles.faqLink}>
                     Return
                   </Link>
                   <Box className="faqHide">
@@ -71,7 +71,7 @@ const Faq = () => {
                   </Box>
                 </Box>
                 <Box style={{ paddingBottom: "26px" }}>
-                  <Link href="#shopper" sx={styles.faqLink}>
+                  <Link href="#orders" sx={styles.faqLink}>
                     Orders
                   </Link>
                   <Box className="faqHide">
@@ -172,7 +172,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.scrollSection} id="brand">
+            <Box sx={styles.scrollSection} id="return">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Returns
               </Typography>
@@ -265,7 +265,7 @@ const Faq = () => {
                 </AccordionDetails>
               </Accordion>
             </Box>
-            <Box sx={styles.scrollSection} id="shopper">
+            <Box sx={styles.scrollSection} id="orders">
               <Typography sx={styles.faqText} fontWeight={"600"} fontSize={"40px"}>
                 Orders
               </Typography>

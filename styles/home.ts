@@ -149,16 +149,16 @@ const styles = {
   },
   brandImage: {
     height: {
-      lg: "215px",
-      md: "158px",
-      sm: "158px",
-      xs: "158px",
+      lg: "150px",
+      md: "100px",
+      sm: "80px",
+      xs: "100px",
     },
     width: {
-      lg: "225px",
-      md: "158px",
-      sm: "158px",
-      xs: "158px",
+      lg: "280px",
+      md: "200px",
+      sm: "180px",
+      xs: "170px",
     },
   },
 };

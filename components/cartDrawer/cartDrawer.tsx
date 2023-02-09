@@ -20,8 +20,8 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
 
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
-    dispatch(clearCart({}));
-    window.open(response?.data?.cart?.checkoutUrl);
+    // dispatch(clearCart({}));
+    window.open(response?.data?.cart?.checkoutUrl, "_self");
     toggleDrawer(false);
   };
 

@@ -18,7 +18,7 @@ const PedlarImage = (props: props) => {
         (max-width: 1200px) 50vw,
         33vw"
         {...props}
-        src={error ? "/noImage.jpeg" : props.src}
+        src={error ? "/skeletonImg.png" : props.src}
         onError={() => {
           setError(true);
         }}

@@ -8,6 +8,8 @@ import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import ListItemText from "@mui/material/ListItemText";
 // import ProductHeader from "components/home/components/productHeader";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 
 interface Props {
   type: string;
@@ -33,6 +35,7 @@ const DropdownButton = (props: Props) => {
   };
 
   const getCheckBoxValue = (e: any, text: string) => {
+    debugger;
     if (e.target.checked) {
       if (type === "Brands" && !BrandsNames?.includes(text)) {
         BrandsNames.push(text);
@@ -74,6 +77,11 @@ const DropdownButton = (props: Props) => {
     setFiltersValue(BrandsNames, VendorsNames, true);
   };
   console.log("type", type);
+
+  const getSelectedValues = (e, item, checkboxKey) => {
+    setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
+    getCheckBoxValue(e, item);
+  };
 
   return (
     <>
@@ -124,21 +132,41 @@ const DropdownButton = (props: Props) => {
                 {data.map((item, index) => {
                   const checkboxKey: string = "checkbox-" + index;
                   return (
-                    <MenuItem
-                      key={index}
-                      onClick={() => {
-                        setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
-                      }}
-                    >
-                      <Checkbox
-                        // id={"checkbox"+index}
+                    <>
+                      <FormGroup>
+                        <FormControlLabel
+                          control={
+                            <Checkbox
+                              checked={filterCheckBoxes[checkboxKey] || false}
+                              sx={styles.menuCheck}
+                              onClick={(e) => getSelectedValues(e, item, checkboxKey)}
+                            />
+                          }
+                          label={item}
+                        />
+                      </FormGroup>
+                      {/* 
+                      <MenuItem
+                        key={index}
+                        onClick={(e) => getSelectedValues(e, item, checkboxKey)}
 
-                        checked={filterCheckBoxes[checkboxKey] || false}
-                        sx={styles.menuCheck}
-                        onChange={(e) => getCheckBoxValue(e, item)}
-                      />
-                      <ListItemText>{item}</ListItemText>
-                    </MenuItem>
+                        // onClick={() => {
+                        //   setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
+                        // }}
+                        // onChange={(e) => getCheckBoxValue(e, item)}
+                      >
+                        <Checkbox
+                          // onChange={(e) => getCheckBoxValue(e, item)}
+                          // id={"checkbox"+index}
+
+                          //jhgjh
+
+                          checked={filterCheckBoxes[checkboxKey] || false}
+                          sx={styles.menuCheck}
+                        />
+                        {/* <ListItemText>{item}</ListItemText> */}
+                      {/* </MenuItem>              */}
+                    </>
                   );
                 })}
               </Box>

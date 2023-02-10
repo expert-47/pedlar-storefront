@@ -76,8 +76,6 @@ const DropdownButton = (props: Props) => {
     setFilterCheckBoxes(obj);
     setFiltersValue(BrandsNames, VendorsNames, true);
   };
-  console.log("type", type);
-
   const getSelectedValues = (e, item, checkboxKey) => {
     setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
     getCheckBoxValue(e, item);

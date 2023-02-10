@@ -37,6 +37,7 @@ const styles = {
     fontSize: "22px",
     fontWeight: "400",
     paddingLeft: "5px",
+    fontFamily: "Inter",
   },
   tabButton: {
     color: "rgba(28, 27, 31, 0.8)",

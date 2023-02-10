@@ -195,6 +195,7 @@ const Cart = (props) => {
     setError(false);
     setErrorMessage("");
   };
+  console.log("newAdditionData", newAdditionData);
 
   return (
     <Layout error={apiError} slug={slugValue} storefrontName={headerData?.data?.storefrontName}>

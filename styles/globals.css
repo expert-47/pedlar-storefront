@@ -377,12 +377,12 @@ section {
 .faq-current .faqHide {
   display: block;
   position: absolute;
-  right: 110px;
+  right: 90px;
   margin-top: -20px;
 }
 @media screen and (max-width: 860px) {
   .faq-current .faqHide {
-    right: 81px;
+    right: 65px;
   }
 }
 .faqHide {

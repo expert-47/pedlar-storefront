@@ -152,48 +152,85 @@ export default function HomepagePopup() {
         </Modal>
       )}
       {/* {mobile view} */}
-      <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={showDilog}
-        sx={{ display: { xs: "block", sm: "none" }, fontFamily: "Inter" }}
-      >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle>
-        <Box sx={{ position: "relative" }}>
-          <Box sx={{ padding: "2rem" }}>
-            <Box sx={{ fontSize: "26px", fontWeight: 700, width: "255px", lineHeight: "30PX", color: "#1C1B1F" }}>
-              Free shipping &
+
+      {showDilog && (
+        <Modal
+          open={showDilog}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          sx={{
+            display: { xs: "flex", sm: "none" },
+            justifyContent: "center",
+            borderColor: "white",
+            "&:focus": {
+              outline: "none",
+            },
+            outline: "none",
+            fontFamily: "inter",
+            marginTop: 20,
+            marginBottom: 10,
+          }}
+        >
+          <Box
+            sx={{
+              height: "90% !important",
+              backgroundColor: "white",
+              outline: "none",
+              width: "90% !important",
+            }}
+          >
+            <Box>
+              <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>
+                <CloseOutlinedIcon onClick={() => handleClose()} />
+              </Box>
+
+              <Box>
+                <Box
+                  sx={{
+                    fontSize: "26px",
+                    fontWeight: 700,
+                    width: "255px",
+                    lineHeight: "30px",
+                    marginLeft: "40px",
+                  }}
+                >
+                  Free shipping & returns!
+                </Box>
+                <Box
+                  sx={{
+                    fontSize: "14px",
+                    width: "230px",
+                    height: "110px",
+                    fontWeight: 400,
+                    lineHeight: "22px",
+                    color: "#1C1B1F",
+                    marginLeft: "40px",
+                    marginTop: "20px",
+                  }}
+                >
+                  Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
+                  shopping. No catches, no hidden fees.
+                </Box>
+                <Box sx={{ marginLeft: "40px", marginTop: "20px" }}>
+                  <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+                    <Button sx={styles.shopbutton}>Shop now</Button>
+                  </Link>
+                </Box>
+              </Box>
             </Box>
-            <Box sx={{ fontSize: "26px", fontWeight: 700, width: "255px", lineHeight: "30PX", color: "#1C1B1F" }}>
-              returns!
-            </Box>
-            <Box sx={{ paddingTop: "1.5rem" }}>
-              <Typography
-                sx={{
-                  size: "14px",
-                  fontWeight: 400,
-                  width: "255px",
-                  height: "88px",
-                  lineHeight: "22px",
-                  color: "#1C1B1F",
-                }}
-              >
-                Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
-                shopping. No catches, no hidden fees.
-              </Typography>
-            </Box>
-            <Box sx={{ marginTop: "48px", Padding: "12px, 24px, 12px, 24px" }}>
-              <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-                <Button sx={styles.shopbutton}>Shop now</Button>
-              </Link>
+            <Box
+              sx={{
+                height: "57%",
+                position: "relative",
+              }}
+            >
+              <img src="/popImg.jpg" height={"100%"} style={{ width: "-webkit-fill-available", marginTop: "11%" }} />
+              <img src="/pedlarWhite.png" style={{ position: "absolute", bottom: -20, left: 20 }} />
             </Box>
           </Box>
-          <Box>
-            <img src="/popImg.jpg" style={{ width: "100%" }} />
-            <img src="/pedlarWhite.png" style={{ position: "absolute", top: "93%", left: "5%", color: "white" }} />
-          </Box>
-        </Box>
-      </BootstrapDialog>
+        </Modal>
+      )}
     </div>
   );
 }

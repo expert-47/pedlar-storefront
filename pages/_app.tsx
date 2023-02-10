@@ -10,7 +10,10 @@ import SEO from "../utils/next-seo.config";
 import { Fragment, useEffect } from "react";
 import { Provider } from "react-redux";
 
-import { store } from "store/index";
+// import { store } from "store/index";
+import { store } from "store/slice";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
 import NextNProgress from "nextjs-progressbar";
@@ -24,6 +27,8 @@ function MyApp({ Component, pageProps }: any) {
     Crisp.load();
   });
 
+  let persistor = persistStore(store);
+
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>
@@ -36,9 +41,11 @@ function MyApp({ Component, pageProps }: any) {
             <DefaultSeo {...SEO} />
 
             <ThemeProvider theme={theme}>
-              <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
+              <PersistGate persistor={persistor}>
+                <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-              <Component {...pageProps} />
+                <Component {...pageProps} />
+              </PersistGate>
             </ThemeProvider>
           </Fragment>
         </SWRConfig>

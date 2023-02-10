@@ -111,7 +111,6 @@ const Cart = (props) => {
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
 
       const varientData = variant?.data.product?.variantBySelectedOptions;
-
       if (varientData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
@@ -140,6 +139,21 @@ const Cart = (props) => {
     } finally {
       await getCartList();
       setButtonLoaderState(false);
+    }
+  };
+  useEffect(() => {
+    onSelectedItem();
+  }, [size, color]);
+  const onSelectedItem = async () => {
+    const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+    const varientData = variant?.data.product?.variantBySelectedOptions;
+
+    if (varientData?.quantityAvailable === 0) {
+      setError(true);
+      setErrorMessage("This item is currently out of stock");
+    } else {
+      setError(false);
+      setErrorMessage("");
     }
   };
 
@@ -195,7 +209,6 @@ const Cart = (props) => {
     setError(false);
     setErrorMessage("");
   };
-  console.log("newAdditionData", newAdditionData);
 
   return (
     <Layout error={apiError} slug={slugValue} storefrontName={headerData?.data?.storefrontName}>
@@ -272,6 +285,7 @@ const Cart = (props) => {
 
                   <Options
                     newAdditionData={newAdditionData}
+                    onSelectedItem={onSelectedItem}
                     size={size}
                     color={color}
                     setSizeValue={setSizeValue}

@@ -53,7 +53,6 @@ export const ResponsiveHeader = (props: Props) => {
     toggleDrawer(!openDrawer);
   };
 
-  console.log("setFiltersValue", setFiltersValue);
   const [open, setOpen] = React.useState(false);
   const [opens, setOpens] = React.useState(false);
   const [filterCheckBoxes, setFilterCheckBoxes] = React.useState({});
@@ -147,7 +146,6 @@ export const ResponsiveHeader = (props: Props) => {
     setFiltersValue(BrandsNames, VendorsNames, true);
   };
 
-  console.log("VendorsNames", VendorsNames);
   return (
     <React.Fragment>
       <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex", paddingTop: "12px" }}>

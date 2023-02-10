@@ -32,8 +32,6 @@ export default function HomepagePopup() {
 
   const { showDilog } = useSelector((state) => state.app);
 
-  console.log("showDilog", showDilog);
-
   const handleClose = () => {
     dispatch(toggleDialog(false));
     document.body.style.overflow = "unset";

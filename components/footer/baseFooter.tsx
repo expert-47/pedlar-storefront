@@ -58,10 +58,10 @@ const BaseFooter = () => {
             We're always here to help.
             <br />
             Contact us at{" "}
-            <a href="hello@pedlar.store" style={{ textDecoration: "none", color: "black" }}>
-              hello@pedlar.store
-            </a>{" "}
-            and out customer service team will be in touch.
+            <a href="mailto:hello@pedlar.store" style={{ color: "black", textDecoration: "underline" }}>
+              {`hello@pedlar.store `}
+            </a>
+            and our customer service team will be in touch.
           </Typography>
         </Grid>
       </Grid>

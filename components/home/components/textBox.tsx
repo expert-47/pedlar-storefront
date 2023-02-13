@@ -12,12 +12,17 @@ const TextBox = (props) => {
   const slug = router?.query;
   const theme = useTheme();
 
+  const instaNameLink = props?.headerData?.instagramLink.split("instagram.com/@");
+  const tiktokNameLink = props?.headerData?.tiktokLink.split("tiktok.com/@");
+
   return (
     <Box
       style={{
         display: "flex",
         flexDirection: "column",
         backgroundColor: "white",
+        wordWrap: "break-word",
+        width: "100%",
       }}
       paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
@@ -37,9 +42,10 @@ const TextBox = (props) => {
           }}
         >
           <Image src="/instagram.png" height="16px" width="16px" />
-          <Text fontSize={"18px"} sx={styles.boxtext}>
-            {props?.headerData?.instagramLink ? props?.headerData?.instagramLink : "  "}
-          </Text>
+
+          <Box fontSize={"18px"} sx={styles.boxtext}>
+            {props?.headerData?.instagramLink ? instaNameLink[1] : " "}
+          </Box>
         </Grid>
         <Grid
           style={{
@@ -47,12 +53,14 @@ const TextBox = (props) => {
             justifyContent: "flex-start",
             paddingTop: "8px",
             alignItems: "center",
+            height: "30px",
           }}
         >
           <Image src="/tiktok.png" height="16px" width="16px" />
-          <Text fontSize={"18px"} sx={styles.boxtext}>
-            {props?.headerData?.tiktokLink ? props?.headerData?.tiktokLink : "  "}
-          </Text>
+
+          <Box fontSize={"18px"} sx={styles.boxtext}>
+            {props?.headerData?.tiktokLink ? tiktokNameLink[1] : " "}
+          </Box>
         </Grid>
         <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid

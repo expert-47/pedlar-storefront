@@ -3,6 +3,7 @@ import { Formik, ErrorMessage } from "formik";
 import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
+import Link from "next/link";
 
 const SubmitSchema = Yup.object().shape({
   Order_Number: Yup.string().required("Order number is required!"),
@@ -19,9 +20,11 @@ const ReturnForm = () => {
     <>
       {/* desktop view */}
       <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
-        <Box sx={{ margin: "1rem" }}>
-          <img src="/backArrow.png" />
-        </Box>
+        <Link href="return-policy">
+          <Box sx={{ margin: "1rem" }}>
+            <img src="/backArrow.png" />
+          </Box>
+        </Link>
         <Box sx={{ width: "55%", margin: "auto" }}>
           <Box sx={{ marginLeft: "2rem", marginTop: "2rem" }}>
             <Typography variant="h1">Returns form</Typography>
@@ -273,9 +276,11 @@ const ReturnForm = () => {
       {/* mobile view */}
 
       <Box sx={{ width: "100%", display: { xs: "block", sm: "none" } }}>
-        <Box sx={{ margin: "1rem" }}>
-          <img src="/backArrow.png" />
-        </Box>
+        <Link href="return-policy">
+          <Box sx={{ margin: "1rem" }}>
+            <img src="/backArrow.png" />
+          </Box>
+        </Link>
         <Box sx={{ marginLeft: "2rem", marginTop: "2rem" }}>
           <Typography variant="h1">Returns form</Typography>
           <Typography sx={{ fontSize: "13px", fontWeight: "300", marginTop: "1rem" }}>

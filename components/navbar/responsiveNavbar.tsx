@@ -38,7 +38,7 @@ export const ResponsiveNavbar = (props: Props) => {
         />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>
-            <Image src="/menuIcon.png" alt="No Image Found" onClick={onClickDrawer} width={20} height={15} />
+            <Image src="/mIcons.png" alt="No Image Found" onClick={onClickDrawer} width="20px" height="14px" />
           </Box>
           <Link href={`/${props?.slugs}`}>
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />

@@ -126,6 +126,8 @@ const styles = {
     fontWeight: "600",
     paddingLeft: "8px",
     width: "90%",
+    fontFamily: "Inter",
+    // marginTop: "20px",
   },
   baseFootTypopara: {
     fontSize: "20px",

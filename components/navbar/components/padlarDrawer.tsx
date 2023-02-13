@@ -109,19 +109,19 @@ export const PedlarDrawer = (props: {
           <Grid xs={1.5}>
             <CloseIcon onClick={onClickDrawer} sx={{ paddingLeft: "8px" }} />
           </Grid>
-          <Grid item xs={9} sm={9} md={9} style={{ display: "flex", textAlign: "center", justifyContent: "center" }}>
-            <Grid item xs={6}>
-              <Box sx={{ float: "right" }}>
-                <Link href={`/${props?.slug}`}>
-                  <Image src="/pedlar.png" alt="No Image Found" width="75px" height="32px" />
-                </Link>
-              </Box>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography fontSize={20} fontWeight={400} style={{ paddingLeft: "5px", display: "flex" }}>
-                {storefrontName ? storefrontName : ""}
-              </Typography>
-            </Grid>
+          <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
+            {/* <Grid item xs={6}> */}
+            <Box sx={{}}>
+              <Link href={`/${props?.slugs}`}>
+                <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
+              </Link>
+            </Box>
+            {/* </Grid> */}
+            {/* <Grid item xs={6}> */}
+            <Typography fontSize={22} fontWeight={400} sx={{ marginLeft: "5px", marginTop: "-5px" }}>
+              {storefrontName ? storefrontName : ""}
+            </Typography>
+            {/* </Grid> */}
           </Grid>
           <Grid xs={1.5}>
             <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }}>
@@ -229,17 +229,24 @@ export const PedlarDrawer = (props: {
                             sm={5.5}
                             style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
                           >
-                            {item}
+                            <Link
+                              as={`/${route?.query?.slug}/products`}
+                              href={{
+                                pathname: `/${route?.query?.slug}/products`,
+                                query: { dataType: type, itemValue: item },
+                              }}
+                              style={{ cursor: "pointer" }}
+                            >
+                              {item}
+                            </Link>
                           </Grid>
                         ))
                     )}
-                    <Link href="/">
-                      <ListItemText
-                        style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
-                      >
-                        View all.....
-                      </ListItemText>
-                    </Link>
+                    <ListItemText
+                      style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
+                    >
+                      View all.....
+                    </ListItemText>
                   </Grid>
                 </ListItem>
               </List>

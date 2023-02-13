@@ -44,7 +44,21 @@ const Footer = () => {
               fontWeight={"500"}
               style={{ margin: "0 auto 0 0", maxWidth: "435px" }}
             >
-              Contact us at hello@pedlar.store and our team will be in touch.
+              Contact us at{" "}
+              {/* <span style={{ textDecoration: "underline", cursor: "pointer", textDecorationColor: "white" }}> */}
+              <a
+                href="mailto:hello@pedlar.store"
+                style={{
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                  textDecorationColor: "white !important",
+                  color: "white",
+                }}
+              >
+                hello@pedlar.store
+              </a>{" "}
+              {/* </span> */}
+              and our team will be in touch.
             </Typography>
           </Grid>
           <Grid

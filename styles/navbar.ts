@@ -158,8 +158,9 @@ const styles = {
     paddingLeft: "2px",
   },
   menuIcon: {
-    paddingRight: "4px",
+    paddingRight: "18px",
     paddingTop: "6px",
+    marginLeft: "6px",
   },
   responsiveTypography: {
     fontSize: "22px",

@@ -1,9 +1,8 @@
 import apiClient from "./client";
 
-export const getCuratedBrands = async (collectionID: number) => {
-  console.log("collectionIDdsa", collectionID);
+export const getCuratedBrands = async (slug) => {
   try {
-    let res = await apiClient.get(`storefront/${collectionID}/vendors?sortKey=random`);
+    let res = await apiClient.get(`storefront/${slug}/vendors?sortKey=random`);
     const updateCartResponse = res.data;
 
     return updateCartResponse;

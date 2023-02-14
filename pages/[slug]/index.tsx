@@ -7,6 +7,7 @@ import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+  console.log("hedersssDatata", headerData?.data?.collectionId);
   return (
     <>
       <Layout
@@ -17,6 +18,7 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
         }}
         storefrontName={headerData?.data?.storefrontName}
         slug={slug}
+        collectionID={headerData?.data?.collectionId}
       >
         <Home
           headerData={headerData?.data}

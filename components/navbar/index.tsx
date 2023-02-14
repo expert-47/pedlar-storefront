@@ -27,10 +27,13 @@ export default function Navbar(props: any) {
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
-  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
-  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
+  let collectionID = props.collectionID;
+  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/vendors/`);
+  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/categories/`);
   const route = useRouter();
   let path = route.asPath.split("/")[1];
+
+  console.log("headerDataThisDown", collectionID);
 
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>

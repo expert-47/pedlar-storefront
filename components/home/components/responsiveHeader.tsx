@@ -37,8 +37,11 @@ let BrandsNames: string[] = [];
 let VendorsNames: string[] = [];
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
-  const { type = "Brands", data, setFiltersValue } = props;
-  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
+  const { type = "Brands", data, setFiltersValue, collectionID } = props;
+
+  console.log("collectionID1", collectionID);
+
+  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/categories/`);
   const route = useRouter();
   const paperStyle = {
     color: "black",

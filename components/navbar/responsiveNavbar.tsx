@@ -35,6 +35,7 @@ export const ResponsiveNavbar = (props: Props) => {
           storefrontName={storefrontName}
           toggleDrawer={toggleDrawer}
           slug={props?.slugs}
+          collectionID={props?.collectionID}
         />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>

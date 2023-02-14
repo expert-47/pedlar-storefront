@@ -39,12 +39,12 @@ export const PedlarDrawer = (props: {
   toggleDrawer: (value: boolean) => void;
   slug: string;
 }) => {
-  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, slug } = props;
+  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, slug, collectionID } = props;
   const theme = useTheme();
   const route = useRouter();
 
-  const { data } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/vendors/");
-  const { data: shopList } = useSwr("https://pedlar-dev.ts.r.appspot.com/storefront/412809756899/categories/");
+  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/vendors/`);
+  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/categories/`);
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -56,8 +56,6 @@ export const PedlarDrawer = (props: {
   const [viewAll, setViewAll] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const cartProducts = useSelector((data) => data.app.products);
-
-  console.log("dddddd", viewAll);
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);

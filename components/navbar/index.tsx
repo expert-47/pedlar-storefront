@@ -33,8 +33,6 @@ export default function Navbar(props: any) {
   const route = useRouter();
   let path = route.asPath.split("/")[1];
 
-  console.log("headerDataThisDown", collectionID);
-
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
@@ -51,7 +49,7 @@ export default function Navbar(props: any) {
 
         <CustomContainer>
           {!isMatch ? (
-            <ResponsiveNavbar storefrontName={props?.storefrontName} slugs={props?.slug} />
+            <ResponsiveNavbar storefrontName={props?.storefrontName} slugs={props?.slug} collectionID={collectionID} />
           ) : (
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>

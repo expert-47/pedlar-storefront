@@ -20,7 +20,7 @@ import { getUserDetail } from "api/restApi/getUserDetail";
 
 let filterValuesForQuery: any = [];
 
-const Products = ({ newAdditionTotalData, newAdditionData, slug, collectionId, userData: data, error }: any) => {
+const Products = ({ newAdditionData, slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -96,7 +96,6 @@ const Products = ({ newAdditionTotalData, newAdditionData, slug, collectionId, u
       console.log(error);
     }
   };
-  console.log("newAdditionTotalData", newAdditionData);
 
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
@@ -118,7 +117,7 @@ const Products = ({ newAdditionTotalData, newAdditionData, slug, collectionId, u
           // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         }}
       >
-        <ProductHeader setFiltersValue={setFiltersValue} />
+        <ProductHeader setFiltersValue={setFiltersValue} collectionId={collectionId} />
 
         <Gallery newAdditionData={productsData} />
       </Box>
@@ -171,15 +170,15 @@ export async function getServerSideProps(context: any) {
     const numberofProducts = 18;
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products || [];
-    let totalData = await getUserTotalDetailByFetchAPICall(headerData?.data?.collectionId);
-    let totalUserData = totalData?.data?.collection?.products || [];
+    // let totalData = await getUserTotalDetailByFetchAPICall(headerData?.data?.collectionId);
+    // let totalUserData = totalData?.data?.collection?.products || [];
     return {
       props: {
         newAdditionData: userData,
         slug,
         collectionId: headerData?.data?.collectionId,
         userData: headerData,
-        newAdditionTotalData: totalUserData,
+        // newAdditionTotalData: totalUserData,
       },
     };
   } else {

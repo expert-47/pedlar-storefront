@@ -10,12 +10,17 @@ import Gallery from "components/home/components/Gallery";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import {
+  getFilteredProducts,
+  getPaginationProducts,
+  getUserDetailByFetchAPICall,
+  getUserTotalDetailByFetchAPICall,
+} from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 let filterValuesForQuery: any = [];
 
-const Products = ({ newAdditionData, slug, collectionId, userData: data, error }: any) => {
+const Products = ({ newAdditionTotalData, newAdditionData, slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
@@ -91,6 +96,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       console.log(error);
     }
   };
+  console.log("newAdditionTotalData", newAdditionData);
 
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
@@ -126,7 +132,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
         }}
       >
         <Text fontSize="12px" fontWeight="600">
-          {`You've viewed ${productsData?.length} out of 100 products`}
+          {`You've viewed ${productsData?.length} out of ${productsData?.length} products`}
         </Text>
         {hasNextPage && (
           <Button
@@ -165,12 +171,15 @@ export async function getServerSideProps(context: any) {
     const numberofProducts = 18;
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products || [];
+    let totalData = await getUserTotalDetailByFetchAPICall(headerData?.data?.collectionId);
+    let totalUserData = totalData?.data?.collection?.products || [];
     return {
       props: {
         newAdditionData: userData,
         slug,
         collectionId: headerData?.data?.collectionId,
         userData: headerData,
+        newAdditionTotalData: totalUserData,
       },
     };
   } else {

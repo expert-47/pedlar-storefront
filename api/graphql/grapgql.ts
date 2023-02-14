@@ -115,6 +115,60 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
   }
 };
 
+export const getUserTotalDetailByFetchAPICall = async (collectionID: number) => {
+  const requestBody = {
+    query: gql`
+      query GetCollection($collectionId: ID!) {
+        collection(id: $collectionId) {
+          products(reverse: true) {
+            nodes {
+              id
+              title
+              productType
+              vendor
+              description
+              totalInventory
+              priceRange {
+                maxVariantPrice {
+                  amount
+                  currencyCode
+                }
+                minVariantPrice {
+                  amount
+                  currencyCode
+                }
+              }
+              featuredImage {
+                height
+                src
+                width
+                originalSrc
+                transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+              }
+              createdAt
+              publishedAt
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+              startCursor
+              endCursor
+            }
+          }
+        }
+      }
+    `,
+    variables: { collectionId: `gid://shopify/Collection/${collectionID}` },
+  };
+  try {
+    const res = await client.query({ query: requestBody.query, variables: requestBody.variables });
+
+    return res || {};
+  } catch (error) {
+    return {};
+  }
+};
+
 export const addToCart = async (merchandiseId, value, quantity) => {
   const requestBody = {
     query: gql`

@@ -12,8 +12,8 @@ const TextBox = (props) => {
   const slug = router?.query;
   const theme = useTheme();
 
-  const instaNameLink = props?.headerData?.instagramLink.split("instagram.com/@");
-  const tiktokNameLink = props?.headerData?.tiktokLink.split("tiktok.com/@");
+  const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
+  const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
 
   return (
     <Box

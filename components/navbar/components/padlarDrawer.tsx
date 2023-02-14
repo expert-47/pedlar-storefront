@@ -57,8 +57,6 @@ export const PedlarDrawer = (props: {
   const [isClicked, setIsClicked] = useState(false);
   const cartProducts = useSelector((data) => data.app.products);
 
-  console.log("dddddd", viewAll);
-
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };

@@ -13,12 +13,12 @@ interface LayoutProps extends ContainerProps {
   error?: boolean;
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo, storefrontName = "", slug = "", productsPage = "", error } = props;
+  const { children, seo, storefrontName = "", slug = "", productsPage = "", error, collectionID } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} />
+        <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} collectionID={collectionID} />
       </header>
       <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
       <footer>

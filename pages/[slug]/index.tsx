@@ -17,6 +17,7 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
         }}
         storefrontName={headerData?.data?.storefrontName}
         slug={slug}
+        collectionID={headerData?.data?.collectionId}
       >
         <Home
           headerData={headerData?.data}
@@ -36,8 +37,7 @@ export async function getServerSideProps(context: any) {
   if (headerData?.data) {
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products?.nodes || [];
-
-    let curatedBrandsResponse = await getCuratedBrands();
+    let curatedBrandsResponse = await getCuratedBrands(headerData?.data?.collectionId);
 
     return {
       props: {

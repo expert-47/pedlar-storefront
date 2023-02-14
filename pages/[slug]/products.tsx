@@ -117,7 +117,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
           // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         }}
       >
-        <ProductHeader setFiltersValue={setFiltersValue} collectionId={collectionId} />
+        <ProductHeader setFiltersValue={setFiltersValue} collectionId={collectionId} slug={slug} />
 
         <Gallery newAdditionData={productsData} />
       </Box>

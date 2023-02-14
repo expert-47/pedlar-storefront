@@ -27,9 +27,9 @@ export default function Navbar(props: any) {
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
-  let collectionID = props.collectionID;
-  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/vendors/`);
-  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/categories/`);
+  let slug = props.slug;
+  const { data, error } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
+  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
   const route = useRouter();
   let path = route.asPath.split("/")[1];
 
@@ -49,7 +49,7 @@ export default function Navbar(props: any) {
 
         <CustomContainer>
           {!isMatch ? (
-            <ResponsiveNavbar storefrontName={props?.storefrontName} slugs={props?.slug} collectionID={collectionID} />
+            <ResponsiveNavbar storefrontName={props?.storefrontName} slugs={props?.slug} />
           ) : (
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>

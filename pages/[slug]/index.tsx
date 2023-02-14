@@ -7,6 +7,8 @@ import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+  console.log("slugslugslug", slug);
+
   return (
     <>
       <Layout
@@ -37,7 +39,7 @@ export async function getServerSideProps(context: any) {
   if (headerData?.data) {
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products?.nodes || [];
-    let curatedBrandsResponse = await getCuratedBrands(headerData?.data?.collectionId);
+    let curatedBrandsResponse = await getCuratedBrands(slug);
 
     return {
       props: {

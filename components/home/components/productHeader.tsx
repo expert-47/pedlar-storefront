@@ -10,10 +10,10 @@ import { ResponsiveHeader } from "./responsiveHeader";
 const ProductHeader = (props) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-  let collectionID = props?.collectionId;
+  let slug = props?.slug;
 
-  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/vendors/`);
-  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/categories/`);
+  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
+  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -45,7 +45,7 @@ const ProductHeader = (props) => {
               type={"Brands"}
               setFiltersValue={props?.setFiltersValue}
               data={data ? data.data.map((item) => item.vendor) : []}
-              collectionID={props?.collectionId}
+              slug={props?.slug}
             />
           </>
         ) : (

@@ -39,12 +39,12 @@ export const PedlarDrawer = (props: {
   toggleDrawer: (value: boolean) => void;
   slug: string;
 }) => {
-  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, slug, collectionID } = props;
+  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, slug } = props;
   const theme = useTheme();
   const route = useRouter();
 
-  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/vendors/`);
-  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${collectionID}/categories/`);
+  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
+  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
   const paperStyle = {
     color: "black",
     width: "100%",

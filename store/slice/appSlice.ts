@@ -9,6 +9,7 @@ const initialState = {
   products: [],
   cartId: "",
   showDilog: true,
+  showCart: false,
 };
 
 const AppState = createSlice({
@@ -40,8 +41,14 @@ const AppState = createSlice({
         showDilog: false,
       };
     },
+    cartDrawerToggle: (state, action) => {
+      return {
+        ...state,
+        showCart: false,
+      };
+    },
   },
 });
 
-export const { addProductToCart, updateCartId, clearCart, toggleDialog } = AppState.actions;
+export const { addProductToCart, updateCartId, clearCart, toggleDialog, cartDrawerToggle } = AppState.actions;
 export default AppState.reducer;

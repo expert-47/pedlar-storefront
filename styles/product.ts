@@ -17,7 +17,9 @@ const styles = {
   select: {
     borderRadius: "50px",
     height: "46px",
-    width: "100%",
+    // width: "100%",
+
+    width: { xs: "100%", lg: "16.5rem" },
     borderColor: "success.main",
     "&.Mui-focused": {
       borderRadius: "50px",

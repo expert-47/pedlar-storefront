@@ -7,8 +7,6 @@ import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
-  console.log("slugslugslug", slug);
-
   return (
     <>
       <Layout
@@ -24,7 +22,7 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
         <Home
           headerData={headerData?.data}
           newAdditionData={newAdditionData}
-          curatedBrandsResponse={curatedBrandsResponse}
+          curatedBrandsResponse={curatedBrandsResponse.slice(0, 4)}
         />
       </Layout>
     </>

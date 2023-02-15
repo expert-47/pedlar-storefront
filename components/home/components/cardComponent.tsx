@@ -23,7 +23,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
   return (
     <Link href={{ pathname: `${path}/product/${productId}` }}>
       <Box
-        style={{
+        sx={{
           cursor: "pointer",
           width: "100%",
         }}

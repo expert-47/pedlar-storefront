@@ -35,7 +35,7 @@ import {
   checkoutCartDetails,
 } from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart, updateCartId } from "store/slice/appSlice";
+import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
 
 const buttonStyle = {
   display: "none",
@@ -117,6 +117,7 @@ const Cart = (props) => {
       } else {
         if (typeof cartId == "string" && cartId != "") {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
+          dispatch(cartDrawerToggle(true));
 
           if (data1) {
             if (varientData?.quantityAvailable === data1?.quantity) {

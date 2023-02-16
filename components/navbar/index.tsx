@@ -14,8 +14,9 @@ import Typography from "components/customText";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PedlarImage from "components/pedlarImage";
+import { cartDrawerToggle } from "store/slice/appSlice";
 
 export default function Navbar(props: any) {
   const theme = useTheme();
@@ -23,13 +24,14 @@ export default function Navbar(props: any) {
   const cartProducts = useSelector((data) => data.app.products);
 
   const [openDrawer, toggleDrawer] = useState(false);
+  const dispatch = useDispatch();
 
   const onClickDrawer = () => {
-    toggleDrawer(!openDrawer);
+    dispatch(cartDrawerToggle(true));
   };
   let slug = props.slug;
-  const { data, error } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
-  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
+  const { data, error, loading } = useSwr(`storefront/${slug}/vendors/`);
+  const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   const route = useRouter();
   let path = route.asPath.split("/")[1];
 
@@ -69,13 +71,13 @@ export default function Navbar(props: any) {
                   {props?.productsPage === true ? null : (
                     <>
                       <DropDownMenu
-                        loading={!data}
+                        loading={loading}
                         type={"Brands"}
                         data={data ? data.data.map((item: any) => item.vendor) : []}
                       />
 
                       <DropDownMenu
-                        loading={!shopList}
+                        loading={shopListLoading}
                         type={"Shop"}
                         data={shopList ? shopList.data.map((item: any) => item.productType) : []}
                       />
@@ -96,7 +98,8 @@ export default function Navbar(props: any) {
                     </IconButton>
                   </Badge>
                 </Stack>
-                <CartDrawer openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
+                <CartDrawer />
+                {/* openDrawer={openDrawer} toggleDrawer={toggleDrawer} */}
               </Toolbar>
             </Grid>
           )}

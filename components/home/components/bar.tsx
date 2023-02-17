@@ -1,15 +1,34 @@
 import React, { useState } from "react";
 import styles from "styles/home";
-import { Typography, Button, Grid } from "@mui/material";
+import { Typography, Button, Grid, Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
 import CloseIcon from "@mui/icons-material/Close";
+import BottomSheet from "landing-components/BottomSheet";
+import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
 const Bar = () => {
   const theme = useTheme();
+  const popupScreen = useMediaQuery("(min-width:600px)");
+  const [userType, setUserType] = useState(true);
   const [stickybar, setStickyBar] = useState(true);
-  const closePopup = () => setStickyBar(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
 
+  const openPopup = () => setOpenDialog(true);
+
+  const closePopup = () => {
+    setSuccessModalShow(true);
+    setOpenDialog(false);
+  };
+  const handleClose = () => {
+    setSuccessModalShow(true);
+
+    setOpenDialog(false);
+  };
+  const isSecondModalActive = (value: boolean) => {
+    setSuccessModalShow(value);
+  };
   return (
     <>
       {stickybar ? (
@@ -54,7 +73,7 @@ const Bar = () => {
               >
                 Love Fashion? Have your own style? Share it with your community.
               </Typography>
-              <Button sx={styles.btn}>
+              <Button sx={styles.btn} onClick={openPopup}>
                 <Typography fontSize={"16px"} fontWeight={"600"}>
                   Sign up for free
                 </Typography>
@@ -71,6 +90,27 @@ const Bar = () => {
             >
               <CloseIcon sx={styles.closeIcon} onClick={closePopup} />
             </Grid>
+            {popupScreen ? (
+              <LoginDialog
+                handleClose={handleClose}
+                openDialog={openDialog}
+                setOpenDialog={setOpenDialog}
+                closePopup={closePopup}
+                isSecondModalActive={isSecondModalActive}
+                sucessModalshow={sucessModalshow}
+                userType={userType}
+              />
+            ) : (
+              <BottomSheet
+                handleClose={handleClose}
+                openDialog={openDialog}
+                setOpenDialog={setOpenDialog}
+                closePopup={closePopup}
+                isSecondModalActive={isSecondModalActive}
+                sucessModalshow={sucessModalshow}
+                userType={userType}
+              />
+            )}
           </Grid>
         </CustomContainer>
       ) : (

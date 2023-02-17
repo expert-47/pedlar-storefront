@@ -179,6 +179,24 @@ const DropDownMenu = (props: Props) => {
                                         </>
                                       );
                                     })}
+<<<<<<< HEAD
+=======
+                                {!loading && dropdownOption === false && data?.length > 2 && (
+                                  <Button onClick={() => setdropdownOption(true)}>
+                                    <ListItemText
+                                      style={{
+                                        paddingLeft: "19px",
+                                        color: "black",
+                                        fontWeight: "600",
+                                        fontSize: "12px",
+                                        textDecoration: "underline",
+                                      }}
+                                    >
+                                      View all
+                                    </ListItemText>
+                                  </Button>
+                                )}
+>>>>>>> 3590f88b8278218768a416684af4e684426328e1
                               </Grid>
                             </Grid>
                           </Grid>

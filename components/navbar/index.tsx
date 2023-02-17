@@ -23,7 +23,6 @@ export default function Navbar(props: any) {
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   const cartProducts = useSelector((data) => data.app.products);
 
-  const [openDrawer, toggleDrawer] = useState(false);
   const dispatch = useDispatch();
 
   const onClickDrawer = () => {

@@ -34,6 +34,11 @@ export const getProductDetails = async (productId: string) => {
           featuredImage {
             url
           }
+          images(first: 10) {
+            nodes {
+              url
+            }
+          }
           createdAt
           publishedAt
         }
@@ -312,11 +317,11 @@ export const getVariantBySelectedOptions = async (productID, size, color) => {
       selectedOptionInput: [
         {
           name: "Size",
-          value: size,
+          value: size ? size : "",
         },
         {
           name: "Color",
-          value: color,
+          value: color ? color : "",
         },
       ],
     },
@@ -327,6 +332,7 @@ export const getVariantBySelectedOptions = async (productID, size, color) => {
 
     return getVariantResponse;
   } catch (error) {
+    console.log(error);
     return undefined;
   }
 };

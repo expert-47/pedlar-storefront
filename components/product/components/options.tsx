@@ -19,7 +19,7 @@ function Options(props) {
 
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} gap={22} sx={styles.container}>
-      {newAdditionData?.options[0]?.values?.length > 0 && (
+      {newAdditionData?.options[0]?.values?.length > 1 && (
         <Grid item xs={12} sm={12} md={5.6} lg={5.6} sx={{ marginRight: { lg: "2.5rem !important" } }}>
           <Typography sx={styles.typography}>{newAdditionData?.options[0]?.name}</Typography>
           <FormControl sx={{ width: "100%" }}>
@@ -42,7 +42,7 @@ function Options(props) {
         </Grid>
       )}
 
-      {newAdditionData?.options[1]?.values?.lenght > 0 && (
+      {newAdditionData?.options[1]?.values?.lenght > 1 && (
         <Grid item xs={12} sm={12} md={5.6} lg={5.6}>
           <Typography sx={styles.typography}>{newAdditionData?.options[1]?.name}</Typography>
           <FormControl sx={{ width: "100%" }}>

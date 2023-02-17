@@ -32,22 +32,31 @@ const DropDownMenu = (props: Props) => {
     setdropdownOption(false);
   };
 
-  console.log(data);
-
   const dividedData = [];
 
   for (let i = 0; i <= data?.length; i = i + 6) {
     let chunk = data?.slice(i, i + 6);
     dividedData.push(chunk);
   }
-  console.log("dividedData", dividedData);
 
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Button sx={styles.tabButton} onClick={handleClick}>
+        <Button sx={styles.tabButtons} onClick={handleClick}>
           <Box>
-            <Typography color={openMenu ? "rgba(28, 27, 31, 0.32)" : "black"}>{type}</Typography>
+            <Typography
+              sx={{
+                fontWeight: 600,
+                fontSize: "16px",
+                color: "rgba(28, 27, 31, 0.8)",
+                textTransform: "none",
+                borderRadius: "0",
+                paddingY: "0",
+              }}
+              color={openMenu ? "rgba(28, 27, 31, 0.32)" : "black"}
+            >
+              {type}
+            </Typography>
           </Box>
           {openMenu ? <ExpandLess sx={styles.tabIcons} /> : <ExpandMore sx={styles.tabIcon} />}
         </Button>
@@ -62,6 +71,7 @@ const DropDownMenu = (props: Props) => {
               elevation: 1,
               sx: {
                 mt: 20,
+                pb: 20,
                 left: "0 !important",
                 l: 0,
                 borderRadius: 0,
@@ -123,50 +133,52 @@ const DropDownMenu = (props: Props) => {
                                     })
                                   : dividedData.map((item, index) => {
                                       return (
-                                        <Grid key={"dropdown-" + index} item sm={4} md={4} lg={2.4}>
-                                          {item.map((items, i) => {
-                                            return (
-                                              <>
-                                                <Link
-                                                  as={`/${route?.query?.slug}/products`}
-                                                  href={{
-                                                    pathname: `/${route?.query?.slug}/products`,
-                                                    query: { dataType: type, itemValue: item },
-                                                  }}
-                                                  style={{ cursor: "pointer" }}
-                                                >
-                                                  <a
-                                                    style={{
-                                                      cursor: "pointer",
-                                                      textDecoration: "none",
-                                                      color: "black",
+                                        <>
+                                          <Grid key={"dropdown-" + index} item sm={4} md={4} lg={2.4}>
+                                            {item.map((items, i) => {
+                                              return (
+                                                <>
+                                                  <Link
+                                                    as={`/${route?.query?.slug}/products`}
+                                                    href={{
+                                                      pathname: `/${route?.query?.slug}/products`,
+                                                      query: { dataType: type, itemValue: item },
                                                     }}
+                                                    style={{ cursor: "pointer" }}
                                                   >
-                                                    <Typography sx={styles.menuItems}>{items}</Typography>
-                                                  </a>
-                                                </Link>
-                                              </>
-                                            );
-                                          })}
-                                        </Grid>
+                                                    <a
+                                                      style={{
+                                                        cursor: "pointer",
+                                                        textDecoration: "none",
+                                                        color: "black",
+                                                      }}
+                                                    >
+                                                      <Typography sx={styles.menuItems}>{items}</Typography>
+                                                    </a>
+                                                  </Link>
+                                                </>
+                                              );
+                                            })}
+
+                                            {!loading && dropdownOption === false && data?.length > 2 && (
+                                              <Button onClick={() => setdropdownOption(true)}>
+                                                <ListItemText
+                                                  style={{
+                                                    paddingLeft: "19px",
+                                                    color: "black",
+                                                    fontWeight: "600",
+                                                    fontSize: "12px",
+                                                    textDecoration: "underline",
+                                                  }}
+                                                >
+                                                  View all
+                                                </ListItemText>
+                                              </Button>
+                                            )}
+                                          </Grid>
+                                        </>
                                       );
                                     })}
-
-                                {!loading && dropdownOption === false && data?.length > 2 && (
-                                  <Button onClick={() => setdropdownOption(true)}>
-                                    <ListItemText
-                                      style={{
-                                        paddingLeft: "19px",
-                                        color: "black",
-                                        fontWeight: "600",
-                                        fontSize: "12px",
-                                        textDecoration: "underline",
-                                      }}
-                                    >
-                                      View all
-                                    </ListItemText>
-                                  </Button>
-                                )}
                               </Grid>
                             </Grid>
                           </Grid>

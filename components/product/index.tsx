@@ -36,6 +36,7 @@ import {
 } from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
+import { images } from "../footer/data";
 
 const buttonStyle = {
   display: "none",
@@ -111,13 +112,13 @@ const Cart = (props) => {
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
 
       const varientData = variant?.data.product?.variantBySelectedOptions;
-      if (varientData?.quantityAvailable === 0) {
+
+      if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
       } else {
         if (typeof cartId == "string" && cartId != "") {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
-          dispatch(cartDrawerToggle(true));
 
           if (data1) {
             if (varientData?.quantityAvailable === data1?.quantity) {
@@ -127,11 +128,15 @@ const Cart = (props) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
+              dispatch(cartDrawerToggle(true));
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, quantity);
+            dispatch(cartDrawerToggle(true));
           }
         } else {
+          dispatch(cartDrawerToggle(true));
+
           let response = await addToCart(varientData?.id, slugValue, quantity);
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
         }
@@ -147,11 +152,21 @@ const Cart = (props) => {
   }, [size, color]);
   const onSelectedItem = async () => {
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+
     const varientData = variant?.data.product?.variantBySelectedOptions;
 
-    if (varientData?.quantityAvailable === 0) {
+    if (!varientData?.quantityAvailable && varientData?.quantityAvailable === 0) {
       setError(true);
       setErrorMessage("This item is currently out of stock");
+    } else if (typeof cartId == "string" && cartId != "") {
+      const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
+
+      if (data1) {
+        if (varientData?.quantityAvailable === data1?.quantity) {
+          setError(true);
+          setErrorMessage("This item is currently out of stock");
+        }
+      }
     } else {
       setError(false);
       setErrorMessage("");
@@ -233,12 +248,15 @@ const Cart = (props) => {
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Slide {...properties} indicators={true}>
-                    <Box className="each-slide-effect">
-                      <Box
-                        sx={styles.eachSlideEffect}
-                        style={{ backgroundImage: `url(${newAdditionData?.featuredImage?.url})` }}
-                      ></Box>
-                    </Box>
+                    {newAdditionData?.images?.nodes?.map((item) => {
+                      return (
+                        <>
+                          <Box className="each-slide-effect">
+                            <Box sx={styles.eachSlideEffect} style={{ backgroundImage: `url(${item?.url})` }}></Box>
+                          </Box>
+                        </>
+                      );
+                    })}
                   </Slide>
                 </Grid>
               </Grid>
@@ -258,7 +276,19 @@ const Cart = (props) => {
                       height: 400,
                     }}
                   >
-                    <PedlarImage src={newAdditionData?.featuredImage?.url} />
+                    {newAdditionData?.images?.nodes?.map((item) => {
+                      return (
+                        <Box
+                          sx={{
+                            width: 400,
+                            height: 400,
+                            marginTop: "20px",
+                          }}
+                        >
+                          <PedlarImage src={item?.url} />
+                        </Box>
+                      );
+                    })}
                   </Box>
                 </ImageListItem>
               </ImageList>

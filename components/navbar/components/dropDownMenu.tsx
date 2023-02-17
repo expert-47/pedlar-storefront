@@ -32,13 +32,6 @@ const DropDownMenu = (props: Props) => {
     setdropdownOption(false);
   };
 
-  const dividedData = [];
-
-  for (let i = 0; i <= data?.length; i = i + 6) {
-    let chunk = data?.slice(i, i + 6);
-    dividedData.push(chunk);
-  }
-
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -96,89 +89,62 @@ const DropDownMenu = (props: Props) => {
                           <CircularProgress color="inherit" />
                         </Grid>
                       ) : (
-                        <Box>
+                        <Box
+                          style={{
+                            height: 200,
+                            flexWrap: "wrap",
+                          }}
+                        >
                           <Grid container>
                             <Grid item sm={6} md={6}></Grid>
                             <Grid item sm={6} md={6} lg={6}>
                               <Grid container lg={12}>
-                                {dropdownOption
-                                  ? dividedData.map((item, index) => {
-                                      return (
-                                        <>
-                                          <Grid key={"dropdown-" + index} item sm={2} md={2} lg={2} direction="row">
-                                            {item?.map((item2, index2) => {
-                                              return (
-                                                <Link
-                                                  as={`${route?.query?.slug}/products`}
-                                                  href={{
-                                                    pathname: `${route?.query?.slug}/products`,
-                                                    query: { dataType: type, itemValue: item2 },
-                                                  }}
-                                                >
-                                                  <a
-                                                    style={{
-                                                      cursor: "pointer",
-                                                      textDecoration: "none ",
-                                                      color: "black",
-                                                    }}
-                                                  >
-                                                    <Typography sx={styles.menuItems}>{item2}</Typography>
-                                                  </a>
-                                                </Link>
-                                              );
-                                            })}
-                                          </Grid>
-                                        </>
-                                      );
-                                    })
-                                  : dividedData.map((item, index) => {
-                                      return (
-                                        <>
-                                          <Grid key={"dropdown-" + index} item sm={4} md={4} lg={2.4}>
-                                            {item.map((items, i) => {
-                                              return (
-                                                <>
-                                                  <Link
-                                                    as={`/${route?.query?.slug}/products`}
-                                                    href={{
-                                                      pathname: `/${route?.query?.slug}/products`,
-                                                      query: { dataType: type, itemValue: item },
-                                                    }}
-                                                    style={{ cursor: "pointer" }}
-                                                  >
-                                                    <a
-                                                      style={{
-                                                        cursor: "pointer",
-                                                        textDecoration: "none",
-                                                        color: "black",
-                                                      }}
-                                                    >
-                                                      <Typography sx={styles.menuItems}>{items}</Typography>
-                                                    </a>
-                                                  </Link>
-                                                </>
-                                              );
-                                            })}
-
-                                            {!loading && dropdownOption === false && data?.length > 2 && (
-                                              <Button onClick={() => setdropdownOption(true)}>
-                                                <ListItemText
-                                                  style={{
-                                                    paddingLeft: "19px",
-                                                    color: "black",
-                                                    fontWeight: "600",
-                                                    fontSize: "12px",
-                                                    textDecoration: "underline",
-                                                  }}
-                                                >
-                                                  View all
-                                                </ListItemText>
-                                              </Button>
-                                            )}
-                                          </Grid>
-                                        </>
-                                      );
-                                    })}
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    height: 200,
+                                    flexWrap: "wrap",
+                                    width: 300,
+                                  }}
+                                >
+                                  {data?.slice(0, 29).map((data, index) => {
+                                    return (
+                                      <>
+                                        <Link
+                                          as={`${route?.query?.slug}/products`}
+                                          href={{
+                                            pathname: `${route?.query?.slug}/products`,
+                                            query: { dataType: type, itemValue: data },
+                                          }}
+                                        >
+                                          <a
+                                            style={{
+                                              cursor: "pointer",
+                                              textDecoration: "none ",
+                                              color: "black",
+                                            }}
+                                          >
+                                            <Typography sx={styles.menuItems}>{data}</Typography>
+                                          </a>
+                                        </Link>
+                                        {/* {data.length - 1 == index && data?.length > 6 && (
+                                          <Typography
+                                            style={{
+                                              color: "black",
+                                              fontWeight: "600",
+                                              fontSize: "12px",
+                                              textDecoration: "underline",
+                                              paddingTop: 10,
+                                            }}
+                                          >
+                                            View all
+                                          </Typography>
+                                        )} */}
+                                      </>
+                                    );
+                                  })}
+                                </Box>
                               </Grid>
                             </Grid>
                           </Grid>

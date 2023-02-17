@@ -35,7 +35,6 @@ const DropdownButton = (props: Props) => {
   };
 
   const getCheckBoxValue = (e: any, text: string) => {
-    debugger;
     if (e.target.checked) {
       if (type === "Brands" && !BrandsNames?.includes(text)) {
         BrandsNames.push(text);

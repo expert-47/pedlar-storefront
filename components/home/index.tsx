@@ -65,7 +65,7 @@ export const Home = (props: any) => {
         </Box>
 
         <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
-        <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />
+        <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse?.slice(0, 4)} />
       </Box>
       <Divider sx={styles.footerDivider} />
       <BaseFooter />

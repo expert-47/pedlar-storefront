@@ -81,8 +81,6 @@ const CartDrawer = () => {
     maxHeight: "100%",
   };
 
-  console.log("showCart", showCart);
-
   const onCloseCart = () => {
     dispatch(cartDrawerToggle(false));
   };

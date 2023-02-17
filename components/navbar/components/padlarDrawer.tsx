@@ -182,9 +182,13 @@ export const PedlarDrawer = (props: {
                                 pathname: `/${route?.query?.slug}/products`,
                                 query: { dataType: type, itemValue: item },
                               }}
-                              style={{ textDecoration: "none" }}
                             >
-                              {item}
+                              <Typography
+                                sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
+                              >
+                                {" "}
+                                {item}
+                              </Typography>
                             </Link>
                           </Grid>
                         ))
@@ -192,9 +196,17 @@ export const PedlarDrawer = (props: {
 
                     <Button onClick={brandsNameHanlder}>
                       <ListItemText
-                        style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
+                        style={{
+                          color: "black",
+                          fontWeight: "600",
+                          fontSize: "14px",
+                          textDecoration: "underline",
+                          marginTop: "-3px",
+                          textTransform: "none",
+                          lineHeight: "4px",
+                        }}
                       >
-                        View all.....
+                        <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
                       </ListItemText>
                     </Button>
                   </Grid>
@@ -235,15 +247,24 @@ export const PedlarDrawer = (props: {
                               }}
                               style={{ textDecoration: "none" }}
                             >
-                              {item}
+                              <Typography
+                                sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
+                              >
+                                {item}
+                              </Typography>
                             </Link>
                           </Grid>
                         ))
                     )}
                     <ListItemText
-                      style={{ color: "black", fontWeight: "600", fontSize: "12px", textDecoration: "underline" }}
+                      style={{
+                        color: "black",
+
+                        textDecoration: "underline",
+                        lineHeight: "4px",
+                      }}
                     >
-                      View all.....
+                      <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
                     </ListItemText>
                   </Grid>
                 </ListItem>

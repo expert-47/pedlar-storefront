@@ -184,7 +184,7 @@ export const PedlarDrawer = (props: {
                               }}
                               style={{ textDecoration: "none" }}
                             >
-                              {item}
+                              <Typography> {item} </Typography>
                             </Link>
                           </Grid>
                         ))

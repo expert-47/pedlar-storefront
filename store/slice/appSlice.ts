@@ -44,7 +44,7 @@ const AppState = createSlice({
     cartDrawerToggle: (state, action) => {
       return {
         ...state,
-        showCart: false,
+        showCart: action.payload,
       };
     },
   },

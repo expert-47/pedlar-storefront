@@ -31,16 +31,29 @@ const DropDownMenu = (props: Props) => {
     setAnchorEl(null);
     setdropdownOption(false);
   };
+
+  console.log(data);
+
+  const dividedData = [];
+
+  for (let i = 0; i <= data?.length; i = i + 6) {
+    let chunk = data?.slice(i, i + 6);
+    dividedData.push(chunk);
+  }
+  console.log("dividedData", dividedData);
+
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Button sx={styles.tabButton} onClick={handleClick}>
-          <Box style={{ borderBottom: openMenu ? "solid #1C1B1F 1px" : "none" }}>{type}</Box>
-          {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
+          <Box>
+            <Typography color={openMenu ? "rgba(28, 27, 31, 0.32)" : "black"}>{type}</Typography>
+          </Box>
+          {openMenu ? <ExpandLess sx={styles.tabIcons} /> : <ExpandMore sx={styles.tabIcon} />}
         </Button>
       </Grid>
 
-      <Grid container display={"flex"} justifyContent={"center"} alignItems={"center"}>
+      <Grid display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <CustomContainer>
           <Menu
             transformOrigin={{ vertical: "top", horizontal: "right" }}
@@ -48,11 +61,14 @@ const DropDownMenu = (props: Props) => {
             PaperProps={{
               elevation: 1,
               sx: {
-                mt: 10.5,
-                left: 0,
+                mt: 20,
+                left: "0 !important",
                 l: 0,
                 borderRadius: 0,
-                width: "100%",
+                width: "100% !important",
+                maxWidth: "100% !important",
+                boxShadow: "none",
+                borderTop: "1px solid rgba(28, 27, 31, 0.32)",
               },
             }}
             sx={styles.menu}
@@ -71,51 +87,72 @@ const DropDownMenu = (props: Props) => {
                         </Grid>
                       ) : (
                         <Box>
-                          <Grid container paddingRight={60}>
+                          <Grid container>
                             <Grid item sm={6} md={6}></Grid>
                             <Grid item sm={6} md={6} lg={6}>
                               <Grid container lg={12}>
                                 {dropdownOption
-                                  ? data.map((item, index) => {
+                                  ? dividedData.map((item, index) => {
                                       return (
-                                        <Grid key={"dropdown-" + index} item sm={2} md={3} lg={4}>
-                                          <Link
-                                            as={`${route?.query?.slug}/products`}
-                                            href={{
-                                              pathname: `${route?.query?.slug}/products`,
-                                              query: { dataType: type, itemValue: item },
-                                            }}
-                                          >
-                                            <a
-                                              style={{
-                                                cursor: "pointer",
-                                                textDecoration: "none !important",
-                                                color: "black",
-                                              }}
-                                            >
-                                              <Typography sx={styles.menuItems}>{item}</Typography>
-                                            </a>
-                                          </Link>
-                                        </Grid>
+                                        <>
+                                          <Grid key={"dropdown-" + index} item sm={2} md={2} lg={2} direction="row">
+                                            {item?.map((item2, index2) => {
+                                              return (
+                                                <Link
+                                                  as={`${route?.query?.slug}/products`}
+                                                  href={{
+                                                    pathname: `${route?.query?.slug}/products`,
+                                                    query: { dataType: type, itemValue: item2 },
+                                                  }}
+                                                >
+                                                  <a
+                                                    style={{
+                                                      cursor: "pointer",
+                                                      textDecoration: "none ",
+                                                      color: "black",
+                                                    }}
+                                                  >
+                                                    <Typography sx={styles.menuItems}>{item2}</Typography>
+                                                  </a>
+                                                </Link>
+                                              );
+                                            })}
+                                          </Grid>
+                                        </>
                                       );
                                     })
-                                  : data.slice(0, 2).map((item, index) => (
-                                      <Grid key={"dropdown-" + index} item sm={4} md={4} lg={4}>
-                                        <Link
-                                          as={`/${route?.query?.slug}/products`}
-                                          href={{
-                                            pathname: `/${route?.query?.slug}/products`,
-                                            query: { dataType: type, itemValue: item },
-                                          }}
-                                          style={{ cursor: "pointer" }}
-                                        >
-                                          <a style={{ cursor: "pointer", textDecoration: "none", color: "black" }}>
-                                            <Typography sx={styles.menuItems}>{item}</Typography>
-                                          </a>
-                                        </Link>
-                                      </Grid>
-                                    ))}
-                                {dropdownOption === false && data?.length > 2 && (
+                                  : dividedData.map((item, index) => {
+                                      return (
+                                        <Grid key={"dropdown-" + index} item sm={4} md={4} lg={2.4}>
+                                          {item.map((items, i) => {
+                                            return (
+                                              <>
+                                                <Link
+                                                  as={`/${route?.query?.slug}/products`}
+                                                  href={{
+                                                    pathname: `/${route?.query?.slug}/products`,
+                                                    query: { dataType: type, itemValue: item },
+                                                  }}
+                                                  style={{ cursor: "pointer" }}
+                                                >
+                                                  <a
+                                                    style={{
+                                                      cursor: "pointer",
+                                                      textDecoration: "none",
+                                                      color: "black",
+                                                    }}
+                                                  >
+                                                    <Typography sx={styles.menuItems}>{items}</Typography>
+                                                  </a>
+                                                </Link>
+                                              </>
+                                            );
+                                          })}
+                                        </Grid>
+                                      );
+                                    })}
+
+                                {!loading && dropdownOption === false && data?.length > 2 && (
                                   <Button onClick={() => setdropdownOption(true)}>
                                     <ListItemText
                                       style={{

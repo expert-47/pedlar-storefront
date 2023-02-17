@@ -48,6 +48,7 @@ const styles = {
     paddingY: "0",
   },
   tabIcon: { alignItems: "center" },
+  tabIcons: { alignItems: "center", color: "rgba(28, 27, 31, 0.32)" },
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
     width: "100vw",
@@ -64,6 +65,12 @@ const styles = {
     fontWeight: "500",
     fontSize: "14px",
     paddingTop: "8px",
+  },
+  menuItems2: {
+    fontWeight: "500",
+    fontSize: "14px",
+    paddingTop: "8px",
+    lineHeight: "30px",
   },
   menu: {
     backgroundImage:

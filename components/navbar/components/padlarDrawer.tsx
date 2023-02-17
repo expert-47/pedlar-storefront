@@ -182,7 +182,7 @@ export const PedlarDrawer = (props: {
                                 pathname: `/${route?.query?.slug}/products`,
                                 query: { dataType: type, itemValue: item },
                               }}
-                              style={{ cursor: "pointer" }}
+                              style={{ textDecoration: "none" }}
                             >
                               {item}
                             </Link>
@@ -233,7 +233,7 @@ export const PedlarDrawer = (props: {
                                 pathname: `/${route?.query?.slug}/products`,
                                 query: { dataType: type, itemValue: item },
                               }}
-                              style={{ cursor: "pointer" }}
+                              style={{ textDecoration: "none" }}
                             >
                               {item}
                             </Link>

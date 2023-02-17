@@ -1,5 +1,4 @@
 import "../styles/globals.css";
-import Axios from "axios";
 import { theme } from "styles/theme/defalutTheme";
 import { ThemeProvider } from "@mui/material";
 import { SWRConfig } from "swr";
@@ -9,13 +8,14 @@ import { DefaultSeo } from "next-seo";
 import SEO from "../utils/next-seo.config";
 import { Fragment, useEffect } from "react";
 import { Provider } from "react-redux";
-
 // import { store } from "store/index";
 import { store } from "store/slice";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
+import apiClient from "api/restApi/client";
+
 import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }: any) {
@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: any) {
       <ApolloProvider client={client}>
         <SWRConfig
           value={{
-            fetcher: (resource) => Axios.get(resource).then((r) => r.data),
+            fetcher: (resource) => apiClient.get(resource).then((r) => r.data),
           }}
         >
           <Fragment>

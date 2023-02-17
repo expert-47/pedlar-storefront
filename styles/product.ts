@@ -19,7 +19,7 @@ const styles = {
     height: "46px",
     // width: "100%",
 
-    width: { xs: "100%", lg: "16.5rem" },
+    width: { xs: "100%", lg: "13.7rem" },
     borderColor: "success.main",
     "&.Mui-focused": {
       borderRadius: "50px",

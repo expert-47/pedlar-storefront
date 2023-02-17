@@ -22,7 +22,7 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
         <Home
           headerData={headerData?.data}
           newAdditionData={newAdditionData}
-          curatedBrandsResponse={curatedBrandsResponse.slice(0, 4)}
+          curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
         />
       </Layout>
     </>

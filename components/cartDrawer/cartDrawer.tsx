@@ -9,12 +9,15 @@ import { getCartProducts } from "api/graphql/grapgql";
 import { checkoutCartDetails } from "../../api/graphql/grapgql";
 import { addProductToCart, clearCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { cartDrawerToggle } from "store/slice/appSlice";
 
-const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }) => {
-  const { openDrawer, toggleDrawer } = props;
+const CartDrawer = () => {
+  // props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }
+  // const { openDrawer, toggleDrawer } = props;
 
   const cartId = useSelector((data) => data.app.cartId);
   const cartProducts = useSelector((data) => data.app.products);
+  const { showCart } = useSelector((state) => state.app);
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState("");
 
@@ -22,7 +25,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     const response = await checkoutCartDetails(cartId);
     // dispatch(clearCart({}));
     window.open(response?.data?.cart?.checkoutUrl, "_self");
-    toggleDrawer(false);
+    dispatch(cartDrawerToggle(false));
   };
 
   const getCartList = async () => {
@@ -57,7 +60,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
   }, [cartProducts]);
   useEffect(() => {
     getCartList();
-  }, [openDrawer, toggleDrawer]);
+  }, []);
 
   useEffect(() => {});
 
@@ -78,11 +81,17 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
     maxHeight: "100%",
   };
 
+  console.log("showCart", showCart);
+
+  const onCloseCart = () => {
+    dispatch(cartDrawerToggle(false));
+  };
+
   return (
     <Drawer
       anchor="right"
-      open={openDrawer}
-      onClose={() => toggleDrawer(false)}
+      open={showCart}
+      onClose={onCloseCart}
       PaperProps={{
         sx: paperStyle,
       }}
@@ -102,11 +111,7 @@ const CartDrawer = (props: { openDrawer: boolean; toggleDrawer: (value: boolean)
           <Typography sx={styles.cartDrawerTypo}>
             {cartProducts?.length ? `Cart(${cartProducts?.length || ""})` : "Cart"}
           </Typography>
-          <CloseIcon
-            onClick={() => {
-              toggleDrawer(false);
-            }}
-          />
+          <CloseIcon onClick={onCloseCart} />
         </Grid>
         <Grid
           container

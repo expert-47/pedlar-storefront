@@ -6,7 +6,8 @@ import React, { useState } from "react";
 import PedlarDrawer from "./components/padlarDrawer";
 import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cartDrawerToggle } from "store/slice/appSlice";
 
 interface Props {
   storefrontName: string;
@@ -19,12 +20,13 @@ export const ResponsiveNavbar = (props: Props) => {
   const [openDrawer, toggleDrawer] = useState(false);
   const [openCart, toggleCart] = useState(false);
   const cartProducts = useSelector((data) => data.app.products);
+  const dispatch = useDispatch();
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
   };
 
   const onClickCart = () => {
-    toggleCart(!openCart);
+    dispatch(cartDrawerToggle(true));
   };
 
   return (

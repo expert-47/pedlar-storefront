@@ -12,9 +12,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
 const CartDrawer = () => {
-  // props: { openDrawer: boolean; toggleDrawer: (value: boolean) => void }
-  // const { openDrawer, toggleDrawer } = props;
-
   const cartId = useSelector((data) => data.app.cartId);
   const cartProducts = useSelector((data) => data.app.products);
   const { showCart } = useSelector((state) => state.app);
@@ -23,7 +20,6 @@ const CartDrawer = () => {
 
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
-    // dispatch(clearCart({}));
     window.open(response?.data?.cart?.checkoutUrl, "_self");
     dispatch(cartDrawerToggle(false));
   };
@@ -122,8 +118,6 @@ const CartDrawer = () => {
           paddingY={"40px"}
           sx={styles.cartDrawerSlider}
         >
-          {/* {data.map((item) => ( */}
-
           {cartProducts?.map((item: any, index) => {
             return (
               <CheckoutOrder

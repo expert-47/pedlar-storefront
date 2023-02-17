@@ -53,7 +53,7 @@ export const ResponsiveNavbar = (props: Props) => {
             <Image src="/cart.png" height="19.48px" width="19.48px" />
           </IconButton>
         </Badge>
-        <CartDrawer openDrawer={openCart} toggleDrawer={toggleCart} />
+        <CartDrawer />
       </Toolbar>
     </React.Fragment>
   );

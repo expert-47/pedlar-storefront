@@ -1,22 +1,21 @@
-import React, { useEffect } from "react";
+import React,from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
-import Grid from "@mui/material/Grid";
+
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
-import { DialogContent, IconButton, Modal, Typography } from "@mui/material";
+import {  IconButton, Modal, } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
 import Link from "next/link";
 import styles from "styles/home";
 import { useRouter } from "next/router";
-import PedlarImage from "components/pedlarImage";
-import popImg from "../../../public/popImg.jpg";
+
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toggleDialog } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const BootstrapDialog = styled(Dialog)(() => ({}));
+
 
 export interface DialogTitleProps {
   id: string;
@@ -66,7 +65,7 @@ export default function HomepagePopup() {
       {/* {desktop view} */}
       {showDilog && (
         <Modal
-          // showDilog={showDilog}
+
           open={showDilog}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
@@ -105,12 +104,9 @@ export default function HomepagePopup() {
                 position: "relative",
               }}
             >
-              <img src="/popImg.jpg" style={{ height: "456px", width: "100%" }} />
+              <img src="/popImg.png" style={{ height: "456px", width: "100%" }} />
 
-              <img
-                src="/pedlarWhite.png"
-                style={{ position: "absolute", bottom: "20px", left: "20px", color: "white" }}
-              />
+
             </Box>
             <Box sx={{ paddingLeft: "3rem", paddingRight: "1rem", width: "40%" }}>
               {/* <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle> */}
@@ -172,13 +168,17 @@ export default function HomepagePopup() {
         >
           <Box
             sx={{
-              height: "90% !important",
+              height: "85% !important",
               backgroundColor: "white",
               outline: "none",
               width: "90% !important",
             }}
           >
-            <Box>
+            <Box
+            style={{
+              height:"60%"
+            }}
+            >
               <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>
                 <CloseOutlinedIcon onClick={() => handleClose()} />
               </Box>
@@ -199,7 +199,6 @@ export default function HomepagePopup() {
                   sx={{
                     fontSize: "14px",
                     width: "230px",
-                    height: "110px",
                     fontWeight: 400,
                     lineHeight: "22px",
                     color: "#1C1B1F",
@@ -219,12 +218,12 @@ export default function HomepagePopup() {
             </Box>
             <Box
               sx={{
-                height: "57%",
+                height: "50%",
                 position: "relative",
               }}
             >
-              <img src="/popImg.jpg" height={"100%"} style={{ width: "-webkit-fill-available", marginTop: "11%" }} />
-              <img src="/pedlarWhite.png" style={{ position: "absolute", bottom: -20, left: 20 }} />
+              <img src="/popImg.png" height={"100%"} style={{ width: "-webkit-fill-available", marginTop: "11%" }} />
+
             </Box>
           </Box>
         </Modal>

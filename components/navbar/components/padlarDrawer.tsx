@@ -43,8 +43,12 @@ export const PedlarDrawer = (props: {
   const theme = useTheme();
   const route = useRouter();
 
-  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
-  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
+  const { data, loading } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
+  const { data: shopList, loading: shopListLoading } = useSwr(
+    `https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`,
+  );
+  console.log("shopList?.data", shopList?.data);
+
   const paperStyle = {
     color: "black",
     width: "100%",
@@ -161,40 +165,37 @@ export const PedlarDrawer = (props: {
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {!data ? (
+                    {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      data.data
-
-                        .map((item) => item.vendor)
-                        .map((item) => (
-                          <Grid
-                            key={item}
-                            item
-                            xs={5.5}
-                            sm={5.5}
-                            style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                            onClick={() => toggleDrawer(false)}
+                      data?.data?.map((item) => (
+                        <Grid
+                          key={item}
+                          item
+                          xs={5.5}
+                          sm={5.5}
+                          style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                          onClick={() => toggleDrawer(false)}
+                        >
+                          <Link
+                            as={`/${route?.query?.slug}/products`}
+                            href={{
+                              pathname: `/${route?.query?.slug}/products`,
+                              query: { dataType: type, itemValue: item },
+                            }}
                           >
-                            <Link
-                              as={`/${route?.query?.slug}/products`}
-                              href={{
-                                pathname: `/${route?.query?.slug}/products`,
-                                query: { dataType: type, itemValue: item },
-                              }}
+                            <Typography
+                              sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
                             >
-                              <Typography
-                                sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
-                              >
-                                {" "}
-                                {item}
-                              </Typography>
-                            </Link>
-                          </Grid>
-                        ))
+                              {" "}
+                              {item.vendor}
+                            </Typography>
+                          </Link>
+                        </Grid>
+                      ))
                     )}
 
-                    <Button onClick={brandsNameHanlder}>
+                    {/* <Button onClick={brandsNameHanlder}>
                       <ListItemText
                         style={{
                           color: "black",
@@ -208,7 +209,7 @@ export const PedlarDrawer = (props: {
                       >
                         <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
                       </ListItemText>
-                    </Button>
+                    </Button> */}
                   </Grid>
                 </ListItem>
               </List>
@@ -224,48 +225,50 @@ export const PedlarDrawer = (props: {
               <List>
                 <ListItem>
                   <Grid container item gap={10} item xs={12} sm={12}>
-                    {!shopList ? (
+                    {shopListLoading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      shopList.data
-                        .map((item) => item.productType)
-
-                        .slice(0, 2)
-                        .map((item) => (
-                          <Grid
-                            key={item}
-                            item
-                            xs={5.5}
-                            sm={5.5}
-                            style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                      shopList?.data?.slice(0, 29)?.map((item) => (
+                        <Grid
+                          key={item}
+                          item
+                          xs={5.5}
+                          sm={5.5}
+                          style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                          onClick={() => toggleDrawer(false)}
+                        >
+                          <Link
+                            as={`/${route?.query?.slug}/products`}
+                            href={{
+                              pathname: `/${route?.query?.slug}/products`,
+                              query: { dataType: type, itemValue: item },
+                            }}
                           >
-                            <Link
-                              as={`/${route?.query?.slug}/products`}
-                              href={{
-                                pathname: `/${route?.query?.slug}/products`,
-                                query: { dataType: type, itemValue: item },
-                              }}
-                              style={{ textDecoration: "none" }}
+                            <Typography
+                              sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
                             >
-                              <Typography
-                                sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
-                              >
-                                {item}
-                              </Typography>
-                            </Link>
-                          </Grid>
-                        ))
+                              {item.productType}
+                            </Typography>
+                          </Link>
+                        </Grid>
+                      ))
                     )}
-                    <ListItemText
-                      style={{
-                        color: "black",
 
-                        textDecoration: "underline",
-                        lineHeight: "4px",
-                      }}
-                    >
-                      <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
-                    </ListItemText>
+                    {/* <Button onClick={brandsNameHanlder}>
+                      <ListItemText
+                        style={{
+                          color: "black",
+                          fontWeight: "600",
+                          fontSize: "14px",
+                          textDecoration: "underline",
+                          marginTop: "-3px",
+                          textTransform: "none",
+                          lineHeight: "4px",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
+                      </ListItemText>
+                    </Button> */}
                   </Grid>
                 </ListItem>
               </List>

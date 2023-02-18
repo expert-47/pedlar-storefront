@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useSwr from "swr";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
@@ -47,7 +47,8 @@ export const PedlarDrawer = (props: {
   const { data: shopList, loading: shopListLoading } = useSwr(
     `https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`,
   );
-  console.log("shopList?.data", shopList?.data);
+  const [viewAll, setViewAll] = useState(data?.data?.slice(0, 9));
+  const [showViewBtn, setShowViewBtn] = useState(true);
 
   const paperStyle = {
     color: "black",
@@ -57,8 +58,7 @@ export const PedlarDrawer = (props: {
     flexDirection: "column",
     backgroundColor: "white",
   };
-  const [viewAll, setViewAll] = useState("");
-  const [isClicked, setIsClicked] = useState(false);
+
   const cartProducts = useSelector((data) => data.app.products);
 
   const onClickDrawer = () => {
@@ -74,9 +74,11 @@ export const PedlarDrawer = (props: {
     setOpens(!opens);
   };
   const brandsNameHanlder = () => {
-    setViewAll(data?.data?.map((item) => item?.vendor)?.map((items) => items));
-    setIsClicked(true);
+    setViewAll(data?.data);
+    setShowViewBtn(false);
   };
+  console.log("myData", viewAll);
+
   return (
     <Drawer
       anchor="left"
@@ -168,7 +170,7 @@ export const PedlarDrawer = (props: {
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      data?.data?.map((item) => (
+                      viewAll?.map((item) => (
                         <Grid
                           key={item}
                           item
@@ -187,29 +189,29 @@ export const PedlarDrawer = (props: {
                             <Typography
                               sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
                             >
-                              {" "}
                               {item.vendor}
                             </Typography>
                           </Link>
                         </Grid>
                       ))
                     )}
-
-                    {/* <Button onClick={brandsNameHanlder}>
-                      <ListItemText
-                        style={{
-                          color: "black",
-                          fontWeight: "600",
-                          fontSize: "14px",
-                          textDecoration: "underline",
-                          marginTop: "-3px",
-                          textTransform: "none",
-                          lineHeight: "4px",
-                        }}
-                      >
-                        <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
-                      </ListItemText>
-                    </Button> */}
+                    {showViewBtn && (
+                      <Button onClick={brandsNameHanlder}>
+                        <ListItemText
+                          style={{
+                            color: "black",
+                            fontWeight: "600",
+                            fontSize: "14px",
+                            textDecoration: "underline",
+                            marginTop: "-3px",
+                            textTransform: "none",
+                            lineHeight: "4px",
+                          }}
+                        >
+                          <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
+                        </ListItemText>
+                      </Button>
+                    )}
                   </Grid>
                 </ListItem>
               </List>

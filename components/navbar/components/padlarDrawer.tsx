@@ -32,6 +32,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { truncate } from "fs";
 import { useSelector } from "react-redux";
+import { shopList } from "../data";
 
 export const PedlarDrawer = (props: {
   openDrawer: boolean;
@@ -39,14 +40,24 @@ export const PedlarDrawer = (props: {
   toggleDrawer: (value: boolean) => void;
   slug: string;
 }) => {
-  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, slug } = props;
+  const {
+    type = "Brands",
+    openDrawer,
+    toggleDrawer,
+    storefrontName,
+    slug,
+    data,
+    shopList,
+    loading,
+    shopListLoading,
+  } = props;
   const theme = useTheme();
   const route = useRouter();
 
-  const { data, loading } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
-  const { data: shopList, loading: shopListLoading } = useSwr(
-    `https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`,
-  );
+  // const { data, loading } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
+  // const { data: shopList, loading: shopListLoading } = useSwr(
+  //   `https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`,
+  // );
   const [viewAll, setViewAll] = useState(data?.data?.slice(0, 9));
   const [showViewBtn, setShowViewBtn] = useState(true);
 

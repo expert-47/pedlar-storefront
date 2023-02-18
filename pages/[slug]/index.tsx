@@ -2,11 +2,14 @@ import React from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
 import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import useSwr from "swr";
 
 import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+  const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
+  const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   return (
     <>
       <Layout
@@ -18,6 +21,10 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
         storefrontName={headerData?.data?.storefrontName}
         slug={slug}
         collectionID={headerData?.data?.collectionId}
+        data={data}
+        shopList={shopList}
+        loading={loading}
+        shopListLoading={shopListLoading}
       >
         <Home
           headerData={headerData?.data}

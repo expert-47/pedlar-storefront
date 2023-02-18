@@ -32,6 +32,8 @@ const DropDownMenu = (props: Props) => {
     setdropdownOption(false);
   };
 
+  console.log("dataForBrandShop", data);
+
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -105,7 +107,7 @@ const DropDownMenu = (props: Props) => {
                                     flexDirection: "column",
                                     height: 200,
                                     flexWrap: "wrap",
-                                    width: 300,
+                                    width: 500,
                                   }}
                                 >
                                   {data?.slice(0, 29).map((data, index) => {
@@ -128,19 +130,6 @@ const DropDownMenu = (props: Props) => {
                                             <Typography sx={styles.menuItems}>{data}</Typography>
                                           </a>
                                         </Link>
-                                        {/* {data.length - 1 == index && data?.length > 6 && (
-                                          <Typography
-                                            style={{
-                                              color: "black",
-                                              fontWeight: "600",
-                                              fontSize: "12px",
-                                              textDecoration: "underline",
-                                              paddingTop: 10,
-                                            }}
-                                          >
-                                            View all
-                                          </Typography>
-                                        )} */}
                                       </>
                                     );
                                   })}

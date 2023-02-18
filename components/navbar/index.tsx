@@ -91,7 +91,7 @@ export default function Navbar(props: any) {
                     </>
                   )}
 
-                  <Link href={`/${path}/frequently-ask-question`}>
+                  <Link href={`/${path}/faq`}>
                     <Button color="inherit" sx={styles.tabButton}>
                       FAQ
                     </Button>

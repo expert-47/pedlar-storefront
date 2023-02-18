@@ -4,7 +4,9 @@ import { Typography, Box, Button, Grid } from "@mui/material";
 import { styles } from "./style";
 import Link from "next/link";
 
-const ReturnPolicy = () => {
+const ReturnPolicy = (props) => {
+  const { slug } = props;
+
   return (
     <CustomContainer>
       <Box sx={styles.MainBox}>

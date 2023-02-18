@@ -2,14 +2,22 @@ import React from "react";
 import { Typography, Box, Divider } from "@mui/material";
 import Layout, { CustomContainer } from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
+import { getUserDetail } from "api/restApi/getUserDetail";
 import useSwr from "swr";
 
 const TermAndCondition = (props) => {
-  let slug = props.slug;
+  // let slug = props.slug;
+  const { slug, headerData } = props;
   const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
   const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   return (
-    <Layout data={data} shopList={shopList} loading={loading} shopListLoading={shopListLoading}>
+    <Layout
+      data={data}
+      shopList={shopList}
+      loading={loading}
+      shopListLoading={shopListLoading}
+      storefrontName={headerData?.data?.storefrontName}
+    >
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>
           <Typography sx={{ fontSize: "40px", fontWeight: 600 }}>Terms & Conditions</Typography>
@@ -499,9 +507,11 @@ export default TermAndCondition;
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
+  const headerData = await getUserDetail(slug);
 
   return {
     props: {
+      headerData: headerData ? headerData : [],
       slug: slug || [],
     },
   };

@@ -9,15 +9,26 @@ import EastIcon from "@mui/icons-material/East";
 import Scrollspy from "react-scrollspy";
 import Layout from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
+import useSwr from "swr";
+import { getUserDetail } from "api/restApi/getUserDetail";
 
-const Faq = () => {
+const Faq = (props) => {
+  const { slug, headerData } = props;
+  const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
+  const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
 
   return (
-    <Layout>
+    <Layout
+      data={data}
+      shopList={shopList}
+      loading={loading}
+      shopListLoading={shopListLoading}
+      storefrontName={headerData?.data?.storefrontName}
+    >
       <CustomContainer>
         <Box sx={styles.MainBox}>
           <Grid
@@ -67,7 +78,7 @@ const Faq = () => {
                   </Box>
                   <Box style={{ paddingBottom: "26px" }}>
                     <Link href="#return" sx={styles.faqLink}>
-                      Return
+                      Returns
                     </Link>
                     <Box className="faqHide">
                       <EastIcon sx={styles.eastIconStyle} />
@@ -208,9 +219,9 @@ const Faq = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={styles.acordianPara}>
-                      Submit your order number and email address through our Returns form linked on every Pedlar store.
-                      Once you have submitted your return, we'll send through a pre-paid returns label, then simply post
-                      your item(s).
+                      Submit your order number and email address through our <a href="return-form">Returns</a> form
+                      linked on every Pedlar store. Once you have submitted your return, we'll send through a pre-paid
+                      returns label, then simply post your item(s).
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -224,8 +235,8 @@ const Faq = () => {
                   </AccordionSummary>
                   <AccordionDetails>
                     <Typography sx={styles.acordianPara}>
-                      Yes, for hygene reasons Pedlar does not offer returns or exhanges on swimwear, jewelry, underwear,
-                      lingerie or innerwear.
+                      Yes, for hygene reasons Pedlar does not offer returns or exhanges on swimwear, jewellery,
+                      underwear, lingerie or innerwear.
                     </Typography>
                   </AccordionDetails>
                 </Accordion>
@@ -523,3 +534,21 @@ const Faq = () => {
 };
 
 export default Faq;
+
+export async function getServerSideProps(context: any) {
+  const { slug } = context.query;
+  const headerData = await getUserDetail(slug);
+
+  return {
+    props: {
+      headerData: headerData ? headerData : [],
+      slug: slug || [],
+    },
+  };
+
+  return {
+    props: {
+      error: true,
+    },
+  };
+}

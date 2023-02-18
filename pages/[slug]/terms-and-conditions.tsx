@@ -2,10 +2,14 @@ import React from "react";
 import { Typography, Box, Divider } from "@mui/material";
 import Layout, { CustomContainer } from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
+import useSwr from "swr";
 
-const TermAndCondition = () => {
+const TermAndCondition = (props) => {
+  let slug = props.slug;
+  const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
+  const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   return (
-    <Layout>
+    <Layout data={data} shopList={shopList} loading={loading} shopListLoading={shopListLoading}>
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>
           <Typography sx={{ fontSize: "40px", fontWeight: 600 }}>Terms & Conditions</Typography>
@@ -492,3 +496,19 @@ const TermAndCondition = () => {
 };
 
 export default TermAndCondition;
+
+export async function getServerSideProps(context: any) {
+  const { slug } = context.query;
+
+  return {
+    props: {
+      slug: slug || [],
+    },
+  };
+
+  return {
+    props: {
+      error: true,
+    },
+  };
+}

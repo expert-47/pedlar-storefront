@@ -8,6 +8,7 @@ import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
+import { shopList } from "./data";
 
 interface Props {
   storefrontName: string;
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export const ResponsiveNavbar = (props: Props) => {
-  const { storefrontName } = props;
+  const { storefrontName, data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
   const [openCart, toggleCart] = useState(false);
@@ -38,6 +39,10 @@ export const ResponsiveNavbar = (props: Props) => {
           toggleDrawer={toggleDrawer}
           slug={props?.slugs}
           collectionID={props?.collectionID}
+          data={data}
+          shopList={shopList}
+          loading={loading}
+          shopListLoading={shopListLoading}
         />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>

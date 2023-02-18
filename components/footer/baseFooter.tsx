@@ -37,8 +37,8 @@ const BaseFooter = () => {
           <Link href={`/${path}/frequently-ask-question`}>
             <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
           </Link>
-          <Link href={`/${path}/terms-and-condition`}>
-            <Typography sx={styles.baseFootTypotext}>Terms & Condition</Typography>
+          <Link href={`/${path}/terms-and-conditions`}>
+            <Typography sx={styles.baseFootTypotext}>Terms & Conditions</Typography>
           </Link>
           <Link href={`/${path}/privacy-policy`}>
             <Typography sx={styles.baseFootTypotext}>Privacy Policy</Typography>

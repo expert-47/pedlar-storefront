@@ -19,6 +19,7 @@ import PedlarImage from "components/pedlarImage";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
 export default function Navbar(props: any) {
+  const { data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   const cartProducts = useSelector((data) => data.app.products);
@@ -28,9 +29,9 @@ export default function Navbar(props: any) {
   const onClickDrawer = () => {
     dispatch(cartDrawerToggle(true));
   };
-  let slug = props.slug;
-  const { data, error, loading } = useSwr(`storefront/${slug}/vendors/`);
-  const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
+  // let slug = props.slug;
+  // const { data, error, loading } = useSwr(`storefront/${slug}/vendors/`);
+  // const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   const route = useRouter();
   let path = route.asPath.split("/")[1];
   console.log("");
@@ -50,7 +51,14 @@ export default function Navbar(props: any) {
 
         <CustomContainer>
           {!isMatch ? (
-            <ResponsiveNavbar storefrontName={props?.storefrontName} slugs={props?.slug} />
+            <ResponsiveNavbar
+              storefrontName={props?.storefrontName}
+              slugs={props?.slug}
+              data={data}
+              shopList={shopList}
+              loading={loading}
+              shopListLoading={shopListLoading}
+            />
           ) : (
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>

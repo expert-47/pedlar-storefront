@@ -5,6 +5,7 @@ import React from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
 
 import ApiError from "components/PageError";
+import { shopList } from "../navbar/data";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
@@ -13,12 +14,31 @@ interface LayoutProps extends ContainerProps {
   error?: boolean;
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo, storefrontName = "", slug = "", productsPage = "", error } = props;
+  const {
+    children,
+    seo,
+    storefrontName = "",
+    slug = "",
+    productsPage = "",
+    error,
+    data,
+    shopList,
+    loading,
+    shopListLoading,
+  } = props;
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} />
+        <Navbar
+          storefrontName={storefrontName}
+          slug={slug}
+          productsPage={productsPage}
+          data={data}
+          shopList={shopList}
+          loading={loading}
+          shopListLoading={shopListLoading}
+        />
       </header>
       <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
       <footer>

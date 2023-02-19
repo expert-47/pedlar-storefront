@@ -29,6 +29,7 @@ export const ResponsiveNavbar = (props: Props) => {
   const onClickCart = () => {
     dispatch(cartDrawerToggle(true));
   };
+  console.log("props?.slugsprops?.slugs", props?.slugs);
 
   return (
     <React.Fragment>

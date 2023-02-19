@@ -12,6 +12,7 @@ const TermAndCondition = (props) => {
   const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   return (
     <Layout
+      slug={slug}
       data={data}
       shopList={shopList}
       loading={loading}

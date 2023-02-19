@@ -31,7 +31,8 @@ import styles from "styles/navbar";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { truncate } from "fs";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cartDrawerToggle } from "store/slice/appSlice";
 import { shopList } from "../data";
 
 export const PedlarDrawer = (props: {
@@ -40,17 +41,7 @@ export const PedlarDrawer = (props: {
   toggleDrawer: (value: boolean) => void;
   slug: string;
 }) => {
-  const {
-    type = "Brands",
-    openDrawer,
-    toggleDrawer,
-    storefrontName,
-    slug,
-    data,
-    shopList,
-    loading,
-    shopListLoading,
-  } = props;
+  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const route = useRouter();
 
@@ -71,6 +62,7 @@ export const PedlarDrawer = (props: {
   };
 
   const cartProducts = useSelector((data) => data.app.products);
+  const dispatch = useDispatch();
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
@@ -88,8 +80,9 @@ export const PedlarDrawer = (props: {
     setViewAll(data?.data);
     setShowViewBtn(false);
   };
-  console.log("myData", viewAll);
-
+  const openCartHandler = () => {
+    dispatch(cartDrawerToggle(true));
+  };
   return (
     <Drawer
       anchor="left"
@@ -127,7 +120,7 @@ export const PedlarDrawer = (props: {
           <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
             {/* <Grid item xs={6}> */}
             <Box sx={{}}>
-              <Link href={`/${props?.slugs}`}>
+              <Link href={`/${props?.slug}`}>
                 <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
               </Link>
             </Box>
@@ -139,7 +132,7 @@ export const PedlarDrawer = (props: {
             {/* </Grid> */}
           </Grid>
           <Grid xs={1.5}>
-            <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }}>
+            <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }} onClick={openCartHandler}>
               <IconButton sx={styles.iconColor}>
                 <Image src="/cart.png" height="19.48px" width="19.48px" />
               </IconButton>
@@ -206,7 +199,7 @@ export const PedlarDrawer = (props: {
                         </Grid>
                       ))
                     )}
-                    {showViewBtn && (
+                    {viewAll?.length >= 9 && showViewBtn && (
                       <Button onClick={brandsNameHanlder}>
                         <ListItemText
                           style={{

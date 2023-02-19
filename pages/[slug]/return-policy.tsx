@@ -16,6 +16,7 @@ const Returnpolicy = (props) => {
         title: process.env.NEXT_PUBLIC_RETURN_POLICY_TITLE,
         description: process.env.NEXT_PUBLIC_RETURN_POLICY_DESCRIPTION,
       }}
+      slug={slug}
       data={data}
       shopList={shopList}
       loading={loading}

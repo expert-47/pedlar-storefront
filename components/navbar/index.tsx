@@ -34,7 +34,6 @@ export default function Navbar(props: any) {
   // const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   const route = useRouter();
   let path = route.asPath.split("/")[1];
-  console.log("");
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>

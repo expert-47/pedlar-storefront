@@ -32,8 +32,6 @@ const DropDownMenu = (props: Props) => {
     setdropdownOption(false);
   };
 
-  console.log("dataForBrandShop", data);
-
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>

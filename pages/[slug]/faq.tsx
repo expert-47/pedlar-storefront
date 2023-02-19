@@ -23,6 +23,7 @@ const Faq = (props) => {
 
   return (
     <Layout
+      slug={slug}
       data={data}
       shopList={shopList}
       loading={loading}

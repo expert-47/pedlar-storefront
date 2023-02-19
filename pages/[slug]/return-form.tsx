@@ -4,6 +4,7 @@ import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 import Link from "next/link";
+import useSwr from "swr";
 
 const SubmitSchema = Yup.object().shape({
   Order_Number: Yup.string().required("Order number is required!"),
@@ -13,14 +14,17 @@ const SubmitSchema = Yup.object().shape({
   Email_Address: Yup.string().required("Email is required!"),
 });
 
-const ReturnForm = () => {
+const ReturnForm = (props) => {
+  const { slug, headerData } = props;
+  // const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
+  // const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
   const forms = useRef();
 
   return (
     <>
       {/* desktop view */}
       <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
-        <Link href="return-policy">
+        <Link href={`/${slug}/return-policy`}>
           <Box sx={{ margin: "1rem" }}>
             <img src="/backArrow.png" />
           </Box>
@@ -276,7 +280,7 @@ const ReturnForm = () => {
       {/* mobile view */}
 
       <Box sx={{ width: "100%", display: { xs: "block", sm: "none" } }}>
-        <Link href="return-policy">
+        <Link href={`/${slug}/return-policy`}>
           <Box sx={{ margin: "1rem" }}>
             <img src="/backArrow.png" />
           </Box>
@@ -487,3 +491,19 @@ const ReturnForm = () => {
 };
 
 export default ReturnForm;
+
+export async function getServerSideProps(context: any) {
+  const { slug } = context.query;
+
+  return {
+    props: {
+      slug: slug || [],
+    },
+  };
+
+  return {
+    props: {
+      error: true,
+    },
+  };
+}

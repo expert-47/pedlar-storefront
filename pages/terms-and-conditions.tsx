@@ -1,15 +1,7 @@
 import React, { Fragment } from "react";
 import { Typography, Box, Button } from "@mui/material";
-import styles from "styles/home";
-import Layout from "components/layout";
-import useSwr from "swr";
 
 const TermsAndConditions = (props) => {
-  // const { slug } = props;
-  // const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
-  // const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
-
-  // console.log("abcDataTes", slug);
   return (
     // <Layout data={data} shopList={shopList} loading={loading} shopListLoading={shopListLoading}>
     <Box sx={{ marginLeft: "51px", width: "1109px" }}>

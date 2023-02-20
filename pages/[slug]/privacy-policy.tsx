@@ -4,12 +4,10 @@ import Layout from "components/layout";
 import React from "react";
 import PrivacyPolicy from "../../landing-components/static-pages/privacy-policy/privacy-policy";
 import { getUserDetail } from "api/restApi/getUserDetail";
-import useSwr from "swr";
 
 const privacypolicy = (props) => {
   const { slug, headerData } = props;
-  const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
-  const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
+
   return (
     <Layout
       seo={{
@@ -17,10 +15,6 @@ const privacypolicy = (props) => {
         description: process.env.NEXT_PUBLIC_PRIVACY_POLICY_DESCRIPTION,
       }}
       slug={slug}
-      data={data}
-      shopList={shopList}
-      loading={loading}
-      shopListLoading={shopListLoading}
       storefrontName={headerData?.data?.storefrontName}
     >
       <PrivacyPolicy />

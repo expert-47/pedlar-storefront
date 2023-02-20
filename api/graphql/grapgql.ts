@@ -455,7 +455,7 @@ export const getPaginationProducts = async (endCursorValue, collectionId, filter
   const requestBody = {
     query: gql`query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
-        products(first: 3, reverse: true ,after: "${endCursorValue}")
+        products(first: 18, reverse: true ,after: "${endCursorValue}")
           {
               nodes {
                   id

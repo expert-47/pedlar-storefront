@@ -4,7 +4,6 @@ import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 import Link from "next/link";
-import useSwr from "swr";
 
 const SubmitSchema = Yup.object().shape({
   Order_Number: Yup.string().required("Order number is required!"),
@@ -16,8 +15,7 @@ const SubmitSchema = Yup.object().shape({
 
 const ReturnForm = (props) => {
   const { slug, headerData } = props;
-  // const { data, loading } = useSwr(`storefront/${slug}/vendors/`);
-  // const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
+
   const [isEmailSent, setIsEmailSent] = useState(false);
   const forms = useRef();
 

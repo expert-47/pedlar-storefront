@@ -106,7 +106,6 @@ const DropDownMenu = (props: Props) => {
                                     flexDirection: "column",
                                     maxHeight: 200,
                                     flexWrap: "wrap",
-                                    width: 500,
                                   }}
                                 >
                                   {data?.slice(0, viewAll ? 9 : data.length).map((data, index) => {
@@ -124,6 +123,8 @@ const DropDownMenu = (props: Props) => {
                                               cursor: "pointer",
                                               textDecoration: "none ",
                                               color: "black",
+                                              paddingRight: 20,
+                                              minWidth: 100,
                                             }}
                                           >
                                             <Typography sx={styles.menuItems}>{data}</Typography>

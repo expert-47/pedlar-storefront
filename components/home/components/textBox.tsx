@@ -33,35 +33,39 @@ const TextBox = (props) => {
           : "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."}
       </Typography>
       <Grid container item xs={10} sm={10} md={10} lg={12} style={{ display: "flex", flexDirection: "column" }}>
-        <Grid
-          style={{
-            display: "flex",
-            justifyContent: "flex-start",
-            paddingTop: "20px",
-            alignItems: "center",
-          }}
-        >
-          <Image src="/instagram.png" height="16px" width="16px" />
+        {props?.headerData?.instagramLink && (
+          <Grid
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              paddingTop: "20px",
+              alignItems: "center",
+            }}
+          >
+            <Image src="/instagram.png" height="16px" width="16px" />
 
-          <Box fontSize={"18px"} sx={styles.boxtext}>
-            {props?.headerData?.instagramLink ? instaNameLink[1] : " "}
-          </Box>
-        </Grid>
-        <Grid
-          style={{
-            display: "flex",
-            justifyContent: "flex-start",
-            paddingTop: "8px",
-            alignItems: "center",
-            height: "30px",
-          }}
-        >
-          <Image src="/tiktok.png" height="16px" width="16px" />
+            <Box fontSize={"18px"} sx={styles.boxtext}>
+              {props?.headerData?.instagramLink ? instaNameLink[1] : " "}
+            </Box>
+          </Grid>
+        )}
+        {props?.headerData?.tiktokLink && (
+          <Grid
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              paddingTop: "8px",
+              alignItems: "center",
+              height: "30px",
+            }}
+          >
+            <Image src="/tiktok.png" height="16px" width="16px" />
 
-          <Box fontSize={"18px"} sx={styles.boxtext}>
-            {props?.headerData?.tiktokLink ? tiktokNameLink[1] : " "}
-          </Box>
-        </Grid>
+            <Box fontSize={"18px"} sx={styles.boxtext}>
+              {props?.headerData?.tiktokLink ? tiktokNameLink[1] : " "}
+            </Box>
+          </Grid>
+        )}
         <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid
             style={{

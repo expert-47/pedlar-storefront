@@ -4,14 +4,9 @@ import {
   ListItemText,
   Grid,
   Typography,
-  InputBase,
   ListItem,
   ListItemButton,
   Button,
-  Divider,
-  Checkbox,
-  useTheme,
-  MenuItem,
   Box,
   IconButton,
   CircularProgress,
@@ -19,10 +14,10 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 
-import React, { useState, useEffect } from "react";
-import useSwr from "swr";
+import React, { useState } from "react";
+
 import CloseIcon from "@mui/icons-material/Close";
-import SearchIcon from "@mui/icons-material/Search";
+
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -30,10 +25,9 @@ import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { truncate } from "fs";
+
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
-import { shopList } from "../data";
 
 export const PedlarDrawer = (props: {
   openDrawer: boolean;
@@ -42,15 +36,11 @@ export const PedlarDrawer = (props: {
   slug: string;
 }) => {
   const { type = "Brands", openDrawer, toggleDrawer, storefrontName, data, shopList, loading, shopListLoading } = props;
-  const theme = useTheme();
+
   const route = useRouter();
 
-  // const { data, loading } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
-  // const { data: shopList, loading: shopListLoading } = useSwr(
-  //   `https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`,
-  // );
-  const [viewAll, setViewAll] = useState(data?.data?.slice(0, 9));
-  const [showViewBtn, setShowViewBtn] = useState(true);
+  const [viewAllBrand, toggleViewAllBrand] = useState(true);
+  const [viewAllShop, toggleViewAllShop] = useState(true);
 
   const paperStyle = {
     color: "black",
@@ -77,8 +67,10 @@ export const PedlarDrawer = (props: {
     setOpens(!opens);
   };
   const brandsNameHanlder = () => {
-    setViewAll(data?.data);
-    setShowViewBtn(false);
+    toggleViewAllBrand((prv) => !prv);
+  };
+  const onClickViewAllShop = () => {
+    toggleViewAllShop((prv) => !prv);
   };
   const openCartHandler = () => {
     dispatch(cartDrawerToggle(true));
@@ -118,18 +110,15 @@ export const PedlarDrawer = (props: {
             <CloseIcon onClick={onClickDrawer} sx={{ paddingLeft: "8px" }} />
           </Grid>
           <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
-            {/* <Grid item xs={6}> */}
             <Box sx={{}}>
               <Link href={`/${props?.slug}`}>
                 <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
               </Link>
             </Box>
-            {/* </Grid> */}
-            {/* <Grid item xs={6}> */}
+
             <Typography fontSize={22} fontWeight={400} sx={{ marginLeft: "5px", marginTop: "-5px" }}>
               {storefrontName ? storefrontName : ""}
             </Typography>
-            {/* </Grid> */}
           </Grid>
           <Grid xs={1.5}>
             <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }} onClick={openCartHandler}>
@@ -139,20 +128,7 @@ export const PedlarDrawer = (props: {
             </Badge>
           </Grid>
         </Grid>
-        {/* <Grid style={{ paddingTop: "36px", paddingLeft: "10px", paddingRight: "10px" }}>
-          <Box
-            style={{
-              padding: "5px",
-              display: "flex",
-              alignItems: "center",
-              borderRadius: "25px",
-              border: "1px solid rgba(0,0,0,0.3)",
-            }}
-          >
-            <SearchIcon style={{ color: "rgba(0,0,0,0.3)", padding: "2px" }} sx={styles.drawerIcon} />
-            <InputBase placeholder="Search store" type="text" aria-label="search icons"></InputBase>
-          </Box>
-        </Grid> */}
+
         <Grid style={{ paddingTop: "10px" }}></Grid>
         <ListItemText sx={styles.drawerText}>
           <Link href={`/${route.query.slug}`}>
@@ -170,11 +146,11 @@ export const PedlarDrawer = (props: {
             <Collapse in={open}>
               <List>
                 <ListItem>
-                  <Grid container item gap={10} item xs={12} sm={12}>
+                  <Grid container item gap={10} xs={12} sm={12}>
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      viewAll?.map((item) => (
+                      data?.data?.slice(0, viewAllBrand ? 9 : data?.data.length)?.map((item) => (
                         <Grid
                           key={item}
                           item
@@ -199,7 +175,7 @@ export const PedlarDrawer = (props: {
                         </Grid>
                       ))
                     )}
-                    {viewAll?.length >= 9 && showViewBtn && (
+                    {data?.data?.length >= 9 && (
                       <Button onClick={brandsNameHanlder}>
                         <ListItemText
                           style={{
@@ -207,12 +183,14 @@ export const PedlarDrawer = (props: {
                             fontWeight: "600",
                             fontSize: "14px",
                             textDecoration: "underline",
-                            marginTop: "-3px",
+                            marginTop: "-10px",
                             textTransform: "none",
                             lineHeight: "4px",
                           }}
                         >
-                          <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
+                          <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                            {viewAllBrand ? "View all" : "View less"}
+                          </Typography>
                         </ListItemText>
                       </Button>
                     )}
@@ -230,11 +208,11 @@ export const PedlarDrawer = (props: {
             <Collapse in={opens}>
               <List>
                 <ListItem>
-                  <Grid container item gap={10} item xs={12} sm={12}>
+                  <Grid container item gap={10} xs={12} sm={12}>
                     {shopListLoading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      shopList?.data?.slice(0, 29)?.map((item) => (
+                      shopList?.data?.slice(0, viewAllShop ? 9 : shopList?.data?.length)?.map((item) => (
                         <Grid
                           key={item}
                           item
@@ -259,22 +237,25 @@ export const PedlarDrawer = (props: {
                         </Grid>
                       ))
                     )}
-
-                    {/* <Button onClick={brandsNameHanlder}>
-                      <ListItemText
-                        style={{
-                          color: "black",
-                          fontWeight: "600",
-                          fontSize: "14px",
-                          textDecoration: "underline",
-                          marginTop: "-3px",
-                          textTransform: "none",
-                          lineHeight: "4px",
-                        }}
-                      >
-                        <Typography sx={{ fontWeight: "600", fontSize: "14px" }}> View all</Typography>
-                      </ListItemText>
-                    </Button> */}
+                    {shopList?.data?.length >= 9 && (
+                      <Button onClick={onClickViewAllShop}>
+                        <ListItemText
+                          style={{
+                            color: "black",
+                            fontWeight: "600",
+                            fontSize: "14px",
+                            textDecoration: "underline",
+                            marginTop: "-10px",
+                            textTransform: "none",
+                            lineHeight: "4px",
+                          }}
+                        >
+                          <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
+                            {viewAllShop ? "View all" : "View less"}
+                          </Typography>
+                        </ListItemText>
+                      </Button>
+                    )}
                   </Grid>
                 </ListItem>
               </List>

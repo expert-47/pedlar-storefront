@@ -42,7 +42,7 @@ const Action = (props: any) => {
           Add to cart
         </LoadingButton>
       </Grid>
-      <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ paddingTop: "20px", width: "100%" }}>
+      <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ paddingTop: "25px", width: "100%" }}>
         <LoadingButton
           variant="outlined"
           sx={{

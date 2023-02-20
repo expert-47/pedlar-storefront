@@ -1,11 +1,12 @@
 import { Container, ContainerProps } from "@mui/material";
 import Footer from "components/footer/footer";
 import Navbar from "components/navbar";
-import React from "react";
+import React, { useEffect } from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
-
 import ApiError from "components/PageError";
 import { shopList } from "../navbar/data";
+import { useDispatch, useSelector } from "react-redux";
+import { clearStore } from "store/slice/appSlice";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
@@ -26,6 +27,15 @@ export default function Layout(props: LayoutProps) {
     loading,
     shopListLoading,
   } = props;
+
+  const storeName = useSelector((data) => data.app.storeName);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (storeName != slug) {
+      dispatch(clearStore(slug));
+    }
+  }, []);
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>

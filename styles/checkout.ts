@@ -7,6 +7,11 @@ const styles = {
     fontSize: "22px",
     paddingLeft: "5px",
   },
+  description: {
+    fontWeight: "600",
+    fontSize: "12px",
+    lineHeight: "16px",
+  },
   inputStyle: {
     width: "100%",
     height: "44px",
@@ -101,7 +106,6 @@ const styles = {
     fontSize: "12px",
     fontWeight: "600",
     textTransform: "uppercase",
-    marginTop: "15px",
   },
   productPrice: {
     fontSize: "16px",

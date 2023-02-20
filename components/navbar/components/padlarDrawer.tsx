@@ -104,7 +104,7 @@ export const PedlarDrawer = (props: {
           xs={12}
           sm={12}
           md={12}
-          style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+          style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "5px" }}
         >
           <Grid xs={1.5}>
             <CloseIcon onClick={onClickDrawer} sx={{ paddingLeft: "8px" }} />

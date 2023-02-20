@@ -41,7 +41,7 @@ const Bar = () => {
             alignItems: "center",
             justifyContent: "center",
             position: "sticky",
-            top: "104px",
+            top: "110px",
             zIndex: "100",
           }}
           sx={{

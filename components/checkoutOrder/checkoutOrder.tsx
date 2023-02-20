@@ -19,6 +19,7 @@ interface Props {
   quantity: number;
   itemData: any;
   CurrencyCode: string;
+  // title: string;
 }
 
 const CheckoutOrder = (props: Props) => {
@@ -26,8 +27,8 @@ const CheckoutOrder = (props: Props) => {
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const cartId = useSelector((data) => data.app.cartId);
-  const cartProducts = useSelector((data) => data.app.products);
+  const cartId = useSelector((data: any) => data.app.cartId);
+  // const cartProducts = useSelector((data:any) => data.app.products);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
     setLoadingButtonState(true);
@@ -140,6 +141,7 @@ const CheckoutOrder = (props: Props) => {
                 width: "100%",
               }}
             >
+              {/* <Typography sx={styles.brandName}>{props.title}</Typography> */}
               <Typography sx={styles.brandName}>{props.name}</Typography>
               <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "$" : ""} ${
                 props?.price

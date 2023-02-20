@@ -55,23 +55,19 @@ const Cart = (props: any) => {
   const route = useRouter();
   const slugValue = route.query.slug;
   let path = getStoreName(route);
-  const cartId = useSelector((data:any) => data.app.cartId);
+  const cartId = useSelector((data: any) => data.app.cartId);
   const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
-
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0]);
     setColor(newAdditionData?.options[1]?.values[0]);
   }, [route]);
-
   useEffect(() => {
     setError(false);
   }, [cartProducts]);
-
   useEffect(() => {
     getCartList();
   }, [cartId]);
@@ -83,9 +79,7 @@ const Cart = (props: any) => {
   const setColorValue = (value: string) => {
     setColor(value);
   };
-
   // add to cart method
-
   const getCartList = async () => {
     if (cartId) {
       try {
@@ -100,7 +94,6 @@ const Cart = (props: any) => {
       const quantity = 1;
       setButtonLoaderState(true);
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
-
       const varientData = variant?.data.product?.variantBySelectedOptions;
 
       if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
@@ -142,7 +135,6 @@ const Cart = (props: any) => {
   }, [size, color]);
   const onSelectedItem = async () => {
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
-
     const varientData = variant?.data.product?.variantBySelectedOptions;
 
     if (!varientData?.quantityAvailable && varientData?.quantityAvailable === 0) {
@@ -377,7 +369,17 @@ const Cart = (props: any) => {
           </Grid>
         </Box>
         <Grid container spacing={4} sx={styles.bottomContainer}>
-          <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
+          <Grid
+            container
+            item
+            xs={11.5}
+            sm={9}
+            md={11.2}
+            lg={9.2}
+            xl={9.2}
+            paddingTop="30px"
+            style={{ justifyContent: "space-around" }}
+          >
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
               <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                 You might like
@@ -399,7 +401,7 @@ const Cart = (props: any) => {
                     sx={{ cursor: "pointer" }}
                     onClick={ClearErrors}
                   >
-                    <Box sx={{ width: "100%", height: 165 }}>
+                    <Box sx={{ width: "100%", height: { xs: 165, sm: 250, md: 200 } }}>
                       <PedlarImage src={item?.featuredImage?.transformedSrc} />
                     </Box>
                     <Typography variant="body1">SISLEY PARIS</Typography>

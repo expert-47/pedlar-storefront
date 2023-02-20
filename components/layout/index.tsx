@@ -3,9 +3,7 @@ import Footer from "components/footer/footer";
 import Navbar from "components/navbar";
 import React from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
-
 import ApiError from "components/PageError";
-import { shopList } from "../navbar/data";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;

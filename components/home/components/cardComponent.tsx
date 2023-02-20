@@ -34,7 +34,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
               sx={{
                 maxWidth: "100%",
                 maxHeight: "100%",
-                width: { xs: 158, sm: 190, md: 344 },
+                width: { xs: "100%", sm: 190, md: 344 },
                 height: { xs: 158, sm: 190, md: 344 },
               }}
             >

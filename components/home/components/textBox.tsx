@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "styles/home";
-import Text from "../../customText/index";
 import Grid from "@mui/material/Grid";
 import { Button, Box, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-const TextBox = (props) => {
+const TextBox = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
   const theme = useTheme();

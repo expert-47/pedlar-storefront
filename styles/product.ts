@@ -47,20 +47,29 @@ const styles = {
   },
   accordianGrid: {
     alignItems: "center",
-    paddingTop: "25px",
+    paddingTop: "20px",
     display: { md: "block" },
   },
   accordianTypography: {
     fontSize: "16px",
     color: "#1C1B1F",
   },
-  description: { fontWeight: "600", fontSize: "40px", lineHeight: "120%", paddingTop: "14px" },
-  price: { margin: "16px" },
+  description: {
+    fontWeight: "600",
+    fontSize: "40px",
+    lineHeight: "120%",
+    paddingTop: "14px",
+  },
+  price: {
+    margin: "16px",
+  },
   mainDescription: {
     color: "info.contrastText",
-    paddingTop: "35px",
-    fontWeight: "bold",
+    paddingTop: "30px",
+    paddingBottom: "30px",
+    fontWeight: "700px",
     fontSize: "16px",
+    lineHeight: "22px",
   },
   bottomHeading: { marginTop: "24px", fontWeight: "700", fontSize: "14px", color: "primary.contrastText" },
   divider: {

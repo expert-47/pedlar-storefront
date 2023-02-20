@@ -12,8 +12,8 @@ const ProductHeader = (props) => {
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   let slug = props?.slug;
 
-  const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
-  const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
+  const { data } = useSwr(`storefront/${slug}/vendors/`);
+  const { data: shopList } = useSwr(`storefront/${slug}/categories/`);
   const { brandsFilterList, shopFilterList } = props;
   const [brandFilterData, setBrandFilterData] = useState([]);
   const [shopFilterData, setShopFilterData] = useState([]);

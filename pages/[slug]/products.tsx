@@ -27,6 +27,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
     if (!applyFilters) {
       if (type == "Brands") {
         setBrandFilterList([]);
+        return;
       }
       setShopFilterList([]);
       return;

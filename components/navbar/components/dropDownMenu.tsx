@@ -145,7 +145,12 @@ const DropDownMenu = (props: Props) => {
                                         onClick={() => {
                                           toggleViewAll((prv) => !prv);
                                         }}
-                                        sx={styles.menuItems}
+                                        sx={[
+                                          styles.menuItems,
+                                          {
+                                            textDecoration: "underline",
+                                          },
+                                        ]}
                                       >
                                         {viewAll ? "View all" : "View less"}
                                       </Typography>

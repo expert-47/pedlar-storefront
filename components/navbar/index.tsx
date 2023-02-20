@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import useSwr from "swr";
 
 import { Stack } from "@mui/system";
 import styles from "styles/navbar";
@@ -29,9 +28,7 @@ export default function Navbar(props: any) {
   const onClickDrawer = () => {
     dispatch(cartDrawerToggle(true));
   };
-  // let slug = props.slug;
-  // const { data, error, loading } = useSwr(`storefront/${slug}/vendors/`);
-  // const { data: shopList, loading: shopListLoading } = useSwr(`storefront/${slug}/categories/`);
+
   const route = useRouter();
   let path = route.asPath.split("/")[1];
   return (

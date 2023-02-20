@@ -7,7 +7,6 @@ import styles from "styles/navbar";
 import { Button, Grid, Typography, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
 
-import ListItemText from "@mui/material/ListItemText";
 import Link from "next/link";
 import { CustomContainer } from "components/layout";
 import { useRouter } from "next/router";
@@ -27,6 +26,8 @@ const DropDownMenu = (props: Props) => {
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
+  const [viewAll, toggleViewAll] = useState(true);
+
   const handleClose = () => {
     setAnchorEl(null);
     setdropdownOption(false);
@@ -91,7 +92,7 @@ const DropDownMenu = (props: Props) => {
                       ) : (
                         <Box
                           style={{
-                            height: 200,
+                            maxHeight: 200,
                             flexWrap: "wrap",
                           }}
                         >
@@ -103,12 +104,12 @@ const DropDownMenu = (props: Props) => {
                                   sx={{
                                     display: "flex",
                                     flexDirection: "column",
-                                    height: 200,
+                                    maxHeight: 200,
                                     flexWrap: "wrap",
                                     width: 500,
                                   }}
                                 >
-                                  {data?.slice(0, 29).map((data, index) => {
+                                  {data?.slice(0, viewAll ? 9 : data.length).map((data, index) => {
                                     return (
                                       <>
                                         <Link
@@ -131,6 +132,24 @@ const DropDownMenu = (props: Props) => {
                                       </>
                                     );
                                   })}
+                                  {data.length >= 9 && (
+                                    <a
+                                      style={{
+                                        cursor: "pointer",
+                                        textDecoration: "none ",
+                                        color: "black",
+                                      }}
+                                    >
+                                      <Typography
+                                        onClick={() => {
+                                          toggleViewAll((prv) => !prv);
+                                        }}
+                                        sx={styles.menuItems}
+                                      >
+                                        {viewAll ? "View all" : "View less"}
+                                      </Typography>
+                                    </a>
+                                  )}
                                 </Box>
                               </Grid>
                             </Grid>

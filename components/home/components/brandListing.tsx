@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "styles/home";
 import Grid from "@mui/material/Grid";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -20,6 +20,10 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         display: "flex",
         alignItems: "center",
       }}
+      sx={{
+        paddingLeft: { xs: "10px", sm: "20px" },
+        paddingRight: { xs: "8px", sm: "20px" },
+      }}
     >
       <Grid
         container
@@ -32,7 +36,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
       >
         <Grid
-          // container
           item
           xs={7}
           sm={8}
@@ -45,7 +48,6 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
 
         <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid
-            // container
             item
             xs={5}
             sm={4}
@@ -60,18 +62,10 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
               flexWrap: "nowrap",
             }}
           >
-            {/* <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-              }}
-            > */}
             <Typography fontSize={15} fontWeight={500} sx={styles.gridtag1typo2}>
               {rightHeading}
             </Typography>
             <ArrowForwardIcon sx={styles.arrowIcon} />
-            {/* </Box> */}
           </Grid>
         </Link>
       </Grid>

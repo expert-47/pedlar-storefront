@@ -24,8 +24,8 @@ const Faq = () => {
           md={12}
           lg={12}
           sx={{
-            paddingTop: "13px",
-            paddingLeft: { xs: "0px", lg: "15px" },
+            paddingTop: "130px",
+            paddingLeft: { xs: "0px", lg: "20px" },
           }}
         >
           <Typography

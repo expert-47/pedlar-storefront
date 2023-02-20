@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "styles/home";
-import { Typography, Button, Grid, Box, useMediaQuery } from "@mui/material";
+import { Typography, Button, Grid, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
 import CloseIcon from "@mui/icons-material/Close";
@@ -41,8 +41,12 @@ const Bar = () => {
             alignItems: "center",
             justifyContent: "center",
             position: "sticky",
-            top: "110px",
+            top: "104px",
             zIndex: "100",
+          }}
+          sx={{
+            paddingLeft: { xs: "5px", md: "0px" },
+            paddingRight: { xs: "5px", md: "0px" },
           }}
         >
           <Grid

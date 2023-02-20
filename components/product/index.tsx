@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography } from "@mui/material";
 import { Slide } from "react-slideshow-image";
 import Link from "next/link";
-
 import "react-slideshow-image/dist/styles.css";
-
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -16,7 +13,6 @@ import AddIcon from "@mui/icons-material/Add";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import RemoveIcon from "@mui/icons-material/Remove";
-
 import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
@@ -24,7 +20,6 @@ import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
 import PedlarImage from "components/pedlarImage";
 import { useMediaQuery, useTheme } from "@mui/material";
-
 import { getStoreName } from "utils/getPathName";
 import {
   addToCart,
@@ -36,7 +31,6 @@ import {
 } from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
-import { images } from "../footer/data";
 
 const buttonStyle = {
   display: "none",
@@ -47,26 +41,22 @@ const properties = {
   nextArrow: <button style={{ ...buttonStyle }}></button>,
 };
 
-const Cart = (props) => {
+const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
-
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
-
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
-
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
   const route = useRouter();
   const slugValue = route.query.slug;
   let path = getStoreName(route);
-  const cartId = useSelector((data) => data.app.cartId);
-  const cartProducts = useSelector((data) => data.app.products);
+  const cartId = useSelector((data:any) => data.app.cartId);
+  const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -219,8 +209,6 @@ const Cart = (props) => {
     }
   };
 
-  // clear error when user click You Might Like
-
   const ClearErrors = () => {
     setError(false);
     setErrorMessage("");
@@ -239,7 +227,6 @@ const Cart = (props) => {
               lg={6}
               sx={{
                 display: "flex",
-
                 justifyContent: isMatch ? "center" : "start",
                 textAlign: "center",
                 paddingTop: "26px",
@@ -248,7 +235,7 @@ const Cart = (props) => {
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Slide {...properties} indicators={true}>
-                    {newAdditionData?.images?.nodes?.map((item) => {
+                    {newAdditionData?.images?.nodes?.map((item: any) => {
                       return (
                         <>
                           <Box className="each-slide-effect">
@@ -276,7 +263,7 @@ const Cart = (props) => {
                       height: 400,
                     }}
                   >
-                    {newAdditionData?.images?.nodes?.map((item) => {
+                    {newAdditionData?.images?.nodes?.map((item: any) => {
                       return (
                         <Box
                           sx={{
@@ -296,7 +283,7 @@ const Cart = (props) => {
 
             <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">
               <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
-                <Grid
+                <Box
                   style={{
                     position: "sticky",
                     top: "110px",
@@ -308,9 +295,8 @@ const Cart = (props) => {
                   <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
                     <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                      {`${newAdditionData?.priceRange?.minVariantPrice?.amount} ${
-                        newAdditionData?.priceRange?.minVariantPrice?.currencyCode === "AUD" ? "$" : ""
-                      }`}
+                      {`${newAdditionData?.priceRange?.minVariantPrice?.currencyCode === "AUD" ? "$" : ""}
+                      ${newAdditionData?.priceRange?.minVariantPrice?.amount} `}
                     </Typography>
                   </Grid>
 
@@ -342,11 +328,8 @@ const Cart = (props) => {
                   />
 
                   <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
+                  <Divider />
                   <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
-                    <Accordion elevation={0}>
-                      <AccordionSummary />
-                      <AccordionDetails />
-                    </Accordion>
                     <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")} elevation={0}>
                       <AccordionSummary expandIcon={expanded === "panel1" ? <RemoveIcon /> : <AddIcon />}>
                         <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
@@ -388,7 +371,7 @@ const Cart = (props) => {
                       <AccordionDetails></AccordionDetails>
                     </Accordion>
                   </Grid>
-                </Grid>
+                </Box>
               </Grid>
             </Grid>
           </Grid>
@@ -416,7 +399,7 @@ const Cart = (props) => {
                     sx={{ cursor: "pointer" }}
                     onClick={ClearErrors}
                   >
-                    <Box sx={{ width: 190, height: 180 }}>
+                    <Box sx={{ width: "100%", height: 165 }}>
                       <PedlarImage src={item?.featuredImage?.transformedSrc} />
                     </Box>
                     <Typography variant="body1">SISLEY PARIS</Typography>

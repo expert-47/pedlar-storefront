@@ -451,7 +451,7 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
   }
 };
 
-export const getPaginationProducts = async (endCursorValue, collectionId) => {
+export const getPaginationProducts = async (endCursorValue, collectionId, filterValuesForQuery) => {
   const requestBody = {
     query: gql`query GetCollection($collectionId: ID!) {
       collection(id: $collectionId) {
@@ -493,7 +493,7 @@ export const getPaginationProducts = async (endCursorValue, collectionId) => {
           }
       }
   }`,
-    variables: { collectionId: `gid://shopify/Collection/${collectionId}` },
+    variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: filterValuesForQuery },
   };
 
   try {

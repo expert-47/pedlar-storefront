@@ -163,7 +163,7 @@ export const PedlarDrawer = (props: {
                             as={`/${route?.query?.slug}/products`}
                             href={{
                               pathname: `/${route?.query?.slug}/products`,
-                              query: { dataType: type, itemValue: item },
+                              query: { dataType: "Brands", itemValue: item.vendor },
                             }}
                           >
                             <Typography
@@ -225,7 +225,7 @@ export const PedlarDrawer = (props: {
                             as={`/${route?.query?.slug}/products`}
                             href={{
                               pathname: `/${route?.query?.slug}/products`,
-                              query: { dataType: type, itemValue: item },
+                              query: { dataType: "Shop", itemValue: item.productType },
                             }}
                           >
                             <Typography

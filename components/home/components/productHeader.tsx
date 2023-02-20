@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
 import useSwr from "swr";
 
@@ -14,15 +14,31 @@ const ProductHeader = (props) => {
 
   const { data } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/vendors/`);
   const { data: shopList } = useSwr(`https://pedlar-dev.ts.r.appspot.com/storefront/${slug}/categories/`);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const { brandsFilterList, shopFilterList } = props;
+  const [brandFilterData, setBrandFilterData] = useState([]);
+  const [shopFilterData, setShopFilterData] = useState([]);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  useEffect(() => {
+    let selectedData = data?.data?.map((item) => {
+      let findIndex = brandsFilterList.findIndex((i) => i.productVendor == item.vendor);
+      return {
+        item: item.vendor,
+        checked: findIndex != -1,
+      };
+    });
+    setBrandFilterData(selectedData);
+  }, [data, brandsFilterList]);
+
+  useEffect(() => {
+    let selectedData = shopList?.data?.map((item) => {
+      let findIndex = shopFilterList.findIndex((i) => i.productType == item.productType);
+      return {
+        item: item.productType,
+        checked: findIndex != -1,
+      };
+    });
+    setShopFilterData(selectedData);
+  }, [shopList, shopFilterList]);
 
   return (
     <CustomGrid>
@@ -44,8 +60,13 @@ const ProductHeader = (props) => {
             <ResponsiveHeader
               type={"Brands"}
               setFiltersValue={props?.setFiltersValue}
-              data={data ? data.data.map((item) => item.vendor) : []}
               slug={props?.slug}
+              brandFilterData={brandFilterData}
+              setBrandFilterData={setBrandFilterData}
+              shopFilterData={shopFilterData}
+              setShopFilterData={setShopFilterData}
+              shopCount={shopFilterList?.length || 0}
+              brandCount={brandsFilterList?.length || 0}
             />
           </>
         ) : (
@@ -53,12 +74,16 @@ const ProductHeader = (props) => {
             <DropdownButton
               type={"Brands"}
               setFiltersValue={props?.setFiltersValue}
-              data={data ? data.data.map((item) => item.vendor) : []}
+              filterList={brandFilterData}
+              setFilterData={setBrandFilterData}
+              filterCount={brandsFilterList?.length || 0}
             />
             <DropdownButton
               type={"Category"}
               setFiltersValue={props?.setFiltersValue}
-              data={shopList ? shopList.data.map((item) => item.productType) : []}
+              filterList={shopFilterData}
+              setFilterData={setShopFilterData}
+              filterCount={shopFilterList?.length || 0}
             />
           </Grid>
         )}

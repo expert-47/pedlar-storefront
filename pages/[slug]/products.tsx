@@ -1,7 +1,7 @@
 import Text from "components/customText";
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Button, Divider, Box } from "@mui/material";
+import { Grid, Button, Divider, Box, CircularProgress } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
@@ -10,82 +10,88 @@ import Gallery from "components/home/components/Gallery";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-import {
-  getFilteredProducts,
-  getPaginationProducts,
-  getUserDetailByFetchAPICall,
-  getUserTotalDetailByFetchAPICall,
-} from "api/graphql/grapgql";
+import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
-
-let filterValuesForQuery: any = [];
 
 const Products = ({ newAdditionData, slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([{}]);
   const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
-  const [applyFiltersState, setApplyFiltersState] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+  const [brandsFilterList, setBrandFilterList] = useState([]);
+  const [shopFilterList, setShopFilterList] = useState([]);
+  console.log("brandsFilterList", brandsFilterList);
   const route = useRouter();
 
-  const setFiltersValue = async (BrandsNames: any, VendorsNames: any, applyFilters: boolean) => {
-    if (BrandsNames?.length > 0) {
-      BrandsNames?.map((item: any) => {
-        filterValuesForQuery.push({ productVendor: item });
-      });
-      BrandsNames = [];
-    }
-    if (VendorsNames?.length > 0) {
-      VendorsNames?.map((item: any) => {
-        filterValuesForQuery.push({ productType: item });
-      });
-      VendorsNames = [];
+  const setFiltersValue = async (filterData: any, type: string, applyFilters: boolean) => {
+    console.log("fds");
+    if (!applyFilters) {
+      if (type == "Brands") {
+        setBrandFilterList([]);
+      }
+      setShopFilterList([]);
+      return;
     }
 
-    if (applyFilters != applyFiltersState) {
-      setApplyFiltersState(applyFilters);
-      getFilteredData().then((res) => {
-        filterValuesForQuery = [];
-      });
+    if (type == "Brands") {
+      setBrandFilterList(
+        filterData.map((item) => {
+          return { productVendor: item };
+        }),
+      );
+      return;
     }
+
+    setShopFilterList(
+      filterData.map((item) => {
+        return { productType: item };
+      }),
+    );
   };
 
-  // console.log("filterValuesForQuery", filterValuesForQuery);
   useEffect(() => {
-    if (!(route.query.dataType === "Brands") && !(route.query.dataType === "Shop")) {
-      setProductsData(newAdditionData?.nodes);
-      setEndCursorValue(newAdditionData?.pageInfo?.endCursor);
-    }
-
     if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
-      filterValuesForQuery = [];
       if (route.query.dataType === "Brands") {
-        filterValuesForQuery.push({ productVendor: route?.query.itemValue });
+        setBrandFilterList([{ productVendor: route?.query.itemValue }]);
       }
       if (route.query.dataType === "Shop") {
-        filterValuesForQuery.push({ productType: route?.query.itemValue });
+        setShopFilterList([{ productType: route?.query.itemValue }]);
       }
-      getFilteredData();
     }
+    return () => {
+      setShopFilterList([]);
+      setBrandFilterList([]);
+    };
   }, []);
 
-  <link rel="icon" href="/favicon.ico" />;
+  useEffect(() => {
+    getFilteredData();
+  }, [brandsFilterList, shopFilterList]);
 
   const getFilteredData = async () => {
-    const response = await getFilteredProducts(collectionId, filterValuesForQuery);
+    try {
+      setLoading(true);
+      const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
+      console.log("response", response, brandsFilterList);
 
-    setProductsData(response?.data?.collection?.products?.nodes);
-    setApplyFiltersState(false);
+      setProductsData(response?.data?.collection?.products?.nodes || []);
+      setEndCursorValue(response?.data?.collection?.products?.pageInfo?.endCursor);
+      setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
   };
-
   const getPaginationData = async () => {
     if (endCursorValue.includes("=")) {
       setEndCursorValue(endCursorValue.slice(0, -2));
     }
 
     try {
-      const collectionDataProducts = await getPaginationProducts(endCursorValue, collectionId);
-
+      const collectionDataProducts = await getPaginationProducts(endCursorValue, collectionId, [
+        ...brandsFilterList,
+        ...shopFilterList,
+      ]);
       const totalData = [...productsData, ...collectionDataProducts.nodes];
       setProductsData(totalData);
       setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
@@ -117,8 +123,25 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
           // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         }}
       >
-        <ProductHeader setFiltersValue={setFiltersValue} collectionId={collectionId} slug={slug} />
-
+        <ProductHeader
+          brandsFilterList={brandsFilterList}
+          setFiltersValue={setFiltersValue}
+          collectionId={collectionId}
+          slug={slug}
+          shopFilterList={shopFilterList}
+        />
+        {loading && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "50px",
+            }}
+          >
+            <CircularProgress color="secondary" />
+          </Box>
+        )}
         <Gallery newAdditionData={productsData} />
       </Box>
       <Grid

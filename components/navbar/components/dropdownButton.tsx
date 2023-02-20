@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
@@ -15,17 +15,18 @@ interface Props {
   type: string;
   data: string[];
   setFiltersValue: any;
+  filterList: [];
+  filterCount: Number;
+
+  setFilterData: (data: []) => void;
 }
-let BrandsNames: string[] = [];
-let VendorsNames: string[] = [];
 
 const DropdownButton = (props: Props) => {
   const theme = useTheme();
-  const { type = "Brands", data, setFiltersValue } = props;
+  const { type = "Brands", data, setFiltersValue, filterList, setFilterData, filterCount } = props;
 
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const [filterCheckBoxes, setFilterCheckBoxes] = useState({});
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -34,50 +35,35 @@ const DropdownButton = (props: Props) => {
     setAnchorEl(null);
   };
 
-  const getCheckBoxValue = (e: any, text: string) => {
-    if (e.target.checked) {
-      if (type === "Brands" && !BrandsNames?.includes(text)) {
-        BrandsNames.push(text);
-      }
-      if (!(type === "Brands") && !VendorsNames?.includes(text)) {
-        VendorsNames.push(text);
-      }
-    }
-    if (!e.target.checked) {
-      if (type === "Brands" && BrandsNames?.includes(text)) {
-        BrandsNames = BrandsNames.filter(function (item) {
-          return item !== text;
-        });
-      }
-      if (!(type === "Brands") && VendorsNames?.includes(text)) {
-        VendorsNames = VendorsNames.filter(function (item) {
-          return item !== text;
-        });
-      }
-    }
-  };
-
   const applyFiltersMethod = () => {
-    setFiltersValue(BrandsNames, VendorsNames, true);
-    setAnchorEl(null);
+    let data = filterList.filter((item) => item.checked);
+    setFiltersValue(
+      data.map((item) => item.item),
+      type,
+      true,
+    );
+    handleClose();
   };
 
   const resetFilters = () => {
-    if (type === "Brands") {
-      BrandsNames = [];
-    } else {
-      VendorsNames = [];
-    }
-    const obj = {};
-    data.forEach((_item, index) => {
-      obj["checkbox-" + index] = false;
-    });
-    setFilterCheckBoxes(obj);
-    setFiltersValue(BrandsNames, VendorsNames, true);
+    setFiltersValue(
+      filterList.map((item) => item.item),
+      type,
+      false,
+    );
+    handleClose();
   };
-  const getSelectedValues = (e, item, checkboxKey) => {
-    setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
-    getCheckBoxValue(e, item);
+  const getSelectedValues = (item) => {
+    let index = filterList.findIndex((data) => data.item == item.item);
+
+    let data = {
+      item: item.item,
+      checked: item.checked ? false : true,
+    };
+    let list = [...filterList];
+    list[index] = data;
+
+    setFilterData(list);
   };
 
   return (
@@ -85,7 +71,7 @@ const DropdownButton = (props: Props) => {
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Button sx={styles.tabButton} onClick={handleClick}>
           <Box style={{ borderBottom: openMenu ? "solid #1C1B1F 1px" : "none" }}>{type}</Box>
-          {type === "Brands" ? <Box sx={{ color: "purple" }}>{`(${BrandsNames.length})`}</Box> : null}
+          {filterCount != 0 ? <Box sx={{ color: "purple" }}>{`(${filterCount})`}</Box> : null}
           {openMenu ? <ExpandLess sx={styles.tabIcon} /> : <ExpandMore sx={styles.tabIcon} />}
         </Button>
       </Grid>
@@ -126,43 +112,21 @@ const DropdownButton = (props: Props) => {
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
               <Box sx={styles.menuInnerContainer} style={{ display: "flex" }}>
-                {data.map((item, index) => {
-                  const checkboxKey: string = "checkbox-" + index;
+                {filterList?.map((item, index) => {
                   return (
                     <>
                       <FormGroup>
                         <FormControlLabel
                           control={
                             <Checkbox
-                              checked={filterCheckBoxes[checkboxKey] || false}
+                              checked={item.checked || false}
                               sx={styles.menuCheck}
-                              onClick={(e) => getSelectedValues(e, item, checkboxKey)}
+                              onClick={(e) => getSelectedValues(item)}
                             />
                           }
-                          label={item}
+                          label={item?.item || ""}
                         />
                       </FormGroup>
-                      {/* 
-                      <MenuItem
-                        key={index}
-                        onClick={(e) => getSelectedValues(e, item, checkboxKey)}
-
-                        // onClick={() => {
-                        //   setFilterCheckBoxes({ ...filterCheckBoxes, [checkboxKey]: !filterCheckBoxes[checkboxKey] });
-                        // }}
-                        // onChange={(e) => getCheckBoxValue(e, item)}
-                      >
-                        <Checkbox
-                          // onChange={(e) => getCheckBoxValue(e, item)}
-                          // id={"checkbox"+index}
-
-                          //jhgjh
-
-                          checked={filterCheckBoxes[checkboxKey] || false}
-                          sx={styles.menuCheck}
-                        />
-                        {/* <ListItemText>{item}</ListItemText> */}
-                      {/* </MenuItem>              */}
                     </>
                   );
                 })}
@@ -183,7 +147,7 @@ const DropdownButton = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod()}>
+                <Button variant="contained" sx={styles.menuButton} onClick={applyFiltersMethod}>
                   Apply
                 </Button>
               </Grid>

@@ -3,18 +3,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
-
 import { useEffect, useState } from "react";
 import { getCartProducts } from "api/graphql/grapgql";
 import { checkoutCartDetails } from "../../api/graphql/grapgql";
-import { addProductToCart, clearCart } from "store/slice/appSlice";
+import { addProductToCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
 const CartDrawer = () => {
-  const cartId = useSelector((data) => data.app.cartId);
-  const cartProducts = useSelector((data) => data.app.products);
-  const { showCart } = useSelector((state) => state.app);
+  const cartId = useSelector((data: any) => data.app.cartId);
+  const cartProducts = useSelector((data: any) => data.app.products);
+  const { showCart } = useSelector((state: any) => state.app);
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState("");
 
@@ -42,7 +41,7 @@ const CartDrawer = () => {
         setTotalPrice(price);
         return;
       }
-      const price = cartProducts.reduce((total, item) => {
+      const price = cartProducts.reduce((total: any, item: any) => {
         return typeof total == "object"
           ? Number(total.merchandise?.price?.amount) * Number(total.quantity) +
               Number(item?.merchandise.price?.amount) * Number(item.quantity)
@@ -118,10 +117,13 @@ const CartDrawer = () => {
           paddingY={"40px"}
           sx={styles.cartDrawerSlider}
         >
-          {cartProducts?.map((item: any, index) => {
+          {cartProducts?.map((item: any, index: any) => {
+            console.log('item',item);
+            
             return (
               <CheckoutOrder
                 key={index}
+              //  title={item?.merchandise?.name || ""}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}

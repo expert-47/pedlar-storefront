@@ -20,10 +20,11 @@ const BannerImg = (props: any) => {
         container
         item
         alignItems={"center"}
+        paddingX={{ lg: theme.spacing(10) }}
         justifyContent={{ lg: "center", md: "center", sm: "center", xs: "center" }}
         lg={11}
       >
-        <Grid item xs={11} md={4} lg={4}>
+        <Grid item xs={11.5} md={4} lg={4}>
           <Box sx={{ width: isMatch ? "100%" : 476, height: isMatch ? 415 : 595 }}>
             <PedlarImage
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
@@ -31,7 +32,15 @@ const BannerImg = (props: any) => {
             />
           </Box>
         </Grid>
-        <Grid item container xs={10.5} md={7} lg={7} marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}>
+        <Grid
+          item
+          container
+          xs={10.5}
+          md={7}
+          lg={7}
+          marginLeft={{ lg: "-2%", md: "-4%" }}
+          marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
+        >
           <TextBox headerData={props?.headerData} style={{}} />
         </Grid>
       </Grid>

@@ -3,7 +3,6 @@ import Footer from "components/footer/footer";
 import Navbar from "components/navbar";
 import React, { useEffect } from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
-
 import ApiError from "components/PageError";
 import { shopList } from "../navbar/data";
 import { useDispatch, useSelector } from "react-redux";

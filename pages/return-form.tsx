@@ -244,7 +244,7 @@ const ReturnForm = () => {
                 <Box sx={{ textAlign: "center" }}>
                   <Button
                     type="submit"
-                    href="thankyou-return"
+                    href="/thankyou-return"
                     // disabled={
                     //   Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
                     // }

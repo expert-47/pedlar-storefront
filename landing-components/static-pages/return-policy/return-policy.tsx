@@ -16,7 +16,7 @@ const ReturnPolicy = (props) => {
           fontWeight={"700"}
           style={{ lineHeight: "normal", paddingBottom: "60px", paddingTop: "11px" }}
         >
-          Pedlar Shipping and Returns Policy (Shoppers)
+          Shipping and Returns
         </Typography>
 
         <Typography textTransform={"none"} fontSize={"20px"} fontWeight={"400"} sx={styles.spacing}>

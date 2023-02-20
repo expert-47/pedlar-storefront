@@ -308,8 +308,8 @@ const Cart = (props) => {
                   <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
                     <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                      {`${newAdditionData?.priceRange?.minVariantPrice?.amount} ${
-                        newAdditionData?.priceRange?.minVariantPrice?.currencyCode === "AUD" ? "$" : ""
+                      {`${newAdditionData?.priceRange?.minVariantPrice?.currencyCode === "AUD" ? "$" : ""}${
+                        newAdditionData?.priceRange?.minVariantPrice?.amount
                       }`}
                     </Typography>
                   </Grid>

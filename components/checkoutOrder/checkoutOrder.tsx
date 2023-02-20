@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
@@ -98,9 +98,11 @@ const CheckoutOrder = (props: Props) => {
               alignItems: "center",
               flexDirection: "row",
               height: "130px",
-              backgroundColor: "#D7D8D9",
+              backgroundColor: "transparent",
             }}
-          ></Box>
+          >
+            <CircularProgress color="secondary" />
+          </Box>
           <Divider sx={styles.divider} />
         </Box>
       ) : (

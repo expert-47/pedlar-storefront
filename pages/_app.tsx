@@ -21,9 +21,6 @@ import { useRouter } from "next/router";
 import { clearStore } from "store/slice/appSlice";
 
 function MyApp({ Component, pageProps }: any) {
-  const route = useRouter();
-  const storeName = store.getState();
-
   useEffect(() => {
     Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
       autoload: false,
@@ -31,14 +28,9 @@ function MyApp({ Component, pageProps }: any) {
     Crisp.setZIndex(9999);
     Crisp.load();
   });
-  const slugValue = route.query.slug;
 
   let persistor = persistStore(store);
-  useEffect(() => {
-    if (slugValue != storeName?.app?.storeName) {
-      store.dispatch(clearStore(slugValue));
-    }
-  }, []);
+
   return (
     <Provider store={store}>
       <ApolloProvider client={client}>

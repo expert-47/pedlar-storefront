@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React from "react";
 import { Grid, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -7,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import styles from "styles/product";
 
-function Options(props) {
+function Options(props: any) {
   const { newAdditionData, setColorValue, setSizeValue, size, color } = props;
 
   const handleChange1 = (event: any) => {

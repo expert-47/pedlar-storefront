@@ -5,7 +5,7 @@ import { useMediaQuery, useTheme, Box } from "@mui/material";
 import TextBox from "./textBox";
 import PedlarImage from "components/pedlarImage";
 
-const BannerImg = (props) => {
+const BannerImg = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   return (
@@ -20,7 +20,7 @@ const BannerImg = (props) => {
         container
         item
         alignItems={"center"}
-        paddingX={{ xs: theme.spacing(10) }}
+        paddingX={{ lg: theme.spacing(10) }}
         justifyContent={{ lg: "center", md: "center", sm: "center", xs: "center" }}
         lg={11}
       >
@@ -38,10 +38,10 @@ const BannerImg = (props) => {
           xs={10.5}
           md={7}
           lg={7}
-          marginLeft={{ lg: "-4%", md: "-4%" }}
+          marginLeft={{ lg: "-2%", md: "-4%" }}
           marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
         >
-          <TextBox headerData={props?.headerData} />
+          <TextBox headerData={props?.headerData} style={{}} />
         </Grid>
       </Grid>
     </CustomContainer>

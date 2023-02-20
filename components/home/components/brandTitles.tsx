@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, GridProps } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
 import { useRouter } from "next/router";
@@ -18,15 +18,18 @@ const BrandTitles = (props: any) => {
           alignItems: "center",
           zIndex: "0",
         }}
+        sx={{
+          paddingLeft: { xs: "15px", sm: "20px" },
+          paddingRight: { xs: "15px", sm: "20px" },
+        }}
       >
-        <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props} style={{ justifyContent: "space-between" }}>
+        <Grid container xs={12} sm={12} md={12} lg={12} gap={12} {...props} style={{ justifyContent: "flex-start" }}>
           {props?.curatedBrandsResponse?.map((item: any, index: number) => (
             <>
               <Box
                 sx={styles.brandImage}
                 style={{
-                  border: "1px solid #C0C0C0",
-                  boxShadow: "0 4px 6px -4px grey",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
@@ -40,7 +43,7 @@ const BrandTitles = (props: any) => {
                     query: { dataType: "Brands", itemValue: item?.vendor },
                   }}
                 >
-                  <PedlarImage src={item?.logo_url} alt={"image" + index} quality="1" />
+                  <PedlarImage src={item?.logo_url} alt={"image" + index} quality="100" />
                 </Link>
               </Box>
             </>

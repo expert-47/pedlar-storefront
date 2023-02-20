@@ -1,14 +1,11 @@
 import React from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import CardComponent from "./cardComponent";
-import styles from "styles/home";
 import { CustomGrid } from "components/layout";
 
 interface Props {
-  // data: any[];
   columnSpacing?: number;
   newAdditionData?: any[];
-  // position:boolean;
 }
 const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
   return (
@@ -27,13 +24,23 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           sm={12}
           md={12}
           lg={12}
-          sx={{ padding: "2px" }}
+          sx={{ paddingLeft: { xs: "15px", sm: "20px" }, paddingRight: { xs: "15px", sm: "20px" } }}
+          justifyContent={{ xs: "space-between" }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
         >
           {newAdditionData?.map((item: any, index: any) => {
             return (
-              <Grid item xs={5.9} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
+              <Grid
+                item
+                xs={6}
+                sm={3.8}
+                md={3.8}
+                lg={3.8}
+                xl={3.8}
+                key={item?.collectionId}
+                style={{ justifyContent: "space-evenly" }}
+              >
                 <CardComponent
                   name={item?.title}
                   type={item?.productType}

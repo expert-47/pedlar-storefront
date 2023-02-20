@@ -6,7 +6,6 @@ import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
-
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
@@ -119,8 +118,6 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
           justifyContent: { xs: "center", md: "center", lg: "center" },
           paddingLeft: { xs: "10px", md: "20px", lg: "40px" },
           paddingRight: { xs: "10px", md: "20px", lg: "40px" },
-
-          // paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         }}
       >
         <ProductHeader

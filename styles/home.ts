@@ -98,7 +98,7 @@ const styles = {
   },
   arrowIcon: {
     fontSize: "medium",
-    padding: "2px",
+    // padding: "2px",
     color: "primary.dark",
   },
   galleryImg1: {

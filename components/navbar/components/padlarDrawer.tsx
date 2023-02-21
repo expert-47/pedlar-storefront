@@ -150,7 +150,7 @@ export const PedlarDrawer = (props: {
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      data?.data?.slice(0, viewAllBrand ? 9 : data?.data.length)?.map((item) => (
+                      data?.data?.slice(0, viewAllBrand ? 10 : data?.data.length)?.map((item) => (
                         <Grid
                           key={item}
                           item
@@ -175,7 +175,7 @@ export const PedlarDrawer = (props: {
                         </Grid>
                       ))
                     )}
-                    {data?.data?.length >= 9 && (
+                    {data?.data?.length > 10 && (
                       <Button onClick={brandsNameHanlder}>
                         <ListItemText
                           style={{
@@ -212,7 +212,7 @@ export const PedlarDrawer = (props: {
                     {shopListLoading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      shopList?.data?.slice(0, viewAllShop ? 9 : shopList?.data?.length)?.map((item) => (
+                      shopList?.data?.slice(0, viewAllShop ? 10 : shopList?.data?.length)?.map((item) => (
                         <Grid
                           key={item}
                           item
@@ -237,7 +237,7 @@ export const PedlarDrawer = (props: {
                         </Grid>
                       ))
                     )}
-                    {shopList?.data?.length >= 9 && (
+                    {shopList?.data?.length > 10 && (
                       <Button onClick={onClickViewAllShop}>
                         <ListItemText
                           style={{

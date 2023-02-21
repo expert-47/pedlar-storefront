@@ -69,8 +69,8 @@ const DropDownMenu = (props: Props) => {
                 left: "0 !important",
                 l: 0,
                 borderRadius: 0,
-                width: "100% !important",
-                maxWidth: "100% !important",
+                width: "100% ",
+                maxWidth: "100% ",
                 boxShadow: "none",
                 borderTop: "1px solid rgba(28, 27, 31, 0.32)",
               },
@@ -80,60 +80,51 @@ const DropDownMenu = (props: Props) => {
             open={openMenu}
             onClose={handleClose}
           >
-            <CustomContainer>
-              <Grid container style={{ maxWidth: "100%" }}>
-                <Grid container item sx={styles.menuContainer}>
-                  <CustomContainer>
-                    <Box sx={styles.menuInnerContainer}>
-                      {loading ? (
-                        <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <CircularProgress color="inherit" />
-                        </Grid>
-                      ) : (
-                        <Box
+            <Box
+              sx={{
+                width: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  maxHeight: 200,
+                  display: "flex",
+                  flexFlow: "column wrap",
+                  alignContent: "flex-end",
+                  paddingRight: "10px",
+                }}
+              >
+                {loading ? (
+                  <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <CircularProgress color="inherit" />
+                  </Grid>
+                ) : (
+                  data?.map((data, index) => {
+                    return (
+                      <Link
+                        as={`${route?.query?.slug}/products`}
+                        href={{
+                          pathname: `${route?.query?.slug}/products`,
+                          query: { dataType: type, itemValue: data },
+                        }}
+                      >
+                        <a
                           style={{
-                            maxHeight: 200,
-                            flexWrap: "wrap",
+                            cursor: "pointer",
+                            textDecoration: "none ",
+                            color: "black",
+                            minWidth: 150,
+                            paddingRight: 20,
                           }}
                         >
-                          <Grid container>
-                            <Grid item sm={6} md={6}></Grid>
-                            <Grid item sm={6} md={6} lg={6}>
-                              <Grid container lg={12}>
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    maxHeight: 200,
-                                    flexWrap: "wrap",
-                                  }}
-                                >
-                                  {data?.slice(0, viewAll ? 9 : data.length).map((data, index) => {
-                                    return (
-                                      <>
-                                        <Link
-                                          as={`${route?.query?.slug}/products`}
-                                          href={{
-                                            pathname: `${route?.query?.slug}/products`,
-                                            query: { dataType: type, itemValue: data },
-                                          }}
-                                        >
-                                          <a
-                                            style={{
-                                              cursor: "pointer",
-                                              textDecoration: "none ",
-                                              color: "black",
-                                              paddingRight: 20,
-                                              minWidth: 100,
-                                            }}
-                                          >
-                                            <Typography sx={styles.menuItems}>{data}</Typography>
-                                          </a>
-                                        </Link>
-                                      </>
-                                    );
-                                  })}
-                                  {data.length >= 9 && (
+                          <Typography sx={styles.menuItems}>{data}</Typography>
+                        </a>
+                      </Link>
+                    );
+                  })
+                )}
+
+                {/* {data.length > 9 && (
                                     <a
                                       style={{
                                         cursor: "pointer",
@@ -155,18 +146,9 @@ const DropDownMenu = (props: Props) => {
                                         {viewAll ? "View all" : "View less"}
                                       </Typography>
                                     </a>
-                                  )}
-                                </Box>
-                              </Grid>
-                            </Grid>
-                          </Grid>
-                        </Box>
-                      )}
-                    </Box>
-                  </CustomContainer>
-                </Grid>
-              </Grid>
-            </CustomContainer>
+                                  )} */}
+              </Box>
+            </Box>
           </Menu>
         </CustomContainer>
         <Grid item></Grid>

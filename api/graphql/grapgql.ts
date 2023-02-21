@@ -246,13 +246,13 @@ export const getCartProducts = async (cartid) => {
 };
 
 export const getVariantBySelectedOptions = async (productID, size, color) => {
-  const selectedOptionInput = [];
-  if (size && size != "") {
-    selectedOptionInput.push({
+  const selectedOptionInput = [
+    {
       name: "Size",
-      value: size ? size : "",
-    });
-  }
+      value: size ? size : "Default Title",
+    },
+  ];
+
   if (color && color != "") {
     selectedOptionInput.push({
       name: "Color",

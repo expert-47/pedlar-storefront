@@ -4,7 +4,7 @@ import { CustomContainer } from "../../layout";
 import { useMediaQuery, useTheme, Box } from "@mui/material";
 import TextBox from "./textBox";
 import PedlarImage from "components/pedlarImage";
-
+import placeholder from "public/Placeholder.jpg";
 const BannerImg = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
@@ -29,6 +29,7 @@ const BannerImg = (props: any) => {
             <PedlarImage
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"
+              placeholder={placeholder}
             />
           </Box>
         </Grid>

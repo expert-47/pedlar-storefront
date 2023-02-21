@@ -79,11 +79,17 @@ const DropdownButton = (props: Props) => {
         PaperProps={{
           elevation: 1,
           sx: {
-            mt: 10.5,
-            left: 0,
+            mt: { md: 10.5, sm: 44 },
+
             l: 0,
-            maxWidth: "unset",
+
             borderRadius: 0,
+
+            pb: 0,
+            left: "0 !important",
+
+            width: "100% ",
+            maxWidth: "100% ",
           },
         }}
         sx={styles.menu}
@@ -106,15 +112,18 @@ const DropdownButton = (props: Props) => {
             <Grid
               container
               display={"flex"}
-              justifyContent={"center"}
-              alignItems={"center"}
-              paddingTop={"10px"}
+              // justifyContent={"center"}
+              // alignItems={"center"}
+              // paddingTop={"10px"}
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
-              <Box sx={styles.menuInnerContainer} style={{ display: "flex" }}>
+              <Box sx={styles.menuInnerContainer}>
                 {filterList?.map((item, index) => {
                   return (
                     <FormControlLabel
+                      sx={{
+                        width: 180,
+                      }}
                       control={
                         <Checkbox
                           checked={item.checked || false}
@@ -128,38 +137,40 @@ const DropdownButton = (props: Props) => {
                 })}
               </Box>
             </Grid>
-            <Grid
-              container
-              item
-              display={"flex"}
-              justifyContent={"center"}
-              paddingY={{ xs: theme.spacing(10), lg: theme.spacing(10) }}
-            >
+            {filterList?.length > 0 && (
               <Grid
-                xs={7}
-                sm={7}
-                md={2.5}
-                lg={2.5}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                container
+                item
+                display={"flex"}
+                justifyContent={"center"}
+                paddingY={{ xs: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button variant="contained" sx={styles.menuButton} onClick={applyFiltersMethod}>
-                  Apply
-                </Button>
+                <Grid
+                  xs={7}
+                  sm={7}
+                  md={2.5}
+                  lg={2.5}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="contained" sx={styles.menuButton} onClick={applyFiltersMethod}>
+                    Apply
+                  </Button>
+                </Grid>
+                <Grid
+                  xs={7}
+                  sm={7}
+                  md={2.5}
+                  lg={2.5}
+                  paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                  paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
+                    Clear all
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid
-                xs={7}
-                sm={7}
-                md={2.5}
-                lg={2.5}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-              >
-                <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
-                  Clear all
-                </Button>
-              </Grid>
-            </Grid>
+            )}
           </Grid>
         </Grid>
       </Menu>

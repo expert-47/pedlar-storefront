@@ -63,11 +63,9 @@ const styles = {
     // padding: "30px",
   },
   menuInnerContainer: {
-    width: "100%",
-    color: "black",
-    fontWeight: "800",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    display: "flex",
+    flexWrap: " wrap",
+    alignContent: "flex-start",
   },
   menuItems: {
     fontWeight: "500",

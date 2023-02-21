@@ -62,8 +62,8 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    setSize(newAdditionData?.options[0]?.values[0]);
-    setColor(newAdditionData?.options[1]?.values[0]);
+    setSize(newAdditionData?.options[0]?.values[0] || "");
+    setColor(newAdditionData?.options[1]?.values[0] || "");
   }, [route]);
   useEffect(() => {
     setError(false);
@@ -118,9 +118,8 @@ const Cart = (props: any) => {
             dispatch(cartDrawerToggle(true));
           }
         } else {
-          dispatch(cartDrawerToggle(true));
-
           let response = await addToCart(varientData?.id, slugValue, quantity);
+          dispatch(cartDrawerToggle(true));
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
         }
       }
@@ -133,22 +132,15 @@ const Cart = (props: any) => {
   useEffect(() => {
     onSelectedItem();
   }, [size, color]);
+
   const onSelectedItem = async () => {
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+
     const varientData = variant?.data.product?.variantBySelectedOptions;
 
-    if (!varientData?.quantityAvailable && varientData?.quantityAvailable === 0) {
+    if (!varientData?.quantityAvailable || varientData?.quantityAvailable === 0) {
       setError(true);
       setErrorMessage("This item is currently out of stock");
-    } else if (typeof cartId == "string" && cartId != "") {
-      const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
-
-      if (data1) {
-        if (varientData?.quantityAvailable === data1?.quantity) {
-          setError(true);
-          setErrorMessage("This item is currently out of stock");
-        }
-      }
     } else {
       setError(false);
       setErrorMessage("");

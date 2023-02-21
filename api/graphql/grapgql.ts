@@ -120,60 +120,6 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
   }
 };
 
-// export const getUserTotalDetailByFetchAPICall = async (collectionID: number) => {
-//   const requestBody = {
-//     query: gql`
-//       query GetCollection($collectionId: ID!) {
-//         collection(id: $collectionId) {
-//           products(reverse: true) {
-//             nodes {
-//               id
-//               title
-//               productType
-//               vendor
-//               description
-//               totalInventory
-//               priceRange {
-//                 maxVariantPrice {
-//                   amount
-//                   currencyCode
-//                 }
-//                 minVariantPrice {
-//                   amount
-//                   currencyCode
-//                 }
-//               }
-//               featuredImage {
-//                 height
-//                 src
-//                 width
-//                 originalSrc
-//                 transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
-//               }
-//               createdAt
-//               publishedAt
-//             }
-//             pageInfo {
-//               hasNextPage
-//               hasPreviousPage
-//               startCursor
-//               endCursor
-//             }
-//           }
-//         }
-//       }
-//     `,
-//     variables: { collectionId: `gid://shopify/Collection/${collectionID}` },
-//   };
-//   try {
-//     const res = await client.query({ query: requestBody.query, variables: requestBody.variables });
-
-//     return res || {};
-//   } catch (error) {
-//     return {};
-//   }
-// };
-
 export const addToCart = async (merchandiseId, value, quantity) => {
   const requestBody = {
     query: gql`
@@ -300,6 +246,19 @@ export const getCartProducts = async (cartid) => {
 };
 
 export const getVariantBySelectedOptions = async (productID, size, color) => {
+  const selectedOptionInput = [];
+  if (size && size != "") {
+    selectedOptionInput.push({
+      name: "Size",
+      value: size ? size : "",
+    });
+  }
+  if (color && color != "") {
+    selectedOptionInput.push({
+      name: "Color",
+      value: color ? color : "",
+    });
+  }
   const requestBody = {
     query: gql`
       query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
@@ -314,16 +273,7 @@ export const getVariantBySelectedOptions = async (productID, size, color) => {
     `,
     variables: {
       productId: `${productID}`,
-      selectedOptionInput: [
-        {
-          name: "Size",
-          value: size ? size : "",
-        },
-        {
-          name: "Color",
-          value: color ? color : "",
-        },
-      ],
+      selectedOptionInput: selectedOptionInput,
     },
   };
 
@@ -332,7 +282,7 @@ export const getVariantBySelectedOptions = async (productID, size, color) => {
 
     return getVariantResponse;
   } catch (error) {
-    console.log(error);
+    console.log("error", error);
     return undefined;
   }
 };

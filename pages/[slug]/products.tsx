@@ -19,11 +19,10 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
   const [loading, setLoading] = useState(false);
   const [brandsFilterList, setBrandFilterList] = useState([]);
   const [shopFilterList, setShopFilterList] = useState([]);
-  console.log("brandsFilterList", brandsFilterList);
+
   const route = useRouter();
 
   const setFiltersValue = async (filterData: any, type: string, applyFilters: boolean) => {
-    console.log("fds");
     if (!applyFilters) {
       if (type == "Brands") {
         setBrandFilterList([]);
@@ -72,7 +71,6 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
     try {
       setLoading(true);
       const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
-      console.log("response", response, brandsFilterList);
 
       setProductsData(response?.data?.collection?.products?.nodes || []);
       setEndCursorValue(response?.data?.collection?.products?.pageInfo?.endCursor);

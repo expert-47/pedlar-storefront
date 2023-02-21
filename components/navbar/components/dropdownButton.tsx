@@ -18,7 +18,7 @@ interface Props {
   filterList: [];
   filterCount: Number;
 
-  setFilterData: (data: []) => void;
+  setFilterData: (data: [], type: string, apply: boolean) => void;
 }
 
 const DropdownButton = (props: Props) => {

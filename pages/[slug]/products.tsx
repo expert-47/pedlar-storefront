@@ -22,7 +22,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
 
   const route = useRouter();
 
-  const setFiltersValue = async (filterData: any, type: string, applyFilters: boolean) => {
+  const setFiltersValue = async (brandData = [], shopData = [], type: string, applyFilters: boolean) => {
     if (!applyFilters) {
       if (type == "Brands") {
         setBrandFilterList([]);
@@ -32,17 +32,15 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       return;
     }
 
-    if (type == "Brands") {
-      setBrandFilterList(
-        filterData.map((item) => {
-          return { productVendor: item };
-        }),
-      );
-      return;
-    }
+    setBrandFilterList(
+      brandData.map((item) => {
+        return { productVendor: item };
+      }),
+    );
+    console.log("shopData", shopData);
 
     setShopFilterList(
-      filterData.map((item) => {
+      shopData.map((item) => {
         return { productType: item };
       }),
     );

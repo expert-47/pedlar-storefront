@@ -20,7 +20,7 @@ const AppState = createSlice({
     addProductToCart: (state, action) => {
       return {
         ...state,
-        products: action.payload,
+        products: state.cartId == "" ? [] : action.payload,
       };
     },
     updateCartId: (state, action) => {

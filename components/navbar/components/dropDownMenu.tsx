@@ -10,6 +10,7 @@ import { Box } from "@mui/system";
 import Link from "next/link";
 import { CustomContainer } from "components/layout";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 interface Props {
   type: string;
@@ -20,19 +21,28 @@ const DropDownMenu = (props: Props) => {
   const { type = "Brands", data, loading } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const [dropdownOption, setdropdownOption] = useState(false);
-
+  const storeName = useSelector((data) => data.app.storeName);
   const route = useRouter();
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const [viewAll, toggleViewAll] = useState(true);
+  console.log("storeName", storeName);
 
   const handleClose = () => {
     setAnchorEl(null);
     setdropdownOption(false);
   };
-
+  const navigateToProduct = (data) => {
+    route.push(
+      {
+        pathname: `${route.basePath}/${storeName}/products`,
+        query: { dataType: type, itemValue: data },
+      },
+      `${route.basePath}/${storeName}/products`,
+    );
+  };
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -91,7 +101,7 @@ const DropDownMenu = (props: Props) => {
                   display: "flex",
                   flexFlow: "column wrap",
                   alignContent: "flex-end",
-                  paddingRight: "10px",
+                  paddingRight: "40px",
                 }}
               >
                 {loading ? (
@@ -101,11 +111,13 @@ const DropDownMenu = (props: Props) => {
                 ) : (
                   data?.map((data, index) => {
                     return (
-                      <Link
-                        as={`${route?.query?.slug}/products`}
-                        href={{
-                          pathname: `${route?.query?.slug}/products`,
-                          query: { dataType: type, itemValue: data },
+                      <Box
+                        sx={{
+                          minWidth: 150,
+                          paddingRight: 20,
+                        }}
+                        onClick={() => {
+                          navigateToProduct(data);
                         }}
                       >
                         <a
@@ -113,13 +125,11 @@ const DropDownMenu = (props: Props) => {
                             cursor: "pointer",
                             textDecoration: "none ",
                             color: "black",
-                            minWidth: 150,
-                            paddingRight: 20,
                           }}
                         >
                           <Typography sx={styles.menuItems}>{data}</Typography>
                         </a>
-                      </Link>
+                      </Box>
                     );
                   })
                 )}

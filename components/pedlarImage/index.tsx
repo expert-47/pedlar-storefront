@@ -1,14 +1,15 @@
 import React from "react";
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps, StaticImageData } from "next/image";
 import { useState } from "react";
 import { Box } from "@mui/material";
-
+import skeletonImg from "public/skeletonImg.jpeg";
 interface props extends ImageProps {
   zIndex?: number;
+  placeholder: StaticImageData;
 }
 const PedlarImage = (props: props) => {
   const [error, setError] = useState(false);
-  const { zIndex = -1 } = props;
+  const { zIndex = -1, placeholder } = props;
   return (
     <Box style={{ width: "100%", height: "100%", position: "relative", zIndex: zIndex }}>
       <Image
@@ -18,7 +19,7 @@ const PedlarImage = (props: props) => {
         (max-width: 1200px) 50vw,
         33vw"
         {...props}
-        src={error ? "/skeletonImg.png" : props.src}
+        src={error ? placeholder || skeletonImg : props.src}
         onError={() => {
           setError(true);
         }}

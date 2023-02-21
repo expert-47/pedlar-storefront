@@ -61,7 +61,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setShopFilterList([]);
       setBrandFilterList([]);
     };
-  }, [route?.query?.dataType]);
+  }, [route?.query]);
 
   useEffect(() => {
     getFilteredData();

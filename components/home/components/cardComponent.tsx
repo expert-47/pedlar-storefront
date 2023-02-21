@@ -38,7 +38,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
                 height: { xs: 158, sm: 190, md: 344 },
               }}
             >
-              <PedlarImage src={image} />
+              <PedlarImage src={image} objectFit="contain" />
             </Box>
           </Grid>
         )}

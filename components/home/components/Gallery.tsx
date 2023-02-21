@@ -25,7 +25,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           md={12}
           lg={12}
           sx={{ paddingLeft: { xs: "15px", sm: "20px" }, paddingRight: { xs: "15px", sm: "20px" } }}
-          justifyContent={{ xs: "space-between" }}
+          // justifyContent={{ xs: "space-between" }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
         >
@@ -39,7 +39,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                 lg={3.8}
                 xl={3.8}
                 key={item?.collectionId}
-                style={{ justifyContent: "space-evenly" }}
+                //   style={{ justifyContent: "space-evenly" }}
               >
                 <CardComponent
                   name={item?.title}

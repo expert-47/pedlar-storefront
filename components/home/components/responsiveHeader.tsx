@@ -160,37 +160,41 @@ export const ResponsiveHeader = (props: Props) => {
               );
             })}
           </Grid>
-          <Grid
-            xs={12}
-            sm={12}
-            md={2}
-            lg={2}
-            paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-            paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod("Brands")}>
-              Apply
-            </Button>
-          </Grid>
-          <Grid
-            xs={12}
-            sm={12}
-            md={2}
-            lg={2}
-            paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-            paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Link
-              as={`/${route?.query?.slug}/products`}
-              href={{
-                pathname: `/${route?.query?.slug}/products`,
-              }}
-            >
-              <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Brands")}>
-                Reset filters
-              </Button>
-            </Link>
-          </Grid>
+          {brandFilterData?.length > 0 && (
+            <>
+              <Grid
+                xs={12}
+                sm={12}
+                md={2}
+                lg={2}
+                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              >
+                <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod("Brands")}>
+                  Apply
+                </Button>
+              </Grid>
+              <Grid
+                xs={12}
+                sm={12}
+                md={2}
+                lg={2}
+                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              >
+                <Link
+                  as={`/${route?.query?.slug}/products`}
+                  href={{
+                    pathname: `/${route?.query?.slug}/products`,
+                  }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Brands")}>
+                    Reset filters
+                  </Button>
+                </Link>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Collapse>
       <Collapse in={opens}>
@@ -226,37 +230,41 @@ export const ResponsiveHeader = (props: Props) => {
               );
             })}
           </Grid>
-          <Grid
-            xs={12}
-            sm={12}
-            md={2}
-            lg={2}
-            paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-            paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod("Category")}>
-              Apply
-            </Button>
-          </Grid>
-          <Grid
-            xs={12}
-            sm={12}
-            md={2}
-            lg={2}
-            paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-            paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Link
-              as={`/${route?.query?.slug}/products`}
-              href={{
-                pathname: `/${route?.query?.slug}/products`,
-              }}
-            >
-              <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Category")}>
-                Reset filters
-              </Button>
-            </Link>
-          </Grid>
+          {shopFilterData?.length > 0 && (
+            <>
+              <Grid
+                xs={12}
+                sm={12}
+                md={2}
+                lg={2}
+                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              >
+                <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod("Category")}>
+                  Apply
+                </Button>
+              </Grid>
+              <Grid
+                xs={12}
+                sm={12}
+                md={2}
+                lg={2}
+                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              >
+                <Link
+                  as={`/${route?.query?.slug}/products`}
+                  href={{
+                    pathname: `/${route?.query?.slug}/products`,
+                  }}
+                >
+                  <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Category")}>
+                    Reset filters
+                  </Button>
+                </Link>
+              </Grid>
+            </>
+          )}
         </Grid>
       </Collapse>
     </React.Fragment>

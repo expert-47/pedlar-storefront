@@ -114,20 +114,16 @@ const DropdownButton = (props: Props) => {
               <Box sx={styles.menuInnerContainer} style={{ display: "flex" }}>
                 {filterList?.map((item, index) => {
                   return (
-                    <>
-                      <FormGroup>
-                        <FormControlLabel
-                          control={
-                            <Checkbox
-                              checked={item.checked || false}
-                              sx={styles.menuCheck}
-                              onClick={(e) => getSelectedValues(item)}
-                            />
-                          }
-                          label={item?.item || ""}
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={item.checked || false}
+                          sx={styles.menuCheck}
+                          onClick={(e) => getSelectedValues(item)}
                         />
-                      </FormGroup>
-                    </>
+                      }
+                      label={item?.item || ""}
+                    />
                   );
                 })}
               </Box>

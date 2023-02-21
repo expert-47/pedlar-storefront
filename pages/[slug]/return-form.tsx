@@ -13,7 +13,7 @@ const SubmitSchema = Yup.object().shape({
   Email_Address: Yup.string().required("Email is required!"),
 });
 
-const ReturnForm = (props) => {
+const ReturnForm = (props: any) => {
   const { slug, headerData } = props;
 
   const [isEmailSent, setIsEmailSent] = useState(false);
@@ -78,9 +78,10 @@ const ReturnForm = (props) => {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
                       alignItems: "center",
                       marginBottom: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Box>
@@ -143,9 +144,10 @@ const ReturnForm = (props) => {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
                       alignItems: "center",
                       marginBottom: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Box>
@@ -196,8 +198,10 @@ const ReturnForm = (props) => {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
                       alignItems: "center",
+                      marginBottom: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Box>

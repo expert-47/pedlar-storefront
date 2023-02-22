@@ -29,20 +29,28 @@ export const ResponsiveHeader = (props: Props) => {
     setShopFilterData,
     brandCount,
     shopCount,
+    openBrand,
+    openShop,
+    handleClose,
+    handleOpenShopDropDown,
+    handleOpenBrandDropDown,
   } = props;
 
   const route = useRouter();
 
-  const [open, setOpen] = React.useState(false);
-  const [opens, setOpens] = React.useState(false);
-
-  const handleClick = (event: any) => {
-    setOpen(!open);
-    setOpens(false);
+  const onClickBrands = (event: any) => {
+    if (!openBrand) {
+      handleOpenBrandDropDown(event);
+      return;
+    }
+    handleClose();
   };
-  const handleClicks = (event: any) => {
-    setOpens(!opens);
-    setOpen(false);
+  const onClickShopButton = (event: any) => {
+    if (!openShop) {
+      handleOpenShopDropDown(event);
+      return;
+    }
+    handleClose();
   };
 
   const applyFiltersMethod = (type) => {
@@ -53,15 +61,12 @@ export const ResponsiveHeader = (props: Props) => {
       type,
       true,
     );
-
-    setOpens(false);
-    setOpen(false);
+    handleClose();
   };
 
   const resetFilters = (type) => {
     setFiltersValue([], type, false);
-    setOpens(false);
-    setOpen(false);
+    handleClose();
   };
 
   const onClickBrand = (item) => {
@@ -88,17 +93,20 @@ export const ResponsiveHeader = (props: Props) => {
 
     setShopFilterData(list);
   };
+
   return (
     <React.Fragment>
       <Grid columns={{ xs: 12, md: 12 }} item style={{ display: "flex", paddingTop: "12px" }}>
         <Grid>
           <Button
-            onClick={handleClick}
+            onClick={onClickBrands}
             style={{ fontSize: "16px", color: "#1C1B1Fe3", fontWeight: "600", padding: "unset" }}
           >
-            <Grid style={{ borderBottom: open ? "solid black 1.5px" : "none", textTransform: "none" }}>Brands</Grid>
+            <Grid style={{ borderBottom: openBrand ? "solid black 1.5px" : "none", textTransform: "none" }}>
+              Brands
+            </Grid>
             {brandCount != 0 ? <Box sx={{ color: "purple" }}>{`(${brandCount})`}</Box> : null}
-            {open ? (
+            {openBrand ? (
               <ExpandLess style={{ transform: "scale(0.8)" }} />
             ) : (
               <ExpandMore style={{ transform: "scale(0.8)" }} />
@@ -108,13 +116,15 @@ export const ResponsiveHeader = (props: Props) => {
 
         <Grid>
           <Button
-            onClick={handleClicks}
+            onClick={onClickShopButton}
             style={{ fontSize: "16px", color: "#1C1B1Fe3", fontWeight: "600", padding: "unset" }}
           >
-            <Grid style={{ borderBottom: opens ? "solid black 1.5px" : "none", textTransform: "none" }}>Category</Grid>
+            <Grid style={{ borderBottom: openShop ? "solid black 1.5px" : "none", textTransform: "none" }}>
+              Category
+            </Grid>
             {shopCount != 0 ? <Box sx={{ color: "purple" }}>{`(${shopCount})`}</Box> : null}
 
-            {opens ? (
+            {openShop ? (
               <ExpandLess style={{ transform: "scale(0.8)" }} />
             ) : (
               <ExpandMore style={{ transform: "scale(0.8)" }} />
@@ -122,7 +132,7 @@ export const ResponsiveHeader = (props: Props) => {
           </Button>
         </Grid>
       </Grid>
-      <Collapse in={open} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Collapse in={openBrand} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Divider sx={styles.menuDivider} />
 
         <Grid
@@ -197,7 +207,7 @@ export const ResponsiveHeader = (props: Props) => {
           )}
         </Grid>
       </Collapse>
-      <Collapse in={opens}>
+      <Collapse in={openShop}>
         <Divider sx={styles.menuDivider} />
 
         <Grid

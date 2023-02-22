@@ -70,9 +70,9 @@ export const getProductDetails = async (productId: string) => {
 
 export const getUserDetailByFetchAPICall = async (collectionID: number, numberofProducts: number) => {
   const requestBody = {
-    query: gql`query GetCollection($collectionId: ID!) {
+    query: gql`query GetCollection($collectionId: ID! , $query: [ProductFilter!] ) {
     collection(id: $collectionId) {
-        products(first: ${numberofProducts}, reverse: true ) {
+        products(first: ${numberofProducts}, reverse: true ,filters: $query) {
             nodes {
                 id
                 title
@@ -109,7 +109,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
         }
     }
 }`,
-    variables: { collectionId: `gid://shopify/Collection/${collectionID}` },
+    variables: { collectionId: `gid://shopify/Collection/${collectionID}`, query: [{ available: true }] },
   };
   try {
     const res = await client.query({ query: requestBody.query, variables: requestBody.variables });
@@ -390,20 +390,26 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
         }
       }
     `,
-    variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: filterValuesForQuery },
+    variables: {
+      collectionId: `gid://shopify/Collection/${collectionId}`,
+      query: [...filterValuesForQuery, { available: true }],
+    },
   };
 
   try {
     const getVariantResponse = await client.query({ query: requestBody.query, variables: requestBody.variables });
+
     return getVariantResponse;
   } catch (error) {
+    console.log("error", error);
+
     return undefined;
   }
 };
 
 export const getPaginationProducts = async (endCursorValue, collectionId, filterValuesForQuery) => {
   const requestBody = {
-    query: gql`query GetCollection($collectionId: ID!) {
+    query: gql`query GetCollection($collectionId: ID! , $query: [ProductFilter!]) {
       collection(id: $collectionId) {
         products(first: 18, reverse: true ,after: "${endCursorValue}")
           {
@@ -443,7 +449,10 @@ export const getPaginationProducts = async (endCursorValue, collectionId, filter
           }
       }
   }`,
-    variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: filterValuesForQuery },
+    variables: {
+      collectionId: `gid://shopify/Collection/${collectionId}`,
+      query: [...filterValuesForQuery, { available: true }],
+    },
   };
 
   try {

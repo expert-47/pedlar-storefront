@@ -20,7 +20,7 @@ interface Props {
   openMenu: boolean;
   handleClose: () => void;
   handleClick: (e) => void;
-
+  anchorEl: any;
   setFilterData: (data: [], type: string, apply: boolean) => void;
 }
 

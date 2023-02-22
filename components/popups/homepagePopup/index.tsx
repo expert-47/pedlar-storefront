@@ -176,7 +176,7 @@ export default function HomepagePopup() {
           >
             <Box
             style={{
-              height:"60%"
+              height:"50%"
             }}
             >
               <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>
@@ -218,11 +218,11 @@ export default function HomepagePopup() {
             </Box>
             <Box
               sx={{
-                height: "50%",
+                height: "60%",
                 position: "relative",
               }}
             >
-              <img src="/popImg.png" height={"100%"} style={{ width: "-webkit-fill-available", marginTop: "11%" }} />
+              <img src="/popImg.png" height={"100%"} style={{ width: "-webkit-fill-available", marginTop: "1%",objectFit:"cover" , imageRendering: "auto"}} />
 
             </Box>
           </Box>

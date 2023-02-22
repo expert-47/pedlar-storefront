@@ -166,7 +166,7 @@ const DropdownButton = (props: Props) => {
                   paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 >
                   <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
-                    Clear all
+                    Reset Filters
                   </Button>
                 </Grid>
               </Grid>

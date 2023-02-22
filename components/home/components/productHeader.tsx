@@ -19,7 +19,9 @@ const ProductHeader = (props) => {
   const [openShop, toggleShopDropDown] = useState(null);
 
   const handleOpenBrandDropDown = (event) => {
-    toggleBrandDropDown(event.currentTarget);
+    console.log("event?.currentTarget", event?.currentTarget);
+
+    toggleBrandDropDown(event?.currentTarget || true);
   };
   const handleOpenShopDropDown = (event) => {
     toggleShopDropDown(event.currentTarget);
@@ -178,6 +180,11 @@ const ProductHeader = (props) => {
               setShopFilterData={setShopFilterData}
               shopCount={shopFilterList?.length || 0}
               brandCount={brandsFilterList?.length || 0}
+              handleOpenBrandDropDown={handleOpenBrandDropDown}
+              handleOpenShopDropDown={handleOpenShopDropDown}
+              openBrand={Boolean(openBrand)}
+              openShop={Boolean(openShop)}
+              handleClose={handleClose}
             />
           </>
         ) : (

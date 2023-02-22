@@ -74,6 +74,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setEndCursorValue(response?.data?.collection?.products?.pageInfo?.endCursor);
       setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
     } catch (error) {
+      setProductsData([]);
     } finally {
       setLoading(false);
     }
@@ -96,6 +97,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       return collectionDataProducts;
     } catch (error) {
       console.log(error);
+      setHasNextPage(false);
     }
   };
 

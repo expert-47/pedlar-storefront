@@ -35,10 +35,10 @@ export const PedlarDrawer = (props: {
   toggleDrawer: (value: boolean) => void;
   slug: string;
 }) => {
-  const { type = "Brands", openDrawer, toggleDrawer, storefrontName, data, shopList, loading, shopListLoading } = props;
+  const { type = "Brands", openDrawer, toggleDrawer, data, shopList, loading, shopListLoading } = props;
 
   const route = useRouter();
-
+  const storeName = useSelector((data) => data.app.storeName);
   const [viewAllBrand, toggleViewAllBrand] = useState(true);
   const [viewAllShop, toggleViewAllShop] = useState(true);
 
@@ -75,11 +75,12 @@ export const PedlarDrawer = (props: {
   const openCartHandler = () => {
     dispatch(cartDrawerToggle(true));
   };
+  const closeDrawer = () => toggleDrawer(false);
   return (
     <Drawer
       anchor="left"
       open={openDrawer}
-      onClose={() => toggleDrawer(false)}
+      onClose={closeDrawer}
       PaperProps={{
         sx: paperStyle,
       }}
@@ -117,7 +118,7 @@ export const PedlarDrawer = (props: {
             </Box>
 
             <Typography fontSize={22} fontWeight={400} sx={{ marginLeft: "5px", marginTop: "-5px" }}>
-              {storefrontName ? storefrontName : ""}
+              {storeName ? storeName : ""}
             </Typography>
           </Grid>
           <Grid xs={1.5}>
@@ -131,8 +132,8 @@ export const PedlarDrawer = (props: {
 
         <Grid style={{ paddingTop: "10px" }}></Grid>
         <ListItemText sx={styles.drawerText}>
-          <Link href={`/${route.query.slug}`}>
-            <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
+          <Link href={`/${storeName}`}>
+            <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               Home
             </ListItem>
           </Link>
@@ -157,12 +158,12 @@ export const PedlarDrawer = (props: {
                           xs={5.5}
                           sm={5.5}
                           style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                          onClick={() => toggleDrawer(false)}
+                          onClick={closeDrawer}
                         >
                           <Link
-                            as={`/${route?.query?.slug}/products`}
+                            as={`/${storeName}/products`}
                             href={{
-                              pathname: `/${route?.query?.slug}/products`,
+                              pathname: `/${storeName}/products`,
                               query: { dataType: "Brands", itemValue: item.vendor },
                             }}
                           >
@@ -219,12 +220,12 @@ export const PedlarDrawer = (props: {
                           xs={5.5}
                           sm={5.5}
                           style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                          onClick={() => toggleDrawer(false)}
+                          onClick={closeDrawer}
                         >
                           <Link
-                            as={`/${route?.query?.slug}/products`}
+                            as={`/${storeName}/products`}
                             href={{
-                              pathname: `/${route?.query?.slug}/products`,
+                              pathname: `/${storeName}/products`,
                               query: { dataType: "Shop", itemValue: item.productType },
                             }}
                           >
@@ -261,8 +262,8 @@ export const PedlarDrawer = (props: {
               </List>
             </Collapse>
           </List>
-          <Link href={`/${route.query.slug}/faq`}>
-            <ListItem color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
+          <Link href={`/${storeName}/faq`}>
+            <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               FAQ
             </ListItem>
           </Link>

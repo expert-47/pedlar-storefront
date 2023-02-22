@@ -15,6 +15,19 @@ const ProductHeader = (props) => {
   const { brandsFilterList, shopFilterList } = props;
   const [brandFilterData, setBrandFilterData] = useState([]);
   const [shopFilterData, setShopFilterData] = useState([]);
+  const [openBrand, toggleBrandDropDown] = useState(null);
+  const [openShop, toggleShopDropDown] = useState(null);
+
+  const handleOpenBrandDropDown = (event) => {
+    toggleBrandDropDown(event.currentTarget);
+  };
+  const handleOpenShopDropDown = (event) => {
+    toggleShopDropDown(event.currentTarget);
+  };
+  const handleClose = () => {
+    toggleBrandDropDown(null);
+    toggleShopDropDown(null);
+  };
   const [filterData, setFilterData] = useState({
     shopList: [],
     vender: [],
@@ -101,6 +114,9 @@ const ProductHeader = (props) => {
     });
   };
   useEffect(() => {
+    if (Boolean(openBrand)) {
+      return;
+    }
     let selectedData = filterData.vender?.map((item) => {
       let findIndex = brandsFilterList.findIndex((i) => i.productVendor == item.vendor);
       return {
@@ -109,9 +125,12 @@ const ProductHeader = (props) => {
       };
     });
     setBrandFilterData(selectedData);
-  }, [filterData.vender, brandsFilterList]);
+  }, [filterData.vender, brandsFilterList, openBrand]);
 
   useEffect(() => {
+    if (Boolean(openShop)) {
+      return;
+    }
     let selectedData = filterData?.shopList?.map((item) => {
       let findIndex = shopFilterList.findIndex((i) => i.productType == item.productType);
       return {
@@ -120,7 +139,7 @@ const ProductHeader = (props) => {
       };
     });
     setShopFilterData(selectedData);
-  }, [filterData?.shopList, shopFilterList]);
+  }, [filterData?.shopList, shopFilterList, openShop]);
 
   const applyFilter = (data, type, apply) => {
     if (type == "Brands") {
@@ -169,6 +188,10 @@ const ProductHeader = (props) => {
               filterList={brandFilterData}
               setFilterData={setBrandFilterData}
               filterCount={brandsFilterList?.length || 0}
+              openMenu={Boolean(openBrand)}
+              handleClick={handleOpenBrandDropDown}
+              handleClose={handleClose}
+              anchorEl={openBrand}
             />
             <DropdownButton
               type={"Category"}
@@ -176,6 +199,10 @@ const ProductHeader = (props) => {
               filterList={shopFilterData}
               setFilterData={setShopFilterData}
               filterCount={shopFilterList?.length || 0}
+              openMenu={Boolean(openShop)}
+              handleClose={handleClose}
+              handleClick={handleOpenShopDropDown}
+              anchorEl={openShop}
             />
           </Grid>
         )}

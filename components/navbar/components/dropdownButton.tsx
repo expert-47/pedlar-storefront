@@ -17,23 +17,27 @@ interface Props {
   setFiltersValue: any;
   filterList: [];
   filterCount: Number;
+  openMenu: boolean;
+  handleClose: () => void;
+  handleClick: (e) => void;
 
   setFilterData: (data: [], type: string, apply: boolean) => void;
 }
 
 const DropdownButton = (props: Props) => {
   const theme = useTheme();
-  const { type = "Brands", data, setFiltersValue, filterList, setFilterData, filterCount } = props;
-
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const openMenu = Boolean(anchorEl);
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const {
+    type = "Brands",
+    data,
+    setFiltersValue,
+    filterList,
+    setFilterData,
+    filterCount,
+    handleClick,
+    handleClose,
+    openMenu,
+    anchorEl,
+  } = props;
 
   const applyFiltersMethod = () => {
     let data = filterList.filter((item) => item.checked);

@@ -142,52 +142,100 @@ const CartDrawer = () => {
         </Grid>
       </Grid>
 
-      <Grid
-        item
-        container
-        xs={12}
-        md={12}
-        lg={12}
-        direction={"column"}
-        justifyContent={"center"}
-        alignItems={"flex-end"}
-        sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
-      >
+      {cartProducts?.length > 0 ? (
         <Grid
-          container
           item
-          style={{
-            display: "flex",
-            padding: "5px",
-            justifyContent: "center",
-            alignItems: "center",
-            paddingBottom: "15px",
-          }}
+          container
+          xs={12}
+          md={12}
+          lg={12}
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"flex-end"}
+          sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
         >
-          <Grid item style={{ display: "flex", justifyContent: "between" }}>
-            <Typography sx={styles.totalText}>Your cart is empty</Typography>
-            {/* <Typography fontSize="12px" sx={styles.taxStyle}>
-              Incl. VAT & Taxes
-            </Typography> */}
-          </Grid>
-
-          <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
-        </Grid>
-        <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-          <Button
-            // href={checkoutData?.data?.cart?.checkoutUrl}
-            // disabled={cartData?.length > 0 ? false : true}
-            sx={styles.checkoutButton}
-            // onClick={apiForCheckout}
-            onClick={onCloseCart}
+          <Grid
+            container
+            item
+            style={{
+              display: "flex",
+              padding: "5px",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: "15px",
+            }}
           >
-            Shop now
-          </Button>
-        </Link>
-        {/* <Link href="/checkout">
+            <Grid item style={{ display: "flex", justifyContent: "between" }}>
+              <Typography sx={styles.totalText}>Total</Typography>
+              <Typography fontSize="12px" sx={styles.taxStyle}>
+                Incl. VAT & Taxes
+              </Typography>
+            </Grid>
+
+            <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
+          </Grid>
+          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+            <Button
+              // href={checkoutData?.data?.cart?.checkoutUrl}
+              // disabled={cartData?.length > 0 ? false : true}
+              sx={styles.checkoutButton}
+              onClick={apiForCheckout}
+            >
+              Checkout
+            </Button>
+          </Link>
+          {/* <Link href="/checkout">
           <Button sx={styles.checkoutButton} >Checkout</Button>
         </Link> */}
-      </Grid>
+        </Grid>
+      ) : (
+        <Grid
+          item
+          container
+          xs={12}
+          md={12}
+          lg={12}
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"flex-end"}
+          sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
+        >
+          <Grid
+            container
+            item
+            style={{
+              display: "flex",
+              padding: "5px",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: "15px",
+            }}
+          >
+            <Grid item style={{ display: "flex", justifyContent: "between" }}>
+              <Typography sx={styles.totalText}>Your cart is empty</Typography>
+              {/* <Typography fontSize="12px" sx={styles.taxStyle}>
+              Incl. VAT & Taxes
+            </Typography> */}
+            </Grid>
+
+            <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
+          </Grid>
+          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+            <Button
+              // href={checkoutData?.data?.cart?.checkoutUrl}
+              // disabled={cartData?.length > 0 ? false : true}
+              sx={styles.checkoutButton}
+              // onClick={apiForCheckout}
+              onClick={onCloseCart}
+            >
+              Shop now
+            </Button>
+          </Link>
+          {/* <Link href="/checkout">
+          <Button sx={styles.checkoutButton} >Checkout</Button>
+        </Link> */}
+        </Grid>
+      )}
     </Drawer>
   );
 };

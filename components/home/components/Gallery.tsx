@@ -27,7 +27,6 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           sx={{
             paddingLeft: { xs: "15px", sm: "20px" },
             paddingRight: { xs: "5px", sm: "10px" },
-            justifyContent: "center",
           }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}

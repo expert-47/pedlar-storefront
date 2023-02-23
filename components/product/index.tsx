@@ -357,18 +357,8 @@ const Cart = (props: any) => {
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={1} sx={styles.bottomContainer}>
-          <Grid
-            container
-            item
-            xs={11.5}
-            sm={9}
-            md={11.2}
-            lg={9.2}
-            xl={9.2}
-            paddingTop="30px"
-            justifyContent={{ xs: "flex-start", md: "space-around" }}
-          >
+        <Grid container spacing={4} sx={styles.bottomContainer}>
+          <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
               <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                 You might like

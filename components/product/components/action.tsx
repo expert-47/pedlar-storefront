@@ -10,7 +10,7 @@ import { Grid } from "@mui/material";
 import LoadingButton from "components/LoadingButton";
 
 const Action = (props: any) => {
-  const { addToCartButton, buttonLoaderState, BuyNowHandler, buyNowLoaderState } = props;
+  const { addToCartButton, buttonLoaderState, BuyNowHandler, buyNowLoaderState, disabled } = props;
 
   return (
     <Grid
@@ -23,8 +23,8 @@ const Action = (props: any) => {
       <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ width: "100%" }}>
         <LoadingButton
           sx={{
-            backgroundColor: "#1C1B1F",
-            color: "white",
+            color: disabled ? "White" : "",
+            backgroundColor: disabled ? "" : "#1C1B1F",
             borderRadius: "25px",
             width: "100%",
             height: "46px",
@@ -32,12 +32,13 @@ const Action = (props: any) => {
             fontSize: "16px",
             textTransform: "none",
             "&:hover": {
-              borderColor: "black",
-              backgroundColor: "#1C1B1F",
+              borderColor: disabled ? "black" : "black",
+              backgroundColor: disabled ? "" : "#1C1B1F",
             },
           }}
           onClick={addToCartButton}
           loading={buttonLoaderState}
+          disabled={disabled}
         >
           Add to cart
         </LoadingButton>
@@ -60,6 +61,7 @@ const Action = (props: any) => {
           }}
           onClick={() => BuyNowHandler()}
           loading={buyNowLoaderState}
+          disabled={disabled}
         >
           Buy now
         </LoadingButton>

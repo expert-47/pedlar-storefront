@@ -118,12 +118,10 @@ const CartDrawer = () => {
           sx={styles.cartDrawerSlider}
         >
           {cartProducts?.map((item: any, index: any) => {
-            console.log("item", item);
-
             return (
               <CheckoutOrder
                 key={index}
-                //  title={item?.merchandise?.name || ""}
+                title={item?.merchandise?.name || ""}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}

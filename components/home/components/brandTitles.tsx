@@ -23,22 +23,14 @@ const BrandTitles = (props: any) => {
         //   paddingRight: { xs: "15px", sm: "20px" },
         // }}
       >
-        <Grid
-          container
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          gap={12}
-          {...props}
-          style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-        >
+        <Grid container xs={12} sm={12} md={12} lg={12} gap={10} {...props} justifyContent={{ xs: "space-evenly" }}>
           {props?.curatedBrandsResponse?.map((item: any, index: number) => (
             <>
               <Box
                 sx={styles.brandImage}
                 style={{
                   boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: "white",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",

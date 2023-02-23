@@ -30,7 +30,7 @@ const OrderDetailCollapsible = () => {
             <Grid style={{ display: "flex", justifyContent: "space-between" }}>
               <Typography sx={styles.totalText}>Total</Typography>
               <Typography fontSize="12px" sx={styles.taxStyle}>
-                Incl. VAT & Taxes
+                Incl. Taxes
               </Typography>
             </Grid>
             <Typography sx={styles.paymentTotal}>$320</Typography>

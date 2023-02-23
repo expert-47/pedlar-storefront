@@ -154,13 +154,13 @@ const styles = {
       lg: "150px",
       md: "100px",
       sm: "80px",
-      xs: "100px",
+      xs: "80px",
     },
     width: {
       lg: "280px",
       md: "200px",
       sm: "180px",
-      xs: "170px",
+      xs: "44%",
     },
   },
 };

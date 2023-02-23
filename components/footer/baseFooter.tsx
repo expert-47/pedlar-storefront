@@ -1,9 +1,9 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { Typography, useTheme } from "@mui/material";
+import { Typography, useTheme, Link } from "@mui/material";
 import styles from "styles/home";
 import { CustomGrid } from "components/layout";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/router";
 
 const BaseFooter = () => {
@@ -31,7 +31,7 @@ const BaseFooter = () => {
       >
         <Grid item xs={12} sm={12} md={7.5} lg={7}>
           <Typography sx={styles.baseFootTypoheading}>Help & Support</Typography>
-          <Link href={`/${path}/return-policy`}>
+          <Link href={`/${path}/return-policy`} target={"blank"}>
             <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
           </Link>
           <Link href={`/${path}/faq`}>

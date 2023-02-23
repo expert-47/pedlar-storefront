@@ -1,20 +1,18 @@
 import React from "react";
 import { ButtonProps, Button, CircularProgress, Box } from "@mui/material";
-import { green } from "@mui/material/colors";
 
 interface Props extends ButtonProps {
   loading: boolean;
 }
 const LoadingButton = (props: Props) => {
-  const { loading, children } = props;
+  const { loading, children, disabled } = props;
 
   return (
-    <Button {...props}>
+    <Button {...props} disabled={disabled}>
       {loading && (
         <Box
           sx={{
             backgroundColor: "#D7D8D9",
-
             position: "absolute",
             top: 0,
             left: 0,

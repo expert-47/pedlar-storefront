@@ -218,7 +218,7 @@ const Cart = (props: any) => {
             >
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
-                  <Slide {...properties} indicators={true}>
+                  <Slide {...properties} indicators={true} autoplay={false}>
                     {newAdditionData?.images?.nodes?.map((item: any) => {
                       return (
                         <>
@@ -295,9 +295,9 @@ const Cart = (props: any) => {
                   />
                   {error ? (
                     <Alert
-                      onClose={() => {
-                        setError(false);
-                      }}
+                      // onClose={() => {
+                      //   setError(false);
+                      // }}
                       sx={{ marginTop: 10 }}
                       severity="error"
                     >
@@ -310,6 +310,7 @@ const Cart = (props: any) => {
                     buttonLoaderState={buttonLoaderState}
                     BuyNowHandler={BuyNowHandler}
                     buyNowLoaderState={buyNowLoaderState}
+                    disabled={error}
                   />
 
                   <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
@@ -332,10 +333,7 @@ const Cart = (props: any) => {
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
-                          amet blandit leo lobortis eget.
-                        </Typography>
+                        <Typography sx={styles.descriptionTypography}>Free shipping on all Pedlar orders</Typography>
                       </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")} elevation={0}>
@@ -345,10 +343,7 @@ const Cart = (props: any) => {
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit
-                          amet blandit leo lobortis eget.
-                        </Typography>
+                        <Typography sx={styles.descriptionTypography}>Free returns on all Pedlar orders</Typography>
                       </AccordionDetails>
                     </Accordion>
                     <Accordion elevation={0}>
@@ -361,7 +356,7 @@ const Cart = (props: any) => {
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={4} sx={styles.bottomContainer}>
+        <Grid container spacing={1} sx={styles.bottomContainer}>
           <Grid
             container
             item
@@ -371,14 +366,14 @@ const Cart = (props: any) => {
             lg={9.2}
             xl={9.2}
             paddingTop="30px"
-            style={{ justifyContent: "space-around" }}
+            justifyContent={{ xs: "flex-start", md: "space-around" }}
           >
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
               <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                 You might like
               </Typography>
             </Grid>
-            {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
+            {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               let productId = item?.id?.split("gid://shopify/Product/")[1];
               return (
                 <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
@@ -390,7 +385,7 @@ const Cart = (props: any) => {
                     md={2.4}
                     lg={2.4}
                     paddingLeft="10px"
-                    paddingBottom="50px"
+                    paddingBottom="10px"
                     sx={{ cursor: "pointer" }}
                     onClick={ClearErrors}
                   >

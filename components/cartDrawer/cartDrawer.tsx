@@ -168,7 +168,7 @@ const CartDrawer = () => {
             <Grid item style={{ display: "flex", justifyContent: "between" }}>
               <Typography sx={styles.totalText}>Total</Typography>
               <Typography fontSize="12px" sx={styles.taxStyle}>
-                Incl. VAT & Taxes
+                Incl. Taxes
               </Typography>
             </Grid>
 

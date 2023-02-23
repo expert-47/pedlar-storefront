@@ -100,6 +100,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setHasNextPage(false);
     }
   };
+  console.log(newAdditionData, "newAdditionData");
 
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
@@ -186,7 +187,7 @@ export async function getServerSideProps(context: any) {
   const headerData = await getUserDetail(slug);
 
   if (headerData?.data) {
-    const numberofProducts = 18;
+    const numberofProducts = 27;
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products || [];
     // let totalData = await getUserTotalDetailByFetchAPICall(headerData?.data?.collectionId);

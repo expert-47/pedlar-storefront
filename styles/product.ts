@@ -107,7 +107,7 @@ const styles = {
   },
   text: { paddingBottom: "20px" },
   footerDivider: {
-    marginTop: "50px",
+    // marginTop: "50px",
     marginBottom: "10px",
     height: "1px",
   },

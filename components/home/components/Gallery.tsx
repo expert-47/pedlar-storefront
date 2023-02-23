@@ -24,23 +24,17 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           sm={12}
           md={12}
           lg={12}
-          sx={{ paddingLeft: { xs: "15px", sm: "20px" }, paddingRight: { xs: "15px", sm: "20px" } }}
-          // justifyContent={{ xs: "space-between" }}
+          sx={{
+            paddingLeft: { xs: "15px", sm: "20px" },
+            paddingRight: { xs: "5px", sm: "10px" },
+            justifyContent: "center",
+          }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
         >
           {newAdditionData?.map((item: any, index: any) => {
             return (
-              <Grid
-                item
-                xs={6}
-                sm={3.8}
-                md={3.8}
-                lg={3.8}
-                xl={3.8}
-                key={item?.collectionId}
-                //   style={{ justifyContent: "space-evenly" }}
-              >
+              <Grid item xs={6} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
                 <CardComponent
                   name={item?.title}
                   type={item?.productType}

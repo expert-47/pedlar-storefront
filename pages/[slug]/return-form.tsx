@@ -10,7 +10,11 @@ const SubmitSchema = Yup.object().shape({
   Reason_For_Return: Yup.string().required("Reason is required!"),
   First_Name: Yup.string().required("First Name is required!"),
   Last_Name: Yup.string().required("Last Name is required!"),
-  Email_Address: Yup.string().required("Email is required!"),
+  Email_Address: Yup.string().required("This field is required").email("Invalid Email Address"),
+  Phone_Number: Yup.string().matches(/^[6-9]\d{9}$/, {
+    message: "Please enter Phone number.",
+    excludeEmptyString: false,
+  }),
 });
 
 const ReturnForm = (props: any) => {
@@ -210,6 +214,7 @@ const ReturnForm = (props: any) => {
                         name="Email_Address"
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        required
                         value={values.Email_Address}
                         placeholder="Email Address"
                         style={{

@@ -159,8 +159,11 @@ const styles = {
     width: {
       lg: "280px",
       md: "200px",
-      sm: "180px",
-      xs: "170px",
+      sm: "170px",
+      xs: "160px",
+    },
+    ["@media (max-width: 374px)"]: {
+      width: "140px",
     },
   },
 };

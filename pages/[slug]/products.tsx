@@ -1,24 +1,36 @@
 import Text from "components/customText";
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Button, Divider, Box, CircularProgress } from "@mui/material";
+import { Grid, Button, Divider, Box, CircularProgress, Typography } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
-import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import Pagination from "@mui/material/Pagination";
+import {
+  getFilteredProducts,
+  getPaginationProducts,
+  getUserDetailByFetchAPICall,
+  getPaginationProducts2,
+} from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
-
-const Products = ({ newAdditionData, slug, collectionId, userData: data, error }: any) => {
-  const [productsData, setProductsData] = useState([{}]);
+const Products = ({ items, slug, collectionId, userData: data, error }: any) => {
+  const [productsData, setProductsData] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState("");
+  const [startCursorValue, setStartCursorValue] = useState("");
+
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
   const [brandsFilterList, setBrandFilterList] = useState([]);
   const [shopFilterList, setShopFilterList] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+
+  // const [paginationCount, setPaginationCount] = useState();
 
   const route = useRouter();
 
@@ -37,7 +49,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
         return { productVendor: item };
       }),
     );
-    console.log("shopData", shopData);
+    // console.log("shopData", shopData);
 
     setShopFilterList(
       shopData.map((item) => {
@@ -63,15 +75,24 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
 
   useEffect(() => {
     getFilteredData();
-  }, [brandsFilterList, shopFilterList]);
+    // }, [brandsFilterList, shopFilterList]);
+  }, []);
 
   const getFilteredData = async () => {
     try {
       setLoading(true);
       const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
-
       setProductsData(response?.data?.collection?.products?.nodes || []);
-      setEndCursorValue(response?.data?.collection?.products?.pageInfo?.endCursor);
+      setTotalPage(Math.ceil(productsData.length) / 18);
+
+      const collectionDataProducts = await getPaginationProducts2(
+        response?.data?.collection?.products?.pageInfo?.endCursor,
+        collectionId,
+        [...brandsFilterList, ...shopFilterList],
+      );
+      setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
+      setStartCursorValue(collectionDataProducts?.pageInfo?.startCursor);
+
       setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
     } catch (error) {
       setProductsData([]);
@@ -79,20 +100,24 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setLoading(false);
     }
   };
-  const getPaginationData = async () => {
-    if (endCursorValue.includes("=")) {
-      setEndCursorValue(endCursorValue.slice(0, -2));
-    }
+  const [updatevalue, setupdatevalue] = useState(false);
+
+  const getPaginationData = async (e, value) => {
+    setupdatevalue(!updatevalue);
 
     try {
-      const collectionDataProducts = await getPaginationProducts(endCursorValue, collectionId, [
-        ...brandsFilterList,
-        ...shopFilterList,
-      ]);
-      const totalData = [...productsData, ...collectionDataProducts.nodes];
-      setProductsData(totalData);
+      const collectionDataProducts = await getPaginationProducts(
+        value > pageNumber ? "after" : "before",
+        value > pageNumber ? endCursorValue : startCursorValue,
+        collectionId,
+        [...brandsFilterList, ...shopFilterList],
+      );
       setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
+      setStartCursorValue(collectionDataProducts?.pageInfo?.startCursor);
+      setProductsData(collectionDataProducts?.nodes || []);
       setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
+      setPageNumber(value);
+      console.log(collectionDataProducts, "ppppp");
 
       return collectionDataProducts;
     } catch (error) {
@@ -100,7 +125,37 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setHasNextPage(false);
     }
   };
-  console.log(newAdditionData, "newAdditionData");
+
+  const [countValue, setCountValue] = useState(0);
+  useEffect(() => {
+    if (hasNextPage === true) {
+      setCountValue((countValue) => countValue + 1);
+    }
+  }, [updatevalue]);
+  console.log("countValue", countValue);
+  const handlerPageChange = (newpage) => {
+    setCurrentPage(newpage);
+  };
+  const handleNextClick = () => {
+    if (currentPage < totalPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handlePrevClick = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const prevDisable = currentPage === 1;
+  const nextDisable = currentPage === totalPage;
+  const itemsPerPage = 8;
+  // const startIndex = (currentPage - 1) * itemsPerPage;
+  // const endIndex = startIndex + itemsPerPage;
+  // console.log({ productsData });
+
+  // const itemsToDisplay = productsData.slice(startIndex, endIndex);
+  // console.log(itemsToDisplay, "itemsToDisplayitemsToDisplayitemsToDisplay");
+  const itemsToDisplay = [...productsData];
 
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
@@ -139,7 +194,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
             <CircularProgress color="secondary" />
           </Box>
         )}
-        <Gallery newAdditionData={productsData} />
+        <Gallery newAdditionData={itemsToDisplay} />
       </Box>
       <Grid
         style={{
@@ -147,31 +202,34 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          flexDirection: "column",
+          //  flexDirection: "column",
         }}
       >
-        <Text fontSize="12px" fontWeight="600">
-          {`You've viewed ${productsData?.length} out of ${productsData?.length} products`}
-        </Text>
-        {hasNextPage && (
-          <Button
-            variant="outlined"
-            onClick={getPaginationData}
-            style={{
-              width: "15em",
-              border: "2px solid black",
-              borderRadius: "30px",
-              backgroundColor: "white",
-              color: "#1E1E1E",
-              fontWeight: "600",
-              fontSize: "16px",
-              textTransform: "none",
-              marginTop: "10px",
-            }}
-          >
-            Load more
-          </Button>
-        )}
+        {/* <button style={{ padding: "10px" }} onClick={handlePrevClick} disabled={prevDisable}>
+          Prev
+        </button>
+        {Array.from({ length: totalPage }, (_, i) => {
+          return (
+            <button
+              style={{ padding: "10px" }}
+              onClick={() => handlerPageChange(i + 1)}
+              key={i}
+              disabled={i + 1 === currentPage}
+            >
+              {i + 1}
+            </button>
+          );
+        })}
+        <button style={{ padding: "10px" }} onClick={handleNextClick} disabled={nextDisable}>
+          Next
+        </button> */}
+        <Pagination
+          count={countValue}
+          variant="outlined"
+          shape="rounded"
+          onChange={(e, value) => getPaginationData(e, value)}
+          page={pageNumber}
+        />
       </Grid>
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
@@ -187,14 +245,15 @@ export async function getServerSideProps(context: any) {
   const headerData = await getUserDetail(slug);
 
   if (headerData?.data) {
-    const numberofProducts = 27;
+    const numberofProducts = 18;
     let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     let userData = data?.data?.collection?.products || [];
     // let totalData = await getUserTotalDetailByFetchAPICall(headerData?.data?.collectionId);
     // let totalUserData = totalData?.data?.collection?.products || [];
+
     return {
       props: {
-        newAdditionData: userData,
+        items: userData,
         slug,
         collectionId: headerData?.data?.collectionId,
         userData: headerData,

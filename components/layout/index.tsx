@@ -30,8 +30,6 @@ export default function Layout(props: LayoutProps) {
     }
   }, []);
 
-  console.log("showNavbarshowNavbar", isNavShow);
-
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>

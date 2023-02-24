@@ -34,6 +34,8 @@ export const ResponsiveHeader = (props: Props) => {
     handleClose,
     handleOpenShopDropDown,
     handleOpenBrandDropDown,
+    toggleBrandDropDown,
+    toggleShopDropDown,
   } = props;
 
   const route = useRouter();
@@ -41,6 +43,7 @@ export const ResponsiveHeader = (props: Props) => {
   const onClickBrands = (event: any) => {
     if (!openBrand) {
       handleOpenBrandDropDown(event);
+      toggleShopDropDown(null);
       return;
     }
     handleClose();
@@ -48,6 +51,7 @@ export const ResponsiveHeader = (props: Props) => {
   const onClickShopButton = (event: any) => {
     if (!openShop) {
       handleOpenShopDropDown(event);
+      toggleBrandDropDown(null);
       return;
     }
     handleClose();

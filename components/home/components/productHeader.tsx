@@ -185,6 +185,8 @@ const ProductHeader = (props) => {
               openBrand={Boolean(openBrand)}
               openShop={Boolean(openShop)}
               handleClose={handleClose}
+              toggleBrandDropDown={toggleBrandDropDown}
+              toggleShopDropDown={toggleShopDropDown}
             />
           </>
         ) : (

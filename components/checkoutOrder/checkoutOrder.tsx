@@ -79,7 +79,6 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(productCount);
   }, [productCount]);
-  console.log(props, "props");
   return (
     <>
       {loadingButtonState ? (

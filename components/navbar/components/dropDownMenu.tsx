@@ -28,7 +28,6 @@ const DropDownMenu = (props: Props) => {
     setAnchorEl(event.currentTarget);
   };
   const [viewAll, toggleViewAll] = useState(true);
-  console.log("storeName", storeName);
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -90,75 +89,56 @@ const DropDownMenu = (props: Props) => {
             open={openMenu}
             onClose={handleClose}
           >
-            <Box
-              sx={{
-                width: "100%",
-              }}
-            >
-              <Box
-                sx={{
-                  maxHeight: 200,
-                  display: "flex",
-                  flexFlow: "column wrap",
-                  alignContent: "flex-end",
-                  paddingRight: "40px",
-                }}
-              >
-                {loading ? (
-                  <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <CircularProgress color="inherit" />
-                  </Grid>
-                ) : (
-                  data?.map((data, index) => {
-                    return (
-                      <Box
-                        sx={{
-                          minWidth: 150,
-                          paddingRight: 20,
-                        }}
-                        onClick={() => {
-                          navigateToProduct(data);
-                        }}
-                      >
-                        <a
-                          style={{
-                            cursor: "pointer",
-                            textDecoration: "none ",
-                            color: "black",
-                          }}
-                        >
-                          <Typography sx={styles.menuItems}>{data}</Typography>
-                        </a>
-                      </Box>
-                    );
-                  })
-                )}
-
-                {/* {data.length > 9 && (
-                                    <a
-                                      style={{
-                                        cursor: "pointer",
-                                        textDecoration: "none ",
-                                        color: "black",
-                                      }}
-                                    >
-                                      <Typography
-                                        onClick={() => {
-                                          toggleViewAll((prv) => !prv);
-                                        }}
-                                        sx={[
-                                          styles.menuItems,
-                                          {
-                                            textDecoration: "underline",
-                                          },
-                                        ]}
-                                      >
-                                        {viewAll ? "View all" : "View less"}
-                                      </Typography>
-                                    </a>
-                                  )} */}
-              </Box>
-            </Box>
+            <Grid container>
+              <Grid item xs={6}></Grid>
+              <Grid item xs={6}>
+                <Box
+                  sx={{
+                    width: "100%",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      maxHeight: 200,
+                      display: "flex",
+                      flexFlow: "column wrap",
+                      // alignContent: "flex-end",
+                      // paddingRight: "40px",
+                    }}
+                  >
+                    {loading ? (
+                      <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <CircularProgress color="inherit" />
+                      </Grid>
+                    ) : (
+                      data?.map((data, index) => {
+                        return (
+                          <Box
+                            sx={{
+                              minWidth: 150,
+                              paddingRight: 20,
+                            }}
+                            onClick={() => {
+                              navigateToProduct(data);
+                            }}
+                          >
+                            <a
+                              style={{
+                                cursor: "pointer",
+                                textDecoration: "none ",
+                                color: "black",
+                              }}
+                            >
+                              <Typography sx={styles.menuItems}>{data}</Typography>
+                            </a>
+                          </Box>
+                        );
+                      })
+                    )}
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
           </Menu>
         </CustomContainer>
         <Grid item></Grid>

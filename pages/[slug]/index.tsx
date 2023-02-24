@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
 import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
@@ -7,6 +7,7 @@ import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+  const [showNavbar, setShowNavbar] = useState(true);
   return (
     <>
       <Layout

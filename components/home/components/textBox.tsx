@@ -5,6 +5,7 @@ import { Button, Box, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { gtmEvents } from "utils/gtm";
 
 const TextBox = (props: any) => {
   const router = useRouter();
@@ -14,6 +15,12 @@ const TextBox = (props: any) => {
   const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
 
+  const onClickShopNow = () => {
+    gtmEvents({
+      event: "view_promotion",
+      ecommerce: null,
+    });
+  };
   return (
     <Box
       style={{
@@ -92,7 +99,9 @@ const TextBox = (props: any) => {
               width: "150px",
             }}
           >
-            <Button sx={styles.shopbutton}>Shop now</Button>
+            <Button sx={styles.shopbutton} onClick={onClickShopNow}>
+              Shop now
+            </Button>
           </Grid>
         </Link>
       </Grid>

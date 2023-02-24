@@ -1,4 +1,4 @@
-import { Grid, Typography, Button, Drawer } from "@mui/material";
+import { Grid, Typography, Button, Drawer, CircularProgress } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
@@ -16,7 +16,7 @@ const CartDrawer = () => {
   const { showCart } = useSelector((state: any) => state.app);
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState("");
-
+  const [loading,setLoading]= useState(false)
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");
@@ -26,11 +26,15 @@ const CartDrawer = () => {
   const getCartList = async () => {
     if (cartId) {
       try {
+        setLoading(true);
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
       } catch (error) {
         console.log(error);
+      }finally{
+        setLoading(false);
+
       }
     }
   };
@@ -54,16 +58,15 @@ const CartDrawer = () => {
     }
   }, [cartProducts]);
   useEffect(() => {
-    getCartList();
-  }, []);
+   if(showCart){ getCartList();}
+  }, [showCart]);
 
-  useEffect(() => {});
 
   const paperStyle = {
     color: "black",
     width: {
       lg: "25%",
-      md: "30%",
+      md: "35%",
       sm: "100%",
       xs: "100%",
     },
@@ -104,7 +107,7 @@ const CartDrawer = () => {
           <Typography sx={styles.cartDrawerTypo}>
             {cartProducts?.length ? `Cart(${cartProducts?.length || ""})` : "Cart"}
           </Typography>
-          <CloseIcon onClick={onCloseCart} />
+          <CloseIcon onClick={onCloseCart} style={{ cursor: "pointer" }} />
         </Grid>
         <Grid
           container
@@ -117,6 +120,7 @@ const CartDrawer = () => {
           paddingY={"40px"}
           sx={styles.cartDrawerSlider}
         >
+          {loading && <CircularProgress color="secondary" />}
           {cartProducts?.map((item: any, index: any) => {
             return (
               <CheckoutOrder

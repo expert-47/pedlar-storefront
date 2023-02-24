@@ -92,11 +92,11 @@ const Cart = (props: any) => {
       } catch (error) {}
     }
   };
-  const toggleCart=()=>{
+  const toggleCart = () => {
     setTimeout(() => {
-        dispatch(cartDrawerToggle(true));
+      dispatch(cartDrawerToggle(true));
     }, 500);
-  }
+  };
   const addToCartButton = async () => {
     try {
       setButtonLoaderState(true);
@@ -118,12 +118,12 @@ const Cart = (props: any) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
-toggleCart();
-           //   dispatch(cartDrawerToggle(true));
+              toggleCart();
+              //   dispatch(cartDrawerToggle(true));
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
-          toggleCart();
+            toggleCart();
           }
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
@@ -140,9 +140,9 @@ toggleCart();
     onSelectedItem();
   }, [size, color]);
 
-
-  const onSelectedItem = async () => {setError(false);
-  setErrorMessage("");
+  const onSelectedItem = async () => {
+    setError(false);
+    setErrorMessage("");
 
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
 
@@ -247,13 +247,8 @@ toggleCart();
             >
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
-<<<<<<< HEAD
-                  <Slide {...properties} indicators={true} autoplay={false}>
-                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-=======
                   <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
-                    {newAdditionData?.images?.nodes?.map((item: any) => {
->>>>>>> develop
+                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                       return (
                         <>
                           <Box className="each-slide-effect" onClick={() => handleClickImage(index)}>

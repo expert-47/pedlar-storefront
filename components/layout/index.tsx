@@ -30,23 +30,25 @@ export default function Layout(props: LayoutProps) {
     }
   }, []);
 
+  console.log("isNavShowisNavShow", isNavShow);
+
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-
+        {/* 
         {isNavShow === "undefined" ||
-          (isNavShow && (
-            <Navbar
-              storefrontName={storefrontName}
-              slug={slug}
-              productsPage={productsPage}
-              data={data}
-              shopList={shopList}
-              loading={venderApiError && !data}
-              shopListLoading={shopListApiError && !shopList}
-            />
-          ))}
+          (isNavShow && ( */}
+        <Navbar
+          storefrontName={storefrontName}
+          slug={slug}
+          productsPage={productsPage}
+          data={data}
+          shopList={shopList}
+          loading={venderApiError && !data}
+          shopListLoading={shopListApiError && !shopList}
+        />
+        {/* ))} */}
       </header>
       <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
       <footer>

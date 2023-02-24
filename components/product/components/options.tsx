@@ -52,7 +52,7 @@ function Options(props: any) {
               sx={styles.select}
               onChange={handleChange2}
               IconComponent={KeyboardArrowDownIcon}
-              // disabled={newAdditionData?.options[1]?.values?.length == 1}
+              disabled={newAdditionData?.options[1]?.values?.length == 1}
             >
               {newAdditionData?.options[1]?.values?.map((val: any, index: any) => {
                 return (

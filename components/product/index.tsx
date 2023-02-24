@@ -92,9 +92,13 @@ const Cart = (props: any) => {
       } catch (error) {}
     }
   };
+  const toggleCart=()=>{
+    setTimeout(() => {
+        dispatch(cartDrawerToggle(true));
+    }, 500);
+  }
   const addToCartButton = async () => {
     try {
-      const quantity = 1;
       setButtonLoaderState(true);
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
       const varientData = variant?.data.product?.variantBySelectedOptions;
@@ -114,21 +118,21 @@ const Cart = (props: any) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
-              dispatch(cartDrawerToggle(true));
+toggleCart();
+           //   dispatch(cartDrawerToggle(true));
             }
           } else {
-            await addToCartLineItem(cartId, varientData?.id, quantity);
-            dispatch(cartDrawerToggle(true));
+            await addToCartLineItem(cartId, varientData?.id, 1);
+          toggleCart();
           }
         } else {
-          let response = await addToCart(varientData?.id, slugValue, quantity);
-          dispatch(cartDrawerToggle(true));
+          let response = await addToCart(varientData?.id, slugValue, 1);
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
+          toggleCart();
         }
       }
     } catch (error) {
     } finally {
-      await getCartList();
       setButtonLoaderState(false);
     }
   };
@@ -136,7 +140,10 @@ const Cart = (props: any) => {
     onSelectedItem();
   }, [size, color]);
 
-  const onSelectedItem = async () => {
+
+  const onSelectedItem = async () => {setError(false);
+  setErrorMessage("");
+
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
 
     const varientData = variant?.data.product?.variantBySelectedOptions;
@@ -240,8 +247,13 @@ const Cart = (props: any) => {
             >
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
+<<<<<<< HEAD
                   <Slide {...properties} indicators={true} autoplay={false}>
                     {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+=======
+                  <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
+                    {newAdditionData?.images?.nodes?.map((item: any) => {
+>>>>>>> develop
                       return (
                         <>
                           <Box className="each-slide-effect" onClick={() => handleClickImage(index)}>

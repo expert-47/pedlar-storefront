@@ -75,7 +75,7 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
   useEffect(() => {
     getFilteredData();
     // }, [brandsFilterList, shopFilterList]);
-  }, []);
+  }, [brandsFilterList, shopFilterList]);
 
   const [paginationCount, setPaginationCount] = useState(1);
 

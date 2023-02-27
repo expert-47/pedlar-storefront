@@ -455,7 +455,7 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
   }`,
     variables: {
       collectionId: `gid://shopify/Collection/${collectionId}`,
-      // query: [...filterValuesForQuery, { available: true }],
+      query: [...filterValuesForQuery, { available: true }],
     },
   };
 
@@ -468,9 +468,10 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
 };
 
 export const getPaginationProducts2 = async (cursorValue, collectionId, filterValuesForQuery) => {
+  //
   // , $query: [ProductFilter!]
   const requestBody = {
-    query: gql`query GetCollection($collectionId: ID! ) {
+    query: gql`query GetCollection($collectionId: ID!  ) {
       collection(id: $collectionId) {
         products(first: 18, reverse: true ,after:"${cursorValue}")
           {
@@ -512,7 +513,7 @@ export const getPaginationProducts2 = async (cursorValue, collectionId, filterVa
   }`,
     variables: {
       collectionId: `gid://shopify/Collection/${collectionId}`,
-      // query: [...filterValuesForQuery, { available: true }],
+      query: [...filterValuesForQuery, { available: true }],
     },
   };
 

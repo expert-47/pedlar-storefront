@@ -11,6 +11,7 @@ import { Alert } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "store/slice/appSlice";
 import PedlarImage from "components/pedlarImage";
+import { gtmEvents } from "utils/gtm";
 
 interface Props {
   name: string;
@@ -41,6 +42,8 @@ const CheckoutOrder = (props: Props) => {
     } else {
       await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
       setProductCount(quantity + 1);
+      gmtEventToAddProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity + 1 });
+
       await getCartList();
       setLoadingButtonState(false);
     }
@@ -50,6 +53,7 @@ const CheckoutOrder = (props: Props) => {
     await updateCartLineItem(cartId, props?.itemData?.id, 0);
     await getCartList();
     setLoadingButtonState(false);
+    gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: 0 });
   };
   const getCartList = async () => {
     if (cartId) {
@@ -60,12 +64,66 @@ const CheckoutOrder = (props: Props) => {
       } catch (error) {}
     }
   };
+
+  const gmtEventToAddProduct = (data) => {
+    console.log("data", data);
+
+    gtmEvents({
+      event: "add_to_cart",
+      ecommerce: {
+        items: {
+          currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
+          item_name: data?.title || "", // Name or ID is required.
+          item_id: data?.id || "", //ID of the item.
+          price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+          item_brand: data?.vendor || "", // brand of the item.(this is the example value)
+          item_category: data?.productType || "", //The category to which the product belongs to.
+          item_category2: data?.size || "", //size of the product.
+          item_variant: data?.size || "", // color of the product.
+          //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+          //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+          // index: 2, // position of the item
+          quantity: data.quantity, //quantity of the item
+          // promotion_id: "abc123",
+          // promotion_name: "shop now"
+        },
+      },
+    });
+  };
+  const gmtEventRemoveProduct = (data) => {
+    console.log("data", data);
+
+    gtmEvents({
+      event: "remove_from_cart",
+      ecommerce: {
+        items: [
+          {
+            currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
+            item_name: data?.title || "", // Name or ID is required.
+            item_id: data?.id || "", //ID of the item.
+            price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+            item_brand: data?.vendor || "", // brand of the item.(this is the example value)
+            item_category: data?.productType || "", //The category to which the product belongs to.
+            item_category2: data?.size || "", //size of the product.
+            item_variant: data?.size || "", // color of the product.
+            //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+            //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+            // index: 2, // position of the item
+            quantity: data.quantity, //quantity of the item
+            // promotion_id: "abc123",
+            // promotion_name: "shop now"
+          },
+        ],
+      },
+    });
+  };
   const productDecrementHandler = async (quantity: number) => {
     setError(false);
 
     setLoadingButtonState(true);
 
     await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
+    gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity - 1 });
     setProductCount(quantity - 1);
 
     await getCartList();

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { getStoreName } from "utils/getPathName";
 import PedlarImage from "components/pedlarImage";
+import { gtmEvents } from "utils/gtm";
 interface Props {
   name: string;
   type: string;
@@ -13,13 +14,39 @@ interface Props {
   image?: string;
   crossPrice?: string;
   id: string;
+  item: any;
 }
 
-const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
   let path = getStoreName(route);
 
+  const onClickCard = () => {
+    gtmEvents({
+      event: "select_item",
+      ecommerce: {
+        items: [
+          {
+            currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
+            item_name: item?.title || "", // Name or ID is required.
+            item_id: item?.id || "", //ID of the item.
+            price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+            item_brand: item?.vendor || "", // brand of the item.(this is the example value)
+            item_category: item?.productType || "", //The category to which the product belongs to.
+            // item_category2: size, //size of the product.
+            //   item_variant: color, // color of the product.
+            //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+            //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+            // index: 2, // position of the item
+            quantity: item.quantity, //quantity of the item
+            // promotion_id: "abc123",
+            // promotion_name: "shop now"
+          },
+        ],
+      },
+    });
+  };
   return (
     <Link href={{ pathname: `${path}/product/${productId}` }}>
       <Box
@@ -27,6 +54,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
           cursor: "pointer",
           width: "100%",
         }}
+        onClick={onClickCard}
       >
         {image && (
           <Grid item xs={12}>

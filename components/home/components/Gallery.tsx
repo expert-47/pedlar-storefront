@@ -45,12 +45,13 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                   name={item?.title}
                   type={item?.productType}
                   price={
-                    newAdditionData?.[index].priceRange?.maxVariantPrice?.currencyCode === "AUD"
-                      ? `$${newAdditionData?.[index].priceRange?.maxVariantPrice?.amount}`
-                      : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
+                    item.priceRange?.maxVariantPrice?.currencyCode === "AUD"
+                      ? `$${item.priceRange?.maxVariantPrice?.amount}`
+                      : item.priceRange?.maxVariantPrice?.amount
                   }
                   image={item?.featuredImage?.transformedSrc}
                   id={item?.id}
+                  item={item}
                 />
               </Grid>
             );

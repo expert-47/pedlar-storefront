@@ -9,6 +9,7 @@ import { checkoutCartDetails } from "../../api/graphql/grapgql";
 import { addProductToCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
+import { gtmEvents } from "utils/gtm";
 
 const CartDrawer = () => {
   const cartId = useSelector((data: any) => data.app.cartId);
@@ -20,6 +21,12 @@ const CartDrawer = () => {
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");
+    gtmEvents({
+      event: "begin_checkout",
+      ecommerce: {
+        items: cartProducts,
+      },
+    });
     dispatch(cartDrawerToggle(false));
   };
 
@@ -29,6 +36,12 @@ const CartDrawer = () => {
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
+        gtmEvents({
+          event: "view_cart",
+          ecommerce: {
+            items: cartProducts,
+          },
+        });
       } catch (error) {
         console.log(error);
       }
@@ -54,10 +67,10 @@ const CartDrawer = () => {
     }
   }, [cartProducts]);
   useEffect(() => {
-    getCartList();
-  }, []);
-
-  useEffect(() => {});
+    if (showCart) {
+      getCartList();
+    }
+  }, [showCart]);
 
   const paperStyle = {
     color: "black",
@@ -118,12 +131,12 @@ const CartDrawer = () => {
           sx={styles.cartDrawerSlider}
         >
           {cartProducts?.map((item: any, index: any) => {
-            console.log('item',item);
-            
+            console.log("item", item);
+
             return (
               <CheckoutOrder
                 key={index}
-              //  title={item?.merchandise?.name || ""}
+                //  title={item?.merchandise?.name || ""}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}

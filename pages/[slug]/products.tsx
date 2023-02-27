@@ -125,7 +125,9 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
         ? collectionDataProducts?.pageInfo?.hasNextPage === true
           ? setCountValue((countValue) => countValue + 1)
           : setPaginationCount(countValue)
-        : setCountValue((countValue) => countValue - 1);
+        : value > 2
+        ? setCountValue((countValue) => countValue - 1)
+        : null;
 
       console.log(collectionDataProducts, "ppppp");
       setPageNumber(value);
@@ -246,8 +248,6 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
           shape="rounded"
           onChange={(e, value) => getPaginationData(e, value)}
           page={pageNumber}
-          hidePrevButton={paginationData?.hasPreviousPage === false ? true : false}
-          hideNextButton={paginationData?.hasNextPage === false ? true : false}
         />
       </Grid>
       <Divider sx={styles.footerDivider} />

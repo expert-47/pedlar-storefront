@@ -20,6 +20,7 @@ const CartDrawer = () => {
   const [totalPrice, setTotalPrice] = useState("");
   const router = useRouter();
   const slug = router?.query;
+  const [loading, setLoading] = useState(false);
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");

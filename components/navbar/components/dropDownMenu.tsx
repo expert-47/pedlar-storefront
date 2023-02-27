@@ -1,13 +1,9 @@
 import { useState } from "react";
-
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
-
 import styles from "styles/navbar";
 import { Button, Grid, Typography, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
-
-import Link from "next/link";
 import { CustomContainer } from "components/layout";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -21,19 +17,19 @@ const DropDownMenu = (props: Props) => {
   const { type = "Brands", data, loading } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const [dropdownOption, setdropdownOption] = useState(false);
-  const storeName = useSelector((data) => data.app.storeName);
+  const storeName = useSelector((data: any) => data.app.storeName);
   const route = useRouter();
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  const [viewAll, toggleViewAll] = useState(true);
+  console.log("storeName", storeName);
 
   const handleClose = () => {
     setAnchorEl(null);
     setdropdownOption(false);
   };
-  const navigateToProduct = (data) => {
+  const navigateToProduct = (data:any) => {
     route.push(
       {
         pathname: `${route.basePath}/${storeName}/products`,
@@ -71,17 +67,18 @@ const DropDownMenu = (props: Props) => {
             transformOrigin={{ vertical: "top", horizontal: "right" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             PaperProps={{
-              elevation: 1,
+              elevation: 0,
               sx: {
-                mt: 20,
-                pb: 20,
-                left: "0 !important",
+                mt: 10,
+                pb: 10,
+                p: 10,
+                // left: "0 !important",
                 l: 0,
                 borderRadius: 0,
-                width: "100% ",
-                maxWidth: "100% ",
-                boxShadow: "none",
-                borderTop: "1px solid rgba(28, 27, 31, 0.32)",
+                // width: "100% ",
+                // maxWidth: "100% ",
+                // boxShadow: "none",
+                // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
               },
             }}
             sx={styles.menu}

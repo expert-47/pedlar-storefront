@@ -4,7 +4,6 @@ import Navbar from "components/navbar";
 import React, { useEffect } from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
 import ApiError from "components/PageError";
-import { shopList } from "../navbar/data";
 import { useDispatch, useSelector } from "react-redux";
 import { clearStore } from "store/slice/appSlice";
 import useSwr from "swr";

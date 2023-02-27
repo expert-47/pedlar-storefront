@@ -8,19 +8,21 @@ import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
-import { shopList } from "./data";
 
 interface Props {
   storefrontName: string;
   slug: string;
+  data: any;
+  shopList: any;
+  loading: any;
+  shopListLoading: any;
 }
 
 export const ResponsiveNavbar = (props: Props) => {
   const { storefrontName, data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
-  const [openCart, toggleCart] = useState(false);
-  const cartProducts = useSelector((data) => data.app.products);
+  const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);

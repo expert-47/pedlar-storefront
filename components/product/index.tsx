@@ -319,7 +319,7 @@ const Cart = (props: any) => {
                   }}
                 >
                   <Typography fontSize={"16px"} fontWeight={"600"}>
-                    LOW CLASSIC
+                    {newAdditionData?.vendor}
                   </Typography>
                   <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">

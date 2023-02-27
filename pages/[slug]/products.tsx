@@ -29,8 +29,7 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
   const [pageNumber, setPageNumber] = useState(1);
-
-  // const [paginationCount, setPaginationCount] = useState();
+  const [paginationData, setPaginationData] = useState({});
 
   const route = useRouter();
 
@@ -78,6 +77,8 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
     // }, [brandsFilterList, shopFilterList]);
   }, []);
 
+  const [paginationCount, setPaginationCount] = useState(1);
+
   const getFilteredData = async () => {
     try {
       setLoading(true);
@@ -94,6 +95,7 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
       setStartCursorValue(collectionDataProducts?.pageInfo?.startCursor);
 
       setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
+      setPaginationData(collectionDataProducts?.pageInfo);
     } catch (error) {
       setProductsData([]);
     } finally {
@@ -104,7 +106,7 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
 
   const getPaginationData = async (e, value) => {
     setupdatevalue(!updatevalue);
-
+    console.log(value, "valllll");
     try {
       const collectionDataProducts = await getPaginationProducts(
         value > pageNumber ? "after" : "before",
@@ -116,22 +118,37 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
       setStartCursorValue(collectionDataProducts?.pageInfo?.startCursor);
       setProductsData(collectionDataProducts?.nodes || []);
       setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
-      setPageNumber(value);
-      console.log(collectionDataProducts, "ppppp");
 
+      setPaginationData(collectionDataProducts?.pageInfo);
+
+      value > pageNumber
+        ? collectionDataProducts?.pageInfo?.hasNextPage === true
+          ? setCountValue((countValue) => countValue + 1)
+          : setPaginationCount(countValue)
+        : setCountValue((countValue) => countValue - 1);
+
+      console.log(collectionDataProducts, "ppppp");
+      setPageNumber(value);
       return collectionDataProducts;
     } catch (error) {
       console.log(error);
       setHasNextPage(false);
     }
   };
-
   const [countValue, setCountValue] = useState(0);
+
+  // useEffect(() => {
+  //   if (pageNumber === countValue) {
+
+  //     setCountValue((countValue) => countValue + 1);
+  //   }
+  // }, [pageNumber, countValue]);
+
   useEffect(() => {
     if (hasNextPage === true) {
       setCountValue((countValue) => countValue + 1);
     }
-  }, [updatevalue]);
+  }, []);
   console.log("countValue", countValue);
   const handlerPageChange = (newpage) => {
     setCurrentPage(newpage);
@@ -224,11 +241,13 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
           Next
         </button> */}
         <Pagination
-          count={countValue}
+          count={paginationCount === 1 ? countValue : paginationCount}
           variant="outlined"
           shape="rounded"
           onChange={(e, value) => getPaginationData(e, value)}
           page={pageNumber}
+          hidePrevButton={paginationData?.hasPreviousPage === false ? true : false}
+          hideNextButton={paginationData?.hasNextPage === false ? true : false}
         />
       </Grid>
       <Divider sx={styles.footerDivider} />

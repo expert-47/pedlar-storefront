@@ -352,7 +352,7 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
     query: gql`
       query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
         collection(id: $collectionId) {
-          products(first: 5, reverse: true, filters: $query) {
+          products(first: 18, reverse: true, filters: $query) {
             nodes {
               id
               title
@@ -415,7 +415,7 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
   const requestBody = {
     query: gql`query GetCollection($collectionId: ID! ) {
       collection(id: $collectionId) {
-        products( ${limitOfProducts}: 5, reverse: true ,${action}:"${cursorValue}")
+        products( ${limitOfProducts}: 18, reverse: true ,${action}:"${cursorValue}")
           {
               nodes {
                   id
@@ -472,7 +472,7 @@ export const getPaginationProducts2 = async (cursorValue, collectionId, filterVa
   const requestBody = {
     query: gql`query GetCollection($collectionId: ID! ) {
       collection(id: $collectionId) {
-        products(first: 5, reverse: true ,after:"${cursorValue}")
+        products(first: 18, reverse: true ,after:"${cursorValue}")
           {
               nodes {
                   id

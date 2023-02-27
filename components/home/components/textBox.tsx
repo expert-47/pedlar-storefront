@@ -16,7 +16,6 @@ const TextBox = (props: any) => {
 
   const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
-  console.log("router.basePath", router);
 
   const onClickShopNow = () => {
     gtmEvents({

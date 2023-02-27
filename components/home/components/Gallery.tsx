@@ -8,7 +8,7 @@ interface Props {
   newAdditionData?: any[];
 }
 const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
-  console.log("newAdditionData", newAdditionData);
+ 
 
   return (
     <>

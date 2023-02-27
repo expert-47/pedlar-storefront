@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Typography } from "@mui/material";
-import useSwr from "swr";
-
 import { useMediaQuery, useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import DropdownButton from "components/navbar/components/dropdownButton";
@@ -19,8 +17,6 @@ const ProductHeader = (props: any) => {
   const [openShop, toggleShopDropDown] = useState(null);
 
   const handleOpenBrandDropDown = (event: any) => {
-    console.log("event?.currentTarget", event?.currentTarget);
-
     toggleBrandDropDown(event?.currentTarget || true);
   };
   const handleOpenShopDropDown = (event: any) => {

@@ -28,9 +28,7 @@ export default function Layout(props: LayoutProps) {
       dispatch(clearStore(slug));
     }
   }, []);
-
-  console.log("isNavShowisNavShow", isNavShow);
-
+  
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>

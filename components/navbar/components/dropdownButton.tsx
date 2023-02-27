@@ -1,14 +1,8 @@
-import { useState, useEffect } from "react";
-
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import styles from "styles/navbar";
 import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
-import ListItemText from "@mui/material/ListItemText";
-// import ProductHeader from "components/home/components/productHeader";
-import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 
 interface Props {
@@ -19,7 +13,7 @@ interface Props {
   filterCount: Number;
   openMenu: boolean;
   handleClose: () => void;
-  handleClick: (e) => void;
+  handleClick: (e: any) => void;
   anchorEl: any;
   setFilterData: (data: [], type: string, apply: boolean) => void;
 }
@@ -28,7 +22,6 @@ const DropdownButton = (props: Props) => {
   const theme = useTheme();
   const {
     type = "Brands",
-    data,
     setFiltersValue,
     filterList,
     setFilterData,
@@ -40,9 +33,9 @@ const DropdownButton = (props: Props) => {
   } = props;
 
   const applyFiltersMethod = () => {
-    let data = filterList.filter((item) => item.checked);
+    let data = filterList.filter((item: any) => item.checked);
     setFiltersValue(
-      data.map((item) => item.item),
+      data.map((item: any) => item.item),
       type,
       true,
     );
@@ -51,14 +44,14 @@ const DropdownButton = (props: Props) => {
 
   const resetFilters = () => {
     setFiltersValue(
-      filterList.map((item) => item.item),
+      filterList.map((item: any) => item.item),
       type,
       false,
     );
     handleClose();
   };
-  const getSelectedValues = (item) => {
-    let index = filterList.findIndex((data) => data.item == item.item);
+  const getSelectedValues = (item: any) => {
+    let index = filterList.findIndex((data: any) => data.item == item.item);
 
     let data = {
       item: item.item,
@@ -69,6 +62,7 @@ const DropdownButton = (props: Props) => {
 
     setFilterData(list);
   };
+  const enableFliter = filterList.some((item: any) => item?.checked);
 
   return (
     <>
@@ -81,19 +75,16 @@ const DropdownButton = (props: Props) => {
       </Grid>
       <Menu
         PaperProps={{
-          elevation: 1,
+          elevation: 0,
           sx: {
-            mt: { md: 10.5, sm: 44 },
-
+            mt: -27,
             l: 0,
-
             borderRadius: 0,
-
             pb: 0,
             left: "0 !important",
-
             width: "100% ",
             maxWidth: "100% ",
+            justifyContent: "center",
           },
         }}
         sx={styles.menu}
@@ -122,7 +113,7 @@ const DropdownButton = (props: Props) => {
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
               <Box sx={styles.menuInnerContainer}>
-                {filterList?.map((item, index) => {
+                {filterList?.map((item: any) => {
                   return (
                     <FormControlLabel
                       sx={{
@@ -157,7 +148,12 @@ const DropdownButton = (props: Props) => {
                   paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                   paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 >
-                  <Button variant="contained" sx={styles.menuButton} onClick={applyFiltersMethod}>
+                  <Button
+                    variant="contained"
+                    sx={styles.menuButton}
+                    onClick={applyFiltersMethod}
+                    disabled={!enableFliter}
+                  >
                     Apply
                   </Button>
                 </Grid>
@@ -170,7 +166,7 @@ const DropdownButton = (props: Props) => {
                   paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 >
                   <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
-                    Clear all
+                    Reset Filters
                   </Button>
                 </Grid>
               </Grid>

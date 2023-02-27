@@ -1,13 +1,9 @@
 import { useState } from "react";
-
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
-
 import styles from "styles/navbar";
 import { Button, Grid, Typography, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
-
-import Link from "next/link";
 import { CustomContainer } from "components/layout";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
@@ -21,20 +17,18 @@ const DropDownMenu = (props: Props) => {
   const { type = "Brands", data, loading } = props;
   const [anchorEl, setAnchorEl] = useState(null);
   const [dropdownOption, setdropdownOption] = useState(false);
-  const storeName = useSelector((data) => data.app.storeName);
+  const storeName = useSelector((data: any) => data.app.storeName);
   const route = useRouter();
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  const [viewAll, toggleViewAll] = useState(true);
-  console.log("storeName", storeName);
 
   const handleClose = () => {
     setAnchorEl(null);
     setdropdownOption(false);
   };
-  const navigateToProduct = (data) => {
+  const navigateToProduct = (data: any) => {
     route.push(
       {
         pathname: `${route.basePath}/${storeName}/products`,
@@ -72,17 +66,18 @@ const DropDownMenu = (props: Props) => {
             transformOrigin={{ vertical: "top", horizontal: "right" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             PaperProps={{
-              elevation: 1,
+              elevation: 0,
               sx: {
-                mt: 20,
-                pb: 20,
-                left: "0 !important",
+                mt: 10,
+                pb: 10,
+                p: 10,
+                // left: "0 !important",
                 l: 0,
                 borderRadius: 0,
-                width: "100% ",
-                maxWidth: "100% ",
-                boxShadow: "none",
-                borderTop: "1px solid rgba(28, 27, 31, 0.32)",
+                width: data.length <=6?"150px" : `${(data.length / 6) * 160}px`,
+                // maxWidth: "100% ",
+                // boxShadow: "none",
+                // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
               },
             }}
             sx={styles.menu}
@@ -90,75 +85,56 @@ const DropDownMenu = (props: Props) => {
             open={openMenu}
             onClose={handleClose}
           >
-            <Box
-              sx={{
-                width: "100%",
-              }}
-            >
-              <Box
-                sx={{
-                  maxHeight: 200,
-                  display: "flex",
-                  flexFlow: "column wrap",
-                  alignContent: "flex-end",
-                  paddingRight: "40px",
-                }}
-              >
-                {loading ? (
-                  <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <CircularProgress color="inherit" />
-                  </Grid>
-                ) : (
-                  data?.map((data, index) => {
-                    return (
-                      <Box
-                        sx={{
-                          minWidth: 150,
-                          paddingRight: 20,
-                        }}
-                        onClick={() => {
-                          navigateToProduct(data);
-                        }}
-                      >
-                        <a
-                          style={{
-                            cursor: "pointer",
-                            textDecoration: "none ",
-                            color: "black",
-                          }}
-                        >
-                          <Typography sx={styles.menuItems}>{data}</Typography>
-                        </a>
-                      </Box>
-                    );
-                  })
-                )}
+            <Grid container>
+              <Grid item xs={12}>
+                <Box
+                  sx={{
+                    width: "100%",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      maxHeight: 200,
+                      display: "flex",
+                      flexFlow: "column wrap",
 
-                {/* {data.length > 9 && (
-                                    <a
-                                      style={{
-                                        cursor: "pointer",
-                                        textDecoration: "none ",
-                                        color: "black",
-                                      }}
-                                    >
-                                      <Typography
-                                        onClick={() => {
-                                          toggleViewAll((prv) => !prv);
-                                        }}
-                                        sx={[
-                                          styles.menuItems,
-                                          {
-                                            textDecoration: "underline",
-                                          },
-                                        ]}
-                                      >
-                                        {viewAll ? "View all" : "View less"}
-                                      </Typography>
-                                    </a>
-                                  )} */}
-              </Box>
-            </Box>
+                      // alignContent: "flex-end",
+                      // paddingRight: "40px",
+                    }}
+                  >
+                    {loading ? (
+                      <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <CircularProgress color="inherit" />
+                      </Grid>
+                    ) : (
+                      data?.map((data, index) => {
+                        return (
+                          <Box
+                            sx={{
+                              width: 150,
+                              paddingRight: 20,
+                            }}
+                            onClick={() => {
+                              navigateToProduct(data);
+                            }}
+                          >
+                            <a
+                              style={{
+                                cursor: "pointer",
+                                textDecoration: "none ",
+                                color: "black",
+                              }}
+                            >
+                              <Typography sx={styles.menuItems}>{data}</Typography>
+                            </a>
+                          </Box>
+                        );
+                      })
+                    )}
+                  </Box>
+                </Box>
+              </Grid>
+            </Grid>
           </Menu>
         </CustomContainer>
         <Grid item></Grid>

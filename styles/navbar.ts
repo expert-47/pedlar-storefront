@@ -65,7 +65,8 @@ const styles = {
   menuInnerContainer: {
     display: "flex",
     flexWrap: " wrap",
-    alignContent: "flex-start",
+    // alignContent: "flex-start",
+    justifyContent: { sm: "space-around", md: "flex-start" },
   },
   menuItems: {
     fontWeight: "500",
@@ -81,7 +82,7 @@ const styles = {
   menu: {
     backgroundImage:
       "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5018382352941176) 0%)",
-    backgroundSize: "100% calc(100% - 156px)",
+    backgroundSize: "100% calc(100% - 119px)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center bottom",
     display: "flex",

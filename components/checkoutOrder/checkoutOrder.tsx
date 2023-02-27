@@ -20,7 +20,7 @@ interface Props {
   quantity: number;
   itemData: any;
   CurrencyCode: string;
-  // title: string;
+  title: string;
 }
 
 const CheckoutOrder = (props: Props) => {
@@ -137,7 +137,6 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(productCount);
   }, [productCount]);
-
   return (
     <>
       {loadingButtonState ? (
@@ -201,7 +200,7 @@ const CheckoutOrder = (props: Props) => {
                 width: "100%",
               }}
             >
-              {/* <Typography sx={styles.brandName}>{props.title}</Typography> */}
+              {/* <Typography sx={styles.brandName}>{props.name}</Typography> */}
               <Typography sx={styles.brandName}>{props.name}</Typography>
               <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "$" : ""} ${
                 props?.price

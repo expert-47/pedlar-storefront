@@ -21,6 +21,8 @@ import BaseFooter from "components/footer/baseFooter";
 import PedlarImage from "components/pedlarImage";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 import {
   addToCart,
   updateCartLineItem,
@@ -34,6 +36,7 @@ import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/ap
 import { gtmEvents } from "utils/gtm";
 import Gallery from "components/home/components/Gallery";
 import CardComponent from "components/home/components/cardComponent";
+import { addProductToCart, updateCartId, cartDrawerToggle, navbarHandle } from "store/slice/appSlice";
 
 const buttonStyle = {
   display: "none",
@@ -49,6 +52,7 @@ const Cart = (props: any) => {
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
+  const [index, setIndex] = useState(-1);
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -148,7 +152,6 @@ const Cart = (props: any) => {
   };
   const addToCartButton = async () => {
     try {
-      const quantity = 1;
       setButtonLoaderState(true);
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
       const varientData = variant?.data.product?.variantBySelectedOptions;
@@ -176,12 +179,11 @@ const Cart = (props: any) => {
               });
             }
           } else {
-            await addToCartLineItem(cartId, varientData?.id, quantity);
-            dispatch(cartDrawerToggle(true));
+            await addToCartLineItem(cartId, varientData?.id, 1);
+            toggleCart();
           }
         } else {
-          let response = await addToCart(varientData?.id, slugValue, quantity);
-          dispatch(cartDrawerToggle(true));
+          let response = await addToCart(varientData?.id, slugValue, 1);
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
           gmtEventToAddProduct({
             ...varientData,
@@ -192,7 +194,6 @@ const Cart = (props: any) => {
       }
     } catch (error) {
     } finally {
-      await getCartList();
       setButtonLoaderState(false);
     }
   };
@@ -201,6 +202,9 @@ const Cart = (props: any) => {
   }, [size, color]);
 
   const onSelectedItem = async () => {
+    setError(false);
+    setErrorMessage("");
+
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
 
     const varientData = variant?.data.product?.variantBySelectedOptions;
@@ -268,6 +272,25 @@ const Cart = (props: any) => {
     setErrorMessage("");
   };
 
+  const currentImage = newAdditionData?.images?.nodes?.[index];
+  const nextIndex = (index + 1) % newAdditionData?.images?.nodes?.length;
+  const nextImage = newAdditionData?.images?.nodes?.[nextIndex] || currentImage;
+  const prevIndex = (index + newAdditionData?.images?.nodes?.length - 1) % newAdditionData?.images?.nodes?.length;
+  const prevImage = newAdditionData?.images?.nodes?.[prevIndex] || currentImage;
+
+  const handleClickImage = (index) => {
+    setIndex(index);
+    document.body.style.overflow = "hidden";
+    dispatch(navbarHandle(false));
+  };
+  const handleClose = () => {
+    setIndex(-1);
+    document.body.style.overflow = "unset";
+    dispatch(navbarHandle(true));
+  };
+  const handleMovePrev = () => setIndex(prevIndex);
+  const handleMoveNext = () => setIndex(nextIndex);
+
   return (
     <Layout error={apiError} slug={slugValue} storefrontName={headerData?.data?.storefrontName}>
       <CustomContainer>
@@ -288,11 +311,11 @@ const Cart = (props: any) => {
             >
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
-                  <Slide {...properties} indicators={true} autoplay={false}>
-                    {newAdditionData?.images?.nodes?.map((item: any) => {
+                  <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
+                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                       return (
                         <>
-                          <Box className="each-slide-effect">
+                          <Box className="each-slide-effect" onClick={() => handleClickImage(index)}>
                             <Box sx={styles.eachSlideEffect} style={{ backgroundImage: `url(${item?.url})` }}></Box>
                           </Box>
                         </>
@@ -317,7 +340,7 @@ const Cart = (props: any) => {
                       height: 400,
                     }}
                   >
-                    {newAdditionData?.images?.nodes?.map((item: any) => {
+                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                       return (
                         <Box
                           sx={{
@@ -325,11 +348,27 @@ const Cart = (props: any) => {
                             height: 400,
                             marginTop: "20px",
                           }}
+                          onClick={() => handleClickImage(index)}
                         >
                           <PedlarImage src={item?.url} />
                         </Box>
                       );
                     })}
+
+                    {!!currentImage && (
+                      <Lightbox
+                        mainSrc={currentImage?.url}
+                        // imageTitle={currentImage.__typename}
+                        mainSrcThumbnail={currentImage?.url}
+                        nextSrc={nextImage.url}
+                        nextSrcThumbnail={nextImage.url}
+                        prevSrc={prevImage.url}
+                        prevSrcThumbnail={prevImage.url}
+                        onCloseRequest={handleClose}
+                        onMovePrevRequest={handleMovePrev}
+                        onMoveNextRequest={handleMoveNext}
+                      />
+                    )}
                   </Box>
                 </ImageListItem>
               </ImageList>
@@ -344,7 +383,7 @@ const Cart = (props: any) => {
                   }}
                 >
                   <Typography fontSize={"16px"} fontWeight={"600"}>
-                    LOW CLASSIC
+                    {newAdditionData?.vendor}
                   </Typography>
                   <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
@@ -426,18 +465,8 @@ const Cart = (props: any) => {
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={1} sx={styles.bottomContainer}>
-          <Grid
-            container
-            item
-            xs={11.5}
-            sm={9}
-            md={11.2}
-            lg={9.2}
-            xl={9.2}
-            paddingTop="30px"
-            justifyContent={{ xs: "flex-start", md: "space-around" }}
-          >
+        <Grid container spacing={4} sx={styles.bottomContainer}>
+          <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
               <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                 You might like

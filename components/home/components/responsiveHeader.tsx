@@ -13,16 +13,25 @@ interface Props {
   type: string;
   data: string[];
   setFiltersValue: any;
+  brandFilterData: any;
+  setBrandFilterData: any;
+  shopFilterData: any;
+  setShopFilterData: any;
+  brandCount: any;
+  shopCount: any;
+  openBrand: any;
+  openShop: any;
+  handleClose: any;
+  handleOpenShopDropDown: any;
+  handleOpenBrandDropDown: any;
+  toggleBrandDropDown: any;
+  toggleShopDropDown: any;
 }
 
 export const ResponsiveHeader = (props: Props) => {
   const theme = useTheme();
-
   const {
-    data,
     setFiltersValue,
-    slug,
-    shopList,
     brandFilterData,
     setBrandFilterData,
     shopFilterData,
@@ -34,13 +43,14 @@ export const ResponsiveHeader = (props: Props) => {
     handleClose,
     handleOpenShopDropDown,
     handleOpenBrandDropDown,
+    toggleBrandDropDown,
+    toggleShopDropDown,
   } = props;
-
   const route = useRouter();
-
   const onClickBrands = (event: any) => {
     if (!openBrand) {
       handleOpenBrandDropDown(event);
+      toggleShopDropDown(null);
       return;
     }
     handleClose();
@@ -48,29 +58,32 @@ export const ResponsiveHeader = (props: Props) => {
   const onClickShopButton = (event: any) => {
     if (!openShop) {
       handleOpenShopDropDown(event);
+      toggleBrandDropDown(null);
       return;
     }
     handleClose();
   };
 
-  const applyFiltersMethod = (type) => {
+  const applyFiltersMethod = (type: any) => {
     let data =
-      type == "Brands" ? brandFilterData.filter((item) => item.checked) : shopFilterData.filter((item) => item.checked);
+      type == "Brands"
+        ? brandFilterData.filter((item: any) => item.checked)
+        : shopFilterData.filter((item: any) => item.checked);
     setFiltersValue(
-      data.map((item) => item.item),
+      data.map((item: any) => item.item),
       type,
       true,
     );
     handleClose();
   };
 
-  const resetFilters = (type) => {
+  const resetFilters = (type: any) => {
     setFiltersValue([], type, false);
     handleClose();
   };
 
-  const onClickBrand = (item) => {
-    let index = brandFilterData.findIndex((data) => data.item == item.item);
+  const onClickBrand = (item: any) => {
+    let index = brandFilterData.findIndex((data: any) => data.item == item.item);
 
     let data = {
       item: item.item,
@@ -81,8 +94,8 @@ export const ResponsiveHeader = (props: Props) => {
 
     setBrandFilterData(list);
   };
-  const onClickShop = (item) => {
-    let index = shopFilterData.findIndex((data) => data.item == item.item);
+  const onClickShop = (item: any) => {
+    let index = shopFilterData.findIndex((data: any) => data.item == item.item);
 
     let data = {
       item: item.item,
@@ -93,6 +106,8 @@ export const ResponsiveHeader = (props: Props) => {
 
     setShopFilterData(list);
   };
+  const enableFliterBrand = brandFilterData.some((item: any) => item?.checked);
+  const enableFliterCatagory = shopFilterData.some((item: any) => item?.checked);
 
   return (
     <React.Fragment>
@@ -144,7 +159,7 @@ export const ResponsiveHeader = (props: Props) => {
           md={12}
         >
           <Grid gap={20} sx={styles.menuInnerContainer}>
-            {brandFilterData?.map((item, index) => {
+            {brandFilterData?.map((item: any, index: any) => {
               return (
                 <Grid
                   onClick={() => {
@@ -180,7 +195,12 @@ export const ResponsiveHeader = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod("Brands")}>
+                <Button
+                  variant="contained"
+                  sx={styles.menuButton}
+                  onClick={() => applyFiltersMethod("Brands")}
+                  disabled={!enableFliterBrand}
+                >
                   Apply
                 </Button>
               </Grid>
@@ -219,7 +239,7 @@ export const ResponsiveHeader = (props: Props) => {
           md={12}
         >
           <Grid gap={20} sx={styles.menuInnerContainer}>
-            {shopFilterData?.map((item, index) => {
+            {shopFilterData?.map((item: any, index: any) => {
               return (
                 <Grid
                   onClick={() => {
@@ -250,7 +270,12 @@ export const ResponsiveHeader = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button variant="contained" sx={styles.menuButton} onClick={() => applyFiltersMethod("Category")}>
+                <Button
+                  variant="contained"
+                  sx={styles.menuButton}
+                  onClick={() => applyFiltersMethod("Category")}
+                  disabled={!enableFliterCatagory}
+                >
                   Apply
                 </Button>
               </Grid>

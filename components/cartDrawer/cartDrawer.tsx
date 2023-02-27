@@ -16,7 +16,7 @@ const CartDrawer = () => {
   const { showCart } = useSelector((state: any) => state.app);
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState("");
-  const [loading,setLoading]= useState(false)
+  const [loading, setLoading] = useState(false);
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");
@@ -32,9 +32,8 @@ const CartDrawer = () => {
         dispatch(addProductToCart(cartProducts));
       } catch (error) {
         console.log(error);
-      }finally{
+      } finally {
         setLoading(false);
-
       }
     }
   };
@@ -58,9 +57,10 @@ const CartDrawer = () => {
     }
   }, [cartProducts]);
   useEffect(() => {
-   if(showCart){ getCartList();}
+    if (showCart) {
+      getCartList();
+    }
   }, [showCart]);
-
 
   const paperStyle = {
     color: "black",

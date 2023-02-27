@@ -37,7 +37,6 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
         return { productVendor: item };
       }),
     );
-    console.log("shopData", shopData);
 
     setShopFilterList(
       shopData.map((item) => {

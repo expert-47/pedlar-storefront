@@ -23,7 +23,6 @@ const DropDownMenu = (props: Props) => {
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  console.log("storeName", storeName);
 
   const handleClose = () => {
     setAnchorEl(null);

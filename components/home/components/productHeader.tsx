@@ -8,7 +8,7 @@ import DropdownButton from "components/navbar/components/dropdownButton";
 import { ResponsiveHeader } from "./responsiveHeader";
 import apiClient from "api/restApi/client";
 
-const ProductHeader = (props) => {
+const ProductHeader = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   let slug = props?.slug;
@@ -18,12 +18,12 @@ const ProductHeader = (props) => {
   const [openBrand, toggleBrandDropDown] = useState(null);
   const [openShop, toggleShopDropDown] = useState(null);
 
-  const handleOpenBrandDropDown = (event) => {
+  const handleOpenBrandDropDown = (event: any) => {
     console.log("event?.currentTarget", event?.currentTarget);
 
     toggleBrandDropDown(event?.currentTarget || true);
   };
-  const handleOpenShopDropDown = (event) => {
+  const handleOpenShopDropDown = (event: any) => {
     toggleShopDropDown(event.currentTarget);
   };
   const handleClose = () => {
@@ -40,7 +40,7 @@ const ProductHeader = (props) => {
     }
   }, []);
 
-  const getSelectedCategories = async (filterArray) => {
+  const getSelectedCategories = async (filterArray: any) => {
     let venders = {};
     if (filterArray.length == 0) {
       venders = await apiClient.get(`storefront/${slug}/vendors/`);
@@ -52,15 +52,15 @@ const ProductHeader = (props) => {
       });
     }
     let data = venders?.data?.data || [];
-    const filterData = brandsFilterList.filter((item) => {
-      let findIndex = data.findIndex((i) => item.productVendor == i.vendor);
+    const filterData = brandsFilterList.filter((item: any) => {
+      let findIndex = data.findIndex((i: any) => item.productVendor == i.vendor);
       if (findIndex != -1) {
         return item;
       }
     });
 
     props.setFiltersValue(
-      filterData.map((item) => item.productVendor),
+      filterData.map((item: any) => item.productVendor),
       filterArray,
       "Brands",
       true,
@@ -72,7 +72,7 @@ const ProductHeader = (props) => {
       };
     });
   };
-  const getSelectedVenders = async (filterArray) => {
+  const getSelectedVenders = async (filterArray: any) => {
     let shop = {};
 
     if (filterArray.length == 0) {
@@ -85,8 +85,8 @@ const ProductHeader = (props) => {
       });
     }
     let data = shop?.data?.data || [];
-    const filterData = shopFilterList.filter((item) => {
-      let findIndex = data.findIndex((i) => item.productType == i.productType);
+    const filterData = shopFilterList.filter((item: any) => {
+      let findIndex = data.findIndex((i: any) => item.productType == i.productType);
       if (findIndex != -1) {
         return item;
       }
@@ -94,7 +94,7 @@ const ProductHeader = (props) => {
 
     props.setFiltersValue(
       filterArray,
-      filterData.map((item) => item.productType),
+      filterData.map((item: any) => item.productType),
       "Shop",
       true,
     );
@@ -119,8 +119,8 @@ const ProductHeader = (props) => {
     if (Boolean(openBrand)) {
       return;
     }
-    let selectedData = filterData.vender?.map((item) => {
-      let findIndex = brandsFilterList.findIndex((i) => i.productVendor == item.vendor);
+    let selectedData = filterData.vender?.map((item: any) => {
+      let findIndex = brandsFilterList.findIndex((i: any) => i.productVendor == item.vendor);
       return {
         item: item.vendor,
         checked: findIndex != -1,
@@ -133,8 +133,8 @@ const ProductHeader = (props) => {
     if (Boolean(openShop)) {
       return;
     }
-    let selectedData = filterData?.shopList?.map((item) => {
-      let findIndex = shopFilterList.findIndex((i) => i.productType == item.productType);
+    let selectedData = filterData?.shopList?.map((item: any) => {
+      let findIndex = shopFilterList.findIndex((i: any) => i.productType == item.productType);
       return {
         item: item.productType,
         checked: findIndex != -1,
@@ -143,7 +143,7 @@ const ProductHeader = (props) => {
     setShopFilterData(selectedData);
   }, [filterData?.shopList, shopFilterList, openShop]);
 
-  const applyFilter = (data, type, apply) => {
+  const applyFilter = (data: any, type: any, apply: any) => {
     if (type == "Brands") {
       getSelectedVenders(apply ? data : []);
     } else {

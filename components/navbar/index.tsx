@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 
 import { Stack } from "@mui/system";
@@ -21,7 +21,7 @@ export default function Navbar(props: any) {
   const { data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-  const cartProducts = useSelector((data) => data.app.products);
+  const cartProducts = useSelector((data:any) => data.app.products);
 
   const dispatch = useDispatch();
 

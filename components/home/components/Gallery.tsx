@@ -8,6 +8,8 @@ interface Props {
   newAdditionData?: any[];
 }
 const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
+  console.log("newAdditionData", newAdditionData);
+
   return (
     <>
       <CustomGrid
@@ -36,7 +38,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
               <Grid item xs={6} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
                 <CardComponent
                   name={item?.title}
-                  type={item?.productType}
+                  type={item?.vendor}
                   price={
                     newAdditionData?.[index].priceRange?.maxVariantPrice?.currencyCode === "AUD"
                       ? `$${newAdditionData?.[index].priceRange?.maxVariantPrice?.amount}`

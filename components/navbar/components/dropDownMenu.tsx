@@ -28,7 +28,7 @@ const DropDownMenu = (props: Props) => {
     setAnchorEl(null);
     setdropdownOption(false);
   };
-  const navigateToProduct = (data:any) => {
+  const navigateToProduct = (data: any) => {
     route.push(
       {
         pathname: `${route.basePath}/${storeName}/products`,
@@ -86,8 +86,7 @@ const DropDownMenu = (props: Props) => {
             onClose={handleClose}
           >
             <Grid container>
-              <Grid item xs={6}></Grid>
-              <Grid item xs={6}>
+              <Grid item xs={12}>
                 <Box
                   sx={{
                     width: "100%",

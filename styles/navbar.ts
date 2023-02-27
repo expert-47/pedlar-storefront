@@ -65,7 +65,8 @@ const styles = {
   menuInnerContainer: {
     display: "flex",
     flexWrap: " wrap",
-    alignContent: "flex-start",
+    // alignContent: "flex-start",
+    justifyContent: { sm: "space-around", md: "flex-start" },
   },
   menuItems: {
     fontWeight: "500",

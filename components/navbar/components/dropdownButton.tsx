@@ -75,15 +75,16 @@ const DropdownButton = (props: Props) => {
       </Grid>
       <Menu
         PaperProps={{
-          elevation: 1,
+          elevation: 0,
           sx: {
-            mt: { md: 10.5, sm: 44 },
+            mt: -27,
             l: 0,
             borderRadius: 0,
             pb: 0,
             left: "0 !important",
             width: "100% ",
             maxWidth: "100% ",
+            justifyContent: "center",
           },
         }}
         sx={styles.menu}

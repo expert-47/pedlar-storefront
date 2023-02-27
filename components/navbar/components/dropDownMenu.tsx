@@ -74,7 +74,7 @@ const DropDownMenu = (props: Props) => {
                 // left: "0 !important",
                 l: 0,
                 borderRadius: 0,
-                // width: "100% ",
+                width: data.length <=6?"150px" : `${(data.length / 6) * 160}px`,
                 // maxWidth: "100% ",
                 // boxShadow: "none",
                 // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
@@ -97,6 +97,7 @@ const DropDownMenu = (props: Props) => {
                       maxHeight: 200,
                       display: "flex",
                       flexFlow: "column wrap",
+
                       // alignContent: "flex-end",
                       // paddingRight: "40px",
                     }}
@@ -110,7 +111,7 @@ const DropDownMenu = (props: Props) => {
                         return (
                           <Box
                             sx={{
-                              minWidth: 150,
+                              width: 150,
                               paddingRight: 20,
                             }}
                             onClick={() => {

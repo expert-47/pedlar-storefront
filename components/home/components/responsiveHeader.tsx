@@ -24,6 +24,8 @@ interface Props {
   handleClose: any;
   handleOpenShopDropDown: any;
   handleOpenBrandDropDown: any;
+  toggleBrandDropDown: any;
+  toggleShopDropDown: any;
 }
 
 export const ResponsiveHeader = (props: Props) => {

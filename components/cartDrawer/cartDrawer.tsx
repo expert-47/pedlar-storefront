@@ -9,6 +9,8 @@ import { checkoutCartDetails } from "../../api/graphql/grapgql";
 import { addProductToCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const CartDrawer = () => {
   const cartId = useSelector((data: any) => data.app.cartId);
@@ -16,11 +18,16 @@ const CartDrawer = () => {
   const { showCart } = useSelector((state: any) => state.app);
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState("");
+  const router = useRouter();
+  const slug = router?.query;
   const [loading, setLoading] = useState(false);
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");
     dispatch(cartDrawerToggle(false));
+  };
+  const shopnowRoute = () => {
+    router.push("/products");
   };
 
   const getCartList = async () => {
@@ -122,10 +129,12 @@ const CartDrawer = () => {
         >
           {loading && <CircularProgress color="secondary" />}
           {cartProducts?.map((item: any, index: any) => {
+            console.log("item", item);
+
             return (
               <CheckoutOrder
                 key={index}
-                title={item?.merchandise?.name || ""}
+                //  title={item?.merchandise?.name || ""}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}
@@ -138,45 +147,100 @@ const CartDrawer = () => {
         </Grid>
       </Grid>
 
-      <Grid
-        item
-        container
-        xs={12}
-        md={12}
-        lg={12}
-        direction={"column"}
-        justifyContent={"flex-end"}
-        alignItems={"flex-end"}
-        sx={{ paddingRight: "20px", paddingLeft: "20px" }}
-      >
+      {cartProducts?.length > 0 ? (
         <Grid
-          container
           item
-          style={{ display: "flex", padding: "5px", justifyContent: "space-between", alignItems: "center" }}
+          container
+          xs={12}
+          md={12}
+          lg={12}
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"flex-end"}
+          sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
         >
-          <Grid style={{ display: "flex", justifyContent: "space-between" }}>
-            <Typography sx={styles.totalText}>Total</Typography>
-            <Typography fontSize="12px" sx={styles.taxStyle}>
-              Incl. Taxes
-            </Typography>
+          <Grid
+            container
+            item
+            style={{
+              display: "flex",
+              padding: "5px",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: "15px",
+            }}
+          >
+            <Grid item style={{ display: "flex", justifyContent: "between" }}>
+              <Typography sx={styles.totalText}>Total</Typography>
+              <Typography fontSize="12px" sx={styles.taxStyle}>
+                Incl. Taxes
+              </Typography>
+            </Grid>
+
+            <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
           </Grid>
-
-          <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
-        </Grid>
-
-        <Button
-          // href={checkoutData?.data?.cart?.checkoutUrl}
-          // disabled={cartData?.length > 0 ? false : true}
-          sx={styles.checkoutButton}
-          onClick={apiForCheckout}
-        >
-          Checkout
-        </Button>
-
-        {/* <Link href="/checkout">
+          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+            <Button
+              // href={checkoutData?.data?.cart?.checkoutUrl}
+              // disabled={cartData?.length > 0 ? false : true}
+              sx={styles.checkoutButton}
+              onClick={apiForCheckout}
+            >
+              Checkout
+            </Button>
+          </Link>
+          {/* <Link href="/checkout">
           <Button sx={styles.checkoutButton} >Checkout</Button>
         </Link> */}
-      </Grid>
+        </Grid>
+      ) : (
+        <Grid
+          item
+          container
+          xs={12}
+          md={12}
+          lg={12}
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"flex-end"}
+          sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
+        >
+          <Grid
+            container
+            item
+            style={{
+              display: "flex",
+              padding: "5px",
+              justifyContent: "center",
+              alignItems: "center",
+              paddingBottom: "15px",
+            }}
+          >
+            <Grid item style={{ display: "flex", justifyContent: "between" }}>
+              <Typography sx={styles.totalText}>Your cart is empty</Typography>
+              {/* <Typography fontSize="12px" sx={styles.taxStyle}>
+              Incl. VAT & Taxes
+            </Typography> */}
+            </Grid>
+
+            <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
+          </Grid>
+          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+            <Button
+              // href={checkoutData?.data?.cart?.checkoutUrl}
+              // disabled={cartData?.length > 0 ? false : true}
+              sx={styles.checkoutButton}
+              // onClick={apiForCheckout}
+              onClick={onCloseCart}
+            >
+              Shop now
+            </Button>
+          </Link>
+          {/* <Link href="/checkout">
+          <Button sx={styles.checkoutButton} >Checkout</Button>
+        </Link> */}
+        </Grid>
+      )}
     </Drawer>
   );
 };

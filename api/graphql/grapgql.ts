@@ -407,11 +407,73 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
   }
 };
 
-export const getPaginationProducts = async (endCursorValue, collectionId, filterValuesForQuery) => {
+export const getPaginationProducts = async (action, cursorValue, collectionId, filterValuesForQuery) => {
+  // , $query: [ProductFilter!]
+  // products(first: 2, reverse: true ,"${action}":"${cursorValue}")
+  const limitOfProducts = action === "after" ? "first" : "last";
+
   const requestBody = {
-    query: gql`query GetCollection($collectionId: ID! , $query: [ProductFilter!]) {
+    query: gql`query GetCollection($collectionId: ID! ) {
       collection(id: $collectionId) {
-        products(first: 18, reverse: true ,after: "${endCursorValue}")
+        products( ${limitOfProducts}: 18, reverse: true ,${action}:"${cursorValue}")
+          {
+              nodes {
+                  id
+                  title
+                  productType
+                  vendor
+                  description
+                  totalInventory
+                  priceRange {
+                      maxVariantPrice {
+                          amount
+                          currencyCode
+                      }
+                      minVariantPrice {
+                          amount
+                          currencyCode
+                      }
+                  }
+                  featuredImage {
+            height
+            src
+            width
+            originalSrc
+            transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+          }
+                  createdAt
+                  publishedAt
+              }
+              pageInfo {
+                  hasNextPage
+                  hasPreviousPage
+                  startCursor
+                  endCursor
+              }
+          }
+      }
+  }`,
+    variables: {
+      collectionId: `gid://shopify/Collection/${collectionId}`,
+      query: [...filterValuesForQuery, { available: true }],
+    },
+  };
+
+  try {
+    const collectionDataProducts = await client.query({ query: requestBody.query, variables: requestBody.variables });
+    return collectionDataProducts?.data?.collection?.products;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPaginationProducts2 = async (cursorValue, collectionId, filterValuesForQuery) => {
+  //
+  // , $query: [ProductFilter!]
+  const requestBody = {
+    query: gql`query GetCollection($collectionId: ID!  ) {
+      collection(id: $collectionId) {
+        products(first: 18, reverse: true ,after:"${cursorValue}")
           {
               nodes {
                   id

@@ -28,7 +28,6 @@ const CheckoutOrder = (props: Props) => {
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const cartId = useSelector((data: any) => data.app.cartId);
-  // const cartProducts = useSelector((data:any) => data.app.products);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
     setLoadingButtonState(true);

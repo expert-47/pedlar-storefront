@@ -79,7 +79,6 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(productCount);
   }, [productCount]);
-  console.log(props, "props");
   return (
     <>
       {loadingButtonState ? (
@@ -143,7 +142,7 @@ const CheckoutOrder = (props: Props) => {
                 width: "100%",
               }}
             >
-              <Typography sx={styles.brandName}>{props.title}</Typography>
+              {/* <Typography sx={styles.brandName}>{props.name}</Typography> */}
               <Typography sx={styles.brandName}>{props.name}</Typography>
               <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "$" : ""} ${
                 props?.price

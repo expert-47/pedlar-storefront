@@ -124,7 +124,6 @@ const ReturnForm = (props: any) => {
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
-                          // marginBottom: "30px",
                           color: "#808080",
                           fontSize: "15px",
                         }}
@@ -269,8 +268,9 @@ const ReturnForm = (props: any) => {
                     sx={{
                       width: "335px",
                       height: "46px",
+                      color: values ? "White !important" : "#1C1B1F",
                       backgroundColor: errors ? "#1C1B1F" : "",
-                      color: errors ? "white !important" : "",
+                      boxShadow: errors ? "unset" : "",
                       borderRadius: "666px",
                       fontWeight: 600,
                       textTransform: "none",

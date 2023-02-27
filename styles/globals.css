@@ -450,3 +450,6 @@ section {
 .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon.Mui-disabled {
   color: rgba(0, 0, 0, 0.54) !important;
 }
+.css-5o1x4w-MuiButtonBase-root-MuiButton-root.Mui-disabled {
+  background-color: #a4a4a5;
+}

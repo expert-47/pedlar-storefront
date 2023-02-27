@@ -176,7 +176,7 @@ export default function HomepagePopup() {
           >
             <Box
             style={{
-              height:"52%"
+              height:"52.5%"
             }}
             >
               <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>

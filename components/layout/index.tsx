@@ -18,7 +18,6 @@ export default function Layout(props: LayoutProps) {
   const { children, seo, storefrontName = "", slug = "", productsPage = "", error } = props;
 
   const storeName = useSelector((data) => data.app.storeName);
-  const isNavShow = useSelector((state) => state.app.showNavbar);
   const dispatch = useDispatch();
   const { data, error: venderApiError } = useSwr(`storefront/${slug}/vendors/`);
   const { data: shopList, error: shopListApiError } = useSwr(`storefront/${slug}/categories/`);
@@ -28,14 +27,11 @@ export default function Layout(props: LayoutProps) {
       dispatch(clearStore(slug));
     }
   }, []);
-  
+
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        {/* 
-        {isNavShow === "undefined" ||
-          (isNavShow && ( */}
         <Navbar
           storefrontName={storefrontName}
           slug={slug}
@@ -45,7 +41,6 @@ export default function Layout(props: LayoutProps) {
           loading={venderApiError && !data}
           shopListLoading={shopListApiError && !shopList}
         />
-        {/* ))} */}
       </header>
       <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
       <footer>

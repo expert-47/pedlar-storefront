@@ -21,8 +21,8 @@ import BaseFooter from "components/footer/baseFooter";
 import PedlarImage from "components/pedlarImage";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
-import Lightbox from "react-image-lightbox";
-import "react-image-lightbox/style.css";
+import "photoswipe/dist/photoswipe.css";
+import { Gallery, Item } from "react-photoswipe-gallery";
 import {
   addToCart,
   updateCartLineItem,
@@ -36,7 +36,6 @@ import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/ap
 import * as gtmEvents from "utils/gtm";
 
 import CardComponent from "components/home/components/cardComponent";
-import { navbarHandle } from "store/slice/appSlice";
 
 const buttonStyle = {
   display: "none",
@@ -52,7 +51,6 @@ const Cart = (props: any) => {
   const theme = useTheme();
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
-  const [index, setIndex] = useState(-1);
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -97,8 +95,6 @@ const Cart = (props: any) => {
     }
   };
   const gmtEventToAddProduct = (data) => {
-    console.log("data", data);
-
     gtmEvents.addToCart(data);
   };
   const gmtEventToBuyNow = (data) => {
@@ -242,25 +238,6 @@ const Cart = (props: any) => {
     setErrorMessage("");
   };
 
-  const currentImage = newAdditionData?.images?.nodes?.[index];
-  const nextIndex = (index + 1) % newAdditionData?.images?.nodes?.length;
-  const nextImage = newAdditionData?.images?.nodes?.[nextIndex] || currentImage;
-  const prevIndex = (index + newAdditionData?.images?.nodes?.length - 1) % newAdditionData?.images?.nodes?.length;
-  const prevImage = newAdditionData?.images?.nodes?.[prevIndex] || currentImage;
-
-  const handleClickImage = (index) => {
-    setIndex(index);
-    document.body.style.overflow = "hidden";
-    dispatch(navbarHandle(false));
-  };
-  const handleClose = () => {
-    setIndex(-1);
-    document.body.style.overflow = "unset";
-    dispatch(navbarHandle(true));
-  };
-  const handleMovePrev = () => setIndex(prevIndex);
-  const handleMoveNext = () => setIndex(nextIndex);
-
   return (
     <Layout error={apiError} slug={slugValue} storefrontName={headerData?.data?.storefrontName}>
       <CustomContainer>
@@ -281,67 +258,65 @@ const Cart = (props: any) => {
             >
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
-                  <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
-                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                      return (
-                        <>
-                          <Box className="each-slide-effect" onClick={() => handleClickImage(index)}>
-                            <Box sx={styles.eachSlideEffect} style={{ backgroundImage: `url(${item?.url})` }}></Box>
-                          </Box>
-                        </>
-                      );
-                    })}
-                  </Slide>
+                  <Gallery>
+                    <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
+                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                        return (
+                          <>
+                            <Box className="each-slide-effect">
+                              <Box sx={styles.eachSlideEffect}>
+                                <Item original={item?.url} thumbnail={item?.url} width="500" height="600">
+                                  {({ ref, open }) => (
+                                    <img width={200} height={200} ref={ref} onClick={open} src={item?.url} />
+                                  )}
+                                </Item>
+                              </Box>
+                            </Box>
+                          </>
+                        );
+                      })}
+                    </Slide>
+                  </Gallery>
                 </Grid>
               </Grid>
-              <ImageList
-                cols={1}
-                sx={{
-                  maxHeight: "240vh",
-                  scrollbarWidth: "none",
-                  "&::-webkit-scrollbar": { display: "none" },
-                  display: { xs: "none", sm: "block" },
-                }}
-              >
-                <ImageListItem sx={{ paddingBottom: "25px" }}>
-                  <Box
-                    sx={{
-                      width: 400,
-                      height: 400,
-                    }}
-                  >
-                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                      return (
-                        <Box
-                          sx={{
-                            width: 400,
-                            height: 400,
-                            marginTop: "20px",
-                          }}
-                          onClick={() => handleClickImage(index)}
-                        >
-                          <PedlarImage src={item?.url} />
-                        </Box>
-                      );
-                    })}
-
-                    {!!currentImage && (
-                      <Lightbox
-                        mainSrc={currentImage?.url}
-                        // imageTitle={currentImage.__typename}
-                        mainSrcThumbnail={currentImage?.url}
-                        nextSrc={nextImage.url}
-                        nextSrcThumbnail={nextImage.url}
-                        prevSrc={prevImage.url}
-                        prevSrcThumbnail={prevImage.url}
-                        onCloseRequest={handleClose}
-                        onMovePrevRequest={handleMovePrev}
-                        onMoveNextRequest={handleMoveNext}
-                      />
-                    )}
-                  </Box>
-                </ImageListItem>
-              </ImageList>
+              <Gallery>
+                <ImageList
+                  cols={1}
+                  sx={{
+                    maxHeight: "240vh",
+                    scrollbarWidth: "none",
+                    "&::-webkit-scrollbar": { display: "none" },
+                    display: { xs: "none", sm: "block" },
+                  }}
+                >
+                  <ImageListItem sx={{ paddingBottom: "25px" }}>
+                    <Box
+                      sx={{
+                        width: 400,
+                        height: 400,
+                      }}
+                    >
+                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                        return (
+                          <Box
+                            sx={{
+                              width: 400,
+                              height: 400,
+                              marginTop: "20px",
+                            }}
+                          >
+                            <Item original={item?.url} thumbnail={item?.url} width="500" height="600">
+                              {({ ref, open }) => (
+                                <img width={400} height={400} ref={ref} onClick={open} src={item?.url} />
+                              )}
+                            </Item>
+                          </Box>
+                        );
+                      })}
+                    </Box>
+                  </ImageListItem>
+                </ImageList>
+              </Gallery>
             </Grid>
 
             <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">

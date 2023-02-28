@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
-const Products = ({ items, slug, collectionId, userData: data, error }: any) => {
+const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
 
@@ -187,13 +187,8 @@ export async function getServerSideProps(context: any) {
   const headerData = await getUserDetail(slug);
 
   if (headerData?.data) {
-    const numberofProducts = 18;
-    let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
-    let userData = data?.data?.collection?.products || [];
-
     return {
       props: {
-        items: userData,
         slug,
         collectionId: headerData?.data?.collectionId,
         userData: headerData,

@@ -410,8 +410,6 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
 };
 
 export const getPaginationProducts = async (action, cursorValue, collectionId, filterValuesForQuery) => {
-  // , $query: [ProductFilter!]
-  // products(first: 2, reverse: true ,"${action}":"${cursorValue}")
   const limitOfProducts = action === "after" ? "first" : "last";
 
   const requestBody = {

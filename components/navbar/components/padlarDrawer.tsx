@@ -158,21 +158,23 @@ export const PedlarDrawer = (props: {
                           xs={5.5}
                           sm={5.5}
                           style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                          onClick={closeDrawer}
+                          onClick={() => {
+                            closeDrawer();
+
+                            route.push(
+                              {
+                                pathname: `${route.basePath}/${storeName}/products`,
+                                query: { dataType: "Brands", itemValue: item.vendor },
+                              },
+                              `${route.basePath}/${storeName}/products`,
+                            );
+                          }}
                         >
-                          <Link
-                            as={`/${storeName}/products`}
-                            href={{
-                              pathname: `/${storeName}/products`,
-                              query: { dataType: "Brands", itemValue: item.vendor },
-                            }}
+                          <Typography
+                            sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
                           >
-                            <Typography
-                              sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
-                            >
-                              {item.vendor}
-                            </Typography>
-                          </Link>
+                            {item.vendor}
+                          </Typography>
                         </Grid>
                       ))
                     )}
@@ -220,21 +222,22 @@ export const PedlarDrawer = (props: {
                           xs={5.5}
                           sm={5.5}
                           style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                          onClick={closeDrawer}
+                          onClick={() => {
+                            closeDrawer();
+                            route.push(
+                              {
+                                pathname: `${route.basePath}/${storeName}/products`,
+                                query: { dataType: "Shop", itemValue: item.productType },
+                              },
+                              `${route.basePath}/${storeName}/products`,
+                            );
+                          }}
                         >
-                          <Link
-                            as={`/${storeName}/products`}
-                            href={{
-                              pathname: `/${storeName}/products`,
-                              query: { dataType: "Shop", itemValue: item.productType },
-                            }}
+                          <Typography
+                            sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
                           >
-                            <Typography
-                              sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
-                            >
-                              {item.productType}
-                            </Typography>
-                          </Link>
+                            {item.productType}
+                          </Typography>
                         </Grid>
                       ))
                     )}

@@ -52,15 +52,9 @@ const AppState = createSlice({
     clearStore: (state, action) => {
       return { ...initialState, storeName: action.payload };
     },
-    navbarHandle: (state, action) => {
-      return {
-        ...state,
-        showNavbar: action.payload,
-      };
-    },
   },
 });
 
-export const { addProductToCart, updateCartId, clearCart, toggleDialog, cartDrawerToggle, clearStore, navbarHandle } =
+export const { addProductToCart, updateCartId, clearCart, toggleDialog, cartDrawerToggle, clearStore } =
   AppState.actions;
 export default AppState.reducer;

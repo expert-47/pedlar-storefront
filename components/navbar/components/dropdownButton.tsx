@@ -1,7 +1,7 @@
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import Menu from "@mui/material/Menu";
 import styles from "styles/navbar";
-import { Button, Grid, useTheme, Checkbox } from "@mui/material";
+import { Button, Grid, useTheme, Checkbox, CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import LoadingButton from "components/LoadingButton";
@@ -19,6 +19,7 @@ interface Props {
   anchorEl: any;
   setFilterData: (data: [], type: string, apply: boolean) => void;
   loading: boolean;
+  pageLoading: boolean;
 }
 
 const DropdownButton = (props: Props) => {
@@ -34,7 +35,9 @@ const DropdownButton = (props: Props) => {
     openMenu,
     anchorEl,
     loading,
+    pageLoading,
   } = props;
+
   const [clickType, setClick] = useState<"apply" | "reset">("apply");
   const applyFiltersMethod = () => {
     setClick("reset");
@@ -118,6 +121,7 @@ const DropdownButton = (props: Props) => {
               paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
             >
               <Box sx={styles.menuInnerContainer}>
+                {pageLoading && <CircularProgress color="secondary" />}
                 {filterList?.map((item: any) => {
                   return (
                     <FormControlLabel

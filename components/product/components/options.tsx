@@ -19,7 +19,7 @@ function Options(props: any) {
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} gap={22} sx={styles.container}>
       {size != "Default Title" && newAdditionData?.options[0]?.values?.length > 0 && (
-        <Grid item xs={12} sm={12} md={5.6} lg={5.5}>
+        <Grid item xs={12} sm={10} md={5.6} lg={5.6}>
           <Typography sx={styles.typography}>{newAdditionData?.options[0]?.name}</Typography>
           <FormControl sx={{ width: "100%" }}>
             <Select
@@ -43,7 +43,7 @@ function Options(props: any) {
       )}
 
       {newAdditionData?.options[1]?.values?.length > 0 && (
-        <Grid item xs={12} sm={12} md={5.6} lg={5.5}>
+        <Grid item xs={12} sm={10} md={5.6} lg={5.6}>
           <Typography sx={styles.typography}>{newAdditionData?.options[1]?.name}</Typography>
           <FormControl sx={{ width: "100%" }}>
             <Select
@@ -51,7 +51,7 @@ function Options(props: any) {
               displayEmpty
               sx={styles.select}
               onChange={handleChange2}
-              IconComponent={KeyboardArrowDownIcon}
+              IconComponent={newAdditionData?.options[1]?.values?.length === 1 ? "" : KeyboardArrowDownIcon}
               disabled={newAdditionData?.options[1]?.values?.length == 1}
             >
               {newAdditionData?.options[1]?.values?.map((val: any, index: any) => {

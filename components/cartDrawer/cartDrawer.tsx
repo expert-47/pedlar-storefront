@@ -9,6 +9,7 @@ import { checkoutCartDetails } from "../../api/graphql/grapgql";
 import { addProductToCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
+import * as gtmEvents from "utils/gtm";
 
 const CartDrawer = () => {
   const cartId = useSelector((data: any) => data.app.cartId);
@@ -20,6 +21,7 @@ const CartDrawer = () => {
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");
+    gtmEvents.beginCheckout(cartProducts);
     dispatch(cartDrawerToggle(false));
   };
 
@@ -30,6 +32,7 @@ const CartDrawer = () => {
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
+        gtmEvents.viewCart(cartProducts);
       } catch (error) {
         console.log(error);
       } finally {
@@ -125,7 +128,7 @@ const CartDrawer = () => {
             return (
               <CheckoutOrder
                 key={index}
-                title={item?.merchandise?.name || ""}
+                //title={item?.merchandise?.name || ""}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}

@@ -213,6 +213,7 @@ export const getCartProducts = async (cartid) => {
             nodes {
               id
               quantity
+
               merchandise {
                 ... on ProductVariant {
                   id
@@ -221,6 +222,7 @@ export const getCartProducts = async (cartid) => {
                     url
                   }
                   quantityAvailable
+
                   title
                   price {
                     amount

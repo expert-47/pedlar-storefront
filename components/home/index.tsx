@@ -11,17 +11,25 @@ import Gallery from "./components/Gallery";
 import HomepagePopup from "components/popups/homepagePopup";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import * as gtmEvents from "utils/gtm";
+import { useSelector } from "react-redux";
 
 export const Home = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
+  const storeName = useSelector((data) => data.app.storeName);
 
   const data = [];
 
   for (let i = 0; i < props?.newAdditionData?.length; i = i + 5) {
     data.push(props?.newAdditionData.slice(i, i + 5));
   }
-
+  const onClickShopAll = () => {
+    gtmEvents.viewPromotion(storeName, "shop all", "new additions", "3");
+  };
+  const onClickShopNow = () => {
+    gtmEvents.viewPromotion(storeName, "shop brand", "curated brands", "2");
+  };
   return (
     <Grid>
       <BannerImg headerData={props?.headerData} />
@@ -30,7 +38,7 @@ export const Home = (props: any) => {
       <HomepagePopup />
       <Bar />
       <Box>
-        <BrandListing leftHeading="New Additions" rightHeading="SHOP ALL" />
+        <BrandListing onClick={onClickShopAll} leftHeading="New Additions" rightHeading="SHOP ALL" />
 
         <Gallery newAdditionData={props?.newAdditionData} />
         <Box
@@ -67,7 +75,7 @@ export const Home = (props: any) => {
           </Link>
         </Box>
 
-        <BrandListing leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
+        <BrandListing onClick={onClickShopNow} leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse?.slice(0, 4)} />
       </Box>
       <Divider sx={styles.footerDivider} />

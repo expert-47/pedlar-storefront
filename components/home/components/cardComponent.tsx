@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { getStoreName } from "utils/getPathName";
 import PedlarImage from "components/pedlarImage";
+import * as gtmEvents from "utils/gtm";
 interface Props {
   name: string;
   type: string;
@@ -13,13 +14,17 @@ interface Props {
   image?: string;
   crossPrice?: string;
   id: string;
+  item: any;
 }
 
-const CardComponent = ({ name, type, price, image, crossPrice, id }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
   let path = getStoreName(route);
 
+  const onClickCard = () => {
+    gtmEvents.selectItem(item);
+  };
   return (
     <Link href={{ pathname: `${path}/product/${productId}` }}>
       <Box
@@ -27,6 +32,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id }: React.Props
           cursor: "pointer",
           width: "100%",
         }}
+        onClick={onClickCard}
       >
         {image && (
           <Grid item xs={12}>

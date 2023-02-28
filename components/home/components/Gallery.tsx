@@ -32,25 +32,24 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
         >
-          {newAdditionData && newAdditionData.length > 0
-            ? newAdditionData.map((item: any, index: any) => {
-                return (
-                  <Grid item xs={6} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
-                    <CardComponent
-                      name={item?.title}
-                      type={item?.productType}
-                      price={
-                        newAdditionData?.[index].priceRange?.maxVariantPrice?.currencyCode === "AUD"
-                          ? `$${newAdditionData?.[index].priceRange?.maxVariantPrice?.amount}`
-                          : newAdditionData?.[index].priceRange?.maxVariantPrice?.amount
-                      }
-                      image={item?.featuredImage?.transformedSrc}
-                      id={item?.id}
-                    />
-                  </Grid>
-                );
-              })
-            : ""}
+          {newAdditionData?.map((item: any, index: any) => {
+            return (
+              <Grid item xs={6} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
+                <CardComponent
+                  name={item?.title}
+                  type={item?.vendor}
+                  price={
+                    item.priceRange?.maxVariantPrice?.currencyCode === "AUD"
+                      ? `$${item.priceRange?.maxVariantPrice?.amount}`
+                      : item.priceRange?.maxVariantPrice?.amount
+                  }
+                  image={item?.featuredImage?.transformedSrc}
+                  id={item?.id}
+                  item={item}
+                />
+              </Grid>
+            );
+          })}
         </Grid>
       </CustomGrid>
     </>

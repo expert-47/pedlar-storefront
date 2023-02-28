@@ -11,6 +11,7 @@ import { Alert } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "store/slice/appSlice";
 import PedlarImage from "components/pedlarImage";
+import * as gtmEvents from "utils/gtm";
 
 interface Props {
   name: string;
@@ -28,7 +29,6 @@ const CheckoutOrder = (props: Props) => {
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const cartId = useSelector((data: any) => data.app.cartId);
-  // const cartProducts = useSelector((data:any) => data.app.products);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
     setLoadingButtonState(true);
@@ -41,6 +41,8 @@ const CheckoutOrder = (props: Props) => {
     } else {
       await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
       setProductCount(quantity + 1);
+      gmtEventToAddProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity + 1 });
+
       await getCartList();
       setLoadingButtonState(false);
     }
@@ -50,6 +52,7 @@ const CheckoutOrder = (props: Props) => {
     await updateCartLineItem(cartId, props?.itemData?.id, 0);
     await getCartList();
     setLoadingButtonState(false);
+    gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: 0 });
   };
   const getCartList = async () => {
     if (cartId) {
@@ -60,12 +63,22 @@ const CheckoutOrder = (props: Props) => {
       } catch (error) {}
     }
   };
+
+  const gmtEventToAddProduct = (data) => {
+    console.log("data", data);
+
+    gtmEvents.addToCart(data);
+  };
+  const gmtEventRemoveProduct = (data) => {
+    gtmEvents.removeFromCart(data);
+  };
   const productDecrementHandler = async (quantity: number) => {
     setError(false);
 
     setLoadingButtonState(true);
 
     await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
+    gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity - 1 });
     setProductCount(quantity - 1);
 
     await getCartList();

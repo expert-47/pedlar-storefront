@@ -32,7 +32,11 @@ import {
   checkoutCartDetails,
 } from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart, updateCartId, cartDrawerToggle, navbarHandle } from "store/slice/appSlice";
+import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
+import * as gtmEvents from "utils/gtm";
+
+import CardComponent from "components/home/components/cardComponent";
+import { navbarHandle } from "store/slice/appSlice";
 
 const buttonStyle = {
   display: "none",
@@ -92,10 +96,28 @@ const Cart = (props: any) => {
       } catch (error) {}
     }
   };
-  const toggleCart = () => {
-    setTimeout(() => {
-      dispatch(cartDrawerToggle(true));
-    }, 500);
+  const gmtEventToAddProduct = (data) => {
+    console.log("data", data);
+
+    gtmEvents.addToCart(data);
+  };
+  const gmtEventToBuyNow = (data) => {
+    gtmEvents.beginCheckout({
+      currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
+      item_name: data?.title || "", // Name or ID is required.
+      item_id: data?.id || "", //ID of the item.
+      price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+      item_brand: data?.vendor || "", // brand of the item.(this is the example value)
+      item_category: data?.productType || "", //The category to which the product belongs to.
+      item_category2: size, //size of the product.
+      item_variant: color, // color of the product.
+      //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+      //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+      // index: 2, // position of the item
+      quantity: data.quantity, //quantity of the item
+      // promotion_id: "abc123",
+      // promotion_name: "shop now"
+    });
   };
   const addToCartButton = async () => {
     try {
@@ -118,8 +140,12 @@ const Cart = (props: any) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
-              toggleCart();
-              //   dispatch(cartDrawerToggle(true));
+              dispatch(cartDrawerToggle(true));
+              gmtEventToAddProduct({
+                ...data1,
+                quantity: quantity,
+                ...newAdditionData,
+              });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
@@ -128,7 +154,11 @@ const Cart = (props: any) => {
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
-          toggleCart();
+          gmtEventToAddProduct({
+            ...varientData,
+            quantity: quantity,
+            ...newAdditionData,
+          });
         }
       }
     } catch (error) {
@@ -176,6 +206,7 @@ const Cart = (props: any) => {
           const response = await checkoutCartDetails(cartId);
 
           window.open(response?.data?.cart?.checkoutUrl);
+          gmtEventToBuyNow({ ...newAdditionData });
         } else {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
           if (data1) {
@@ -187,12 +218,14 @@ const Cart = (props: any) => {
               const response = await checkoutCartDetails(cartId);
 
               window.open(response?.data?.cart?.checkoutUrl);
+              gmtEventToBuyNow({ ...newAdditionData });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, quantity);
             const response = await checkoutCartDetails(cartId);
 
             window.open(response?.data?.cart?.checkoutUrl);
+            gmtEventToBuyNow({ ...newAdditionData });
           }
         }
       }
@@ -408,6 +441,7 @@ const Cart = (props: any) => {
                 You might like
               </Typography>
             </Grid>
+
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               let productId = item?.id?.split("gid://shopify/Product/")[1];
               return (
@@ -424,12 +458,18 @@ const Cart = (props: any) => {
                     sx={{ cursor: "pointer" }}
                     onClick={ClearErrors}
                   >
-                    <Box sx={{ width: "100%", height: { xs: 165, sm: 250, md: 200 } }}>
-                      <PedlarImage src={item?.featuredImage?.transformedSrc} />
-                    </Box>
-                    <Typography variant="body1">SISLEY PARIS</Typography>
-                    <Typography variant="subtitle2">Eye Contour Mask</Typography>
-                    <Typography variant="subtitle2">$42</Typography>
+                    <CardComponent
+                      name={item?.title}
+                      type={item?.productType}
+                      price={
+                        item.priceRange?.maxVariantPrice?.currencyCode === "AUD"
+                          ? `$${item.priceRange?.maxVariantPrice?.amount}`
+                          : item.priceRange?.maxVariantPrice?.amount
+                      }
+                      image={item?.featuredImage?.transformedSrc}
+                      id={item?.id}
+                      item={item}
+                    />
                   </Grid>
                 </Link>
               );

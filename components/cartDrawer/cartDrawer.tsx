@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import * as gtmEvents from "utils/gtm";
 
 const CartDrawer = () => {
   const cartId = useSelector((data: any) => data.app.cartId);
@@ -24,6 +25,7 @@ const CartDrawer = () => {
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
     window.open(response?.data?.cart?.checkoutUrl, "_self");
+    gtmEvents.beginCheckout(cartProducts);
     dispatch(cartDrawerToggle(false));
   };
   const shopnowRoute = () => {
@@ -37,6 +39,7 @@ const CartDrawer = () => {
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart(cartProducts));
+        gtmEvents.viewCart(cartProducts);
       } catch (error) {
         console.log(error);
       } finally {

@@ -176,7 +176,7 @@ export default function HomepagePopup() {
           >
             <Box
             style={{
-              height:"50%"
+              height:"52.5%"
             }}
             >
               <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>
@@ -209,7 +209,7 @@ export default function HomepagePopup() {
                   Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
                   shopping. No catches, no hidden fees.
                 </Box>
-                <Box sx={{ marginLeft: "40px", marginTop: "20px" }}>
+                <Box sx={{ marginLeft: "40px", marginTop: "10px" }}>
                   <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
                     <Button sx={styles.shopbutton}>Shop now</Button>
                   </Link>

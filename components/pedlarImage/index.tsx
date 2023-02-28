@@ -2,12 +2,12 @@ import React from "react";
 import Image, { ImageProps, StaticImageData } from "next/image";
 import { useState } from "react";
 import { Box } from "@mui/material";
-
+import skeletonImg from "public/skeletonImg.jpeg";
 interface props extends ImageProps {
   zIndex?: number;
   placeholder: StaticImageData;
   item: any;
-  renderError: any;
+  renderError:any;
 }
 const PedlarImage = (props: props) => {
   const [error, setError] = useState(false);
@@ -26,7 +26,7 @@ const PedlarImage = (props: props) => {
         (max-width: 1200px) 50vw,
         33vw"
         {...props}
-        src={error ? placeholder || item?.vendor : props.src}
+        src={error ? placeholder || skeletonImg : props.src}
         onError={() => {
           setError(true);
         }}

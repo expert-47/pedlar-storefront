@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
@@ -43,8 +43,8 @@ const BrandTitles = (props: any) => {
                         query: { dataType: "Brands", itemValue: item?.vendor },
                       }}
                     >
-                    
-                        <PedlarImage renderError={()=>{
+                      <PedlarImage
+                        renderError={() => {
                           return (
                             <Box
                               sx={{
@@ -59,8 +59,11 @@ const BrandTitles = (props: any) => {
                               <Typography fontSize={"16px"}>{item?.vendor}</Typography>
                             </Box>
                           );
-                        }} src={item?.logo_url} alt={item?.vendor + index} quality="100" />
-                      
+                        }}
+                        src={item?.logo_url}
+                        alt={item?.vendor + index}
+                        quality="100"
+                      />
                     </Link>
                   </Box>
                 </>

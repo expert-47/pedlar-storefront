@@ -18,7 +18,7 @@ const TextBox = (props: any) => {
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
 
   const onClickShopNow = () => {
-    gtmEvents.viewPromotion(storeName);
+    gtmEvents.viewPromotion(storeName, "shop now", "home page banner", "1");
   };
   return (
     <Box

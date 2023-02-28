@@ -8,14 +8,15 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const BrandListing = (props: { leftHeading: string; rightHeading: string }) => {
+const BrandListing = (props: { leftHeading: string; rightHeading: string; onClick: () => void }) => {
   const theme = useTheme();
-  const { leftHeading, rightHeading } = props;
+  const { leftHeading, rightHeading, onClick = () => {} } = props;
   const router = useRouter();
   const slug = router?.query;
 
   return (
     <CustomGrid
+      onClick={onClick}
       style={{
         display: "flex",
         alignItems: "center",

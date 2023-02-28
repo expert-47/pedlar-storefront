@@ -10,7 +10,9 @@ export const gtmEvents = (data: any) => {
     ...data,
   };
   //@ts-ignore
+  event({ ecommerce: null });
   event(data);
+
   return pageEvent;
 };
 
@@ -107,7 +109,7 @@ export const selectItem = (item) => {
   });
 };
 
-export const viewPromotion = (storeName) => {
+export const viewPromotion = (storeName, name = "shop now", creativeName = "home page banner", slot = "1") => {
   gtmEvents({
     event: "view_promotion",
     ecommerce: {
@@ -120,9 +122,9 @@ export const viewPromotion = (storeName) => {
           //    item_list_name: "Category Page", // item list name
           //   price: 240.0,
           //   promotion_id: "abc123",
-          promotion_name: "shop now", // name of the banner/promotion
-          creative_name: "home page banner",
-          //   creative_slot: "1",
+          promotion_name: name, // name of the banner/promotion
+          creative_name: creativeName,
+          creative_slot: slot,
           location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
           index: 1,
         },

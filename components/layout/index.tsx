@@ -28,14 +28,11 @@ export default function Layout(props: LayoutProps) {
       dispatch(clearStore(slug));
     }
   }, []);
-  
+
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        {/* 
-        {isNavShow === "undefined" ||
-          (isNavShow && ( */}
         <Navbar
           storefrontName={storefrontName}
           slug={slug}
@@ -45,7 +42,6 @@ export default function Layout(props: LayoutProps) {
           loading={venderApiError && !data}
           shopListLoading={shopListApiError && !shopList}
         />
-        {/* ))} */}
       </header>
       <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
       <footer>

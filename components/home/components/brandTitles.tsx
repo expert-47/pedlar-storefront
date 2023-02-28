@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
@@ -43,24 +43,24 @@ const BrandTitles = (props: any) => {
                         query: { dataType: "Brands", itemValue: item?.vendor },
                       }}
                     >
-                      {!item?.logo_url ? (
-                        <PedlarImage src={item?.logo_url} alt={item?.vendor + index} quality="100" />
-                      ) : (
-                        <>
-                          <Box
-                            sx={{
-                              color: "black",
-                              height: "150px",
-                              width: "280px",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              display: "flex",
-                            }}
-                          >
-                            <Typography fontSize={"16px"}>{item?.vendor}</Typography>
-                          </Box>
-                        </>
-                      )}
+                    
+                        <PedlarImage renderError={()=>{
+                          return (
+                            <Box
+                              sx={{
+                                color: "black",
+                                height: "150px",
+                                width: "280px",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                display: "flex",
+                              }}
+                            >
+                              <Typography fontSize={"16px"}>{item?.vendor}</Typography>
+                            </Box>
+                          );
+                        }} src={item?.logo_url} alt={item?.vendor + index} quality="100" />
+                      
                     </Link>
                   </Box>
                 </>

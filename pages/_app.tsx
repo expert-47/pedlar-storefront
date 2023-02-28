@@ -19,6 +19,8 @@ import apiClient from "api/restApi/client";
 import NextNProgress from "nextjs-progressbar";
 import { useRouter } from "next/router";
 import { clearStore } from "store/slice/appSlice";
+import Head from "next/head";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: any) {
   useEffect(() => {
@@ -32,27 +34,29 @@ function MyApp({ Component, pageProps }: any) {
   let persistor = persistStore(store);
 
   return (
-    <Provider store={store}>
-      <ApolloProvider client={client}>
-        <SWRConfig
-          value={{
-            fetcher: (resource) => apiClient.get(resource).then((r) => r.data),
-          }}
-        >
-          <Fragment>
-            <DefaultSeo {...SEO} />
+    <>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <SWRConfig
+            value={{
+              fetcher: (resource) => apiClient.get(resource).then((r) => r.data),
+            }}
+          >
+            <Fragment>
+              <DefaultSeo {...SEO} />
 
-            <ThemeProvider theme={theme}>
-              <PersistGate persistor={persistor}>
-                <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
+              <ThemeProvider theme={theme}>
+                <PersistGate persistor={persistor}>
+                  <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-                <Component {...pageProps} />
-              </PersistGate>
-            </ThemeProvider>
-          </Fragment>
-        </SWRConfig>
-      </ApolloProvider>
-    </Provider>
+                  <Component {...pageProps} />
+                </PersistGate>
+              </ThemeProvider>
+            </Fragment>
+          </SWRConfig>
+        </ApolloProvider>
+      </Provider>
+    </>
   );
 }
 

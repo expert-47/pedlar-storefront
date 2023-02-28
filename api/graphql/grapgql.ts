@@ -409,11 +409,13 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
   }
 };
 
-export const getPaginationProducts = async (endCursorValue, collectionId, filterValuesForQuery) => {
+export const getPaginationProducts = async (action, cursorValue, collectionId, filterValuesForQuery) => {
+  const limitOfProducts = action === "after" ? "first" : "last";
+
   const requestBody = {
-    query: gql`query GetCollection($collectionId: ID! , $query: [ProductFilter!]) {
+    query: gql`query GetCollection($collectionId: ID! , $query: [ProductFilter!] ) {
       collection(id: $collectionId) {
-        products(first: 18, reverse: true ,after: "${endCursorValue}")
+        products( ${limitOfProducts}: 18, reverse: true ,${action}:"${cursorValue}" ,filters: $query)
           {
               nodes {
                   id

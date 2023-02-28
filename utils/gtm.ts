@@ -9,11 +9,10 @@ export const gtmEvents = (data: any) => {
   const pageEvent: PageEventProps = {
     ...data,
   };
-  //@ts-ignore
-  event({ ecommerce: null });
-  event(data);
 
-  return pageEvent;
+  //@ts-ignore
+  window?.dataLayer?.push({ ecommerce: null });
+  window?.dataLayer?.push(data);
 };
 
 export const beginCheckout = (data) => {

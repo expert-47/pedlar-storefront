@@ -1,13 +1,14 @@
 import { Grid, Typography, Button, useTheme, Checkbox, Divider, Box } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 
 import styles from "styles/navbar";
+import LoadingButton from "components/LoadingButton";
 
 interface Props {
   type: string;
@@ -26,6 +27,7 @@ interface Props {
   handleOpenBrandDropDown: any;
   toggleBrandDropDown: any;
   toggleShopDropDown: any;
+  loading: boolean;
 }
 
 export const ResponsiveHeader = (props: Props) => {
@@ -45,8 +47,11 @@ export const ResponsiveHeader = (props: Props) => {
     handleOpenBrandDropDown,
     toggleBrandDropDown,
     toggleShopDropDown,
+    loading
   } = props;
   const route = useRouter();
+  const [clickType, setClick] = useState<"apply" | "reset">("apply");
+
   const onClickBrands = (event: any) => {
     if (!openBrand) {
       handleOpenBrandDropDown(event);
@@ -65,6 +70,7 @@ export const ResponsiveHeader = (props: Props) => {
   };
 
   const applyFiltersMethod = (type: any) => {
+    setClick("apply");
     let data =
       type == "Brands"
         ? brandFilterData.filter((item: any) => item.checked)
@@ -74,12 +80,11 @@ export const ResponsiveHeader = (props: Props) => {
       type,
       true,
     );
-    handleClose();
   };
 
   const resetFilters = (type: any) => {
+    setClick("reset");
     setFiltersValue([], type, false);
-    handleClose();
   };
 
   const onClickBrand = (item: any) => {
@@ -195,14 +200,15 @@ export const ResponsiveHeader = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button
+                <LoadingButton
                   variant="contained"
+                  loading={loading && clickType =="apply"}
                   sx={styles.menuButton}
                   onClick={() => applyFiltersMethod("Brands")}
                   disabled={!enableFliterBrand}
                 >
                   Apply
-                </Button>
+                </LoadingButton>
               </Grid>
               <Grid
                 xs={12}
@@ -212,16 +218,13 @@ export const ResponsiveHeader = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Link
-                  as={`/${route?.query?.slug}/products`}
-                  href={{
-                    pathname: `/${route?.query?.slug}/products`,
-                  }}
-                >
-                  <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Brands")}>
+
+                  <LoadingButton
+                     loading={loading && clickType =="reset"}
+                  variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Brands")}>
                     Reset filters
-                  </Button>
-                </Link>
+                  </LoadingButton>
+
               </Grid>
             </>
           )}
@@ -270,14 +273,15 @@ export const ResponsiveHeader = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Button
+                <LoadingButton
                   variant="contained"
                   sx={styles.menuButton}
                   onClick={() => applyFiltersMethod("Category")}
                   disabled={!enableFliterCatagory}
+                  loading={loading && clickType =="apply"}
                 >
                   Apply
-                </Button>
+                </LoadingButton>
               </Grid>
               <Grid
                 xs={12}
@@ -287,16 +291,13 @@ export const ResponsiveHeader = (props: Props) => {
                 paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
               >
-                <Link
-                  as={`/${route?.query?.slug}/products`}
-                  href={{
-                    pathname: `/${route?.query?.slug}/products`,
-                  }}
-                >
-                  <Button variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Category")}>
+
+                  <LoadingButton
+                    loading={loading && clickType =="reset"}
+                  variant="outlined" sx={styles.outlinedButton} onClick={() => resetFilters("Category")}>
                     Reset filters
-                  </Button>
-                </Link>
+                  </LoadingButton>
+
               </Grid>
             </>
           )}

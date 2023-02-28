@@ -1,25 +1,26 @@
-import Text from "components/customText";
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Button, Divider, Box, CircularProgress } from "@mui/material";
+import { Grid, Divider, Box, CircularProgress, useMediaQuery } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-
+import Pagination from "@mui/material/Pagination";
 import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
+const Products = ({ slug, collectionId, userData: data, error }: any) => {
+  const [productsData, setProductsData] = useState([]);
+  const [endCursorValue, setEndCursorValue] = useState({});
 
-const Products = ({ newAdditionData, slug, collectionId, userData: data, error }: any) => {
-  const [productsData, setProductsData] = useState([{}]);
-  const [endCursorValue, setEndCursorValue] = useState("");
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
   const [brandsFilterList, setBrandFilterList] = useState([]);
   const [shopFilterList, setShopFilterList] = useState([]);
 
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageCount, setPageCount] = useState(1);
   const route = useRouter();
 
   const setFiltersValue = async (brandData = [], shopData = [], type: string, applyFilters: boolean) => {
@@ -37,6 +38,7 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
         return { productVendor: item };
       }),
     );
+    // console.log("shopData", shopData);
 
     setShopFilterList(
       shopData.map((item) => {
@@ -68,9 +70,10 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
     try {
       setLoading(true);
       const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
-
       setProductsData(response?.data?.collection?.products?.nodes || []);
-      setEndCursorValue(response?.data?.collection?.products?.pageInfo?.endCursor);
+      setEndCursorValue({ 1: response?.data?.collection?.products?.pageInfo?.endCursor });
+
+      setPageNumber(1);
       setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
     } catch (error) {
       setProductsData([]);
@@ -78,19 +81,25 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setLoading(false);
     }
   };
-  const getPaginationData = async () => {
-    if (endCursorValue.includes("=")) {
-      setEndCursorValue(endCursorValue.slice(0, -2));
-    }
 
+  const getPaginationData = async (e, value) => {
     try {
-      const collectionDataProducts = await getPaginationProducts(endCursorValue, collectionId, [
+      if (value == 1) {
+        getFilteredData();
+        return;
+      }
+      const collectionDataProducts = await getPaginationProducts("after", endCursorValue[value - 1], collectionId, [
         ...brandsFilterList,
         ...shopFilterList,
       ]);
-      const totalData = [...productsData, ...collectionDataProducts.nodes];
-      setProductsData(totalData);
-      setEndCursorValue(collectionDataProducts?.pageInfo?.endCursor);
+      setProductsData(collectionDataProducts?.nodes || []);
+      setPageNumber(value);
+
+      setEndCursorValue((prv) => {
+        let data = { ...prv };
+        data[value] = collectionDataProducts?.pageInfo.endCursor;
+        return data;
+      });
       setHasNextPage(collectionDataProducts?.pageInfo?.hasNextPage);
 
       return collectionDataProducts;
@@ -99,7 +108,11 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
       setHasNextPage(false);
     }
   };
-
+  useEffect(() => {
+    if (hasNextPage && pageCount <= pageNumber) {
+      setPageCount(pageNumber + 1);
+    }
+  }, [pageNumber, hasNextPage]);
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
       <Head>
@@ -119,13 +132,15 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
         }}
       >
         <ProductHeader
+          loading={loading}
+          setLoading={setLoading}
           brandsFilterList={brandsFilterList}
           setFiltersValue={setFiltersValue}
           collectionId={collectionId}
           slug={slug}
           shopFilterList={shopFilterList}
         />
-        {loading && (
+        {/* {loading && (
           <Box
             sx={{
               display: "flex",
@@ -136,41 +151,28 @@ const Products = ({ newAdditionData, slug, collectionId, userData: data, error }
           >
             <CircularProgress color="secondary" />
           </Box>
-        )}
+        )} */}
         <Gallery newAdditionData={productsData} />
       </Box>
-      <Grid
-        style={{
+      <Box
+        sx={{
           marginTop: "20px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          flexDirection: "column",
+          width: "100%",
         }}
+        paddingX={0}
       >
-        <Text fontSize="12px" fontWeight="600">
-          {`You've viewed ${productsData?.length} out of ${productsData?.length} products`}
-        </Text>
-        {hasNextPage && (
-          <Button
-            variant="outlined"
-            onClick={getPaginationData}
-            style={{
-              width: "15em",
-              border: "2px solid black",
-              borderRadius: "30px",
-              backgroundColor: "white",
-              color: "#1E1E1E",
-              fontWeight: "600",
-              fontSize: "16px",
-              textTransform: "none",
-              marginTop: "10px",
-            }}
-          >
-            Load more
-          </Button>
-        )}
-      </Grid>
+        <Pagination
+          count={hasNextPage ? pageCount : pageNumber}
+          variant="outlined"
+          shape="rounded"
+          siblingCount={0}
+          onChange={(e, value) => getPaginationData(e, value)}
+          page={pageNumber}
+        />
+      </Box>
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>
@@ -185,18 +187,11 @@ export async function getServerSideProps(context: any) {
   const headerData = await getUserDetail(slug);
 
   if (headerData?.data) {
-    const numberofProducts = 18;
-    let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
-    let userData = data?.data?.collection?.products || [];
-    // let totalData = await getUserTotalDetailByFetchAPICall(headerData?.data?.collectionId);
-    // let totalUserData = totalData?.data?.collection?.products || [];
     return {
       props: {
-        newAdditionData: userData,
         slug,
         collectionId: headerData?.data?.collectionId,
         userData: headerData,
-        // newAdditionTotalData: totalUserData,
       },
     };
   } else {

@@ -118,7 +118,13 @@ const Cart = (props: any) => {
   const addToCartButton = async () => {
     try {
       setButtonLoaderState(true);
-      const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+      const variant = await getVariantBySelectedOptions(
+        newAdditionData?.id,
+        size,
+        color,
+        newAdditionData?.options[0]?.name,
+        newAdditionData?.options[1]?.name,
+      );
       const varientData = variant?.data.product?.variantBySelectedOptions;
 
       if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
@@ -145,14 +151,14 @@ const Cart = (props: any) => {
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
-            toggleCart();
+            dispatch(cartDrawerToggle(true));
           }
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
           gmtEventToAddProduct({
             ...varientData,
-            quantity: quantity,
+            quantity: 1,
             ...newAdditionData,
           });
         }
@@ -170,7 +176,11 @@ const Cart = (props: any) => {
     setError(false);
     setErrorMessage("");
 
-    const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+    const variant = await getVariantBySelectedOptions(
+      newAdditionData?.id,size,color,
+      newAdditionData?.options[0]?.name,
+      newAdditionData?.options[1]?.name,
+    );
 
     const varientData = variant?.data.product?.variantBySelectedOptions;
     console.log("variant", variant);
@@ -189,7 +199,13 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
-      const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
+      const variant = await getVariantBySelectedOptions(
+        newAdditionData?.id,
+        size,
+        color,
+        newAdditionData?.options[0]?.name,
+        newAdditionData?.options[1]?.name,
+      );
 
       const varientData = variant?.data.product?.variantBySelectedOptions;
       if (varientData?.quantityAvailable === 0) {

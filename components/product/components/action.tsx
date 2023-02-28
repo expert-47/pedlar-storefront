@@ -20,7 +20,7 @@ const Action = (props: any) => {
       lg={12}
       sx={{ paddingTop: "30px", display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ width: "100%" }}>
+      <Grid item xs={12} sm={10} md={5.6} lg={5.6} sx={{ width: "100%" }}>
         <LoadingButton
           sx={{
             color: disabled ? "White" : "",
@@ -43,7 +43,7 @@ const Action = (props: any) => {
           Add to cart
         </LoadingButton>
       </Grid>
-      <Grid item xs={12} sm={7} md={6.7} lg={6.7} sx={{ paddingTop: "25px", width: "100%" }}>
+      <Grid item xs={12} sm={10} md={5.6} lg={5.6} sx={{ paddingTop: "25px", width: "100%" }}>
         <LoadingButton
           variant="outlined"
           sx={{

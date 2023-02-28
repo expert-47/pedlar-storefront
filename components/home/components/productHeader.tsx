@@ -5,11 +5,13 @@ import { CustomGrid } from "components/layout";
 import DropdownButton from "components/navbar/components/dropdownButton";
 import { ResponsiveHeader } from "./responsiveHeader";
 import apiClient from "api/restApi/client";
+import { useRouter } from "next/router";
 
 const ProductHeader = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   let slug = props?.slug;
+  const route = useRouter();
   const { brandsFilterList, shopFilterList } = props;
   const [brandFilterData, setBrandFilterData] = useState([]);
   const [shopFilterData, setShopFilterData] = useState([]);
@@ -37,7 +39,7 @@ const ProductHeader = (props: any) => {
     vender: [],
   });
   useEffect(() => {
-    if (filterData?.shopList?.length == 0 || filterData?.vender?.length == 0) {
+    if (filterData?.shopList?.length == 0 || filterData?.vender?.length == 0 || !isMatch) {
       getVenders();
     }
   }, [brandsFilterList, shopFilterList]);

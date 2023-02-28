@@ -16,7 +16,7 @@ interface Props {
 const DropDownMenu = (props: Props) => {
   const { type = "Brands", data, loading } = props;
   const [anchorEl, setAnchorEl] = useState(null);
-  const [dropdownOption, setdropdownOption] = useState(false);
+
   const storeName = useSelector((data: any) => data.app.storeName);
   const route = useRouter();
   const openMenu = Boolean(anchorEl);
@@ -26,7 +26,6 @@ const DropDownMenu = (props: Props) => {
 
   const handleClose = () => {
     setAnchorEl(null);
-    setdropdownOption(false);
   };
   const navigateToProduct = (data: any) => {
     route.push(

@@ -1,6 +1,6 @@
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Divider, Box, CircularProgress } from "@mui/material";
+import { Grid, Divider, Box, CircularProgress, useMediaQuery } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
@@ -140,7 +140,7 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
           slug={slug}
           shopFilterList={shopFilterList}
         />
-        {loading && (
+        {/* {loading && (
           <Box
             sx={{
               display: "flex",
@@ -151,7 +151,7 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
           >
             <CircularProgress color="secondary" />
           </Box>
-        )}
+        )} */}
         <Gallery newAdditionData={productsData} />
       </Box>
       <Box

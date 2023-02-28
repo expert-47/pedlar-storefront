@@ -15,7 +15,7 @@ const ProductHeader = (props: any) => {
   const [shopFilterData, setShopFilterData] = useState([]);
   const [openBrand, toggleBrandDropDown] = useState(null);
   const [openShop, toggleShopDropDown] = useState(null);
-
+  const [filterListLoading, setFilterListLoading] = useState(false);
   const handleOpenBrandDropDown = (event: any) => {
     toggleBrandDropDown(event?.currentTarget || true);
   };
@@ -40,9 +40,9 @@ const ProductHeader = (props: any) => {
     if (filterData?.shopList?.length == 0 || filterData?.vender?.length == 0) {
       getVenders();
     }
-  }, []);
+  }, [brandsFilterList, shopFilterList]);
 
-  const getSelectedCategories = async (filterArray: any) => {
+  const getSelectedVenders = async (filterArray: any) => {
     try {
       props?.setLoading(true);
 
@@ -80,7 +80,7 @@ const ProductHeader = (props: any) => {
       props?.setLoading(false);
     }
   };
-  const getSelectedVenders = async (filterArray: any) => {
+  const getSelectedCategories = async (filterArray: any) => {
     let shop = {};
     try {
       props.setLoading(true);
@@ -118,14 +118,31 @@ const ProductHeader = (props: any) => {
       props.setLoading(false);
     }
   };
-  const getVenders = async () => {
-    let venders = await apiClient.get(`storefront/${slug}/vendors/`);
-    let shop = await apiClient.get(`storefront/${slug}/categories/`);
 
-    setFilterData({
-      vender: venders?.data?.data || [],
-      shopList: shop?.data?.data || [],
-    });
+  const getVenders = async () => {
+    try {
+      setFilterListLoading(true);
+
+      let venders = await apiClient.get(`storefront/${slug}/vendors/`, {
+        params: {
+          category: shopFilterList.map((item) => item.productType).join(","),
+        },
+      });
+
+      let shop = await apiClient.get(`storefront/${slug}/categories/`, {
+        params: {
+          vendor: brandsFilterList.map((item) => item.productVendor).join(","),
+        },
+      });
+
+      setFilterData({
+        vender: venders?.data?.data || [],
+        shopList: shop?.data?.data || [],
+      });
+    } catch (error) {
+    } finally {
+      setFilterListLoading(false);
+    }
   };
   useEffect(() => {
     if (Boolean(openBrand)) {
@@ -157,9 +174,9 @@ const ProductHeader = (props: any) => {
 
   const applyFilter = (data: any, type: any, apply: any) => {
     if (type == "Brands") {
-      getSelectedVenders(apply ? data : []);
-    } else {
       getSelectedCategories(apply ? data : []);
+    } else {
+      getSelectedVenders(apply ? data : []);
     }
     if (!apply) {
       props?.setFiltersValue(data, type, apply);
@@ -214,6 +231,7 @@ const ProductHeader = (props: any) => {
               handleClick={handleOpenBrandDropDown}
               handleClose={handleClose}
               anchorEl={openBrand}
+              pageLoading={filterListLoading}
               loading={props?.loading}
             />
             <DropdownButton
@@ -227,6 +245,7 @@ const ProductHeader = (props: any) => {
               handleClick={handleOpenShopDropDown}
               anchorEl={openShop}
               loading={props?.loading}
+              pageLoading={filterListLoading}
             />
           </Grid>
         )}

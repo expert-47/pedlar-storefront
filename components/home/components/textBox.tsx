@@ -5,7 +5,7 @@ import { Button, Box, useTheme, Typography } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { gtmEvents } from "utils/gtm";
+import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
 
 const TextBox = (props: any) => {
@@ -18,27 +18,7 @@ const TextBox = (props: any) => {
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
 
   const onClickShopNow = () => {
-    gtmEvents({
-      event: "view_promotion",
-      ecommerce: {
-        items: [
-          {
-            item_name: "The mariah", // Name or ID is required.
-            item_id: "555",
-            item_brand: "Hannah Juneva",
-            item_category: "shoes",
-            item_list_name: "Category Page", // item list name
-            price: 240.0,
-            promotion_id: "abc123",
-            promotion_name: "shop now", // name of the banner/promotion
-            creative_name: "home page banner",
-            creative_slot: "1",
-            location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
-            index: 1,
-          },
-        ],
-      },
-    });
+    gtmEvents.viewPromotion(storeName);
   };
   return (
     <Box

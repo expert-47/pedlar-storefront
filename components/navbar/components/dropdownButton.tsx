@@ -11,7 +11,7 @@ interface Props {
   type: string;
   data: string[];
   setFiltersValue: any;
-  filterList: [];
+  filterList: any;
   filterCount: Number;
   openMenu: boolean;
   handleClose: () => void;

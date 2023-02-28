@@ -12,8 +12,7 @@ import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall
 import { getUserDetail } from "api/restApi/getUserDetail";
 const Products = ({ items, slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);
-  const [endCursorValue, setEndCursorValue] = useState([]);
-  const [startCursorValue, setStartCursorValue] = useState("");
+  const [endCursorValue, setEndCursorValue] = useState({});
 
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -133,6 +132,8 @@ const Products = ({ items, slug, collectionId, userData: data, error }: any) => 
         }}
       >
         <ProductHeader
+          loading={loading}
+          setLoading={setLoading}
           brandsFilterList={brandsFilterList}
           setFiltersValue={setFiltersValue}
           collectionId={collectionId}

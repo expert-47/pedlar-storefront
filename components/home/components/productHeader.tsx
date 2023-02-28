@@ -26,6 +26,12 @@ const ProductHeader = (props: any) => {
     toggleBrandDropDown(null);
     toggleShopDropDown(null);
   };
+
+  useEffect(() => {
+    if (!props.loading) {
+      handleClose();
+    }
+  }, [props.loading]);
   const [filterData, setFilterData] = useState({
     shopList: [],
     vender: [],
@@ -37,70 +43,80 @@ const ProductHeader = (props: any) => {
   }, []);
 
   const getSelectedCategories = async (filterArray: any) => {
-    let venders = {};
-    if (filterArray.length == 0) {
-      venders = await apiClient.get(`storefront/${slug}/vendors/`);
-    } else {
-      venders = await apiClient.get(`storefront/${slug}/vendors/`, {
-        params: {
-          category: filterArray.join(","),
-        },
-      });
-    }
-    let data = venders?.data?.data || [];
-    const filterData = brandsFilterList.filter((item: any) => {
-      let findIndex = data.findIndex((i: any) => item.productVendor == i.vendor);
-      if (findIndex != -1) {
-        return item;
-      }
-    });
+    try {
+      props?.setLoading(true);
 
-    props.setFiltersValue(
-      filterData.map((item: any) => item.productVendor),
-      filterArray,
-      "Brands",
-      true,
-    );
-    setFilterData((prv) => {
-      return {
-        shopList: prv.shopList,
-        vender: venders?.data?.data || [],
-      };
-    });
+      let venders = {};
+      if (filterArray.length == 0) {
+        venders = await apiClient.get(`storefront/${slug}/vendors/`);
+      } else {
+        venders = await apiClient.get(`storefront/${slug}/vendors/`, {
+          params: {
+            category: filterArray.join(","),
+          },
+        });
+      }
+      let data = venders?.data?.data || [];
+      const filterData = brandsFilterList.filter((item: any) => {
+        let findIndex = data.findIndex((i: any) => item.productVendor == i.vendor);
+        if (findIndex != -1) {
+          return item;
+        }
+      });
+
+      props.setFiltersValue(
+        filterData.map((item: any) => item.productVendor),
+        filterArray,
+        "Brands",
+        true,
+      );
+      setFilterData((prv) => {
+        return {
+          shopList: prv.shopList,
+          vender: venders?.data?.data || [],
+        };
+      });
+    } catch (error) {
+      props?.setLoading(false);
+    }
   };
   const getSelectedVenders = async (filterArray: any) => {
     let shop = {};
-
-    if (filterArray.length == 0) {
-      shop = await apiClient.get(`storefront/${slug}/categories/`);
-    } else {
-      shop = await apiClient.get(`storefront/${slug}/categories/`, {
-        params: {
-          vendor: filterArray.join(","),
-        },
-      });
-    }
-    let data = shop?.data?.data || [];
-    const filterData = shopFilterList.filter((item: any) => {
-      let findIndex = data.findIndex((i: any) => item.productType == i.productType);
-      if (findIndex != -1) {
-        return item;
+    try {
+      props.setLoading(true);
+      if (filterArray.length == 0) {
+        shop = await apiClient.get(`storefront/${slug}/categories/`);
+      } else {
+        shop = await apiClient.get(`storefront/${slug}/categories/`, {
+          params: {
+            vendor: filterArray.join(","),
+          },
+        });
       }
-    });
+      let data = shop?.data?.data || [];
+      const filterData = shopFilterList.filter((item: any) => {
+        let findIndex = data.findIndex((i: any) => item.productType == i.productType);
+        if (findIndex != -1) {
+          return item;
+        }
+      });
 
-    props.setFiltersValue(
-      filterArray,
-      filterData.map((item: any) => item.productType),
-      "Shop",
-      true,
-    );
+      props.setFiltersValue(
+        filterArray,
+        filterData.map((item: any) => item.productType),
+        "Shop",
+        true,
+      );
 
-    setFilterData((prv) => {
-      return {
-        shopList: shop?.data?.data || [],
-        vender: prv.vender,
-      };
-    });
+      setFilterData((prv) => {
+        return {
+          shopList: shop?.data?.data || [],
+          vender: prv.vender,
+        };
+      });
+    } catch (error) {
+      props.setLoading(false);
+    }
   };
   const getVenders = async () => {
     let venders = await apiClient.get(`storefront/${slug}/vendors/`);
@@ -183,6 +199,7 @@ const ProductHeader = (props: any) => {
               handleClose={handleClose}
               toggleBrandDropDown={toggleBrandDropDown}
               toggleShopDropDown={toggleShopDropDown}
+              loading={props?.loading}
             />
           </>
         ) : (
@@ -197,6 +214,7 @@ const ProductHeader = (props: any) => {
               handleClick={handleOpenBrandDropDown}
               handleClose={handleClose}
               anchorEl={openBrand}
+              loading={props?.loading}
             />
             <DropdownButton
               type={"Category"}
@@ -208,6 +226,7 @@ const ProductHeader = (props: any) => {
               handleClose={handleClose}
               handleClick={handleOpenShopDropDown}
               anchorEl={openShop}
+              loading={props?.loading}
             />
           </Grid>
         )}

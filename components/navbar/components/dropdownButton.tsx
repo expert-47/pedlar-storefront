@@ -4,6 +4,8 @@ import styles from "styles/navbar";
 import { Button, Grid, useTheme, Checkbox } from "@mui/material";
 import { Box } from "@mui/system";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import LoadingButton from "components/LoadingButton";
+import { useState } from "react";
 
 interface Props {
   type: string;
@@ -16,6 +18,7 @@ interface Props {
   handleClick: (e: any) => void;
   anchorEl: any;
   setFilterData: (data: [], type: string, apply: boolean) => void;
+  loading: boolean;
 }
 
 const DropdownButton = (props: Props) => {
@@ -30,25 +33,30 @@ const DropdownButton = (props: Props) => {
     handleClose,
     openMenu,
     anchorEl,
+    loading,
   } = props;
-
+  const [clickType, setClick] = useState<"apply" | "reset">("apply");
   const applyFiltersMethod = () => {
+    setClick("reset");
     let data = filterList.filter((item: any) => item.checked);
     setFiltersValue(
       data.map((item: any) => item.item),
       type,
       true,
     );
-    handleClose();
+    setClick("apply");
+    // handleClose();
   };
 
   const resetFilters = () => {
+    setClick("reset");
     setFiltersValue(
       filterList.map((item: any) => item.item),
       type,
       false,
     );
-    handleClose();
+
+    // handleClose();
   };
   const getSelectedValues = (item: any) => {
     let index = filterList.findIndex((data: any) => data.item == item.item);
@@ -148,14 +156,15 @@ const DropdownButton = (props: Props) => {
                   paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                   paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 >
-                  <Button
+                  <LoadingButton
                     variant="contained"
                     sx={styles.menuButton}
                     onClick={applyFiltersMethod}
                     disabled={!enableFliter}
+                    loading={clickType == "apply" && loading}
                   >
                     Apply
-                  </Button>
+                  </LoadingButton>
                 </Grid>
                 <Grid
                   xs={7}
@@ -165,9 +174,15 @@ const DropdownButton = (props: Props) => {
                   paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                   paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
                 >
-                  <Button variant="outlined" sx={styles.outlinedButton} type="reset" onClick={() => resetFilters()}>
+                  <LoadingButton
+                    loading={clickType == "reset" && loading}
+                    variant="outlined"
+                    sx={styles.outlinedButton}
+                    type="reset"
+                    onClick={() => resetFilters()}
+                  >
                     Reset Filters
-                  </Button>
+                  </LoadingButton>
                 </Grid>
               </Grid>
             )}

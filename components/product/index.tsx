@@ -147,6 +147,7 @@ const Cart = (props: any) => {
     const variant = await getVariantBySelectedOptions(newAdditionData?.id, size, color);
 
     const varientData = variant?.data.product?.variantBySelectedOptions;
+    console.log("variant", variant);
 
     if (!varientData?.quantityAvailable || varientData?.quantityAvailable === 0) {
       setError(true);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "styles/home";
-import { Typography, Button, Grid, useMediaQuery } from "@mui/material";
+import { Typography, Button, Grid, useMediaQuery, Box } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
 import CloseIcon from "@mui/icons-material/Close";
@@ -34,127 +34,45 @@ const Bar = () => {
   };
   return (
     <>
-      {stickybar ? (
-        <CustomContainer
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            position: "sticky",
-            top: "110px",
-            zIndex: "100",
-          }}
-          sx={{
-            paddingLeft: { xs: "5px", md: "0px" },
-            paddingRight: { xs: "5px", md: "0px" },
-          }}
+      <CustomContainer
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "50px",
+        }}
+      >
+        <Grid
+          container
+          item
+          xs={11.6}
+          md={11}
+          lg={10}
+          xl={9.25}
+          alignItems={"center"}
+          style={{ width: "1116px", backgroundColor: "black" }}
+          justifyContent={{ xs: "flex-end", sm: "flex-start", lg: "flex-end" }}
+          height={{ xs: "unset", lg: "104px" }}
+          paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(30) }}
+          paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
-          <Grid
-            container
-            item
-            xs={11.5}
-            sm={11.5}
-            md={11.5}
-            lg={11.5}
-            sx={styles.mainbargrid}
-            justifyContent={{ lg: "space-between", md: "center", sm: "center", xs: "center" }}
-            paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
-            paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Grid
-              container
-              item
-              xs={11}
-              md={10}
-              lg={11}
-              alignItems={"center"}
-              style={{ width: "1340px" }}
-              height={{ xs: "unset", lg: "104px" }}
-              paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(25) }}
-              paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
+          <Grid item xs={12} sm={12} md={12} lg={10}>
+            <Typography
+              sx={styles.bartext}
+              fontWeight={"bold"}
+              fontSize={{ lg: "24px", md: "24px", sm: "20px", xs: "20px" }}
             >
-              <Typography
-                sx={styles.bartext}
-                fontWeight={"bold"}
-                fontSize={{ lg: "24px", md: "24px", sm: "20px", xs: "20px" }}
-              >
-                Love Fashion? Have your own style? Share it with your community.
-              </Typography>
-              <Button sx={styles.btn} onClick={openPopup}>
-                <Typography fontSize={"16px"} fontWeight={"600"}>
-                  Sign up for free
-                </Typography>
-              </Button>
-            </Grid>
-            <Grid
-              container
-              item
-              xs={1}
-              md={2}
-              lg={1}
-              justifyContent={{ xs: "flex-end", sm: "flex-end" }}
-              alignItems={{ xs: "flex-start", sm: "flex-start" }}
-            >
-              <CloseIcon sx={styles.closeIcon} onClick={onCloseBar} />
-            </Grid>
+              Love Fashion? Have your own style? Share it with your community.
+            </Typography>
           </Grid>
-        </CustomContainer>
-      ) : (
-        <CustomContainer
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Grid
-            container
-            item
-            xs={11.5}
-            sm={11.5}
-            md={11.5}
-            lg={11.5}
-            sx={styles.mainbargrid}
-            justifyContent={{ lg: "space-between", md: "center", sm: "center", xs: "center" }}
-            paddingX={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
-            paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Grid
-              container
-              item
-              xs={11}
-              md={10}
-              lg={11}
-              alignItems={"center"}
-              style={{ width: "1340px" }}
-              paddingX={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(25) }}
-              paddingY={{ xs: theme.spacing(8), md: theme.spacing(5), lg: theme.spacing(5) }}
-            >
-              <Typography
-                sx={styles.bartext}
-                fontWeight={"bold"}
-                fontSize={{ lg: "24px", md: "24px", sm: "20px", xs: "20px" }}
-              >
-                Love Fashion? Have your own style? Share it with your community.
+          <Box>
+            <Button sx={styles.btn} onClick={openPopup}>
+              <Typography fontSize={"16px"} fontWeight={"600"}>
+                Sign up for free
               </Typography>
-              <Button sx={styles.btn} onClick={openPopup}>
-                <Typography fontSize={"16px"} fontWeight={"600"}>
-                  Sign up for free
-                </Typography>
-              </Button>
-            </Grid>
-            <Grid
-              container
-              item
-              xs={1}
-              md={2}
-              lg={1}
-              justifyContent={{ xs: "flex-end", sm: "flex-end" }}
-              alignItems={{ xs: "flex-start", sm: "flex-start" }}
-            ></Grid>
-          </Grid>
-        </CustomContainer>
-      )}
+            </Button>
+          </Box>
+        </Grid>
+      </CustomContainer>
       {popupScreen ? (
         <LoginDialog
           handleClose={handleClose}

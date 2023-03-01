@@ -1,4 +1,4 @@
-import { Checkbox, Collapse, Divider, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Checkbox, Collapse, Divider, Grid, Typography, useTheme } from "@mui/material";
 import LoadingButton from "components/LoadingButton";
 import React, { useState } from "react";
 import styles from "styles/navbar";
@@ -8,9 +8,8 @@ interface Props {
   brandFilterData: any;
   setBrandFilterData: any;
   shopFilterData: any;
-  openBrand: any;
+  anchorEl: any;
   loading: boolean;
-  openShop: any;
   setShopFilterData: any;
 }
 
@@ -19,10 +18,9 @@ const FilterHeader = ({
   brandFilterData,
   setBrandFilterData,
   shopFilterData,
-  openBrand,
+  anchorEl,
   loading,
   setShopFilterData,
-  openShop,
 }: Props) => {
   const theme = useTheme();
   const [clickType, setClick] = useState<"apply" | "reset">("apply");
@@ -73,158 +71,159 @@ const FilterHeader = ({
   return (
     <>
       {/* {For Brand} */}
-      <Collapse in={openBrand} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Collapse in={anchorEl} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Divider sx={styles.menuDivider} />
-        <Grid
-          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-          container
-          item
-          xs={12}
-          sm={12}
-          md={12}
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            flexFlow: " wrap",
+          }}
         >
-          <Grid gap={20} sx={styles.menuInnerContainer}>
-            {brandFilterData?.map((item: any, index: any) => {
-              return (
-                <Grid
-                  onClick={() => {
-                    onClickBrand(item);
-                  }}
-                  style={{ display: "flex" }}
-                  key={"checkBox-" + index}
-                >
-                  <Grid>
-                    <Checkbox
-                      style={{ padding: "2px" }}
-                      sx={styles.menuCheck}
-                      checked={item.checked || false}
-                      onChange={(e) => onClickBrand(item)}
-                    />
-                  </Grid>
-                  <Grid>
-                    <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
-                      {item.item}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              );
-            })}
-          </Grid>
-          {brandFilterData?.length > 0 && (
-            <>
-              <Grid
-                xs={12}
-                sm={12}
-                md={2}
-                lg={2}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+          {brandFilterData?.map((item: any, index: any) => {
+            return (
+              <Box
+                onClick={() => {
+                  onClickBrand(item);
+                }}
+                sx={{
+                  width: "50%",
+                  flexDirection: "row",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                }}
+                key={"checkBox-" + index}
               >
-                <LoadingButton
-                  variant="contained"
-                  loading={loading && clickType == "apply"}
-                  sx={styles.menuButton}
-                  onClick={() => applyFiltersMethod("Brands")}
-                  disabled={!enableFliterBrand}
-                >
-                  Apply
-                </LoadingButton>
-              </Grid>
-              <Grid
-                xs={12}
-                sm={12}
-                md={2}
-                lg={2}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                <Checkbox
+                  style={{ padding: "2px" }}
+                  sx={styles.menuCheck}
+                  checked={item.checked || false}
+                  onChange={(e) => onClickBrand(item)}
+                />
+                <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
+                  {item.item}
+                </Typography>
+              </Box>
+            );
+          })}
+        </Box>
+        {brandFilterData?.length > 0 && (
+          <>
+            <Grid
+              xs={12}
+              sm={12}
+              md={2}
+              lg={2}
+              paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+            >
+              <LoadingButton
+                variant="contained"
+                loading={loading && clickType == "apply"}
+                sx={styles.menuButton}
+                onClick={() => applyFiltersMethod("Brands")}
+                disabled={!enableFliterBrand}
               >
-                <LoadingButton
-                  loading={loading && clickType == "reset"}
-                  variant="outlined"
-                  sx={styles.outlinedButton}
-                  onClick={() => resetFilters("Brands")}
-                >
-                  Reset filters
-                </LoadingButton>
-              </Grid>
-            </>
-          )}
-        </Grid>
+                Apply
+              </LoadingButton>
+            </Grid>
+            <Grid
+              xs={12}
+              sm={12}
+              md={2}
+              lg={2}
+              paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+            >
+              <LoadingButton
+                loading={loading && clickType == "reset"}
+                variant="outlined"
+                sx={styles.outlinedButton}
+                onClick={() => resetFilters("Brands")}
+              >
+                Reset filters
+              </LoadingButton>
+            </Grid>
+          </>
+        )}
       </Collapse>
 
       {/* {For Catagory} */}
-      <Collapse in={openShop}>
-        <Divider sx={styles.menuDivider} />
-        <Grid
-          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-          container
-          item
-          xs={12}
-          sm={12}
-          md={12}
+      <Collapse in={anchorEl}>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            flexFlow: " wrap",
+          }}
         >
-          <Grid gap={20} sx={styles.menuInnerContainer}>
-            {shopFilterData?.map((item: any, index: any) => {
-              return (
-                <Grid
-                  onClick={() => {
-                    onClickShop(item);
-                  }}
-                  style={{ display: "flex" }}
-                  key={"checkBoxx" + index}
-                >
-                  <Grid>
-                    <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} checked={item.checked || false} />
-                  </Grid>
-                  <Grid>
-                    <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
-                      {item.item}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              );
-            })}
-          </Grid>
-          {shopFilterData?.length > 0 && (
-            <>
-              <Grid
-                xs={12}
-                sm={12}
-                md={2}
-                lg={2}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+          {shopFilterData?.map((item: any, index: any) => {
+            return (
+              <Box
+                onClick={() => {
+                  onClickShop(item);
+                }}
+                sx={{
+                  width: "50%",
+                  flexDirection: "row",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                }}
+                key={"checkBoxx" + index}
               >
-                <LoadingButton
-                  variant="contained"
-                  sx={styles.menuButton}
-                  onClick={() => applyFiltersMethod("Category")}
-                  disabled={!enableFliterCatagory}
-                  loading={loading && clickType == "apply"}
-                >
-                  Apply
-                </LoadingButton>
-              </Grid>
-              <Grid
-                xs={12}
-                sm={12}
-                md={2}
-                lg={2}
-                paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
-                paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+                <Box>
+                  <Checkbox style={{ padding: "2px" }} sx={styles.menuCheck} checked={item.checked || false} />
+                </Box>
+                <Box>
+                  <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
+                    {item.item}
+                  </Typography>
+                </Box>
+              </Box>
+            );
+          })}
+        </Box>
+        {shopFilterData?.length > 0 && (
+          <>
+            <Grid
+              xs={12}
+              sm={12}
+              md={2}
+              lg={2}
+              paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+            >
+              <LoadingButton
+                variant="contained"
+                sx={styles.menuButton}
+                onClick={() => applyFiltersMethod("Category")}
+                disabled={!enableFliterCatagory}
+                loading={loading && clickType == "apply"}
               >
-                <LoadingButton
-                  loading={loading && clickType == "reset"}
-                  variant="outlined"
-                  sx={styles.outlinedButton}
-                  onClick={() => resetFilters("Category")}
-                >
-                  Reset filters
-                </LoadingButton>
-              </Grid>
-            </>
-          )}
-        </Grid>
+                Apply
+              </LoadingButton>
+            </Grid>
+            <Grid
+              xs={12}
+              sm={12}
+              md={2}
+              lg={2}
+              paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+              paddingY={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
+            >
+              <LoadingButton
+                loading={loading && clickType == "reset"}
+                variant="outlined"
+                sx={styles.outlinedButton}
+                onClick={() => resetFilters("Category")}
+              >
+                Reset filters
+              </LoadingButton>
+            </Grid>
+          </>
+        )}
       </Collapse>
     </>
   );

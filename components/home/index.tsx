@@ -36,7 +36,6 @@ export const Home = (props: any) => {
 
       <Divider sx={styles.bannerDivider} />
       <HomepagePopup />
-      <Bar />
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="New Additions" rightHeading="SHOP ALL" />
 
@@ -78,6 +77,7 @@ export const Home = (props: any) => {
         <BrandListing onClick={onClickShopNow} leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse?.slice(0, 4)} />
       </Box>
+      <Bar />
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Grid>

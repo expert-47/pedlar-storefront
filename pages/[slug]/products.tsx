@@ -1,6 +1,6 @@
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Divider, Box, CircularProgress, useMediaQuery, useScrollTrigger } from "@mui/material";
+import { Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
@@ -8,7 +8,7 @@ import Gallery from "components/home/components/Gallery";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import { getFilteredProducts, getPaginationProducts } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
 const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);

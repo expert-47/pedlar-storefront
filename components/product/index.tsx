@@ -276,7 +276,7 @@ const Cart = (props: any) => {
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Gallery>
-                    <Slide {...properties} indicators={true} autoplay={false} transitionDuration={300}>
+                    <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
                       {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                         return (
                           <>
@@ -428,7 +428,7 @@ const Cart = (props: any) => {
           </Grid>
         </Box>
         <Grid container spacing={4} sx={styles.bottomContainer}>
-          <Grid container item xs={11.5} sm={9} md={11.2} lg={9.2} xl={9.2} paddingTop="30px">
+          <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px">
             <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
               <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                 You might like
@@ -444,11 +444,10 @@ const Cart = (props: any) => {
                     item
                     xs={6}
                     sm={6}
-                    md={2.4}
-                    lg={2.4}
+                    md={3}
+                    lg={3}
                     paddingLeft="10px"
                     paddingBottom="10px"
-                    sx={{ cursor: "pointer" }}
                     onClick={ClearErrors}
                   >
                     <CardComponent

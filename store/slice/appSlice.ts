@@ -6,8 +6,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: [],
-  cartId: "",
+  products: {},
+  cartId: {},
   showDilog: true,
   showCart: false,
   storeName: "",
@@ -19,15 +19,23 @@ const AppState = createSlice({
   initialState,
   reducers: {
     addProductToCart: (state, action) => {
+      let data = { ...state.products };
+      let cartIds = { ...state.cartId };
+      cartIds[state.storeName] = action.payload.products?.length == 0 ? undefined : cartIds[state.storeName];
+      data[state.storeName] = !state.cartId[state.storeName] ? [] : action.payload.products;
       return {
         ...state,
-        products: state.cartId == "" ? [] : action.payload,
+        products: data,
+        showCart: action.payload.showCart || false,
+        cartId: cartIds,
       };
     },
     updateCartId: (state, action) => {
+      let data = { ...state.cartId };
+      data[state.storeName] = action.payload;
       return {
         ...state,
-        cartId: action.payload,
+        cartId: data,
       };
     },
     clearCart: (state, action) => {
@@ -50,7 +58,7 @@ const AppState = createSlice({
       };
     },
     clearStore: (state, action) => {
-      return { ...initialState, storeName: action.payload };
+      return { ...state, showNavbar: true, showDilog: false, storeName: action.payload, cartId: state.cartId };
     },
   },
 });

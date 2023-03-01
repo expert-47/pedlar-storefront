@@ -14,8 +14,10 @@ import Link from "next/link";
 import * as gtmEvents from "utils/gtm";
 
 const CartDrawer = () => {
-  const cartId = useSelector((data: any) => data.app.cartId);
-  const cartProducts = useSelector((data: any) => data.app.products);
+  const storeName = useSelector((data: any) => data.app.storeName);
+
+  const cartId = useSelector((data: any) => data.app.cartId[storeName]);
+  const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
   const { showCart } = useSelector((state: any) => state.app);
   const dispatch = useDispatch();
   const [totalPrice, setTotalPrice] = useState("");
@@ -38,7 +40,7 @@ const CartDrawer = () => {
         setLoading(true);
         let response = await getCartProducts(cartId);
         let cartProducts = response?.data?.cart?.lines?.nodes || [];
-        dispatch(addProductToCart(cartProducts));
+        dispatch(addProductToCart({ products: cartProducts, showCart: true }));
         gtmEvents.viewCart(cartProducts);
       } catch (error) {
         console.log(error);
@@ -48,6 +50,9 @@ const CartDrawer = () => {
     }
   };
   useEffect(() => {
+    if (!Array.isArray(cartProducts)) {
+      return;
+    }
     if (cartProducts?.length > 0) {
       if (cartProducts?.length == 1) {
         let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
@@ -131,22 +136,21 @@ const CartDrawer = () => {
           sx={styles.cartDrawerSlider}
         >
           {loading && <CircularProgress color="secondary" />}
-          {cartProducts?.map((item: any, index: any) => {
-            console.log("item", item);
-
-            return (
-              <CheckoutOrder
-                key={index}
-                //  title={item?.merchandise?.name || ""}
-                image={item?.merchandise?.image?.url || ""}
-                name={item?.merchandise?.title || ""}
-                price={item?.merchandise?.price?.amount || 0}
-                CurrencyCode={item?.merchandise?.price?.currencyCode || "$"}
-                quantity={item?.quantity}
-                itemData={item}
-              />
-            );
-          })}
+          {Array.isArray(cartProducts) &&
+            cartProducts?.map((item: any, index: any) => {
+              return (
+                <CheckoutOrder
+                  key={index}
+                  //  title={item?.merchandise?.name || ""}
+                  image={item?.merchandise?.image?.url || ""}
+                  name={item?.merchandise?.title || ""}
+                  price={item?.merchandise?.price?.amount || 0}
+                  CurrencyCode={item?.merchandise?.price?.currencyCode || "$"}
+                  quantity={item?.quantity}
+                  itemData={item}
+                />
+              );
+            })}
         </Grid>
       </Grid>
 

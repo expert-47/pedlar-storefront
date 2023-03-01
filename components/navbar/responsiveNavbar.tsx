@@ -22,7 +22,8 @@ export const ResponsiveNavbar = (props: Props) => {
   const { storefrontName, data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const [openDrawer, toggleDrawer] = useState(false);
-  const cartProducts = useSelector((data: any) => data.app.products);
+  const storeName = useSelector((data: any) => data.app.storeName);
+  const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
   const dispatch = useDispatch();
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);

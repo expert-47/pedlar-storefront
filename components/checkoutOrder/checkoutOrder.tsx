@@ -28,7 +28,9 @@ const CheckoutOrder = (props: Props) => {
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const cartId = useSelector((data: any) => data.app.cartId);
+  const storeName = useSelector((data: any) => data.app.storeName);
+
+  const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
     setLoadingButtonState(true);
@@ -58,8 +60,7 @@ const CheckoutOrder = (props: Props) => {
     if (cartId) {
       try {
         let response = await getCartProducts(cartId);
-
-        dispatch(addProductToCart(response?.data?.cart?.lines?.nodes || []));
+        dispatch(addProductToCart({ products: response?.data?.cart?.lines?.nodes || [], showCart: false }));
       } catch (error) {}
     }
   };

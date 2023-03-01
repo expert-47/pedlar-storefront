@@ -21,7 +21,14 @@ const Faq = (props) => {
   };
 
   return (
-    <Layout slug={slug} storefrontName={headerData?.data?.storefrontName}>
+    <Layout
+      slug={slug}
+      seo={{
+        title: `${process.env.NEXT_PUBLIC_STOREFRONT_FAQ_TITLE}`,
+        description: `${process.env.NEXT_PUBLIC_STOREFRONT_FAQ_DESCRIPTION}`,
+      }}
+      storefrontName={headerData?.data?.storefrontName}
+    >
       <CustomContainer>
         <Box sx={styles.MainBox}>
           <Grid

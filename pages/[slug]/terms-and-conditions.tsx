@@ -9,7 +9,14 @@ const TermAndCondition = (props) => {
   const { slug, headerData } = props;
 
   return (
-    <Layout slug={slug} storefrontName={headerData?.data?.storefrontName}>
+    <Layout
+      slug={slug}
+      seo={{
+        title: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_TITLE}`,
+        description: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_DESCRIPTION}`,
+      }}
+      storefrontName={headerData?.data?.storefrontName}
+    >
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>
           <Typography sx={{ fontSize: "40px", fontWeight: 600 }}>Terms & Conditions</Typography>

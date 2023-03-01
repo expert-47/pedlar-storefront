@@ -5,8 +5,9 @@ import React, { useEffect } from "react";
 import { NextSeo, NextSeoProps } from "next-seo";
 import ApiError from "components/PageError";
 import { useDispatch, useSelector } from "react-redux";
-import { clearStore } from "store/slice/appSlice";
+import { addProductToCart, clearStore } from "store/slice/appSlice";
 import useSwr from "swr";
+import { getCartProducts } from "api/graphql/grapgql";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
@@ -18,9 +19,23 @@ export default function Layout(props: LayoutProps) {
   const { children, seo, storefrontName = "", slug = "", productsPage = "", error } = props;
 
   const storeName = useSelector((data) => data.app.storeName);
+
+  const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const dispatch = useDispatch();
   const { data, error: venderApiError } = useSwr(`storefront/${slug}/vendors/`);
   const { data: shopList, error: shopListApiError } = useSwr(`storefront/${slug}/categories/`);
+
+  const getCartList = async (value = false) => {
+    if (cartId) {
+      try {
+        let response = await getCartProducts(cartId);
+        dispatch(addProductToCart({ products: response?.data?.cart?.lines?.nodes || [], showCart: false }));
+      } catch (error) {}
+    }
+  };
+  useEffect(() => {
+    getCartList();
+  }, [cartId]);
 
   useEffect(() => {
     if (storeName != slug) {

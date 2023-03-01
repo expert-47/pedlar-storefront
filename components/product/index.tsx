@@ -60,12 +60,16 @@ const Cart = (props: any) => {
   const route = useRouter();
   const slugValue = route.query.slug;
   let path = getStoreName(route);
-  const cartId = useSelector((data: any) => data.app.cartId);
-  const cartProducts = useSelector((data: any) => data.app.products);
+  const storeName = useSelector((data: any) => data.app.storeName);
+
+  const cartId = useSelector((data: any) => data.app.cartId[storeName]);
+
+  const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
   const dispatch = useDispatch();
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
+
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0] || "");
     setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -73,9 +77,7 @@ const Cart = (props: any) => {
   useEffect(() => {
     setError(false);
   }, [cartProducts]);
-  useEffect(() => {
-    getCartList();
-  }, [cartId]);
+
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
@@ -85,12 +87,11 @@ const Cart = (props: any) => {
     setColor(value);
   };
   // add to cart method
-  const getCartList = async () => {
+  const getCartList = async (value = false) => {
     if (cartId) {
       try {
         let response = await getCartProducts(cartId);
-
-        dispatch(addProductToCart(response?.data?.cart?.lines?.nodes || []));
+        dispatch(addProductToCart({ products: response?.data?.cart?.lines?.nodes || [], showCart: value }));
       } catch (error) {}
     }
   };
@@ -131,7 +132,7 @@ const Cart = (props: any) => {
         setError(true);
         setErrorMessage("This item is currently out of stock");
       } else {
-        if (typeof cartId == "string" && cartId != "") {
+        if (Boolean(cartId)) {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
 
           if (data1) {
@@ -142,7 +143,7 @@ const Cart = (props: any) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
-              dispatch(cartDrawerToggle(true));
+
               gmtEventToAddProduct({
                 ...data1,
                 quantity: quantity,
@@ -151,10 +152,10 @@ const Cart = (props: any) => {
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
-            dispatch(cartDrawerToggle(true));
           }
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
+
           dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
           gmtEventToAddProduct({
             ...varientData,
@@ -165,6 +166,7 @@ const Cart = (props: any) => {
       }
     } catch (error) {
     } finally {
+      getCartList(true);
       setButtonLoaderState(false);
     }
   };

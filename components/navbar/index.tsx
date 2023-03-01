@@ -21,7 +21,9 @@ export default function Navbar(props: any) {
   const { data, shopList, loading, shopListLoading } = props;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-  const cartProducts = useSelector((data: any) => data.app.products);
+  const storeName = useSelector((data: any) => data.app.storeName);
+
+  const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
 
   const dispatch = useDispatch();
 

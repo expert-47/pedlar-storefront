@@ -22,6 +22,7 @@ interface Props {
   CurrencyCode: string;
   title: string;
   vendor: string;
+  index: Number;
 }
 
 const CheckoutOrder = (props: Props) => {
@@ -29,61 +30,79 @@ const CheckoutOrder = (props: Props) => {
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  const cartId = useSelector((data: any) => data.app.cartId);
+  const storeName = useSelector((data: any) => data.app.storeName);
+
+  const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
+
+  const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
-    setLoadingButtonState(true);
-    setError(false);
+    try {
+      setLoadingButtonState(true);
+      setError(false);
 
-    if (props?.itemData?.merchandise?.quantityAvailable === productCount) {
-      setError(true);
-      setErrorMessage("This item is currently out of stock");
-      setLoadingButtonState(false);
-    } else {
-      await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
-      setProductCount(quantity + 1);
-      gmtEventToAddProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity + 1 });
+      if (props?.itemData?.merchandise?.quantityAvailable === productCount) {
+        setError(true);
+        setErrorMessage("This item is currently out of stock");
+        setLoadingButtonState(false);
+      } else {
+        await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
+        let products = [...cartProducts];
+        products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
+        dispatch(addProductToCart({ products: products, showCart: true }));
+        // setProductCount(quantity + 1);
+        gmtEventToAddProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity + 1 });
 
-      await getCartList();
+        setLoadingButtonState(false);
+      }
+    } catch (error) {
       setLoadingButtonState(false);
     }
   };
   const removeItem = async () => {
-    setLoadingButtonState(true);
-    await updateCartLineItem(cartId, props?.itemData?.id, 0);
-    await getCartList();
-    setLoadingButtonState(false);
-    gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: 0 });
-  };
-  const getCartList = async () => {
-    if (cartId) {
-      try {
-        let response = await getCartProducts(cartId);
+    try {
+      setLoadingButtonState(true);
+      await updateCartLineItem(cartId, props?.itemData?.id, 0);
 
-        dispatch(addProductToCart(response?.data?.cart?.lines?.nodes || []));
-      } catch (error) {}
+      dispatch(
+        addProductToCart({ products: cartProducts.filter((item, index) => index != props.index), showCart: true }),
+      );
+
+      setLoadingButtonState(false);
+      gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: 0 });
+    } catch (error) {
+      setLoadingButtonState(false);
     }
   };
 
   const gmtEventToAddProduct = (data) => {
-    console.log("data", data);
-
     gtmEvents.addToCart(data);
   };
   const gmtEventRemoveProduct = (data) => {
     gtmEvents.removeFromCart(data);
   };
   const productDecrementHandler = async (quantity: number) => {
-    setError(false);
+    try {
+      setError(false);
 
-    setLoadingButtonState(true);
+      setLoadingButtonState(true);
 
-    await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
-    gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity - 1 });
-    setProductCount(quantity - 1);
+      await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
+      gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity - 1 });
+      if (quantity - 1 == 0) {
+        dispatch(
+          addProductToCart({ products: cartProducts.filter((item, index) => index != props.index), showCart: true }),
+        );
+      } else {
+        let products = [...cartProducts];
+        products[props.index] = { ...cartProducts[props.index], quantity: quantity - 1 };
+        dispatch(addProductToCart({ products: products, showCart: true }));
+      }
 
-    await getCartList();
-    setLoadingButtonState(false);
+      setLoadingButtonState(false);
+    } catch (error) {
+      setLoadingButtonState(false);
+    }
   };
 
   const handleAlertClose = () => {
@@ -91,8 +110,8 @@ const CheckoutOrder = (props: Props) => {
     setErrorMessage("");
   };
   useEffect(() => {
-    setProductCount(productCount);
-  }, [productCount]);
+    setProductCount(props?.quantity);
+  }, [props?.quantity, props.index]);
   return (
     <>
       {loadingButtonState ? (

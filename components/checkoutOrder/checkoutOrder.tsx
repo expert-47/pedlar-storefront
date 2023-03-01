@@ -21,6 +21,7 @@ interface Props {
   itemData: any;
   CurrencyCode: string;
   title: string;
+  vendor: string;
 }
 
 const CheckoutOrder = (props: Props) => {
@@ -155,7 +156,8 @@ const CheckoutOrder = (props: Props) => {
                 width: "100%",
               }}
             >
-              {/* <Typography sx={styles.brandName}>{props.name}</Typography> */}
+              <Typography sx={styles.vendorName}>{props.vendor}</Typography>
+              <Typography sx={styles.brandName}>{props.title}</Typography>
               <Typography sx={styles.brandName}>{props.name}</Typography>
               <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "$" : ""} ${
                 props?.price

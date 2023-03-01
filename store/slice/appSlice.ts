@@ -26,16 +26,18 @@ const AppState = createSlice({
       return {
         ...state,
         products: data,
-        showCart: action.payload.showCart || false,
+        showCart: state.showCart ? state.showCart : action.payload.showCart || false,
         cartId: cartIds,
       };
     },
     updateCartId: (state, action) => {
       let data = { ...state.cartId };
-      data[state.storeName] = action.payload;
+      data[state.storeName] = action.payload.id;
+
       return {
         ...state,
         cartId: data,
+        showCart: action.payload.showCart,
       };
     },
     clearCart: (state, action) => {

@@ -116,6 +116,7 @@ const Cart = (props: any) => {
       // promotion_name: "shop now"
     });
   };
+
   const addToCartButton = async () => {
     try {
       setButtonLoaderState(true);
@@ -156,7 +157,7 @@ const Cart = (props: any) => {
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
-          dispatch(updateCartId(response?.data?.cartCreate?.cart?.id));
+          dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
           gmtEventToAddProduct({
             ...varientData,
             quantity: 1,
@@ -217,7 +218,8 @@ const Cart = (props: any) => {
       } else {
         if (!cartId) {
           let res = await addToCart(varientData?.id, slugValue, quantity);
-          dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
+          dispatch(updateCartId({ id: res?.data?.cartCreate?.cart?.id, showCart: false }));
+
           let cartId = res?.data?.cartCreate?.cart?.id;
           const response = await checkoutCartDetails(cartId);
 

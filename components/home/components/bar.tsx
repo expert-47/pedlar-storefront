@@ -46,7 +46,8 @@ const Bar = () => {
           item
           xs={11.6}
           md={11}
-          lg={9.7}
+          lg={10}
+          xl={9.25}
           alignItems={"center"}
           style={{ width: "1116px", backgroundColor: "black" }}
           justifyContent={{ xs: "flex-end", sm: "flex-start", lg: "flex-end" }}

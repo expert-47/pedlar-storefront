@@ -62,8 +62,6 @@ const styles = {
   },
   bartext: {
     color: "primary.main",
-    // minWidth: "50%",
-    paddingRight: "50px",
   },
   barbtn: {
     display: "flex",

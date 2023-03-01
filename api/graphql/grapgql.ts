@@ -221,6 +221,10 @@ export const getCartProducts = async (cartid) => {
                   image {
                     url
                   }
+                  product {
+                    title
+                    vendor
+                  }
                   quantityAvailable
 
                   title
@@ -247,7 +251,7 @@ export const getCartProducts = async (cartid) => {
   }
 };
 
-export const getVariantBySelectedOptions = async (productID, size, color,varientSize, varitentColor) => {
+export const getVariantBySelectedOptions = async (productID, size, color, varientSize, varitentColor) => {
   const selectedOptionInput = [
     {
       name: varientSize,

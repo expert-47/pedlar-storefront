@@ -107,6 +107,11 @@ const styles = {
     fontWeight: "600",
     textTransform: "uppercase",
   },
+  vendorName: {
+    fontSize: "12px",
+    fontWeight: "600",
+    textTransform: "uppercase",
+  },
   productPrice: {
     fontSize: "16px",
     fontWeight: "600",

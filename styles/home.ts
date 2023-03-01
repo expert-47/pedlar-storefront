@@ -62,8 +62,6 @@ const styles = {
   },
   bartext: {
     color: "primary.main",
-    minWidth: "50%",
-    paddingRight: "50px",
   },
   barbtn: {
     display: "flex",
@@ -76,7 +74,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    marginTop: { xs: "20px", sm: "10px", lg: "0px" },
+    marginTop: { xs: "10px", sm: "10px", lg: "0px" },
     "&:hover": {
       backgroundColor: "primary.main",
     },

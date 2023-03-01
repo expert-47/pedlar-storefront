@@ -1,6 +1,6 @@
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Divider, Box, CircularProgress, useMediaQuery } from "@mui/material";
+import { Divider, Box } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
@@ -8,7 +8,7 @@ import Gallery from "components/home/components/Gallery";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { getFilteredProducts, getPaginationProducts, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import { getFilteredProducts, getPaginationProducts } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
 const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);
@@ -79,6 +79,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setProductsData([]);
     } finally {
       setLoading(false);
+      scrollToTop();
     }
   };
 
@@ -106,6 +107,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     } catch (error) {
       console.log(error);
       setHasNextPage(false);
+    } finally {
+      scrollToTop();
     }
   };
   useEffect(() => {
@@ -113,6 +116,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setPageCount(pageNumber + 1);
     }
   }, [pageNumber, hasNextPage]);
+
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
       <Head>
@@ -140,7 +144,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           slug={slug}
           shopFilterList={shopFilterList}
         />
-        {loading && (
+        {/* {loading && (
           <Box
             sx={{
               display: "flex",
@@ -151,10 +155,10 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           >
             <CircularProgress color="secondary" />
           </Box>
-        )}
+        )} */}
         <Gallery newAdditionData={productsData} />
       </Box>
-      {!loading && productsData?.length > 0 && (
+      {(!loading && productsData?.length > 0) || pageNumber != 1 ? (
         <Box
           sx={{
             marginTop: "20px",
@@ -172,9 +176,11 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
             siblingCount={0}
             onChange={(e, value) => getPaginationData(e, value)}
             page={pageNumber}
+            hidePrevButton={pageNumber == 1}
+            hideNextButton={!hasNextPage}
           />
         </Box>
-      )}
+      ) : null}
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>
@@ -203,4 +209,11 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
+}
+
+function scrollToTop() {
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+
+  if (!isBrowser()) return;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }

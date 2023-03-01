@@ -132,12 +132,11 @@ const CartDrawer = () => {
         >
           {loading && <CircularProgress color="secondary" />}
           {cartProducts?.map((item: any, index: any) => {
-            console.log("item", item);
-
             return (
               <CheckoutOrder
                 key={index}
-                //  title={item?.merchandise?.name || ""}
+                vendor={item?.merchandise?.product?.vendor || ""}
+                title={item?.merchandise?.product?.title || ""}
                 image={item?.merchandise?.image?.url || ""}
                 name={item?.merchandise?.title || ""}
                 price={item?.merchandise?.price?.amount || 0}

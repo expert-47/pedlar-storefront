@@ -177,13 +177,14 @@ const Cart = (props: any) => {
     setErrorMessage("");
 
     const variant = await getVariantBySelectedOptions(
-      newAdditionData?.id,size,color,
+      newAdditionData?.id,
+      size,
+      color,
       newAdditionData?.options[0]?.name,
       newAdditionData?.options[1]?.name,
     );
 
     const varientData = variant?.data.product?.variantBySelectedOptions;
-    console.log("variant", variant);
 
     if (!varientData?.quantityAvailable || varientData?.quantityAvailable === 0) {
       setError(true);
@@ -275,7 +276,7 @@ const Cart = (props: any) => {
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Gallery>
-                    <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
+                    <Slide {...properties} indicators={true} autoplay={false} transitionDuration={300}>
                       {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                         return (
                           <>

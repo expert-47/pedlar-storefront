@@ -113,6 +113,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setPageCount(pageNumber + 1);
     }
   }, [pageNumber, hasNextPage]);
+
   return (
     <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
       <Head>
@@ -140,7 +141,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           slug={slug}
           shopFilterList={shopFilterList}
         />
-        {loading && (
+        {/* {loading && (
           <Box
             sx={{
               display: "flex",
@@ -151,10 +152,10 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           >
             <CircularProgress color="secondary" />
           </Box>
-        )}
+        )} */}
         <Gallery newAdditionData={productsData} />
       </Box>
-      {!loading && productsData?.length > 0 && (
+      {(!loading && productsData?.length > 0) || pageNumber != 1 ? (
         <Box
           sx={{
             marginTop: "20px",
@@ -172,9 +173,11 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
             siblingCount={0}
             onChange={(e, value) => getPaginationData(e, value)}
             page={pageNumber}
+            hidePrevButton={pageNumber == 1}
+            hideNextButton={!hasNextPage}
           />
         </Box>
-      )}
+      ) : null}
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>

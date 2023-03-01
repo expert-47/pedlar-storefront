@@ -140,7 +140,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           slug={slug}
           shopFilterList={shopFilterList}
         />
-        {/* {loading && (
+        {loading && (
           <Box
             sx={{
               display: "flex",
@@ -151,28 +151,30 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           >
             <CircularProgress color="secondary" />
           </Box>
-        )} */}
+        )}
         <Gallery newAdditionData={productsData} />
       </Box>
-      <Box
-        sx={{
-          marginTop: "20px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-        }}
-        paddingX={0}
-      >
-        <Pagination
-          count={hasNextPage ? pageCount : pageNumber}
-          variant="outlined"
-          shape="rounded"
-          siblingCount={0}
-          onChange={(e, value) => getPaginationData(e, value)}
-          page={pageNumber}
-        />
-      </Box>
+      {!loading && productsData?.length > 0 && (
+        <Box
+          sx={{
+            marginTop: "20px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+          paddingX={0}
+        >
+          <Pagination
+            count={hasNextPage ? pageCount : pageNumber}
+            variant="outlined"
+            shape="rounded"
+            siblingCount={0}
+            onChange={(e, value) => getPaginationData(e, value)}
+            page={pageNumber}
+          />
+        </Box>
+      )}
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Layout>

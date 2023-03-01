@@ -93,8 +93,6 @@ const CartDrawer = () => {
     dispatch(cartDrawerToggle(false));
   };
 
-  console.log("cartIdcartId", cartProducts);
-
   return (
     <Drawer
       anchor="right"
@@ -134,8 +132,6 @@ const CartDrawer = () => {
         >
           {loading && <CircularProgress color="secondary" />}
           {cartProducts?.map((item: any, index: any) => {
-            console.log("itemitemss", item);
-
             return (
               <CheckoutOrder
                 key={index}

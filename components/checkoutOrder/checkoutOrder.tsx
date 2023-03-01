@@ -133,6 +133,7 @@ const CheckoutOrder = (props: Props) => {
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "row",
+              paddingTop: "10px",
             }}
           >
             <Box

@@ -1,6 +1,6 @@
 import ProductHeader from "components/home/components/productHeader";
 import Layout from "components/layout";
-import { Grid, Divider, Box, CircularProgress, useMediaQuery } from "@mui/material";
+import { Grid, Divider, Box, CircularProgress, useMediaQuery, useScrollTrigger } from "@mui/material";
 import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
@@ -79,6 +79,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setProductsData([]);
     } finally {
       setLoading(false);
+      scrollToTop();
     }
   };
 
@@ -106,6 +107,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     } catch (error) {
       console.log(error);
       setHasNextPage(false);
+    } finally {
+      scrollToTop();
     }
   };
   useEffect(() => {
@@ -206,4 +209,11 @@ export async function getServerSideProps(context: any) {
       },
     };
   }
+}
+
+function scrollToTop() {
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+
+  if (!isBrowser()) return;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }

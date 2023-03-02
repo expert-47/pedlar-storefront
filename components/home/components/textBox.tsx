@@ -12,7 +12,7 @@ const TextBox = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
   const theme = useTheme();
-  const storeName = useSelector((data) => data.app.storeName);
+  const storeName = useSelector((data:any) => data.app.storeName);
 
   const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";

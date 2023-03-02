@@ -39,7 +39,7 @@ const BannerImg = (props: any) => {
           xs={10.5}
           md={7}
           lg={7}
-          marginLeft={{ lg: "-2%", md: "-4%" }}
+          marginLeft={{ lg: "-0.7%", md: "-4%", xl: "-2%" }}
           marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
         >
           <TextBox headerData={props?.headerData} style={{}} />

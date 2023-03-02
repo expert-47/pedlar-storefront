@@ -28,14 +28,24 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
             paddingLeft: { xs: "15px", sm: "10px" },
             paddingRight: { xs: "5px", sm: "10px" },
             justifyContent: "flex-start",
+            backgroundColor: "",
           }}
-          columnSpacing={columnSpacing || 10}
+          // columnSpacing={columnSpacing || 10}
           rowSpacing={10}
         >
           {Array.isArray(newAdditionData) &&
             newAdditionData?.map((item: any, index: any) => {
               return (
-                <Grid item xs={6} sm={3.8} md={3.8} lg={3.8} xl={3.8} key={item?.collectionId}>
+                <Grid
+                  item
+                  xs={6}
+                  sm={3.8}
+                  md={3.8}
+                  lg={4}
+                  xl={4}
+                  key={item?.collectionId}
+                  sx={{ backgroundColor: "", justifyContent: "space-evenly" }}
+                >
                   <CardComponent
                     name={item?.title}
                     type={item?.vendor}

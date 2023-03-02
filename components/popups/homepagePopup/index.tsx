@@ -2,7 +2,7 @@ import React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
-import { IconButton, Modal } from "@mui/material";
+import { Dialog, IconButton, Modal, Typography } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
 import Link from "next/link";
 import styles from "styles/home";
@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toggleDialog } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
+import PedlarImage from "components/pedlarImage";
+import PopUpImage from "../../../public/popImg.png";
 
 export interface DialogTitleProps {
   id: string;
@@ -136,86 +138,84 @@ export default function HomepagePopup() {
         </Modal>
       )}
       {/* {mobile view} */}
-
       {showDilog && (
-        <Modal
+        <Dialog
           open={showDilog}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
           sx={{
             display: { xs: "flex", sm: "none" },
             justifyContent: "center",
             borderColor: "white",
-            "&:focus": {
-              outline: "none",
-            },
-            outline: "none",
-            fontFamily: "inter",
-            marginTop: 20,
-            marginBottom: 10,
+            width: "100vw",
           }}
         >
           <Box
             sx={{
-              height: "85% !important",
-              backgroundColor: "white",
-              outline: "none",
-              width: "90% !important",
+              overflow: "hidden",
+              "&::-webkit-scrollbar": {
+                display: "none",
+              },
             }}
           >
             <Box
-              style={{
-                height: "52.5%",
+              sx={{
+                display: "flex",
+                justifyContent: "flex-end",
+                paddingTop: "5px",
+                paddingRight: "5px",
               }}
             >
-              <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>
-                <CloseOutlinedIcon onClick={() => handleClose()} />
-              </Box>
-
-              <Box>
-                <Box
+              <CloseOutlinedIcon onClick={() => handleClose()} />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <Typography sx={{ fontSize: "26px", fontWeight: 700, width: "80%", lineHeight: "30px" }}>
+                Free shipping & returns!
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "14px",
+                  width: "80%",
+                  fontWeight: 400,
+                  lineHeight: "22px",
+                  color: "#1C1B1F",
+                  marginTop: "20px",
+                }}
+              >
+                Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
+                shopping. No catches, no hidden fees.
+              </Typography>
+              <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+                <Button
                   sx={{
-                    fontSize: "26px",
-                    fontWeight: 700,
-                    width: "255px",
-                    lineHeight: "30px",
-                    marginLeft: "40px",
+                    marginTop: "10px",
+                    width: "90%",
+                    backgroundColor: "primary.dark",
+                    color: "primary.main",
+                    borderRadius: "666px",
+                    fontWeight: "600",
+                    textTransform: "none",
+                    padding: "10px 32.5px",
+                    fontSize: "16px",
+                    "&:hover": {
+                      backgroundColor: "primary.dark",
+                    },
                   }}
                 >
-                  Free shipping & returns!
-                </Box>
-                <Box
-                  sx={{
-                    fontSize: "14px",
-                    width: "230px",
-                    fontWeight: 400,
-                    lineHeight: "22px",
-                    color: "#1C1B1F",
-                    marginLeft: "40px",
-                    marginTop: "20px",
-                  }}
-                >
-                  Shop with confidence! Free shipping & free returns on all orders. Order now and enjoy hassle free
-                  shopping. No catches, no hidden fees.
-                </Box>
-                <Box sx={{ marginLeft: "40px", marginTop: "10px" }}>
-                  <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-                    <Button sx={styles.shopbutton}>Shop now</Button>
-                  </Link>
-                </Box>
-              </Box>
-              <Box>
-                <img
-                  src="/popImg.png"
-                  height={"100%"}
-                  width={"100%"}
-                  style={{ marginTop: "15.5%", objectFit: "cover", imageRendering: "auto" }}
-                />
+                  Shop now
+                </Button>
+              </Link>
+              <Box sx={{ height: "40vh", width: "100%", paddingTop: "25px" }}>
+                <img src="/popImg.png" height={"100%"} width={"100%"} />
               </Box>
             </Box>
           </Box>
-        </Modal>
+        </Dialog>
       )}
     </div>
   );

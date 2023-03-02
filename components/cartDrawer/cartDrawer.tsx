@@ -26,12 +26,9 @@ const CartDrawer = () => {
   const [loading, setLoading] = useState(false);
   const apiForCheckout = async () => {
     const response = await checkoutCartDetails(cartId);
+    dispatch(cartDrawerToggle(false));
     window.open(response?.data?.cart?.checkoutUrl, "_self");
     gtmEvents.beginCheckout(cartProducts);
-    dispatch(cartDrawerToggle(false));
-  };
-  const shopnowRoute = () => {
-    router.push("/products");
   };
 
   const getCartList = async () => {
@@ -98,6 +95,16 @@ const CartDrawer = () => {
     dispatch(cartDrawerToggle(false));
   };
 
+  const totalProductLength =
+    Array.isArray(cartProducts) && cartProducts.length > 1
+      ? cartProducts.reduce((total: any, item: any) => {
+          return typeof total == "object"
+            ? Number(total.quantity) + Number(item.quantity)
+            : total + Number(item.quantity);
+        })
+      : cartProducts.length == 1
+      ? Number(cartProducts[0].quantity)
+      : 0;
   return (
     <Drawer
       anchor="right"
@@ -120,7 +127,7 @@ const CartDrawer = () => {
           alignItems={"center"}
         >
           <Typography sx={styles.cartDrawerTypo}>
-            {cartProducts?.length ? `Cart(${cartProducts?.length || ""})` : "Cart"}
+            {cartProducts?.length ? `Cart(${totalProductLength != 0 ? totalProductLength : ""})` : "Cart"}
           </Typography>
           <CloseIcon onClick={onCloseCart} style={{ cursor: "pointer" }} />
         </Grid>

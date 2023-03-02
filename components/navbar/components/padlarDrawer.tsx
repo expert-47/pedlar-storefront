@@ -76,6 +76,16 @@ export const PedlarDrawer = (props: {
     dispatch(cartDrawerToggle(true));
   };
   const closeDrawer = () => toggleDrawer(false);
+  const totalProductLength =
+    Array.isArray(cartProducts) && cartProducts.length > 1
+      ? cartProducts.reduce((total: any, item: any) => {
+          return typeof total == "object"
+            ? Number(total.quantity) + Number(item.quantity)
+            : total + Number(item.quantity);
+        })
+      : cartProducts.length == 1
+      ? Number(cartProducts[0].quantity)
+      : 0;
   return (
     <Drawer
       anchor="left"
@@ -122,7 +132,7 @@ export const PedlarDrawer = (props: {
             </Typography>
           </Grid>
           <Grid xs={1.5}>
-            <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }} onClick={openCartHandler}>
+            <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 10 }} onClick={openCartHandler}>
               <IconButton sx={styles.iconColor}>
                 <Image src="/cart.png" height="19.48px" width="19.48px" />
               </IconButton>

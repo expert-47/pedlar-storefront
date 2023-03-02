@@ -32,7 +32,16 @@ export const ResponsiveNavbar = (props: Props) => {
   const onClickCart = () => {
     dispatch(cartDrawerToggle(true));
   };
-
+  const totalProductLength =
+    Array.isArray(cartProducts) && cartProducts.length > 1
+      ? cartProducts.reduce((total: any, item: any) => {
+          return typeof total == "object"
+            ? Number(total.quantity) + Number(item.quantity)
+            : total + Number(item.quantity);
+        })
+      : cartProducts.length == 1
+      ? Number(cartProducts[0].quantity)
+      : 0;
   return (
     <React.Fragment>
       <Toolbar sx={{ paddingTop: 4 }}>
@@ -56,7 +65,7 @@ export const ResponsiveNavbar = (props: Props) => {
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
-        <Badge badgeContent={cartProducts.length} color="secondary" sx={{ right: 10 }}>
+        <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 10 }}>
           <IconButton onClick={onClickCart} sx={styles.iconColor}>
             <Image src="/cart.png" height="19.48px" width="19.48px" />
           </IconButton>

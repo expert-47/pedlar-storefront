@@ -309,7 +309,7 @@ const Cart = (props: any) => {
                           <>
                             <Box className="each-slide-effect">
                               <Box sx={styles.eachSlideEffect}>
-                                <Item original={item?.url} thumbnail={item?.url} width="500" height="600">
+                                <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
                                   {({ ref, open }) => (
                                     <img width={200} height={200} ref={ref} onClick={open} src={item?.url} />
                                   )}
@@ -349,7 +349,7 @@ const Cart = (props: any) => {
                               marginTop: "20px",
                             }}
                           >
-                            <Item original={item?.url} thumbnail={item?.url} width="500" height="600">
+                            <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
                               {({ ref, open }) => (
                                 <img width={400} height={400} ref={ref} onClick={open} src={item?.url} />
                               )}

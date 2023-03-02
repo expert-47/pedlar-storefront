@@ -87,8 +87,6 @@ const CartDrawer = () => {
     flexDirection: "column",
     backgroundColor: "white",
     justifyContent: "space-between",
-
-    maxHeight: "100%",
   };
 
   const onCloseCart = () => {
@@ -140,13 +138,12 @@ const CartDrawer = () => {
           justifyContent={"center"}
           alignItems={"center"}
           paddingY={"40px"}
+          paddingBottom="140px"
           sx={styles.cartDrawerSlider}
         >
           {loading && <CircularProgress color="secondary" />}
           {Array.isArray(cartProducts) &&
             cartProducts?.map((item: any, index: any) => {
-              console.log("item?.quantity", item?.quantity);
-
               return (
                 <CheckoutOrder
                   key={index}
@@ -173,9 +170,19 @@ const CartDrawer = () => {
           md={12}
           lg={12}
           direction={"column"}
-          justifyContent={"center"}
+          justifyContent={"flex-end"}
           alignItems={"flex-end"}
-          sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
+          sx={{
+            paddingRight: "20px",
+            paddingLeft: "20px",
+            backgroundColor: "white",
+            position: "fixed",
+            bottom: "0px",
+            // right: "15px",
+            cursor: "pointer",
+            zIndex: "9999999",
+            width: { xs: "100%", sm: "100%", md: "35%", lg: "25%" },
+          }}
         >
           <Grid
             container
@@ -198,18 +205,10 @@ const CartDrawer = () => {
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
           </Grid>
           <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-            <Button
-              // href={checkoutData?.data?.cart?.checkoutUrl}
-              // disabled={cartData?.length > 0 ? false : true}
-              sx={styles.checkoutButton}
-              onClick={apiForCheckout}
-            >
+            <Button sx={styles.checkoutButton} onClick={apiForCheckout}>
               Checkout
             </Button>
           </Link>
-          {/* <Link href="/checkout">
-          <Button sx={styles.checkoutButton} >Checkout</Button>
-        </Link> */}
         </Grid>
       ) : (
         <Grid
@@ -236,27 +235,15 @@ const CartDrawer = () => {
           >
             <Grid item style={{ display: "flex", justifyContent: "between" }}>
               <Typography sx={styles.totalText}>Your cart is empty</Typography>
-              {/* <Typography fontSize="12px" sx={styles.taxStyle}>
-              Incl. VAT & Taxes
-            </Typography> */}
             </Grid>
 
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
           </Grid>
           <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-            <Button
-              // href={checkoutData?.data?.cart?.checkoutUrl}
-              // disabled={cartData?.length > 0 ? false : true}
-              sx={styles.checkoutButton}
-              // onClick={apiForCheckout}
-              onClick={onCloseCart}
-            >
+            <Button sx={styles.checkoutButton} onClick={onCloseCart}>
               Shop now
             </Button>
           </Link>
-          {/* <Link href="/checkout">
-          <Button sx={styles.checkoutButton} >Checkout</Button>
-        </Link> */}
         </Grid>
       )}
     </Drawer>

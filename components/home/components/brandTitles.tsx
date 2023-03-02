@@ -19,8 +19,18 @@ const BrandTitles = (props: any) => {
           zIndex: "0",
         }}
       >
-        <Grid container xs={12} sm={12} md={12} lg={12} gap={10} {...props} justifyContent={{ xs: "space-evenly" }}>
-          {props?.curatedBrandsResponse?.map((item: any, index: number) => (
+        <Grid
+          container
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          gap={10}
+          {...props}
+          justifyContent={{ xs: "flex-start" }}
+          paddingLeft={{ xs: "20px",sm: "25px" }}
+        >
+          {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
             <>
               <Box
                 sx={styles.brandImage}

@@ -139,7 +139,7 @@ const CheckoutOrder = (props: Props) => {
         </Box>
       ) : (
         <Box
-          style={{
+          sx={{
             display: "flex",
             width: "100%",
             flexDirection: "column",

@@ -55,7 +55,6 @@ const ReturnForm = (props: any) => {
             }}
             validationSchema={SubmitSchema}
             onSubmit={(values, { setSubmitting }) => {
-              console.log(values);
               emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
                 (result) => {
                   console.log("success", result.text);
@@ -318,7 +317,6 @@ const ReturnForm = (props: any) => {
           }}
           validationSchema={SubmitSchema}
           onSubmit={(values, { setSubmitting }) => {
-            console.log("values", values);
             emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
               (result) => {
                 console.log("success", result.text);

@@ -3,7 +3,6 @@ import styles from "styles/home";
 import { Typography, Button, Grid, useMediaQuery, Box } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
-import CloseIcon from "@mui/icons-material/Close";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
@@ -47,7 +46,7 @@ const Bar = () => {
           xs={11.6}
           md={11}
           lg={10}
-          xl={9.25}
+          xl={9}
           alignItems={"center"}
           style={{ width: "1116px", backgroundColor: "black" }}
           justifyContent={{ xs: "flex-end", sm: "flex-start", lg: "flex-end" }}
@@ -55,7 +54,7 @@ const Bar = () => {
           paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(30) }}
           paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
-          <Grid item xs={12} sm={12} md={12} lg={10}>
+          <Grid item xs={12} sm={12} md={12} lg={9.9}>
             <Typography
               sx={styles.bartext}
               fontWeight={"bold"}

@@ -62,18 +62,20 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   }, [route?.query]);
 
   useEffect(() => {
-    getFilteredData();
+    getFilteredData(0);
   }, [brandsFilterList, shopFilterList]);
 
-  const getFilteredData = async () => {
+  const getFilteredData = async (value: number) => {
     try {
       setLoading(true);
       const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
       setProductsData(response?.data?.collection?.products?.nodes || []);
-      setEndCursorValue({ 1: response?.data?.collection?.products?.pageInfo?.endCursor });
+      if (value === 0) {
+        setEndCursorValue({ 1: response?.data?.collection?.products?.pageInfo?.endCursor });
 
-      setPageNumber(1);
-      setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
+        setPageNumber(1);
+        setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
+      }
     } catch (error) {
       setProductsData([]);
     } finally {
@@ -85,9 +87,11 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const getPaginationData = async (e, value) => {
     try {
       if (value == 1) {
-        getFilteredData();
+        getFilteredData(value);
         return;
       }
+      console.log("endCursorValue[value - 1]", value === 1 ? endCursorValue[1] : endCursorValue[value - 1]);
+
       const collectionDataProducts = await getPaginationProducts("after", endCursorValue[value - 1], collectionId, [
         ...brandsFilterList,
         ...shopFilterList,

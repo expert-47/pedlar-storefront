@@ -90,7 +90,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         getFilteredData(value);
         return;
       }
-      console.log("endCursorValue[value - 1]", value === 1 ? endCursorValue[1] : endCursorValue[value - 1]);
 
       const collectionDataProducts = await getPaginationProducts("after", endCursorValue[value - 1], collectionId, [
         ...brandsFilterList,

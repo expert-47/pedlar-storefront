@@ -1,21 +1,15 @@
-import React,from "react";
+import React from "react";
 import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import Dialog from "@mui/material/Dialog";
-
 import { Box } from "@mui/system";
 import CloseIcon from "@mui/icons-material/Close";
-import {  IconButton, Modal, } from "@mui/material";
+import { IconButton, Modal } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
 import Link from "next/link";
 import styles from "styles/home";
 import { useRouter } from "next/router";
-
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toggleDialog } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
-
-
 
 export interface DialogTitleProps {
   id: string;
@@ -65,7 +59,6 @@ export default function HomepagePopup() {
       {/* {desktop view} */}
       {showDilog && (
         <Modal
-
           open={showDilog}
           onClose={handleClose}
           aria-labelledby="modal-modal-title"
@@ -105,11 +98,8 @@ export default function HomepagePopup() {
               }}
             >
               <img src="/popImg.png" style={{ height: "456px", width: "100%" }} />
-
-
             </Box>
             <Box sx={{ paddingLeft: "3rem", paddingRight: "1rem", width: "40%" }}>
-              {/* <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}></BootstrapDialogTitle> */}
               <Box sx={{ textAlign: "right", marginTop: "1rem", cursor: "pointer" }}>
                 <CloseOutlinedIcon onClick={() => handleClose()} />
               </Box>
@@ -175,9 +165,9 @@ export default function HomepagePopup() {
             }}
           >
             <Box
-            style={{
-              height:"52.5%"
-            }}
+              style={{
+                height: "52.5%",
+              }}
             >
               <Box sx={{ textAlign: "right", marginRight: 20, marginTop: 10 }}>
                 <CloseOutlinedIcon onClick={() => handleClose()} />
@@ -215,15 +205,14 @@ export default function HomepagePopup() {
                   </Link>
                 </Box>
               </Box>
-            </Box>
-            <Box
-              sx={{
-                height: "60%",
-                position: "relative",
-              }}
-            >
-              <img src="/popImg.png" height={"100%"} style={{ width: "-webkit-fill-available", marginTop: "1%",objectFit:"cover" , imageRendering: "auto"}} />
-
+              <Box>
+                <img
+                  src="/popImg.png"
+                  height={"100%"}
+                  width={"100%"}
+                  style={{ marginTop: "15.5%", objectFit: "cover", imageRendering: "auto" }}
+                />
+              </Box>
             </Box>
           </Box>
         </Modal>

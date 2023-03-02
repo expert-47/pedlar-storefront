@@ -200,6 +200,75 @@ const Cart = (props: any) => {
     }
   };
 
+  // const BuyNowHandler = async () => {
+  //   const quantity = 1;
+
+  //   setBuyNowLoaderState(true);
+  //   try {
+  //     const variant = await getVariantBySelectedOptions(
+  //       newAdditionData?.id,
+  //       size,
+  //       color,
+  //       newAdditionData?.options[0]?.name,
+  //       newAdditionData?.options[1]?.name,
+  //     );
+
+  //     const varientData = variant?.data.product?.variantBySelectedOptions;
+  //     if (varientData?.quantityAvailable === 0) {
+  //       setError(true);
+  //       setErrorMessage("This item is currently out of stock");
+  //     } else {
+  //       if (!cartId) {
+  //         let res = await addToCart(varientData?.id, slugValue, quantity);
+
+  //         let cartId = res?.data?.cartCreate?.cart?.id;
+  //         const response = await checkoutCartDetails(cartId);
+
+  //         if (isMobile) {
+  //           window.open(response?.data?.cart?.checkoutUrl, "_self");
+  //         } else {
+  //           window.open(response?.data?.cart?.checkoutUrl);
+  //         }
+
+  //         gmtEventToBuyNow({ ...newAdditionData });
+  //       } else {
+  //         const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
+  //         if (data1) {
+  //           if (varientData?.quantityAvailable === data1?.quantity) {
+  //             setError(true);
+  //             setErrorMessage("This item is currently out of stock");
+  //           } else {
+  //             let res = await addToCart(varientData?.id, slugValue, quantity);
+
+  //             let cartId = res?.data?.cartCreate?.cart?.id;
+  //             const response = await checkoutCartDetails(cartId);
+  //             if (isMobile) {
+  //               window.open(response?.data?.cart?.checkoutUrl, "_self");
+  //             } else {
+  //               window.open(response?.data?.cart?.checkoutUrl);
+  //             }
+  //             gmtEventToBuyNow({ ...newAdditionData });
+  //           }
+  //         } else {
+  //           let res = await addToCart(varientData?.id, slugValue, quantity);
+  //           let cartId = res?.data?.cartCreate?.cart?.id;
+  //           const response = await checkoutCartDetails(cartId);
+  //           if (isMobile) {
+  //             window.open(response?.data?.cart?.checkoutUrl, "_self");
+  //           } else {
+  //             window.open(response?.data?.cart?.checkoutUrl);
+  //           }
+  //           gmtEventToBuyNow({ ...newAdditionData });
+  //         }
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.log("error");
+  //   } finally {
+  //     setBuyNowLoaderState(false);
+  //   }
+  // };
+
   const BuyNowHandler = async () => {
     const quantity = 1;
 
@@ -220,16 +289,11 @@ const Cart = (props: any) => {
       } else {
         if (!cartId) {
           let res = await addToCart(varientData?.id, slugValue, quantity);
-
+          dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
           let cartId = res?.data?.cartCreate?.cart?.id;
           const response = await checkoutCartDetails(cartId);
 
-          if (isMobile) {
-            window.open(response?.data?.cart?.checkoutUrl, "_self");
-          } else {
-            window.open(response?.data?.cart?.checkoutUrl);
-          }
-
+          window.open(response?.data?.cart?.checkoutUrl, "_self");
           gmtEventToBuyNow({ ...newAdditionData });
         } else {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
@@ -238,26 +302,17 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              let res = await addToCart(varientData?.id, slugValue, quantity);
-
-              let cartId = res?.data?.cartCreate?.cart?.id;
+              await updateCartLineItem(cartId, data1?.id, quantity);
               const response = await checkoutCartDetails(cartId);
-              if (isMobile) {
-                window.open(response?.data?.cart?.checkoutUrl, "_self");
-              } else {
-                window.open(response?.data?.cart?.checkoutUrl);
-              }
+
+              window.open(response?.data?.cart?.checkoutUrl, "_self");
               gmtEventToBuyNow({ ...newAdditionData });
             }
           } else {
-            let res = await addToCart(varientData?.id, slugValue, quantity);
-            let cartId = res?.data?.cartCreate?.cart?.id;
+            await addToCartLineItem(cartId, varientData?.id, quantity);
             const response = await checkoutCartDetails(cartId);
-            if (isMobile) {
-              window.open(response?.data?.cart?.checkoutUrl, "_self");
-            } else {
-              window.open(response?.data?.cart?.checkoutUrl);
-            }
+
+            window.open(response?.data?.cart?.checkoutUrl, "_self");
             gmtEventToBuyNow({ ...newAdditionData });
           }
         }

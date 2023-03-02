@@ -43,9 +43,9 @@ const Bar = () => {
         <Grid
           container
           item
-          xs={11.6}
-          md={11}
-          lg={10}
+          xs={11}
+          md={11.4}
+          lg={9.6}
           xl={9}
           alignItems={"center"}
           style={{ width: "1116px", backgroundColor: "black" }}

@@ -28,7 +28,8 @@ const BrandTitles = (props: any) => {
           gap={10}
           {...props}
           justifyContent={{ xs: "flex-start" }}
-          paddingLeft={{ xs: "20px",sm: "25px" }}
+          paddingLeft={{ xs: "20px", sm: "10px" }}
+          sx={{ columnGap: "15px" }}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
             <>

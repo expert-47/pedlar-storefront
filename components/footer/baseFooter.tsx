@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import { Typography, useTheme, Link } from "@mui/material";
+import { Typography, useTheme, Link, Box } from "@mui/material";
 import styles from "styles/home";
 import { CustomGrid } from "components/layout";
 // import Link from "next/link";
@@ -15,14 +15,15 @@ const BaseFooter = () => {
     <CustomGrid
       style={{
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "flex-satrt",
         alignItems: "center",
+        paddingLeft: "15px",
       }}
     >
       <Grid
         container
         item
-        xs={10}
+        xs={11}
         sm={8.5}
         md={11}
         lg={10}
@@ -50,17 +51,20 @@ const BaseFooter = () => {
           xs={12}
           sm={12}
           md={4}
-          lg={3.8}
+          lg={5}
           container
           paddingY={{ xs: theme.spacing(30), md: theme.spacing(80), lg: theme.spacing(80) }}
         >
           <Typography sx={styles.baseFootTypopara}>
             We're always here to help.
             <br />
+            <Box>
+
             Contact us at{" "}
             <a href="mailto:hello@pedlar.store" style={{ color: "black", textDecoration: "underline" }}>
               {`hello@pedlar.store `}
-            </a>
+            </a>{" "}
+            </Box>
             and our customer service team will be in touch.
           </Typography>
         </Grid>

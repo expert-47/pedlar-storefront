@@ -10,8 +10,6 @@ import { useRouter } from "next/router";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toggleDialog } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
-import PedlarImage from "components/pedlarImage";
-import PopUpImage from "../../../public/popImg.png";
 
 export interface DialogTitleProps {
   id: string;
@@ -20,12 +18,11 @@ export interface DialogTitleProps {
 }
 
 export default function HomepagePopup() {
-  // const [open, setOpen] = React.useState(true);
   const router = useRouter();
   const slug = router?.query;
   const dispatch = useDispatch();
 
-  const { showDilog } = useSelector((state) => state.app);
+  const { showDilog } = useSelector((state: any) => state.app);
 
   const handleClose = () => {
     dispatch(toggleDialog(false));

@@ -156,8 +156,8 @@ const styles = {
       xs: "80px",
     },
     width: {
-      lg: "280px",
-      md: "235px",
+      lg: "285px",
+      md: "238px",
       sm: "170px",
       xs: "45%",
     },

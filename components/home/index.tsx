@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 export const Home = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
-  const storeName = useSelector((data) => data.app.storeName);
+  const storeName = useSelector((data:any) => data.app.storeName);
 
   const data = [];
 
@@ -48,6 +48,7 @@ export const Home = (props: any) => {
             zIndex: "-100 !important",
             paddingLeft: { xs: "15px", md: "0px" },
             paddingRight: { xs: "15px", md: "0px" },
+            
           }}
         >
           <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>

@@ -44,14 +44,15 @@ const Bar = () => {
           container
           item
           xs={11}
-          md={11.4}
-          lg={9.6}
-          xl={9}
+          sm={11.6}
+          md={11.7}
+          lg={9.8}
+          xl={9.25}
           alignItems={"center"}
           style={{ width: "1116px", backgroundColor: "black" }}
           justifyContent={{ xs: "flex-end", sm: "flex-start", lg: "flex-end" }}
           height={{ xs: "unset", lg: "104px" }}
-          paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(30) }}
+          paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(20) }}
           paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
           <Grid item xs={12} sm={12} md={12} lg={9.9}>

@@ -31,6 +31,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
         sx={{
           cursor: "pointer",
           width: "100%",
+          backgroundColor: "",
         }}
         onClick={onClickCard}
       >

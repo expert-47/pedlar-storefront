@@ -12,8 +12,8 @@ const Returnpolicy = (props: any) => {
   return (
     <Layout
       seo={{
-        title: process.env.NEXT_PUBLIC_RETURN_POLICY_TITLE,
-        description: process.env.NEXT_PUBLIC_RETURN_POLICY_DESCRIPTION,
+        title: `${process.env.NEXT_PUBLIC_STOREFRONT_SHIPPINGRETURNS_TITLE}`,
+        description: `${process.env.NEXT_PUBLIC_STOREFRONT_SHIPPINGRETURNS_DESCRIPTION}`,
       }}
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}

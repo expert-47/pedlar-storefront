@@ -118,7 +118,16 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   }, [pageNumber, hasNextPage]);
 
   return (
-    <Layout error={error} storefrontName={data?.data?.storefrontName} slug={slug} productsPage={true}>
+    <Layout
+      error={error}
+      seo={{
+        title: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_TITLE1} ${data?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_TITLE2}`,
+        description: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_DESCRIPTION1} ${data?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_DESCRIPTION2}`,
+      }}
+      storefrontName={data?.data?.storefrontName}
+      slug={slug}
+      productsPage={true}
+    >
       <Head>
         <title>Pedlar</title>
         <meta property="og:image" content="url img" />

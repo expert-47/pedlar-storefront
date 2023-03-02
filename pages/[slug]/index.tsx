@@ -7,14 +7,13 @@ import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
-  const [showNavbar, setShowNavbar] = useState(true);
   return (
     <>
       <Layout
         error={error}
         seo={{
-          title: "Pedlar | " + headerData?.data?.storefrontName,
-          description: "Hi honeys! I've worked closely with some of my favorite brands to curate my own store!",
+          title: `${process.env.NEXT_PUBLIC_STOREFRONT_HOME_TITLE1} ${headerData?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_HOME_TITLE2}`,
+          description: `${process.env.NEXT_PUBLIC_STOREFRONT_HOME_DESCRIPTION1} ${headerData?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_HOME_DESCRIPTION2}`,
         }}
         storefrontName={headerData?.data?.storefrontName}
         slug={slug}

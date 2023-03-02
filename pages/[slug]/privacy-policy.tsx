@@ -11,8 +11,8 @@ const privacypolicy = (props: any) => {
   return (
     <Layout
       seo={{
-        title: process.env.NEXT_PUBLIC_PRIVACY_POLICY_TITLE,
-        description: process.env.NEXT_PUBLIC_PRIVACY_POLICY_DESCRIPTION,
+        title: `${process.env.NEXT_PUBLIC_STOREFRONT_PRIVACY_POLICY_TITLE}`,
+        description: `${process.env.NEXT_PUBLIC_STOREFRONT_PRIVACY_POLICY_DESCRIPTION}`,
       }}
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}

@@ -23,6 +23,8 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
+import { isMobile } from "react-device-detect";
+
 import {
   addToCart,
   updateCartLineItem,
@@ -218,12 +220,16 @@ const Cart = (props: any) => {
       } else {
         if (!cartId) {
           let res = await addToCart(varientData?.id, slugValue, quantity);
-          dispatch(updateCartId({ id: res?.data?.cartCreate?.cart?.id, showCart: false }));
 
           let cartId = res?.data?.cartCreate?.cart?.id;
           const response = await checkoutCartDetails(cartId);
 
-          window.open(response?.data?.cart?.checkoutUrl);
+          if (isMobile) {
+            window.open(response?.data?.cart?.checkoutUrl, "_self");
+          } else {
+            window.open(response?.data?.cart?.checkoutUrl);
+          }
+
           gmtEventToBuyNow({ ...newAdditionData });
         } else {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
@@ -232,17 +238,26 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              await updateCartLineItem(cartId, data1?.id, quantity);
-              const response = await checkoutCartDetails(cartId);
+              let res = await addToCart(varientData?.id, slugValue, quantity);
 
-              window.open(response?.data?.cart?.checkoutUrl);
+              let cartId = res?.data?.cartCreate?.cart?.id;
+              const response = await checkoutCartDetails(cartId);
+              if (isMobile) {
+                window.open(response?.data?.cart?.checkoutUrl, "_self");
+              } else {
+                window.open(response?.data?.cart?.checkoutUrl);
+              }
               gmtEventToBuyNow({ ...newAdditionData });
             }
           } else {
-            await addToCartLineItem(cartId, varientData?.id, quantity);
+            let res = await addToCart(varientData?.id, slugValue, quantity);
+            let cartId = res?.data?.cartCreate?.cart?.id;
             const response = await checkoutCartDetails(cartId);
-
-            window.open(response?.data?.cart?.checkoutUrl);
+            if (isMobile) {
+              window.open(response?.data?.cart?.checkoutUrl, "_self");
+            } else {
+              window.open(response?.data?.cart?.checkoutUrl);
+            }
             gmtEventToBuyNow({ ...newAdditionData });
           }
         }

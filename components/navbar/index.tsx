@@ -33,6 +33,16 @@ export default function Navbar(props: any) {
 
   const route = useRouter();
   let path = route.asPath.split("/")[1];
+  const totalProductLength =
+    Array.isArray(cartProducts) && cartProducts.length > 1
+      ? cartProducts.reduce((total: any, item: any) => {
+          return typeof total == "object"
+            ? Number(total.quantity) + Number(item.quantity)
+            : total + Number(item.quantity);
+        })
+      : cartProducts.length == 1
+      ? Number(cartProducts[0].quantity)
+      : 0;
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
@@ -97,7 +107,7 @@ export default function Navbar(props: any) {
                   {/* <IconButton sx={styles.iconColor}>
                     <Image src="/search.png" height="19.48px" width="19.48px" />
                   </IconButton> */}
-                  <Badge badgeContent={cartProducts.length} color="secondary">
+                  <Badge badgeContent={totalProductLength} color="secondary">
                     <IconButton sx={styles.iconColor}>
                       <Image src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
                     </IconButton>

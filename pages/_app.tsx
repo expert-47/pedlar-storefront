@@ -3,6 +3,7 @@ import { theme } from "styles/theme/defalutTheme";
 import { ThemeProvider } from "@mui/material";
 import { SWRConfig } from "swr";
 import { Crisp } from "crisp-sdk-web";
+import App, { Container } from "next/app";
 
 import { DefaultSeo } from "next-seo";
 import SEO from "../utils/next-seo.config";
@@ -34,7 +35,8 @@ function MyApp({ Component, pageProps }: any) {
   let persistor = persistStore(store);
 
   return (
-    <>
+    <Fragment>
+      <DefaultSeo {...SEO} />
       <Provider store={store}>
         <ApolloProvider client={client}>
           <SWRConfig
@@ -42,21 +44,17 @@ function MyApp({ Component, pageProps }: any) {
               fetcher: (resource) => apiClient.get(resource).then((r) => r.data),
             }}
           >
-            <Fragment>
-              <DefaultSeo {...SEO} />
+            <ThemeProvider theme={theme}>
+              <PersistGate persistor={persistor}>
+                <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-              <ThemeProvider theme={theme}>
-                <PersistGate persistor={persistor}>
-                  <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
-
-                  <Component {...pageProps} />
-                </PersistGate>
-              </ThemeProvider>
-            </Fragment>
+                <Component {...pageProps} />
+              </PersistGate>
+            </ThemeProvider>
           </SWRConfig>
         </ApolloProvider>
       </Provider>
-    </>
+    </Fragment>
   );
 }
 

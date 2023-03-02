@@ -43,8 +43,6 @@ export default function Layout(props: LayoutProps) {
     }
   }, []);
 
-  console.log("seotitlessss", seo?.description);
-
   return (
     <Container maxWidth={false} disableGutters {...props}>
       <header>

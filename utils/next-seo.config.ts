@@ -7,8 +7,8 @@ const config: DefaultSeoProps = {
     url: "https://pedlar.store/",
     siteName: "pedlar",
   },
-  titleTemplate: "Pedlar",
-  defaultTitle: "Pedlar",
+  title: "Pedlar",
+
   additionalLinkTags: [
     {
       rel: "favicon",

@@ -13,11 +13,8 @@ import {
   Badge,
 } from "@mui/material";
 import Link from "next/link";
-
 import React, { useState } from "react";
-
 import CloseIcon from "@mui/icons-material/Close";
-
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
@@ -25,7 +22,6 @@ import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
@@ -34,11 +30,15 @@ export const PedlarDrawer = (props: {
   storefrontName: string;
   toggleDrawer: (value: boolean) => void;
   slug: string;
+  data: any;
+  shopList: any;
+  loading: any;
+  shopListLoading: any;
+  type: "Brands";
 }) => {
   const { type = "Brands", openDrawer, toggleDrawer, data, shopList, loading, shopListLoading } = props;
-
   const route = useRouter();
-  const storeName = useSelector((data) => data.app.storeName);
+  const storeName = useSelector((data: any) => data.app.storeName);
   const [viewAllBrand, toggleViewAllBrand] = useState(true);
   const [viewAllShop, toggleViewAllShop] = useState(true);
 
@@ -51,7 +51,7 @@ export const PedlarDrawer = (props: {
     backgroundColor: "white",
   };
 
-  const cartProducts = useSelector((data) => data.app.products);
+  const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
 
   const onClickDrawer = () => {
@@ -121,7 +121,7 @@ export const PedlarDrawer = (props: {
             <CloseIcon onClick={onClickDrawer} sx={{ paddingLeft: "8px" }} />
           </Grid>
           <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{}}>
+            <Box onClick={closeDrawer}>
               <Link href={`/${props?.slug}`}>
                 <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
               </Link>
@@ -161,7 +161,7 @@ export const PedlarDrawer = (props: {
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      data?.data?.slice(0, viewAllBrand ? 10 : data?.data.length)?.map((item) => (
+                      data?.data?.slice(0, viewAllBrand ? 10 : data?.data.length)?.map((item: any) => (
                         <Grid
                           key={item}
                           item
@@ -225,7 +225,7 @@ export const PedlarDrawer = (props: {
                     {shopListLoading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      shopList?.data?.slice(0, viewAllShop ? 10 : shopList?.data?.length)?.map((item) => (
+                      shopList?.data?.slice(0, viewAllShop ? 10 : shopList?.data?.length)?.map((item: any) => (
                         <Grid
                           key={item}
                           item

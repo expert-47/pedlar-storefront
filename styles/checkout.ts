@@ -171,7 +171,6 @@ const styles = {
   },
   cartDrawerSlider: {
     overflow: "scroll",
-    // height: "75vh",
     "&::-webkit-scrollbar": {
       display: "none",
     },

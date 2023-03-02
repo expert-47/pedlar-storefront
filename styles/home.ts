@@ -156,13 +156,10 @@ const styles = {
     },
     width: {
       lg: "280px",
-      md: "200px",
+      md: "235px",
       sm: "170px",
       xs: "45%",
     },
-    // ["@media (max-width: 374px)"]: {
-    //   width: "140px",
-    // },
   },
 };
 

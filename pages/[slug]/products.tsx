@@ -90,7 +90,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   };
 
   const getPaginationData = async (e, value) => {
-    debugger;
     try {
       if (value == 1) {
         setPageNumber(1);
@@ -126,8 +125,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setPageCount(pageNumber + 1);
     }
   }, [pageNumber, hasNextPage]);
-
-  console.log("pageNumber", pageNumber, hasNextPage, pageCount);
 
   return (
     <Layout

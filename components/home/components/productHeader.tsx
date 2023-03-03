@@ -19,10 +19,14 @@ const ProductHeader = (props: any) => {
   const [openShop, toggleShopDropDown] = useState(null);
   const [filterListLoading, setFilterListLoading] = useState(false);
   const handleOpenBrandDropDown = (event: any) => {
-    toggleBrandDropDown(event?.currentTarget || true);
+    {
+      brandFilterData.length > 0 && toggleBrandDropDown(event?.currentTarget || true);
+    }
   };
   const handleOpenShopDropDown = (event: any) => {
-    toggleShopDropDown(event.currentTarget);
+    {
+      shopFilterData?.length > 0 && toggleShopDropDown(event.currentTarget);
+    }
   };
   const handleClose = () => {
     toggleBrandDropDown(null);

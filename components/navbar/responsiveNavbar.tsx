@@ -55,6 +55,7 @@ export const ResponsiveNavbar = (props: Props) => {
           shopList={shopList}
           loading={loading}
           shopListLoading={shopListLoading}
+          totalProductLength={totalProductLength}
         />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
           <Box sx={styles.menuIcon}>

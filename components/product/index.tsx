@@ -365,7 +365,7 @@ const Cart = (props: any) => {
                             <Box sx={styles.eachSlideEffect}>
                               <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
                                 {({ ref, open }) => (
-                                  <img width={"335px"} height={"365.97px"} ref={ref} onClick={open} src={item?.url} />
+                                  <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
                                 )}
                               </Item>
                             </Box>

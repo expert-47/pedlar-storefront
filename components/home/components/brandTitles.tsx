@@ -33,22 +33,23 @@ const BrandTitles = (props: any) => {
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
             <>
-              <Box
-                sx={styles.brandImage}
-                style={{
-                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                  backgroundColor: "white",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  zIndex: "-1",
+              <Link
+                as={`${route?.query?.slug}/products`}
+                href={{
+                  pathname: `${route?.query?.slug}/products`,
+                  query: { dataType: "Brands", itemValue: item?.vendor },
                 }}
               >
-                <Link
-                  as={`${route?.query?.slug}/products`}
-                  href={{
-                    pathname: `${route?.query?.slug}/products`,
-                    query: { dataType: "Brands", itemValue: item?.vendor },
+                <Box
+                  sx={styles.brandImage}
+                  style={{
+                    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                    backgroundColor: "white",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    zIndex: "1",
+                    cursor: "pointer",
                   }}
                 >
                   <PedlarImage
@@ -72,8 +73,8 @@ const BrandTitles = (props: any) => {
                     alt={item?.vendor + index}
                     quality="100"
                   />
-                </Link>
-              </Box>
+                </Box>
+              </Link>
             </>
           ))}
         </Grid>

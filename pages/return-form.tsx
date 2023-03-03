@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Formik, ErrorMessage } from "formik";
 import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
@@ -10,25 +10,36 @@ const SubmitSchema = Yup.object().shape({
   Reason_For_Return: Yup.string().required("Reason is required!"),
   First_Name: Yup.string().required("First Name is required!"),
   Last_Name: Yup.string().required("Last Name is required!"),
-  Email_Address: Yup.string().required("Email is required!"),
+  Email_Address: Yup.string().required("This field is required").email("Invalid Email Address"),
+  Phone_Number: Yup.string().matches(/^[6-9]\d{9}$/, {
+    message: "Please enter Phone number.",
+    excludeEmptyString: false,
+  }),
 });
 
-const ReturnForm = () => {
+const ReturnForm = (props: any) => {
+  const { slug, headerData } = props;
+
+  const [isEmailSent, setIsEmailSent] = useState(false);
   const forms = useRef();
 
   return (
     <>
       {/* desktop view */}
       <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
-        <Link href="return-policy">
+        <Link href={`/return-policy`}>
           <Box sx={{ margin: "1rem" }}>
             <img src="/backArrow.png" />
           </Box>
         </Link>
-        <Box sx={{ width: "55%", margin: "auto" }}>
-          <Box sx={{ marginLeft: "2rem", marginTop: "2rem" }}>
-            <Typography variant="h1">Returns form</Typography>
-            <Typography sx={{ fontSize: "20px", fontWeight: "300", marginTop: "2rem" }}>
+        <Box sx={{ width: "60%", margin: "auto" }}>
+          <Box sx={{ width: "246px", marginTop: "1rem" }}>
+            <Typography variant="h1" sx={{ fontSize: "26px", fontWeight: "600px" }}>
+              Returns form
+            </Typography>
+          </Box>
+          <Box sx={{ width: "700px" }}>
+            <Typography sx={{ fontSize: "16px", fontWeight: 400, marginTop: "1.5rem", color: "#1C1B1F" }}>
               We want you to be completely satisfied with your purchases; if for any reason you change your mind, we’re
               happy to refund all full-priced items. Please fill in the below form.
             </Typography>
@@ -47,6 +58,7 @@ const ReturnForm = () => {
               emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
                 (result) => {
                   console.log("success", result.text);
+                  setIsEmailSent(true);
                 },
                 (error) => {
                   console.log("Faild...", error.text);
@@ -65,13 +77,14 @@ const ReturnForm = () => {
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit} ref={forms}>
-                <Box sx={{ margin: "2rem" }}>
+                <Box sx={{ marginTop: "1.5rem" }}>
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
                       alignItems: "center",
-                      marginBottom: "40px",
+                      marginBottom: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Box>
@@ -83,16 +96,17 @@ const ReturnForm = () => {
                         onBlur={handleBlur}
                         placeholder="Order Number"
                         style={{
-                          width: "350px",
-                          height: "50px",
+                          width: "320px",
+                          height: "44px",
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
                           // marginBottom: "30px",
-                          fontSize: "15px",
+                          fontSize: "16px",
+                          fontWeight: 400,
                         }}
                       />
-                      <Box sx={{ color: "red" }}>
+                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Order_Number" />
                       </Box>
                       {/* {errors.orderNumber && touched.orderNumber ? (
@@ -104,12 +118,11 @@ const ReturnForm = () => {
                         name="Reason_For_Return"
                         onChange={handleChange}
                         style={{
-                          width: "380px",
-                          height: "50px",
+                          width: "350px",
+                          height: "48px",
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
-                          // marginBottom: "30px",
                           color: "#808080",
                           fontSize: "15px",
                         }}
@@ -125,7 +138,7 @@ const ReturnForm = () => {
                         <option value="Damaged or defective">Damaged or defective</option>
                         <option value="Other">Other</option>
                       </select>
-                      <Box sx={{ color: "red" }}>
+                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Reason_For_Return" />
                       </Box>
                     </Box>
@@ -133,9 +146,10 @@ const ReturnForm = () => {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
                       alignItems: "center",
                       marginBottom: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Box>
@@ -147,15 +161,15 @@ const ReturnForm = () => {
                         onBlur={handleBlur}
                         placeholder="First Name"
                         style={{
-                          width: "350px",
-                          height: "50px",
+                          width: "320px",
+                          height: "44px",
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red" }}>
+                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="First_Name" />
                       </Box>
                       {/* {errors.fname && touched.fname ? <div>{errors.fname}</div> : null} */}
@@ -169,15 +183,15 @@ const ReturnForm = () => {
                         onBlur={handleBlur}
                         placeholder="Last Name"
                         style={{
-                          width: "350px",
-                          height: "50px",
+                          width: "320px",
+                          height: "44px",
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red" }}>
+                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Last_Name" />
                       </Box>
                       {/* {errors.lname && touched.lname ? <div>{errors.lname}</div> : null} */}
@@ -186,9 +200,10 @@ const ReturnForm = () => {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "space-between",
+                      justifyContent: "center",
                       alignItems: "center",
                       marginBottom: "20px",
+                      gap: "20px",
                     }}
                   >
                     <Box>
@@ -197,18 +212,19 @@ const ReturnForm = () => {
                         name="Email_Address"
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        required
                         value={values.Email_Address}
                         placeholder="Email Address"
                         style={{
-                          width: "350px",
-                          height: "50px",
+                          width: "320px",
+                          height: "44px",
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red" }}>
+                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Email_Address" />
                       </Box>
                       {/* {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
@@ -222,38 +238,40 @@ const ReturnForm = () => {
                         onBlur={handleBlur}
                         placeholder="Phone Number"
                         style={{
-                          width: "350px",
-                          height: "50px",
+                          width: "320px",
+                          height: "44px",
                           borderRadius: "40px",
                           border: "1px solid #BEBEBE",
                           paddingLeft: "25px",
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red" }}>
+                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Phone_Number" />
                       </Box>
                     </Box>
                   </Box>
                 </Box>
 
-                <Typography sx={{ fontSize: "20px", fontWeight: "300", marginTop: "2rem", marginLeft: "2rem" }}>
+                <Typography sx={{ fontSize: "16px", fontWeight: 400, marginTop: "2rem", color: "#1C1B1F" }}>
                   Our customer support team will be in contact with you to assist in completing your return.
                 </Typography>
                 <Box sx={{ textAlign: "center" }}>
                   <Button
                     type="submit"
-                    href="/thankyou-return"
+                    href={isEmailSent ? "thankyou-return" : ""}
                     // disabled={
                     //   Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
                     // }
                     disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                     sx={{
-                      width: "400px",
+                      width: "335px",
+                      height: "46px",
+                      color: values ? "White !important" : "#1C1B1F",
                       backgroundColor: errors ? "#1C1B1F" : "",
-                      color: errors ? "white !important" : "",
+                      boxShadow: errors ? "unset" : "",
                       borderRadius: "666px",
-                      fontWeight: "600",
+                      fontWeight: 600,
                       textTransform: "none",
                       padding: "10px 32.5px",
                       marginTop: "40px",
@@ -275,14 +293,14 @@ const ReturnForm = () => {
       {/* mobile view */}
 
       <Box sx={{ width: "100%", display: { xs: "block", sm: "none" } }}>
-        <Link href="return-policy">
+        <Link href={`/return-policy`}>
           <Box sx={{ margin: "1rem" }}>
             <img src="/backArrow.png" />
           </Box>
         </Link>
-        <Box sx={{ marginLeft: "2rem", marginTop: "2rem" }}>
+        <Box sx={{ marginLeft: "1rem", marginTop: "2rem" }}>
           <Typography variant="h1">Returns form</Typography>
-          <Typography sx={{ fontSize: "13px", fontWeight: "300", marginTop: "1rem" }}>
+          <Typography sx={{ fontSize: "13px", fontWeight: "300", marginTop: "1rem", width: "335px" }}>
             We want you to be completely satisfied with your purchases; if for any reason you change your mind, we’re
             happy to refund all full-priced items. Please fill in the below form.
           </Typography>
@@ -302,6 +320,7 @@ const ReturnForm = () => {
             emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
               (result) => {
                 console.log("success", result.text);
+                setIsEmailSent(true);
               },
               (error) => {
                 console.log("Faild...", error.text);
@@ -311,7 +330,7 @@ const ReturnForm = () => {
         >
           {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit} ref={forms}>
-              <Box sx={{ margin: "2rem" }}>
+              <Box sx={{ padding: "1rem", paddingRight: "1rem", marginTop: "2rem" }}>
                 <Box sx={{ marginBottom: "20px" }}>
                   <input
                     type="text"
@@ -321,30 +340,33 @@ const ReturnForm = () => {
                     onBlur={handleBlur}
                     placeholder="Order Number"
                     style={{
-                      width: "350px",
-                      height: "50px",
+                      width: "335px",
+                      height: "44px",
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
                       fontSize: "15px",
+                      marginRight: "1rem",
                     }}
                   />
-                  <Box sx={{ color: "red" }}>
+                  <Box sx={{ color: "red", fontFamily: "Inter" }}>
                     <ErrorMessage component="div" name="Order_Number" />
                   </Box>
                 </Box>
                 <Box sx={{ marginBottom: "20px" }}>
                   <select
-                    name=" Reason_For_Return"
+                    name="Reason_For_Return"
                     onChange={handleChange}
                     style={{
-                      width: "380px",
-                      height: "50px",
+                      width: "364px",
+                      height: "48px",
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
+                      // paddingRight: "25px",
                       color: "#808080",
                       fontSize: "15px",
+                      marginRight: "1rem",
                     }}
                   >
                     <option value={values.Reason_For_Return} selected>
@@ -358,7 +380,7 @@ const ReturnForm = () => {
                     <option value="Damaged or defective">Damaged or defective</option>
                     <option value="Other">Other</option>
                   </select>
-                  <Box sx={{ color: "red" }}>
+                  <Box sx={{ color: "red", fontFamily: "Inter" }}>
                     <ErrorMessage component="div" name="Reason_For_Return" />
                   </Box>
                 </Box>
@@ -371,15 +393,16 @@ const ReturnForm = () => {
                     onBlur={handleBlur}
                     placeholder="First Name"
                     style={{
-                      width: "350px",
-                      height: "50px",
+                      width: "335px",
+                      height: "44px",
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
                       fontSize: "15px",
+                      marginRight: "1rem",
                     }}
                   />
-                  <Box sx={{ color: "red" }}>
+                  <Box sx={{ color: "red", fontFamily: "Inter" }}>
                     <ErrorMessage component="div" name="First_Name" />
                   </Box>
                 </Box>
@@ -392,15 +415,16 @@ const ReturnForm = () => {
                     onBlur={handleBlur}
                     placeholder="Last Name"
                     style={{
-                      width: "350px",
-                      height: "50px",
+                      width: "335px",
+                      height: "44px",
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
                       fontSize: "15px",
+                      marginRight: "1rem",
                     }}
                   />
-                  <Box sx={{ color: "red" }}>
+                  <Box sx={{ color: "red", fontFamily: "Inter" }}>
                     <ErrorMessage component="div" name="Last_Name" />
                   </Box>
                 </Box>
@@ -414,15 +438,16 @@ const ReturnForm = () => {
                     value={values.Email_Address}
                     placeholder="Email Address"
                     style={{
-                      width: "350px",
-                      height: "50px",
+                      width: "335px",
+                      height: "44px",
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
                       fontSize: "15px",
+                      marginRight: "1rem",
                     }}
                   />
-                  <Box sx={{ color: "red" }}>
+                  <Box sx={{ color: "red", fontFamily: "Inter" }}>
                     <ErrorMessage component="div" name="Email_Address" />
                   </Box>
                 </Box>
@@ -435,41 +460,48 @@ const ReturnForm = () => {
                     onBlur={handleBlur}
                     placeholder="Phone Number"
                     style={{
-                      width: "350px",
-                      height: "50px",
+                      width: "335px",
+                      height: "44px",
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
                       fontSize: "15px",
+                      marginRight: "1rem",
                     }}
                   />
-                  <Box sx={{ color: "red" }}>
+                  <Box sx={{ color: "red", fontFamily: "Inter" }}>
                     <ErrorMessage component="div" name="Phone_Number" />
                   </Box>
                 </Box>
               </Box>
 
-              <Typography sx={{ fontSize: "20px", fontWeight: "300", marginTop: "2rem", marginLeft: "2rem" }}>
+              <Typography
+                sx={{ fontSize: "16px", fontWeight: "400", marginTop: "2rem", marginLeft: "1rem", width: "335px" }}
+              >
                 Our customer support team will be in contact with you to assist in completing your return.
               </Typography>
-              <Box>
+              <Box sx={{ margin: "1rem" }}>
                 <Button
                   type="submit"
-                  href="thankyou-return"
-                  disabled={Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true}
+                  href={isEmailSent ? "thankyou-return" : ""}
+                  // disabled={
+                  //   Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
+                  // }
+                  disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                   sx={{
-                    width: "400px",
-                    backgroundColor: "primary.dark",
-                    color: "primary.main",
+                    width: "363px",
+                    height: "46px",
+                    backgroundColor: errors ? "#1C1B1F" : "",
+                    color: errors ? "white !important" : "",
                     borderRadius: "666px",
-                    fontWeight: "600",
+                    fontWeight: 600,
                     textTransform: "none",
                     padding: "10px 32.5px",
                     marginTop: "40px",
                     marginBottom: "50px",
                     fontSize: "16px",
                     "&:hover": {
-                      backgroundColor: "primary.dark",
+                      backgroundColor: "#1C1B1F",
                     },
                   }}
                 >
@@ -485,3 +517,19 @@ const ReturnForm = () => {
 };
 
 export default ReturnForm;
+
+export async function getServerSideProps(context: any) {
+  const { slug } = context.query;
+
+  return {
+    props: {
+      slug: slug || [],
+    },
+  };
+
+  return {
+    props: {
+      error: true,
+    },
+  };
+}

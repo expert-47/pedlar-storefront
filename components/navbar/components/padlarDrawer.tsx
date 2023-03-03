@@ -87,7 +87,6 @@ export const PedlarDrawer = (props: {
   };
   const closeDrawer = () => toggleDrawer(false);
 
-  console.log("totalProductLengthtotalProductLength", totalProductLength);
   return (
     <Drawer
       anchor="left"

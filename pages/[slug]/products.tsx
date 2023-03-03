@@ -155,20 +155,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           slug={slug}
           shopFilterList={shopFilterList}
         />
-        {/* {loading && (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "50px",
-            }}
-          >
-            <CircularProgress color="secondary" />
-          </Box>
-        )} */}
-        <Gallery newAdditionData={productsData} />
       </Box>
+      <Gallery newAdditionData={productsData} />
       {(!loading && productsData?.length > 0) || pageNumber != 1 ? (
         <Box
           sx={{

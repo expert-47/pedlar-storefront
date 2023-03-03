@@ -95,7 +95,7 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     backgroundSize: "contain",
-    height: "200px",
+    height: "300px",
     backgroundPosition: "center center",
     backgroundRepeat: "no-repeat",
   },

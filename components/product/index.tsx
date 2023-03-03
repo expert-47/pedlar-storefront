@@ -359,17 +359,15 @@ const Cart = (props: any) => {
                 <Grid>
                   <Gallery>
                     <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
-                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                      {newAdditionData?.images?.nodes?.map((item: any) => {
                         return (
                           <>
-                            <Box className="each-slide-effect">
-                              <Box sx={styles.eachSlideEffect}>
-                                <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
-                                  {({ ref, open }) => (
-                                    <img width={200} height={200} ref={ref} onClick={open} src={item?.url} />
-                                  )}
-                                </Item>
-                              </Box>
+                            <Box sx={styles.eachSlideEffect}>
+                              <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
+                                {({ ref, open }) => (
+                                  <img width={"335px"} height={"365.97px"} ref={ref} onClick={open} src={item?.url} />
+                                )}
+                              </Item>
                             </Box>
                           </>
                         );

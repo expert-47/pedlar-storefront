@@ -352,7 +352,7 @@ const Cart = (props: any) => {
                 display: "flex",
                 justifyContent: isMatch ? "center" : "start",
                 textAlign: "center",
-                // paddingTop: "26px",
+                paddingTop: "26px",
               }}
             >
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>

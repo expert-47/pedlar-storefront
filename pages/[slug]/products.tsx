@@ -62,16 +62,15 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   }, [route?.query]);
 
   useEffect(() => {
-    getFilteredData(0);
+    getFilteredData();
   }, [brandsFilterList, shopFilterList]);
 
-  const getFilteredData = async (value: number) => {
+  const getFilteredData = async () => {
     try {
       setLoading(true);
       const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
       setProductsData(response?.data?.collection?.products?.nodes || []);
-      // if (value === 0) {
-      // setEndCursorValue({ 1: response?.data?.collection?.products?.pageInfo?.endCursor });
+
       setEndCursorValue((prev) => {
         let data = { ...prev };
         data[1] = response?.data?.collection?.products?.pageInfo?.endCursor;
@@ -92,9 +91,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const getPaginationData = async (e, value) => {
     try {
       if (value == 1) {
-        setPageNumber(1);
-
-        getFilteredData(value);
+        getFilteredData();
         return;
       }
 

@@ -70,12 +70,17 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setLoading(true);
       const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
       setProductsData(response?.data?.collection?.products?.nodes || []);
-      if (value === 0) {
-        setEndCursorValue({ 1: response?.data?.collection?.products?.pageInfo?.endCursor });
+      // if (value === 0) {
+      // setEndCursorValue({ 1: response?.data?.collection?.products?.pageInfo?.endCursor });
+      setEndCursorValue((prev) => {
+        let data = { ...prev };
+        data[1] = response?.data?.collection?.products?.pageInfo?.endCursor;
+        return data;
+      });
 
-        setPageNumber(1);
-        setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
-      }
+      setPageNumber(1);
+      setHasNextPage(response?.data?.collection?.products?.pageInfo?.hasNextPage);
+      // }
     } catch (error) {
       setProductsData([]);
     } finally {
@@ -85,8 +90,11 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   };
 
   const getPaginationData = async (e, value) => {
+    debugger;
     try {
       if (value == 1) {
+        setPageNumber(1);
+
         getFilteredData(value);
         return;
       }
@@ -118,6 +126,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setPageCount(pageNumber + 1);
     }
   }, [pageNumber, hasNextPage]);
+
+  console.log("pageNumber", pageNumber, hasNextPage, pageCount);
 
   return (
     <Layout

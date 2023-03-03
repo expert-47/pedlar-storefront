@@ -17,6 +17,7 @@ const BrandTitles = (props: any) => {
           justifyContent: "center",
           alignItems: "center",
           zIndex: "0",
+          // border: "1px solid red",
         }}
       >
         <Grid

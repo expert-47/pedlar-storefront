@@ -25,12 +25,13 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           md={12}
           lg={12}
           sx={{
-            paddingLeft: { xs: "15px", sm: "10px" },
-            paddingRight: { xs: "5px", sm: "10px" },
+            paddingLeft: { xs: "5px", sm: "5px" },
+            paddingRight: { xs: "5px", sm: "5px" },
             justifyContent: "flex-start",
             backgroundColor: "",
+            // border: "1px solid red",
           }}
-          // columnSpacing={columnSpacing || 10}
+          columnSpacing={columnSpacing || 10}
           rowSpacing={10}
         >
           {Array.isArray(newAdditionData) &&
@@ -39,8 +40,8 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                 <Grid
                   item
                   xs={6}
-                  sm={3.8}
-                  md={3.8}
+                  sm={4}
+                  md={4}
                   lg={4}
                   xl={4}
                   key={item?.collectionId}

@@ -52,8 +52,8 @@ const Bar = () => {
           style={{ width: "1116px", backgroundColor: "black" }}
           justifyContent={{ xs: "flex-end", sm: "flex-start", lg: "flex-end" }}
           height={{ xs: "unset", lg: "104px" }}
-          paddingX={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(20) }}
-          paddingY={{ xs: theme.spacing(5), md: theme.spacing(10), lg: theme.spacing(10) }}
+          paddingX={{ xs: theme.spacing(20), md: theme.spacing(10), lg: theme.spacing(20) }}
+          paddingY={{ xs: theme.spacing(40), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
           <Grid item xs={12} sm={12} md={12} lg={9.9}>
             <Typography

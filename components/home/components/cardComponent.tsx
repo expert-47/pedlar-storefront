@@ -31,7 +31,8 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
         sx={{
           cursor: "pointer",
           width: "100%",
-          backgroundColor: "",
+          // backgroundColor: "pink",
+          // border: "1px solid red",
         }}
         onClick={onClickCard}
       >
@@ -41,8 +42,9 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
               sx={{
                 maxWidth: "100%",
                 maxHeight: "100%",
-                width: { xs: "100%", sm: 190, md: 344 },
+                width: { xs: "100%", sm: 190, md: 400 },
                 height: { xs: 158, sm: 190, md: 344 },
+                // backgroundColor: "red",
               }}
             >
               <PedlarImage src={image} objectFit="contain" />

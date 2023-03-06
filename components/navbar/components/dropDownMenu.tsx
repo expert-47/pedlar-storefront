@@ -70,12 +70,12 @@ const DropDownMenu = (props: Props) => {
                 mt: 10,
                 pb: 10,
                 p: 10,
-                // left: "0 !important",
+                left: data.length > 12 && "0 !important",
                 l: 0,
                 borderRadius: 0,
-                width: data.length <= 6 ? "150px" : `${(data.length / 6) * 160}px`,
-                // maxWidth: "100% ",
-                // boxShadow: "none",
+                width: data.length > 12 ? "100%" : data.length <= 6 ? "150px" : `${(data.length / 6) * 250}px`,
+                //   maxWidth: "100% ",
+                //  boxShadow: "none",
                 // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
               },
             }}
@@ -84,56 +84,52 @@ const DropDownMenu = (props: Props) => {
             open={openMenu}
             onClose={handleClose}
           >
-            <Grid container>
-              <Grid item xs={12}>
-                <Box
-                  sx={{
-                    width: "100%",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      maxHeight: 200,
-                      display: "flex",
-                      flexFlow: "column wrap",
+            <Box
+              sx={{
+                width: "100%",
+              }}
+            >
+              <Box
+                sx={{
+                  maxHeight: 200,
+                  display: "flex",
+                  flexFlow: "column wrap",
 
-                      // alignContent: "flex-end",
-                      // paddingRight: "40px",
-                    }}
-                  >
-                    {loading ? (
-                      <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <CircularProgress color="inherit" />
-                      </Grid>
-                    ) : (
-                      data?.map((data, index) => {
-                        return (
-                          <Box
-                            sx={{
-                              width: 150,
-                              paddingRight: 20,
-                            }}
-                            onClick={() => {
-                              navigateToProduct(data);
-                            }}
-                          >
-                            <a
-                              style={{
-                                cursor: "pointer",
-                                textDecoration: "none ",
-                                color: "black",
-                              }}
-                            >
-                              <Typography sx={styles.menuItems}>{data}</Typography>
-                            </a>
-                          </Box>
-                        );
-                      })
-                    )}
-                  </Box>
-                </Box>
-              </Grid>
-            </Grid>
+                  // alignContent: "flex-end",
+                  // paddingRight: "40px",
+                }}
+              >
+                {loading ? (
+                  <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <CircularProgress color="inherit" />
+                  </Grid>
+                ) : (
+                  data?.map((data, index) => {
+                    return (
+                      <Box
+                        sx={{
+                          width: 150,
+                          paddingRight: 20,
+                        }}
+                        onClick={() => {
+                          navigateToProduct(data);
+                        }}
+                      >
+                        <a
+                          style={{
+                            cursor: "pointer",
+                            textDecoration: "none ",
+                            color: "black",
+                          }}
+                        >
+                          <Typography sx={styles.menuItems}>{data}</Typography>
+                        </a>
+                      </Box>
+                    );
+                  })
+                )}
+              </Box>
+            </Box>
           </Menu>
         </CustomContainer>
         <Grid item></Grid>

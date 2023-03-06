@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Typography } from "@mui/material";
+import { Box, CircularProgress, Grid, Typography } from "@mui/material";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import DropdownButton from "components/navbar/components/dropdownButton";
@@ -73,7 +73,7 @@ const ProductHeader = (props: any) => {
       props.setFiltersValue(
         filterData.map((item: any) => item.productVendor),
         filterArray,
-        "Brands",
+        "Shop",
         true,
       );
       setFilterData((prv) => {
@@ -110,7 +110,7 @@ const ProductHeader = (props: any) => {
       props.setFiltersValue(
         filterArray,
         filterData.map((item: any) => item.productType),
-        "Shop",
+        "Brands",
         true,
       );
 
@@ -256,6 +256,18 @@ const ProductHeader = (props: any) => {
           </Grid>
         )}
       </Grid>
+      {props.loading && !Boolean(openShop) && !Boolean(openBrand) && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: 30,
+          }}
+        >
+          <CircularProgress color="secondary" />
+        </Box>
+      )}
     </CustomGrid>
   );
 };

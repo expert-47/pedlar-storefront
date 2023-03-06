@@ -11,10 +11,10 @@ const SubmitSchema = Yup.object().shape({
   First_Name: Yup.string().required("First Name is required!"),
   Last_Name: Yup.string().required("Last Name is required!"),
   Email_Address: Yup.string().required("This field is required").email("Invalid Email Address"),
-  Phone_Number: Yup.string().matches(/^[6-9]\d{9}$/, {
-    message: "Please enter Phone number.",
-    excludeEmptyString: false,
-  }),
+  // Phone_Number: Yup.string().matches(/^[6-9]\d{9}$/, {
+  //   message: "Please enter Phone number.",
+  //   excludeEmptyString: false,
+  // }),
 });
 
 const ReturnForm = (props: any) => {
@@ -231,7 +231,7 @@ const ReturnForm = (props: any) => {
                     </Box>
                     <Box>
                       <input
-                        type="text"
+                        type="number"
                         name="Phone_Number"
                         value={values.Phone_Number}
                         onChange={handleChange}
@@ -260,15 +260,17 @@ const ReturnForm = (props: any) => {
                   <Button
                     type="submit"
                     href={isEmailSent ? "thankyou-return" : ""}
-                    // disabled={
-                    //   Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
-                    // }
                     disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                     sx={{
                       width: "335px",
                       height: "46px",
                       color: values ? "White !important" : "#1C1B1F",
-                      backgroundColor: errors ? "#1C1B1F" : "",
+                      backgroundColor:
+                        Object.keys(errors).length > 0
+                          ? "#808080"
+                          : !values?.Email_Address.length
+                          ? "#808080"
+                          : "#1C1B1F",
                       boxShadow: errors ? "unset" : "",
                       borderRadius: "666px",
                       fontWeight: 600,
@@ -453,7 +455,7 @@ const ReturnForm = (props: any) => {
                 </Box>
                 <Box sx={{ marginBottom: "20px" }}>
                   <input
-                    type="text"
+                    type="number"
                     name="Phone_Number"
                     value={values.Phone_Number}
                     onChange={handleChange}
@@ -474,7 +476,6 @@ const ReturnForm = (props: any) => {
                   </Box>
                 </Box>
               </Box>
-
               <Typography
                 sx={{ fontSize: "16px", fontWeight: "400", marginTop: "2rem", marginLeft: "1rem", width: "335px" }}
               >
@@ -484,15 +485,18 @@ const ReturnForm = (props: any) => {
                 <Button
                   type="submit"
                   href={isEmailSent ? "thankyou-return" : ""}
-                  // disabled={
-                  //   Object.keys(errors).length === 0 ? (values?.Email_Address.length > 0 ? false : true) : true
-                  // }
                   disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                   sx={{
                     width: "363px",
                     height: "46px",
-                    backgroundColor: errors ? "#1C1B1F" : "",
-                    color: errors ? "white !important" : "",
+                    color: values ? "White !important" : "#1C1B1F",
+                    backgroundColor:
+                      Object.keys(errors).length > 0
+                        ? "#808080"
+                        : !values?.Email_Address.length
+                        ? "#808080"
+                        : "#1C1B1F",
+                    boxShadow: errors ? "unset" : "",
                     borderRadius: "666px",
                     fontWeight: 600,
                     textTransform: "none",

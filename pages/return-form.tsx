@@ -18,8 +18,6 @@ const SubmitSchema = Yup.object().shape({
 });
 
 const ReturnForm = (props: any) => {
-  const { slug, headerData } = props;
-
   const [isEmailSent, setIsEmailSent] = useState(false);
   const forms = useRef();
 
@@ -231,7 +229,7 @@ const ReturnForm = (props: any) => {
                     </Box>
                     <Box>
                       <input
-                        type="text"
+                        type="number"
                         name="Phone_Number"
                         value={values.Phone_Number}
                         onChange={handleChange}

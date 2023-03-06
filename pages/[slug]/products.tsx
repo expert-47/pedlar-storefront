@@ -5,7 +5,7 @@ import Head from "next/head";
 import BaseFooter from "components/footer/baseFooter";
 import styles from "styles/home";
 import Gallery from "components/home/components/Gallery";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { getFilteredProducts, getPaginationProducts } from "api/graphql/grapgql";
@@ -24,15 +24,31 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const route = useRouter();
 
   const setFiltersValue = async (brandData = [], shopData = [], type: string, applyFilters: boolean) => {
+    console.log("applyFilters", type, applyFilters, shopFilterList.length, brandsFilterList.length);
+
     if (!applyFilters) {
       if (type == "Brands") {
         setBrandFilterList([]);
+        console.log("shopFilterList.length", shopFilterList.length);
+
         return;
       }
+
       setShopFilterList([]);
+      if (brandsFilterList.length == 0) {
+        getFilteredData(true);
+      }
       return;
     }
+    if (type == "Brands" && brandData?.length == 0) {
+      if (shopFilterList.length == 0) {
+        console.log("here");
 
+        getFilteredData(true);
+      }
+    } else if (type == "Brands" && brandsFilterList.length == 0) {
+      getFilteredData(true);
+    }
     setBrandFilterList(
       brandData.map((item) => {
         return { productVendor: item };
@@ -46,7 +62,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     );
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
       if (route.query.dataType === "Brands") {
         setBrandFilterList([{ productVendor: route?.query.itemValue }]);
@@ -54,21 +70,23 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       if (route.query.dataType === "Shop") {
         setShopFilterList([{ productType: route?.query.itemValue }]);
       }
-    }
-    return () => {
+    } else {
+      getFilteredData(true);
       setShopFilterList([]);
       setBrandFilterList([]);
-    };
+    }
   }, [route?.query]);
 
   useEffect(() => {
-    getFilteredData();
+    if (brandsFilterList.length != 0 || shopFilterList.length != 0) {
+      getFilteredData();
+    }
   }, [brandsFilterList, shopFilterList]);
 
-  const getFilteredData = async () => {
+  const getFilteredData = async (reset = false) => {
     try {
       setLoading(true);
-      const response = await getFilteredProducts(collectionId, [...brandsFilterList, ...shopFilterList]);
+      const response = await getFilteredProducts(collectionId, reset ? [] : [...brandsFilterList, ...shopFilterList]);
       setProductsData(response?.data?.collection?.products?.nodes || []);
 
       setEndCursorValue((prev) => {

@@ -4,6 +4,7 @@ import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
 import emailjs from "@emailjs/browser";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const SubmitSchema = Yup.object().shape({
   Order_Number: Yup.string().required("Order number is required!"),
@@ -18,10 +19,12 @@ const SubmitSchema = Yup.object().shape({
 });
 
 const ReturnForm = (props: any) => {
-  const { slug, headerData } = props;
-
-  const [isEmailSent, setIsEmailSent] = useState(false);
+  const { slug } = props;
+  const router = useRouter();
   const forms = useRef();
+  const forms2 = useRef();
+
+  console.log("forms.currentforms.current", forms2.current);
 
   return (
     <>
@@ -55,10 +58,10 @@ const ReturnForm = (props: any) => {
             }}
             validationSchema={SubmitSchema}
             onSubmit={(values, { setSubmitting }) => {
-              emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
+              emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms2.current, "eE9W4Thiy_5GA_B4N").then(
                 (result) => {
                   console.log("success", result.text);
-                  setIsEmailSent(true);
+                  router.push(`/${slug}/thankyou-return`);
                 },
                 (error) => {
                   console.log("Faild...", error.text);
@@ -76,7 +79,7 @@ const ReturnForm = (props: any) => {
               isSubmitting,
               /* and other goodies */
             }) => (
-              <form onSubmit={handleSubmit} ref={forms}>
+              <form onSubmit={handleSubmit} ref={forms2}>
                 <Box sx={{ marginTop: "1.5rem" }}>
                   <Box
                     sx={{
@@ -259,7 +262,7 @@ const ReturnForm = (props: any) => {
                 <Box sx={{ textAlign: "center" }}>
                   <Button
                     type="submit"
-                    href={isEmailSent ? "thankyou-return" : ""}
+                    // href={isEmailSent ? "thankyou-return" : ""}
                     disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                     sx={{
                       width: "335px",
@@ -322,7 +325,7 @@ const ReturnForm = (props: any) => {
             emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
               (result) => {
                 console.log("success", result.text);
-                setIsEmailSent(true);
+                router.push(`/${slug}/thankyou-return`);
               },
               (error) => {
                 console.log("Faild...", error.text);
@@ -484,7 +487,6 @@ const ReturnForm = (props: any) => {
               <Box sx={{ margin: "1rem" }}>
                 <Button
                   type="submit"
-                  href={isEmailSent ? "thankyou-return" : ""}
                   disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                   sx={{
                     width: "363px",

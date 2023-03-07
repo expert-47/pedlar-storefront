@@ -3,6 +3,7 @@ import styles from "styles/home";
 import { Typography, Button, Grid, useMediaQuery, Box } from "@mui/material";
 import { useTheme } from "@mui/material";
 import { CustomContainer } from "components/layout";
+import { CustomGrid } from "components/layout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
@@ -33,10 +34,11 @@ const Bar = () => {
   };
   return (
     <>
-      <CustomContainer
-        style={{
+      <CustomGrid
+        sx={{
           display: "flex",
           justifyContent: "center",
+          alignItems: "center",
           marginTop: "50px",
         }}
       >
@@ -44,18 +46,20 @@ const Bar = () => {
           container
           item
           xs={11}
-          sm={11.6}
+          sm={11.9}
           md={11.7}
-          lg={9.8}
-          xl={9.25}
+          lg={11.8}
+          xl={12}
+          display={"flex"}
           alignItems={"center"}
-          style={{ width: "1116px", backgroundColor: "black" }}
-          justifyContent={{ xs: "flex-end", sm: "flex-start", lg: "flex-end" }}
+          // justifyContent={{ xs: "flex-end", sm: "flex-start" }}
+          // paddingLeft={{ xs: "20px", sm: "10px" }}
           height={{ xs: "unset", lg: "104px" }}
           paddingX={{ xs: theme.spacing(20), md: theme.spacing(10), lg: theme.spacing(20) }}
-          paddingY={{ xs: theme.spacing(40), md: theme.spacing(10), lg: theme.spacing(10) }}
+          paddingY={{ xs: theme.spacing(40), md: theme.spacing(10), lg: theme.spacing(0) }}
+          style={{ backgroundColor: "black" }}
         >
-          <Grid item xs={12} sm={12} md={12} lg={9.9}>
+          <Grid item xs={12} sm={8} md={9.7} lg={9.5}>
             <Typography
               sx={styles.bartext}
               fontWeight={"bold"}
@@ -64,15 +68,15 @@ const Bar = () => {
               Love Fashion? Have your own style? Share it with your community.
             </Typography>
           </Grid>
-          <Box>
+          <Grid item xs={12} sm={4} md={2.3} lg={2.5} sx={{ paddingLeft: { xs: "25%", sm: "90px", lg: "40px" } }}>
             <Button sx={styles.btn} onClick={openPopup}>
               <Typography fontSize={"16px"} fontWeight={"600"}>
                 Sign up for free
               </Typography>
             </Button>
-          </Box>
+          </Grid>
         </Grid>
-      </CustomContainer>
+      </CustomGrid>
       {popupScreen ? (
         <LoginDialog
           handleClose={handleClose}

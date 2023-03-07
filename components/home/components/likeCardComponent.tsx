@@ -17,7 +17,7 @@ interface Props {
   item: any;
 }
 
-const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React.PropsWithChildren<Props>) => {
+const LikeCardComponent = ({ name, type, price, image, crossPrice, id, item }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
   let path = getStoreName(route);
@@ -30,7 +30,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
       <Box
         sx={{
           cursor: "pointer",
-          width: { xs: "160px", sm: 250, md: 320, lg: 344 },
+          width: { xs: "100%", sm: 170, md: 230, lg: 209 },
         }}
         onClick={onClickCard}
       >
@@ -38,7 +38,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
           <Box
             sx={{
               width: "100%",
-              height: { xs: "161px", sm: 250, md: 320, lg: 344 },
+              height: { xs: 158, sm: 170, md: 230, lg: 215 },
             }}
           >
             <PedlarImage src={image} objectFit="contain" />
@@ -85,7 +85,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
     </Link>
   );
 };
-CardComponent.propTypes = {
+LikeCardComponent.propTypes = {
   name: PropTypes.string,
 };
-export default CardComponent;
+export default LikeCardComponent;

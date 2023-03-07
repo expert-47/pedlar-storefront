@@ -38,6 +38,7 @@ import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/ap
 import * as gtmEvents from "utils/gtm";
 
 import CardComponent from "components/home/components/cardComponent";
+import LikeCardComponent from "components/home/components/likeCardComponent";
 
 const buttonStyle = {
   display: "none",
@@ -454,14 +455,14 @@ const Cart = (props: any) => {
                     key={index}
                     item
                     xs={6}
-                    sm={6}
+                    sm={3}
                     md={3}
-                    lg={3}
+                    lg={2.5}
                     paddingLeft="10px"
                     paddingBottom="10px"
                     onClick={ClearErrors}
                   >
-                    <CardComponent
+                    <LikeCardComponent
                       name={item?.title}
                       type={item?.productType}
                       price={

@@ -36,6 +36,7 @@ const DropDownMenu = (props: Props) => {
       `${route.basePath}/${storeName}/products`,
     );
   };
+
   return (
     <>
       <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -70,10 +71,10 @@ const DropDownMenu = (props: Props) => {
                 mt: 10,
                 pb: 10,
                 p: 10,
-                left: data.length > 12 && "0 !important",
-                l: 0,
+                // left: data.length > 12 && "0 !important",
+                // l: 0,
                 borderRadius: 0,
-                width: data.length > 12 ? "100%" : data.length <= 6 ? "150px" : `${(data.length / 6) * 250}px`,
+                width: data.length > 12 ? "50%" : data.length <= 6 ? "150px" : `${(data.length / 6) * 250}px`,
                 //   maxWidth: "100% ",
                 //  boxShadow: "none",
                 // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
@@ -94,6 +95,7 @@ const DropDownMenu = (props: Props) => {
                   maxHeight: 200,
                   display: "flex",
                   flexFlow: "column wrap",
+                  ml: 10,
 
                   // alignContent: "flex-end",
                   // paddingRight: "40px",

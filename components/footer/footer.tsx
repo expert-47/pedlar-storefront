@@ -2,12 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Divider, useTheme } from "@mui/material";
-import { useState } from "react";
 import { styles } from "styles/footer";
 import Text from "components/customText";
 import Image from "next/image";
 const Footer = () => {
-  const [date] = useState(new Date());
   const theme = useTheme();
 
   return (
@@ -31,14 +29,6 @@ const Footer = () => {
           paddingTop={{ xs: theme.spacing(10), md: theme.spacing(10) }}
           paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
-          <Grid
-            paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
-            paddingBottom={{ xs: theme.spacing(15), md: theme.spacing(10), lg: theme.spacing(10) }}
-          >
-            <Text fontSize="16px" sx={styles.footerText}>
-              &copy; {`${date.getFullYear()} pedlar PTY/LTD.`}
-            </Text>
-          </Grid>
           <Grid
             paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
             paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}

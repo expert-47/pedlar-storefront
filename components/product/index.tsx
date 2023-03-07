@@ -38,6 +38,7 @@ import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/ap
 import * as gtmEvents from "utils/gtm";
 
 import CardComponent from "components/home/components/cardComponent";
+import LikeCardComponent from "components/home/components/likeCardComponent";
 
 const buttonStyle = {
   display: "none",
@@ -320,22 +321,22 @@ const Cart = (props: any) => {
                   <ImageListItem sx={{ paddingBottom: "25px" }}>
                     <Box
                       sx={{
-                        width: 400,
-                        height: 400,
+                        width: 530,
+                        height: 579,
                       }}
                     >
                       {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                         return (
                           <Box
                             sx={{
-                              width: 400,
-                              height: 400,
+                              width: 530,
+                              height: 579,
                               marginTop: "20px",
                             }}
                           >
                             <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
                               {({ ref, open }) => (
-                                <img width={400} height={400} ref={ref} onClick={open} src={item?.url} />
+                                <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />
                               )}
                             </Item>
                           </Box>
@@ -454,14 +455,16 @@ const Cart = (props: any) => {
                     key={index}
                     item
                     xs={6}
-                    sm={6}
+                    sm={3}
                     md={3}
-                    lg={3}
+                    lg={2.5}
                     paddingLeft="10px"
                     paddingBottom="10px"
                     onClick={ClearErrors}
                   >
                     <CardComponent
+                      width={{ xs: "100%", sm: 170, md: 230, lg: 209 }}
+                      height={{ xs: 158, sm: 170, md: 230, lg: 215 }}
                       name={item?.title}
                       type={item?.productType}
                       price={

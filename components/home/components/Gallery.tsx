@@ -28,8 +28,6 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
             paddingLeft: { xs: "5px", sm: "5px" },
             paddingRight: { xs: "5px", sm: "5px" },
             justifyContent: "flex-start",
-            backgroundColor: "",
-            // border: "1px solid red",
           }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
@@ -45,11 +43,13 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                   lg={4}
                   xl={4}
                   key={item?.collectionId}
-                  sx={{ backgroundColor: "", justifyContent: "space-evenly" }}
+                  sx={{ justifyContent: "space-evenly" }}
                 >
                   <CardComponent
-                    name={item?.title}
+                    width={{ xs: "160px", sm: 250, md: 320, lg: 344 }}
+                    height={{ xs: "161px", sm: 250, md: 320, lg: 344 }}
                     type={item?.vendor}
+                    name={item?.title}
                     price={
                       item.priceRange?.maxVariantPrice?.currencyCode === "AUD"
                         ? `$${item.priceRange?.maxVariantPrice?.amount}`

@@ -15,9 +15,21 @@ interface Props {
   crossPrice?: string;
   id: string;
   item: any;
+  width: any;
+  height: any;
 }
 
-const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React.PropsWithChildren<Props>) => {
+const CardComponent = ({
+  name,
+  type,
+  price,
+  image,
+  crossPrice,
+  id,
+  item,
+  width,
+  height,
+}: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
   let path = getStoreName(route);
@@ -28,34 +40,35 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
   return (
     <Link href={{ pathname: `${path}/product/${productId}` }}>
       <Box
+        width={width}
         sx={{
           cursor: "pointer",
-          width: "100%",
-          // backgroundColor: "pink",
-          // border: "1px solid red",
+          // width: { xs: "160px", sm: 250, md: 320, lg: 344 },
         }}
         onClick={onClickCard}
       >
         {image && (
-          <Grid item xs={12}>
-            <Box
-              sx={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                width: { xs: "100%", sm: 190, md: 400 },
-                height: { xs: 158, sm: 190, md: 344 },
-                // backgroundColor: "red",
-              }}
-            >
-              <PedlarImage src={image} objectFit="contain" />
-            </Box>
-          </Grid>
+          <Box
+            height={height}
+            sx={{
+              width: "100%",
+              // height: { xs: "161px", sm: 250, md: 320, lg: 344 },
+            }}
+          >
+            <PedlarImage src={image} objectFit="contain" />
+          </Box>
         )}
         <Grid xs={12}>
           <Typography
+            fontSize={"16px"}
+            fontWeight={"600"}
+            style={{ textOverflow: "wrap", color: "#1C1B1F", paddingTop: "8px" }}
+          >
+            {type}
+          </Typography>
+          <Typography
             style={{
               textTransform: "uppercase",
-              paddingTop: "8px",
               lineHeight: "16px",
               color: "#1C1B1F",
             }}
@@ -64,9 +77,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
           >
             {name}
           </Typography>
-          <Typography fontSize={"16px"} fontWeight={"600"} style={{ textOverflow: "wrap", color: "#1C1B1F" }}>
-            {type}
-          </Typography>
+
           {crossPrice ? (
             <Grid sx={{ display: "flex" }}>
               <Typography

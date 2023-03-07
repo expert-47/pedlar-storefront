@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 export const Home = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
-  const storeName = useSelector((data:any) => data.app.storeName);
+  const storeName = useSelector((data: any) => data.app.storeName);
 
   const data = [];
 
@@ -33,12 +33,10 @@ export const Home = (props: any) => {
   return (
     <Grid>
       <BannerImg headerData={props?.headerData} />
-
       <Divider sx={styles.bannerDivider} />
       <HomepagePopup />
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="New Additions" rightHeading="SHOP ALL" />
-
         <Gallery newAdditionData={props?.newAdditionData} />
         <Box
           sx={{
@@ -48,7 +46,6 @@ export const Home = (props: any) => {
             zIndex: "-100 !important",
             paddingLeft: { xs: "15px", md: "0px" },
             paddingRight: { xs: "15px", md: "0px" },
-            
           }}
         >
           <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
@@ -74,7 +71,6 @@ export const Home = (props: any) => {
             </Grid>
           </Link>
         </Box>
-
         <BrandListing onClick={onClickShopNow} leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse?.slice(0, 4)} />
       </Box>

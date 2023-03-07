@@ -66,9 +66,11 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
       if (route.query.dataType === "Brands") {
         setBrandFilterList([{ productVendor: route?.query.itemValue }]);
+        setShopFilterList([]);
       }
       if (route.query.dataType === "Shop") {
         setShopFilterList([{ productType: route?.query.itemValue }]);
+        setBrandFilterList([]);
       }
     } else {
       getFilteredData(true);

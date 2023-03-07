@@ -150,7 +150,7 @@ const CartDrawer = () => {
                   vendor={item?.merchandise?.product?.vendor || ""}
                   title={item?.merchandise?.product?.title || ""}
                   image={item?.merchandise?.image?.url || ""}
-                  name={item?.merchandise?.title || ""}
+                  name={(item?.merchandise?.title != "Default Title" && item?.merchandise?.title) || ""}
                   price={item?.merchandise?.price?.amount || 0}
                   CurrencyCode={item?.merchandise?.price?.currencyCode || "$"}
                   quantity={item?.quantity}

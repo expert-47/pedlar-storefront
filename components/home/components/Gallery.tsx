@@ -20,9 +20,9 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
         <Grid
           container
           item
-          xs={12}
-          sm={12}
-          md={12}
+          xs={11.5}
+          sm={11.8}
+          md={11.6}
           lg={12}
           sx={{
             paddingLeft: { xs: "5px", sm: "5px" },
@@ -46,8 +46,8 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                   sx={{ justifyContent: "space-evenly" }}
                 >
                   <CardComponent
-                    width={{ xs: "160px", sm: 250, md: 320, lg: 344 }}
-                    height={{ xs: "161px", sm: 250, md: 320, lg: 344 }}
+                    width={{ xs: "150px", sm: 250, md: 320, lg: 344 }}
+                    height={{ xs: "150px", sm: 250, md: 320, lg: 344 }}
                     type={item?.vendor}
                     name={item?.title}
                     price={

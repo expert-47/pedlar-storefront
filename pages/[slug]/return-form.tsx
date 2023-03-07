@@ -24,8 +24,6 @@ const ReturnForm = (props: any) => {
   const forms = useRef();
   const forms2 = useRef();
 
-  console.log("forms.currentforms.current", forms2.current);
-
   return (
     <>
       {/* desktop view */}

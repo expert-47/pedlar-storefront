@@ -74,7 +74,7 @@ const DropDownMenu = (props: Props) => {
                 // left: data.length > 12 && "0 !important",
                 // l: 0,
                 borderRadius: 0,
-                width: data.length > 12 ? "50%" : data.length <= 6 ? "150px" : `${(data.length / 6) * 250}px`,
+                width: data.length <= 6 ? "150px" : `${(data.length / 6) * 170}px`,
                 //   maxWidth: "100% ",
                 //  boxShadow: "none",
                 // borderTop: "1px solid rgba(28, 27, 31, 0.32)",

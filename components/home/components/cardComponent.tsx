@@ -30,7 +30,8 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
       <Box
         sx={{
           cursor: "pointer",
-          width: { xs: "100%", sm: 370, md: 209 },
+          width: { xs: "100%", sm: 230, md: 320, lg: 370 },
+          // backgroundColor: "yellow",
         }}
         onClick={onClickCard}
       >
@@ -38,7 +39,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
           <Box
             sx={{
               width: "100%",
-              height: { xs: 158, sm: 370, md: 215 },
+              height: { xs: 158, sm: 230, md: 320, lg: 370 },
             }}
           >
             <PedlarImage src={image} objectFit="contain" />

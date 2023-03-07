@@ -456,7 +456,7 @@ const Cart = (props: any) => {
                     xs={6}
                     sm={6}
                     md={3}
-                    lg={2}
+                    lg={3}
                     paddingLeft="10px"
                     paddingBottom="10px"
                     onClick={ClearErrors}

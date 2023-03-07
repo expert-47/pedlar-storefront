@@ -30,28 +30,24 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
       <Box
         sx={{
           cursor: "pointer",
-          width: "100%",
-          // backgroundColor: "pink",
-          // border: "1px solid red",
+          width: { xs: "100%", sm: 370, md: 209 },
         }}
         onClick={onClickCard}
       >
         {image && (
-          <Grid item xs={12}>
-            <Box
-              sx={{
-                maxWidth: "100%",
-                maxHeight: "100%",
-                width: { xs: "100%", sm: 190, md: 400 },
-                height: { xs: 158, sm: 190, md: 344 },
-                // backgroundColor: "red",
-              }}
-            >
-              <PedlarImage src={image} objectFit="contain" />
-            </Box>
-          </Grid>
+          <Box
+            sx={{
+              width: "100%",
+              height: { xs: 158, sm: 370, md: 215 },
+            }}
+          >
+            <PedlarImage src={image} objectFit="contain" />
+          </Box>
         )}
         <Grid xs={12}>
+          <Typography fontSize={"16px"} fontWeight={"600"} style={{ textOverflow: "wrap", color: "#1C1B1F" }}>
+            {type}
+          </Typography>
           <Typography
             style={{
               textTransform: "uppercase",
@@ -64,9 +60,7 @@ const CardComponent = ({ name, type, price, image, crossPrice, id, item }: React
           >
             {name}
           </Typography>
-          <Typography fontSize={"16px"} fontWeight={"600"} style={{ textOverflow: "wrap", color: "#1C1B1F" }}>
-            {type}
-          </Typography>
+
           {crossPrice ? (
             <Grid sx={{ display: "flex" }}>
               <Typography

@@ -320,22 +320,22 @@ const Cart = (props: any) => {
                   <ImageListItem sx={{ paddingBottom: "25px" }}>
                     <Box
                       sx={{
-                        width: 400,
-                        height: 400,
+                        width: 530,
+                        height: 579,
                       }}
                     >
                       {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                         return (
                           <Box
                             sx={{
-                              width: 400,
-                              height: 400,
+                              width: 530,
+                              height: 579,
                               marginTop: "20px",
                             }}
                           >
                             <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
                               {({ ref, open }) => (
-                                <img width={400} height={400} ref={ref} onClick={open} src={item?.url} />
+                                <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />
                               )}
                             </Item>
                           </Box>
@@ -456,7 +456,7 @@ const Cart = (props: any) => {
                     xs={6}
                     sm={6}
                     md={3}
-                    lg={3}
+                    lg={2}
                     paddingLeft="10px"
                     paddingBottom="10px"
                     onClick={ClearErrors}

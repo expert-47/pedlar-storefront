@@ -462,7 +462,9 @@ const Cart = (props: any) => {
                     paddingBottom="10px"
                     onClick={ClearErrors}
                   >
-                    <LikeCardComponent
+                    <CardComponent
+                      width={{ xs: "100%", sm: 170, md: 230, lg: 209 }}
+                      height={{ xs: 158, sm: 170, md: 230, lg: 215 }}
                       name={item?.title}
                       type={item?.productType}
                       price={

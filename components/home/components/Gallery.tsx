@@ -46,6 +46,8 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                   sx={{ justifyContent: "space-evenly" }}
                 >
                   <CardComponent
+                    width={{ xs: "160px", sm: 250, md: 320, lg: 344 }}
+                    height={{ xs: "161px", sm: 250, md: 320, lg: 344 }}
                     type={item?.vendor}
                     name={item?.title}
                     price={

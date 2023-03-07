@@ -45,13 +45,16 @@ const LikeCardComponent = ({ name, type, price, image, crossPrice, id, item }: R
           </Box>
         )}
         <Grid xs={12}>
-          <Typography fontSize={"16px"} fontWeight={"600"} style={{ textOverflow: "wrap", color: "#1C1B1F" }}>
+          <Typography
+            fontSize={"16px"}
+            fontWeight={"600"}
+            style={{ textOverflow: "wrap", color: "#1C1B1F", paddingTop: "8px" }}
+          >
             {type}
           </Typography>
           <Typography
             style={{
               textTransform: "uppercase",
-              paddingTop: "8px",
               lineHeight: "16px",
               color: "#1C1B1F",
             }}

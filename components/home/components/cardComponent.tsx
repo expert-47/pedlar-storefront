@@ -43,7 +43,6 @@ const CardComponent = ({
         width={width}
         sx={{
           cursor: "pointer",
-          // width: { xs: "160px", sm: 250, md: 320, lg: 344 },
         }}
         onClick={onClickCard}
       >
@@ -52,13 +51,11 @@ const CardComponent = ({
             height={height}
             sx={{
               width: "100%",
-              // height: { xs: "161px", sm: 250, md: 320, lg: 344 },
             }}
           >
             <PedlarImage src={image} objectFit="contain" />
           </Box>
         )}
-        <Grid xs={12}>
           <Typography
             fontSize={"16px"}
             fontWeight={"600"}
@@ -77,9 +74,8 @@ const CardComponent = ({
           >
             {name}
           </Typography>
-
           {crossPrice ? (
-            <Grid sx={{ display: "flex" }}>
+            <Box sx={{ display: "flex" }}>
               <Typography
                 style={{
                   textDecoration: "line-through",
@@ -93,11 +89,10 @@ const CardComponent = ({
                 {crossPrice}
               </Typography>
               <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
-            </Grid>
+            </Box>
           ) : (
             <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
           )}
-        </Grid>
       </Box>
     </Link>
   );

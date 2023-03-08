@@ -46,6 +46,7 @@ export const PedlarDrawer = (props: {
     loading,
     shopListLoading,
     totalProductLength,
+    storefrontName,
   } = props;
   const route = useRouter();
   const storeName = useSelector((data: any) => data.app.storeName);
@@ -129,7 +130,7 @@ export const PedlarDrawer = (props: {
             </Box>
 
             <Typography fontSize={22} fontWeight={400} sx={{ marginLeft: "5px", marginTop: "-5px" }}>
-              {storeName ? storeName : ""}
+              {storefrontName ? storefrontName : ""}
             </Typography>
           </Grid>
           <Grid xs={1.5}>

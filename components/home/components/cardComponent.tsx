@@ -56,43 +56,43 @@ const CardComponent = ({
             <PedlarImage src={image} objectFit="contain" />
           </Box>
         )}
-          <Typography
-            fontSize={"16px"}
-            fontWeight={"600"}
-            style={{ textOverflow: "wrap", color: "#1C1B1F", paddingTop: "8px" }}
-          >
-            {type}
-          </Typography>
-          <Typography
-            style={{
-              textTransform: "uppercase",
-              lineHeight: "16px",
-              color: "#1C1B1F",
-            }}
-            fontSize={"12px"}
-            fontWeight={"600"}
-          >
-            {name}
-          </Typography>
-          {crossPrice ? (
-            <Box sx={{ display: "flex" }}>
-              <Typography
-                style={{
-                  textDecoration: "line-through",
-                  textDecorationColor: "#1C1B1F87",
-                  textDecorationThickness: "0.1em",
-                  color: "#1C1B1F87",
-                }}
-                fontSize={"16px"}
-                fontWeight={"600"}
-              >
-                {crossPrice}
-              </Typography>
-              <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
-            </Box>
-          ) : (
-            <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
-          )}
+        <Typography
+          fontSize={"16px"}
+          fontWeight={"600"}
+          style={{ textOverflow: "wrap", color: "#1C1B1F", paddingTop: "8px" }}
+        >
+          {type}
+        </Typography>
+        <Typography
+          style={{
+            textTransform: "uppercase",
+            lineHeight: "16px",
+            color: "#1C1B1F",
+          }}
+          fontSize={"12px"}
+          fontWeight={"600"}
+        >
+          {name}
+        </Typography>
+        {crossPrice ? (
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              style={{
+                textDecoration: "line-through",
+                textDecorationColor: "#1C1B1F87",
+                textDecorationThickness: "0.1em",
+                color: "#1C1B1F87",
+              }}
+              fontSize={"16px"}
+              fontWeight={"600"}
+            >
+              {crossPrice}
+            </Typography>
+            <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
+          </Box>
+        ) : (
+          <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
+        )}
       </Box>
     </Link>
   );

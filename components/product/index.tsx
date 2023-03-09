@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
-import { Alert, Divider, Grid, Typography } from "@mui/material";
-import { Slide } from "react-slideshow-image";
+import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
+import { Fade } from "react-slideshow-image";
 import Link from "next/link";
 import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
@@ -56,6 +56,12 @@ const Cart = (props: any) => {
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [price, setPrice] = useState({
+    price: 0,
+    currencyCode: "AUD",
+  });
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -135,6 +141,7 @@ const Cart = (props: any) => {
       if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
+        setLoading(false);
       } else {
         if (Boolean(cartId)) {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
@@ -143,6 +150,7 @@ const Cart = (props: any) => {
             if (varientData?.quantityAvailable === data1?.quantity) {
               setError(true);
               setErrorMessage("This item is currently out of stock");
+              setLoading(false);
             } else {
               const quantity = data1.quantity + 1;
 
@@ -172,6 +180,7 @@ const Cart = (props: any) => {
     } finally {
       getCartList(true);
       setButtonLoaderState(false);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -179,25 +188,34 @@ const Cart = (props: any) => {
   }, [size, color]);
 
   const onSelectedItem = async () => {
-    setError(false);
-    setErrorMessage("");
-
-    const variant = await getVariantBySelectedOptions(
-      newAdditionData?.id,
-      size,
-      color,
-      newAdditionData?.options[0]?.name,
-      newAdditionData?.options[1]?.name,
-    );
-
-    const varientData = variant?.data.product?.variantBySelectedOptions;
-
-    if (!varientData?.quantityAvailable || varientData?.quantityAvailable === 0) {
-      setError(true);
-      setErrorMessage("This item is currently out of stock");
-    } else {
+    try {
       setError(false);
       setErrorMessage("");
+      setLoading(true);
+      const variant = await getVariantBySelectedOptions(
+        newAdditionData?.id,
+        size,
+        color,
+        newAdditionData?.options[0]?.name,
+        newAdditionData?.options[1]?.name,
+      );
+
+      const varientData = variant?.data.product?.variantBySelectedOptions;
+      setPrice({
+        price: varientData.price.amount,
+        currencyCode: varientData.price.currencyCode,
+      });
+      if (!varientData?.quantityAvailable || varientData?.quantityAvailable === 0) {
+        setError(true);
+        setErrorMessage("This item is currently out of stock");
+        setLoading(false);
+      } else {
+        setError(false);
+        setErrorMessage("");
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false);
     }
   };
 
@@ -261,6 +279,8 @@ const Cart = (props: any) => {
     setErrorMessage("");
   };
 
+  console.log("newAdditionDatanewAdditionData", newAdditionData);
+
   return (
     <Layout
       error={apiError}
@@ -290,8 +310,10 @@ const Cart = (props: any) => {
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Gallery>
-                    <Slide {...properties} indicators={true} autoplay={false} transitionDuration={500}>
-                      {newAdditionData?.images?.nodes?.map((item: any) => {
+                    <Fade {...properties} indicators={true} autoplay={false} transitionDuration={0}>
+                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                        console.log("mobileTestData", item);
+
                         return (
                           <>
                             <Box sx={styles.eachSlideEffect}>
@@ -304,7 +326,7 @@ const Cart = (props: any) => {
                           </>
                         );
                       })}
-                    </Slide>
+                    </Fade>
                   </Gallery>
                 </Grid>
               </Grid>
@@ -361,11 +383,13 @@ const Cart = (props: any) => {
                   </Typography>
                   <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
                   <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-                    <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                      {`${newAdditionData?.priceRange?.minVariantPrice?.currencyCode === "AUD" ? "$" : ""}${
-                        newAdditionData?.priceRange?.minVariantPrice?.amount
-                      }`}
-                    </Typography>
+                    {loading ? (
+                      <CircularProgress color="secondary" />
+                    ) : (
+                      <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
+                        {`${price.currencyCode === "AUD" ? "$" : ""}${price?.price}`}
+                      </Typography>
+                    )}
                   </Grid>
 
                   <Options

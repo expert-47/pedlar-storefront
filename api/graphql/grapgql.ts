@@ -273,6 +273,10 @@ export const getVariantBySelectedOptions = async (productID, size, color, varien
             id
             title
             quantityAvailable
+            price {
+              amount
+              currencyCode
+            }
           }
         }
       }

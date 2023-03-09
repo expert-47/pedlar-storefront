@@ -34,8 +34,6 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
         >
           {Array.isArray(newAdditionData) &&
             newAdditionData?.map((item: any, index: any) => {
-              console.log("item.priceRange", item.priceRange);
-
               return (
                 <Grid
                   item

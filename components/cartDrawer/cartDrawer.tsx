@@ -204,11 +204,9 @@ const CartDrawer = () => {
 
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
           </Grid>
-          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-            <Button sx={styles.checkoutButton} onClick={apiForCheckout}>
-              Checkout
-            </Button>
-          </Link>
+          <Button sx={styles.checkoutButton} onClick={apiForCheckout}>
+            Checkout
+          </Button>
         </Grid>
       ) : (
         <Grid

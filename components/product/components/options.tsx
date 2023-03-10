@@ -27,7 +27,7 @@ function Options(props: any) {
               onChange={handleChange1}
               displayEmpty
               sx={styles.select}
-              IconComponent={newAdditionData?.options[1]?.values?.length === 1 ? KeyboardArrowDownIcon : ""}
+              IconComponent={newAdditionData?.options[0]?.values?.length === 1 ? "" : KeyboardArrowDownIcon}
               disabled={newAdditionData?.options[0]?.values?.length == 1}
             >
               {newAdditionData?.options[0]?.values?.map((val: any, index: any) => {

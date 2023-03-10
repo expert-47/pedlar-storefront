@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
-import { Fade } from "react-slideshow-image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
 import Link from "next/link";
 import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
@@ -36,18 +39,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
 import * as gtmEvents from "utils/gtm";
-
 import CardComponent from "components/home/components/cardComponent";
 import LikeCardComponent from "components/home/components/likeCardComponent";
-
-const buttonStyle = {
-  display: "none",
-};
-
-const properties = {
-  prevArrow: <button style={{ ...buttonStyle }}></button>,
-  nextArrow: <button style={{ ...buttonStyle }}></button>,
-};
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -62,6 +55,7 @@ const Cart = (props: any) => {
     price: 0,
     currencyCode: "AUD",
   });
+
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -69,6 +63,7 @@ const Cart = (props: any) => {
   const route = useRouter();
   const slugValue = route.query.slug;
   let path = getStoreName(route);
+
   const storeName = useSelector((data: any) => data.app.storeName);
 
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
@@ -278,8 +273,10 @@ const Cart = (props: any) => {
     setError(false);
     setErrorMessage("");
   };
-
-  console.log("newAdditionDatanewAdditionData", newAdditionData);
+  const pagination = {
+    clickable: true,
+    pagination: true,
+  };
 
   return (
     <Layout
@@ -310,23 +307,21 @@ const Cart = (props: any) => {
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Gallery>
-                    <Fade {...properties} indicators={true} autoplay={false} transitionDuration={0}>
+                    <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
                       {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                        console.log("mobileTestData", item);
-
                         return (
-                          <>
-                            <Box sx={styles.eachSlideEffect}>
+                          <Box sx={styles.eachSlideEffect}>
+                            <SwiperSlide>
                               <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
                                 {({ ref, open }) => (
                                   <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
                                 )}
                               </Item>
-                            </Box>
-                          </>
+                            </SwiperSlide>
+                          </Box>
                         );
                       })}
-                    </Fade>
+                    </Swiper>
                   </Gallery>
                 </Grid>
               </Grid>

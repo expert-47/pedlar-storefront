@@ -79,7 +79,7 @@ const Cart = (props: any) => {
     setColor(newAdditionData?.options[1]?.values[0] || "");
   }, [route]);
   useEffect(() => {
-    setError(false);
+    // setError(false);
   }, [cartProducts]);
 
   // for setting the size of the product
@@ -120,6 +120,27 @@ const Cart = (props: any) => {
       // promotion_name: "shop now"
     });
   };
+  const checkAvailabilityOnPageLoad = async () => {
+    try {
+      const variant = await getVariantBySelectedOptions(
+        newAdditionData?.id,
+        size,
+        color,
+        newAdditionData?.options[0]?.name,
+        newAdditionData?.options[1]?.name,
+      );
+
+      const varientData = variant?.data?.product?.variantBySelectedOptions;
+      if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
+        setError(true);
+        setErrorMessage("This item is currently out of stock");
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    checkAvailabilityOnPageLoad();
+  }, []);
 
   const addToCartButton = async () => {
     try {
@@ -131,7 +152,8 @@ const Cart = (props: any) => {
         newAdditionData?.options[0]?.name,
         newAdditionData?.options[1]?.name,
       );
-      const varientData = variant?.data.product?.variantBySelectedOptions;
+
+      const varientData = variant?.data?.product?.variantBySelectedOptions;
 
       if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
         setError(true);
@@ -213,7 +235,7 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-
+  console.log({ error: error });
   const BuyNowHandler = async () => {
     const quantity = 1;
 

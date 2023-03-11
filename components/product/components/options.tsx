@@ -15,7 +15,6 @@ function Options(props: any) {
   const handleChange2 = (event: any) => {
     setColorValue(event.target.value);
   };
-
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} gap={22} sx={styles.container}>
       {size != "Default Title" && newAdditionData?.options[0]?.values?.length > 0 && (

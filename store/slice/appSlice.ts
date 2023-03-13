@@ -60,7 +60,7 @@ const AppState = createSlice({
       };
     },
     clearStore: (state, action) => {
-      return { ...state, showNavbar: true, showDilog: true, storeName: action.payload, cartId: state.cartId };
+      return { ...state, showNavbar: true, storeName: action.payload, cartId: state.cartId };
     },
   },
 });

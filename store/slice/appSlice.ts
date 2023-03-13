@@ -8,7 +8,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: {},
   cartId: {},
-  showDilog: true,
+  showDilog: {},
   showCart: false,
   storeName: "",
   showNavbar: true,
@@ -48,9 +48,13 @@ const AppState = createSlice({
       };
     },
     toggleDialog: (state, action) => {
+      let data = { ...state.showDilog };
+      data[state.storeName] = false;
+    console.log(data);
+    
       return {
         ...state,
-        showDilog: false,
+        showDilog: data,
       };
     },
     cartDrawerToggle: (state, action) => {
@@ -60,7 +64,9 @@ const AppState = createSlice({
       };
     },
     clearStore: (state, action) => {
-      return { ...state, showNavbar: true, storeName: action.payload, cartId: state.cartId };
+    
+
+      return { ...state, showNavbar: true, storeName: action.payload, cartId: state.cartId,};
     },
   },
 });

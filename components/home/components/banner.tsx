@@ -25,7 +25,7 @@ const BannerImg = (props: any) => {
         lg={11}
       >
         <Grid item xs={11.5} md={4} lg={4}>
-          <Box sx={{ width: isMatch ? "100%" : 476, height: isMatch ? 415 : 595 }}>
+          <Box sx={{ width: isMatch ? "100%" : 476, height: isMatch ? 415 : 595, minHeight: "550px" }}>
             <PedlarImage
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"

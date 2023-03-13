@@ -12,7 +12,7 @@ const TextBox = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
   const theme = useTheme();
-  const storeName = useSelector((data:any) => data.app.storeName);
+  const storeName = useSelector((data: any) => data.app.storeName);
 
   const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
@@ -28,6 +28,7 @@ const TextBox = (props: any) => {
         backgroundColor: "white",
         wordWrap: "break-word",
         width: "100%",
+        minWidth: "242px",
       }}
       paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}

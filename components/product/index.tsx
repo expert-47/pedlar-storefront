@@ -584,8 +584,8 @@ const Cart = (props: any) => {
                     onClick={ClearErrors}
                   >
                     <CardComponent
-                      width={{ xs: 150, sm: 170, md: 230, lg: 209 }}
-                      height={{ xs: 150, sm: 170, md: 230, lg: 215 }}
+                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       name={item?.title}
                       type={item?.productType}
                       price={

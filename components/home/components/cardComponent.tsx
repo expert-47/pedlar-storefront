@@ -43,6 +43,7 @@ const CardComponent = ({
         width={width}
         sx={{
           cursor: "pointer",
+          // backgroundColor: "pink",
         }}
         onClick={onClickCard}
       >

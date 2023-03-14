@@ -464,7 +464,7 @@ section {
   transition: background-color 0.2s ease-in-out;
 }
 .is-current a div {
-  background-color: #007aff !important;
+  background-color: #000 !important;
 }
 
 .app__navigation-dot {
@@ -478,8 +478,11 @@ section {
 }
 
 .app__navigation-dot:hover {
-  background-color: #007aff;
+  background-color: #000;
 }
 .list_unorder {
   list-style-type: none;
+}
+.swiper-pagination-bullet-active {
+  background-color: #000 !important;
 }

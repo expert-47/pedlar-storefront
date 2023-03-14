@@ -341,7 +341,7 @@ const Cart = (props: any) => {
             <AppBar
               position="sticky"
               sx={{
-                top: "120px",
+                top: "200px",
                 boxShadow: "none",
                 zIndex: "5",
               }}

@@ -27,6 +27,7 @@ import { getStoreName } from "utils/getPathName";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { isMobile } from "react-device-detect";
+import Scrollspy from "react-scrollspy";
 
 import {
   addToCart,
@@ -41,6 +42,7 @@ import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/ap
 import * as gtmEvents from "utils/gtm";
 import CardComponent from "components/home/components/cardComponent";
 import LikeCardComponent from "components/home/components/likeCardComponent";
+import AppBar from "@mui/material/AppBar";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -63,7 +65,7 @@ const Cart = (props: any) => {
   const route = useRouter();
   const slugValue = route.query.slug;
   let path = getStoreName(route);
-
+  const ref = useRef();
   const storeName = useSelector((data: any) => data.app.storeName);
 
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
@@ -73,7 +75,7 @@ const Cart = (props: any) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-
+  const listInnerRef = useRef();
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0] || "");
     setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -299,6 +301,20 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
+  console.log("listInnerRef.current", listInnerRef.current);
+
+  const handleScroll = () => {
+    console.log("working");
+    debugger;
+
+    if (listInnerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+      if (scrollTop + clientHeight === scrollHeight) {
+        // aour is k andr three dots ki ID get kr k display none kr dainaaa
+        console.log("working");
+      }
+    }
+  };
 
   return (
     <Layout
@@ -312,6 +328,41 @@ const Cart = (props: any) => {
     >
       <CustomContainer>
         <Box sx={styles.mainContainer}>
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+                zIndex: "10px",
+                marginRight: "1rem",
+              },
+            }}
+          >
+            <AppBar
+              position="sticky"
+              sx={{
+                top: "120px",
+                boxShadow: "none",
+                zIndex: "5",
+              }}
+            >
+              <Scrollspy
+                items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
+                currentClassName="is-current"
+                style={{ width: 10 }}
+              >
+                {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                  return (
+                    <li className="list_unorder">
+                      <a href={`#section-${index + 1}`}>
+                        <div className="app__navigation-dot"></div>
+                      </a>
+                    </li>
+                  );
+                })}
+              </Scrollspy>
+            </AppBar>
+          </Box>
           <Grid container item md={11} lg={9} xl={9}>
             <Grid
               item
@@ -347,8 +398,8 @@ const Cart = (props: any) => {
                   </Gallery>
                 </Grid>
               </Grid>
-              <Gallery>
-                <ImageList
+
+              {/* <ImageList
                   cols={1}
                   sx={{
                     maxHeight: "240vh",
@@ -363,31 +414,59 @@ const Cart = (props: any) => {
                         width: 530,
                         height: 579,
                       }}
-                    >
-                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                        return (
-                          <Box
-                            sx={{
-                              width: 530,
-                              height: 579,
-                              marginTop: "20px",
-                            }}
-                          >
-                            <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
-                              {({ ref, open }) => (
-                                <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />
-                              )}
-                            </Item>
-                          </Box>
-                        );
-                      })}
-                    </Box>
-                  </ImageListItem>
-                </ImageList>
-              </Gallery>
-            </Grid>
+                    > */}
 
-            <Grid container item xs={12} sm={12} md={6} lg={6} justifyContent="center">
+              <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                <Gallery>
+                  {/* <ImageList
+                    cols={1}
+                    sx={{
+                      maxHeight: "240vh",
+                      scrollbarWidth: "none",
+                      "&::-webkit-scrollbar": { display: "none" },
+                      display: { xs: "none", sm: "block" },
+                    }}
+                  > */}
+                  {/* <Box
+                    sx={{
+                      width: 530,
+                      height: 579,
+                    }}
+                  > */}
+                  {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                    return (
+                      // <ImageListItem sx={{ paddingBottom: "25px" }}>
+                      <div
+                        id={`section-${index + 1}`}
+                        style={{
+                          width: 530,
+                          height: 579,
+                          marginTop: "20px",
+                        }}
+                      >
+                        <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
+                          {({ ref, open }) => <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />}
+                        </Item>
+                      </div>
+                      // </ImageListItem>
+                    );
+                  })}
+                  {/* </Box> */}
+                  {/* </ImageList> */}
+                </Gallery>
+              </Box>
+              {/* </ImageListItem>
+                </ImageList> */}
+            </Grid>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              sx={{ justifyContent: { xs: "center", lg: "flex-end" } }}
+            >
               <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
                 <Box
                   style={{

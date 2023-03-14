@@ -453,3 +453,33 @@ section {
 .css-5o1x4w-MuiButtonBase-root-MuiButton-root.Mui-disabled {
   background-color: #a4a4a5;
 }
+.is-current {
+  color: #313131;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  /* background-color: #cbcbcb; */
+  margin-top: 0.5rem;
+
+  transition: background-color 0.2s ease-in-out;
+}
+.is-current a div {
+  background-color: #007aff !important;
+}
+
+.app__navigation-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #cbcbcb;
+  margin-top: 0.5rem;
+
+  transition: background-color 0.2s ease-in-out;
+}
+
+.app__navigation-dot:hover {
+  background-color: #007aff;
+}
+.list_unorder {
+  list-style-type: none;
+}

@@ -50,7 +50,6 @@ const AppState = createSlice({
     toggleDialog: (state, action) => {
       let data = { ...state.showDilog };
       data[state.storeName] = false;
-      console.log(data);
 
       return {
         ...state,

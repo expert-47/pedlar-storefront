@@ -42,8 +42,9 @@ const DropdownButton = (props: Props) => {
   const applyFiltersMethod = () => {
     setClick("reset");
     let data = filterList.filter((item: any) => item.checked);
+
     setFiltersValue(
-      data.map((item: any) => item.item),
+      data.map((item: any) => JSON.parse(item.input)),
       type,
       true,
     );
@@ -52,19 +53,17 @@ const DropdownButton = (props: Props) => {
 
   const resetFilters = () => {
     setClick("reset");
-    setFiltersValue(
-      filterList.map((item: any) => item.item),
-      type,
-      false,
-    );
+    console.log("here");
+
+    setFiltersValue([], type, false);
 
     // handleClose();
   };
   const getSelectedValues = (item: any) => {
-    let index = filterList.findIndex((data: any) => data.item == item.item);
+    let index = filterList.findIndex((data: any) => data.label == item.label);
 
     let data = {
-      item: item.item,
+      ...item,
       checked: item.checked ? false : true,
     };
     let list = [...filterList];
@@ -122,21 +121,23 @@ const DropdownButton = (props: Props) => {
               <Box sx={styles.menuInnerContainer}>
                 {pageLoading && <CircularProgress color="secondary" />}
                 {filterList?.map((item: any) => {
-                  return (
-                    <FormControlLabel
-                      sx={{
-                        width: 180,
-                      }}
-                      control={
-                        <Checkbox
-                          checked={item.checked || false}
-                          sx={styles.menuCheck}
-                          onClick={(e) => getSelectedValues(item)}
-                        />
-                      }
-                      label={item?.item || ""}
-                    />
-                  );
+                  if (item.count != 0) {
+                    return (
+                      <FormControlLabel
+                        sx={{
+                          width: 180,
+                        }}
+                        control={
+                          <Checkbox
+                            checked={item.checked || false}
+                            sx={styles.menuCheck}
+                            onClick={(e) => getSelectedValues(item)}
+                          />
+                        }
+                        label={item?.label || ""}
+                      />
+                    );
+                  }
                 })}
               </Box>
             </Grid>

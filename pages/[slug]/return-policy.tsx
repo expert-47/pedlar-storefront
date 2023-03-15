@@ -111,17 +111,20 @@ export default Returnpolicy;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
   const headerData = await getUserDetail(slug);
-
-  return {
-    props: {
-      headerData: headerData ? headerData : [],
-      slug: slug || [],
-    },
-  };
-
-  return {
-    props: {
-      error: true,
-    },
-  };
+  try {
+    if (headerData?.data) {
+      return {
+        props: {
+          headerData: headerData ? headerData : [],
+          slug: slug || [],
+        },
+      };
+    } else {
+      return {
+        props: {
+          error: true,
+        },
+      };
+    }
+  } catch (error) {}
 }

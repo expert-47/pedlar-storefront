@@ -168,32 +168,34 @@ export const PedlarDrawer = (props: {
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      data?.slice(0, viewAllBrand ? 10 : data.length)?.map((item: any) => (
-                        <Grid
-                          key={item}
-                          item
-                          xs={5.5}
-                          sm={5.5}
-                          style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                          onClick={() => {
-                            closeDrawer();
+                      data?.slice(0, viewAllBrand ? 10 : data.length)?.map((item: any) => {
+                        return (
+                          <Grid
+                            key={item}
+                            item
+                            xs={5.5}
+                            sm={5.5}
+                            style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                            onClick={() => {
+                              closeDrawer();
 
-                            route.push(
-                              {
-                                pathname: `${route.basePath}/${storeName}/products`,
-                                query: { dataType: "Brands", itemValue: item.label },
-                              },
-                              `${route.basePath}/${storeName}/products`,
-                            );
-                          }}
-                        >
-                          <Typography
-                            sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
+                              route.push(
+                                {
+                                  pathname: `${route.basePath}/${storeName}/products`,
+                                  query: { dataType: "Brands", itemValue: item.label },
+                                },
+                                `${route.basePath}/${storeName}/products`,
+                              );
+                            }}
                           >
-                            {item.label}
-                          </Typography>
-                        </Grid>
-                      ))
+                            <Typography
+                              sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
+                            >
+                              {item.label}
+                            </Typography>
+                          </Grid>
+                        );
+                      })
                     )}
                     {data?.length > 10 && (
                       <Button onClick={brandsNameHanlder}>

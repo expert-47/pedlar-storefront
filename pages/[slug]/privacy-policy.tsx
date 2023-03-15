@@ -6,7 +6,7 @@ import { styles } from "../../landing-components/static-pages/privacy-policy/sty
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 const privacypolicy = (props: any) => {
-  const { slug, headerData } = props;
+  const { slug, headerData, error } = props;
   return (
     <Layout
       seo={{
@@ -16,6 +16,7 @@ const privacypolicy = (props: any) => {
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
+      error={error}
     >
       <CustomContainer>
         <Box
@@ -260,17 +261,20 @@ export default privacypolicy;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
   const headerData = await getUserDetail(slug);
-
-  return {
-    props: {
-      headerData: headerData ? headerData : [],
-      slug: slug || [],
-    },
-  };
-
-  return {
-    props: {
-      error: true,
-    },
-  };
+  try {
+    if (headerData?.data) {
+      return {
+        props: {
+          headerData: headerData ? headerData : [],
+          slug: slug || [],
+        },
+      };
+    } else {
+      return {
+        props: {
+          error: true,
+        },
+      };
+    }
+  } catch (error) {}
 }

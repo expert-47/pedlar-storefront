@@ -13,7 +13,10 @@ import { getUserDetail } from "api/restApi/getUserDetail";
 const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
-
+  const [filterData, setFilterData] = useState({
+    shopList: [],
+    vender: [],
+  });
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
   const [brandsFilterList, setBrandFilterList] = useState([]);
@@ -24,42 +27,13 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const route = useRouter();
 
   const setFiltersValue = async (brandData = [], shopData = [], type: string, applyFilters: boolean) => {
-    console.log("applyFilters", type, applyFilters, shopFilterList.length, brandsFilterList.length);
-
-    if (!applyFilters) {
-      if (type == "Brands") {
-        setBrandFilterList([]);
-        console.log("shopFilterList.length", shopFilterList.length);
-
-        return;
-      }
-
-      setShopFilterList([]);
-      if (brandsFilterList.length == 0) {
-        getFilteredData(true);
-      }
-      return;
-    }
-    if (type == "Brands" && brandData?.length == 0) {
-      if (shopFilterList.length == 0) {
-        console.log("here");
-
-        getFilteredData(true);
-      }
-    } else if (type == "Brands" && brandsFilterList.length == 0) {
+    if (shopData.length == 0 && brandData?.length == 0) {
       getFilteredData(true);
     }
-    setBrandFilterList(
-      brandData.map((item) => {
-        return { productVendor: item };
-      }),
-    );
 
-    setShopFilterList(
-      shopData.map((item) => {
-        return { productType: item };
-      }),
-    );
+    setBrandFilterList(brandData);
+
+    setShopFilterList(shopData);
   };
 
   useLayoutEffect(() => {
@@ -88,7 +62,14 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const getFilteredData = async (reset = false) => {
     try {
       setLoading(true);
+      setProductsData([]);
       const response = await getFilteredProducts(collectionId, reset ? [] : [...brandsFilterList, ...shopFilterList]);
+      let data = response?.data?.collection?.products?.filters;
+
+      let shopList = data.find((data) => data.label == "Product type");
+
+      let vender = data.find((data) => data.label == "Brand");
+      setFilterData({ shopList: shopList?.values || [], vender: vender?.values || [] });
       setProductsData(response?.data?.collection?.products?.nodes || []);
 
       setEndCursorValue((prev) => {
@@ -119,6 +100,13 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         ...brandsFilterList,
         ...shopFilterList,
       ]);
+      let data = collectionDataProducts?.filters;
+
+      let shopList = data.find((data) => data.label == "Product type");
+
+      let vender = data.find((data) => data.label == "Brand");
+      setFilterData({ shopList: shopList.values, vender: vender.values });
+
       setProductsData(collectionDataProducts?.nodes || []);
       setPageNumber(value);
 
@@ -177,6 +165,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           setFiltersValue={setFiltersValue}
           collectionId={collectionId}
           slug={slug}
+          filterData={filterData}
           shopFilterList={shopFilterList}
         />
       </Box>

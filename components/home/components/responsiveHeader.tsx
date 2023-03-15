@@ -42,7 +42,6 @@ export const ResponsiveHeader = (props: Props) => {
     toggleShopDropDown,
     loading,
   } = props;
-  // const [clickType, setClick] = useState<"apply" | "reset">("apply");
 
   const onClickBrands = (event: any) => {
     if (!openBrand) {
@@ -60,51 +59,6 @@ export const ResponsiveHeader = (props: Props) => {
     }
     handleClose();
   };
-
-  // const applyFiltersMethod = (type: any) => {
-  //   setClick("apply");
-  //   let data =
-  //     type == "Brands"
-  //       ? brandFilterData.filter((item: any) => item.checked)
-  //       : shopFilterData.filter((item: any) => item.checked);
-  //   setFiltersValue(
-  //     data.map((item: any) => item.item),
-  //     type,
-  //     true,
-  //   );
-  // };
-
-  // const resetFilters = (type: any) => {
-  //   setClick("reset");
-  //   setFiltersValue([], type, false);
-  // };
-
-  // const onClickBrand = (item: any) => {
-  //   let index = brandFilterData.findIndex((data: any) => data.item == item.item);
-
-  //   let data = {
-  //     item: item.item,
-  //     checked: item.checked ? false : true,
-  //   };
-  //   let list = [...brandFilterData];
-  //   list[index] = data;
-
-  //   setBrandFilterData(list);
-  // };
-  // const onClickShop = (item: any) => {
-  //   let index = shopFilterData.findIndex((data: any) => data.item == item.item);
-
-  //   let data = {
-  //     item: item.item,
-  //     checked: item.checked ? false : true,
-  //   };
-  //   let list = [...shopFilterData];
-  //   list[index] = data;
-
-  //   setShopFilterData(list);
-  // };
-  // const enableFliterBrand = brandFilterData.some((item: any) => item?.checked);
-  // const enableFliterCatagory = shopFilterData.some((item: any) => item?.checked);
 
   return (
     <React.Fragment>
@@ -147,15 +101,17 @@ export const ResponsiveHeader = (props: Props) => {
       <FilterHeader
         anchorEl={openBrand}
         setFiltersValue={setFiltersValue}
-        setBrandFilterData={setBrandFilterData}
-        brandFilterData={brandFilterData}
+        setFilterData={setBrandFilterData}
+        filterData={brandFilterData}
         loading={loading}
+        type={"Brands"}
       />
       <FilterHeader
+        type={"Category"}
         anchorEl={openShop}
         setFiltersValue={setFiltersValue}
-        setShopFilterData={setShopFilterData}
-        shopFilterData={shopFilterData}
+        setFilterData={setShopFilterData}
+        filterData={shopFilterData}
         loading={loading}
       />
     </React.Fragment>

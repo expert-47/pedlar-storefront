@@ -396,6 +396,17 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
               startCursor
               endCursor
             }
+            filters {
+              id
+              label
+              type
+              values {
+                id
+                label
+                count
+                input
+              }
+            }
           }
         }
       }
@@ -458,6 +469,17 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
                   startCursor
                   endCursor
               }
+              filters {
+                id
+                label
+                type
+                values {
+                    id
+                    label
+                    count
+                    input
+                }
+            }
           }
       }
   }`,

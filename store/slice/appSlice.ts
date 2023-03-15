@@ -50,8 +50,7 @@ const AppState = createSlice({
     toggleDialog: (state, action) => {
       let data = { ...state.showDilog };
       data[state.storeName] = false;
-    console.log(data);
-    
+
       return {
         ...state,
         showDilog: data,
@@ -64,9 +63,7 @@ const AppState = createSlice({
       };
     },
     clearStore: (state, action) => {
-    
-
-      return { ...state, showNavbar: true, storeName: action.payload, cartId: state.cartId,};
+      return { ...state, showNavbar: true, storeName: action.payload, cartId: state.cartId };
     },
   },
 });

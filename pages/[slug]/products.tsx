@@ -26,44 +26,34 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [pageCount, setPageCount] = useState(1);
   const route = useRouter();
 
-  const setFiltersValue = async (brandData = [], shopData = [], type: string, applyFilters: boolean) => {
-    if (shopData.length == 0 && brandData?.length == 0) {
-      getFilteredData(true);
-    }
-
+  const setFiltersValue = async (brandData = [], shopData = []) => {
+    getFilteredData([...brandData, ...shopData]);
     setBrandFilterList(brandData);
-
     setShopFilterList(shopData);
   };
 
   useLayoutEffect(() => {
     if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
       if (route.query.dataType === "Brands") {
-        setBrandFilterList([{ productVendor: route?.query.itemValue }]);
-        setShopFilterList([]);
+        let filterList = [{ productVendor: route?.query.itemValue }];
+        setFiltersValue(filterList, []);
       }
       if (route.query.dataType === "Shop") {
-        setShopFilterList([{ productType: route?.query.itemValue }]);
-        setBrandFilterList([]);
+        let filterList = [{ productType: route?.query.itemValue }];
+        setFiltersValue([], filterList);
       }
     } else {
-      getFilteredData(true);
+      getFilteredData([]);
       setShopFilterList([]);
       setBrandFilterList([]);
     }
   }, [route?.query]);
 
-  useEffect(() => {
-    if (brandsFilterList.length != 0 || shopFilterList.length != 0) {
-      getFilteredData();
-    }
-  }, [brandsFilterList, shopFilterList]);
-
-  const getFilteredData = async (reset = false) => {
+  const getFilteredData = async (filterData) => {
     try {
       setLoading(true);
       setProductsData([]);
-      const response = await getFilteredProducts(collectionId, reset ? [] : [...brandsFilterList, ...shopFilterList]);
+      const response = await getFilteredProducts(collectionId, filterData);
       let data = response?.data?.collection?.products?.filters;
 
       let shopList = data.find((data) => data.label == "Product type");
@@ -92,7 +82,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const getPaginationData = async (e, value) => {
     try {
       if (value == 1) {
-        getFilteredData();
+        getFilteredData([...brandsFilterList, ...shopFilterList]);
         return;
       }
 

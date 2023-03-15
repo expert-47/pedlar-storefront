@@ -7,17 +7,13 @@ import emailjs from "@emailjs/browser";
 
 const Brandspopup = (props: any) => {
   const [submitform, setSubmitForm] = useState(true);
-  // const formsubmission = () => {
-  //   setSubmitForm(false);
-  //   props?.isSecondModalActive(false);
-  // };
   const form = useRef();
   const formsubmission = (e: any) => {
     setSubmitForm(false);
     props?.isSecondModalActive(false);
     e.preventDefault();
 
-    emailjs.sendForm("service_2y5c7s5", "template_bjrpdiw", form.current, "eE9W4Thiy_5GA_B4N").then(
+    emailjs.sendForm("service_2y5c7s5", "template_k8u5oum", form.current, "eE9W4Thiy_5GA_B4N").then(
       (result) => {
         console.log("success", result.text);
       },

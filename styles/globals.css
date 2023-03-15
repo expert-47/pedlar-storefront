@@ -76,7 +76,7 @@
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  right: 41px;
+  right: 38px;
   width: 680px !important;
   z-index: 0;
   bottom: 40px;
@@ -88,7 +88,7 @@
   position: absolute !important;
   transform-origin: 0 0;
   left: 0px;
-  bottom: 10px;
+  bottom: 0px;
   width: 660px !important;
   z-index: 0;
 }
@@ -101,7 +101,7 @@
   }
   .marq-right {
     width: 1310px !important;
-    right: 30px;
+    right: 27px;
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -134,10 +134,10 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .marq-left {
-    width: 670px !important;
+    width: 690px !important;
   }
   .marq-right {
-    width: 670px !important;
+    width: 690px !important;
   }
 }
 
@@ -486,3 +486,19 @@ section {
 .swiper-pagination-bullet-active {
   background-color: #000 !important;
 }
+
+/* @media screen and (max-height: 320px) {
+  .css-nr60hm {
+    height: 1250px !important;
+  }
+}
+@media screen and (min-height: 375px) {
+  .css-nr60hm {
+    height: 1130px !important;
+  }
+}
+@media screen and (max-height: 425px) {
+  .css-nr60hm {
+    height: 1060px !important;
+  }
+} */

@@ -17,7 +17,7 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
         }}
         storefrontName={headerData?.data?.storefrontName}
         slug={slug}
-        collectionID={headerData?.data?.collectionId}
+        collectionId={headerData?.data?.collectionId}
       >
         <Home
           headerData={headerData?.data}

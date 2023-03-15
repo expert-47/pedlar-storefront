@@ -16,6 +16,7 @@ const TermAndCondition = (props) => {
         description: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_DESCRIPTION}`,
       }}
       storefrontName={headerData?.data?.storefrontName}
+      collectionId={headerData?.data?.collectionId}
     >
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>

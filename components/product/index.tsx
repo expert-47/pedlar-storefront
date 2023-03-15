@@ -325,6 +325,7 @@ const Cart = (props: any) => {
         description: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_DESCRIPTION1} ${newAdditionData?.title} ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_DESCRIPTION2} ${headerData?.data?.storefrontName} ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_DESCRIPTION3}`,
       }}
       storefrontName={headerData?.data?.storefrontName}
+      collectionId={headerData?.data?.collectionId}
     >
       <CustomContainer>
         <Box sx={styles.mainContainer}>

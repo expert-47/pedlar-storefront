@@ -349,7 +349,7 @@ const Cart = (props: any) => {
             >
               <Scrollspy
                 items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
-                currentClassName="is-current"
+                currentClassName="detail-page-current"
                 style={{ width: 10 }}
               >
                 {newAdditionData?.images?.nodes?.map((item: any, index: any) => {

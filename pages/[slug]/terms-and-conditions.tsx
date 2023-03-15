@@ -6,16 +6,18 @@ import { getUserDetail } from "api/restApi/getUserDetail";
 
 const TermAndCondition = (props) => {
   // let slug = props.slug;
-  const { slug, headerData } = props;
+  const { slug, headerData, error } = props;
 
   return (
     <Layout
       slug={slug}
+      error={error}
       seo={{
         title: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_TITLE}`,
         description: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_DESCRIPTION}`,
       }}
       storefrontName={headerData?.data?.storefrontName}
+      collectionId={headerData?.data?.collectionId}
     >
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>
@@ -507,17 +509,20 @@ export default TermAndCondition;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
   const headerData = await getUserDetail(slug);
-
-  return {
-    props: {
-      headerData: headerData ? headerData : [],
-      slug: slug || [],
-    },
-  };
-
-  return {
-    props: {
-      error: true,
-    },
-  };
+  try {
+    if (headerData?.data) {
+      return {
+        props: {
+          headerData: headerData ? headerData : [],
+          slug: slug || [],
+        },
+      };
+    } else {
+      return {
+        props: {
+          error: true,
+        },
+      };
+    }
+  } catch (error) {}
 }

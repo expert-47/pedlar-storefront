@@ -168,34 +168,36 @@ export const PedlarDrawer = (props: {
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      data?.data?.slice(0, viewAllBrand ? 10 : data?.data.length)?.map((item: any) => (
-                        <Grid
-                          key={item}
-                          item
-                          xs={5.5}
-                          sm={5.5}
-                          style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
-                          onClick={() => {
-                            closeDrawer();
+                      data?.slice(0, viewAllBrand ? 10 : data.length)?.map((item: any) => {
+                        return (
+                          <Grid
+                            key={item}
+                            item
+                            xs={5.5}
+                            sm={5.5}
+                            style={{ color: "black", fontWeight: "500", fontSize: "14px" }}
+                            onClick={() => {
+                              closeDrawer();
 
-                            route.push(
-                              {
-                                pathname: `${route.basePath}/${storeName}/products`,
-                                query: { dataType: "Brands", itemValue: item.vendor },
-                              },
-                              `${route.basePath}/${storeName}/products`,
-                            );
-                          }}
-                        >
-                          <Typography
-                            sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
+                              route.push(
+                                {
+                                  pathname: `${route.basePath}/${storeName}/products`,
+                                  query: { dataType: "Brands", itemValue: item.label },
+                                },
+                                `${route.basePath}/${storeName}/products`,
+                              );
+                            }}
                           >
-                            {item.vendor}
-                          </Typography>
-                        </Grid>
-                      ))
+                            <Typography
+                              sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
+                            >
+                              {item.label}
+                            </Typography>
+                          </Grid>
+                        );
+                      })
                     )}
-                    {data?.data?.length > 10 && (
+                    {data?.length > 10 && (
                       <Button onClick={brandsNameHanlder}>
                         <ListItemText
                           style={{
@@ -232,7 +234,7 @@ export const PedlarDrawer = (props: {
                     {shopListLoading ? (
                       <CircularProgress color="inherit" />
                     ) : (
-                      shopList?.data?.slice(0, viewAllShop ? 10 : shopList?.data?.length)?.map((item: any) => (
+                      shopList?.slice(0, viewAllShop ? 10 : shopList?.length)?.map((item: any) => (
                         <Grid
                           key={item}
                           item
@@ -244,7 +246,7 @@ export const PedlarDrawer = (props: {
                             route.push(
                               {
                                 pathname: `${route.basePath}/${storeName}/products`,
-                                query: { dataType: "Shop", itemValue: item.productType },
+                                query: { dataType: "Shop", itemValue: item?.label },
                               },
                               `${route.basePath}/${storeName}/products`,
                             );
@@ -253,12 +255,12 @@ export const PedlarDrawer = (props: {
                           <Typography
                             sx={{ textDecoration: "none", color: "black", fontWeight: "500", fontSize: "14px" }}
                           >
-                            {item.productType}
+                            {item.label}
                           </Typography>
                         </Grid>
                       ))
                     )}
-                    {shopList?.data?.length > 10 && (
+                    {shopList?.length > 10 && (
                       <Button onClick={onClickViewAllShop}>
                         <ListItemText
                           style={{

@@ -19,7 +19,6 @@ const Faq = (props) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
-
   return (
     <Layout
       slug={slug}
@@ -28,6 +27,7 @@ const Faq = (props) => {
         description: `${process.env.NEXT_PUBLIC_STOREFRONT_FAQ_DESCRIPTION}`,
       }}
       storefrontName={headerData?.data?.storefrontName}
+      collectionId={headerData?.data?.collectionId}
     >
       <CustomContainer>
         <Box sx={styles.MainBox}>

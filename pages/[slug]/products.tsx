@@ -143,6 +143,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     }
   }, [pageNumber, hasNextPage]);
 
+  console.log("collectionId", collectionId);
+
   return (
     <Layout
       error={error}
@@ -153,6 +155,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       storefrontName={data?.data?.storefrontName}
       slug={slug}
       productsPage={true}
+      collectionId={collectionId}
     >
       <Head>
         <title>Pedlar</title>

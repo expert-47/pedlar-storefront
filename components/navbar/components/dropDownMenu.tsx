@@ -31,7 +31,7 @@ const DropDownMenu = (props: Props) => {
     route.push(
       {
         pathname: `${route.basePath}/${storeName}/products`,
-        query: { dataType: type, itemValue: data },
+        query: { dataType: type, itemValue: data.label },
       },
       `${route.basePath}/${storeName}/products`,
     );
@@ -74,7 +74,7 @@ const DropDownMenu = (props: Props) => {
                 // left: data.length > 12 && "0 !important",
                 // l: 0,
                 borderRadius: 0,
-                width: data.length <= 6 ? "150px" : `${(data.length / 6) * 170}px`,
+                width: data?.length <= 6 ? "150px" : `${(data?.length / 6) * 170}px`,
                 //   maxWidth: "100% ",
                 //  boxShadow: "none",
                 // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
@@ -124,7 +124,7 @@ const DropDownMenu = (props: Props) => {
                             color: "black",
                           }}
                         >
-                          <Typography sx={styles.menuItems}>{data}</Typography>
+                          <Typography sx={styles.menuItems}>{data?.label}</Typography>
                         </a>
                       </Box>
                     );

@@ -7,7 +7,6 @@ import { getUserDetail } from "api/restApi/getUserDetail";
 
 const privacypolicy = (props: any) => {
   const { slug, headerData } = props;
-
   return (
     <Layout
       seo={{
@@ -16,6 +15,7 @@ const privacypolicy = (props: any) => {
       }}
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}
+      collectionId={headerData?.data?.collectionId}
     >
       <CustomContainer>
         <Box

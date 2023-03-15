@@ -474,3 +474,25 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
     console.log(error);
   }
 };
+
+export const getFliterData = gql`
+  query GetCollection($collectionId: ID!) {
+    collection(id: $collectionId) {
+      id
+
+      products(first: 18, reverse: true) {
+        filters {
+          id
+          label
+          type
+          values {
+            id
+            label
+            count
+            input
+          }
+        }
+      }
+    }
+  }
+`;

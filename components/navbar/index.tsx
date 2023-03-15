@@ -85,17 +85,9 @@ export default function Navbar(props: any) {
 
                   {props?.productsPage === true ? null : (
                     <>
-                      <DropDownMenu
-                        loading={loading}
-                        type={"Brands"}
-                        data={data ? data.data.map((item: any) => item.vendor) : []}
-                      />
+                      <DropDownMenu loading={loading} type={"Brands"} data={data || []} />
 
-                      <DropDownMenu
-                        loading={shopListLoading}
-                        type={"Shop"}
-                        data={shopList ? shopList.data.map((item: any) => item.productType) : []}
-                      />
+                      <DropDownMenu loading={shopListLoading} type={"Shop"} data={shopList || []} />
                     </>
                   )}
 

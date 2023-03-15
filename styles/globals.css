@@ -453,7 +453,8 @@ section {
 .css-5o1x4w-MuiButtonBase-root-MuiButton-root.Mui-disabled {
   background-color: #a4a4a5;
 }
-.is-current {
+
+.detail-page-current {
   color: #313131;
   width: 10px;
   height: 10px;
@@ -463,10 +464,9 @@ section {
 
   transition: background-color 0.2s ease-in-out;
 }
-.is-current a div {
+.detail-page-current a div {
   background-color: #000 !important;
 }
-
 .app__navigation-dot {
   width: 10px;
   height: 10px;

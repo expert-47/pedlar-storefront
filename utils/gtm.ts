@@ -239,7 +239,7 @@ export const productsImpressiongmtEvent = (data: any) => {
 
 export const productDetailImpressiongmtEvent = (item: any) => {
   gtmEvents({
-    event: "view_item_list",
+    event: "view_item",
     ecommerce: {
       items: [
         {

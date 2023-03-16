@@ -26,6 +26,7 @@ interface Props {
 }
 
 const CheckoutOrder = (props: Props) => {
+  const { itemData } = props;
   const [productCount, setProductCount] = useState(props?.quantity);
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
@@ -51,7 +52,7 @@ const CheckoutOrder = (props: Props) => {
         products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
         // setProductCount(quantity + 1);
-        gmtEventToAddProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity + 1 });
+        gmtEventToAddProduct(itemData);
 
         setLoadingButtonState(false);
       }
@@ -76,7 +77,7 @@ const CheckoutOrder = (props: Props) => {
   };
 
   const gmtEventToAddProduct = (data) => {
-    gtmEvents.addToCart(data);
+    gtmEvents.increaseCartProduct(data);
   };
   const gmtEventRemoveProduct = (data) => {
     gtmEvents.removeFromCart(data);
@@ -112,8 +113,6 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(props?.quantity);
   }, [props?.quantity, props.index]);
-
-  console.log("cartProducts", cartProducts);
 
   return (
     <>

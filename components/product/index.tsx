@@ -54,7 +54,7 @@ const Cart = (props: any) => {
     price: 0,
     currencyCode: "AUD",
   });
-
+  console.log("ppNewAdd", newAdditionData);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);

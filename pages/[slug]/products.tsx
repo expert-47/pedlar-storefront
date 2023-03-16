@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
 import { getFilteredProducts, getPaginationProducts } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
+import { productsImpressiongmtEvent } from "utils/gtm";
 const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
@@ -60,6 +61,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
 
       let vender = data.find((data) => data.label == "Brand");
       setFilterData({ shopList: shopList?.values || [], vender: vender?.values || [] });
+      productsImpressiongmtEvent(response?.data?.collection?.products?.nodes || []);
+
       setProductsData(response?.data?.collection?.products?.nodes || []);
 
       setEndCursorValue((prev) => {
@@ -98,6 +101,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setFilterData({ shopList: shopList.values, vender: vender.values });
 
       setProductsData(collectionDataProducts?.nodes || []);
+      productsImpressiongmtEvent(collectionDataProducts?.nodes || []);
+
       setPageNumber(value);
 
       setEndCursorValue((prv) => {
@@ -120,8 +125,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setPageCount(pageNumber + 1);
     }
   }, [pageNumber, hasNextPage]);
-
-  console.log("collectionId", collectionId);
 
   return (
     <Layout

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BannerImg from "./components/banner";
 import BrandListing from "./components/brandListing";
 import { Box, Grid, Button } from "@mui/material";
@@ -25,11 +25,12 @@ export const Home = (props: any) => {
     data.push(props?.newAdditionData.slice(i, i + 5));
   }
   const onClickShopAll = () => {
-    gtmEvents.viewPromotion(storeName, "shop all", "new additions", "3");
+    gtmEvents.selectPromission(storeName, "shop all", "new additions", "3", "abc123");
   };
   const onClickShopNow = () => {
-    gtmEvents.viewPromotion(storeName, "shop brand", "curated brands", "2");
+    gtmEvents.selectPromission(storeName, "shop brand", "curated brands", "2", "abc123");
   };
+
   return (
     <Grid>
       <BannerImg headerData={props?.headerData} />

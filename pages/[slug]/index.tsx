@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
 import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
-
+import { homeImpressiongmtEvent } from "utils/gtm";
 import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+  useEffect(() => {
+    homeImpressiongmtEvent(headerData?.data?.storefrontName);
+  }, []);
+
   return (
     <>
       <Layout

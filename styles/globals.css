@@ -487,18 +487,18 @@ section {
   background-color: #000 !important;
 }
 
-/* @media screen and (max-height: 320px) {
+/* @media screen and (max-width: 320px) {
   .css-nr60hm {
     height: 1250px !important;
   }
-}
-@media screen and (min-height: 375px) {
+} */
+ @media screen and (min-width: 375px) and (max-width: 375px) {
   .css-nr60hm {
     height: 1130px !important;
   }
-}
-@media screen and (max-height: 425px) {
+} 
+@media screen and (min-width: 425px) and (max-width: 425px) {
   .css-nr60hm {
     height: 1060px !important;
   }
-} */
+}

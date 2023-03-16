@@ -3,6 +3,7 @@
  */
 import { configureStore } from "@reduxjs/toolkit";
 import appSlice from "./appSlice";
+import tagsSlice from "./tagsSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
 import { combineReducers } from "@reduxjs/toolkit";
@@ -12,12 +13,14 @@ middleware.push(thunk);
 
 const persistConfig = {
   key: "root",
+  blacklist: ["tags"],
   version: 1,
   storage,
 };
 
 const rootReducer = combineReducers({
   app: appSlice,
+  tags: tagsSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

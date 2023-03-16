@@ -73,7 +73,6 @@ const Cart = (props: any) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-  const listInnerRef = useRef();
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0] || "");
     setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -99,9 +98,10 @@ const Cart = (props: any) => {
       } catch (error) {}
     }
   };
-  const gmtEventToAddProduct = (data) => {
+  const gmtEventToAddProduct = (data: any) => {
     gtmEvents.addToCart(data);
   };
+
   const gmtEventToBuyNow = (data) => {
     gtmEvents.beginCheckout({
       currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
@@ -173,11 +173,7 @@ const Cart = (props: any) => {
 
               await updateCartLineItem(cartId, data1?.id, quantity);
 
-              gmtEventToAddProduct({
-                ...data1,
-                quantity: quantity,
-                ...newAdditionData,
-              });
+              gmtEventToAddProduct(newAdditionData);
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
@@ -186,11 +182,7 @@ const Cart = (props: any) => {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
-          gmtEventToAddProduct({
-            ...varientData,
-            quantity: 1,
-            ...newAdditionData,
-          });
+          gmtEventToAddProduct(newAdditionData);
         }
       }
     } catch (error) {
@@ -302,6 +294,8 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
+
+  console.log("newAdditionDatanewAdditionData", newAdditionData);
   return (
     <Layout
       error={apiError}

@@ -83,6 +83,8 @@ export const removeFromCart = (data) => {
   });
 };
 export const selectItem = (item) => {
+  console.log("GMTTestingMe", item);
+
   gtmEvents({
     event: "select_item",
     ecommerce: {
@@ -181,17 +183,31 @@ export const homeImpressiongmtEvent = (storeName) => {
   });
 };
 
-export const homeProductsImpressiongmtEvent = (promotionId: "abc123", name: "shop now") => {
-  gtmEvents({
-    event: "view_item_list",
-    ecommerce: {
-      items: [
-        {
-          promotion_id: promotionId,
-          promotion_name: name,
-          index: 1,
-        },
-      ],
-    },
+export const homeProductsImpressiongmtEvent = (data: any) => {
+  data.map((item: any) => {
+    console.log("itemData", item);
+    return gtmEvents({
+      event: "view_item_list",
+      ecommerce: {
+        items: [
+          {
+            currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
+            item_name: item?.title || "", // Name or ID is required.
+            item_id: item?.id || "", //ID of the item.
+            price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+            item_brand: item?.vendor || "", // brand of the item.(this is the example value)
+            item_category: item?.productType || "", //The category to which the product belongs to.
+            // item_category2: size, //size of the product.
+            //   item_variant: color, // color of the product.
+            //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+            //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+            // index: 2, // position of the item
+            quantity: item.quantity, //quantity of the item
+            // promotion_id: "abc123",
+            // promotion_name: "shop now"
+          },
+        ],
+      },
+    });
   });
 };

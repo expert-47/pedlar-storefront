@@ -9,12 +9,15 @@ import { addProductToCart, clearStore } from "store/slice/appSlice";
 import useSwr from "swr";
 import { getCartProducts, getFilteredProductsData, getFilterData } from "api/graphql/grapgql";
 import { useQuery } from "@apollo/client";
+import { client } from "api/graphql/client";
+import { getBrandShopTags, updateTags } from "store/slice/tagsSlice";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
   slug: string;
   productsPage: boolean;
   error?: boolean;
+  collectionId: string;
 }
 export default function Layout(props: LayoutProps) {
   const { children, seo, storefrontName = "", slug = "", productsPage = "", error, collectionId } = props;
@@ -22,17 +25,18 @@ export default function Layout(props: LayoutProps) {
   const storeName = useSelector((data) => data.app.storeName);
 
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
+  const { shop, brand } = useSelector((data: any) => data.tags);
+
   const dispatch = useDispatch();
-  const { data: filterData } = useQuery(getFilterData, {
-    variables: {
-      collectionId: `gid://shopify/Collection/${collectionId}`,
-      query: [{ available: true }],
-    },
-  });
 
-  let shopList = filterData?.collection?.products?.filters?.find((data) => data.label === "Product type");
-  let data = filterData?.collection?.products?.filters?.find((data) => data.label === "Brand");
-
+  useEffect(() => {
+    const getTagsData = async () => {
+      if (shop?.length == 0 || brand?.length == 0) {
+        dispatch(getBrandShopTags(collectionId));
+      }
+    };
+    getTagsData();
+  }, []);
   const getCartList = async (value = false) => {
     if (cartId) {
       try {
@@ -55,13 +59,7 @@ export default function Layout(props: LayoutProps) {
     <Container maxWidth={false} disableGutters {...props}>
       <header>
         <NextSeo {...seo} />
-        <Navbar
-          storefrontName={storefrontName}
-          slug={slug}
-          productsPage={productsPage}
-          data={data?.values?.filter((item) => item.count != 0) || []}
-          shopList={shopList?.values.filter((item) => item.count != 0) || []}
-        />
+        <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} data={brand} shopList={shop} />
       </header>
       <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
       <footer>

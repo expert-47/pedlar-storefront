@@ -108,23 +108,87 @@ export const selectItem = (item) => {
   });
 };
 
-export const viewPromotion = (storeName, name = "shop now", creativeName = "home page banner", slot = "1") => {
+export const selectPromission = (
+  storeName,
+  name = "shop now",
+  creativeName = "home page banner",
+  slot = "1",
+  promotionId = "abc123",
+) => {
+  gtmEvents({
+    event: "select_promotion",
+    ecommerce: {
+      items: [
+        {
+          promotion_id: promotionId,
+          promotion_name: name, // name of the banner/promotion
+          creative_name: creativeName,
+          creative_slot: slot,
+          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          index: slot,
+        },
+      ],
+    },
+  });
+};
+
+export const homeImpressiongmtEvent = (storeName) => {
   gtmEvents({
     event: "view_promotion",
     ecommerce: {
       items: [
         {
-          //     item_name: "The mariah", // Name or ID is required.
-          //    item_id: "555",
-          //    item_brand: "Hannah Juneva",
-          //    item_category: "shoes",
-          //    item_list_name: "Category Page", // item list name
-          //   price: 240.0,
-          //   promotion_id: "abc123",
-          promotion_name: name, // name of the banner/promotion
-          creative_name: creativeName,
-          creative_slot: slot,
+          promotion_id: "abc123",
+          promotion_name: "shop now", // name of the banner/promotion
+          creative_name: "home page banner",
+          creative_slot: "1",
           location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          index: 1,
+        },
+      ],
+    },
+  });
+  gtmEvents({
+    event: "view_promotion",
+    ecommerce: {
+      items: [
+        {
+          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+
+          promotion_id: "abc12d3",
+          promotion_name: "shop brand", // name of the banner/promotion
+          creative_name: "curated brands",
+          creative_slot: "2",
+          index: 2,
+        },
+      ],
+    },
+  });
+  gtmEvents({
+    event: "view_promotion",
+    ecommerce: {
+      items: [
+        {
+          promotion_id: "abc12ddd3",
+          promotion_name: "shop all", // name of the banner/promotion
+          creative_name: "new additions",
+          creative_slot: "3",
+          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          index: 3,
+        },
+      ],
+    },
+  });
+};
+
+export const homeProductsImpressiongmtEvent = (promotionId: "abc123", name: "shop now") => {
+  gtmEvents({
+    event: "view_item_list",
+    ecommerce: {
+      items: [
+        {
+          promotion_id: promotionId,
+          promotion_name: name,
           index: 1,
         },
       ],

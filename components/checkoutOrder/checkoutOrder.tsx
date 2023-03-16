@@ -112,6 +112,9 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(props?.quantity);
   }, [props?.quantity, props.index]);
+
+  console.log("cartProducts", cartProducts);
+
   return (
     <>
       {loadingButtonState ? (

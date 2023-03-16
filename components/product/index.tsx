@@ -13,20 +13,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
 import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
-import PedlarImage from "components/pedlarImage";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
-import { isMobile } from "react-device-detect";
 import Scrollspy from "react-scrollspy";
 
 import {
@@ -42,6 +38,8 @@ import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/ap
 import * as gtmEvents from "utils/gtm";
 import CardComponent from "components/home/components/cardComponent";
 import LikeCardComponent from "components/home/components/likeCardComponent";
+import { productDetailImpressiongmtEvent } from "utils/gtm";
+
 import AppBar from "@mui/material/AppBar";
 
 const Cart = (props: any) => {
@@ -206,6 +204,10 @@ const Cart = (props: any) => {
     onSelectedItem();
   }, [size, color]);
 
+  useEffect(() => {
+    productDetailImpressiongmtEvent(newAdditionData);
+  }, []);
+
   const onSelectedItem = async () => {
     try {
       setError(false);
@@ -237,7 +239,6 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-  console.log({ error: error });
   const BuyNowHandler = async () => {
     const quantity = 1;
 
@@ -301,21 +302,6 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
-  console.log("listInnerRef.current", listInnerRef.current);
-
-  const handleScroll = () => {
-    console.log("working");
-    debugger;
-
-    if (listInnerRef.current) {
-      const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-      if (scrollTop + clientHeight === scrollHeight) {
-        // aour is k andr three dots ki ID get kr k display none kr dainaaa
-        console.log("working");
-      }
-    }
-  };
-
   return (
     <Layout
       error={apiError}

@@ -37,6 +37,7 @@ const CardComponent = ({
   const onClickCard = () => {
     gtmEvents.selectItem(item);
   };
+
   return (
     <Link href={{ pathname: `${path}/product/${productId}` }}>
       <Box

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
 import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";

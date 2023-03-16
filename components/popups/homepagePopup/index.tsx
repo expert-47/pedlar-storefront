@@ -23,8 +23,7 @@ export default function HomepagePopup() {
   const dispatch = useDispatch();
   const { storeName } = useSelector((state: any) => state.app);
 
-  const  showDilog  = useSelector((state: any) => state.app.showDilog[storeName]) ==false? false : true;
-console.log("showDilog", storeName, showDilog);
+  const showDilog = useSelector((state: any) => state.app.showDilog[storeName]) == false ? false : true;
 
   const handleClose = () => {
     dispatch(toggleDialog(false));

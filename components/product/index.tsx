@@ -34,10 +34,9 @@ import {
   checkoutCartDetails,
 } from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
+import { addProductToCart, updateCartId } from "store/slice/appSlice";
 import * as gtmEvents from "utils/gtm";
 import CardComponent from "components/home/components/cardComponent";
-import LikeCardComponent from "components/home/components/likeCardComponent";
 import { productDetailImpressiongmtEvent } from "utils/gtm";
 
 import AppBar from "@mui/material/AppBar";
@@ -295,7 +294,6 @@ const Cart = (props: any) => {
     pagination: true,
   };
 
-  console.log("newAdditionDatanewAdditionData", newAdditionData);
   return (
     <Layout
       error={apiError}

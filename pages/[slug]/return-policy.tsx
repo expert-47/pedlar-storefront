@@ -9,8 +9,6 @@ import { styles } from "../../landing-components/static-pages/return-policy/styl
 const Returnpolicy = (props: any) => {
   const { slug, headerData } = props;
 
-  console.log("headerDataCollectionid", headerData?.data?.collectionId);
-
   return (
     <Layout
       seo={{

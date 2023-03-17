@@ -70,7 +70,7 @@ const CheckoutOrder = (props: Props) => {
       );
 
       setLoadingButtonState(false);
-      gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: 0 });
+      gmtEventRemoveProduct(itemData);
     } catch (error) {
       setLoadingButtonState(false);
     }
@@ -89,7 +89,7 @@ const CheckoutOrder = (props: Props) => {
       setLoadingButtonState(true);
 
       await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
-      gmtEventRemoveProduct({ ...props?.itemData, ...props?.itemData?.merchandise, quantity: quantity - 1 });
+      gmtEventRemoveProduct(itemData);
       if (quantity - 1 == 0) {
         dispatch(
           addProductToCart({ products: cartProducts.filter((item, index) => index != props.index), showCart: true }),
@@ -113,6 +113,8 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(props?.quantity);
   }, [props?.quantity, props.index]);
+
+  console.log("gtmEvents", gtmEvents);
 
   return (
     <>

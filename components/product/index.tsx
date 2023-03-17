@@ -54,7 +54,6 @@ const Cart = (props: any) => {
     price: 0,
     currencyCode: "AUD",
   });
-  console.log("ppNewAdd", newAdditionData);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -102,22 +101,7 @@ const Cart = (props: any) => {
   };
 
   const gmtEventToBuyNow = (data) => {
-    gtmEvents.beginCheckout({
-      currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
-      item_name: data?.title || "", // Name or ID is required.
-      item_id: data?.id || "", //ID of the item.
-      price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
-      item_brand: data?.vendor || "", // brand of the item.(this is the example value)
-      item_category: data?.productType || "", //The category to which the product belongs to.
-      item_category2: size, //size of the product.
-      item_variant: color, // color of the product.
-      //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-      //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-      // index: 2, // position of the item
-      quantity: data.quantity, //quantity of the item
-      // promotion_id: "abc123",
-      // promotion_name: "shop now"
-    });
+    gtmEvents.buyNowbeginCheckout(data);
   };
   const checkAvailabilityOnPageLoad = async () => {
     try {

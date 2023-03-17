@@ -103,6 +103,7 @@ const CartDrawer = () => {
       : cartProducts.length == 1
       ? Number(cartProducts[0].quantity)
       : 0;
+
   return (
     <Drawer
       anchor="right"

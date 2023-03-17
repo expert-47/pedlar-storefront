@@ -103,11 +103,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         ...brandsFilterList,
         ...shopFilterList,
       ]);
-      let data = collectionDataProducts?.filters;
 
-      let shopList = data.find((data) => data.label == "Product type");
-
-      let vender = data.find((data) => data.label == "Brand");
       setProductsData(collectionDataProducts?.nodes || []);
       productsImpressiongmtEvent(collectionDataProducts?.nodes || []);
 

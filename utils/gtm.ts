@@ -203,7 +203,7 @@ export const homeImpressiongmtEvent = (storeName) => {
 };
 
 export const homeProductsImpressiongmtEvent = (data: any) => {
-  data.map((item: any) => {
+  data?.map((item: any) => {
     return gtmEvents({
       event: "view_item_list",
       ecommerce: {

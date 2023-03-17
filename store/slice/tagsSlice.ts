@@ -14,7 +14,6 @@ export const getBrandShopTags = (collectionId) => {
         query: getFilterData,
         variables: { collectionId: `gid://shopify/Collection/${collectionId}`, query: [{ available: true }] },
       });
-      console.log("filterData?.collection?.products?.filters", filterData.data?.collection?.products);
 
       let shop = filterData?.data?.collection?.products?.filters?.find((data) => data.label === "Product type");
       let brand = filterData?.data?.collection?.products?.filters?.find((data) => data.label === "Brand");

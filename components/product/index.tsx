@@ -34,10 +34,9 @@ import {
   checkoutCartDetails,
 } from "api/graphql/grapgql";
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart, updateCartId, cartDrawerToggle } from "store/slice/appSlice";
+import { addProductToCart, updateCartId } from "store/slice/appSlice";
 import * as gtmEvents from "utils/gtm";
 import CardComponent from "components/home/components/cardComponent";
-import LikeCardComponent from "components/home/components/likeCardComponent";
 import { productDetailImpressiongmtEvent } from "utils/gtm";
 
 import AppBar from "@mui/material/AppBar";
@@ -55,7 +54,7 @@ const Cart = (props: any) => {
     price: 0,
     currencyCode: "AUD",
   });
-
+  console.log("ppNewAdd", newAdditionData);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -73,7 +72,6 @@ const Cart = (props: any) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-  const listInnerRef = useRef();
   useEffect(() => {
     setSize(newAdditionData?.options[0]?.values[0] || "");
     setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -99,9 +97,10 @@ const Cart = (props: any) => {
       } catch (error) {}
     }
   };
-  const gmtEventToAddProduct = (data) => {
+  const gmtEventToAddProduct = (data: any) => {
     gtmEvents.addToCart(data);
   };
+
   const gmtEventToBuyNow = (data) => {
     gtmEvents.beginCheckout({
       currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
@@ -173,11 +172,7 @@ const Cart = (props: any) => {
 
               await updateCartLineItem(cartId, data1?.id, quantity);
 
-              gmtEventToAddProduct({
-                ...data1,
-                quantity: quantity,
-                ...newAdditionData,
-              });
+              gmtEventToAddProduct(newAdditionData);
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
@@ -186,11 +181,7 @@ const Cart = (props: any) => {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
-          gmtEventToAddProduct({
-            ...varientData,
-            quantity: 1,
-            ...newAdditionData,
-          });
+          gmtEventToAddProduct(newAdditionData);
         }
       }
     } catch (error) {
@@ -302,6 +293,7 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
+
   return (
     <Layout
       error={apiError}

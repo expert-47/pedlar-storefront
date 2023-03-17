@@ -49,7 +49,7 @@ export const addToCart = (data) => {
         //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
         //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
         // index: 2, // position of the item
-        quantity: data.quantity, //quantity of the item
+        quantity: data?.quantity, //quantity of the item
         // promotion_id: "abc123",
         // promotion_name: "shop now"
       },
@@ -74,7 +74,7 @@ export const removeFromCart = (data) => {
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
-          quantity: data.quantity, //quantity of the item
+          quantity: data?.quantity, //quantity of the item
           // promotion_id: "abc123",
           // promotion_name: "shop now"
         },
@@ -99,7 +99,7 @@ export const selectItem = (item) => {
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
-          quantity: item.quantity, //quantity of the item
+          quantity: item?.quantity, //quantity of the item
           // promotion_id: "abc123",
           // promotion_name: "shop now"
         },
@@ -199,7 +199,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             // index: 2, // position of the item
-            quantity: item.quantity, //quantity of the item
+            quantity: item?.quantity, //quantity of the item
             // promotion_id: "abc123",
             // promotion_name: "shop now"
           },
@@ -227,7 +227,7 @@ export const productsImpressiongmtEvent = (data: any) => {
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             // index: 2, // position of the item
-            quantity: item.quantity, //quantity of the item
+            quantity: item?.quantity, //quantity of the item
             // promotion_id: "abc123",
             // promotion_name: "shop now"
           },
@@ -254,11 +254,35 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
-          quantity: item.quantity, //quantity of the item
+          quantity: item?.quantity, //quantity of the item
           // promotion_id: "abc123",
           // promotion_name: "shop now"
         },
       ],
+    },
+  });
+};
+
+export const increaseCartProduct = (data) => {
+  gtmEvents({
+    event: "add_to_cart",
+    ecommerce: {
+      items: {
+        currency: data?.merchandise?.price?.currencyCode || "", // Currency
+        item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
+        item_id: data?.id || "", //ID of the item.
+        price: data?.merchandise?.price?.amount || "", //total price of the item.
+        item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
+        // item_category: data?.productType || "", //The category to which the product belongs to.
+        // item_category2: data?.size || "", //size of the product.
+        // item_variant: data?.size || "", // color of the product.
+        //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+        //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+        // index: 2, // position of the item
+        quantity: data?.quantity, //quantity of the item
+        // promotion_id: "abc123",
+        // promotion_name: "shop now"
+      },
     },
   });
 };

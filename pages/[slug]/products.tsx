@@ -29,8 +29,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
 
   const setFiltersValue = async (brandData = [], shopData = []) => {
     getFilteredData([...brandData, ...shopData]);
-    setBrandFilterList(brandData);
-    setShopFilterList(shopData);
+    // setBrandFilterList(brandData);
+    // setShopFilterList(shopData);
   };
 
   useLayoutEffect(() => {
@@ -61,6 +61,16 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
 
       let vender = data.find((data) => data.label == "Brand");
       setFilterData({ shopList: shopList?.values || [], vender: vender?.values || [] });
+      let brandsFilter =
+        filterData.filter(
+          (item) => vender?.values.findIndex((i) => i.label == item?.productVendor && i.count != 0) != -1,
+        ) || [];
+      setBrandFilterList(brandsFilter);
+      let shopFilter =
+        filterData.filter(
+          (item) => shopList?.values.findIndex((i) => i.label == item?.productType && i.count != 0) != -1,
+        ) || [];
+      setShopFilterList(shopFilter);
       productsImpressiongmtEvent(response?.data?.collection?.products?.nodes || []);
 
       setProductsData(response?.data?.collection?.products?.nodes || []);
@@ -93,12 +103,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         ...brandsFilterList,
         ...shopFilterList,
       ]);
-      let data = collectionDataProducts?.filters;
-
-      let shopList = data.find((data) => data.label == "Product type");
-
-      let vender = data.find((data) => data.label == "Brand");
-      setFilterData({ shopList: shopList.values, vender: vender.values });
 
       setProductsData(collectionDataProducts?.nodes || []);
       productsImpressiongmtEvent(collectionDataProducts?.nodes || []);

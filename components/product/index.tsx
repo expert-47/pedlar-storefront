@@ -313,6 +313,7 @@ const Cart = (props: any) => {
                 items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
                 currentClassName="detail-page-current"
                 style={{ width: 10 }}
+                offset={-300}
               >
                 {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                   return (

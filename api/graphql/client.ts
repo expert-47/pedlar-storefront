@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 const headers: any = {
-  "X-Shopify-Storefront-Access-Token": "539c0fd31464cd8d090d295cfca2fb7f",
+  "X-Shopify-Storefront-Access-Token": "2c5cf3b924c90e78a67a460aa46d7d7c",
 };
 
 export const client = new ApolloClient({

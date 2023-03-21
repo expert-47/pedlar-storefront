@@ -304,7 +304,7 @@ const Cart = (props: any) => {
             <AppBar
               position="sticky"
               sx={{
-                top: "200px",
+                top: "350px",
                 boxShadow: "none",
                 zIndex: "5",
               }}
@@ -489,7 +489,10 @@ const Cart = (props: any) => {
                         </Typography>
                       </AccordionSummary>
                       <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>{newAdditionData?.description}</Typography>
+                        <Typography
+                          sx={styles.descriptionTypography}
+                          dangerouslySetInnerHTML={{ __html: newAdditionData?.description }}
+                        ></Typography>
                       </AccordionDetails>
                     </Accordion>
                     <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")} elevation={0}>

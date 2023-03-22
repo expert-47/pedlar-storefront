@@ -36,7 +36,7 @@ const TextBox = (props: any) => {
       <Typography sx={styles.bannerText}>
         {props?.headerData?.storefrontDescription
           ? props?.headerData?.storefrontDescription
-          : "Hi honeys! I’ve worked closely with some of my fave brands to curate my own store! All items are shipped out directly from each brand. I hope you love what I've put together."}
+          : "Welcome to my Pedlar Store! Here is a collection of my favourite products from my favourite brands. Have a browse and enjoy."}
       </Typography>
       <Grid container item xs={10} sm={10} md={10} lg={12} style={{ display: "flex", flexDirection: "column" }}>
         {props?.headerData?.instagramLink && instaNameLink[1] != "" && (

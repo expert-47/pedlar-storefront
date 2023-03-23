@@ -28,6 +28,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
             paddingLeft: { xs: "5px", sm: "5px" },
             paddingRight: { xs: "5px", sm: "5px" },
             justifyContent: "flex-start",
+            margin: "0px auto 0px auto",
           }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
@@ -43,7 +44,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                   lg={4}
                   xl={4}
                   key={item?.collectionId}
-                  sx={{ justifyContent: "space-evenly" }}
+                  sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent
                     width={{ xs: "150px", sm: 250, md: 320, lg: 344 }}

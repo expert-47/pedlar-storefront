@@ -19,11 +19,6 @@ export const Home = (props: any) => {
   const slug = router?.query;
   const storeName = useSelector((data: any) => data.app.storeName);
 
-  const data = [];
-
-  for (let i = 0; i < props?.newAdditionData?.length; i = i + 5) {
-    data.push(props?.newAdditionData.slice(i, i + 5));
-  }
   const onClickShopAll = () => {
     gtmEvents.selectPromission(storeName, "shop all", "new additions", "3", "abc123");
   };

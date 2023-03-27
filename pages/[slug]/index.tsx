@@ -10,7 +10,7 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
   useEffect(() => {
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
-  }, []);
+  }, [newAdditionData]);
 
   return (
     <>

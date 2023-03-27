@@ -61,7 +61,7 @@ const Cart = (props: any) => {
   const route = useRouter();
   const slugValue = route.query.slug;
   let path = getStoreName(route);
-  const ref = useRef();
+
   const storeName = useSelector((data: any) => data.app.storeName);
 
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
@@ -72,12 +72,9 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    setSize(newAdditionData?.options[0]?.values[0] || "");
+    setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
     setColor(newAdditionData?.options[1]?.values[0] || "");
-  }, [route]);
-  useEffect(() => {
-    // setError(false);
-  }, [cartProducts]);
+  }, [newAdditionData]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
@@ -176,12 +173,14 @@ const Cart = (props: any) => {
     }
   };
   useEffect(() => {
-    onSelectedItem();
+    if (size != "" && color != "") {
+      onSelectedItem();
+    }
   }, [size, color]);
 
   useEffect(() => {
     productDetailImpressiongmtEvent(newAdditionData);
-  }, []);
+  }, [size, color]);
 
   const onSelectedItem = async () => {
     try {

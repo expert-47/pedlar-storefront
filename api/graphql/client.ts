@@ -5,6 +5,8 @@ const headers: any = {
 
 export const client = new ApolloClient({
   uri: "https://pedlar-development.myshopify.com/api/2022-10/graphql.json",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    resultCaching: false,
+  }),
   headers: headers,
 });

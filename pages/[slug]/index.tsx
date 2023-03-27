@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
 import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
@@ -6,11 +6,25 @@ import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gt
 import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
-export default function index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+export default function Index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
+  const [newAdditionsLatest, setnewAdditionsLatest] = useState();
   useEffect(() => {
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
+    getNewAdditionsData();
+  
   }, []);
+
+  const getNewAdditionsData = async () =>{
+
+const numberofProducts = 6;
+
+      const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    const userData = data?.data?.collection?.products?.nodes || [];
+
+    setnewAdditionsLatest(userData);
+
+  };
 
   return (
     <>
@@ -26,7 +40,9 @@ export default function index({ headerData, newAdditionData, slug, curatedBrands
       >
         <Home
           headerData={headerData?.data}
-          newAdditionData={newAdditionData}
+          // newAdditionData={newAdditionData}
+          newAdditionData={newAdditionsLatest}
+
           curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
         />
       </Layout>

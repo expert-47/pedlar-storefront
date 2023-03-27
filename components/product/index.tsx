@@ -72,17 +72,22 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
+    if(newAdditionData?.options){
     setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
     setColor(newAdditionData?.options[1]?.values[0] || "");
-  }, [newAdditionData]);
+     onSelectedItem(newAdditionData?.options[0]?.values[0] || "Default Title", newAdditionData?.options[1]?.values[0] || "");
+ } }, [newAdditionData ,route]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
+    onSelectedItem(value,undefined);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
+    onSelectedItem(undefined,value);
+
   };
   // add to cart method
   const getCartList = async (value = false) => {
@@ -100,27 +105,7 @@ const Cart = (props: any) => {
   const gmtEventToBuyNow = (data) => {
     gtmEvents.buyNowbeginCheckout(data);
   };
-  const checkAvailabilityOnPageLoad = async () => {
-    try {
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        size,
-        color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
-
-      const varientData = variant?.data?.product?.variantBySelectedOptions;
-      if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
-        setError(true);
-        setErrorMessage("This item is currently out of stock");
-      }
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    checkAvailabilityOnPageLoad();
-  }, []);
+  
 
   const addToCartButton = async () => {
     try {
@@ -172,25 +157,22 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    if (size != "" && color != "") {
-      onSelectedItem();
-    }
-  }, [size, color]);
+  
 
   useEffect(() => {
     productDetailImpressiongmtEvent(newAdditionData);
   }, [size, color]);
 
-  const onSelectedItem = async () => {
+  const onSelectedItem = async (sizeValue =undefined, colorValue =undefined) => {
     try {
+      
       setError(false);
       setErrorMessage("");
       setLoading(true);
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
-        size,
-        color,
+      sizeValue !=undefined? sizeValue:  size,
+       colorValue != undefined ?colorValue: color,
         newAdditionData?.options[0]?.name,
         newAdditionData?.options[1]?.name,
       );

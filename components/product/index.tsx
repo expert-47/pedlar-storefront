@@ -11,6 +11,7 @@ import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -40,6 +41,7 @@ import CardComponent from "components/home/components/cardComponent";
 import { productDetailImpressiongmtEvent } from "utils/gtm";
 
 import AppBar from "@mui/material/AppBar";
+import Image from "next/image";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -49,7 +51,6 @@ const Cart = (props: any) => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [loader, setLoader] = useState(false);
 
   const [price, setPrice] = useState({
     price: 0,
@@ -164,9 +165,6 @@ const Cart = (props: any) => {
   useEffect(() => {
     productDetailImpressiongmtEvent(newAdditionData);
   }, [size, color]);
-  useEffect(() => {
-    // setLoader(true);
-  }, [newAdditionData]);
 
   const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
     try {
@@ -359,17 +357,19 @@ const Cart = (props: any) => {
                           marginTop: "20px",
                         }}
                       >
-                        {loader ? (
-                          <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <CircularProgress color="secondary" />
-                          </Grid>
-                        ) : (
-                          <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
-                            {({ ref, open }) => (
-                              <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />
-                            )}
-                          </Item>
-                        )}
+                        <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
+                          {({ ref, open }) => (
+                            <div onClick={open} ref={ref}>
+                              <Image
+                                src={item?.url}
+                                width={530}
+                                height={579}
+                                placeholder="blur"
+                                blurDataURL="/loaderShim.png"
+                              />
+                            </div>
+                          )}
+                        </Item>
                       </div>
                     );
                   })}

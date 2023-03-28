@@ -74,6 +74,10 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    productDetailImpressiongmtEvent(newAdditionData);
+>>>>>>> develop
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -162,10 +166,13 @@ const Cart = (props: any) => {
     }
   };
 
+<<<<<<< HEAD
   useEffect(() => {
     productDetailImpressiongmtEvent(newAdditionData);
   }, [size, color]);
 
+=======
+>>>>>>> develop
   const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
     try {
       setError(false);
@@ -222,7 +229,7 @@ const Cart = (props: any) => {
           const response = await checkoutCartDetails(cartId);
 
           window.open(response?.data?.cart?.checkoutUrl, "_self");
-          gmtEventToBuyNow({ ...newAdditionData });
+          gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
         } else {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
           if (data1) {
@@ -230,18 +237,20 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              await updateCartLineItem(cartId, data1?.id, quantity);
-              const response = await checkoutCartDetails(cartId);
+              let data = await updateCartLineItem(cartId, data1?.id, quantity);
+              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || []);
 
+              const response = await checkoutCartDetails(cartId);
               window.open(response?.data?.cart?.checkoutUrl, "_self");
-              gmtEventToBuyNow({ ...newAdditionData });
             }
           } else {
-            await addToCartLineItem(cartId, varientData?.id, quantity);
+            let data = await addToCartLineItem(cartId, varientData?.id, quantity);
+
+            gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || []);
+
             const response = await checkoutCartDetails(cartId);
 
             window.open(response?.data?.cart?.checkoutUrl, "_self");
-            gmtEventToBuyNow({ ...newAdditionData });
           }
         }
       }

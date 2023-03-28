@@ -25,7 +25,9 @@ export const beginCheckout = (item: any) => {
           {
             currency: data?.merchandise?.price?.currencyCode || "", // Currency
             item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
-            item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
+            item_id: data?.merchandise?.id
+              ? data?.merchandise?.id.split("/")[data?.merchandise?.id.split("/").length - 1]
+              : "", //ID of the item.
             price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
             item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
             // item_category: data?.productType || "", //The category to which the product belongs to.
@@ -85,7 +87,9 @@ export const removeFromCart = (data) => {
         {
           currency: data?.merchandise?.price?.currencyCode || "", // Currency
           item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
-          item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
+          item_id: data?.merchandise?.id
+            ? data.merchandise?.id.split("/")[data.merchandise?.id.split("/").length - 1]
+            : "", //ID of the item.
           price: data?.merchandise?.price?.amount || "", //total price of the item.
           item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
           // item_category: data?.productType || "", //The category to which the product belongs to.

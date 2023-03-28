@@ -1,6 +1,3 @@
-import { AnyARecord } from "dns";
-import { event } from "nextjs-google-analytics-gtm";
-
 export const gtmEvents = (data: any) => {
   interface PageEventProps {
     event: string;
@@ -25,8 +22,8 @@ export const beginCheckout = (item: any) => {
           {
             currency: data?.merchandise?.price?.currencyCode || "", // Currency
             item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
-            item_id: data?.merchandise?.id
-              ? data?.merchandise?.id.split("/")[data?.merchandise?.id.split("/").length - 1]
+            item_id: data?.merchandise?.product?.id
+              ? data?.merchandise?.product?.id.split("/")[data?.merchandise?.product?.id.split("/").length - 1]
               : "", //ID of the item.
             price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
             item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
@@ -46,11 +43,32 @@ export const beginCheckout = (item: any) => {
   });
 };
 
-export const viewCart = (data) => {
+export const viewCart = (items) => {
+  console.log("items", items);
+
+  let item = items.map((data) => {
+    return {
+      currency: data?.merchandise?.price?.currencyCode || "", // Currency
+      item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
+      item_id: data?.merchandise?.product?.id
+        ? data?.merchandise?.product?.id.split("/")[data?.merchandise?.product?.id.split("/").length - 1]
+        : "", //ID of the item.
+      price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
+      item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
+      // item_category: data?.productType || "", //The category to which the product belongs to.
+      // item_category2: data?.size || "", //size of the product.
+      // item_variant: data?.size || "", // color of the product.
+      //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+      //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
+      // index: 2, // position of the item
+      quantity: data?.quantity, //quantity of the item
+      // promotion_id: "abc123",
+    };
+  });
   gtmEvents({
     event: "view_cart",
     ecommerce: {
-      items: data,
+      items: item,
     },
   });
 };
@@ -63,7 +81,7 @@ export const addToCart = (data) => {
         currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
         item_name: data?.title || "", // Name or ID is required.
         item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
-        price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+        price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
         item_brand: data?.vendor || "", // brand of the item.(this is the example value)
         item_category: data?.productType || "", //The category to which the product belongs to.
         item_category2: data?.size || "", //size of the product.
@@ -90,7 +108,7 @@ export const removeFromCart = (data) => {
           item_id: data?.merchandise?.id
             ? data.merchandise?.id.split("/")[data.merchandise?.id.split("/").length - 1]
             : "", //ID of the item.
-          price: data?.merchandise?.price?.amount || "", //total price of the item.
+          price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
           item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
           // item_category: data?.productType || "", //The category to which the product belongs to.
           // item_category2: data?.size || "", //size of the product.
@@ -115,7 +133,7 @@ export const selectItem = (item) => {
           currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
           item_name: item?.title || "", // Name or ID is required.
           item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
-          price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+          price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           item_category: item?.productType || "", //The category to which the product belongs to.
           // item_category2: size, //size of the product.
@@ -123,7 +141,7 @@ export const selectItem = (item) => {
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
-          quantity: item?.quantity, //quantity of the item
+          quantity: item?.totalInventory, //quantity of the item
           // promotion_id: "abc123",
           // promotion_name: "shop now"
         },
@@ -206,6 +224,8 @@ export const homeImpressiongmtEvent = (storeName) => {
 };
 
 export const homeProductsImpressiongmtEvent = (data: any) => {
+  console.log("data", data);
+
   data?.map((item: any) => {
     return gtmEvents({
       event: "view_item_list",
@@ -223,7 +243,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             // index: 2, // position of the item
-            quantity: item?.quantity, //quantity of the item
+            quantity: item?.totalInventory, //quantity of the item
             // promotion_id: "abc123",
             // promotion_name: "shop now"
           },
@@ -251,7 +271,7 @@ export const productsImpressiongmtEvent = (data: any) => {
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             // index: 2, // position of the item
-            quantity: item?.quantity, //quantity of the item
+            quantity: item?.totalInventory, //quantity of the item
             // promotion_id: "abc123",
             // promotion_name: "shop now"
           },
@@ -278,7 +298,7 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
-          quantity: item?.quantity, //quantity of the item
+          quantity: item?.totalInventory, //quantity of the item
           // promotion_id: "abc123",
           // promotion_name: "shop now"
         },
@@ -319,7 +339,7 @@ export const buyNowbeginCheckout = (data: any) => {
         {
           currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
           item_name: data?.title || "", // Name or ID is required.
-          item_id: data?.id || "", //ID of the item.
+          item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
           price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
           item_category: data?.productType || "", //The category to which the product belongs to.

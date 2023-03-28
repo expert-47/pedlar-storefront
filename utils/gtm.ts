@@ -25,8 +25,8 @@ export const beginCheckout = (item: any) => {
           {
             currency: data?.merchandise?.price?.currencyCode || "", // Currency
             item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
-            item_id: data?.id || "", //ID of the item.
-            price: data?.merchandise?.price?.amount || "", //total price of the item.
+            item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
+            price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
             item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
             // item_category: data?.productType || "", //The category to which the product belongs to.
             // item_category2: data?.size || "", //size of the product.
@@ -60,7 +60,7 @@ export const addToCart = (data) => {
       items: {
         currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
         item_name: data?.title || "", // Name or ID is required.
-        item_id: data?.id || "", //ID of the item.
+        item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
         price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
         item_brand: data?.vendor || "", // brand of the item.(this is the example value)
         item_category: data?.productType || "", //The category to which the product belongs to.
@@ -78,7 +78,6 @@ export const addToCart = (data) => {
 };
 
 export const removeFromCart = (data) => {
-  console.log("GTMREMOVEDATA", data);
   gtmEvents({
     event: "remove_from_cart",
     ecommerce: {
@@ -86,7 +85,7 @@ export const removeFromCart = (data) => {
         {
           currency: data?.merchandise?.price?.currencyCode || "", // Currency
           item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
-          item_id: data?.id || "", //ID of the item.
+          item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
           price: data?.merchandise?.price?.amount || "", //total price of the item.
           item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
           // item_category: data?.productType || "", //The category to which the product belongs to.
@@ -111,7 +110,7 @@ export const selectItem = (item) => {
         {
           currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
           item_name: item?.title || "", // Name or ID is required.
-          item_id: item?.id || "", //ID of the item.
+          item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
           price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           item_category: item?.productType || "", //The category to which the product belongs to.
@@ -211,8 +210,8 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
           {
             currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
             item_name: item?.title || "", // Name or ID is required.
-            item_id: item?.id || "", //ID of the item.
-            price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+            item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
+            price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
             item_category: item?.productType || "", //The category to which the product belongs to.
             // item_category2: size, //size of the product.
@@ -239,8 +238,8 @@ export const productsImpressiongmtEvent = (data: any) => {
           {
             currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
             item_name: item?.title || "", // Name or ID is required.
-            item_id: item?.id || "", //ID of the item.
-            price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+            item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
+            price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
             item_category: item?.productType || "", //The category to which the product belongs to.
             // item_category2: size, //size of the product.
@@ -266,8 +265,8 @@ export const productDetailImpressiongmtEvent = (item: any) => {
         {
           currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
           item_name: item?.title || "", // Name or ID is required.
-          item_id: item?.id || "", //ID of the item.
-          price: item?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+          item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
+          price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           item_category: item?.productType || "", //The category to which the product belongs to.
           // item_category2: size, //size of the product.
@@ -291,8 +290,8 @@ export const increaseCartProduct = (data) => {
       items: {
         currency: data?.merchandise?.price?.currencyCode || "", // Currency
         item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
-        item_id: data?.id || "", //ID of the item.
-        price: data?.merchandise?.price?.amount || "", //total price of the item.
+        item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
+        price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
         item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
         // item_category: data?.productType || "", //The category to which the product belongs to.
         // item_category2: data?.size || "", //size of the product.
@@ -317,7 +316,7 @@ export const buyNowbeginCheckout = (data: any) => {
           currency: data?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
           item_name: data?.title || "", // Name or ID is required.
           item_id: data?.id || "", //ID of the item.
-          price: data?.priceRange?.minVariantPrice?.amount || "", //total price of the item.
+          price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
           item_category: data?.productType || "", //The category to which the product belongs to.
           //item_category2: size, //size of the product.

@@ -74,10 +74,7 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-<<<<<<< HEAD
-=======
     productDetailImpressiongmtEvent(newAdditionData);
->>>>>>> develop
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");

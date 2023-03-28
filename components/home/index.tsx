@@ -20,10 +20,10 @@ export const Home = (props: any) => {
   const storeName = useSelector((data: any) => data.app.storeName);
 
   const onClickShopAll = () => {
-    gtmEvents.selectPromission(storeName, "shop all", "new additions", "3", "abc123");
+    gtmEvents.selectPromission(storeName, "shop all", "new additions", "3", "abc12ddd3");
   };
   const onClickShopNow = () => {
-    gtmEvents.selectPromission(storeName, "shop brand", "curated brands", "2", "abc123");
+    gtmEvents.selectPromission(storeName, "shop brand", "curated brands", "2", "abc12d3");
   };
 
   return (

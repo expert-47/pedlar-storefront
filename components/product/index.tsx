@@ -49,6 +49,7 @@ const Cart = (props: any) => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const [price, setPrice] = useState({
     price: 0,
@@ -72,22 +73,25 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    if(newAdditionData?.options){
-    setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
-    setColor(newAdditionData?.options[1]?.values[0] || "");
-     onSelectedItem(newAdditionData?.options[0]?.values[0] || "Default Title", newAdditionData?.options[1]?.values[0] || "");
- } }, [newAdditionData ,route]);
+    if (newAdditionData?.options) {
+      setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
+      setColor(newAdditionData?.options[1]?.values[0] || "");
+      onSelectedItem(
+        newAdditionData?.options[0]?.values[0] || "Default Title",
+        newAdditionData?.options[1]?.values[0] || "",
+      );
+    }
+  }, [newAdditionData, route]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
-    onSelectedItem(value,undefined);
+    onSelectedItem(value, undefined);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
-    onSelectedItem(undefined,value);
-
+    onSelectedItem(undefined, value);
   };
   // add to cart method
   const getCartList = async (value = false) => {
@@ -105,7 +109,6 @@ const Cart = (props: any) => {
   const gmtEventToBuyNow = (data) => {
     gtmEvents.buyNowbeginCheckout(data);
   };
-  
 
   const addToCartButton = async () => {
     try {
@@ -157,22 +160,23 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     productDetailImpressiongmtEvent(newAdditionData);
   }, [size, color]);
+  useEffect(() => {
+    // setLoader(true);
+  }, [newAdditionData]);
 
-  const onSelectedItem = async (sizeValue =undefined, colorValue =undefined) => {
+  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
     try {
-      
       setError(false);
       setErrorMessage("");
       setLoading(true);
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
-      sizeValue !=undefined? sizeValue:  size,
-       colorValue != undefined ?colorValue: color,
+        sizeValue != undefined ? sizeValue : size,
+        colorValue != undefined ? colorValue : color,
         newAdditionData?.options[0]?.name,
         newAdditionData?.options[1]?.name,
       );
@@ -258,7 +262,6 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
-
   return (
     <Layout
       error={apiError}
@@ -344,43 +347,10 @@ const Cart = (props: any) => {
                 </Grid>
               </Grid>
 
-              {/* <ImageList
-                  cols={1}
-                  sx={{
-                    maxHeight: "240vh",
-                    scrollbarWidth: "none",
-                    "&::-webkit-scrollbar": { display: "none" },
-                    display: { xs: "none", sm: "block" },
-                  }}
-                >
-                  <ImageListItem sx={{ paddingBottom: "25px" }}>
-                    <Box
-                      sx={{
-                        width: 530,
-                        height: 579,
-                      }}
-                    > */}
-
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <Gallery>
-                  {/* <ImageList
-                    cols={1}
-                    sx={{
-                      maxHeight: "240vh",
-                      scrollbarWidth: "none",
-                      "&::-webkit-scrollbar": { display: "none" },
-                      display: { xs: "none", sm: "block" },
-                    }}
-                  > */}
-                  {/* <Box
-                    sx={{
-                      width: 530,
-                      height: 579,
-                    }}
-                  > */}
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                     return (
-                      // <ImageListItem sx={{ paddingBottom: "25px" }}>
                       <div
                         id={`section-${index + 1}`}
                         style={{
@@ -389,19 +359,22 @@ const Cart = (props: any) => {
                           marginTop: "20px",
                         }}
                       >
-                        <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
-                          {({ ref, open }) => <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />}
-                        </Item>
+                        {loader ? (
+                          <Grid style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <CircularProgress color="secondary" />
+                          </Grid>
+                        ) : (
+                          <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
+                            {({ ref, open }) => (
+                              <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />
+                            )}
+                          </Item>
+                        )}
                       </div>
-                      // </ImageListItem>
                     );
                   })}
-                  {/* </Box> */}
-                  {/* </ImageList> */}
                 </Gallery>
               </Box>
-              {/* </ImageListItem>
-                </ImageList> */}
             </Grid>
             <Grid
               container
@@ -442,13 +415,7 @@ const Cart = (props: any) => {
                     setColorValue={setColorValue}
                   />
                   {error ? (
-                    <Alert
-                      // onClose={() => {
-                      //   setError(false);
-                      // }}
-                      sx={{ marginTop: 10 }}
-                      severity="error"
-                    >
+                    <Alert sx={{ marginTop: 10 }} severity="error">
                       {errorMessage}
                     </Alert>
                   ) : null}

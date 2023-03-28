@@ -60,7 +60,6 @@ const styles = {
   menuItem: { color: "black", fontWeight: "600", fontSize: "12px", left: "303px", top: "203px" },
   menuContainer: {
     width: "100vw",
-    // padding: "30px",
   },
   menuInnerContainer: {
     display: "flex",

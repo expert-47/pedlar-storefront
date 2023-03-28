@@ -1,12 +1,5 @@
 import React from "react";
 import { Grid } from "@mui/material";
-// import Button from "@mui/material/Button";
-// import { addToCart } from "api/grapgql";
-// import { useRouter } from "next/router";
-// import { useEffect, useState } from "react";
-// import { getVariantBySelectedOptions, addToCartLineItem } from "api/grapgql";
-// import { getCartProducts, updateCartLineItem } from "api/grapgql";
-// import { checkoutCartDetails } from "api/grapgql";
 import LoadingButton from "components/LoadingButton";
 
 const Action = (props: any) => {

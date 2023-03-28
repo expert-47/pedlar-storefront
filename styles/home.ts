@@ -12,7 +12,6 @@ const styles = {
     fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
   },
   typotext: {
-    // height: "374px",
     padding: "15px",
     paddingTop: "50px",
   },
@@ -58,7 +57,6 @@ const styles = {
   },
 
   mainbargrid: {
-    // display: "flex",
     backgroundColor: "primary.dark",
   },
   bartext: {
@@ -91,18 +89,14 @@ const styles = {
     color: "primary.dark",
   },
   gridtag1typo2: {
-    // fontSize: "16px",
-    // fontWeight: "600",
     color: "primary.dark",
   },
   arrowIcon: {
     fontSize: "medium",
-    // padding: "2px",
     color: "primary.dark",
   },
   galleryImg1: {
     width: "100%",
-    // height: "88%",
   },
   galleryImg2: {
     width: "100%",
@@ -126,7 +120,6 @@ const styles = {
     paddingLeft: "8px",
     width: "90%",
     fontFamily: "Inter",
-    // marginTop: "20px",
   },
   baseFootTypopara: {
     fontSize: "20px",

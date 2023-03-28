@@ -284,10 +284,12 @@ export const PedlarDrawer = (props: {
               </List>
             </Collapse>
           </List>
-          <Link href={`/${storeName}/faq`}>
-            <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
-              FAQ
-            </ListItem>
+          <Link href={`/${storeName}/faq`} target={"blank"}>
+            <a target="_blank" style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}>
+              <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
+                FAQ
+              </ListItem>
+            </a>
           </Link>
         </ListItemText>
       </List>

@@ -48,10 +48,6 @@ const TextBox = (props: any) => {
             }}
           >
             <Grid
-              // onClick={() => {
-              //   alert();
-              //   router.push("instagram://user?username={USERNAME}");
-              // }}
               style={{
                 display: "flex",
                 justifyContent: "flex-start",

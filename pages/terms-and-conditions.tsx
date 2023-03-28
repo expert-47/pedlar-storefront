@@ -3,7 +3,6 @@ import { Typography, Box, Button } from "@mui/material";
 
 const TermsAndConditions = (props) => {
   return (
-    // <Layout data={data} shopList={shopList} loading={loading} shopListLoading={shopListLoading}>
     <Box sx={{ marginLeft: "51px", width: "1109px" }}>
       <Typography sx={{ fontSize: "40px", fontWeight: 600, marginTop: "150px" }}>Terms & Conditions</Typography>
       <Typography sx={{ fontSize: "20px", fontWeight: 600, marginTop: "30px" }}>Introduction</Typography>
@@ -111,13 +110,3 @@ const TermsAndConditions = (props) => {
 };
 
 export default TermsAndConditions;
-
-// export async function getServerSideProps(context: any) {
-//   const { slug } = context.query;
-
-//   return {
-//     props: {
-//       slug: slug || [],
-//     },
-//   };
-// }

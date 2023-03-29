@@ -163,13 +163,6 @@ const Cart = (props: any) => {
     }
   };
 
-<<<<<<< HEAD
-  useEffect(() => {
-    productDetailImpressiongmtEvent(newAdditionData);
-  }, [size, color]);
-
-=======
->>>>>>> develop
   const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
     try {
       setError(false);

@@ -18,7 +18,6 @@ const styles = {
     borderRadius: "50px",
     height: "46px",
     width: "100%",
-    // width: { xs: "100%", lg: "100%" },
     borderColor: "success.main",
     "&.Mui-focused": {
       borderRadius: "50px",
@@ -107,7 +106,6 @@ const styles = {
   },
   text: { paddingBottom: "20px" },
   footerDivider: {
-    // marginTop: "50px",
     marginBottom: "10px",
     height: "1px",
   },

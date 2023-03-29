@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import { Typography, useTheme, Link, Box } from "@mui/material";
 import styles from "styles/home";
 import { CustomGrid } from "components/layout";
-// import Link from "next/link";
 import { useRouter } from "next/router";
 
 const BaseFooter = () => {
@@ -35,13 +34,13 @@ const BaseFooter = () => {
           <Link href={`/${path}/return-policy`} target={"blank"}>
             <Typography sx={styles.baseFootTypotext}>Shipping & Returns</Typography>
           </Link>
-          <Link href={`/${path}/faq`}>
+          <Link href={`/${path}/faq`} target={"blank"}>
             <Typography sx={styles.baseFootTypotext}>FAQ</Typography>
           </Link>
-          <Link href={`/${path}/terms-and-conditions`}>
+          <Link href={`/${path}/terms-and-conditions`} target={"blank"}>
             <Typography sx={styles.baseFootTypotext}>Terms & Conditions</Typography>
           </Link>
-          <Link href={`/${path}/privacy-policy`}>
+          <Link href={`/${path}/privacy-policy`} target={"blank"}>
             <Typography sx={styles.baseFootTypotext}>Privacy Policy</Typography>
           </Link>
         </Grid>
@@ -59,11 +58,10 @@ const BaseFooter = () => {
             We're always here to help.
             <br />
             <Box>
-
-            Contact us at{" "}
-            <a href="mailto:hello@pedlar.store" style={{ color: "black", textDecoration: "underline" }}>
-              {`hello@pedlar.store `}
-            </a>{" "}
+              Contact us at{" "}
+              <a href="mailto:hello@pedlar.store" style={{ color: "black", textDecoration: "underline" }}>
+                {`hello@pedlar.store `}
+              </a>{" "}
             </Box>
             and our customer service team will be in touch.
           </Typography>

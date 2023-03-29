@@ -52,8 +52,6 @@ const Bar = () => {
           xl={12}
           display={"flex"}
           alignItems={"center"}
-          // justifyContent={{ xs: "flex-end", sm: "flex-start" }}
-          // paddingLeft={{ xs: "20px", sm: "10px" }}
           height={{ xs: "unset", lg: "104px" }}
           paddingX={{ xs: theme.spacing(20), md: theme.spacing(10), lg: theme.spacing(20) }}
           paddingY={{ xs: theme.spacing(40), md: theme.spacing(10), lg: theme.spacing(0) }}

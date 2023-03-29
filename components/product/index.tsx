@@ -11,6 +11,7 @@ import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -40,6 +41,7 @@ import CardComponent from "components/home/components/cardComponent";
 import { productDetailImpressiongmtEvent } from "utils/gtm";
 
 import AppBar from "@mui/material/AppBar";
+import Image from "next/image";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -257,7 +259,6 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
-
   return (
     <Layout
       error={apiError}
@@ -343,43 +344,10 @@ const Cart = (props: any) => {
                 </Grid>
               </Grid>
 
-              {/* <ImageList
-                  cols={1}
-                  sx={{
-                    maxHeight: "240vh",
-                    scrollbarWidth: "none",
-                    "&::-webkit-scrollbar": { display: "none" },
-                    display: { xs: "none", sm: "block" },
-                  }}
-                >
-                  <ImageListItem sx={{ paddingBottom: "25px" }}>
-                    <Box
-                      sx={{
-                        width: 530,
-                        height: 579,
-                      }}
-                    > */}
-
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <Gallery>
-                  {/* <ImageList
-                    cols={1}
-                    sx={{
-                      maxHeight: "240vh",
-                      scrollbarWidth: "none",
-                      "&::-webkit-scrollbar": { display: "none" },
-                      display: { xs: "none", sm: "block" },
-                    }}
-                  > */}
-                  {/* <Box
-                    sx={{
-                      width: 530,
-                      height: 579,
-                    }}
-                  > */}
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                     return (
-                      // <ImageListItem sx={{ paddingBottom: "25px" }}>
                       <div
                         id={`section-${index + 1}`}
                         style={{
@@ -389,18 +357,23 @@ const Cart = (props: any) => {
                         }}
                       >
                         <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
-                          {({ ref, open }) => <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />}
+                          {({ ref, open }) => (
+                            <div onClick={open} ref={ref}>
+                              <Image
+                                src={item?.url}
+                                width={530}
+                                height={579}
+                                placeholder="blur"
+                                blurDataURL="/loaderShim.png"
+                              />
+                            </div>
+                          )}
                         </Item>
                       </div>
-                      // </ImageListItem>
                     );
                   })}
-                  {/* </Box> */}
-                  {/* </ImageList> */}
                 </Gallery>
               </Box>
-              {/* </ImageListItem>
-                </ImageList> */}
             </Grid>
             <Grid
               container
@@ -441,13 +414,7 @@ const Cart = (props: any) => {
                     setColorValue={setColorValue}
                   />
                   {error ? (
-                    <Alert
-                      // onClose={() => {
-                      //   setError(false);
-                      // }}
-                      sx={{ marginTop: 10 }}
-                      severity="error"
-                    >
+                    <Alert sx={{ marginTop: 10 }} severity="error">
                       {errorMessage}
                     </Alert>
                   ) : null}

@@ -56,8 +56,6 @@ const DropdownButton = (props: Props) => {
     console.log("here");
 
     setFiltersValue([], type, false);
-
-    // handleClose();
   };
   const getSelectedValues = (item: any) => {
     let index = filterList.findIndex((data: any) => data.label == item.label);

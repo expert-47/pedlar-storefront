@@ -5,7 +5,6 @@ import BaseFooter from "components/footer/baseFooter";
 import { getUserDetail } from "api/restApi/getUserDetail";
 
 const TermAndCondition = (props) => {
-  // let slug = props.slug;
   const { slug, headerData, error } = props;
 
   return (

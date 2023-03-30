@@ -14,15 +14,7 @@ interface Props {
   type: string;
 }
 
-const FilterHeader = ({
-  setFiltersValue,
-  filterData,
-  setFilterData,
-
-  anchorEl,
-  loading,
-  type,
-}: Props) => {
+const FilterHeader = ({ setFiltersValue, filterData, setFilterData, filterCounts, anchorEl, loading, type }: Props) => {
   const theme = useTheme();
   const [clickType, setClick] = useState<"apply" | "reset">("apply");
   const applyFiltersMethod = () => {
@@ -108,7 +100,7 @@ const FilterHeader = ({
               loading={loading && clickType == "apply"}
               sx={styles.menuButton}
               onClick={() => applyFiltersMethod("Brands")}
-              disabled={!enableFliterBrand}
+              disabled={!enableFliterBrand && filterCounts == 0}
             >
               Apply
             </LoadingButton>

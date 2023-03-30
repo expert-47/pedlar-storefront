@@ -47,7 +47,7 @@ const CardBox = ({
         sm={12}
         md={12}
         lg={12}
-        paddingTop={{ xs: "400px", sm: "350px", md: "350px", lg: "120px" }}
+        paddingTop={{ xs: "40px", sm: "350px", md: "350px", lg: "120px" }}
         style={{ position: "relative" }}
       >
         <Grid item xs={12} sm={12} md={12} lg={10.5} xl={8.5}>

@@ -18,7 +18,7 @@ const TextBox = (props: any) => {
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
 
   const onClickShopNow = () => {
-    gtmEvents.selectPromission(storeName, "shop now", "home page banner", "1");
+    gtmEvents.selectPromission(storeName, "shop now", "home page banner", "1", "abc123");
   };
   return (
     <Box
@@ -48,10 +48,6 @@ const TextBox = (props: any) => {
             }}
           >
             <Grid
-              // onClick={() => {
-              //   alert();
-              //   router.push("instagram://user?username={USERNAME}");
-              // }}
               style={{
                 display: "flex",
                 justifyContent: "flex-start",

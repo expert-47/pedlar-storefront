@@ -12,10 +12,6 @@ const SubmitSchema = Yup.object().shape({
   First_Name: Yup.string().required("First Name is required!"),
   Last_Name: Yup.string().required("Last Name is required!"),
   Email_Address: Yup.string().required("This field is required").email("Invalid Email Address"),
-  // Phone_Number: Yup.string().matches(/^[6-9]\d{9}$/, {
-  //   message: "Please enter Phone number.",
-  //   excludeEmptyString: false,
-  // }),
 });
 
 const ReturnForm = (props: any) => {
@@ -228,7 +224,6 @@ const ReturnForm = (props: any) => {
                       <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Email_Address" />
                       </Box>
-                      {/* {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
                     </Box>
                     <Box>
                       <input
@@ -260,7 +255,6 @@ const ReturnForm = (props: any) => {
                 <Box sx={{ textAlign: "center" }}>
                   <Button
                     type="submit"
-                    // href={isEmailSent ? "thankyou-return" : ""}
                     disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                     sx={{
                       width: "335px",
@@ -366,7 +360,6 @@ const ReturnForm = (props: any) => {
                       borderRadius: "40px",
                       border: "1px solid #BEBEBE",
                       paddingLeft: "25px",
-                      // paddingRight: "25px",
                       color: "#808080",
                       fontSize: "15px",
                       marginRight: "1rem",

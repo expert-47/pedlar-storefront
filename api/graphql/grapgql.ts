@@ -10,7 +10,7 @@ export const getProductDetails = async (productId: string) => {
           title
           productType
           vendor
-          description
+          descriptionHtml
           totalInventory
           priceRange {
             maxVariantPrice {
@@ -75,7 +75,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
         products(first: ${numberofProducts}, reverse: true ,filters: $query) {
             nodes {
                 id
-                title
+                 title
                 productType
                 vendor
                 description
@@ -175,6 +175,28 @@ export const addToCartLineItem = async (cartID, merchandiseId, quantity) => {
               nodes {
                 id
                 quantity
+
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    currentlyNotInStock
+                    image {
+                      url
+                    }
+                    product {
+                      title
+                      vendor
+                      id
+                    }
+                    quantityAvailable
+
+                    title
+                    price {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
               }
             }
           }
@@ -224,6 +246,7 @@ export const getCartProducts = async (cartid) => {
                   product {
                     title
                     vendor
+                    id
                   }
                   quantityAvailable
 
@@ -329,6 +352,28 @@ export const updateCartLineItem = async (createdCartID, cartLineid, quantity) =>
               nodes {
                 id
                 quantity
+
+                merchandise {
+                  ... on ProductVariant {
+                    id
+                    currentlyNotInStock
+                    image {
+                      url
+                    }
+                    product {
+                      title
+                      vendor
+                      id
+                    }
+                    quantityAvailable
+
+                    title
+                    price {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
               }
             }
           }

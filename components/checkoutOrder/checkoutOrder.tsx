@@ -114,7 +114,7 @@ const CheckoutOrder = (props: Props) => {
     setProductCount(props?.quantity);
   }, [props?.quantity, props.index]);
 
-  console.log("gtmEvents", gtmEvents);
+  let prices = props?.price?.endsWith(".0") ? Math.round(props?.price) : props?.price;
 
   return (
     <>
@@ -183,9 +183,9 @@ const CheckoutOrder = (props: Props) => {
               <Typography sx={styles.vendorName}>{props.vendor}</Typography>
               <Typography sx={styles.brandName}>{props.title}</Typography>
               <Typography sx={styles.brandName}>{props.name}</Typography>
-              <Typography sx={styles.productPrice}>{`${props?.CurrencyCode === "AUD" ? "$" : ""} ${
-                props?.price
-              }`}</Typography>
+              <Typography sx={styles.productPrice}>{`${
+                props?.CurrencyCode === "AUD" ? "$" : ""
+              } ${prices}`}</Typography>
 
               <Box
                 style={{

@@ -11,6 +11,7 @@ import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -40,6 +41,7 @@ import CardComponent from "components/home/components/cardComponent";
 import { productDetailImpressiongmtEvent } from "utils/gtm";
 
 import AppBar from "@mui/material/AppBar";
+import Image from "next/image";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -72,22 +74,26 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    if(newAdditionData?.options){
-    setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
-    setColor(newAdditionData?.options[1]?.values[0] || "");
-     onSelectedItem(newAdditionData?.options[0]?.values[0] || "Default Title", newAdditionData?.options[1]?.values[0] || "");
- } }, [newAdditionData ,route]);
+    productDetailImpressiongmtEvent(newAdditionData);
+    if (newAdditionData?.options) {
+      setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
+      setColor(newAdditionData?.options[1]?.values[0] || "");
+      onSelectedItem(
+        newAdditionData?.options[0]?.values[0] || "Default Title",
+        newAdditionData?.options[1]?.values[0] || "",
+      );
+    }
+  }, [newAdditionData, route]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
-    onSelectedItem(value,undefined);
+    onSelectedItem(value, undefined);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
-    onSelectedItem(undefined,value);
-
+    onSelectedItem(undefined, value);
   };
   // add to cart method
   const getCartList = async (value = false) => {
@@ -105,7 +111,6 @@ const Cart = (props: any) => {
   const gmtEventToBuyNow = (data) => {
     gtmEvents.buyNowbeginCheckout(data);
   };
-  
 
   const addToCartButton = async () => {
     try {
@@ -157,22 +162,16 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-  
 
-  useEffect(() => {
-    productDetailImpressiongmtEvent(newAdditionData);
-  }, [size, color]);
-
-  const onSelectedItem = async (sizeValue =undefined, colorValue =undefined) => {
+  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
     try {
-      
       setError(false);
       setErrorMessage("");
       setLoading(true);
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
-      sizeValue !=undefined? sizeValue:  size,
-       colorValue != undefined ?colorValue: color,
+        sizeValue != undefined ? sizeValue : size,
+        colorValue != undefined ? colorValue : color,
         newAdditionData?.options[0]?.name,
         newAdditionData?.options[1]?.name,
       );
@@ -220,7 +219,7 @@ const Cart = (props: any) => {
           const response = await checkoutCartDetails(cartId);
 
           window.open(response?.data?.cart?.checkoutUrl, "_self");
-          gmtEventToBuyNow({ ...newAdditionData });
+          gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
         } else {
           const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
           if (data1) {
@@ -228,18 +227,20 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              await updateCartLineItem(cartId, data1?.id, quantity);
-              const response = await checkoutCartDetails(cartId);
+              let data = await updateCartLineItem(cartId, data1?.id, quantity);
+              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || []);
 
+              const response = await checkoutCartDetails(cartId);
               window.open(response?.data?.cart?.checkoutUrl, "_self");
-              gmtEventToBuyNow({ ...newAdditionData });
             }
           } else {
-            await addToCartLineItem(cartId, varientData?.id, quantity);
+            let data = await addToCartLineItem(cartId, varientData?.id, quantity);
+
+            gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || []);
+
             const response = await checkoutCartDetails(cartId);
 
             window.open(response?.data?.cart?.checkoutUrl, "_self");
-            gmtEventToBuyNow({ ...newAdditionData });
           }
         }
       }
@@ -258,6 +259,8 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
+
+  let prices = price?.price?.toString()?.endsWith(".0") ? Math.round(price?.price) : price?.price;
 
   return (
     <Layout
@@ -332,7 +335,14 @@ const Cart = (props: any) => {
                             <SwiperSlide>
                               <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
                                 {({ ref, open }) => (
-                                  <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                                  <img
+                                    width={"265px"}
+                                    height={"290px"}
+                                    ref={ref}
+                                    onClick={open}
+                                    src={item?.url}
+                                    objectFit="contain"
+                                  />
                                 )}
                               </Item>
                             </SwiperSlide>
@@ -344,43 +354,10 @@ const Cart = (props: any) => {
                 </Grid>
               </Grid>
 
-              {/* <ImageList
-                  cols={1}
-                  sx={{
-                    maxHeight: "240vh",
-                    scrollbarWidth: "none",
-                    "&::-webkit-scrollbar": { display: "none" },
-                    display: { xs: "none", sm: "block" },
-                  }}
-                >
-                  <ImageListItem sx={{ paddingBottom: "25px" }}>
-                    <Box
-                      sx={{
-                        width: 530,
-                        height: 579,
-                      }}
-                    > */}
-
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <Gallery>
-                  {/* <ImageList
-                    cols={1}
-                    sx={{
-                      maxHeight: "240vh",
-                      scrollbarWidth: "none",
-                      "&::-webkit-scrollbar": { display: "none" },
-                      display: { xs: "none", sm: "block" },
-                    }}
-                  > */}
-                  {/* <Box
-                    sx={{
-                      width: 530,
-                      height: 579,
-                    }}
-                  > */}
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                     return (
-                      // <ImageListItem sx={{ paddingBottom: "25px" }}>
                       <div
                         id={`section-${index + 1}`}
                         key={"newAdditionImages" + index}
@@ -391,18 +368,24 @@ const Cart = (props: any) => {
                         }}
                       >
                         <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
-                          {({ ref, open }) => <img width={530} height={579} ref={ref} onClick={open} src={item?.url} />}
+                          {({ ref, open }) => (
+                            <div onClick={open} ref={ref}>
+                              <Image
+                                src={item?.url}
+                                width={530}
+                                height={579}
+                                placeholder="blur"
+                                blurDataURL="/loaderShim.png"
+                                objectFit="contain"
+                              />
+                            </div>
+                          )}
                         </Item>
                       </div>
-                      // </ImageListItem>
                     );
                   })}
-                  {/* </Box> */}
-                  {/* </ImageList> */}
                 </Gallery>
               </Box>
-              {/* </ImageListItem>
-                </ImageList> */}
             </Grid>
             <Grid
               container
@@ -429,7 +412,7 @@ const Cart = (props: any) => {
                       <CircularProgress color="secondary" />
                     ) : (
                       <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                        {`${price.currencyCode === "AUD" ? "$" : ""}${price?.price}`}
+                        {`${price.currencyCode === "AUD" ? "$" : ""}${prices}`}
                       </Typography>
                     )}
                   </Grid>
@@ -443,13 +426,7 @@ const Cart = (props: any) => {
                     setColorValue={setColorValue}
                   />
                   {error ? (
-                    <Alert
-                      // onClose={() => {
-                      //   setError(false);
-                      // }}
-                      sx={{ marginTop: 10 }}
-                      severity="error"
-                    >
+                    <Alert sx={{ marginTop: 10 }} severity="error">
                       {errorMessage}
                     </Alert>
                   ) : null}
@@ -474,7 +451,7 @@ const Cart = (props: any) => {
                       <AccordionDetails>
                         <Typography
                           sx={styles.descriptionTypography}
-                          dangerouslySetInnerHTML={{ __html: newAdditionData?.description }}
+                          dangerouslySetInnerHTML={{ __html: newAdditionData?.descriptionHtml }}
                         ></Typography>
                       </AccordionDetails>
                     </Accordion>
@@ -520,6 +497,9 @@ const Cart = (props: any) => {
      <Grid container  xs={12} sm={12} md={12} lg={12} xl={12} pl={3} pr={3} >
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               const productId = item?.id?.split("gid://shopify/Product/")[1];
+              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
+                ? Math.round(item.priceRange?.minVariantPrice?.amount)
+                : item.priceRange?.minVariantPrice?.amount;
               return (
                 <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
                   <Grid
@@ -542,11 +522,7 @@ const Cart = (props: any) => {
                       height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       name={item?.title}
                       type={item?.productType}
-                      price={
-                        item.priceRange?.minVariantPrice?.currencyCode === "AUD"
-                          ? `$${item.priceRange?.minVariantPrice?.amount}`
-                          : item.priceRange?.minVariantPrice?.amount
-                      }
+                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}
                       item={item}

@@ -104,13 +104,13 @@ export default function Navbar(props: any) {
                   )}
 
                   <Link href={`/${path}/faq`}>
-                    <Button color="inherit" sx={styles.tabButton}>
-                      FAQ
-                    </Button>
+                    <a target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
+                      <Button color="inherit" sx={styles.tabButton}>
+                        FAQ
+                      </Button>
+                    </a>
                   </Link>
-                  {/* <IconButton sx={styles.iconColor}>
-                    <Image src="/search.png" height="19.48px" width="19.48px" />
-                  </IconButton> */}
+
                   <Badge badgeContent={totalProductLength} color="secondary">
                     <IconButton sx={styles.iconColor}>
                       <Image src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
@@ -118,7 +118,6 @@ export default function Navbar(props: any) {
                   </Badge>
                 </Stack>
                 <CartDrawer />
-                {/* openDrawer={openDrawer} toggleDrawer={toggleDrawer} */}
               </Toolbar>
             </Grid>
           )}

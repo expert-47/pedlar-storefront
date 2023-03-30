@@ -179,7 +179,6 @@ const CartDrawer = () => {
             backgroundColor: "white",
             position: "fixed",
             bottom: "0px",
-            // right: "15px",
             cursor: "pointer",
             zIndex: "9999999",
             width: { xs: "100%", sm: "100%", md: "35%", lg: "25%" },

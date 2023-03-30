@@ -56,8 +56,6 @@ const DropdownButton = (props: Props) => {
     console.log("here");
 
     setFiltersValue([], type, false);
-
-    // handleClose();
   };
   const getSelectedValues = (item: any) => {
     let index = filterList.findIndex((data: any) => data.label == item.label);
@@ -161,7 +159,7 @@ const DropdownButton = (props: Props) => {
                     variant="contained"
                     sx={styles.menuButton}
                     onClick={applyFiltersMethod}
-                    disabled={!enableFliter}
+                    disabled={!enableFliter && filterCount == 0}
                     loading={clickType == "apply" && loading}
                   >
                     Apply

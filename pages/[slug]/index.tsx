@@ -12,18 +12,15 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
     getNewAdditionsData();
-  
   }, []);
 
-  const getNewAdditionsData = async () =>{
+  const getNewAdditionsData = async () => {
+    const numberofProducts = 6;
 
-const numberofProducts = 6;
-
-      const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     const userData = data?.data?.collection?.products?.nodes || [];
 
     setnewAdditionsLatest(userData);
-
   };
 
   return (
@@ -40,9 +37,7 @@ const numberofProducts = 6;
       >
         <Home
           headerData={headerData?.data}
-          // newAdditionData={newAdditionData}
           newAdditionData={newAdditionsLatest}
-
           curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
         />
       </Layout>

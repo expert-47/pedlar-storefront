@@ -105,6 +105,7 @@ export const ResponsiveHeader = (props: Props) => {
         filterData={brandFilterData}
         loading={loading}
         type={"Brands"}
+        filterCounts={brandCount}
       />
       <FilterHeader
         type={"Category"}
@@ -113,6 +114,7 @@ export const ResponsiveHeader = (props: Props) => {
         setFilterData={setShopFilterData}
         filterData={shopFilterData}
         loading={loading}
+        filterCounts={shopCount}
       />
     </React.Fragment>
   );

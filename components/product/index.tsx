@@ -259,6 +259,9 @@ const Cart = (props: any) => {
     clickable: true,
     pagination: true,
   };
+
+  let prices = price?.price?.toString()?.endsWith(".0") ? Math.round(price?.price) : price?.price;
+
   return (
     <Layout
       error={apiError}
@@ -332,7 +335,14 @@ const Cart = (props: any) => {
                             <SwiperSlide>
                               <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
                                 {({ ref, open }) => (
-                                  <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                                  <img
+                                    width={"265px"}
+                                    height={"290px"}
+                                    ref={ref}
+                                    onClick={open}
+                                    src={item?.url}
+                                    objectFit="contain"
+                                  />
                                 )}
                               </Item>
                             </SwiperSlide>
@@ -365,6 +375,7 @@ const Cart = (props: any) => {
                                 height={579}
                                 placeholder="blur"
                                 blurDataURL="/loaderShim.png"
+                                objectFit="contain"
                               />
                             </div>
                           )}
@@ -400,7 +411,7 @@ const Cart = (props: any) => {
                       <CircularProgress color="secondary" />
                     ) : (
                       <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                        {`${price.currencyCode === "AUD" ? "$" : ""}${price?.price}`}
+                        {`${price.currencyCode === "AUD" ? "$" : ""}${prices}`}
                       </Typography>
                     )}
                   </Grid>
@@ -483,6 +494,9 @@ const Cart = (props: any) => {
 
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               let productId = item?.id?.split("gid://shopify/Product/")[1];
+              let prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
+                ? Math.round(item.priceRange?.minVariantPrice?.amount)
+                : item.priceRange?.minVariantPrice?.amount;
               return (
                 <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
                   <Grid
@@ -502,11 +516,7 @@ const Cart = (props: any) => {
                       height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       name={item?.title}
                       type={item?.productType}
-                      price={
-                        item.priceRange?.minVariantPrice?.currencyCode === "AUD"
-                          ? `$${item.priceRange?.minVariantPrice?.amount}`
-                          : item.priceRange?.minVariantPrice?.amount
-                      }
+                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}
                       item={item}

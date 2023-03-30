@@ -159,7 +159,7 @@ const DropdownButton = (props: Props) => {
                     variant="contained"
                     sx={styles.menuButton}
                     onClick={applyFiltersMethod}
-                    disabled={!enableFliter}
+                    disabled={!enableFliter && filterCount == 0}
                     loading={clickType == "apply" && loading}
                   >
                     Apply

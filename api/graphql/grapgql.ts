@@ -10,7 +10,7 @@ export const getProductDetails = async (productId: string) => {
           title
           productType
           vendor
-          description
+          descriptionHtml
           totalInventory
           priceRange {
             maxVariantPrice {

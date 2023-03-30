@@ -439,7 +439,7 @@ const Cart = (props: any) => {
                       <AccordionDetails>
                         <Typography
                           sx={styles.descriptionTypography}
-                          dangerouslySetInnerHTML={{ __html: newAdditionData?.description }}
+                          dangerouslySetInnerHTML={{ __html: newAdditionData?.descriptionHtml }}
                         ></Typography>
                       </AccordionDetails>
                     </Accordion>

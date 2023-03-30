@@ -34,7 +34,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           rowSpacing={10}
         >
           {Array.isArray(newAdditionData) &&
-            newAdditionData?.map((item: any, index: any) => {
+            newAdditionData?.map((item: any) => {
               return (
                 <Grid
                   item

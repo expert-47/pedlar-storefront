@@ -298,7 +298,7 @@ const Cart = (props: any) => {
               >
                 {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                   return (
-                    <li className="list_unorder">
+                    <li className="list_unorder" key={"imagesScrollSpy" + index}>
                       <a href={`#section-${index + 1}`}>
                         <div className="app__navigation-dot"></div>
                       </a>
@@ -326,9 +326,9 @@ const Cart = (props: any) => {
                 <Grid>
                   <Gallery>
                     <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
-                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                      {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
-                          <Box sx={styles.eachSlideEffect}>
+                          <Box sx={styles.eachSlideEffect} key={"sliderImages" + index}>
                             <SwiperSlide>
                               <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
                                 {({ ref, open }) => (
@@ -383,6 +383,7 @@ const Cart = (props: any) => {
                       // <ImageListItem sx={{ paddingBottom: "25px" }}>
                       <div
                         id={`section-${index + 1}`}
+                        key={"newAdditionImages" + index}
                         style={{
                           width: 530,
                           height: 579,
@@ -514,9 +515,11 @@ const Cart = (props: any) => {
                 You might like
               </Typography>
             </Grid>
+            </Grid>
 
+     <Grid container  xs={12} sm={12} md={12} lg={12} xl={12} pl={3} pr={3} >
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
-              let productId = item?.id?.split("gid://shopify/Product/")[1];
+              const productId = item?.id?.split("gid://shopify/Product/")[1];
               return (
                 <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
                   <Grid
@@ -526,9 +529,12 @@ const Cart = (props: any) => {
                     sm={3}
                     md={3}
                     lg={2.5}
-                    paddingLeft="5px"
-                    paddingRight="5px"
-                    paddingBottom="10px"
+                    // paddingLeft="5px"
+                    // paddingRight="5px"
+                    // paddingBottom="10px"
+                  
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+
                     onClick={ClearErrors}
                   >
                     <CardComponent

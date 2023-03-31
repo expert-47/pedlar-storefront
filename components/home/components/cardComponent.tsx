@@ -37,7 +37,7 @@ const CardComponent = ({
   let path = getStoreName(route);
 
   const onClickCard = () => {
-    gtmEvents.selectItem({ item, index: index });
+    gtmEvents.selectItem({ ...item, index: index });
   };
 
   return (

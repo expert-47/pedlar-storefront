@@ -46,6 +46,7 @@ import Image from "next/image";
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
+
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -74,7 +75,6 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    productDetailImpressiongmtEvent(newAdditionData);
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -105,11 +105,21 @@ const Cart = (props: any) => {
     }
   };
   const gmtEventToAddProduct = (data: any) => {
-    gtmEvents.addToCart(data);
+    gtmEvents.addToCart({
+      ...data,
+      size: size,
+      color: color,
+      index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
+    });
   };
 
   const gmtEventToBuyNow = (data) => {
-    gtmEvents.buyNowbeginCheckout(data);
+    gtmEvents.buyNowbeginCheckout({
+      ...data,
+      size: size,
+      color: color,
+      index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
+    });
   };
 
   const addToCartButton = async () => {
@@ -143,7 +153,7 @@ const Cart = (props: any) => {
 
               await updateCartLineItem(cartId, data1?.id, quantity);
 
-              gmtEventToAddProduct(newAdditionData);
+              gmtEventToAddProduct({ quantity: 1, ...newAdditionData });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
@@ -152,7 +162,7 @@ const Cart = (props: any) => {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
-          gmtEventToAddProduct(newAdditionData);
+          gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
         }
       }
     } catch (error) {
@@ -168,6 +178,13 @@ const Cart = (props: any) => {
       setError(false);
       setErrorMessage("");
       setLoading(true);
+      productDetailImpressiongmtEvent({
+        ...newAdditionData,
+        size: sizeValue != undefined ? sizeValue : size,
+        color: colorValue != undefined ? colorValue : color,
+        index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
+      });
+
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
         sizeValue != undefined ? sizeValue : size,
@@ -498,31 +515,30 @@ const Cart = (props: any) => {
                 ? Math.round(item.priceRange?.minVariantPrice?.amount)
                 : item.priceRange?.minVariantPrice?.amount;
               return (
-                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
-                  <Grid
-                    key={index}
-                    item
-                    xs={6}
-                    sm={3}
-                    md={3}
-                    lg={2.5}
-                    paddingLeft="5px"
-                    paddingRight="5px"
-                    paddingBottom="10px"
-                    onClick={ClearErrors}
-                  >
-                    <CardComponent
-                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      name={item?.title}
-                      type={item?.productType}
-                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
-                      image={item?.featuredImage?.transformedSrc}
-                      id={item?.id}
-                      item={item}
-                    />
-                  </Grid>
-                </Link>
+                <Grid
+                  key={index}
+                  item
+                  xs={6}
+                  sm={3}
+                  md={3}
+                  lg={2.5}
+                  paddingLeft="5px"
+                  paddingRight="5px"
+                  paddingBottom="10px"
+                  onClick={ClearErrors}
+                >
+                  <CardComponent
+                    width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                    height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                    name={item?.title}
+                    type={item?.productType}
+                    price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
+                    image={item?.featuredImage?.transformedSrc}
+                    id={item?.id}
+                    item={item}
+                    index={index}
+                  />
+                </Grid>
               );
             })}
           </Grid>

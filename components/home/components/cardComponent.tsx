@@ -17,6 +17,7 @@ interface Props {
   item: any;
   width: any;
   height: any;
+  index: number;
 }
 
 const CardComponent = ({
@@ -29,17 +30,21 @@ const CardComponent = ({
   item,
   width,
   height,
+  index,
 }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
   let path = getStoreName(route);
 
   const onClickCard = () => {
-    gtmEvents.selectItem(item);
+    gtmEvents.selectItem({ item, index: index });
   };
 
   return (
-    <Link href={{ pathname: `${path}/product/${productId}` }}>
+    <Link
+      href={{ pathname: `${path}/product/${productId}`, query: { id: productId, index: index } }}
+      as={`${path}/product/${productId}`}
+    >
       <Box
         width={width}
         sx={{

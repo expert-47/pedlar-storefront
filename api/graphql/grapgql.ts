@@ -247,6 +247,11 @@ export const getCartProducts = async (cartid) => {
                     title
                     vendor
                     id
+                    productType
+                  }
+                  selectedOptions {
+                    name
+                    value
                   }
                   quantityAvailable
 
@@ -364,9 +369,13 @@ export const updateCartLineItem = async (createdCartID, cartLineid, quantity) =>
                       title
                       vendor
                       id
+                      productType
                     }
                     quantityAvailable
-
+                    selectedOptions {
+                      name
+                      value
+                    }
                     title
                     price {
                       amount

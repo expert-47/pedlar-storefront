@@ -27,6 +27,8 @@ interface Props {
 
 const CheckoutOrder = (props: Props) => {
   const { itemData } = props;
+  console.log("itemData", itemData);
+
   const [productCount, setProductCount] = useState(props?.quantity);
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
@@ -52,7 +54,7 @@ const CheckoutOrder = (props: Props) => {
         products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
         // setProductCount(quantity + 1);
-        gmtEventToAddProduct(itemData);
+        gmtEventToAddProduct({ quantity: 1, ...itemData });
 
         setLoadingButtonState(false);
       }
@@ -70,7 +72,7 @@ const CheckoutOrder = (props: Props) => {
       );
 
       setLoadingButtonState(false);
-      gmtEventRemoveProduct(itemData);
+      gmtEventRemoveProduct({ quantity: props?.quantity, ...itemData });
     } catch (error) {
       setLoadingButtonState(false);
     }
@@ -89,7 +91,7 @@ const CheckoutOrder = (props: Props) => {
       setLoadingButtonState(true);
 
       await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
-      gmtEventRemoveProduct(itemData);
+      gmtEventRemoveProduct({ quantity: 1, ...itemData });
       if (quantity - 1 == 0) {
         dispatch(
           addProductToCart({ products: cartProducts.filter((item, index) => index != props.index), showCart: true }),

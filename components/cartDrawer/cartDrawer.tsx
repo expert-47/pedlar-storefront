@@ -25,10 +25,13 @@ const CartDrawer = () => {
   const slug = router?.query;
   const [loading, setLoading] = useState(false);
   const apiForCheckout = async () => {
-    const response = await checkoutCartDetails(cartId);
-    dispatch(cartDrawerToggle(false));
-    window.open(response?.data?.cart?.checkoutUrl, "_self");
     gtmEvents.beginCheckout(cartProducts);
+    return;
+    const response = await checkoutCartDetails(cartId);
+
+    dispatch(cartDrawerToggle(false));
+
+    window.open(response?.data?.cart?.checkoutUrl, "_self");
   };
 
   const getCartList = async () => {

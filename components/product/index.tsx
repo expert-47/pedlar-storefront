@@ -46,6 +46,8 @@ import Image from "next/image";
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
+  console.log("newAdditionData", newAdditionData);
+
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -74,7 +76,6 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    productDetailImpressiongmtEvent(newAdditionData);
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -105,11 +106,11 @@ const Cart = (props: any) => {
     }
   };
   const gmtEventToAddProduct = (data: any) => {
-    gtmEvents.addToCart(data);
+    gtmEvents.addToCart({ ...data, size: size, color: color });
   };
 
   const gmtEventToBuyNow = (data) => {
-    gtmEvents.buyNowbeginCheckout(data);
+    gtmEvents.buyNowbeginCheckout({ ...data, size: size, color: color });
   };
 
   const addToCartButton = async () => {
@@ -143,7 +144,7 @@ const Cart = (props: any) => {
 
               await updateCartLineItem(cartId, data1?.id, quantity);
 
-              gmtEventToAddProduct(newAdditionData);
+              gmtEventToAddProduct({ quantity: 1, ...newAdditionData });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
@@ -152,7 +153,7 @@ const Cart = (props: any) => {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
-          gmtEventToAddProduct(newAdditionData);
+          gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
         }
       }
     } catch (error) {
@@ -168,6 +169,12 @@ const Cart = (props: any) => {
       setError(false);
       setErrorMessage("");
       setLoading(true);
+      productDetailImpressiongmtEvent({
+        ...newAdditionData,
+        size: sizeValue != undefined ? sizeValue : size,
+        color: colorValue != undefined ? colorValue : color,
+      });
+
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
         sizeValue != undefined ? sizeValue : size,

@@ -12,7 +12,7 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
     getNewAdditionsData();
-  }, []);
+  }, [newAdditionData]);
 
   const getNewAdditionsData = async () => {
     const numberofProducts = 6;

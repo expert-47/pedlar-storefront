@@ -247,6 +247,11 @@ export const getCartProducts = async (cartid) => {
                     title
                     vendor
                     id
+                    productType
+                  }
+                  selectedOptions {
+                    name
+                    value
                   }
                   quantityAvailable
 
@@ -364,9 +369,13 @@ export const updateCartLineItem = async (createdCartID, cartLineid, quantity) =>
                       title
                       vendor
                       id
+                      productType
                     }
                     quantityAvailable
-
+                    selectedOptions {
+                      name
+                      value
+                    }
                     title
                     price {
                       amount
@@ -543,11 +552,11 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
 };
 
 export const getFilterData = gql`
-  query GetCollection($collectionId: ID!) {
+  query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
     collection(id: $collectionId) {
       id
 
-      products(first: 18, reverse: true) {
+      products(first: 18, reverse: true, filters: $query) {
         filters {
           id
           label

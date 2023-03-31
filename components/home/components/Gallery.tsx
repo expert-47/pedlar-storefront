@@ -59,6 +59,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                     image={item?.featuredImage?.transformedSrc}
                     id={item?.id}
                     item={item}
+                    index={index}
                   />
                 </Grid>
               );

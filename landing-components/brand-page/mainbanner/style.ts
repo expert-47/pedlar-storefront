@@ -11,10 +11,10 @@ export const styles = {
     position: "absolute",
     right: "0",
     ["@media (min-width:1440px)"]: {
-      maxWidth: "597px",
+      maxWidth: "690px",
     },
     ["@media (min-width:1441px)"]: {
-      maxWidth: "690px",
+      maxWidth: "710px",
     },
     ["@media (max-width:1280px)"]: {
       maxWidth: "584px",

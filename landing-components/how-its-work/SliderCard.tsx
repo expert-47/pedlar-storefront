@@ -17,15 +17,16 @@ const SliderCard = ({ title, image }: Props) => {
       }}
     >
       <Box sx={styles.ResponsText}>
-        <Typography
-          fontSize={{ xs: "30px", sm: "40px" }}
-          fontWeight={600}
-          lineHeight="normal"
-          textAlign={{ xs: "center", sm: "left" }}
-          width={{ xs: "100%", sm: "70%", md: "100%" }}
-        >
-          {title}
-        </Typography>
+      <Typography
+        fontSize={{ xs: "27px", sm: "40px" }}
+        fontWeight={600}
+        lineHeight="normal"
+        textAlign={{ xs: "center", sm: "left" }}
+        width={{ xs: "100%", sm: "70%", md: "100%" }}
+       
+      >
+        {title}
+      </Typography>
       </Box>
       <Box sx={styles.imageSize}>
         <PedlarImage src={image} alt="Sticky Section Images" style={{ borderRadius: "16px" }} objectFit="contain" />

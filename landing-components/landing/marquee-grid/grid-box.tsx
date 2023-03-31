@@ -57,7 +57,7 @@ const Gridbox = () => {
           </Typography>
         </Marquee>
 
-        <Box sx={styles.mainGrid} height={{ xs: "1250px", sm: "1100px", md: "950px", lg: "620px", xl: "620px" }}>
+        <Box sx={styles.mainGrid} height={{ xs: "fit-content", sm: "fit-content", md: "fit-content", lg: "620px", xl: "620px" }}>
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "54px", sm: "54px", xs: "30px" }}

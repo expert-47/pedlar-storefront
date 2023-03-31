@@ -110,27 +110,29 @@ const DropDownMenu = (props: Props) => {
                   </Grid>
                 ) : (
                   data?.map((data, index) => {
-                    return (
-                      <Box
-                        sx={{
-                          width: 150,
-                          paddingRight: 20,
-                        }}
-                        onClick={() => {
-                          navigateToProduct(data);
-                        }}
-                      >
-                        <a
-                          style={{
-                            cursor: "pointer",
-                            textDecoration: "none ",
-                            color: "black",
+                    if (data.count != 0) {
+                      return (
+                        <Box
+                          sx={{
+                            width: 150,
+                            paddingRight: 20,
+                          }}
+                          onClick={() => {
+                            navigateToProduct(data);
                           }}
                         >
-                          <Typography sx={styles.menuItems}>{data?.label}</Typography>
-                        </a>
-                      </Box>
-                    );
+                          <a
+                            style={{
+                              cursor: "pointer",
+                              textDecoration: "none ",
+                              color: "black",
+                            }}
+                          >
+                            <Typography sx={styles.menuItems}>{data?.label || ""}</Typography>
+                          </a>
+                        </Box>
+                      );
+                    }
                   })
                 )}
               </Box>

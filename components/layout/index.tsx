@@ -6,11 +6,8 @@ import { NextSeo, NextSeoProps } from "next-seo";
 import ApiError from "components/PageError";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, clearStore } from "store/slice/appSlice";
-import useSwr from "swr";
-import { getCartProducts, getFilteredProductsData, getFilterData } from "api/graphql/grapgql";
-import { useQuery } from "@apollo/client";
-import { client } from "api/graphql/client";
-import { getBrandShopTags, updateTags } from "store/slice/tagsSlice";
+import { getCartProducts } from "api/graphql/grapgql";
+import { getBrandShopTags } from "store/slice/tagsSlice";
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
@@ -54,6 +51,7 @@ export default function Layout(props: LayoutProps) {
       dispatch(clearStore(slug));
     }
   }, []);
+  console.log();
 
   return (
     <Container maxWidth={false} disableGutters {...props}>

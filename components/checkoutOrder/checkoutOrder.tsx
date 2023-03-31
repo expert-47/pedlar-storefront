@@ -91,7 +91,7 @@ const CheckoutOrder = (props: Props) => {
       setLoadingButtonState(true);
 
       await updateCartLineItem(cartId, props?.itemData?.id, quantity - 1);
-      gmtEventRemoveProduct({ quantity: 1, ...itemData, index: props.index });
+      gmtEventRemoveProduct({ ...itemData, index: props.index, quantity: 1 });
       if (quantity - 1 == 0) {
         dispatch(
           addProductToCart({ products: cartProducts.filter((item, index) => index != props.index), showCart: true }),

@@ -26,7 +26,7 @@ const CartDrawer = () => {
   const [loading, setLoading] = useState(false);
   const apiForCheckout = async () => {
     gtmEvents.beginCheckout(cartProducts);
-    return;
+
     const response = await checkoutCartDetails(cartId);
 
     dispatch(cartDrawerToggle(false));

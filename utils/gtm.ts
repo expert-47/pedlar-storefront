@@ -14,7 +14,7 @@ export const gtmEvents = (data: any) => {
 };
 
 export const beginCheckout = (item: any) => {
-  item?.map((data: any) => {
+  item?.map((data: any, index) => {
     return gtmEvents({
       event: "begin_checkout",
       ecommerce: {
@@ -32,7 +32,7 @@ export const beginCheckout = (item: any) => {
             item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-            // index: 2, // position of the item
+            index: index + 1, // position of the item
             quantity: data?.quantity, //quantity of the item
             // promotion_id: "abc123",
             // promotion_name: "shop now"
@@ -44,7 +44,7 @@ export const beginCheckout = (item: any) => {
 };
 
 export const viewCart = (items) => {
-  let item = items.map((data) => {
+  let item = items.map((data, index) => {
     return {
       currency: data?.merchandise?.price?.currencyCode || "", // Currency
       item_name: data?.merchandise?.product?.title || "", // Name or ID is required.
@@ -56,7 +56,7 @@ export const viewCart = (items) => {
       item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
       item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
       item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
-
+      index: index + 1,
       // item_category: data?.productType || "", //The category to which the product belongs to.
       // item_category2: data?.size || "", //size of the product.
       // item_variant: data?.size || "", // color of the product.
@@ -88,6 +88,7 @@ export const addToCart = (data) => {
         item_category: data?.productType || "", //The category to which the product belongs to.
         item_category2: data?.size, //size of the product.
         item_variant: data?.color,
+        index: data.index,
         //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
         //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
         // index: 2, // position of the item
@@ -115,7 +116,7 @@ export const removeFromCart = (data) => {
           item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
           item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
           item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
-
+          index: data.index + 1,
           // item_category: data?.productType || "", //The category to which the product belongs to.
           // item_category2: data?.size || "", //size of the product.
           // item_variant: data?.size || "", // color of the product.
@@ -142,6 +143,7 @@ export const selectItem = (item) => {
           price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           item_category: item?.productType || "", //The category to which the product belongs to.
+          index: item?.index ? item.index + 1 : 1,
           // item_category2: size, //size of the product.
           //   item_variant: color, // color of the product.
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
@@ -230,9 +232,7 @@ export const homeImpressiongmtEvent = (storeName) => {
 };
 
 export const homeProductsImpressiongmtEvent = (data: any) => {
-  console.log("data", data);
-
-  data?.map((item: any) => {
+  data?.map((item: any, index) => {
     return gtmEvents({
       event: "view_item_list",
       ecommerce: {
@@ -244,6 +244,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
             price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
             item_category: item?.productType || "", //The category to which the product belongs to.
+            index: index + 1,
             // item_category2: size, //size of the product.
             //   item_variant: color, // color of the product.
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
@@ -260,7 +261,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
 };
 
 export const productsImpressiongmtEvent = (data: any) => {
-  data.map((item: any) => {
+  data.map((item: any, index) => {
     return gtmEvents({
       event: "view_item_list",
       ecommerce: {
@@ -272,6 +273,7 @@ export const productsImpressiongmtEvent = (data: any) => {
             price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
             item_category: item?.productType || "", //The category to which the product belongs to.
+            index: index + 1,
             // item_category2: size, //size of the product.
             //   item_variant: color, // color of the product.
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
@@ -299,8 +301,9 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           item_category: item?.productType || "", //The category to which the product belongs to.
-          item_category2: item?.size, //size of the product.
-          item_variant: item?.color, // color of the product.
+          item_category2: item?.size || "", //size of the product.
+          item_variant: item?.color || "", // color of the product.
+          index: item?.index || 1,
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
@@ -328,7 +331,7 @@ export const increaseCartProduct = (data) => {
         item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
         item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
         item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
-
+        index: data.index + 1 || 0,
         // item_category: data?.productType || "", //The category to which the product belongs to.
         // item_category2: data?.size || "", //size of the product.
         // item_variant: data?.size || "", // color of the product.
@@ -355,6 +358,7 @@ export const buyNowbeginCheckout = (data: any) => {
           price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
           item_category: data?.productType || "", //The category to which the product belongs to.
+          index: data.index || 1,
           //item_category2: size, //size of the product.
           //item_variant: color, // color of the product.
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.

@@ -5,6 +5,7 @@ import React from "react";
 import { getUserDetail } from "api/restApi/getUserDetail";
 import Link from "next/link";
 import { styles } from "../../landing-components/static-pages/return-policy/style";
+import { seo } from "utils/seoData";
 
 const Returnpolicy = (props: any) => {
   const { slug, headerData } = props;
@@ -12,8 +13,8 @@ const Returnpolicy = (props: any) => {
   return (
     <Layout
       seo={{
-        title: `${process.env.NEXT_PUBLIC_STOREFRONT_SHIPPINGRETURNS_TITLE}`,
-        description: `${process.env.NEXT_PUBLIC_STOREFRONT_SHIPPINGRETURNS_DESCRIPTION}`,
+        title: seo.shippingTitle,
+        description: seo.shippingDescription,
       }}
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}

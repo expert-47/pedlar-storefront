@@ -11,6 +11,7 @@ import Pagination from "@mui/material/Pagination";
 import { getFilteredProducts, getPaginationProducts } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
 import { productsImpressiongmtEvent } from "utils/gtm";
+import { seo } from "utils/seoData";
 const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [productsData, setProductsData] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
@@ -134,8 +135,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     <Layout
       error={error}
       seo={{
-        title: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_TITLE1} ${data?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_TITLE2}`,
-        description: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_DESCRIPTION1} ${data?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTLISTING_DESCRIPTION2}`,
+        title: seo.productListingTitle.replace("storefrontName", `${data?.data?.storefrontName}'s`),
+        description: seo.productListingDescription.replace("storefrontName", `${data?.data?.storefrontName}'s`),
       }}
       storefrontName={data?.data?.storefrontName}
       slug={slug}

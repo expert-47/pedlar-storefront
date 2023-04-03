@@ -16,6 +16,7 @@ import secondStep from "../public/step2.png";
 import thirdStep from "../public/step3.png";
 import fourthStep from "../public/step4.png";
 import PedlarImage from "components/pedlarImage";
+import { seo } from "utils/seoData";
 
 const styless = {
   paperContainer: {
@@ -40,8 +41,8 @@ const index = () => {
     <Layout
       style={{ position: "relative", backgroundColor: "#f9f6f2" }}
       seo={{
-        title: process.env.NEXT_PUBLIC_LANDING_TITLE,
-        description: process.env.NEXT_PUBLIC_LANDING_DESCRIPTION,
+        title: seo.landingTitle,
+        description: seo.landingDescription,
       }}
     >
       <Box sx={styless.paperContainer}></Box>

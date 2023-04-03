@@ -1,4 +1,5 @@
 import React from "react";
+import { seo } from "utils/seoData";
 import Layout from "../landing-components/landinglayout";
 import PrivacyPolicy from "../landing-components/static-pages/privacy-policy/privacy-policy";
 
@@ -9,8 +10,8 @@ const privacypolicy = () => {
         backgroundColor: "#f9f6f2",
       }}
       seo={{
-        title: process.env.NEXT_PUBLIC_PRIVACY_POLICY_TITLE,
-        description: process.env.NEXT_PUBLIC_PRIVACY_POLICY_DESCRIPTION,
+        title: seo.landingTitle,
+        description: seo.landingDescription,
       }}
     >
       <PrivacyPolicy />

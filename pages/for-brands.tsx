@@ -19,6 +19,7 @@ import SalesBrand from "../public/sales-brand1.png";
 import SetForgot from "../public/set-forgot.png";
 import FreeJoin from "../public/free-join.png";
 import PropleTrustPeople from "../public/people-trust-people.png";
+import { seo } from "utils/seoData";
 
 const styless = {
   paperContainer: {
@@ -43,8 +44,8 @@ const brands = () => {
     <Layout
       style={{ position: "relative", backgroundColor: "#f9f6f2" }}
       seo={{
-        title: process.env.NEXT_PUBLIC_BRAND_TITLE,
-        description: process.env.NEXT_PUBLIC_BRAND_DESCRIPTION,
+        title: seo.landingTitle,
+        description: seo.landingDescription,
       }}
     >
       <Box sx={styless.paperContainer}></Box>

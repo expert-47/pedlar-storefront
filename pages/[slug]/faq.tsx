@@ -11,6 +11,7 @@ import Layout from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
 
 import { getUserDetail } from "api/restApi/getUserDetail";
+import { seo } from "utils/seoData";
 
 const Faq = (props) => {
   const { slug, headerData } = props;
@@ -23,8 +24,8 @@ const Faq = (props) => {
     <Layout
       slug={slug}
       seo={{
-        title: `${process.env.NEXT_PUBLIC_STOREFRONT_FAQ_TITLE}`,
-        description: `${process.env.NEXT_PUBLIC_STOREFRONT_FAQ_DESCRIPTION}`,
+        title: seo.faqTitle,
+        description: seo.faqDescription,
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}

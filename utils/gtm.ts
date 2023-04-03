@@ -92,7 +92,7 @@ export const addToCart = (data) => {
         item_category: data?.productType || "", //The category to which the product belongs to.
         item_category2: data?.size, //size of the product.
         item_variant: data?.color,
-        index: data.index,
+        index: data?.index,
         //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
         //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
         // index: 2, // position of the item
@@ -124,7 +124,7 @@ export const removeFromCart = (data) => {
           ...(data?.merchandise?.selectedOptions[1]?.value && {
             item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
           }), // color of the product.
-          index: data.index + 1,
+          index: data?.index ? data?.index + 1 : 1,
           // item_category: data?.productType || "", //The category to which the product belongs to.
           // item_category2: data?.size || "", //size of the product.
           // item_variant: data?.size || "", // color of the product.
@@ -343,7 +343,7 @@ export const increaseCartProduct = (data) => {
         ...(data?.merchandise?.selectedOptions[0]?.value && {
           item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
         }), // color of the product.
-        index: data.index + 1 || 0,
+        index: data?.index ? data?.index + 1 : 1,
         // item_category: data?.productType || "", //The category to which the product belongs to.
         // item_category2: data?.size || "", //size of the product.
         // item_variant: data?.size || "", // color of the product.
@@ -370,7 +370,7 @@ export const buyNowbeginCheckout = (data: any) => {
           price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
           item_category: data?.productType || "", //The category to which the product belongs to.
-          index: data.index || 1,
+          index: data?.index ? data.index : 1,
           //item_category2: size, //size of the product.
           //item_variant: color, // color of the product.
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.

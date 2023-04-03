@@ -34,8 +34,8 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
           rowSpacing={10}
         >
           {Array.isArray(newAdditionData) &&
-            newAdditionData?.map((item: any, index: any) => {
-              let prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
+            newAdditionData?.map((item: any) => {
+              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
                 ? Math.round(item.priceRange?.minVariantPrice?.amount)
                 : item.priceRange?.minVariantPrice?.amount;
 

@@ -153,7 +153,7 @@ const Cart = (props: any) => {
 
               await updateCartLineItem(cartId, data1?.id, quantity);
 
-              gmtEventToAddProduct({ quantity: 1, ...newAdditionData });
+              gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);

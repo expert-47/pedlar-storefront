@@ -54,7 +54,7 @@ const CheckoutOrder = (props: Props) => {
         products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
         // setProductCount(quantity + 1);
-        gmtEventToAddProduct({ quantity: 1, ...itemData, index: props.index });
+        gmtEventToAddProduct({ ...itemData, index: props.index, quantity: 1 });
 
         setLoadingButtonState(false);
       }

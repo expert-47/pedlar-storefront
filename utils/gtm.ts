@@ -28,8 +28,12 @@ export const beginCheckout = (item: any) => {
             price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
             item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
             item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-            item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
-            item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
+            ...(data?.merchandise?.selectedOptions[0]?.value && {
+              item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+            }), //size of the product.
+            ...(data?.merchandise?.selectedOptions[0]?.value && {
+              item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+            }), // color of the product.
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             index: index + 1, // position of the item
@@ -114,8 +118,12 @@ export const removeFromCart = (data) => {
           price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
           item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
           item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-          item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
-          item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
+          ...(data?.merchandise?.selectedOptions[0]?.value && {
+            item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+          }),
+          ...(data?.merchandise?.selectedOptions[1]?.value && {
+            item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+          }), // color of the product.
           index: data.index + 1,
           // item_category: data?.productType || "", //The category to which the product belongs to.
           // item_category2: data?.size || "", //size of the product.
@@ -301,8 +309,8 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           item_category: item?.productType || "", //The category to which the product belongs to.
-          item_category2: item?.size || "", //size of the product.
-          item_variant: item?.color || "", // color of the product.
+          ...(item?.size != "" && { item_category2: item?.size || "" }), //size of the product.
+          ...(item?.color != "" && { item_variant: item?.color || "" }), // color of the product.
           index: item?.index || 1,
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
@@ -329,8 +337,12 @@ export const increaseCartProduct = (data) => {
         price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
         item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
         item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-        item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
-        item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
+        ...(data?.merchandise?.selectedOptions[0]?.value && {
+          item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+        }), //size of the product.
+        ...(data?.merchandise?.selectedOptions[0]?.value && {
+          item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+        }), // color of the product.
         index: data.index + 1 || 0,
         // item_category: data?.productType || "", //The category to which the product belongs to.
         // item_category2: data?.size || "", //size of the product.

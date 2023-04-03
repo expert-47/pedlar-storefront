@@ -318,7 +318,7 @@ const Cart = (props: any) => {
               >
                 {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                   return (
-                    <li className="list_unorder">
+                    <li className="list_unorder" key={"imagesScrollSpy" + index}>
                       <a href={`#section-${index + 1}`}>
                         <div className="app__navigation-dot"></div>
                       </a>
@@ -346,9 +346,9 @@ const Cart = (props: any) => {
                 <Grid>
                   <Gallery>
                     <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
-                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                      {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
-                          <Box sx={styles.eachSlideEffect}>
+                          <Box sx={styles.eachSlideEffect} key={"sliderImages" + index}>
                             <SwiperSlide>
                               <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
                                 {({ ref, open }) => (
@@ -377,6 +377,7 @@ const Cart = (props: any) => {
                     return (
                       <div
                         id={`section-${index + 1}`}
+                        key={"newAdditionImages" + index}
                         style={{
                           width: 530,
                           height: 579,
@@ -508,37 +509,43 @@ const Cart = (props: any) => {
                 You might like
               </Typography>
             </Grid>
+            </Grid>
 
+     <Grid container  xs={12} sm={12} md={12} lg={12} xl={12} pl={3} pr={3} >
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
-              let productId = item?.id?.split("gid://shopify/Product/")[1];
-              let prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
+              const productId = item?.id?.split("gid://shopify/Product/")[1];
+              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
                 ? Math.round(item.priceRange?.minVariantPrice?.amount)
                 : item.priceRange?.minVariantPrice?.amount;
               return (
-                <Grid
-                  key={index}
-                  item
-                  xs={6}
-                  sm={3}
-                  md={3}
-                  lg={2.5}
-                  paddingLeft="5px"
-                  paddingRight="5px"
-                  paddingBottom="10px"
-                  onClick={ClearErrors}
-                >
-                  <CardComponent
-                    width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                    height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                    name={item?.title}
-                    type={item?.productType}
-                    price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
-                    image={item?.featuredImage?.transformedSrc}
-                    id={item?.id}
-                    item={item}
-                    index={index}
-                  />
-                </Grid>
+                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
+                  <Grid
+                    key={index}
+                    item
+                    xs={6}
+                    sm={3}
+                    md={3}
+                    lg={2.5}
+                    // paddingLeft="5px"
+                    // paddingRight="5px"
+                    // paddingBottom="10px"
+
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                    onClick={ClearErrors}
+                  >
+                    <CardComponent
+                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                      name={item?.title}
+                      type={item?.productType}
+                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
+                      image={item?.featuredImage?.transformedSrc}
+                      id={item?.id}
+                      item={item}
+                      index={index}
+                    />
+                  </Grid>
+                </Link>
               );
             })}
           </Grid>

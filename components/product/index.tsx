@@ -281,14 +281,18 @@ const Cart = (props: any) => {
   };
 
   let prices = price?.price?.toString()?.endsWith(".0") ? Math.round(price?.price) : price?.price;
-let title =
+
   return (
     <Layout
       error={apiError}
       slug={slugValue}
       seo={{
-        title: seo.productDetailTitle.replace("TITLE",`${newAdditionData?.title}`).replace("storefrontName",`${headerData?.data?.storefrontName}'s`),
-        description: seo.productDetailDescription.replace("TITLE",`${newAdditionData?.title}`).replace("storefrontName",`${headerData?.data?.storefrontName}'s`),
+        title: seo.productDetailTitle
+          .replace("TITLE", `${newAdditionData?.title}`)
+          .replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
+        description: seo.productDetailDescription
+          .replace("TITLE", `${newAdditionData?.title}`)
+          .replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}

@@ -248,24 +248,23 @@ const Cart = (props: any) => {
               setErrorMessage("This item is currently out of stock");
             } else {
               let data = await updateCartLineItem(cartId, data1?.id, quantity);
-              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || []);
+              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
 
               const response = await checkoutCartDetails(cartId);
               window.open(response?.data?.cart?.checkoutUrl, "_self");
             }
           } else {
             let data = await addToCartLineItem(cartId, varientData?.id, quantity);
-
-            gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || []);
-
             const response = await checkoutCartDetails(cartId);
+
+            gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
 
             window.open(response?.data?.cart?.checkoutUrl, "_self");
           }
         }
       }
     } catch (error) {
-      console.log("error");
+      console.log("response", error);
     } finally {
       setBuyNowLoaderState(false);
     }

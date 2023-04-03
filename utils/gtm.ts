@@ -13,7 +13,11 @@ export const gtmEvents = (data: any) => {
   window?.dataLayer?.push(data);
 };
 
-export const beginCheckout = (item: any) => {
+export const beginCheckout = (item: any, type = "checkout button") => {
+  console.log("data.data?.cartLinesAdd?.cart?.lines?.nodes", item);
+  if (Array.isArray(item)) {
+    return;
+  }
   item?.map((data: any, index) => {
     return gtmEvents({
       event: "begin_checkout",
@@ -34,10 +38,12 @@ export const beginCheckout = (item: any) => {
             ...(data?.merchandise?.selectedOptions[0]?.value && {
               item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
             }), // color of the product.
+            item_category3: type,
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             index: index + 1, // position of the item
             quantity: data?.quantity, //quantity of the item
+
             // promotion_id: "abc123",
             // promotion_name: "shop now"
           },
@@ -371,12 +377,13 @@ export const buyNowbeginCheckout = (data: any) => {
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
           item_category: data?.productType || "", //The category to which the product belongs to.
           index: data?.index ? data.index : 1,
-          //item_category2: size, //size of the product.
-          //item_variant: color, // color of the product.
+          item_category2: data?.size || "", //size of the product.
+          item_variant: data?.color || "", // color of the product.
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
           // index: 2, // position of the item
           quantity: data.quantity, //quantity of the item
+          item_category3: "buy now button",
           // promotion_id: "abc123",
           // promotion_name: "shop now"
         },

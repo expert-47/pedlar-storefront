@@ -19,6 +19,7 @@ import HassleIcon1 from "../public/hassle-icon1.png";
 import HassleIcon2 from "../public/hassle-icon2.png";
 import HassleIcon3 from "../public/hassle-icon3.png";
 import HassleIcon4 from "../public/hassle-icon4.png";
+import { seo } from "utils/seoData";
 
 const styless = {
   paperContainer: {
@@ -43,8 +44,8 @@ const creator = () => {
     <Layout
       style={{ position: "relative", backgroundColor: "#f9f6f2" }}
       seo={{
-        title: process.env.NEXT_PUBLIC_CREATOR_TITLE,
-        description: process.env.NEXT_PUBLIC_CREATOR_DESCRIPTION,
+        title: seo.landingTitle,
+        description: seo.landingDescription,
       }}
     >
       <Box sx={styless.paperContainer}></Box>

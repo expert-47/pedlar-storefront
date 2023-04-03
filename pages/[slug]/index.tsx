@@ -5,6 +5,7 @@ import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
 import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gtm";
 import { getCuratedBrands } from "api/restApi/getCuratedBrands";
 import { getUserDetail } from "api/restApi/getUserDetail";
+import { seo } from "utils/seoData";
 
 export default function Index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
   const [newAdditionsLatest, setnewAdditionsLatest] = useState();
@@ -28,8 +29,8 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
       <Layout
         error={error}
         seo={{
-          title: `${process.env.NEXT_PUBLIC_STOREFRONT_HOME_TITLE1} ${headerData?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_HOME_TITLE2}`,
-          description: `${process.env.NEXT_PUBLIC_STOREFRONT_HOME_DESCRIPTION1} ${headerData?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_HOME_DESCRIPTION2}`,
+          title: seo.storeFrontHomeTitle.replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
+          description: seo.storeFrontHomeDescription.replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
         }}
         storefrontName={headerData?.data?.storefrontName}
         slug={slug}

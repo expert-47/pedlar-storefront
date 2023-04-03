@@ -1,4 +1,5 @@
 import React from "react";
+import { seo } from "utils/seoData";
 import Layout from "../landing-components/landinglayout";
 import Faq from "../landing-components/static-pages/faq/faq";
 
@@ -10,8 +11,8 @@ const faq = () => {
         color: "#1C1B1F",
       }}
       seo={{
-        title: process.env.NEXT_PUBLIC_FAQ_TITLE,
-        description: process.env.NEXT_PUBLIC_FAQ_DESCRIPTION,
+        title: seo.landingTitle,
+        description: seo.landingDescription,
       }}
     >
       <Faq />

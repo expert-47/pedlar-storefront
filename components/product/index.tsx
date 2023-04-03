@@ -42,6 +42,7 @@ import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "uti
 
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
+import { seo } from "utils/seoData";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -280,14 +281,14 @@ const Cart = (props: any) => {
   };
 
   let prices = price?.price?.toString()?.endsWith(".0") ? Math.round(price?.price) : price?.price;
-
+let title =
   return (
     <Layout
       error={apiError}
       slug={slugValue}
       seo={{
-        title: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_TITLE1} ${newAdditionData?.title} ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_TITLE2} ${headerData?.data?.storefrontName}'s ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_TITLE3}`,
-        description: `${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_DESCRIPTION1} ${newAdditionData?.title} ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_DESCRIPTION2} ${headerData?.data?.storefrontName} ${process.env.NEXT_PUBLIC_STOREFRONT_PRODUCTDETAILS_DESCRIPTION3}`,
+        title: seo.productDetailTitle.replace("TITLE",`${newAdditionData?.title}`).replace("storefrontName",`${headerData?.data?.storefrontName}'s`),
+        description: seo.productDetailDescription.replace("TITLE",`${newAdditionData?.title}`).replace("storefrontName",`${headerData?.data?.storefrontName}'s`),
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}

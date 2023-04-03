@@ -4,14 +4,15 @@ import Layout, { CustomContainer } from "components/layout";
 import React from "react";
 import { styles } from "../../landing-components/static-pages/privacy-policy/style";
 import { getUserDetail } from "api/restApi/getUserDetail";
+import { seo } from "utils/seoData";
 
 const privacypolicy = (props: any) => {
   const { slug, headerData, error } = props;
   return (
     <Layout
       seo={{
-        title: `${process.env.NEXT_PUBLIC_STOREFRONT_PRIVACY_POLICY_TITLE}`,
-        description: `${process.env.NEXT_PUBLIC_STOREFRONT_PRIVACY_POLICY_DESCRIPTION}`,
+        title: seo.privacyPolicyTitle,
+        description: seo.privacyPolicyDescription,
       }}
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}

@@ -1,4 +1,5 @@
 import React from "react";
+import { seo } from "utils/seoData";
 import Layout from "../landing-components/landinglayout";
 import ReturnPolicy from "../landing-components/static-pages/return-policy/return-policy";
 
@@ -9,8 +10,8 @@ const Returnpolicy = () => {
         backgroundColor: "#f9f6f2",
       }}
       seo={{
-        title: process.env.NEXT_PUBLIC_RETURN_POLICY_TITLE,
-        description: process.env.NEXT_PUBLIC_RETURN_POLICY_DESCRIPTION,
+        title: seo.landingTitle,
+        description: seo.landingDescription,
       }}
     >
       <ReturnPolicy />

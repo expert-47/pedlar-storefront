@@ -38,7 +38,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId } from "store/slice/appSlice";
 import * as gtmEvents from "utils/gtm";
 import CardComponent from "components/home/components/cardComponent";
-import { productDetailImpressiongmtEvent } from "utils/gtm";
+import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
@@ -46,7 +46,9 @@ import Image from "next/image";
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
-
+  useEffect(() => {
+    productsImpressiongmtEvent(newAdditionData2);
+  }, [newAdditionData2]);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -509,9 +511,9 @@ const Cart = (props: any) => {
                 You might like
               </Typography>
             </Grid>
-            </Grid>
+          </Grid>
 
-     <Grid container  xs={12} sm={12} md={12} lg={12} xl={12} pl={3} pr={3} >
+          <Grid container xs={12} sm={12} md={12} lg={12} xl={12} pl={3} pr={3}>
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               const productId = item?.id?.split("gid://shopify/Product/")[1];
               const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")

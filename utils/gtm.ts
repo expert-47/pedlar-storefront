@@ -31,13 +31,18 @@ export const beginCheckout = (item: any, type = "checkout button") => {
               : "", //ID of the item.
             price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
             item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
-            item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-            ...(data?.merchandise?.selectedOptions[0]?.value && {
-              item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
-            }), //size of the product.
-            ...(data?.merchandise?.selectedOptions[0]?.value && {
-              item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
-            }), // color of the product.
+            ...(data?.merchandise?.product?.productType &&
+              data?.merchandise?.product?.productType != "" && {
+                item_category: data?.merchandise?.product?.productType || "",
+              }), //The category to which the product belongs to.
+            ...(data?.merchandise?.selectedOptions[0]?.value &&
+              data?.merchandise?.selectedOptions[0]?.value != "" && {
+                item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+              }), //size of the product.
+            ...(data?.merchandise?.selectedOptions[0]?.value &&
+              data?.merchandise?.selectedOptions[0]?.value != "" && {
+                item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+              }), // color of the product.
             item_category3: type,
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
@@ -63,9 +68,18 @@ export const viewCart = (items) => {
         : "", //ID of the item.
       price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
       item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
-      item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-      item_category2: data?.merchandise?.selectedOptions[0]?.value || "", //size of the product.
-      item_variant: data?.merchandise?.selectedOptions[1]?.value || "", // color of the product.
+      ...(data?.merchandise?.product?.productType &&
+        data?.merchandise?.product?.productType != "" && {
+          item_category: data?.merchandise?.product?.productType || "",
+        }), //The category to which the product belongs to.
+      ...(data?.merchandise?.selectedOptions[0]?.value &&
+        data?.merchandise?.selectedOptions[0]?.value != "" && {
+          item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+        }), //size of the product.
+      ...(data?.merchandise?.selectedOptions[1]?.value &&
+        data?.merchandise?.selectedOptions[1]?.value != "" && {
+          item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+        }), // color of the product.
       index: index + 1,
       // item_category: data?.productType || "", //The category to which the product belongs to.
       // item_category2: data?.size || "", //size of the product.
@@ -95,9 +109,9 @@ export const addToCart = (data) => {
         item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
         price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
         item_brand: data?.vendor || "", // brand of the item.(this is the example value)
-        item_category: data?.productType || "", //The category to which the product belongs to.
-        item_category2: data?.size, //size of the product.
-        item_variant: data?.color,
+        ...(data?.productType && data?.productType != "" && { item_category: data?.productType || "" }), //The category to which the product belongs to.
+        ...(data?.size && data?.size != "" && { item_category2: data?.size }), //size of the product.
+        ...(data?.color && data?.color != "" && { item_variant: data?.color }),
         index: data?.index,
         //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
         //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
@@ -123,13 +137,18 @@ export const removeFromCart = (data) => {
             : "", //ID of the item.
           price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
           item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
-          item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-          ...(data?.merchandise?.selectedOptions[0]?.value && {
-            item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
-          }),
-          ...(data?.merchandise?.selectedOptions[1]?.value && {
-            item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
-          }), // color of the product.
+          ...(data?.merchandise?.product?.productType &&
+            data?.merchandise?.product?.productType != "" && {
+              item_category: data?.merchandise?.product?.productType || "",
+            }), //The category to which the product belongs to.
+          ...(data?.merchandise?.selectedOptions[0]?.value &&
+            data?.merchandise?.selectedOptions[0]?.value != "" && {
+              item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+            }),
+          ...(data?.merchandise?.selectedOptions[0]?.value &&
+            data?.merchandise?.selectedOptions[0]?.value != "" && {
+              item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+            }), // color of the product.
           index: data?.index ? data?.index + 1 : 1,
           // item_category: data?.productType || "", //The category to which the product belongs to.
           // item_category2: data?.size || "", //size of the product.
@@ -156,7 +175,7 @@ export const selectItem = (item) => {
           item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
           price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
-          item_category: item?.productType || "", //The category to which the product belongs to.
+          ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
           index: item?.index ? item.index + 1 : 1,
           // item_category2: size, //size of the product.
           //   item_variant: color, // color of the product.
@@ -257,11 +276,11 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
             item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
             price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
-            item_category: item?.productType || "", //The category to which the product belongs to.
+            ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
             index: index + 1,
             // item_category2: size, //size of the product.
             //   item_variant: color, // color of the product.
-            //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+            item_list_name: "new additions", //e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             // index: 2, // position of the item
             quantity: item?.totalInventory, //quantity of the item
@@ -274,7 +293,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
   });
 };
 
-export const productsImpressiongmtEvent = (data: any) => {
+export const productsImpressiongmtEvent = (data: any, type = "all products") => {
   data.map((item: any, index) => {
     return gtmEvents({
       event: "view_item_list",
@@ -286,11 +305,11 @@ export const productsImpressiongmtEvent = (data: any) => {
             item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
             price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
-            item_category: item?.productType || "", //The category to which the product belongs to.
+            ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
             index: index + 1,
             // item_category2: size, //size of the product.
             //   item_variant: color, // color of the product.
-            //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+            item_list_name: type, //e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
             //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
             // index: 2, // position of the item
             quantity: item?.totalInventory, //quantity of the item
@@ -314,9 +333,9 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           item_id: item?.id ? item?.id.split("/")[item?.id.split("/").length - 1] : "", //ID of the item.
           price: parseFloat(item?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
-          item_category: item?.productType || "", //The category to which the product belongs to.
-          ...(item?.size != "" && { item_category2: item?.size || "" }), //size of the product.
-          ...(item?.color != "" && { item_variant: item?.color || "" }), // color of the product.
+          ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
+          ...(item?.size && item?.size != "" && { item_category2: item?.size || "" }), //size of the product.
+          ...(item?.color && item?.color != "" && { item_variant: item?.color || "" }), // color of the product.
           index: item?.index || 1,
           //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
           //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
@@ -342,13 +361,18 @@ export const increaseCartProduct = (data) => {
           : "", //ID of the item.
         price: parseFloat(data?.merchandise?.price?.amount || ""), //total price of the item.
         item_brand: data?.merchandise?.product?.vendor || "", // brand of the item.(this is the example value)
-        item_category: data?.merchandise?.product?.productType || "", //The category to which the product belongs to.
-        ...(data?.merchandise?.selectedOptions[0]?.value && {
-          item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
-        }), //size of the product.
-        ...(data?.merchandise?.selectedOptions[0]?.value && {
-          item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
-        }), // color of the product.
+        ...(data?.merchandise?.product?.productType &&
+          data?.merchandise?.product?.productType != "" && {
+            item_category: data?.merchandise?.product?.productType || "",
+          }), //The category to which the product belongs to.
+        ...(data?.merchandise?.selectedOptions[0]?.value &&
+          data?.merchandise?.selectedOptions[0]?.value != "" && {
+            item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
+          }), //size of the product.
+        ...(data?.merchandise?.selectedOptions[0]?.value &&
+          data?.merchandise?.selectedOptions[0]?.value != "" && {
+            item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+          }), // color of the product.
         index: data?.index ? data?.index + 1 : 1,
         // item_category: data?.productType || "", //The category to which the product belongs to.
         // item_category2: data?.size || "", //size of the product.
@@ -375,7 +399,7 @@ export const buyNowbeginCheckout = (data: any) => {
           item_id: data?.id ? data?.id.split("/")[data?.id.split("/").length - 1] : "", //ID of the item.
           price: parseFloat(data?.priceRange?.minVariantPrice?.amount || ""), //total price of the item.
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
-          item_category: data?.productType || "", //The category to which the product belongs to.
+          ...(data?.productType && data?.productType != "" && { item_category: data?.productType || "" }), //The category to which the product belongs to.
           index: data?.index ? data.index : 1,
           item_category2: data?.size || "", //size of the product.
           item_variant: data?.color || "", // color of the product.

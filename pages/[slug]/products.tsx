@@ -72,7 +72,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           (item) => shopList?.values.findIndex((i) => i.label == item?.productType && i.count != 0) != -1,
         ) || [];
       setShopFilterList(shopFilter);
-      productsImpressiongmtEvent(response?.data?.collection?.products?.nodes || []);
+      productsImpressiongmtEvent(response?.data?.collection?.products?.nodes || [], "all products");
 
       setProductsData(response?.data?.collection?.products?.nodes || []);
 
@@ -106,7 +106,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       ]);
 
       setProductsData(collectionDataProducts?.nodes || []);
-      productsImpressiongmtEvent(collectionDataProducts?.nodes || []);
+      productsImpressiongmtEvent(collectionDataProducts?.nodes || [], "all products");
 
       setPageNumber(value);
 

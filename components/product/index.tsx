@@ -48,7 +48,7 @@ const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
   useEffect(() => {
-    productsImpressiongmtEvent(newAdditionData2);
+    productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");

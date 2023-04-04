@@ -118,10 +118,11 @@ const DropdownButton = (props: Props) => {
             >
               <Box sx={styles.menuInnerContainer}>
                 {pageLoading && <CircularProgress color="secondary" />}
-                {filterList?.map((item: any) => {
+                {filterList?.map((item: any , index:number) => {
                   if (item.count != 0) {
                     return (
                       <FormControlLabel
+                      key={item?.label + index }
                         sx={{
                           width: 180,
                         }}

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Formik, ErrorMessage } from "formik";
 import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
@@ -12,23 +12,20 @@ const SubmitSchema = Yup.object().shape({
   First_Name: Yup.string().required("First Name is required!"),
   Last_Name: Yup.string().required("Last Name is required!"),
   Email_Address: Yup.string().required("This field is required").email("Invalid Email Address"),
-  // Phone_Number: Yup.string().matches(/^[6-9]\d{9}$/, {
-  //   message: "Please enter Phone number.",
-  //   excludeEmptyString: false,
-  // }),
+
 });
 
-const ReturnForm = (props: any) => {
-  const { slug } = props;
+const ReturnForm = () => {
+ 
   const router = useRouter();
-  const forms = useRef();
-  const forms2 = useRef();
+  const forms = useRef<HTMLFormElement>(null);
+  const forms2 = useRef<HTMLFormElement>(null);
 
   return (
     <>
       {/* desktop view */}
       <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
-        <Link href={`/return-policy`}>
+        <Link href={"/return-policy"}>
           <Box sx={{ margin: "1rem" }}>
             <img src="/backArrow.png" />
           </Box>
@@ -55,11 +52,11 @@ const ReturnForm = (props: any) => {
               Reason_For_Return: "",
             }}
             validationSchema={SubmitSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms2.current, "eE9W4Thiy_5GA_B4N").then(
+            onSubmit={() => {
+              emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms2.current ? forms2.current :  "" , "eE9W4Thiy_5GA_B4N").then(
                 (result) => {
                   console.log("success", result.text);
-                  router.push(`/thankyou-return`);
+                  router.push("/thankyou-return");
                 },
                 (error) => {
                   console.log("Faild...", error.text);
@@ -70,11 +67,11 @@ const ReturnForm = (props: any) => {
             {({
               values,
               errors,
-              touched,
+             
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting,
+             
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit} ref={forms2}>
@@ -296,7 +293,7 @@ const ReturnForm = (props: any) => {
       {/* mobile view */}
 
       <Box sx={{ width: "100%", display: { xs: "block", sm: "none" } }}>
-        <Link href={`/return-policy`}>
+        <Link href={"/return-policy"}>
           <Box sx={{ margin: "1rem" }}>
             <img src="/backArrow.png" />
           </Box>
@@ -319,11 +316,11 @@ const ReturnForm = (props: any) => {
             Reason_For_Return: "",
           }}
           validationSchema={SubmitSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
+          onSubmit={() => {
+            emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current ? forms.current : "", "eE9W4Thiy_5GA_B4N").then(
               (result) => {
                 console.log("success", result.text);
-                router.push(`/thankyou-return`);
+                router.push("/thankyou-return");
               },
               (error) => {
                 console.log("Faild...", error.text);
@@ -331,7 +328,7 @@ const ReturnForm = (props: any) => {
             );
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit} ref={forms}>
               <Box sx={{ padding: "1rem", paddingRight: "1rem", marginTop: "2rem" }}>
                 <Box sx={{ marginBottom: "20px" }}>
@@ -522,18 +519,4 @@ const ReturnForm = (props: any) => {
 
 export default ReturnForm;
 
-export async function getServerSideProps(context: any) {
-  const { slug } = context.query;
 
-  return {
-    props: {
-      slug: slug || [],
-    },
-  };
-
-  return {
-    props: {
-      error: true,
-    },
-  };
-}

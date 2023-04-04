@@ -79,8 +79,6 @@ const Cart = (props: any) => {
   };
   useEffect(() => {
     if (newAdditionData?.options) {
-      console.log("newAdditionData?.options[0]?.values[0]", newAdditionData?.options[0]?.values[0]);
-
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
       onSelectedItem(

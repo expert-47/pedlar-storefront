@@ -79,11 +79,14 @@ const Cart = (props: any) => {
   };
   useEffect(() => {
     if (newAdditionData?.options) {
+      console.log("newAdditionData?.options[0]?.values[0]", newAdditionData?.options[0]?.values[0]);
+
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
       onSelectedItem(
         newAdditionData?.options[0]?.values[0] || "Default Title",
         newAdditionData?.options[1]?.values[0] || "",
+        newAdditionData?.options.length,
       );
     }
   }, [newAdditionData, route]);
@@ -91,12 +94,12 @@ const Cart = (props: any) => {
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
-    onSelectedItem(value, undefined);
+    onSelectedItem(value, undefined, newAdditionData?.options.length);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
-    onSelectedItem(undefined, value);
+    onSelectedItem(undefined, value, newAdditionData?.options.length);
   };
   // add to cart method
   const getCartList = async (value = false) => {
@@ -110,8 +113,8 @@ const Cart = (props: any) => {
   const gmtEventToAddProduct = (data: any) => {
     gtmEvents.addToCart({
       ...data,
-      size: size,
-      color: color,
+      ...(newAdditionData?.options.length != 1 && { size: size }),
+      color: newAdditionData?.options.length == 1 ? size : color,
       index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
     });
   };
@@ -160,6 +163,7 @@ const Cart = (props: any) => {
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
+            gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
           }
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
@@ -176,15 +180,17 @@ const Cart = (props: any) => {
     }
   };
 
-  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
+  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined, type) => {
     try {
+      console.log("sizeValue", sizeValue, colorValue, type);
+
       setError(false);
       setErrorMessage("");
       setLoading(true);
       productDetailImpressiongmtEvent({
         ...newAdditionData,
-        size: sizeValue != undefined ? sizeValue : size,
-        color: colorValue != undefined ? colorValue : color,
+        ...(type != 1 && { size: sizeValue != undefined ? sizeValue : size }),
+        color: type == 1 && sizeValue != undefined ? sizeValue : colorValue != undefined ? colorValue : color,
         index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
       });
 

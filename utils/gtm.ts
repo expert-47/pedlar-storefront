@@ -14,11 +14,11 @@ export const gtmEvents = (data: any) => {
 };
 
 export const beginCheckout = (item: any, type = "checkout button") => {
-  console.log("data.data?.cartLinesAdd?.cart?.lines?.nodes", item);
-  if (Array.isArray(item)) {
+  if (!Array.isArray(item)) {
     return;
   }
-  item?.map((data: any, index) => {
+
+  item.map((data: any, index) => {
     return gtmEvents({
       event: "begin_checkout",
       ecommerce: {
@@ -207,7 +207,7 @@ export const selectPromission = (
           promotion_name: name, // name of the banner/promotion
           creative_name: creativeName,
           creative_slot: slot,
-          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          location_id: `${process.env.NEXT_PUBLIC_HOST_URL}${storeName}`, //location_id belongs to the current page url
           index: slot,
         },
       ],
@@ -225,7 +225,7 @@ export const homeImpressiongmtEvent = (storeName) => {
           promotion_name: "shop now", // name of the banner/promotion
           creative_name: "home page banner",
           creative_slot: "1",
-          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          location_id: `${process.env.NEXT_PUBLIC_HOST_URL}${storeName}`, //location_id belongs to the current page url
           index: 1,
         },
       ],
@@ -236,7 +236,7 @@ export const homeImpressiongmtEvent = (storeName) => {
     ecommerce: {
       items: [
         {
-          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          location_id: `${process.env.NEXT_PUBLIC_HOST_URL}${storeName}`, //location_id belongs to the current page url
 
           promotion_id: "abc12d3",
           promotion_name: "shop brand", // name of the banner/promotion
@@ -256,7 +256,7 @@ export const homeImpressiongmtEvent = (storeName) => {
           promotion_name: "shop all", // name of the banner/promotion
           creative_name: "new additions",
           creative_slot: "3",
-          location_id: `https://storefront-ui-dot-pedlar-dev.ts.r.appspot.com/${storeName}`, //location_id belongs to the current page url
+          location_id: `${process.env.NEXT_PUBLIC_HOST_URL}${storeName}`, //location_id belongs to the current page url
           index: 3,
         },
       ],

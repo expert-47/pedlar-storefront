@@ -1,0 +1,42 @@
+export const styles = {
+  footerLink: {
+    fontFamily: "Inter",
+    display: "block",
+    textDecoration: "none",
+    fontSize: "22px",
+    fontWeight: "600",
+    paddingBottom: "16px",
+    letterSpacing: "-0.03em",
+    color: "rgb(249, 246, 242)",
+  },
+  footerText: {
+    fontFamily: "Inter",
+    paddingBottom: "18px",
+    color: "rgb(249, 246, 242)",
+  },
+  footersocial: {
+    fontFamily: "Inter",
+    color: "#fff",
+    fontSize: "22px",
+    fontWeight: "600",
+    textDecoration: "none",
+    paddingLeft: "16px",
+  },
+  staticFooter: {
+    background: "#1C1B1F",
+    borderRadius: " 16px 16px 0px 0px",
+    paddingTop: " 80px",
+    paddingBottom: "40px",
+    //zIndex:'9999',
+    position: "relative",
+  },
+  footerRow: {
+    justifyContent: "space-between",
+  },
+  footerMobcol: {
+    zIndex: "5",
+  },
+  footerLogocol: {
+    zIndex: "5",
+  },
+};

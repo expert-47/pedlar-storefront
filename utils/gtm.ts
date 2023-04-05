@@ -36,12 +36,18 @@ export const beginCheckout = (item: any, type = "checkout button") => {
                 item_category: data?.merchandise?.product?.productType || "",
               }), //The category to which the product belongs to.
             ...(data?.merchandise?.selectedOptions[0]?.value &&
-              data?.merchandise?.selectedOptions[0]?.value != "" && {
+              data?.merchandise?.selectedOptions[0]?.value != "" &&
+              data?.merchandise?.selectedOptions.length != 1 && {
                 item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
               }), //size of the product.
-            ...(data?.merchandise?.selectedOptions[0]?.value &&
-              data?.merchandise?.selectedOptions[0]?.value != "" && {
+            ...(data?.merchandise?.selectedOptions[1]?.value &&
+              data?.merchandise?.selectedOptions[1]?.value != "" && {
                 item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
+              }), // color of the product.
+            ...(data?.merchandise?.selectedOptions[0]?.value &&
+              data?.merchandise?.selectedOptions[0]?.value != "" &&
+              data?.merchandise?.selectedOptions.length == 1 && {
+                item_variant: data?.merchandise?.selectedOptions[0]?.value || "",
               }), // color of the product.
             item_category3: type,
             //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
@@ -73,22 +79,22 @@ export const viewCart = (items) => {
           item_category: data?.merchandise?.product?.productType || "",
         }), //The category to which the product belongs to.
       ...(data?.merchandise?.selectedOptions[0]?.value &&
-        data?.merchandise?.selectedOptions[0]?.value != "" && {
+        data?.merchandise?.selectedOptions[0]?.value != "" &&
+        data?.merchandise?.selectedOptions.length != 1 && {
           item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
         }), //size of the product.
       ...(data?.merchandise?.selectedOptions[1]?.value &&
         data?.merchandise?.selectedOptions[1]?.value != "" && {
           item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
         }), // color of the product.
+      ...(data?.merchandise?.selectedOptions[0]?.value &&
+        data?.merchandise?.selectedOptions[0]?.value != "" &&
+        data?.merchandise?.selectedOptions.length == 1 && {
+          item_variant: data?.merchandise?.selectedOptions[0]?.value || "",
+        }), // color of the product.
       index: index + 1,
-      // item_category: data?.productType || "", //The category to which the product belongs to.
-      // item_category2: data?.size || "", //size of the product.
-      // item_variant: data?.size || "", // color of the product.
-      //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-      //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-      // index: 2, // position of the item
+
       quantity: data?.quantity, //quantity of the item
-      // promotion_id: "abc123",
     };
   });
   gtmEvents({
@@ -113,12 +119,8 @@ export const addToCart = (data) => {
         ...(data?.size && data?.size != "" && { item_category2: data?.size }), //size of the product.
         ...(data?.color && data?.color != "" && { item_variant: data?.color }),
         index: data?.index,
-        //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-        //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-        // index: 2, // position of the item
+
         quantity: data?.quantity, //quantity of the item
-        // promotion_id: "abc123",
-        // promotion_name: "shop now"
       },
     },
   });
@@ -142,23 +144,22 @@ export const removeFromCart = (data) => {
               item_category: data?.merchandise?.product?.productType || "",
             }), //The category to which the product belongs to.
           ...(data?.merchandise?.selectedOptions[0]?.value &&
-            data?.merchandise?.selectedOptions[0]?.value != "" && {
+            data?.merchandise?.selectedOptions[0]?.value != "" &&
+            data?.merchandise?.selectedOptions.length != 1 && {
               item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
-            }),
-          ...(data?.merchandise?.selectedOptions[0]?.value &&
-            data?.merchandise?.selectedOptions[0]?.value != "" && {
+            }), //size of the product.
+          ...(data?.merchandise?.selectedOptions[1]?.value &&
+            data?.merchandise?.selectedOptions[1]?.value != "" && {
               item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
             }), // color of the product.
+          ...(data?.merchandise?.selectedOptions[0]?.value &&
+            data?.merchandise?.selectedOptions[0]?.value != "" &&
+            data?.merchandise?.selectedOptions.length == 1 && {
+              item_variant: data?.merchandise?.selectedOptions[0]?.value || "",
+            }), // color of the product.
           index: data?.index ? data?.index + 1 : 1,
-          // item_category: data?.productType || "", //The category to which the product belongs to.
-          // item_category2: data?.size || "", //size of the product.
-          // item_variant: data?.size || "", // color of the product.
-          //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-          //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-          // index: 2, // position of the item
+
           quantity: data?.quantity, //quantity of the item
-          // promotion_id: "abc123",
-          // promotion_name: "shop now"
         },
       ],
     },
@@ -177,14 +178,8 @@ export const selectItem = (item) => {
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
           index: item?.index ? item.index + 1 : 1,
-          // item_category2: size, //size of the product.
-          //   item_variant: color, // color of the product.
-          //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-          //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-          // index: 2, // position of the item
+          item_list_name: item?.heading,
           quantity: item?.totalInventory, //quantity of the item
-          // promotion_id: "abc123",
-          // promotion_name: "shop now"
         },
       ],
     },
@@ -278,14 +273,10 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
             ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
             index: index + 1,
-            // item_category2: size, //size of the product.
-            //   item_variant: color, // color of the product.
+
             item_list_name: "new additions", //e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-            //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-            // index: 2, // position of the item
+
             quantity: item?.totalInventory, //quantity of the item
-            // promotion_id: "abc123",
-            // promotion_name: "shop now"
           },
         ],
       },
@@ -307,14 +298,10 @@ export const productsImpressiongmtEvent = (data: any, type = "all products") => 
             item_brand: item?.vendor || "", // brand of the item.(this is the example value)
             ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
             index: index + 1,
-            // item_category2: size, //size of the product.
-            //   item_variant: color, // color of the product.
+
             item_list_name: type, //e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-            //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-            // index: 2, // position of the item
+
             quantity: item?.totalInventory, //quantity of the item
-            // promotion_id: "abc123",
-            // promotion_name: "shop now"
           },
         ],
       },
@@ -337,12 +324,8 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           ...(item?.size && item?.size != "" && { item_category2: item?.size || "" }), //size of the product.
           ...(item?.color && item?.color != "" && { item_variant: item?.color || "" }), // color of the product.
           index: item?.index || 1,
-          //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-          //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-          // index: 2, // position of the item
           quantity: item?.totalInventory, //quantity of the item
-          // promotion_id: "abc123",
-          // promotion_name: "shop now"
+          item_list_name: item?.heading || "all products",
         },
       ],
     },
@@ -366,23 +349,22 @@ export const increaseCartProduct = (data) => {
             item_category: data?.merchandise?.product?.productType || "",
           }), //The category to which the product belongs to.
         ...(data?.merchandise?.selectedOptions[0]?.value &&
-          data?.merchandise?.selectedOptions[0]?.value != "" && {
+          data?.merchandise?.selectedOptions[0]?.value != "" &&
+          data?.merchandise?.selectedOptions.length != 1 && {
             item_category2: data?.merchandise?.selectedOptions[0]?.value || "",
           }), //size of the product.
-        ...(data?.merchandise?.selectedOptions[0]?.value &&
-          data?.merchandise?.selectedOptions[0]?.value != "" && {
+        ...(data?.merchandise?.selectedOptions[1]?.value &&
+          data?.merchandise?.selectedOptions[1]?.value != "" && {
             item_variant: data?.merchandise?.selectedOptions[1]?.value || "",
           }), // color of the product.
+        ...(data?.merchandise?.selectedOptions[0]?.value &&
+          data?.merchandise?.selectedOptions[0]?.value != "" &&
+          data?.merchandise?.selectedOptions.length == 1 && {
+            item_variant: data?.merchandise?.selectedOptions[0]?.value || "",
+          }),
         index: data?.index ? data?.index + 1 : 1,
-        // item_category: data?.productType || "", //The category to which the product belongs to.
-        // item_category2: data?.size || "", //size of the product.
-        // item_variant: data?.size || "", // color of the product.
-        //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-        //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-        // index: 2, // position of the item
+
         quantity: data?.quantity, //quantity of the item
-        // promotion_id: "abc123",
-        // promotion_name: "shop now"
       },
     },
   });
@@ -403,13 +385,9 @@ export const buyNowbeginCheckout = (data: any) => {
           index: data?.index ? data.index : 1,
           item_category2: data?.size || "", //size of the product.
           item_variant: data?.color || "", // color of the product.
-          //  item_list_name: "Category Page",//e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
-          //  item_list_id: "H3123", //ID of the list in which the item was presented to the user.
-          // index: 2, // position of the item
+
           quantity: data.quantity, //quantity of the item
           item_category3: "buy now button",
-          // promotion_id: "abc123",
-          // promotion_name: "shop now"
         },
       ],
     },

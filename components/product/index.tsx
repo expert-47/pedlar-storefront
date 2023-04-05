@@ -50,6 +50,7 @@ const Cart = (props: any) => {
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
+
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -84,6 +85,7 @@ const Cart = (props: any) => {
       onSelectedItem(
         newAdditionData?.options[0]?.values[0] || "Default Title",
         newAdditionData?.options[1]?.values[0] || "",
+        newAdditionData?.options.length,
       );
     }
   }, [newAdditionData, route]);
@@ -91,12 +93,12 @@ const Cart = (props: any) => {
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
-    onSelectedItem(value, undefined);
+    onSelectedItem(value, undefined, newAdditionData?.options.length);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
-    onSelectedItem(undefined, value);
+    onSelectedItem(undefined, value, newAdditionData?.options.length);
   };
   // add to cart method
   const getCartList = async (value = false) => {
@@ -110,8 +112,8 @@ const Cart = (props: any) => {
   const gmtEventToAddProduct = (data: any) => {
     gtmEvents.addToCart({
       ...data,
-      size: size,
-      color: color,
+      ...(newAdditionData?.options.length != 1 && { size: size }),
+      color: newAdditionData?.options.length == 1 ? size : color,
       index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
     });
   };
@@ -155,8 +157,6 @@ const Cart = (props: any) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
-
-              gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
@@ -165,27 +165,29 @@ const Cart = (props: any) => {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
-          gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
         }
       }
     } catch (error) {
     } finally {
+      gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
+
       getCartList(true);
       setButtonLoaderState(false);
       setLoading(false);
     }
   };
 
-  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined) => {
+  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined, type) => {
     try {
       setError(false);
       setErrorMessage("");
       setLoading(true);
       productDetailImpressiongmtEvent({
         ...newAdditionData,
-        size: sizeValue != undefined ? sizeValue : size,
-        color: colorValue != undefined ? colorValue : color,
+        ...(type != 1 && { size: sizeValue != undefined ? sizeValue : size }),
+        color: type == 1 && sizeValue != undefined ? sizeValue : colorValue != undefined ? colorValue : color,
         index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
+        heading: route?.query?.heading || "all products",
       });
 
       const variant = await getVariantBySelectedOptions(
@@ -219,6 +221,7 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
+      gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
         size,
@@ -247,19 +250,25 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              let data = await updateCartLineItem(cartId, data1?.id, quantity);
-              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
+              console.log("gfds");
 
-              const response = await checkoutCartDetails(cartId);
-              window.open(response?.data?.cart?.checkoutUrl, "_self");
+              let data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
+
+              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
+              setTimeout(async () => {
+                const response = await checkoutCartDetails(cartId);
+                window.open(response?.data?.cart?.checkoutUrl, "_self");
+              }, 500);
             }
           } else {
             let data = await addToCartLineItem(cartId, varientData?.id, quantity);
-            const response = await checkoutCartDetails(cartId);
 
             gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
+            setTimeout(async () => {
+              const response = await checkoutCartDetails(cartId);
 
-            window.open(response?.data?.cart?.checkoutUrl, "_self");
+              window.open(response?.data?.cart?.checkoutUrl, "_self");
+            }, 500);
           }
         }
       }
@@ -549,6 +558,7 @@ const Cart = (props: any) => {
                       id={item?.id}
                       item={item}
                       index={index}
+                      heading={"you might like"}
                     />
                   </Grid>
                 </Link>

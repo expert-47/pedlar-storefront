@@ -170,7 +170,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
           shopFilterList={shopFilterList}
         />
       </Box>
-      <Gallery newAdditionData={productsData} />
+      <Gallery newAdditionData={productsData} heading={"all products"} />
       {(!loading && productsData?.length > 0) || pageNumber != 1 ? (
         <Box
           sx={{

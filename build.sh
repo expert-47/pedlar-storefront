@@ -1,4 +1,4 @@
-if test "$ENV" = "dev"
+if test "$GCP_PROJECT" = "pedlar-dev"
   then
     rm -f ./.env.production
     mv ./.env.development ./.env.production

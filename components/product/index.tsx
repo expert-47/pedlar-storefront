@@ -221,7 +221,6 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
-      gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
         size,
@@ -235,6 +234,8 @@ const Cart = (props: any) => {
         setError(true);
         setErrorMessage("This item is currently out of stock");
       } else {
+        gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
+
         if (!cartId) {
           let res = await addToCart(varientData?.id, slugValue, quantity);
           dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));

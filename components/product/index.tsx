@@ -121,8 +121,8 @@ const Cart = (props: any) => {
   const gmtEventToBuyNow = (data) => {
     gtmEvents.buyNowbeginCheckout({
       ...data,
-      size: size,
-      color: color,
+      ...(newAdditionData?.options.length != 1 && { size: size }),
+      color: newAdditionData?.options.length == 1 ? size : color,
       index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
     });
   };

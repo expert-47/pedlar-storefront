@@ -383,9 +383,8 @@ export const buyNowbeginCheckout = (data: any) => {
           item_brand: data?.vendor || "", // brand of the item.(this is the example value)
           ...(data?.productType && data?.productType != "" && { item_category: data?.productType || "" }), //The category to which the product belongs to.
           index: data?.index ? data.index : 1,
-          item_category2: data?.size || "", //size of the product.
-          item_variant: data?.color || "", // color of the product.
-
+          ...(data?.size && data?.size != "" && { item_category2: data?.size || "" }), //size of the product.
+          ...(data?.color && data?.color != "" && { item_variant: data?.color || "" }), // color of the product.
           quantity: data.quantity, //quantity of the item
           item_category3: "buy now button",
         },

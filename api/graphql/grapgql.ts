@@ -189,7 +189,10 @@ export const addToCartLineItem = async (cartID, merchandiseId, quantity) => {
                       id
                     }
                     quantityAvailable
-
+                    selectedOptions {
+                      name
+                      value
+                    }
                     title
                     price {
                       amount

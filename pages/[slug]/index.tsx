@@ -25,24 +25,22 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
   };
 
   return (
-    <>
-      <Layout
-        error={error}
-        seo={{
-          title: seo.storeFrontHomeTitle.replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
-          description: seo.storeFrontHomeDescription.replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
-        }}
-        storefrontName={headerData?.data?.storefrontName}
-        slug={slug}
-        collectionId={headerData?.data?.collectionId}
-      >
-        <Home
-          headerData={headerData?.data}
-          newAdditionData={newAdditionsLatest}
-          curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
-        />
-      </Layout>
-    </>
+    <Layout
+      error={error}
+      seo={{
+        title: seo.storeFrontHomeTitle.replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
+        description: seo.storeFrontHomeDescription.replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
+      }}
+      storefrontName={headerData?.data?.storefrontName}
+      slug={slug}
+      collectionId={headerData?.data?.collectionId}
+    >
+      <Home
+        headerData={headerData?.data}
+        newAdditionData={newAdditionsLatest}
+        curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
+      />
+    </Layout>
   );
 }
 

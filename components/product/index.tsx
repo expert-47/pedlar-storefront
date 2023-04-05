@@ -50,6 +50,7 @@ const Cart = (props: any) => {
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
+
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -156,22 +157,20 @@ const Cart = (props: any) => {
               const quantity = data1.quantity + 1;
 
               await updateCartLineItem(cartId, data1?.id, quantity);
-
-              gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
             }
           } else {
             await addToCartLineItem(cartId, varientData?.id, 1);
-            gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
           }
         } else {
           let response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
-          gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
         }
       }
     } catch (error) {
     } finally {
+      gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
+
       getCartList(true);
       setButtonLoaderState(false);
       setLoading(false);
@@ -180,8 +179,6 @@ const Cart = (props: any) => {
 
   const onSelectedItem = async (sizeValue = undefined, colorValue = undefined, type) => {
     try {
-      console.log("sizeValue", sizeValue, colorValue, type);
-
       setError(false);
       setErrorMessage("");
       setLoading(true);
@@ -190,6 +187,7 @@ const Cart = (props: any) => {
         ...(type != 1 && { size: sizeValue != undefined ? sizeValue : size }),
         color: type == 1 && sizeValue != undefined ? sizeValue : colorValue != undefined ? colorValue : color,
         index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
+        heading: route?.query?.heading || "all products",
       });
 
       const variant = await getVariantBySelectedOptions(
@@ -223,6 +221,7 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
+      gmtEventToAddProduct({ ...newAdditionData, quantity: 1 });
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
         size,
@@ -251,19 +250,25 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              let data = await updateCartLineItem(cartId, data1?.id, quantity);
-              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
+              console.log("gfds");
 
-              const response = await checkoutCartDetails(cartId);
-              window.open(response?.data?.cart?.checkoutUrl, "_self");
+              let data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
+
+              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
+              setTimeout(async () => {
+                const response = await checkoutCartDetails(cartId);
+                window.open(response?.data?.cart?.checkoutUrl, "_self");
+              }, 500);
             }
           } else {
             let data = await addToCartLineItem(cartId, varientData?.id, quantity);
-            const response = await checkoutCartDetails(cartId);
 
             gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
+            setTimeout(async () => {
+              const response = await checkoutCartDetails(cartId);
 
-            window.open(response?.data?.cart?.checkoutUrl, "_self");
+              window.open(response?.data?.cart?.checkoutUrl, "_self");
+            }, 500);
           }
         }
       }
@@ -553,6 +558,7 @@ const Cart = (props: any) => {
                       id={item?.id}
                       item={item}
                       index={index}
+                      heading={"you might like"}
                     />
                   </Grid>
                 </Link>

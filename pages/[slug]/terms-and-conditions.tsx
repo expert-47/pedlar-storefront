@@ -3,6 +3,7 @@ import { Typography, Box, Divider } from "@mui/material";
 import Layout, { CustomContainer } from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
 import { getUserDetail } from "api/restApi/getUserDetail";
+import { seo } from "utils/seoData";
 
 const TermAndCondition = (props) => {
   const { slug, headerData, error } = props;
@@ -12,8 +13,8 @@ const TermAndCondition = (props) => {
       slug={slug}
       error={error}
       seo={{
-        title: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_TITLE}`,
-        description: `${process.env.NEXT_PUBLIC_STOREFRONT_TERMSCONDITIONS_DESCRIPTION}`,
+        title: seo.termsAndConditionTitle,
+        description: seo.termsAndConditionDescription,
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}

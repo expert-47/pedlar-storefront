@@ -6,8 +6,9 @@ import { CustomGrid } from "components/layout";
 interface Props {
   columnSpacing?: number;
   newAdditionData?: any[];
+  heading: string;
 }
-const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
+const Gallery = ({ newAdditionData, columnSpacing = 10, heading }: Props) => {
   return (
     <>
       <CustomGrid
@@ -60,6 +61,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10 }: Props) => {
                     id={item?.id}
                     item={item}
                     index={index}
+                    heading={heading}
                   />
                 </Grid>
               );

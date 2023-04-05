@@ -178,7 +178,7 @@ export const selectItem = (item) => {
           item_brand: item?.vendor || "", // brand of the item.(this is the example value)
           ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
           index: item?.index ? item.index + 1 : 1,
-
+          item_list_name: item?.heading,
           quantity: item?.totalInventory, //quantity of the item
         },
       ],
@@ -325,6 +325,7 @@ export const productDetailImpressiongmtEvent = (item: any) => {
           ...(item?.color && item?.color != "" && { item_variant: item?.color || "" }), // color of the product.
           index: item?.index || 1,
           quantity: item?.totalInventory, //quantity of the item
+          item_list_name: item?.heading || "all products",
         },
       ],
     },

@@ -33,7 +33,7 @@ export const Home = (props: any) => {
       <HomepagePopup />
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="New Additions" rightHeading="SHOP ALL" />
-        <Gallery newAdditionData={props?.newAdditionData} />
+        <Gallery newAdditionData={props?.newAdditionData} heading={"new additions"} />
         <Box
           sx={{
             textAlign: "center",

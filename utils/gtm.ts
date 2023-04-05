@@ -119,7 +119,7 @@ export const addToCart = (data) => {
         ...(data?.size && data?.size != "" && { item_category2: data?.size }), //size of the product.
         ...(data?.color && data?.color != "" && { item_variant: data?.color }),
         index: data?.index,
-
+        ...(data.item_category3 && { item_category3: data.item_category3 }),
         quantity: data?.quantity, //quantity of the item
       },
     },

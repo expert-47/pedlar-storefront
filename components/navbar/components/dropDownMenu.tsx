@@ -71,16 +71,13 @@ const DropDownMenu = (props: Props) => {
                 mt: 10,
                 pb: 10,
                 p: 10,
-                // left: data.length > 12 && "0 !important",
-                // l: 0,
+              
                 borderRadius: 0,
                 width: {
                   sx: data?.length <= 6 ? "150px" : `${(data?.length / 6) * 170}px`,
                   lg: data?.length <= 6 ? "200px" : `${(data?.length / 6) * 220}px`,
                 },
-                //   maxWidth: "100% ",
-                //  boxShadow: "none",
-                // borderTop: "1px solid rgba(28, 27, 31, 0.32)",
+               
               },
             }}
             sx={styles.menu}
@@ -100,8 +97,7 @@ const DropDownMenu = (props: Props) => {
                   flexFlow: "column wrap",
                   ml: 10,
 
-                  // alignContent: "flex-end",
-                  // paddingRight: "40px",
+              
                 }}
               >
                 {loading ? (
@@ -109,10 +105,11 @@ const DropDownMenu = (props: Props) => {
                     <CircularProgress color="inherit" />
                   </Grid>
                 ) : (
-                  data?.map((data, index) => {
+                  data?.map((data : any, index: number) => {
                     if (data.count != 0) {
                       return (
                         <Box
+                          key={data?.label + index}
                           sx={{
                             width: 150,
                             paddingRight: 20,

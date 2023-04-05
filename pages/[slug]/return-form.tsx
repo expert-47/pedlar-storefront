@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef  } from "react";
 import { Formik, ErrorMessage } from "formik";
 import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
@@ -17,8 +17,8 @@ const SubmitSchema = Yup.object().shape({
 const ReturnForm = (props: any) => {
   const { slug } = props;
   const router = useRouter();
-  const forms = useRef();
-  const forms2 = useRef();
+  const forms = useRef<HTMLFormElement>(null);
+  const forms2 = useRef<HTMLFormElement>(null);
 
   return (
     <>
@@ -51,26 +51,33 @@ const ReturnForm = (props: any) => {
               Reason_For_Return: "",
             }}
             validationSchema={SubmitSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms2.current, "eE9W4Thiy_5GA_B4N").then(
-                (result) => {
-                  console.log("success", result.text);
-                  router.push(`/${slug}/thankyou-return`);
-                },
-                (error) => {
-                  console.log("Faild...", error.text);
-                },
-              );
+            onSubmit={() => {
+              emailjs
+                .sendForm(
+                  "service_2y5c7s5",
+                  "template_lwj4t3j",
+                  forms2.current ? forms2.current : "",
+                  "eE9W4Thiy_5GA_B4N",
+                )
+                .then(
+                  (result) => {
+                    console.log("success", result.text);
+                    router.push(`/${slug}/thankyou-return`);
+                  },
+                  (error) => {
+                    console.log("Faild...", error.text);
+                  },
+                );
             }}
           >
             {({
               values,
               errors,
-              touched,
+             
               handleChange,
               handleBlur,
               handleSubmit,
-              isSubmitting,
+            
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit} ref={forms2}>
@@ -313,19 +320,21 @@ const ReturnForm = (props: any) => {
             Reason_For_Return: "",
           }}
           validationSchema={SubmitSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current, "eE9W4Thiy_5GA_B4N").then(
-              (result) => {
-                console.log("success", result.text);
-                router.push(`/${slug}/thankyou-return`);
-              },
-              (error) => {
-                console.log("Faild...", error.text);
-              },
-            );
+          onSubmit={() => {
+            emailjs
+              .sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current ? forms.current : "", "eE9W4Thiy_5GA_B4N")
+              .then(
+                (result) => {
+                  console.log("success", result.text);
+                  router.push(`/${slug}/thankyou-return`);
+                },
+                (error) => {
+                  console.log("Faild...", error.text);
+                },
+              );
           }}
         >
-          {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
+          {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit} ref={forms}>
               <Box sx={{ padding: "1rem", paddingRight: "1rem", marginTop: "2rem" }}>
                 <Box sx={{ marginBottom: "20px" }}>

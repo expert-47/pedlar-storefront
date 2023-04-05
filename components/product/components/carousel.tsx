@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useTheme } from "@mui/material/styles";
+
 import MobileStepper from "@mui/material/MobileStepper";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
@@ -26,21 +26,17 @@ const images = [
 ];
 
 function SwipeableTextMobileStepper() {
-  const theme = useTheme();
+
   const [activeStep, setActiveStep] = React.useState(0);
   const maxSteps = images.length;
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleStepChange = (step) => {
-    setActiveStep(step);
-  };
+
 
   return (
     <Grid item xs={12} sx={{ flexGrow: 1, alignItems: "center" }}>
@@ -55,33 +51,7 @@ function SwipeableTextMobileStepper() {
           bgcolor: "background.default",
         }}
       ></Paper>
-      {/* <SwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={activeStep}
-        onChangeIndex={handleStepChange}
-        enableMouseEvents
-      >
-        {images.map((step, index) => (
-          <div key={step.label}>
-            {Math.abs(activeStep - index) <= 2 ? (
-              <Box
-                component="img"
-                sx={{
-                  height: 355,
-                  display: "block",
-                  maxWidth: 400,
-                  justifyItems: "center",
-                  overflow: "hidden",
-                  width: "80%",
-                  paddingLeft: "13%",
-                }}
-                src={step.imgPath}
-                alt={step.label}
-              />
-            ) : null}
-          </div>
-        ))}
-      </SwipeableViews> */}
+     
       <MobileStepper
         steps={maxSteps}
         position="static"

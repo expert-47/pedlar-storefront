@@ -5,7 +5,7 @@ import BaseFooter from "components/footer/baseFooter";
 import { getUserDetail } from "api/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 
-const TermAndCondition = (props) => {
+const TermAndCondition = (props : any) => {
   const { slug, headerData, error } = props;
 
   return (
@@ -18,6 +18,7 @@ const TermAndCondition = (props) => {
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
+      productsPage={false}
     >
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>
@@ -147,9 +148,9 @@ const TermAndCondition = (props) => {
           <Typography sx={{ fontSize: "20px", fontWeight: 600, marginTop: "30px" }}>Indemnities</Typography>
           <Typography sx={{ fontSize: "16px", fontWeight: 400, marginTop: "20px" }}>
             You agree to indemnify and hold us and our suppliers, affiliates, partners, subsidiaries, directors,
-            shareholders and employees (collectively, the "Indemnified Parties") harmless from any and all claims and
-            demands, losses, liability costs and expenses (including, but not limited to, reasonable attorneys' fees),
-            incurred by an Indemnified Party arising out of or related to:
+            shareholders and employees (collectively, the &ldquo;Indemnified Parties&rdquo;) harmless from any and all
+            claims and demands, losses, liability costs and expenses (including, but not limited to, reasonable
+            attorneys&apos; fees), incurred by an Indemnified Party arising out of or related to:
           </Typography>
           <Typography sx={{ fontSize: "16px", fontWeight: 400, marginTop: "20px" }}>
             a) your breach of these Terms;
@@ -524,5 +525,7 @@ export async function getServerSideProps(context: any) {
         },
       };
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log("");
+  }
 }

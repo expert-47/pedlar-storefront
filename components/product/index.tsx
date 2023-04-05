@@ -541,9 +541,7 @@ const Cart = (props: any) => {
                     sm={3}
                     md={3}
                     lg={2.5}
-                    // paddingLeft="5px"
-                    // paddingRight="5px"
-                    // paddingBottom="10px"
+                  
 
                     sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                     onClick={ClearErrors}

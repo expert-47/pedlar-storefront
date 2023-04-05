@@ -19,6 +19,7 @@ const Returnpolicy = (props: any) => {
       slug={slug}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
+      productsPage={false}
     >
       <CustomContainer>
         <Box
@@ -36,8 +37,8 @@ const Returnpolicy = (props: any) => {
           </Typography>
 
           <Typography textTransform={"none"} fontSize={"20px"} fontWeight={"400"} sx={styles.spacing}>
-            We want you to be completely satisfied with your purchased; if for any you change your mind, we're happy to
-            refund all full priced items
+            We want you to be completely satisfied with your purchased; if for any you change your mind, we&apos;re
+            happy to refund all full priced items
           </Typography>
           <Link href={`/${slug}/return-form`}>
             <Button sx={styles.returnbutton}>Start Return</Button>
@@ -74,7 +75,7 @@ const Returnpolicy = (props: any) => {
             Returns
           </Typography>
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
-            We understand that purchasing items online don’t always go as planned, that"s why we offer free returns
+            We understand that purchasing items online don’t always go as planned, that&quot;s why we offer free returns
             within Australia. For exchanges, please return the item and then re-order the preferred item.
           </Typography>
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -84,7 +85,7 @@ const Returnpolicy = (props: any) => {
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
             Returns must be received by us within 14 days of receiving your item. We offer a full refund for full priced
             items in original condition with their original packaging and tags. Item(s) must not have been worn, washed
-            or altered in any way. Brands have the rights to deny any item/s that aren"t returned in their original
+            or altered in any way. Brands have the rights to deny any item/s that aren&quot;t returned in their original
             condition.
           </Typography>
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
@@ -93,9 +94,9 @@ const Returnpolicy = (props: any) => {
             to be processed.
           </Typography>
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"400"} sx={styles.spacing}>
-            If your order has arrived damaged, doesn't match the listing description or you are concerned that there is
-            a fault, please submit returns form on the Pedlar store you bought from and our Team will be in contact to
-            assist.
+            If your order has arrived damaged, doesn&apos;t match the listing description or you are concerned that
+            there is a fault, please submit returns form on the Pedlar store you bought from and our Team will be in
+            contact to assist.
           </Typography>
         </Box>
       </CustomContainer>
@@ -125,5 +126,7 @@ export async function getServerSideProps(context: any) {
         },
       };
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log("");
+  }
 }

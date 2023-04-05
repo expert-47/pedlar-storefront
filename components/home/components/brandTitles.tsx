@@ -58,6 +58,7 @@ const BrandTitles = (props: any) => {
                 zIndex: "1",
                 cursor: "pointer",
               }}
+              key={item?.vendor + index}
             >
               <PedlarImage
                 renderError={() => {

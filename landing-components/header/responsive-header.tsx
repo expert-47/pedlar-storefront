@@ -7,6 +7,8 @@ import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
 import PedlarImage from "components/pedlarImage";
 import BottomSheet from "landing-components/BottomSheet";
+import Link from "next/link";
+
 
 const ResponsiveHeader = () => {
   const router = useRouter();
@@ -136,9 +138,11 @@ const ResponsiveHeader = () => {
                 </Grid>
                 <Grid>
                   <Button sx={styles.Login1} onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                      Log in
-                    </Typography>
+                    <Link href="https://portal.pedlar.store">
+                      <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                        Log in
+                      </Typography>
+                    </Link>
                   </Button>
 
                   <BottomSheet

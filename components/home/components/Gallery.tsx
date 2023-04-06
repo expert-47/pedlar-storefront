@@ -33,6 +33,7 @@ const Gallery = ({ newAdditionData, columnSpacing = 10, heading }: Props) => {
           }}
           columnSpacing={columnSpacing || 10}
           rowSpacing={10}
+          alignItems={"baseline"}
         >
           {Array.isArray(newAdditionData) &&
             newAdditionData?.map((item: any, index) => {

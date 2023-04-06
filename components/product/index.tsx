@@ -534,7 +534,7 @@ const Cart = (props: any) => {
                     lg={2.5}
                   
 
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline"  }}
                     onClick={ClearErrors}
                   >
                     <CardComponent

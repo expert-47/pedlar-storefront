@@ -31,8 +31,8 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         marginX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
-        style={{
-          marginTop: "105px",
+        sx={{
+          marginTop: "98px",
           position: "relative",
           overflow: "unset",
           backgroundColor: "#1c1b1f",
@@ -184,8 +184,8 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           <Image src={image3} alt="step3" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Box>
-                      <Box id="section-4" mt={132} >
-                        <Box className="hs5-ib-sbr-img" >
+                      <Box id="section-4" mt={132}>
+                        <Box className="hs5-ib-sbr-img">
                           <Image src={image4} alt="step4" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Box>

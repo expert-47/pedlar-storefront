@@ -57,7 +57,10 @@ const Gridbox = () => {
           </Typography>
         </Marquee>
 
-        <Box sx={styles.mainGrid} height={{ xs: "fit-content", sm: "fit-content", md: "fit-content", lg: "620px", xl: "620px" }}>
+        <Box
+          sx={styles.mainGrid}
+          height={{ xs: "fit-content", sm: "fit-content", md: "fit-content", lg: "620px", xl: "620px" }}
+        >
           <Typography
             sx={styles.gridboxText}
             fontSize={{ lg: "54px", md: "54px", sm: "54px", xs: "30px" }}
@@ -185,6 +188,7 @@ const Gridbox = () => {
             Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           </Typography>
         </Marquee>
+
         {popupScreen ? (
           <LoginDialog
             handleClose={handleClose}

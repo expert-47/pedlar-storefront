@@ -137,7 +137,7 @@ const ResponsiveHeader = () => {
                   </Button>
                 </Grid>
                 <Grid>
-                  <Button sx={styles.Login1} onClick={openPopup}>
+                  <Button sx={styles.Login1} >
                     <Link href="https://portal.pedlar.store">
                       <Typography textTransform="none" sx={styles.ButtonRTypo}>
                         Log in

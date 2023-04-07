@@ -492,13 +492,16 @@ section {
     height: 1250px !important;
   }
 } */
- @media screen and (min-width: 375px) and (max-width: 375px) {
+@media screen and (min-width: 375px) and (max-width: 375px) {
   .css-nr60hm {
     height: 1130px !important;
   }
-} 
+}
 @media screen and (min-width: 425px) and (max-width: 425px) {
   .css-nr60hm {
     height: 1060px !important;
   }
+}
+.pswp__img {
+  object-fit: contain;
 }

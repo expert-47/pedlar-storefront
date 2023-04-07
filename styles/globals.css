@@ -76,7 +76,7 @@
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  right: 38px;
+  right: 28px !important;
   width: 680px !important;
   z-index: 0;
   bottom: 40px;
@@ -87,7 +87,7 @@
   transform: rotate(-90deg);
   position: absolute !important;
   transform-origin: 0 0;
-  left: 0px;
+  left: 1px !important;
   bottom: 0px;
   width: 660px !important;
   z-index: 0;
@@ -492,11 +492,11 @@ section {
     height: 1250px !important;
   }
 } */
- @media screen and (min-width: 375px) and (max-width: 375px) {
+@media screen and (min-width: 375px) and (max-width: 375px) {
   .css-nr60hm {
     height: 1130px !important;
   }
-} 
+}
 @media screen and (min-width: 425px) and (max-width: 425px) {
   .css-nr60hm {
     height: 1060px !important;

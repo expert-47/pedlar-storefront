@@ -47,13 +47,13 @@ const CardBox = ({
         sm={12}
         md={12}
         lg={12}
-        paddingTop={{ xs: "40px", sm: "350px", md: "350px", lg: "120px" }}
+        paddingTop={{ xs: "450px", sm: "450px", md: "420px", lg: "120px" }}
         style={{ position: "relative" }}
       >
         <Grid item xs={12} sm={12} md={12} lg={10.5} xl={8.5}>
           <Typography
             textTransform={"none"}
-            fontSize={{ xs: "48px", md: "54px" }}
+            fontSize={{ xs: "40px", md: "54px" }}
             sx={styles.heading}
             paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(50), lg: theme.spacing(50) }}
           >

@@ -246,7 +246,7 @@ const Storefree = () => {
               </Formik>
             </Box>
           ) : (
-            <Box style={{ textAlign: "center", alignItems: "center", padding: "140px" }}>
+            <Box style={{ textAlign: "center", alignItems: "center" }} padding={{ xs: "66px", sm: "140px" }}>
               <Box style={{ paddingBottom: "20px" }}>
                 <Typography fontSize={"48px"} fontWeight={700}>
                   Thank you!

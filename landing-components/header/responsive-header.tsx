@@ -58,6 +58,9 @@ const ResponsiveHeader = () => {
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
+   const handleClick = () => {
+     router.push("https://portal.pedlar.store");
+   };
 
   return (
     <AppBar
@@ -137,12 +140,10 @@ const ResponsiveHeader = () => {
                   </Button>
                 </Grid>
                 <Grid>
-                  <Button sx={styles.Login1} onClick={openPopup}>
-                    <Link href="https://portal.pedlar.store">
-                      <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                        Log in
-                      </Typography>
-                    </Link>
+                  <Button sx={styles.Login1} onClick={handleClick}>
+                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                      Log in
+                    </Typography>
                   </Button>
 
                   <BottomSheet

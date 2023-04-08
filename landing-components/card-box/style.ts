@@ -8,7 +8,7 @@ export const styles = {
   heading: {
     fontWeight: "700",
     color: "#1C1B1F",
-    lineHeight: "unset",
+    lineHeight: "60px",
     marginBottom: "40px",
   },
   title: {

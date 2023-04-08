@@ -52,6 +52,11 @@ const Header = () => {
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
+
+  const handleClick =() =>{
+    router.push("https://portal.pedlar.store");
+  };
+  
   return (
     <AppBar
       elevation={0}
@@ -125,12 +130,13 @@ const Header = () => {
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12} md={3.5} style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button>
-                  <Link href="https://portal.pedlar.store">
+                <Button onClick = {handleClick}>
+                    
+               
                     <Typography textTransform="none" sx={styles.LoginButton}>
                       Log in
                     </Typography>
-                  </Link>
+               
                 </Button>
                 <Button onClick={openPopup}>
                   <Typography textTransform="none" sx={styles.GetAccessTypo}>

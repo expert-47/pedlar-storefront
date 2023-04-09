@@ -49,6 +49,7 @@ const CardComponent = ({
     >
       <Box
         width={width}
+        height="100%"
         sx={{
           cursor: "pointer",
         }}
@@ -65,41 +66,65 @@ const CardComponent = ({
           </Box>
         )}
         <Typography
-          fontSize={"16px"}
-          fontWeight={"600"}
-          style={{ textOverflow: "wrap", color: "#1C1B1F", paddingTop: "8px" }}
+          align="center"
+          fontSize={"14px"}
+          fontWeight={"500"}
+          style={{
+            color: "#1C1B1F",
+            paddingTop: "20px",
+            textTransform: "capitalize"
+        }}
+          sx={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "1",
+            WebkitBoxOrient: "vertical",
+          }}
         >
           {type}
         </Typography>
         <Typography
+          align="center"
           style={{
-            textTransform: "uppercase",
-            lineHeight: "16px",
+            textTransform: "capitalize",
+            lineHeight: "18px",
             color: "#1C1B1F",
           }}
-          fontSize={"12px"}
-          fontWeight={"600"}
+          fontSize={"14px"}
+          fontWeight={"400"}
+          sx={{
+            paddingInlineStart: "7px",
+            paddingInlineEnd: "7px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+          }}
         >
           {name}
         </Typography>
         {crossPrice ? (
           <Box sx={{ display: "flex" }}>
             <Typography
+              align="center"
               style={{
+                paddingTop: "8px",
                 textDecoration: "line-through",
                 textDecorationColor: "#1C1B1F87",
                 textDecorationThickness: "0.1em",
                 color: "#1C1B1F87",
               }}
-              fontSize={"16px"}
-              fontWeight={"600"}
+              fontSize={"12px"}
+              fontWeight={"400"}
             >
               {crossPrice}
             </Typography>
-            <Typography style={{ fontSize: "16px", marginLeft: "6px", fontWeight: "600" }}>{price}</Typography>
+            <Typography align="center" style={{ fontSize: "12px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
           </Box>
         ) : (
-          <Typography style={{ fontSize: "16px", fontWeight: "600" }}>{price}</Typography>
+          <Typography  align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
         )}
       </Box>
     </Link>

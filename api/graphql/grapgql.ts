@@ -91,12 +91,12 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
                     }
                 }
                 featuredImage {
-          height
-          src
-          width
-          originalSrc
-          transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
-        }
+                    height
+                    src
+                    width
+                    originalSrc
+                    transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+                }
                 createdAt
                 publishedAt
             }

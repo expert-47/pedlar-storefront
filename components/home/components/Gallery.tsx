@@ -30,6 +30,7 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
             margin: "0px auto 0px auto",
           }}
           rowSpacing={20}
+          alignItems={"baseline"}
         >
           {Array.isArray(newAdditionData) &&
             newAdditionData?.map((item: any, index) => {

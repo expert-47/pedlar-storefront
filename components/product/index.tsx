@@ -400,7 +400,7 @@ const Cart = (props: any) => {
                           marginTop: "20px",
                         }}
                       >
-                        <Item original={item?.url} thumbnail={item?.url} width="500" height="500">
+                        <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
                           {({ ref, open }) => (
                             <div onClick={open} ref={ref}>
                               <Image
@@ -542,9 +542,7 @@ const Cart = (props: any) => {
                     sm={3}
                     md={3}
                     lg={2.5}
-                  
-
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
                     onClick={ClearErrors}
                   >
                     <CardComponent

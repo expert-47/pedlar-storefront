@@ -7,7 +7,6 @@ export const styles = {
     alignContent: "center",
     justifyContent: "flex-end",
     height: { xs: "355px", sm: "580px", md: "600px", lg: "auto", xl: "650px" },
-    marginBottom: "100px",
   },
   GridBox: {
     alignSelf: "center",

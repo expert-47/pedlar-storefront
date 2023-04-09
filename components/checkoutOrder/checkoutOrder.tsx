@@ -170,7 +170,7 @@ const CheckoutOrder = (props: Props) => {
               }}
             >
               <Box sx={{ width: 130, height: 130 }}>
-                <PedlarImage src={props.image} />
+                <PedlarImage src={props.image} objectFit="contain" />
               </Box>
             </Box>
             <Box

@@ -103,7 +103,7 @@ const CardComponent = ({
             WebkitBoxOrient: "vertical",
           }}
         >
-          {name}
+          {name?.length > 20 ?  name.substring(0,20) + "..." : name}
         </Typography>
         {crossPrice ? (
           <Box sx={{ display: "flex" }}>

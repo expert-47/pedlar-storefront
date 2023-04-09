@@ -7,6 +7,8 @@ import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
 import PedlarImage from "components/pedlarImage";
 import BottomSheet from "landing-components/BottomSheet";
+import Link from "next/link";
+
 
 const ResponsiveHeader = () => {
   const router = useRouter();
@@ -56,6 +58,9 @@ const ResponsiveHeader = () => {
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
+   const handleClick = () => {
+     router.push("https://portal.pedlar.store");
+   };
 
   return (
     <AppBar
@@ -135,7 +140,7 @@ const ResponsiveHeader = () => {
                   </Button>
                 </Grid>
                 <Grid>
-                  <Button sx={styles.Login1} onClick={openPopup}>
+                  <Button sx={styles.Login1} onClick={handleClick}>
                     <Typography textTransform="none" sx={styles.ButtonRTypo}>
                       Log in
                     </Typography>

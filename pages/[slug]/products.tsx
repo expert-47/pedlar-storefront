@@ -122,7 +122,9 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       console.log(error);
       setHasNextPage(false);
     } finally {
-      scrollToTop();
+      setTimeout(() => {
+        scrollToTop();
+      }, 500);
     }
   };
   useEffect(() => {

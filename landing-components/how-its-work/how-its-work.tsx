@@ -32,7 +32,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         marginX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
         sx={{
-          marginTop: "98px",
+          marginTop: { xs: "50px", md: "98px" },
           position: "relative",
           overflow: "unset",
           backgroundColor: "#1c1b1f",

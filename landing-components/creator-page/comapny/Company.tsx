@@ -16,7 +16,13 @@ const Company = () => {
         sm={12}
         md={12}
         lg={12}
-        style={{ display: "flex", flexDirection: "column", zIndex: "999", position: "relative", marginTop: "85px" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          zIndex: "999",
+          position: "relative",
+          marginTop: { xs: "30px", md: "85px" },
+        }}
         paddingX={{ xs: theme.spacing(15), sm: theme.spacing(40), md: theme.spacing(40), lg: theme.spacing(60) }}
       >
         <Grid item xs={12} sm={12} md={12} lg={12}>

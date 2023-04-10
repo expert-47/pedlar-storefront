@@ -8,7 +8,7 @@ interface Props {
   newAdditionData?: any[];
   heading: string;
 }
-const Gallery = ({ newAdditionData, columnSpacing = 10, heading }: Props) => {
+const Gallery = ({ newAdditionData, heading }: Props) => {
   return (
     <>
       <CustomGrid
@@ -26,13 +26,10 @@ const Gallery = ({ newAdditionData, columnSpacing = 10, heading }: Props) => {
           md={11.6}
           lg={12}
           sx={{
-            paddingLeft: { xs: "5px", sm: "5px" },
-            paddingRight: { xs: "5px", sm: "5px" },
             justifyContent: "flex-start",
             margin: "0px auto 0px auto",
           }}
-          columnSpacing={columnSpacing || 10}
-          rowSpacing={10}
+          rowSpacing={20}
           alignItems={"baseline"}
         >
           {Array.isArray(newAdditionData) &&
@@ -50,15 +47,15 @@ const Gallery = ({ newAdditionData, columnSpacing = 10, heading }: Props) => {
                   lg={4}
                   xl={4}
                   key={item?.collectionId}
-                  sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                  sx={{ display: "flex", justifyContent: "center", alignItems: "center"}}
                 >
                   <CardComponent
-                    width={{ xs: "150px", sm: 250, md: 320, lg: 344 }}
-                    height={{ xs: "150px", sm: 250, md: 320, lg: 344 }}
-                    type={item?.vendor}
-                    name={item?.title}
+                    width={{ xs: "185px", sm: 250, md: 320, lg: 380 }}
+                    height={{ xs: "230px", sm: 312, md: 400, lg: 450 }}
+                    type={item?.vendor?.toLowerCase()}
+                    name={item?.title?.toLowerCase()}
                     price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
-                    image={item?.featuredImage?.transformedSrc}
+                    image={item?.featuredImage?.src}
                     id={item?.id}
                     item={item}
                     index={index}

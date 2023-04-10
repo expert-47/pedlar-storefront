@@ -87,7 +87,7 @@
   transform: rotate(-90deg);
   position: absolute !important;
   transform-origin: 0 0;
-  left: 1px !important;
+  left: 0px;
   bottom: 0px;
   width: 660px !important;
   z-index: 0;
@@ -97,7 +97,6 @@
 @media only screen and (max-width: 320px) {
   .marq-left {
     width: 1320px !important;
-    left: -2px;
   }
   .marq-right {
     width: 1320px !important;
@@ -107,7 +106,6 @@
 @media only screen and (min-width: 375px) {
   .marq-left {
     width: 1220px !important;
-    left: -2px;
   }
   .marq-right {
     width: 1220px !important;
@@ -117,7 +115,6 @@
 @media only screen and (min-width: 425px) {
   .marq-left {
     width: 1150px !important;
-    left: -2px;
   }
   .marq-right {
     width: 1150px !important;
@@ -137,9 +134,11 @@
 @media only screen and (min-width: 768px) {
   .marq-left {
     width: 1150px !important;
+    left: -5px;
   }
   .marq-right {
     width: 1150px !important;
+    right: 34px !important;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */

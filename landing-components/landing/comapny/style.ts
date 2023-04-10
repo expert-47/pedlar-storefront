@@ -1,6 +1,6 @@
 export const styles = {
   heading: {
-    marginTop: "100px",
+    marginTop: { xs: "50px", md: "100px" },
     color: "#1C1B1F",
     lineHeight: "normal",
     zIndex: "2",

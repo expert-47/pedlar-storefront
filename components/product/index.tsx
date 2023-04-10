@@ -11,7 +11,6 @@ import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-
 import { CustomContainer } from "../layout";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -25,7 +24,6 @@ import { getStoreName } from "utils/getPathName";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import Scrollspy from "react-scrollspy";
-
 import {
   addToCart,
   updateCartLineItem,
@@ -39,7 +37,6 @@ import { addProductToCart, updateCartId } from "store/slice/appSlice";
 import * as gtmEvents from "utils/gtm";
 import CardComponent from "components/home/components/cardComponent";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
-
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { seo } from "utils/seoData";
@@ -170,13 +167,11 @@ const Cart = (props: any) => {
     } catch (error) {
     } finally {
       gmtEventToAddProduct({ ...newAdditionData, quantity: 1, item_category3: "add to cart" });
-
       getCartList(true);
       setButtonLoaderState(false);
       setLoading(false);
     }
   };
-
   const onSelectedItem = async (sizeValue = undefined, colorValue = undefined, type) => {
     try {
       setError(false);
@@ -189,7 +184,6 @@ const Cart = (props: any) => {
         index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
         heading: route?.query?.heading || "all products",
       });
-
       const variant = await getVariantBySelectedOptions(
         newAdditionData?.id,
         sizeValue != undefined ? sizeValue : size,
@@ -197,7 +191,6 @@ const Cart = (props: any) => {
         newAdditionData?.options[0]?.name,
         newAdditionData?.options[1]?.name,
       );
-
       const varientData = variant?.data.product?.variantBySelectedOptions;
       setPrice({
         price: varientData.price.amount,
@@ -228,20 +221,17 @@ const Cart = (props: any) => {
         newAdditionData?.options[0]?.name,
         newAdditionData?.options[1]?.name,
       );
-
       const varientData = variant?.data.product?.variantBySelectedOptions;
       if (varientData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
       } else {
         gmtEventToAddProduct({ ...newAdditionData, quantity: 1, item_category3: "buy now button" });
-
         if (!cartId) {
           let res = await addToCart(varientData?.id, slugValue, quantity);
           dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
           let cartId = res?.data?.cartCreate?.cart?.id;
           const response = await checkoutCartDetails(cartId);
-
           window.open(response?.data?.cart?.checkoutUrl, "_self");
           gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
         } else {
@@ -252,9 +242,7 @@ const Cart = (props: any) => {
               setErrorMessage("This item is currently out of stock");
             } else {
               console.log("gfds");
-
               let data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
-
               gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
               setTimeout(async () => {
                 const response = await checkoutCartDetails(cartId);
@@ -519,15 +507,25 @@ const Cart = (props: any) => {
           </Grid>
         </Box>
         <Grid container spacing={4} sx={styles.bottomContainer}>
-          <Grid container item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px">
-            <Grid item xs={12} sm={12} md={12} lg={12} paddingLeft="10px">
-              <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
-                You might like
-              </Typography>
-            </Grid>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
+            <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+              You might like
+            </Typography>
           </Grid>
-
-          <Grid container xs={12} sm={12} md={12} lg={12} xl={12} pl={3} pr={3}>
+          <Grid
+            container
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            pl={3}
+            pr={3}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               const productId = item?.id?.split("gid://shopify/Product/")[1];
               const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")

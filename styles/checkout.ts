@@ -30,7 +30,7 @@ const styles = {
     paddingTop: "20px",
   },
   checkoutButton: {
-    width: "100%",
+    width: "90%",
     backgroundColor: "primary.dark",
     color: "primary.main",
     borderRadius: "666px",
@@ -105,11 +105,13 @@ const styles = {
   brandName: {
     fontSize: "12px",
     fontWeight: "600",
+    lineHeight: "16px",
     textTransform: "uppercase",
   },
   vendorName: {
     fontSize: "12px",
     fontWeight: "600",
+    lineHeight: "16px",
     textTransform: "uppercase",
   },
   productPrice: {
@@ -147,6 +149,7 @@ const styles = {
     width: "100%",
     left: "935px",
     top: "343px",
+    marginTop: "20px",
   },
   paymentButton: {
     width: "100%",

@@ -1,6 +1,6 @@
 export const styles = {
   Box: {
-    marginTop: "100px",
+    marginTop: { xs: "50px", md: "100px" },
     display: "flex",
     backgroundColor: "white",
     borderRadius: "15px",

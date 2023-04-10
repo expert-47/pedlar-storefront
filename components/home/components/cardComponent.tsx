@@ -80,7 +80,7 @@ const CardComponent = ({
           fontSize={"12px"}
           fontWeight={"600"}
         >
-          {name?.length > 20 ?  name.substring(0,20) + "..." : name}
+          {name?.length > 20 ? name.substring(0, 20) + "..." : name}
         </Typography>
         {crossPrice ? (
           <Box sx={{ display: "flex" }}>

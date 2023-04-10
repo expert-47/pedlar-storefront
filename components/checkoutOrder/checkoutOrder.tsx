@@ -27,16 +27,12 @@ interface Props {
 
 const CheckoutOrder = (props: Props) => {
   const { itemData, index } = props;
-  console.log("itemData", itemData);
-
   const [productCount, setProductCount] = useState(props?.quantity);
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const storeName = useSelector((data: any) => data.app.storeName);
-
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
-
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
@@ -208,7 +204,6 @@ const CheckoutOrder = (props: Props) => {
                   }}
                 >
                   <RemoveIcon sx={styles.addRemoveIcon} onClick={() => productDecrementHandler(props?.quantity)} />
-
                   <Typography sx={styles.addRemoveText}>{productCount}</Typography>
                   <AddIcon sx={styles.addRemoveIcon} onClick={() => incQuantityHandler(productCount)} />
                 </Box>

@@ -208,8 +208,8 @@ export default function HomepagePopup() {
                   Shop now
                 </Button>
               </Link>
-              <Box sx={{ height: "44vh", width: "100%", paddingTop: "25px" }}>
-                <img src="/popImg.png" height={"100%"} width={"100%"} />
+              <Box sx={{ height: "42.3vh", width: "100%", paddingTop: "25px" }}>
+                <img src="/popImg.png" height={"100%"} width={"100%"} style={{ objectFit: "contain" }} />
               </Box>
             </Box>
           </Box>

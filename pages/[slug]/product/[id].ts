@@ -1,4 +1,3 @@
-import React from "react";
 import { getProductDetails, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
 import { getUserDetail } from "api/restApi/getUserDetail";
 import Cart from "components/product";

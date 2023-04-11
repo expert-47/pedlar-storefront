@@ -8,8 +8,3 @@ automatic_scaling:
     target_utilization: 0.9
 resources:
   memory_gb: 2.3
-handlers:
-- url: .*
-  secure: always
-  redirect_http_response_code: 301
-  script: auto

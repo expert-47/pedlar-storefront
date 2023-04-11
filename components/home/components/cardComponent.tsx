@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { getStoreName } from "utils/getPathName";
 import PedlarImage from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
+import { useSelector } from "react-redux";
 interface Props {
   name: string;
   type: string;
@@ -36,100 +37,109 @@ const CardComponent = ({
 }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
-  let path = getStoreName(route);
+
+  console.log("route", route);
+
+  const storeName = useSelector((data: any) => data.app.storeName);
 
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
     route.push(
       {
-        pathname: `${path}/product/${productId}`,
+        pathname: `${storeName}/product/${productId}`,
         query: { id: productId, index: index, heading: heading },
       },
-      `${path}/product/${productId}`,
+      `${storeName}/product/${productId}`,
     );
   };
 
   return (
-    
-      <Box
-        width={width}
+    <Box
+      width={width}
+      sx={{
+        cursor: "pointer",
+      }}
+      onClick={onClickCard}
+    >
+      {image && (
+        <Box
+          height={height}
+          sx={{
+            width: "100%",
+          }}
+        >
+          <PedlarImage src={image} objectFit="contain" />
+        </Box>
+      )}
+      <Typography
+        align="center"
+        fontSize={"14px"}
+        fontWeight={"500"}
+        style={{
+          color: "#1C1B1F",
+          paddingTop: "20px",
+          textTransform: "capitalize",
+        }}
         sx={{
-          cursor: "pointer",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          display: "-webkit-box",
+          WebkitLineClamp: "1",
+          WebkitBoxOrient: "vertical",
         }}
-        onClick={onClickCard}
       >
-        {image && (
-          <Box
-            height={height}
-            sx={{
-              width: "100%",
-            }}
-          >
-            <PedlarImage src={image} objectFit="contain" />
-          </Box>
-        )}
-        <Typography
-          align="center"
-          fontSize={"14px"}
-          fontWeight={"500"}
-          style={{
-            color: "#1C1B1F",
-            paddingTop: "20px",
-            textTransform: "capitalize"
+        {type}
+      </Typography>
+      <Typography
+        align="center"
+        style={{
+          textTransform: "capitalize",
+          lineHeight: "18px",
+          color: "#1C1B1F",
         }}
-          sx={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: "1",
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {type}
+        fontSize={"14px"}
+        fontWeight={"400"}
+        sx={{
+          paddingInlineStart: "7px",
+          paddingInlineEnd: "7px",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          display: "-webkit-box",
+          WebkitLineClamp: "2",
+          WebkitBoxOrient: "vertical",
+        }}
+      >
+        {name}
+      </Typography>
+      {crossPrice ? (
+        <Box sx={{ display: "flex" }}>
+          <Typography
+            align="center"
+            style={{
+              paddingTop: "8px",
+              textDecoration: "line-through",
+              textDecorationColor: "#1C1B1F87",
+              textDecorationThickness: "0.1em",
+              color: "#1C1B1F87",
+            }}
+            fontSize={"12px"}
+            fontWeight={"400"}
+          >
+            {crossPrice}
+          </Typography>
+          <Typography
+            align="center"
+            style={{ fontSize: "12px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
+          >
+            {price}
+          </Typography>
+        </Box>
+      ) : (
+        <Typography align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>
+          {price}
         </Typography>
-        <Typography
-          align="center"
-          style={{
-            textTransform: "capitalize",
-            lineHeight: "18px",
-            color: "#1C1B1F",
-          }}
-          fontSize={"14px"}
-          fontWeight={"400"}
-          sx={{
-            paddingInlineStart: "7px",
-            paddingInlineEnd: "7px",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: "2",
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {name}
-        </Typography>
-        {crossPrice ? (
-          <Box sx={{ display: "flex" }}>
-            <Typography
-              align="center"
-              style={{
-                paddingTop: "8px",
-                textDecoration: "line-through",
-                textDecorationColor: "#1C1B1F87",
-                textDecorationThickness: "0.1em",
-                color: "#1C1B1F87",
-              }}
-              fontSize={"12px"}
-              fontWeight={"400"}
-            >
-              {crossPrice}
-            </Typography>
-            <Typography align="center" style={{ fontSize: "12px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
-          </Box>
-        ) : (
-          <Typography  align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
-        )}
-      </Box>
+      )}
+    </Box>
   );
 };
 CardComponent.propTypes = {

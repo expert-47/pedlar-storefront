@@ -20,8 +20,7 @@ const config: DefaultSeoProps = {
       sizes: "76x76",
     },
   ],
-  description:
-    "We’re always here to help.  Contact us at hello@pedlar.store and our customer service team will be in touch.",
+  description: "Creator storefronts to showcase the brands you love",
   twitter: {
     handle: "@handle",
     site: "@site",

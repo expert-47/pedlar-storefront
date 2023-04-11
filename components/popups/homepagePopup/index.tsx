@@ -10,8 +10,7 @@ import { useRouter } from "next/router";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toggleDialog } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
-import PedlarImage from "components/pedlarImage";
-import PopImg from "../../../public/popImg.png";
+
 export interface DialogTitleProps {
   id: string;
   children?: React.ReactNode;
@@ -209,15 +208,7 @@ export default function HomepagePopup() {
                   Shop now
                 </Button>
               </Link>
-              <Box
-                sx={{
-                  height: "40vh",
-                  width: "100%",
-                  marginTop: "25px",
-                }}
-              >
-                <img src="/popImg.png" alt="PopUp Image" height={"100%"} width={"100%"} />
-              </Box>
+              <img src="/popImg.png" alt="PopUp Image" height={"100%"} width={"100%"} style={{ marginTop: "25px" }} />
             </Box>
           </Box>
         </Dialog>

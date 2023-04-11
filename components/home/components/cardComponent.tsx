@@ -40,13 +40,17 @@ const CardComponent = ({
 
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
+    route.push(
+      {
+        pathname: `${path}/product/${productId}`,
+        query: { id: productId, index: index, heading: heading },
+      },
+      `${path}/product/${productId}`,
+    );
   };
 
   return (
-    <Link
-      href={{ pathname: `${path}/product/${productId}`, query: { id: productId, index: index, heading: heading } }}
-      as={`${path}/product/${productId}`}
-    >
+    
       <Box
         width={width}
         sx={{
@@ -126,7 +130,6 @@ const CardComponent = ({
           <Typography  align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
         )}
       </Box>
-    </Link>
   );
 };
 CardComponent.propTypes = {

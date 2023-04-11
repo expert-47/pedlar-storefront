@@ -546,10 +546,10 @@ const Cart = (props: any) => {
                     onClick={ClearErrors}
                   >
                     <CardComponent
-                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      name={item?.title}
-                      type={item?.productType}
+                      width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
+                      height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
+                      name={item?.title?.toLowerCase()}
+                      type={item?.vender?.toLowerCase()}
                       price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}

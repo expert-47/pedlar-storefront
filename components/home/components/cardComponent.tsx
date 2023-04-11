@@ -38,18 +38,16 @@ const CardComponent = ({
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
 
-  console.log("route", route);
-
   const storeName = useSelector((data: any) => data.app.storeName);
 
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
     route.push(
       {
-        pathname: `${storeName}/product/${productId}`,
+        pathname: `/${storeName}/product/${productId}`,
         query: { id: productId, index: index, heading: heading },
       },
-      `${storeName}/product/${productId}`,
+      `/${storeName}/product/${productId}`,
     );
   };
 

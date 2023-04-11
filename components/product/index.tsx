@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
@@ -115,7 +115,7 @@ const Cart = (props: any) => {
     });
   };
 
-  const gmtEventToBuyNow = (data) => {
+  const gmtEventToBuyNow = (data: any) => {
     gtmEvents.buyNowbeginCheckout({
       ...data,
       ...(newAdditionData?.options.length != 1 && { size: size }),
@@ -346,6 +346,7 @@ const Cart = (props: any) => {
                 paddingTop: "26px",
               }}
             >
+              {/* Mobile View */}
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Gallery>
@@ -353,17 +354,14 @@ const Cart = (props: any) => {
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
                           <Box sx={styles.eachSlideEffect} key={"sliderImages" + index}>
-                            <SwiperSlide>
-                              <Item original={item?.url} thumbnail={item?.url} width="600" height="600">
+                            <SwiperSlide
+                              style={{
+                                backgroundColor: "white",
+                              }}
+                            >
+                              <Item original={item?.url} thumbnail={item?.url} width="1600" height="1600">
                                 {({ ref, open }) => (
-                                  <img
-                                    width={"265px"}
-                                    height={"290px"}
-                                    ref={ref}
-                                    onClick={open}
-                                    src={item?.url}
-                                    objectFit="contain"
-                                  />
+                                  <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
                                 )}
                               </Item>
                             </SwiperSlide>
@@ -374,7 +372,8 @@ const Cart = (props: any) => {
                   </Gallery>
                 </Grid>
               </Grid>
-
+              
+              {/* Desktop View */}
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <Gallery>
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {

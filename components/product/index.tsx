@@ -21,7 +21,7 @@ import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
-import "photoswipe/dist/photoswipe.css";
+
 import { Gallery, Item } from "react-photoswipe-gallery";
 import Scrollspy from "react-scrollspy";
 import {
@@ -349,30 +349,33 @@ const Cart = (props: any) => {
               {/* Mobile View */}
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
-                  <Gallery>
+                  <Gallery
+                    options={{
+                      showAnimationDuration: 0,
+                      hideAnimationDuration: 0,
+                    }}
+                  >
                     <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
-                          <Box sx={styles.eachSlideEffect} key={"sliderImages" + index}>
-                            <SwiperSlide
-                              style={{
-                                backgroundColor: "white",
-                              }}
-                            >
-                              <Item original={item?.url} thumbnail={item?.url} width="1600" height="1600">
-                                {({ ref, open }) => (
-                                  <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
-                                )}
-                              </Item>
-                            </SwiperSlide>
-                          </Box>
+                          <SwiperSlide
+                            style={{
+                              backgroundColor: "white",
+                            }}
+                          >
+                            <Item id={index} original={item?.url} thumbnail={item?.url}>
+                              {({ ref, open }) => (
+                                <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                              )}
+                            </Item>
+                          </SwiperSlide>
                         );
                       })}
                     </Swiper>
                   </Gallery>
                 </Grid>
               </Grid>
-              
+
               {/* Desktop View */}
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <Gallery>
@@ -505,7 +508,64 @@ const Cart = (props: any) => {
             </Grid>
           </Grid>
         </Box>
-        <Grid container spacing={4} sx={styles.bottomContainer}>
+        {/* Desktop View */}
+        <Grid container spacing={4} sx={{ ...styles.bottomContainer, display: { xs: "none", sm: "block" } }}>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
+            <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+              You might like
+            </Typography>
+          </Grid>
+          <Grid
+            container
+            xs={12}
+            sm={12}
+            md={12}
+            lg={12}
+            xl={12}
+            pl={3}
+            pr={3}
+            sx={{
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
+              const productId = item?.id?.split("gid://shopify/Product/")[1];
+              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
+                ? Math.round(item.priceRange?.minVariantPrice?.amount)
+                : item.priceRange?.minVariantPrice?.amount;
+              return (
+                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
+                  <Grid
+                    key={index}
+                    item
+                    xs={6}
+                    sm={3}
+                    md={3}
+                    lg={2}
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
+                    onClick={ClearErrors}
+                  >
+                    <CardComponent
+                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                      name={item?.title}
+                      type={item?.vendor}
+                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
+                      image={item?.featuredImage?.transformedSrc}
+                      id={item?.id}
+                      item={item}
+                      index={index}
+                      heading={"you might like"}
+                    />
+                  </Grid>
+                </Link>
+              );
+            })}
+          </Grid>
+        </Grid>
+        {/* Mobile View */}
+        <Grid container spacing={4} sx={{ ...styles.bottomContainer, display: { xs: "block", sm: "none" } }}>
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
             <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
               You might like
@@ -538,7 +598,7 @@ const Cart = (props: any) => {
                     xs={6}
                     sm={3}
                     md={3}
-                    lg={2.5}
+                    lg={2}
                     sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
                     onClick={ClearErrors}
                   >
@@ -546,7 +606,7 @@ const Cart = (props: any) => {
                       width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       name={item?.title}
-                      type={item?.productType}
+                      type={item?.vendor}
                       price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}

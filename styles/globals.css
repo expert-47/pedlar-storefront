@@ -508,18 +508,25 @@ section {
 
 .pswp__img {
   object-fit: contain;
-  background-color: white;
+  background-color: black;
+  object-position: center;
 }
-.pswp__top-bar {
-  /* background-color: black !important; */
-}
+
 .pswp__item {
   background-color: black !important;
+  height: "100%" !important;
+  width: "100%" !important;
+  /* transform: none !important; */
 }
 
 .pswp--ui-visible {
   background-color: black !important;
+  height: "100%" !important;
+  width: "100%" !important;
 }
-.pswp__icn-shadow {
+.pswp__icn-shadow .pswp__icn {
   background-color: black !important;
+}
+.pswp--touch .pswp__button--arrow {
+  visibility: visible !important;
 }

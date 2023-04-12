@@ -358,19 +358,17 @@ const Cart = (props: any) => {
                     <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
-                          <Box sx={styles.eachSlideEffect} key={"sliderImages" + index}>
-                            <SwiperSlide
-                              style={{
-                                backgroundColor: "white",
-                              }}
-                            >
-                              <Item id={index} original={item?.url} thumbnail={item?.url}>
-                                {({ ref, open }) => (
-                                  <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
-                                )}
-                              </Item>
-                            </SwiperSlide>
-                          </Box>
+                          <SwiperSlide
+                            style={{
+                              backgroundColor: "white",
+                            }}
+                          >
+                            <Item id={index} original={item?.url} thumbnail={item?.url}>
+                              {({ ref, open }) => (
+                                <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                              )}
+                            </Item>
+                          </SwiperSlide>
                         );
                       })}
                     </Swiper>

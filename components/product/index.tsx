@@ -21,7 +21,7 @@ import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
-import "photoswipe/dist/photoswipe.css";
+
 import { Gallery, Item } from "react-photoswipe-gallery";
 import Scrollspy from "react-scrollspy";
 import {
@@ -349,7 +349,12 @@ const Cart = (props: any) => {
               {/* Mobile View */}
               <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
-                  <Gallery>
+                  <Gallery
+                    options={{
+                      showAnimationDuration: 0,
+                      hideAnimationDuration: 0,
+                    }}
+                  >
                     <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
@@ -359,7 +364,7 @@ const Cart = (props: any) => {
                                 backgroundColor: "white",
                               }}
                             >
-                              <Item original={item?.url} thumbnail={item?.url} width="1600" height="1600">
+                              <Item id={index} original={item?.url} thumbnail={item?.url}>
                                 {({ ref, open }) => (
                                   <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
                                 )}
@@ -372,7 +377,7 @@ const Cart = (props: any) => {
                   </Gallery>
                 </Grid>
               </Grid>
-              
+
               {/* Desktop View */}
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
                 <Gallery>

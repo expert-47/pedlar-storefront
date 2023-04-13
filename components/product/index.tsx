@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
@@ -45,6 +45,7 @@ import { Slide } from "react-slideshow-image";
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
+  const slideRef = useRef(null);
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
@@ -86,6 +87,9 @@ const Cart = (props: any) => {
         newAdditionData?.options.length,
       );
     }
+    return () => {
+      slideRef?.current?.goTo(0);
+    };
   }, [newAdditionData, route]);
 
   // for setting the size of the product
@@ -356,7 +360,14 @@ const Cart = (props: any) => {
                       hideAnimationDuration: 0,
                     }}
                   >
-                    <Slide indicators={true} arrows={false} autoplay={false}>
+                    <Slide
+                      transitionDuration={100}
+                      ref={slideRef}
+                      indicators={true}
+                      arrows={false}
+                      autoplay={false}
+                      infinite={false}
+                    >
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
                           <Box
@@ -366,7 +377,14 @@ const Cart = (props: any) => {
                           >
                             <Item id={index} original={item?.url} thumbnail={item?.url}>
                               {({ ref, open }) => (
-                                <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                                <img
+                                  width={"265px"}
+                                  style={{ objectFit: "contain" }}
+                                  height={"290px"}
+                                  ref={ref}
+                                  onClick={open}
+                                  src={item?.url}
+                                />
                               )}
                             </Item>
                           </Box>
@@ -379,7 +397,12 @@ const Cart = (props: any) => {
 
               {/* Desktop View */}
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                <Gallery>
+                <Gallery
+                  options={{
+                    showAnimationDuration: 0,
+                    hideAnimationDuration: 0,
+                  }}
+                >
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                     return (
                       <div

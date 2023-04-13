@@ -29,7 +29,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN if [ "$ENV" = "dev" ] ; then \
+RUN if [ "${ENV}" = "dev" ] ; then \
          rm ./.env.production; \
          mv ./.env.development ./.env.production; \
     fi
@@ -55,9 +55,5 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 USER nextjs
-
-EXPOSE $PORT
-
-ENV PORT $PORT
 
 CMD ["node", "server.js"]

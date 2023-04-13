@@ -41,6 +41,7 @@ import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { seo } from "utils/seoData";
 import { Slide } from "react-slideshow-image";
+import PedlarImage from "components/pedlarImage";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -377,14 +378,23 @@ const Cart = (props: any) => {
                           >
                             <Item id={index} original={item?.url} thumbnail={item?.url}>
                               {({ ref, open }) => (
-                                <img
-                                  width={"265px"}
-                                  style={{ objectFit: "contain" }}
-                                  height={"290px"}
+                                <Box
                                   ref={ref}
                                   onClick={open}
-                                  src={item?.url}
-                                />
+                                  sx={{
+                                    height: 290,
+                                    width: 265,
+                                  }}
+                                >
+                                  <Image
+                                    src={item?.url}
+                                    width={265}
+                                    height={290}
+                                    placeholder="blur"
+                                    blurDataURL="/loaderShim.png"
+                                    objectFit="contain"
+                                  />
+                                </Box>
                               )}
                             </Item>
                           </Box>

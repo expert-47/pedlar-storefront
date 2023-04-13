@@ -91,7 +91,7 @@ const Cart = (props: any) => {
     return () => {
       slideRef?.current?.goTo(0);
     };
-  }, [newAdditionData?.id]);
+  }, [route.query?.id]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
@@ -382,10 +382,11 @@ const Cart = (props: any) => {
                                   ref={ref}
                                   onClick={open}
                                   sx={{
-                                    height: 290,
-                                    width: 265,
+                                    height: "100%",
+                                    width: "100%",
                                     alignItems: "center",
                                     justifyContent: "center",
+                                    display: "flex",
                                   }}
                                 >
                                   <Image

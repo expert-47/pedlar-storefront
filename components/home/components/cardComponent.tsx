@@ -42,102 +42,103 @@ const CardComponent = ({
 
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
-    route.push(
-      {
-        pathname: `/${storeName}/product/${productId}`,
-        query: { id: productId, index: index, heading: heading },
-      },
-      `/${storeName}/product/${productId}`,
-    );
   };
 
   return (
-    <Box
-      width={width}
-      sx={{
-        cursor: "pointer",
+    <Link
+      href={{
+        pathname: `/${storeName}/product/${productId}`,
+        query: { id: productId, index: index, heading: heading },
       }}
-      onClick={onClickCard}
+      as={`/${storeName}/product/${productId}`}
     >
-      {image && (
-        <Box
-          height={height}
+      <Box
+        width={width}
+        sx={{
+          cursor: "pointer",
+        }}
+        onClick={onClickCard}
+      >
+        {image && (
+          <Box
+            height={height}
+            sx={{
+              width: "100%",
+            }}
+          >
+            <PedlarImage src={image} objectFit="contain" />
+          </Box>
+        )}
+        <Typography
+          align="center"
+          fontSize={"14px"}
+          fontWeight={"500"}
+          style={{
+            color: "#1C1B1F",
+            paddingTop: "20px",
+            textTransform: "capitalize",
+          }}
           sx={{
-            width: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "1",
+            WebkitBoxOrient: "vertical",
           }}
         >
-          <PedlarImage src={image} objectFit="contain" />
-        </Box>
-      )}
-      <Typography
-        align="center"
-        fontSize={"14px"}
-        fontWeight={"500"}
-        style={{
-          color: "#1C1B1F",
-          paddingTop: "20px",
-          textTransform: "capitalize",
-        }}
-        sx={{
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          display: "-webkit-box",
-          WebkitLineClamp: "1",
-          WebkitBoxOrient: "vertical",
-        }}
-      >
-        {type}
-      </Typography>
-      <Typography
-        align="center"
-        style={{
-          textTransform: "capitalize",
-          lineHeight: "18px",
-          color: "#1C1B1F",
-        }}
-        fontSize={"14px"}
-        fontWeight={"400"}
-        sx={{
-          paddingInlineStart: "7px",
-          paddingInlineEnd: "7px",
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          display: "-webkit-box",
-          WebkitLineClamp: "2",
-          WebkitBoxOrient: "vertical",
-        }}
-      >
-        {name}
-      </Typography>
-      {crossPrice ? (
-        <Box sx={{ display: "flex" }}>
-          <Typography
-            align="center"
-            style={{
-              paddingTop: "8px",
-              textDecoration: "line-through",
-              textDecorationColor: "#1C1B1F87",
-              textDecorationThickness: "0.1em",
-              color: "#1C1B1F87",
-            }}
-            fontSize={"12px"}
-            fontWeight={"400"}
-          >
-            {crossPrice}
-          </Typography>
-          <Typography
-            align="center"
-            style={{ fontSize: "12px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
-          >
+          {type}
+        </Typography>
+        <Typography
+          align="center"
+          style={{
+            textTransform: "capitalize",
+            lineHeight: "18px",
+            color: "#1C1B1F",
+          }}
+          fontSize={"14px"}
+          fontWeight={"400"}
+          sx={{
+            paddingInlineStart: "7px",
+            paddingInlineEnd: "7px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {name}
+        </Typography>
+        {crossPrice ? (
+          <Box sx={{ display: "flex" }}>
+            <Typography
+              align="center"
+              style={{
+                paddingTop: "8px",
+                textDecoration: "line-through",
+                textDecorationColor: "#1C1B1F87",
+                textDecorationThickness: "0.1em",
+                color: "#1C1B1F87",
+              }}
+              fontSize={"12px"}
+              fontWeight={"400"}
+            >
+              {crossPrice}
+            </Typography>
+            <Typography
+              align="center"
+              style={{ fontSize: "12px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
+            >
+              {price}
+            </Typography>
+          </Box>
+        ) : (
+          <Typography align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>
             {price}
           </Typography>
-        </Box>
-      ) : (
-        <Typography align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>
-          {price}
-        </Typography>
-      )}
-    </Box>
+        )}
+      </Box>
+    </Link>
   );
 };
 CardComponent.propTypes = {

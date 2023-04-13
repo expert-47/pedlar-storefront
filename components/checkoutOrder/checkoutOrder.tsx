@@ -112,20 +112,14 @@ const CheckoutOrder = (props: Props) => {
   }, [props?.quantity, props.index]);
   let prices = props?.price?.endsWith(".0") ? Math.round(props?.price) : props?.price;
   const route = useRouter();
-  const [proID, setProID] = useState();
-  useEffect(() => {
-    let productID = itemData?.merchandise?.id;
-    productID = productID?.split("/")[4];
-    setProID(itemData?.merchandise?.id.split("/")[4]);
-  }, []);
-    
+
   const ProductRoute = () => {
     let productID = itemData?.merchandise.product.id;
     productID = productID.split("gid://shopify/Product/")[1];
     route.push({
       pathname: `/${storeName}/product/${productID}`,
     });
-        dispatch(cartDrawerToggle(false));
+    dispatch(cartDrawerToggle(false));
   };
   return (
     <>

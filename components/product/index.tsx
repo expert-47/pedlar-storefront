@@ -78,7 +78,6 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
-    slideRef?.current?.goTo(0);
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -88,6 +87,9 @@ const Cart = (props: any) => {
         newAdditionData?.options.length,
       );
     }
+    return () => {
+      slideRef?.current?.goTo(0);
+    };
   }, [newAdditionData, route]);
 
   // for setting the size of the product
@@ -358,7 +360,14 @@ const Cart = (props: any) => {
                       hideAnimationDuration: 0,
                     }}
                   >
-                    <Slide ref={slideRef} indicators={true} arrows={false} autoplay={false}>
+                    <Slide
+                      transitionDuration={100}
+                      ref={slideRef}
+                      indicators={true}
+                      arrows={false}
+                      autoplay={false}
+                      infinite={false}
+                    >
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
                           <Box
@@ -368,7 +377,14 @@ const Cart = (props: any) => {
                           >
                             <Item id={index} original={item?.url} thumbnail={item?.url}>
                               {({ ref, open }) => (
-                                <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                                <img
+                                  width={"265px"}
+                                  style={{ objectFit: "contain" }}
+                                  height={"290px"}
+                                  ref={ref}
+                                  onClick={open}
+                                  src={item?.url}
+                                />
                               )}
                             </Item>
                           </Box>
@@ -381,7 +397,12 @@ const Cart = (props: any) => {
 
               {/* Desktop View */}
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                <Gallery>
+                <Gallery
+                  options={{
+                    showAnimationDuration: 0,
+                    hideAnimationDuration: 0,
+                  }}
+                >
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                     return (
                       <div

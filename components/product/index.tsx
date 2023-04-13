@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
@@ -45,6 +45,7 @@ import { Slide } from "react-slideshow-image";
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
+  const slideRef = useRef(null);
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
@@ -77,6 +78,7 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
   useEffect(() => {
+    slideRef?.current?.goTo(0);
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -356,7 +358,7 @@ const Cart = (props: any) => {
                       hideAnimationDuration: 0,
                     }}
                   >
-                    <Slide indicators={true} arrows={false} autoplay={false}>
+                    <Slide ref={slideRef} indicators={true} arrows={false} autoplay={false}>
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
                           <Box

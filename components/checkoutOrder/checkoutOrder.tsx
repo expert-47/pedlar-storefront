@@ -113,7 +113,7 @@ const CheckoutOrder = (props: Props) => {
   let prices = props?.price?.endsWith(".0") ? Math.round(props?.price) : props?.price;
   const route = useRouter();
 
-  const ProductRoute = () => {
+  const onClickCard = () => {
     let productID = itemData?.merchandise.product.id;
     productID = productID.split("gid://shopify/Product/")[1];
     route.push({
@@ -163,7 +163,7 @@ const CheckoutOrder = (props: Props) => {
               flexDirection: "row",
               paddingTop: "10px",
             }}
-            onClick={ProductRoute}
+            onClick={onClickCard}
           >
             <Box
               style={{

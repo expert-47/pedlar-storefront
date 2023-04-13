@@ -91,7 +91,7 @@ const Cart = (props: any) => {
     return () => {
       slideRef?.current?.goTo(0);
     };
-  }, [newAdditionData, route]);
+  }, [newAdditionData?.id]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
@@ -384,6 +384,8 @@ const Cart = (props: any) => {
                                   sx={{
                                     height: 290,
                                     width: 265,
+                                    alignItems: "center",
+                                    justifyContent: "center",
                                   }}
                                 >
                                   <Image
@@ -393,6 +395,7 @@ const Cart = (props: any) => {
                                     placeholder="blur"
                                     blurDataURL="/loaderShim.png"
                                     objectFit="contain"
+                                    objectPosition={"center"}
                                   />
                                 </Box>
                               )}

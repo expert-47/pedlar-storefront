@@ -16,6 +16,7 @@ import { persistStore } from "redux-persist";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
 import apiClient from "api/restApi/client";
+import "react-slideshow-image/dist/styles.css";
 
 import NextNProgress from "nextjs-progressbar";
 

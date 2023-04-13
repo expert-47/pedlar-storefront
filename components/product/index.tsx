@@ -40,6 +40,7 @@ import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "uti
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { seo } from "utils/seoData";
+import { Slide } from "react-slideshow-image";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -355,10 +356,10 @@ const Cart = (props: any) => {
                       hideAnimationDuration: 0,
                     }}
                   >
-                    <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
+                    <Slide indicators={true} arrows={false} autoplay={false}>
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
-                          <SwiperSlide
+                          <Box
                             style={{
                               backgroundColor: "white",
                             }}
@@ -368,10 +369,10 @@ const Cart = (props: any) => {
                                 <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
                               )}
                             </Item>
-                          </SwiperSlide>
+                          </Box>
                         );
                       })}
-                    </Swiper>
+                    </Slide>
                   </Gallery>
                 </Grid>
               </Grid>

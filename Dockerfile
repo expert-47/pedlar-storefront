@@ -24,7 +24,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN if [ "$ENV" = "dev" ] ; then \
+RUN if [ "${ENV}" = "dev" ] ; then \
          rm ./.env.production; \
          mv ./.env.development ./.env.production; \
     fi

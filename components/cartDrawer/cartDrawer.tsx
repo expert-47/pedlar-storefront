@@ -112,6 +112,7 @@ const CartDrawer = () => {
       anchor="right"
       open={showCart}
       onClose={onCloseCart}
+      transitionDuration={500}
       PaperProps={{
         sx: paperStyle,
       }}

@@ -22,8 +22,8 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string; onClic
         alignItems: "center",
       }}
       sx={{
-        paddingLeft: { xs: "10px", sm: "10px" },
-        paddingRight: { xs: "8px", sm: "10px" },
+        paddingLeft: { xs: "8px", sm: "3px" },
+        paddingRight: { xs: "8px", sm: "3px" },
       }}
     >
       <Grid

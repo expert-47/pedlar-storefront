@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import styles from "styles/home";
-import { Typography, Button, Grid, useMediaQuery, Box } from "@mui/material";
+import { Typography, Button, Grid, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { CustomContainer } from "components/layout";
 import { CustomGrid } from "components/layout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
@@ -45,7 +44,7 @@ const Bar = () => {
         <Grid
           container
           item
-          xs={11}
+          xs={11.4}
           sm={11.9}
           md={11.7}
           lg={11.8}

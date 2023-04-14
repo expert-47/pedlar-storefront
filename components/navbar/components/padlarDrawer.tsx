@@ -93,6 +93,7 @@ export const PedlarDrawer = (props: {
       anchor="left"
       open={openDrawer}
       onClose={closeDrawer}
+      transitionDuration={500}
       PaperProps={{
         sx: paperStyle,
       }}

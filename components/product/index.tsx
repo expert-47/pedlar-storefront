@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
@@ -40,10 +40,13 @@ import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "uti
 import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { seo } from "utils/seoData";
+import { Slide } from "react-slideshow-image";
+import PedlarImage from "components/pedlarImage";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
+  const slideRef = useRef(null);
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
@@ -85,7 +88,10 @@ const Cart = (props: any) => {
         newAdditionData?.options.length,
       );
     }
-  }, [newAdditionData, route]);
+    return () => {
+      slideRef?.current?.goTo(0);
+    };
+  }, [route.query?.id]);
 
   // for setting the size of the product
   const setSizeValue = (value: string) => {
@@ -355,30 +361,62 @@ const Cart = (props: any) => {
                       hideAnimationDuration: 0,
                     }}
                   >
-                    <Swiper pagination={pagination} modules={[Pagination]} className="mySwiper">
+                    <Slide
+                      transitionDuration={100}
+                      ref={slideRef}
+                      indicators={true}
+                      arrows={false}
+                      autoplay={false}
+                      infinite={false}
+                    >
                       {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                         return (
-                          <SwiperSlide
+                          <Box
                             style={{
                               backgroundColor: "white",
                             }}
                           >
                             <Item id={index} original={item?.url} thumbnail={item?.url}>
                               {({ ref, open }) => (
-                                <img width={"265px"} height={"290px"} ref={ref} onClick={open} src={item?.url} />
+                                <Box
+                                  ref={ref}
+                                  onClick={open}
+                                  sx={{
+                                    height: "100%",
+                                    width: "100%",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    display: "flex",
+                                  }}
+                                >
+                                  <Image
+                                    src={item?.url}
+                                    width={265}
+                                    height={290}
+                                    placeholder="blur"
+                                    blurDataURL="/loaderShim.png"
+                                    objectFit="contain"
+                                    objectPosition={"center"}
+                                  />
+                                </Box>
                               )}
                             </Item>
-                          </SwiperSlide>
+                          </Box>
                         );
                       })}
-                    </Swiper>
+                    </Slide>
                   </Gallery>
                 </Grid>
               </Grid>
 
               {/* Desktop View */}
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                <Gallery>
+                <Gallery
+                  options={{
+                    showAnimationDuration: 0,
+                    hideAnimationDuration: 0,
+                  }}
+                >
                   {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                     return (
                       <div

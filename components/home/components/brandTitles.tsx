@@ -3,7 +3,6 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import PedlarImage from "components/pedlarImage";
 import { useSelector } from "react-redux";
 
@@ -39,8 +38,8 @@ const BrandTitles = (props: any) => {
           lg={12}
           gap={10}
           {...props}
-          justifyContent={{ xs: "flex-start" }}
-          paddingLeft={{ xs: "20px", sm: "10px" }}
+          justifyContent={{ xs: "center" }}
+          // paddingLeft={{ xs: "20px", sm: "10px" }}
           sx={{ columnGap: "15px" }}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (

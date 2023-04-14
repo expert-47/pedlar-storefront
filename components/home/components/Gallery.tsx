@@ -47,7 +47,7 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   lg={4}
                   xl={4}
                   key={item?.collectionId}
-                  sx={{ display: "flex", justifyContent: "center", alignItems: "center"}}
+                  sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent
                     width={{ xs: "185px", sm: 250, md: 320, lg: 380 }}

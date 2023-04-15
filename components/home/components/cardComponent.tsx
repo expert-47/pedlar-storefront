@@ -76,7 +76,7 @@ const CardComponent = ({
           style={{
             color: "#1C1B1F",
             paddingTop: "20px"
-        }}
+          }}
           sx={{
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -113,14 +113,14 @@ const CardComponent = ({
             <Typography
               align="center"
               style={{
+                fontSize: "13px",
+                fontWeight: "400",
                 paddingTop: "8px",
                 textDecoration: "line-through",
                 textDecorationColor: "#1C1B1F87",
                 textDecorationThickness: "0.1em",
                 color: "#1C1B1F87",
               }}
-              fontSize={{ xs: "13px", sm: "13px", md: "15px", lg: "15px" }}
-              fontWeight={"400"}
             >
               {crossPrice}
             </Typography>

@@ -3,8 +3,8 @@ import { theme } from "styles/theme/defalutTheme";
 import { ThemeProvider } from "@mui/material";
 import { SWRConfig } from "swr";
 import { Crisp } from "crisp-sdk-web";
-import App, { Container } from "next/app";
 
+import "photoswipe/dist/photoswipe.css";
 import { DefaultSeo } from "next-seo";
 import SEO from "../utils/next-seo.config";
 import { Fragment, useEffect } from "react";
@@ -16,6 +16,7 @@ import { persistStore } from "redux-persist";
 import { ApolloProvider } from "@apollo/client";
 import { client } from "api/graphql/client";
 import apiClient from "api/restApi/client";
+import "react-slideshow-image/dist/styles.css";
 
 import NextNProgress from "nextjs-progressbar";
 

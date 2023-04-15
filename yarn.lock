@@ -3350,10 +3350,10 @@
     "lodash.debounce" "^4.0.8"
     "resize-observer-polyfill" "^1.5.0"
 
-"react-slideshow-image@^4.0.5":
-  "integrity" "sha512-TKFfK0b0YyS0DJCE2xSK64gA/mxAP4gbyAWboko4akvr0xClToflkdbBTo/9CRI6NuRIZKsy8v7g+bzpNTHWzw=="
-  "resolved" "https://registry.npmjs.org/react-slideshow-image/-/react-slideshow-image-4.0.5.tgz"
-  "version" "4.0.5"
+"react-slideshow-image@^4.2.1":
+  "integrity" "sha512-R73s0L+4ect3e49qLP+EQE0m+BWs72LAfsfR2Z941snWq2W9o0poWtYTyZmCH7Ui5HaT0qkpszzeZ1F0xiGkZg=="
+  "resolved" "https://registry.npmjs.org/react-slideshow-image/-/react-slideshow-image-4.2.1.tgz"
+  "version" "4.2.1"
   dependencies:
     "@tweenjs/tween.js" "^18.6.4"
     "resize-observer-polyfill" "^1.5.1"

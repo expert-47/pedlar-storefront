@@ -1,4 +1,4 @@
-import { Grid, Typography, Button, Drawer, CircularProgress } from "@mui/material";
+import { Grid, Typography, Button, Drawer, CircularProgress, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
@@ -83,7 +83,7 @@ const CartDrawer = () => {
       lg: "25%",
       md: "35%",
       sm: "100%",
-      xs: "100%",
+      xs: "90%",
     },
     height: "100%",
     display: "flex",
@@ -112,6 +112,7 @@ const CartDrawer = () => {
       anchor="right"
       open={showCart}
       onClose={onCloseCart}
+      transitionDuration={500}
       PaperProps={{
         sx: paperStyle,
       }}
@@ -174,8 +175,7 @@ const CartDrawer = () => {
           md={12}
           lg={12}
           direction={"column"}
-          justifyContent={"flex-end"}
-          alignItems={"flex-end"}
+          justifyContent={"center"}
           sx={{
             paddingRight: "20px",
             paddingLeft: "20px",
@@ -190,7 +190,7 @@ const CartDrawer = () => {
           <Grid
             container
             item
-            style={{
+            sx={{
               display: "flex",
               padding: "5px",
               justifyContent: "center",
@@ -198,13 +198,12 @@ const CartDrawer = () => {
               paddingBottom: "15px",
             }}
           >
-            <Grid item style={{ display: "flex", justifyContent: "between" }}>
+            <Box sx={{ display: "flex", justifyContent: "between" }}>
               <Typography sx={styles.totalText}>Total</Typography>
               <Typography fontSize="12px" sx={styles.taxStyle}>
                 Incl. Taxes
               </Typography>
-            </Grid>
-
+            </Box>
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
           </Grid>
           <Button sx={styles.checkoutButton} onClick={apiForCheckout}>

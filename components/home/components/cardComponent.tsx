@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { getStoreName } from "utils/getPathName";
 import PedlarImage from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
+import { useSelector } from "react-redux";
 interface Props {
   name: string;
   type: string;
@@ -36,7 +37,8 @@ const CardComponent = ({
 }: React.PropsWithChildren<Props>) => {
   let productId = id?.split("gid://shopify/Product/")[1];
   const route = useRouter();
-  let path = getStoreName(route);
+
+  const storeName = useSelector((data: any) => data.app.storeName);
 
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
@@ -44,8 +46,11 @@ const CardComponent = ({
 
   return (
     <Link
-      href={{ pathname: `${path}/product/${productId}`, query: { id: productId, index: index, heading: heading } }}
-      as={`${path}/product/${productId}`}
+      href={{
+        pathname: `/${storeName}/product/${productId}`,
+        query: { id: productId, index: index, heading: heading },
+      }}
+      as={`/${storeName}/product/${productId}`}
     >
       <Box
         width={width}
@@ -103,6 +108,7 @@ const CardComponent = ({
           }}
         >
           {name}
+          {name}
         </Typography>
         {crossPrice ? (
           <Box sx={{ display: "flex" }}>
@@ -120,10 +126,17 @@ const CardComponent = ({
             >
               {crossPrice}
             </Typography>
-            <Typography align="center" style={{ fontSize: "13px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
+            <Typography
+              align="center"
+              style={{ fontSize: "13px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
+            >
+              {price}
+            </Typography>
           </Box>
         ) : (
-          <Typography  align="center" style={{ fontSize: "13px", fontWeight: "400", paddingTop: "8px" }}>{price}</Typography>
+          <Typography align="center" style={{ fontSize: "13px", fontWeight: "400", paddingTop: "8px" }}>
+            {price}
+          </Typography>
         )}
       </Box>
     </Link>

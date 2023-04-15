@@ -22,7 +22,7 @@ const Picturecarousel = () => {
   const islarge = useMediaQuery(theme.breakpoints.up("lg"));
 
   return (
-    <Box style={{ paddingTop: "100px" }}>
+    <Box sx={{ paddingTop: { xs: "50px", md: "100px" } }}>
       <Swiper
         slidesPerView={isMatch ? 1.3 : islarge ? 4.3 : 3.6}
         centeredSlides={false}

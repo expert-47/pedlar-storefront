@@ -76,7 +76,7 @@
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: 100% 75%;
-  right: 28px !important;
+  right: 27px;
   width: 680px !important;
   z-index: 0;
   bottom: 40px;
@@ -87,7 +87,7 @@
   transform: rotate(-90deg);
   position: absolute !important;
   transform-origin: 0 0;
-  left: 1px !important;
+  left: 0px;
   bottom: 0px;
   width: 660px !important;
   z-index: 0;
@@ -97,31 +97,25 @@
 @media only screen and (max-width: 320px) {
   .marq-left {
     width: 1320px !important;
-    left: -2px;
   }
   .marq-right {
     width: 1320px !important;
-    right: 27px;
   }
 }
 @media only screen and (min-width: 375px) {
   .marq-left {
     width: 1220px !important;
-    left: -2px;
   }
   .marq-right {
     width: 1220px !important;
-    right: 27px;
   }
 }
 @media only screen and (min-width: 425px) {
   .marq-left {
     width: 1150px !important;
-    left: -2px;
   }
   .marq-right {
     width: 1150px !important;
-    right: 27px;
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -137,9 +131,11 @@
 @media only screen and (min-width: 768px) {
   .marq-left {
     width: 1150px !important;
+    left: -5px;
   }
   .marq-right {
     width: 1150px !important;
+    right: 34px !important;
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
@@ -509,4 +505,25 @@ section {
 
 .pswp__img {
   object-fit: contain;
+  background-color: black;
+  object-position: center;
+}
+
+.pswp__item {
+  background-color: black !important;
+  height: "100%" !important;
+  width: "100%" !important;
+  /* transform: none !important; */
+}
+
+.pswp--ui-visible {
+  background-color: black !important;
+  height: "100%" !important;
+  width: "100%" !important;
+}
+.pswp__icn-shadow .pswp__icn {
+  background-color: black !important;
+}
+.pswp--touch .pswp__button--arrow {
+  visibility: visible !important;
 }

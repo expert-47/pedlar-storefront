@@ -26,7 +26,6 @@ const Banner = () => {
           priority
         />
       </Box>
-
       <Box sx={styles.GridBox}>
         <Grid item xs={12} sm={12} md={12} lg={12} padding={{ sm: "40px 40px", xs: "20px 20px" }}>
           <Typography textTransform={"none"} fontSize={{ xs: "34px", sm: "64px" }} sx={styles.heading}>

@@ -5,13 +5,13 @@ import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
-import { getCartProducts, updateCartLineItem } from "api/graphql/grapgql";
+import { updateCartLineItem } from "api/graphql/grapgql";
 import { Alert } from "@mui/material";
-
 import { useDispatch, useSelector } from "react-redux";
-import { addProductToCart } from "store/slice/appSlice";
+import { addProductToCart, cartDrawerToggle } from "store/slice/appSlice";
 import PedlarImage from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
+import { useRouter } from "next/router";
 
 interface Props {
   name: string;
@@ -23,20 +23,17 @@ interface Props {
   title: string;
   vendor: string;
   index: Number;
+  id: string;
 }
 
 const CheckoutOrder = (props: Props) => {
-  const { itemData, index } = props;
-  console.log("itemData", itemData);
-
+  const { itemData, index, id } = props;
   const [productCount, setProductCount] = useState(props?.quantity);
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const storeName = useSelector((data: any) => data.app.storeName);
-
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
-
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const dispatch = useDispatch();
   const incQuantityHandler = async (quantity: number) => {
@@ -77,11 +74,10 @@ const CheckoutOrder = (props: Props) => {
       setLoadingButtonState(false);
     }
   };
-
-  const gmtEventToAddProduct = (data) => {
+  const gmtEventToAddProduct = (data: any) => {
     gtmEvents.increaseCartProduct(data);
   };
-  const gmtEventRemoveProduct = (data) => {
+  const gmtEventRemoveProduct = (data: any) => {
     gtmEvents.removeFromCart(data);
   };
   const productDecrementHandler = async (quantity: number) => {
@@ -107,7 +103,6 @@ const CheckoutOrder = (props: Props) => {
       setLoadingButtonState(false);
     }
   };
-
   const handleAlertClose = () => {
     setError(false);
     setErrorMessage("");
@@ -115,9 +110,17 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(props?.quantity);
   }, [props?.quantity, props.index]);
-
   let prices = props?.price?.endsWith(".0") ? Math.round(props?.price) : props?.price;
+  const route = useRouter();
 
+  const onClickCard = () => {
+    let productID = itemData?.merchandise.product.id;
+    productID = productID.split("gid://shopify/Product/")[1];
+    route.push({
+      pathname: `/${storeName}/product/${productID}`,
+    });
+    dispatch(cartDrawerToggle(false));
+  };
   return (
     <>
       {loadingButtonState ? (
@@ -160,6 +163,7 @@ const CheckoutOrder = (props: Props) => {
               flexDirection: "row",
               paddingTop: "10px",
             }}
+            onClick={onClickCard}
           >
             <Box
               style={{
@@ -208,7 +212,6 @@ const CheckoutOrder = (props: Props) => {
                   }}
                 >
                   <RemoveIcon sx={styles.addRemoveIcon} onClick={() => productDecrementHandler(props?.quantity)} />
-
                   <Typography sx={styles.addRemoveText}>{productCount}</Typography>
                   <AddIcon sx={styles.addRemoveIcon} onClick={() => incQuantityHandler(productCount)} />
                 </Box>

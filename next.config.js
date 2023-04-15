@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const webpack = require("webpack");
+const securityHeaders = [
+    {
+        key: 'Strict-Transport-Security',
+        value: 'max-age=31536000; includeSubDomains'
+    }
+]
 const nextConfig = {
+  output: 'standalone',
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -21,6 +28,14 @@ const nextConfig = {
       }),
     );
     return config;
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
   },
 };
 

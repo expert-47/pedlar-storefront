@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BannerImg from "./components/banner";
 import BrandListing from "./components/brandListing";
 import { Box, Grid, Button } from "@mui/material";
@@ -40,8 +40,8 @@ export const Home = (props: any) => {
             marginTop: "20px",
             marginBottom: "20px",
             zIndex: "-100 !important",
-            paddingLeft: { xs: "15px", md: "0px" },
-            paddingRight: { xs: "15px", md: "0px" },
+            paddingLeft: { xs: "10px", md: "0px" },
+            paddingRight: { xs: "10px", md: "0px" },
           }}
         >
           <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>

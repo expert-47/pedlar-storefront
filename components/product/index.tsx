@@ -644,7 +644,7 @@ const Cart = (props: any) => {
                       width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
                       height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
                       name={item?.title?.toLowerCase()}
-                      type={item?.vender?.toLowerCase()}
+                      type={item?.vender}
                       price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}

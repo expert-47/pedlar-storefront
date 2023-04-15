@@ -71,11 +71,11 @@ const CardComponent = ({
         )}
         <Typography
           align="center"
-          fontSize={{ xs: "14px", sm: "14px", md: "16px", lg: "16px" }}
-          fontWeight={"525"}
+          fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
+          fontWeight={"500"}
           style={{
             color: "#1C1B1F",
-            paddingTop: "15px"
+            paddingTop: "20px"
         }}
           sx={{
             overflow: "hidden",
@@ -94,7 +94,7 @@ const CardComponent = ({
             lineHeight: "18px",
             color: "#1C1B1F",
           }}
-          fontSize={{ xs: "14px", sm: "14px", md: "16px", lg: "16px" }}
+          fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
           fontWeight={"400"}
           sx={{
             paddingTop: "3px",
@@ -106,7 +106,6 @@ const CardComponent = ({
             WebkitBoxOrient: "vertical",
           }}
         >
-          {name}
           {name}
         </Typography>
         {crossPrice ? (

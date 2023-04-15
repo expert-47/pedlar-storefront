@@ -52,7 +52,7 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   <CardComponent
                     width={{ xs: "185px", sm: 250, md: 320, lg: 380 }}
                     height={{ xs: "230px", sm: 312, md: 400, lg: 450 }}
-                    type={item?.vendor?.toLowerCase()}
+                    type={item?.vendor}
                     name={item?.title?.toLowerCase()}
                     price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
                     image={item?.featuredImage?.src}

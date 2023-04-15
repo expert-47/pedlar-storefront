@@ -54,7 +54,7 @@ const styles = {
   },
   description: {
     fontWeight: "600",
-    fontSize: "40px",
+    fontSize: { xs: "20px", sm: "20px", md: "30px", lg: "30px" },
     lineHeight: "120%",
     paddingTop: "14px",
   },

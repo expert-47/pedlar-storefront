@@ -4,13 +4,15 @@ steps:
   args:
   - 'build'
   - '--build-arg'
-  - 'ENV=${_ENV}'
+  - 'ENV=$_ENV'
   - '-t'
   - 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA'
   - '.'
 # Push the container image to Container Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA']
+  args:
+  - 'push'
+  - 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA'
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud

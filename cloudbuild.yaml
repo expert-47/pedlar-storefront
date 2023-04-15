@@ -1,15 +1,29 @@
 steps:
-  - name: node
-    entrypoint: npm
-    args: ["install"]
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args: ['./build.sh']
-    env:
-    - 'ENV=$_ENV'
-  - name: node
-    entrypoint: npm
-    args: ["run", "build"]
-  - name: "gcr.io/cloud-builders/gcloud"
-    args: ["app", "deploy"]
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'build'
+  - '--build-arg'
+  - 'ENV=$_ENV'
+  - '-t'
+  - 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA'
+  - '.'
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args:
+  - 'push'
+  - 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA'
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'storefront-ui'
+  - '--image'
+  - 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA'
+  - '--region'
+  - 'australia-southeast1'
+images:
+- 'gcr.io/$PROJECT_ID/storefront-ui:$COMMIT_SHA'
 timeout: 1500s

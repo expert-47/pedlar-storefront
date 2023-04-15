@@ -75,8 +75,7 @@ const CardComponent = ({
           fontWeight={"525"}
           style={{
             color: "#1C1B1F",
-            paddingTop: "15px",
-            textTransform: "capitalize"
+            paddingTop: "15px"
         }}
           sx={{
             overflow: "hidden",

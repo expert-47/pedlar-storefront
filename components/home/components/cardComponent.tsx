@@ -71,12 +71,11 @@ const CardComponent = ({
         )}
         <Typography
           align="center"
-          fontSize={"14px"}
+          fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
           fontWeight={"500"}
           style={{
             color: "#1C1B1F",
-            paddingTop: "20px",
-            textTransform: "capitalize",
+            paddingTop: "20px"
           }}
           sx={{
             overflow: "hidden",
@@ -95,11 +94,11 @@ const CardComponent = ({
             lineHeight: "18px",
             color: "#1C1B1F",
           }}
-          fontSize={"14px"}
+          fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
           fontWeight={"400"}
           sx={{
-            paddingInlineStart: "7px",
-            paddingInlineEnd: "7px",
+            paddingTop: "3px",
+            paddingInline: "7px",
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",
@@ -114,26 +113,26 @@ const CardComponent = ({
             <Typography
               align="center"
               style={{
+                fontSize: "13px",
+                fontWeight: "400",
                 paddingTop: "8px",
                 textDecoration: "line-through",
                 textDecorationColor: "#1C1B1F87",
                 textDecorationThickness: "0.1em",
                 color: "#1C1B1F87",
               }}
-              fontSize={"12px"}
-              fontWeight={"400"}
             >
               {crossPrice}
             </Typography>
             <Typography
               align="center"
-              style={{ fontSize: "12px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
+              style={{ fontSize: "13px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
             >
               {price}
             </Typography>
           </Box>
         ) : (
-          <Typography align="center" style={{ fontSize: "12px", fontWeight: "400", paddingTop: "8px" }}>
+          <Typography align="center" style={{ fontSize: "13px", fontWeight: "400", paddingTop: "8px" }}>
             {price}
           </Typography>
         )}

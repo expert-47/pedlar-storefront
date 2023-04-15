@@ -1,0 +1,12 @@
+{
+    "hosting": {
+        "site": "pedlar-storefront-ui-prod",
+        "rewrites": [{
+            "source": "**",
+            "run": {
+                "serviceId": "storefront-ui",
+                "region": "australia-southeast1"
+            }
+        }]
+    }
+}

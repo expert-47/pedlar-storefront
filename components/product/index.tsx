@@ -375,6 +375,7 @@ const Cart = (props: any) => {
                             style={{
                               backgroundColor: "white",
                             }}
+                            key={"newAdditiondataCart" + index}
                           >
                             <Item id={index} original={item?.url} thumbnail={item?.url}>
                               {({ ref, open }) => (

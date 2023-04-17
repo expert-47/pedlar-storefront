@@ -32,6 +32,7 @@ const BrandTitles = (props: any) => {
       >
         <Grid
           container
+          item
           xs={12}
           sm={12}
           md={12}
@@ -40,7 +41,7 @@ const BrandTitles = (props: any) => {
           {...props}
           justifyContent={{ xs: "center" }}
           // paddingLeft={{ xs: "20px", sm: "10px" }}
-          sx={{ columnGap: "15px" }}
+          sx={{ columnGap: "15px", border: "1px solid red" }}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
             <Box

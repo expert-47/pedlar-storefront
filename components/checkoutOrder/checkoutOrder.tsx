@@ -163,7 +163,6 @@ const CheckoutOrder = (props: Props) => {
               flexDirection: "row",
               paddingTop: "10px",
             }}
-            onClick={onClickCard}
           >
             <Box
               style={{
@@ -173,7 +172,7 @@ const CheckoutOrder = (props: Props) => {
                 marginRight: "10px",
               }}
             >
-              <Box sx={{ width: 130, height: 130 }}>
+              <Box sx={{ width: 130, height: 130 }} onClick={onClickCard}>
                 <PedlarImage src={props.image} objectFit="contain" />
               </Box>
             </Box>

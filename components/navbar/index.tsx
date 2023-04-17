@@ -112,8 +112,8 @@ export default function Navbar(props: any) {
                   </Link>
 
                   <Badge badgeContent={totalProductLength} color="secondary">
-                    <IconButton sx={styles.iconColor}>
-                      <Image src="/cart.png" height="19.48px" width="19.48px" onClick={onClickDrawer} />
+                    <IconButton sx={styles.iconColor} onClick={onClickDrawer}>
+                      <Image src="/cart.png" height="19.48px" width="19.48px" />
                     </IconButton>
                   </Badge>
                 </Stack>

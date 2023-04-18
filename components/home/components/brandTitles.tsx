@@ -41,7 +41,7 @@ const BrandTitles = (props: any) => {
           {...props}
           justifyContent={{ xs: "center" }}
           // paddingLeft={{ xs: "20px", sm: "10px" }}
-          sx={{ columnGap: "15px", border: "1px solid red" }}
+          sx={{ columnGap: "15px" }}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
             <Box

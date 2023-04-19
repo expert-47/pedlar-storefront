@@ -75,19 +75,21 @@
   opacity: 0.08;
   transform: rotate(90deg);
   position: absolute !important;
-  transform-origin: 100% 75%;
-  right: 27px;
-  width: 680px !important;
+
+  transform-origin: top right;
+  right: -2px;
+  bottom: 0px;
+  width: 660px !important;
   z-index: 0;
-  bottom: 40px;
 }
 .marq-left {
   color: rgb(28, 27, 31);
   opacity: 0.08;
   transform: rotate(-90deg);
   position: absolute !important;
-  transform-origin: 0 0;
-  left: 0px;
+
+  transform-origin: top left;
+  left: -2px;
   bottom: 0px;
   width: 660px !important;
   z-index: 0;
@@ -104,18 +106,18 @@
 }
 @media only screen and (min-width: 375px) {
   .marq-left {
-    width: 1220px !important;
+    width: 1180px !important;
   }
   .marq-right {
-    width: 1220px !important;
+    width: 1180px !important;
   }
 }
 @media only screen and (min-width: 425px) {
   .marq-left {
-    width: 1150px !important;
+    width: 1120px !important;
   }
   .marq-right {
-    width: 1150px !important;
+    width: 1120px !important;
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -130,30 +132,32 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .marq-left {
-    width: 1150px !important;
-    left: -5px;
+    width: 1080px !important;
+    /* left: -5px; */
   }
   .marq-right {
-    width: 1150px !important;
-    right: 34px !important;
+    width: 1080px !important;
+    /* right: 34px !important; */
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .marq-left {
-    width: 1000px !important;
+    width: 950px !important;
   }
   .marq-right {
-    width: 1000px !important;
+    width: 950px !important;
   }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .marq-left {
-    width: 690px !important;
+    width: 640px !important;
+    left: -2px;
   }
   .marq-right {
-    width: 690px !important;
+    width: 640px !important;
+    right: -2px;
   }
 }
 

@@ -2,7 +2,6 @@ export const styles = {
   mainGrid: {
     background: "#FFFFFF",
     borderRadius: "16px",
-    padding: "50px 0",
     width: "100%",
     position: "relative",
     zIndex: "3",
@@ -18,11 +17,11 @@ export const styles = {
     fontFamily: "Inter",
     opacity: "0.64",
     lineHeight: "normal",
-    letterSpacing:"normal"
+    letterSpacing: "normal",
   },
   gridinnereText: {
     color: "#1C1B1E",
-    lineHeight: "normal"
+    lineHeight: "normal",
   },
   creator: {
     color: "#8652FF",

@@ -204,7 +204,7 @@ const CartDrawer = () => {
                 Incl. Taxes
               </Typography>
             </Box>
-            <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
+            <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice?.toFixed(2)}` : ""}</Typography>
           </Grid>
           <Button sx={styles.checkoutButton} onClick={apiForCheckout}>
             Checkout

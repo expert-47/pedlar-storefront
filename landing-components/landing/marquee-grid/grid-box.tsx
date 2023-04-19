@@ -36,12 +36,9 @@ const Gridbox = () => {
     <CustomContainer
       sx={{
         width: "100%",
-        paddingLeft: { xs: theme.spacing(30), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) },
-        paddingRight: { xs: theme.spacing(30), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) },
+        paddingLeft: { xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) },
+        paddingRight: { xs: theme.spacing(25), sm: theme.spacing(35), md: theme.spacing(30), lg: theme.spacing(35) },
         position: "relative",
-
-        // alignItems: "center",
-        // justifyContent: "center",
       }}
     >
       <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
@@ -66,7 +63,7 @@ const Gridbox = () => {
         width={"100%"}
         container
         paddingBottom={{ xs: "30px", sm: "30px" }}
-        paddingTop="10px"
+        paddingTop="40px"
         //  height={{ lg: "620px", xl: "620px" }}
       >
         <Typography
@@ -175,7 +172,7 @@ const Gridbox = () => {
           fontWeight={"700"}
           fontSize={{ xs: "24px", sm: "36px" }}
           sx={styles.marqueebottom}
-          marginTop={{ xs: "-12px", sm: "-18px" }}
+          marginTop={{ xs: "-10px", sm: "-18px" }}
         >
           Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           Pedlar Pedlar Pedlar Pedlar

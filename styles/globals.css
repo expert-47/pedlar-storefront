@@ -106,18 +106,18 @@
 }
 @media only screen and (min-width: 375px) {
   .marq-left {
-    width: 1220px !important;
+    width: 1180px !important;
   }
   .marq-right {
-    width: 1220px !important;
+    width: 1180px !important;
   }
 }
 @media only screen and (min-width: 425px) {
   .marq-left {
-    width: 1150px !important;
+    width: 1120px !important;
   }
   .marq-right {
-    width: 1150px !important;
+    width: 1120px !important;
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -132,21 +132,21 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .marq-left {
-    width: 1150px !important;
-    left: -5px;
+    width: 1080px !important;
+    /* left: -5px; */
   }
   .marq-right {
-    width: 1150px !important;
+    width: 1080px !important;
     /* right: 34px !important; */
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .marq-left {
-    width: 1000px !important;
+    width: 950px !important;
   }
   .marq-right {
-    width: 1000px !important;
+    width: 950px !important;
   }
 }
 /* Extra large devices (large laptops and desktops, 1200px and up) */

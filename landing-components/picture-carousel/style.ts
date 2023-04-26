@@ -15,4 +15,7 @@ export const styles = {
     textAlign: "left",
     padding: "20px 0 0 0",
   },
+  slide: {
+    marginRight: "0px",
+  },
 };

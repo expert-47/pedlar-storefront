@@ -8,6 +8,8 @@ import placeholder from "public/Placeholder.jpg";
 const BannerImg = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const screen320 = useMediaQuery("(max-width:320px)");
+  const screen375 = useMediaQuery("(max-width:375px)");
   return (
     <CustomContainer
       style={{
@@ -29,7 +31,7 @@ const BannerImg = (props: any) => {
             sx={{
               width: isMatch ? "100%" : 476,
               height: isMatch ? 415 : 595,
-              minHeight: "550px",
+              minHeight: screen320 ? 380 : screen375 ? "450px" : "550px",
             }}
           >
             <PedlarImage

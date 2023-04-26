@@ -99,7 +99,12 @@ export const PedlarDrawer = (props: {
       }}
     >
       <Marquee
-        style={{ backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" }}
+        style={{
+          backgroundColor: "black",
+          color: "white",
+          paddingTop: "12px",
+          paddingBottom: "12px",
+        }}
         gradient={false}
       >
         <Typography fontSize={"14px"} fontWeight={"600"}>

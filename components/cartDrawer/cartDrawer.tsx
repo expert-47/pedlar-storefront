@@ -220,7 +220,7 @@ const CartDrawer = () => {
           direction={"column"}
           justifyContent={"center"}
           alignItems={"flex-end"}
-          sx={{ paddingRight: "20px", paddingLeft: "20px", paddingBottom: "150px" }}
+          sx={{ paddingBottom: "150px" }}
         >
           <Grid
             container
@@ -236,14 +236,13 @@ const CartDrawer = () => {
             <Grid item style={{ display: "flex", justifyContent: "between" }}>
               <Typography sx={styles.totalText}>Your cart is empty</Typography>
             </Grid>
-
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
+            <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+              <Button sx={styles.checkoutButton} onClick={onCloseCart}>
+                Shop now
+              </Button>
+            </Link>
           </Grid>
-          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-            <Button sx={styles.checkoutButton} onClick={onCloseCart}>
-              Shop now
-            </Button>
-          </Link>
         </Grid>
       )}
     </Drawer>

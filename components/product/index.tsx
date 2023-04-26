@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { Box } from "@mui/system";
 import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper";
 import Link from "next/link";
 import "react-slideshow-image/dist/styles.css";
 import Accordion from "@mui/material/Accordion";
@@ -21,7 +19,6 @@ import styles from "styles/product";
 import BaseFooter from "components/footer/baseFooter";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { getStoreName } from "utils/getPathName";
-
 import { Gallery, Item } from "react-photoswipe-gallery";
 import Scrollspy from "react-scrollspy";
 import {
@@ -41,7 +38,6 @@ import AppBar from "@mui/material/AppBar";
 import Image from "next/image";
 import { seo } from "utils/seoData";
 import { Slide } from "react-slideshow-image";
-import PedlarImage from "components/pedlarImage";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -478,7 +474,6 @@ const Cart = (props: any) => {
                       </Typography>
                     )}
                   </Grid>
-
                   <Options
                     newAdditionData={newAdditionData}
                     onSelectedItem={onSelectedItem}
@@ -492,7 +487,6 @@ const Cart = (props: any) => {
                       {errorMessage}
                     </Alert>
                   ) : null}
-
                   <Action
                     addToCartButton={addToCartButton}
                     buttonLoaderState={buttonLoaderState}
@@ -500,7 +494,6 @@ const Cart = (props: any) => {
                     buyNowLoaderState={buyNowLoaderState}
                     disabled={error}
                   />
-
                   <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
                   <Divider />
                   <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>

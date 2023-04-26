@@ -57,7 +57,7 @@ export const ResponsiveNavbar = (props: Props) => {
           shopListLoading={shopListLoading}
           totalProductLength={totalProductLength}
         />
-        <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(10) }}>
+        <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(0) }}>
           <Box sx={styles.menuIcon}>
             <Image src="/mIcons.png" alt="No Image Found" onClick={onClickDrawer} width="20px" height="14px" />
           </Box>
@@ -66,7 +66,7 @@ export const ResponsiveNavbar = (props: Props) => {
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
-        <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 10 }}>
+        <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 0 }}>
           <IconButton onClick={onClickCart} sx={styles.iconColor}>
             <Image src="/cart.png" height="19.48px" width="19.48px" />
           </IconButton>

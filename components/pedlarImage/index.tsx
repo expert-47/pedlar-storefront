@@ -11,7 +11,7 @@ interface props extends ImageProps {
 }
 const PedlarImage = (props: props) => {
   const [error, setError] = useState(false);
-  const { zIndex = -1, placeholder, item, renderError } = props;
+  const { zIndex = -1, placeholder, renderError } = props;
 
   if (error && renderError) {
     return renderError();

@@ -45,7 +45,6 @@ const styles = {
   },
   accordianGrid: {
     alignItems: "center",
-    paddingTop: "20px",
     display: { md: "block" },
   },
   accordianTypography: {

@@ -29,6 +29,7 @@ const TextBox = (props: any) => {
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",
+        
       }}
       paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}

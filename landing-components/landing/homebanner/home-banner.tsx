@@ -87,6 +87,7 @@ const Banner = () => {
                   loop: true,
                   skipAddStyles: true,
                   wrapperClassName: "Typewriter__wrapper",
+                  cursor: "",
                 }}
               />
               <Typography

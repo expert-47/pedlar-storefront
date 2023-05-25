@@ -170,6 +170,7 @@ export default function HomepagePopup() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                height: "77vh",
               }}
             >
               <Typography sx={{ fontSize: "26px", fontWeight: 700, width: "80%", lineHeight: "30px" }}>

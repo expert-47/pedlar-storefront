@@ -82,19 +82,20 @@ const Banner = () => {
             <Box style={{ display: "flex" }} sx={styles.animateRow}>
               <Typewriter
                 options={{
-                  strings: ["Creators", "Influencers", "Curators"],
+                  strings: ["Creators ", "Influencers ", "Curators "],
                   autoStart: true,
                   loop: true,
                   skipAddStyles: true,
                   wrapperClassName: "Typewriter__wrapper",
-                  cursor: "",
                 }}
               />
+
               <Typography
                 fontWeight={"700"}
                 color={"#1C1B1F"}
                 sx={styles.fashionText}
                 lineHeight={"unset"}
+                ml={1}
                 fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
               >
                 in business

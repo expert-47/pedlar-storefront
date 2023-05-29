@@ -209,7 +209,13 @@ export default function HomepagePopup() {
                   Shop now
                 </Button>
               </Link>
-              <img src="/popImg.png" alt="PopUp Image" height={"100%"} width={"100%"} style={{ marginTop: "25px" }} />
+              <img
+                src="/welcomeModalImageForMObile.webp"
+                alt="PopUp Image"
+                height={"100%"}
+                width={"100%"}
+                style={{ marginTop: "25px" }}
+              />
             </Box>
           </Box>
         </Dialog>

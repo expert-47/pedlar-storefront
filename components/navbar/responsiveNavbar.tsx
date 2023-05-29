@@ -66,7 +66,7 @@ export const ResponsiveNavbar = (props: Props) => {
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
-        <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 0 }}>
+        <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: "10px" }}>
           <IconButton onClick={onClickCart} sx={styles.iconColor}>
             <Image src="/cart.png" height="19.48px" width="19.48px" />
           </IconButton>

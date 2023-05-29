@@ -7,7 +7,7 @@ import { Crisp } from "crisp-sdk-web";
 import "photoswipe/dist/photoswipe.css";
 import { DefaultSeo } from "next-seo";
 import SEO from "../utils/next-seo.config";
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 // import { store } from "store/index";
 import { store } from "store/slice";
@@ -21,8 +21,16 @@ import "react-slideshow-image/dist/styles.css";
 import NextNProgress from "nextjs-progressbar";
 
 import Script from "next/script";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import { AppProps } from "next/app";
+import createEmotionCache from "utils/createEmotionCache";
 
-function MyApp({ Component, pageProps }: any) {
+export interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+const clientSideEmotionCache = createEmotionCache();
+
+function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: any) {
   useEffect(() => {
     Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
       autoload: false,
@@ -34,7 +42,7 @@ function MyApp({ Component, pageProps }: any) {
   let persistor = persistStore(store);
 
   return (
-    <Fragment>
+    <CacheProvider value={emotionCache}>
       <Script
         id="gtag-base"
         strategy="afterInteractive"
@@ -66,7 +74,7 @@ function MyApp({ Component, pageProps }: any) {
           </SWRConfig>
         </ApolloProvider>
       </Provider>
-    </Fragment>
+    </CacheProvider>
   );
 }
 

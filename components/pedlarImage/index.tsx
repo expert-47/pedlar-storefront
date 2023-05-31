@@ -8,10 +8,11 @@ interface props extends ImageProps {
   placeholder: StaticImageData;
   item: any;
   renderError: any;
+  disableShimmer: boolean;
 }
 const PedlarImage = (props: props) => {
   const [error, setError] = useState(false);
-  const { zIndex = -1, placeholder, renderError } = props;
+  const { zIndex = -1, placeholder, renderError, disableShimmer = false } = props;
 
   if (error && renderError) {
     return renderError();
@@ -31,7 +32,7 @@ const PedlarImage = (props: props) => {
         }}
         // loading="lazy"
         placeholder="blur"
-        blurDataURL="/loaderShim.png"
+        {...(!disableShimmer && { blurDataURL: "/loaderShim.png" })}
       />
     </Box>
   );

@@ -16,6 +16,7 @@ import secondStep from "../public/step2.png";
 import thirdStep from "../public/step3.png";
 import fourthStep from "../public/step4.png";
 import PedlarImage from "components/pedlarImage";
+import Image from "next/image";
 import { seo } from "utils/seoData";
 
 const styless = {
@@ -48,16 +49,16 @@ const index = () => {
       <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "relative" }}>
         <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "1051px" }}>
-          <PedlarImage layout="intrinsic" src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
+          <Image layout="intrinsic" src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
         </Box>
         <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "512px", lg: "57px" }}>
-          <PedlarImage layout="intrinsic" src={pinkMeshes} alt="pink meshes" quality={50} />
+          <Image layout="intrinsic" src={pinkMeshes} alt="pink meshes" quality={50} />
         </Box>
         <Box
           style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }}
           top={{ xs: "2118px", sm: "422px", md: "422px", lg: "1655px" }}
         >
-          <PedlarImage layout="intrinsic" src={orangeMesh} alt="Oranges pink meshes" quality={50} />
+          <Image layout="intrinsic" src={orangeMesh} alt="Oranges pink meshes" quality={50} />
         </Box>
       </Box>
       <Banner />

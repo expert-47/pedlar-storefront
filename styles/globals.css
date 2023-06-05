@@ -82,7 +82,7 @@ body {
   position: absolute !important;
 
   transform-origin: top right;
-  right: -2px;
+  right: 0px;
   bottom: 0px;
   width: 660px !important;
   z-index: 0;
@@ -94,7 +94,7 @@ body {
   position: absolute !important;
 
   transform-origin: top left;
-  left: -2px;
+  left: 0px;
   bottom: 0px;
   width: 660px !important;
   z-index: 0;

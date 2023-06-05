@@ -26,7 +26,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
   return (
     <CustomContainer>
       <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0", bottom: "44px" }}>
-        <PedlarImage src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
+        <Image src={orangepinkmesh} alt="orange pink meshes" loading={"lazy"} />
       </Box>
       <Box
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
@@ -50,13 +50,20 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
           }}
         >
           {isResponsive ? (
-            <PedlarImage src={purpleGradient} alt="purple gradient" layout={"fill"} style={{ borderRadius: "16px" }} />
+            <Image
+              src={purpleGradient}
+              alt="purple gradient"
+              loading={"lazy"}
+              layout={"fill"}
+              style={{ borderRadius: "16px" }}
+            />
           ) : (
-            <PedlarImage
+            <Image
               src={purpleGradient}
               alt="purple gradient"
               layout={"intrinsic"}
               style={{ borderRadius: "16px" }}
+              loading={"lazy"}
             />
           )}
         </Box>
@@ -106,6 +113,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="contain"
+                            disableShimmer={true}
                           />
                         </Box>
                       </Grid>
@@ -121,7 +129,13 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <PedlarImage
+                            src={image2}
+                            disableShimmer={true}
+                            alt="step 2"
+                            style={{ borderRadius: "16px" }}
+                            objectFit="contain"
+                          />
                         </Box>
                       </Grid>
                       <Grid>
@@ -141,6 +155,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="contain"
+                            disableShimmer={true}
                           />
                         </Box>
                       </Grid>
@@ -164,6 +179,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="contain"
+                            disableShimmer={true}
                           />
                         </Box>
                       </Grid>

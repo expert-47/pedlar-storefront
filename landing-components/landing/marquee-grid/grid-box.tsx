@@ -62,8 +62,8 @@ const Gridbox = () => {
         sx={styles.mainGrid}
         width={"100%"}
         container
-        paddingBottom={{ xs: "30px", sm: "30px" }}
-        paddingTop="40px"
+        paddingBottom={{ xs: "15px", sm: "15px" }}
+        paddingTop="15px"
         //  height={{ lg: "620px", xl: "620px" }}
       >
         <Typography

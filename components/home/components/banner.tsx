@@ -31,7 +31,7 @@ const BannerImg = (props: any) => {
             sx={{
               width: isMatch ? "100%" : 476,
               height: isMatch ? 415 : 595,
-              minHeight: screen320 ? 380 : screen375 ? "450px" : "550px",
+              minHeight: screen320 ? 415 : screen375 ? 480 : 500,
             }}
           >
             <PedlarImage

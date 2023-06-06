@@ -59,7 +59,7 @@ export default function Layout(props: LayoutProps) {
         <NextSeo {...seo} />
         <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} data={brand} shopList={shop} />
       </header>
-      <main style={{ paddingTop: "115px" }}>{error ? <ApiError /> : children}</main>
+      <main style={{ paddingTop: "90px" }}>{error ? <ApiError /> : children}</main>
       <footer>
         <Footer />
       </footer>

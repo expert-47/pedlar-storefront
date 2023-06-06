@@ -6,6 +6,11 @@
   scroll-behavior: smooth;
 } */
 
+body {
+  /* ... */
+  font-family: 'Inter'
+}
+
 .Typewriter {
   padding: 1px;
   color: #1c1b1f;

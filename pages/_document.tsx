@@ -15,6 +15,8 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
+        <link rel="preload" href="/welcomeModalImageForMObile.webp" as="image" />
+
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
       </Head>

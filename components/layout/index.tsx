@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, clearStore } from "store/slice/appSlice";
 import { getCartProducts } from "api/graphql/grapgql";
 import { getBrandShopTags } from "store/slice/tagsSlice";
+import { useMediaQuery, useTheme } from "@mui/material";
+
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;
   storefrontName: string;
@@ -23,6 +25,8 @@ export default function Layout(props: LayoutProps) {
 
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const { shop, brand } = useSelector((data: any) => data.tags);
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
   const dispatch = useDispatch();
 
@@ -59,7 +63,7 @@ export default function Layout(props: LayoutProps) {
         <NextSeo {...seo} />
         <Navbar storefrontName={storefrontName} slug={slug} productsPage={productsPage} data={brand} shopList={shop} />
       </header>
-      <main style={{ paddingTop: "90px" }}>{error ? <ApiError /> : children}</main>
+      <main style={{ paddingTop: isMatch ? "110px" : "90px" }}>{error ? <ApiError /> : children}</main>
       <footer>
         <Footer />
       </footer>

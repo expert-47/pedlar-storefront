@@ -34,9 +34,15 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
         >
           {Array.isArray(newAdditionData) &&
             newAdditionData?.map((item: any, index) => {
-              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
-                ? Math.round(item.priceRange?.minVariantPrice?.amount)
-                : item.priceRange?.minVariantPrice?.amount;
+              const prices = item.priceRange?.minVariantPrice?.amount;
+              let formattedPrice = prices;
+
+              const decimalPart = formattedPrice.split(".")[1];
+              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                formattedPrice += "0";
+              } else if (decimalPart === "0") {
+                formattedPrice = Math.round(formattedPrice);
+              }
 
               return (
                 <Grid
@@ -54,7 +60,9 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                     height={{ xs: "230px", sm: 312, md: 400, lg: 450 }}
                     type={item?.vendor}
                     name={item?.title?.toLowerCase()}
-                    price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
+                    price={
+                      item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
+                    }
                     image={item?.featuredImage?.src}
                     id={item?.id}
                     item={item}

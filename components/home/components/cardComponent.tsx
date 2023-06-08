@@ -66,7 +66,7 @@ const CardComponent = ({
               width: "100%",
             }}
           >
-            <PedlarImage src={image} objectFit="contain" />
+            <PedlarImage src={image} objectFit="contain" enableBlurDataUrl={true} />
           </Box>
         )}
         <Typography
@@ -75,7 +75,7 @@ const CardComponent = ({
           fontWeight={"500"}
           style={{
             color: "#1C1B1F",
-            paddingTop: "20px"
+            paddingTop: "20px",
           }}
           sx={{
             overflow: "hidden",

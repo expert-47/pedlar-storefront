@@ -12,10 +12,12 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
     <Html lang="en">
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="fonts/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
-        <link rel="preload" href="/welcomeModalImageForMObile.webp" as="image" />
 
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}

@@ -72,7 +72,7 @@ export default function HomepagePopup() {
                 position: "relative",
               }}
             >
-              <img src="/popImg.png" style={{ height: "456px", width: "100%" }} />
+              <img src="/welcomeModalDesktop.webp" style={{ height: "456px", width: "100%" }} />
             </Box>
             <Box sx={{ paddingLeft: "3rem", paddingRight: "1rem", width: "40%" }}>
               <Box sx={{ textAlign: "right", marginTop: "1rem", cursor: "pointer" }}>

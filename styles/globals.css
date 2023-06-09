@@ -1,23 +1,26 @@
+
+
 * {
   padding: 0;
   margin: 0;
 }
-/* html {
+html {
   scroll-behavior: smooth;
-} */
+}
 
 
- @font-face {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url("/fonts/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2") format("woff2");
-  }
+ 
+  @font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
 body {
  
-  font-family: 'Inter';
-  font-display: 'auto';
+  font-family: 'Inter', sans-serif;
+ 
 }
 
 .Typewriter {

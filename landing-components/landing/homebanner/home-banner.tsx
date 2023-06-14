@@ -16,8 +16,8 @@ import PedlarImage from "components/pedlarImage";
 
 const Banner = () => {
   const isSmall = useMediaQuery("(max-width:767px)");
-  const isMedium = useMediaQuery("(max-width:850px)");
-  const isdektop = useMediaQuery("(max-width:1451px)");
+  const isMedium = useMediaQuery("(min-width:768px) and (max-width:1023px)");
+  const isdektop = useMediaQuery("(min-width:1024px)");
   const popupScreen = useMediaQuery("(min-width:600px)");
   const [openDialog, setOpenDialog] = useState(false);
   const [loadImage, setloadimage] = useState(false);

@@ -350,7 +350,7 @@ const Cart = (props: any) => {
               }}
             >
               {/* Mobile View */}
-              <Grid item xs={10} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
+              <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
                 <Grid>
                   <Gallery
                     options={{
@@ -389,8 +389,8 @@ const Cart = (props: any) => {
                                 >
                                   <Image
                                     src={item?.url}
-                                    width={265}
-                                    height={290}
+                                    width={358}
+                                    height={400}
                                     placeholder="blur"
                                     blurDataURL="/loaderShim.png"
                                     objectFit="contain"

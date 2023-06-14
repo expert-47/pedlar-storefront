@@ -28,9 +28,9 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
+      <HomepagePopup />
       <BannerImg headerData={props?.headerData} />
       <Divider sx={styles.bannerDivider} />
-      <HomepagePopup />
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="New Additions" rightHeading="SHOP ALL" />
         <Gallery newAdditionData={props?.newAdditionData} heading={"new additions"} />

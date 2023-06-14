@@ -1,15 +1,14 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
-import CloseIcon from "@mui/icons-material/Close";
-import { Dialog, IconButton, Modal, Typography } from "@mui/material";
-import DialogTitle from "@mui/material/DialogTitle";
+import { Dialog, Modal, Typography } from "@mui/material";
 import Link from "next/link";
 import styles from "styles/home";
 import { useRouter } from "next/router";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import { toggleDialog } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export interface DialogTitleProps {
   id: string;
@@ -22,7 +21,8 @@ export default function HomepagePopup() {
   const slug = router?.query;
   const dispatch = useDispatch();
   const { storeName } = useSelector((state: any) => state.app);
-
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   const showDilog = useSelector((state: any) => state.app.showDilog[storeName]) == false ? false : true;
 
   const handleClose = () => {
@@ -30,34 +30,9 @@ export default function HomepagePopup() {
     document.body.style.overflow = "unset";
   };
 
-  function BootstrapDialogTitle(props: DialogTitleProps) {
-    const { children, onClose, ...other } = props;
-
-    return (
-      <DialogTitle sx={{}} {...other}>
-        {children}
-        {onClose ? (
-          <IconButton
-            aria-label="close"
-            onClick={onClose}
-            sx={{
-              position: "absolute",
-              right: 0,
-              top: 0,
-              color: (theme) => theme.palette.grey[500],
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        ) : null}
-      </DialogTitle>
-    );
-  }
-
   return (
     <div>
-      {/* {desktop view} */}
-      {showDilog && (
+      {showDilog && isMatch ? (
         <Modal
           open={showDilog}
           onClose={handleClose}
@@ -97,7 +72,7 @@ export default function HomepagePopup() {
                 position: "relative",
               }}
             >
-              <img src="/popImg.png" style={{ height: "456px", width: "100%" }} />
+              <img src="/welcomeModalDesktop.webp" style={{ height: "456px", width: "100%" }} />
             </Box>
             <Box sx={{ paddingLeft: "3rem", paddingRight: "1rem", width: "40%" }}>
               <Box sx={{ textAlign: "right", marginTop: "1rem", cursor: "pointer" }}>
@@ -134,9 +109,7 @@ export default function HomepagePopup() {
             </Box>
           </Box>
         </Modal>
-      )}
-      {/* {mobile view} */}
-      {showDilog && (
+      ) : (
         <Dialog
           open={showDilog}
           onClose={handleClose}

@@ -9,10 +9,11 @@ interface props extends ImageProps {
   item: any;
   renderError: any;
   onLoad: any;
+  enableBlurDataUrl: boolean;
 }
 const PedlarImage = (props: props) => {
   const [error, setError] = useState(false);
-  const { zIndex = -1, placeholder, renderError, onLoad } = props;
+  const { zIndex = -1, placeholder, renderError, onLoad, enableBlurDataUrl } = props;
 
   if (error && renderError) {
     return renderError();
@@ -31,6 +32,8 @@ const PedlarImage = (props: props) => {
         onError={() => {
           setError(true);
         }}
+        placeholder={enableBlurDataUrl ? "blur" : undefined}
+        {...(enableBlurDataUrl ? { blurDataURL: "/loaderShim.png" } : {})}
         onLoad={onLoad}
         loading="eager"
       />

@@ -3,6 +3,7 @@
 import Document, { Html, Head, Main, NextScript, DocumentProps } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from "utils/createEmotionCache";
+
 interface MyDocumentProps extends DocumentProps {
   emotionStyleTags: JSX.Element[];
 }
@@ -12,9 +13,11 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
     <Html lang="en">
       <Head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block"
           rel="stylesheet"
         />
+
+        <link rel="preload" href="/welcomeModalImageForMObile.webp" as="image" />
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
       </Head>
@@ -37,6 +40,7 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
+
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   // Resolution order
   //

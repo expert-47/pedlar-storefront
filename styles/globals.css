@@ -1,14 +1,26 @@
+
+
 * {
   padding: 0;
   margin: 0;
 }
-/* html {
+html {
   scroll-behavior: smooth;
-} */
+}
 
+
+ 
+  @font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+}
 body {
-  /* ... */
-  font-family: 'Inter'
+ 
+  font-family: 'Inter', sans-serif;
+ 
 }
 
 .Typewriter {
@@ -103,26 +115,34 @@ body {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 320px) {
   .marq-left {
-    width: 1320px !important;
+    width: 1300px !important;
   }
   .marq-right {
-    width: 1320px !important;
+    width: 1300px !important;
   }
 }
 @media only screen and (min-width: 375px) {
   .marq-left {
-    width: 1180px !important;
+    width: 1170px !important;
   }
   .marq-right {
-    width: 1180px !important;
+    width: 1170px !important;
+  }
+}
+@media only screen and (min-width: 412px) {
+  .marq-left {
+    width: 1145px !important;
+  }
+  .marq-right {
+    width: 1145px !important;
   }
 }
 @media only screen and (min-width: 425px) {
   .marq-left {
-    width: 1120px !important;
+    width: 1090px !important;
   }
   .marq-right {
-    width: 1120px !important;
+    width: 1090px !important;
   }
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */

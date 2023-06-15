@@ -34,6 +34,8 @@ export const styles = {
     opacity: "0.08",
     wordSpacing: "18px",
     paddingLeft: "30px",
+    lineHeight: "1 !important",
+
     transform: "translate(0px, 17px)",
     ["@media (max-width:600px)"]: {
       transform: "translate(0px, 11px)",
@@ -45,6 +47,7 @@ export const styles = {
     opacity: "0.08",
     wordSpacing: "18px",
     paddingLeft: "30px",
+    lineHeight: "1 !important",
   },
   LoginBox: {
     backgroundColor: "#f9f6f2",

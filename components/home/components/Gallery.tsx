@@ -34,6 +34,9 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
         >
           {Array.isArray(newAdditionData) &&
             newAdditionData?.map((item: any, index) => {
+              //   assign the value of price according to the requirement of the client
+              //(remove .0 if exists , and if there is one decimal and that
+              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
               const prices = item.priceRange?.minVariantPrice?.amount;
               let formattedPrice = prices;
 

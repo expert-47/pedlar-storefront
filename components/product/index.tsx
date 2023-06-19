@@ -39,6 +39,7 @@ import Image from "next/image";
 import { seo } from "utils/seoData";
 import { Slide } from "react-slideshow-image";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { AnyARecord } from "dns";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -280,7 +281,18 @@ const Cart = (props: any) => {
     pagination: true,
   };
 
-  let prices = price?.price?.toString()?.endsWith(".0") ? Math.round(price?.price) : price?.price;
+  //   assign the value of price according to the requirement of the client
+  //(remove .0 if exists , and if there is one decimal and that
+  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+  const getPriceValueFromState = price?.price;
+
+  let priceOfProduct: any = getPriceValueFromState;
+  const decimalPart = priceOfProduct?.toString().split(".")[1];
+  if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+    priceOfProduct += "0";
+  } else if (decimalPart === "0") {
+    priceOfProduct = Math.round(priceOfProduct);
+  }
 
   return (
     <Layout
@@ -471,7 +483,7 @@ const Cart = (props: any) => {
                       <CircularProgress color="secondary" />
                     ) : (
                       <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                        {`${price.currencyCode === "AUD" ? "$" : ""}${prices}`}
+                        {`${price.currencyCode === "AUD" ? "$" : ""}${priceOfProduct}`}
                       </Typography>
                     )}
                   </Grid>
@@ -577,9 +589,18 @@ const Cart = (props: any) => {
           >
             {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
               const productId = item?.id?.split("gid://shopify/Product/")[1];
-              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
-                ? Math.round(item.priceRange?.minVariantPrice?.amount)
-                : item.priceRange?.minVariantPrice?.amount;
+              //   assign the value of price according to the requirement of the client
+              //(remove .0 if exists , and if there is one decimal and that
+              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+              const prices = item.priceRange?.minVariantPrice?.amount;
+              let formattedPrice = prices;
+
+              const decimalPart = formattedPrice.split(".")[1];
+              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                formattedPrice += "0";
+              } else if (decimalPart === "0") {
+                formattedPrice = Math.round(formattedPrice);
+              }
               return (
                 <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
                   <Grid
@@ -597,7 +618,9 @@ const Cart = (props: any) => {
                       height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       name={item?.title}
                       type={item?.vendor}
-                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
+                      price={
+                        item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
+                      }
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}
                       item={item}
@@ -633,9 +656,19 @@ const Cart = (props: any) => {
           >
             {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
               const productId = item?.id?.split("gid://shopify/Product/")[1];
-              const prices = item.priceRange?.minVariantPrice?.amount.endsWith(".0")
-                ? Math.round(item.priceRange?.minVariantPrice?.amount)
-                : item.priceRange?.minVariantPrice?.amount;
+              //   assign the value of price according to the requirement of the client
+              //(remove .0 if exists , and if there is one decimal and that
+              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+
+              const prices = item.priceRange?.minVariantPrice?.amount;
+              let formattedPrice = prices;
+
+              const decimalPart = formattedPrice.split(".")[1];
+              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                formattedPrice += "0";
+              } else if (decimalPart === "0") {
+                formattedPrice = Math.round(formattedPrice);
+              }
               return (
                 <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
                   <Grid
@@ -653,7 +686,9 @@ const Cart = (props: any) => {
                       height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
                       name={item?.title?.toLowerCase()}
                       type={item?.vender}
-                      price={item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${prices}` : prices}
+                      price={
+                        item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
+                      }
                       image={item?.featuredImage?.transformedSrc}
                       id={item?.id}
                       item={item}

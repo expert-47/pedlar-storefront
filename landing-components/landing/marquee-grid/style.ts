@@ -34,8 +34,7 @@ export const styles = {
     opacity: "0.08",
     wordSpacing: "18px",
     paddingLeft: "30px",
-    //giving the lineHeight property because the client wants that text should be half inner and so half display should be under main grid
-    lineHeight: "1 !important",
+
     transform: "translate(0px, 17px)",
     ["@media (max-width:600px)"]: {
       transform: "translate(0px, 11px)",
@@ -47,8 +46,6 @@ export const styles = {
     opacity: "0.08",
     wordSpacing: "18px",
     paddingLeft: "30px",
-    //giving the lineHeight property because the client wants that text should be half inner and so half display should be under main grid
-    lineHeight: "1 !important",
   },
   LoginBox: {
     backgroundColor: "#f9f6f2",

@@ -178,7 +178,7 @@ const Gridbox = () => {
           fontWeight={"700"}
           fontSize={{ xs: "24px", sm: "36px" }}
           sx={styles.marqueebottom}
-          marginTop={{ xs: "-16px", sm: "-15px" }}
+          marginTop={{ xs: "-18px", sm: "-15px" }}
         >
           Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           Pedlar Pedlar Pedlar Pedlar

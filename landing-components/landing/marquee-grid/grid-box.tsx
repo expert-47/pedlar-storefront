@@ -51,8 +51,14 @@ const Gridbox = () => {
           Pedlar Pedlar Pedlar Pedlar Pedlar
         </Typography>
       </Marquee>
+
       <Marquee direction="right" speed={45} gradient={false} style={{ overflow: "hidden" }}>
-        <Typography fontWeight={"700"} fontSize={{ xs: "24px", sm: "36px" }} sx={styles.marqueetop}>
+        <Typography
+          fontWeight={"700"}
+          fontSize={{ xs: "24px", sm: "36px" }}
+          sx={styles.marqueetop}
+          marginBottom={{ xs: "-7px", sm: "0px" }}
+        >
           Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           Pedlar Pedlar
         </Typography>
@@ -172,12 +178,13 @@ const Gridbox = () => {
           fontWeight={"700"}
           fontSize={{ xs: "24px", sm: "36px" }}
           sx={styles.marqueebottom}
-          marginTop={{ xs: "-10px", sm: "-18px" }}
+          marginTop={{ xs: "-16px", sm: "-15px" }}
         >
           Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
           Pedlar Pedlar Pedlar Pedlar
         </Typography>
       </Marquee>
+
       <Marquee direction="right" speed={1.3} gradient={false} className="marq-right">
         <Typography
           fontWeight={"700"}

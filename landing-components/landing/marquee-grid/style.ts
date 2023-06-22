@@ -34,7 +34,6 @@ export const styles = {
     opacity: "0.08",
     wordSpacing: "18px",
     paddingLeft: "30px",
-
     transform: "translate(0px, 17px)",
     ["@media (max-width:600px)"]: {
       transform: "translate(0px, 11px)",

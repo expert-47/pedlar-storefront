@@ -86,13 +86,11 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
 .marq-right {
   color: rgb(28, 27, 31);
   opacity: 0.08;
   transform: rotate(90deg);
   position: absolute !important;
-
   transform-origin: top right;
   right: 0px;
   bottom: 0px;
@@ -104,7 +102,6 @@ body {
   opacity: 0.08;
   transform: rotate(-90deg);
   position: absolute !important;
-
   transform-origin: top left;
   left: 0px;
   bottom: 0px;

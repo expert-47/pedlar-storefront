@@ -28,7 +28,7 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
-      <HomepagePopup />
+      {/* <HomepagePopup /> */}
       <BannerImg headerData={props?.headerData} />
       <Divider sx={styles.bannerDivider} />
       <Box>

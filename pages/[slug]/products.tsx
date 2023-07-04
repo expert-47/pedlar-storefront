@@ -40,7 +40,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         let filterList = [{ productVendor: route?.query.itemValue }];
         setFiltersValue(filterList, []);
       }
-      if (route.query.dataType === "Shop") {
+      if (route.query.dataType === "Categories") {
         let filterList = [{ productType: route?.query.itemValue }];
         setFiltersValue([], filterList);
       }

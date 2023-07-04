@@ -230,7 +230,7 @@ export const PedlarDrawer = (props: {
           <List>
             <ListItemButton onClick={handleClicks} style={{ fontSize: "16px", fontWeight: "600", padding: "unset" }}>
               <ListItem style={{ color: opens ? "rgba(0,0,0,0.3)" : "inherit" }}>
-                Shops {opens ? <ExpandLess /> : <ExpandMore />}
+                Categories {opens ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
             </ListItemButton>
             <Collapse in={opens}>
@@ -252,7 +252,7 @@ export const PedlarDrawer = (props: {
                             route.push(
                               {
                                 pathname: `${route.basePath}/${storeName}/products`,
-                                query: { dataType: "Shop", itemValue: item?.label },
+                                query: { dataType: "Categories", itemValue: item?.label },
                               },
                               `${route.basePath}/${storeName}/products`,
                             );

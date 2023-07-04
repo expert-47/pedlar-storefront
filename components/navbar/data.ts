@@ -1,7 +1,7 @@
 export const pages = [
   { name: "Home", link: "/" },
   { name: "Brands", link: "/brands" },
-  { name: "Shop", link: "/Shop" },
+  { name: "Categories", link: "/categories" },
   { name: "FAQ", link: "/Faq" },
 ];
 

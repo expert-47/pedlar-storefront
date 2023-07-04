@@ -99,7 +99,7 @@ export default function Navbar(props: any) {
                     <>
                       <DropDownMenu loading={loading} type={"Brands"} data={data || []} />
 
-                      <DropDownMenu loading={shopListLoading} type={"Shop"} data={shopList || []} />
+                      <DropDownMenu loading={shopListLoading} type={"Categories"} data={shopList || []} />
                     </>
                   )}
 

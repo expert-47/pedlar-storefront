@@ -24,7 +24,7 @@ const ProductListing = () => {
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(40) }}
       >
         <Grid container item xs={8} sm={10} md={10.5} lg={11}>
-          <Typography sx={styles.gridtag1typo1}>New Additions</Typography>
+          <Typography sx={styles.gridtag1typo1}>My Latest Picks</Typography>
         </Grid>
         <Grid
           container

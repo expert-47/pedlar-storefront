@@ -403,8 +403,8 @@ const Cart = (props: any) => {
                                     src={item?.url}
                                     width={358}
                                     height={400}
-                                    placeholder="blur"
-                                    blurDataURL="/loaderShim.png"
+                                    // placeholder="blur"
+                                    // blurDataURL="/loaderShim.png"
                                     objectFit="contain"
                                     objectPosition={"center"}
                                   />

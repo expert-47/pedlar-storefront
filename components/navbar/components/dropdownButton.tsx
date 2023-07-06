@@ -12,7 +12,7 @@ interface Props {
   data: string[];
   setFiltersValue: any;
   filterList: any;
-  filterCount: Number;
+  filterCount: number;
   openMenu: boolean;
   handleClose: () => void;
   handleClick: (e: any) => void;
@@ -58,13 +58,13 @@ const DropdownButton = (props: Props) => {
     setFiltersValue([], type, false);
   };
   const getSelectedValues = (item: any) => {
-    let index = filterList.findIndex((data: any) => data.label == item.label);
+    const index = filterList.findIndex((data: any) => data.label == item.label);
 
-    let data = {
+    const data = {
       ...item,
       checked: item.checked ? false : true,
     };
-    let list = [...filterList];
+    const list = [...filterList];
     list[index] = data;
 
     setFilterData(list);
@@ -118,11 +118,11 @@ const DropdownButton = (props: Props) => {
             >
               <Box sx={styles.menuInnerContainer}>
                 {pageLoading && <CircularProgress color="secondary" />}
-                {filterList?.map((item: any , index:number) => {
+                {filterList?.map((item: any, index: number) => {
                   if (item.count != 0) {
                     return (
                       <FormControlLabel
-                      key={item?.label + index }
+                        key={item?.label + index}
                         sx={{
                           width: 180,
                         }}
@@ -130,7 +130,7 @@ const DropdownButton = (props: Props) => {
                           <Checkbox
                             checked={item.checked || false}
                             sx={styles.menuCheck}
-                            onClick={(e) => getSelectedValues(item)}
+                            onClick={() => getSelectedValues(item)}
                           />
                         }
                         label={item?.label || ""}

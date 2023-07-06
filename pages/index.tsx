@@ -15,7 +15,7 @@ import firstStep from "../public/step1.png";
 import secondStep from "../public/step2.png";
 import thirdStep from "../public/step3.png";
 import fourthStep from "../public/step4.png";
-import PedlarImage from "components/pedlarImage";
+
 import Image from "next/image";
 import { seo } from "utils/seoData";
 
@@ -25,7 +25,7 @@ const styless = {
     backgroundPosition: "0 0",
     backgroundRepeat: "repeat",
     backgroundSize: "initial",
-    content: `""`,
+    content: "",
     height: " 100%",
     mixBlendMode: "overlay",
     opacity: ".6",

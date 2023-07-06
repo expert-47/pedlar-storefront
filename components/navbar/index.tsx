@@ -32,7 +32,7 @@ export default function Navbar(props: any) {
   };
 
   const route = useRouter();
-  let path = route.asPath.split("/")[1];
+  const path = route.asPath.split("/")[1];
   const totalProductLength =
     Array.isArray(cartProducts) && cartProducts.length > 1
       ? cartProducts.reduce((total: any, item: any) => {

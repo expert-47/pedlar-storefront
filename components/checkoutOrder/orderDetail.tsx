@@ -22,7 +22,7 @@ const OrderDetailCollapsible = () => {
 
           <Grid container item justifyContent={"center"}>
             {data.map((item) => (
-              <CheckoutOrder image={item.image} name={item.name} price={item.price} />
+              <CheckoutOrder key={item?.name} image={item.image} name={item.name} price={item.price} />
             ))}
           </Grid>
 

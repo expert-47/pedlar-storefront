@@ -39,13 +39,14 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
     Crisp.load();
   });
 
-  let persistor = persistStore(store);
+  const persistor = persistStore(store);
 
   return (
     <CacheProvider value={emotionCache}>
       <Script
         id="gtag-base"
-        strategy="afterInteractive"
+        // strategy="afterInteractive"
+        strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

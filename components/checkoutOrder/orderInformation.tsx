@@ -25,7 +25,7 @@ const OrderInformation = () => {
         }}
       >
         {data.map((item) => (
-          <CheckoutOrder image={item.image} name={item.name} price={item.price} />
+          <CheckoutOrder key={item?.name} image={item.image} name={item.name} price={item.price} />
         ))}
       </Grid>
       <Grid

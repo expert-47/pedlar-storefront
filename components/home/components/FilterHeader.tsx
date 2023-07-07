@@ -19,7 +19,7 @@ const FilterHeader = ({ setFiltersValue, filterData, setFilterData, filterCounts
   const [clickType, setClick] = useState<"apply" | "reset">("apply");
   const applyFiltersMethod = () => {
     setClick("apply");
-    let data = filterData.filter((item: any) => item.checked);
+    const data = filterData.filter((item: any) => item.checked);
 
     setFiltersValue(
       data.map((item: any) => JSON.parse(item.input)),
@@ -32,13 +32,13 @@ const FilterHeader = ({ setFiltersValue, filterData, setFilterData, filterCounts
     setFiltersValue([], type, false);
   };
   const onClickBrand = (item: any) => {
-    let index = filterData.findIndex((data: any) => data.label == item.label);
+    const index = filterData.findIndex((data: any) => data.label == item.label);
 
-    let data = {
+    const data = {
       ...item,
       checked: item.checked ? false : true,
     };
-    let list = [...filterData];
+    const list = [...filterData];
     list[index] = data;
 
     setFilterData(list);
@@ -75,7 +75,7 @@ const FilterHeader = ({ setFiltersValue, filterData, setFilterData, filterCounts
                   style={{ padding: "2px" }}
                   sx={styles.menuCheck}
                   checked={item.checked || false}
-                  onChange={(e) => onClickBrand(item)}
+                  onChange={() => onClickBrand(item)}
                 />
                 <Typography sx={styles.menuCheck} style={{ paddingTop: "2px" }}>
                   {item.label}

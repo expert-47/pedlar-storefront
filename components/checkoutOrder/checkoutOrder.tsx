@@ -22,12 +22,13 @@ interface Props {
   CurrencyCode: string;
   title: string;
   vendor: string;
-  index: Number;
+  index: number;
   id: string;
+  key: string;
 }
 
 const CheckoutOrder = (props: Props) => {
-  const { itemData, index, id } = props;
+  const { itemData } = props;
   const [productCount, setProductCount] = useState(props?.quantity);
   const [error, setError] = useState(false);
   const [loadingButtonState, setLoadingButtonState] = useState(false);
@@ -47,7 +48,7 @@ const CheckoutOrder = (props: Props) => {
         setLoadingButtonState(false);
       } else {
         await updateCartLineItem(cartId, props?.itemData?.id, quantity + 1);
-        let products = [...cartProducts];
+        const products = [...cartProducts];
         products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
         // setProductCount(quantity + 1);
@@ -93,7 +94,7 @@ const CheckoutOrder = (props: Props) => {
           addProductToCart({ products: cartProducts.filter((item, index) => index != props.index), showCart: true }),
         );
       } else {
-        let products = [...cartProducts];
+        const products = [...cartProducts];
         products[props.index] = { ...cartProducts[props.index], quantity: quantity - 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
       }
@@ -110,7 +111,7 @@ const CheckoutOrder = (props: Props) => {
   useEffect(() => {
     setProductCount(props?.quantity);
   }, [props?.quantity, props.index]);
-  let prices = props?.price?.endsWith(".0") ? Math.round(props?.price) : props?.price;
+  const prices = props?.price?.endsWith(".0") ? Math.round(props?.price) : props?.price;
   const route = useRouter();
 
   const onClickCard = () => {

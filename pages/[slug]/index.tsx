@@ -50,9 +50,9 @@ export async function getServerSideProps(context: any) {
 
   const numberofProducts = 6;
   if (headerData?.data) {
-    let data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
-    let userData = data?.data?.collection?.products?.nodes || [];
-    let curatedBrandsResponse = await getCuratedBrands(slug);
+    const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    const userData = data?.data?.collection?.products?.nodes || [];
+    const curatedBrandsResponse = await getCuratedBrands(slug);
 
     return {
       props: {

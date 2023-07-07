@@ -116,7 +116,7 @@ const Banner = () => {
               >
                 We put fashion
               </Typography>
-              <Box style={{ display: "flex" }} sx={styles.animateRow}>
+              <Box sx={styles.animateRow}>
                 <Typewriter
                   options={{
                     strings: ["Creators ", "Influencers ", "Curators "],
@@ -143,10 +143,10 @@ const Banner = () => {
               </Typography>
               <Grid>
                 <Button sx={styles.creator} onClick={() => openPopup("creator")}>
-                  I’m a creator
+                  {"I’m a creator"}
                 </Button>
                 <Button sx={styles.brands} onClick={() => openPopup("brand")}>
-                  I’m a brand
+                  {"I’m a brand"}
                 </Button>
                 {popupScreen ? (
                   <LoginDialog

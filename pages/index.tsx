@@ -40,7 +40,7 @@ const styless = {
 const index = () => {
   return (
     <Layout
-      style={{ position: "relative", backgroundColor: "#f9f6f2" }}
+      sx={{ position: "relative", backgroundColor: "#f9f6f2" }}
       seo={{
         title: seo.landingTitle,
         description: seo.landingDescription,

@@ -5,7 +5,6 @@ import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { brandvalidation } from "../../add-validation/brand-validation";
 import emailjs from "@emailjs/browser";
-import PedlarImage from "components/pedlarImage";
 import LanguageIcon from "@mui/icons-material/Language";
 
 const Businesstoday = () => {

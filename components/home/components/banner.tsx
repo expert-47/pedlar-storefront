@@ -1,30 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import { CustomContainer } from "../../layout";
-import { useMediaQuery, useTheme, Box, Snackbar } from "@mui/material";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import { useMediaQuery, useTheme, Box } from "@mui/material";
 import TextBox from "./textBox";
 import PedlarImage from "components/pedlarImage";
 import placeholder from "public/Placeholder.jpg";
-
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
-
 const BannerImg = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   const screen320 = useMediaQuery("(max-width:320px)");
   const screen375 = useMediaQuery("(max-width:375px)");
-
-  const [open, setOpen] = useState(true);
-
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setOpen(false);
-  };
   return (
     <CustomContainer
       style={{
@@ -66,42 +51,6 @@ const BannerImg = (props: any) => {
           marginLeft={{ lg: "-0.7%", md: "4%", xl: "-2%" }}
           marginTop={{ lg: "0%", md: "0%", sm: "-20%", xs: "-30%" }}
         >
-          <Snackbar
-            open={open}
-            onClose={handleClose}
-            anchorOrigin={{ vertical: "top", horizontal: "right" }}
-            sx={{
-              "& .MuiAlert-icon": {
-                display: "none",
-              },
-            }}
-            style={{
-              top: "112px",
-              right: "1px",
-              zIndex: "2",
-            }}
-          >
-            <Alert
-              onClose={handleClose}
-              severity="success"
-              sx={{
-                width: "193PX",
-                padding: "2px 10px 0px 10px",
-                height: "48px",
-                fontSize: "12px",
-                fontWeight: "400px",
-                lineHeight: "16px",
-                backgroundColor: "#21005D",
-                color: "F9F6F2",
-
-                "& .MuiIconButton-root": {
-                  paddingTop: "10px",
-                },
-              }}
-            >
-              SPECIAL OFFER! Use code <strong>PEDLAR20</strong> for 20% off
-            </Alert>
-          </Snackbar>
           <TextBox headerData={props?.headerData} style={{}} />
         </Grid>
       </Grid>

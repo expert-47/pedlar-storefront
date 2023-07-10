@@ -14,7 +14,6 @@ import PedlarImage from "components/pedlarImage";
 import Image from "next/image";
 import Link from "next/link";
 
-
 const Header = () => {
   const theme = useTheme();
   const router = useRouter();
@@ -53,10 +52,10 @@ const Header = () => {
     setSuccessModalShow(value);
   };
 
-  const handleClick =() =>{
+  const handleClick = () => {
     router.push("https://portal.pedlar.store");
   };
-  
+
   return (
     <AppBar
       elevation={0}
@@ -100,43 +99,44 @@ const Header = () => {
                 )}
               </Grid>
               <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
-                <Grid onClick={openCreators}>
-                  <Typography
-                    textTransform="none"
-                    fontSize={"16px"}
-                    fontWeight={600}
-                    sx={{
-                      ...styles.Button,
-                      textDecorationLine: router.pathname == "/for-creator" && "underline",
-                      color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
-                    }}
-                  >
-                    For Creators
-                  </Typography>
+                <Grid>
+                  <Link href={"/for-creator"}>
+                    <Typography
+                      textTransform="none"
+                      fontSize={"16px"}
+                      fontWeight={600}
+                      sx={{
+                        ...styles.Button,
+                        textDecorationLine: router.pathname == "/for-creator" && "underline",
+                        color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
+                      }}
+                    >
+                      For Creators
+                    </Typography>
+                  </Link>
                 </Grid>
                 <Grid onClick={openBrands}>
-                  <Typography
-                    textTransform="none"
-                    fontSize={"16px"}
-                    fontWeight={600}
-                    sx={{
-                      ...styles.Button,
-                      textDecorationLine: router.pathname == "/for-brands" && "underline",
-                      color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
-                    }}
-                  >
-                    For Brands
-                  </Typography>
+                  <Link href={"/for-brands"}>
+                    <Typography
+                      textTransform="none"
+                      fontSize={"16px"}
+                      fontWeight={600}
+                      sx={{
+                        ...styles.Button,
+                        textDecorationLine: router.pathname == "/for-brands" && "underline",
+                        color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
+                      }}
+                    >
+                      For Brands
+                    </Typography>
+                  </Link>
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={12} md={3.5} style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Button onClick = {handleClick}>
-                    
-               
-                    <Typography textTransform="none" sx={styles.LoginButton}>
-                      Log in
-                    </Typography>
-               
+                <Button onClick={handleClick}>
+                  <Typography textTransform="none" sx={styles.LoginButton}>
+                    Log in
+                  </Typography>
                 </Button>
                 <Button onClick={openPopup}>
                   <Typography textTransform="none" sx={styles.GetAccessTypo}>

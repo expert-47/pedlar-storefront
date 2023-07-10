@@ -9,7 +9,6 @@ import PedlarImage from "components/pedlarImage";
 import BottomSheet from "landing-components/BottomSheet";
 import Link from "next/link";
 
-
 const ResponsiveHeader = () => {
   const router = useRouter();
   const theme = useTheme();
@@ -58,9 +57,9 @@ const ResponsiveHeader = () => {
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
-   const handleClick = () => {
-     router.push("https://portal.pedlar.store");
-   };
+  const handleClick = () => {
+    router.push("https://portal.pedlar.store");
+  };
 
   return (
     <AppBar
@@ -104,31 +103,35 @@ const ResponsiveHeader = () => {
             </Grid>
             <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
               <Grid>
-                <Grid sx={styles.ResponButtonCreator} onClick={openCreators}>
-                  <Typography
-                    textTransform="none"
-                    sx={{
-                      ...styles.ButtonRTypo,
-                      textDecorationLine: router.pathname == "/for-creator" && "underline",
-                      color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
-                    }}
-                  >
-                    For Creators
-                  </Typography>
+                <Grid sx={styles.ResponButtonCreator}>
+                  <Link prefetch={true} href={"/for-creator"}>
+                    <Typography
+                      textTransform="none"
+                      sx={{
+                        ...styles.ButtonRTypo,
+                        textDecorationLine: router.pathname == "/for-creator" && "underline",
+                        color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
+                      }}
+                    >
+                      For Creators
+                    </Typography>
+                  </Link>
                 </Grid>
               </Grid>
               <Grid>
-                <Grid sx={styles.ResponButtonBrands} onClick={openBrands}>
-                  <Typography
-                    textTransform="none"
-                    sx={{
-                      ...styles.ButtonRTypo,
-                      textDecorationLine: router.pathname == "/for-brands" && "underline",
-                      color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
-                    }}
-                  >
-                    For Brands
-                  </Typography>
+                <Grid sx={styles.ResponButtonBrands}>
+                  <Link href={"/for-brands"} prefetch={true}>
+                    <Typography
+                      textTransform="none"
+                      sx={{
+                        ...styles.ButtonRTypo,
+                        textDecorationLine: router.pathname == "/for-brands" && "underline",
+                        color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
+                      }}
+                    >
+                      For Brands
+                    </Typography>
+                  </Link>
                 </Grid>
               </Grid>
               <Grid style={{ textAlign: "center" }}>

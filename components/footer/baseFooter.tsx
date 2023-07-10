@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 const BaseFooter = () => {
   const route = useRouter();
-  let path = route.asPath.split("/")[1];
+  const path = route.asPath.split("/")[1];
   const theme = useTheme();
 
   return (
@@ -60,7 +60,7 @@ const BaseFooter = () => {
             <Box>
               Contact us at{" "}
               <a href="mailto:hello@pedlar.store" style={{ color: "black", textDecoration: "underline" }}>
-                {`hello@pedlar.store `}
+                hello@pedlar.store
               </a>{" "}
             </Box>
             and our customer service team will be in touch.

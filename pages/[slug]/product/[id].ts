@@ -12,7 +12,7 @@ export async function getServerSideProps(context: any) {
     let response = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
     response = response?.data?.collection?.products?.nodes;
 
-    let data = await getProductDetails(context?.query?.id);
+    const data = await getProductDetails(context?.query?.id);
 
     return {
       props: {

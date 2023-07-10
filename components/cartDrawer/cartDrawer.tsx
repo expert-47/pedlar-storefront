@@ -38,8 +38,8 @@ const CartDrawer = () => {
     if (cartId) {
       try {
         setLoading(true);
-        let response = await getCartProducts(cartId);
-        let cartProducts = response?.data?.cart?.lines?.nodes || [];
+        const response = await getCartProducts(cartId);
+        const cartProducts = response?.data?.cart?.lines?.nodes || [];
         dispatch(addProductToCart({ products: cartProducts, showCart: true }));
         gtmEvents.viewCart(cartProducts);
       } catch (error) {
@@ -55,7 +55,7 @@ const CartDrawer = () => {
     }
     if (cartProducts?.length > 0) {
       if (cartProducts?.length == 1) {
-        let price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
+        const price = Number(cartProducts[0].merchandise?.price?.amount) * Number(cartProducts[0].quantity);
         setTotalPrice(price);
         return;
       }

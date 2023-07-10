@@ -10,8 +10,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import { CustomContainer } from "../layout";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
+
 import Layout from "../layout";
 import Options from "./components/options";
 import Action from "./components/action";
@@ -39,7 +38,6 @@ import Image from "next/image";
 import { seo } from "utils/seoData";
 import { Slide } from "react-slideshow-image";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { AnyARecord } from "dns";
 
 const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
@@ -65,7 +63,7 @@ const Cart = (props: any) => {
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
   const route = useRouter();
   const slugValue = route.query.slug;
-  let path = getStoreName(route);
+  const path = getStoreName(route);
 
   const storeName = useSelector((data: any) => data.app.storeName);
 
@@ -105,7 +103,7 @@ const Cart = (props: any) => {
   const getCartList = async (value = false) => {
     if (cartId) {
       try {
-        let response = await getCartProducts(cartId);
+        const response = await getCartProducts(cartId);
         dispatch(addProductToCart({ products: response?.data?.cart?.lines?.nodes || [], showCart: value }));
       } catch (error) {}
     }
@@ -163,7 +161,7 @@ const Cart = (props: any) => {
             await addToCartLineItem(cartId, varientData?.id, 1);
           }
         } else {
-          let response = await addToCart(varientData?.id, slugValue, 1);
+          const response = await addToCart(varientData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
         }
@@ -232,9 +230,9 @@ const Cart = (props: any) => {
       } else {
         gmtEventToAddProduct({ ...newAdditionData, quantity: 1, item_category3: "buy now button" });
         if (!cartId) {
-          let res = await addToCart(varientData?.id, slugValue, quantity);
+          const res = await addToCart(varientData?.id, slugValue, quantity);
           dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
-          let cartId = res?.data?.cartCreate?.cart?.id;
+          const cartId = res?.data?.cartCreate?.cart?.id;
           const response = await checkoutCartDetails(cartId);
           window.open(response?.data?.cart?.checkoutUrl, "_self");
           gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
@@ -246,7 +244,7 @@ const Cart = (props: any) => {
               setErrorMessage("This item is currently out of stock");
             } else {
               console.log("gfds");
-              let data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
+              const data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
               gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
               setTimeout(async () => {
                 const response = await checkoutCartDetails(cartId);
@@ -254,7 +252,7 @@ const Cart = (props: any) => {
               }, 500);
             }
           } else {
-            let data = await addToCartLineItem(cartId, varientData?.id, quantity);
+            const data = await addToCartLineItem(cartId, varientData?.id, quantity);
 
             gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
             setTimeout(async () => {
@@ -276,10 +274,10 @@ const Cart = (props: any) => {
     setError(false);
     setErrorMessage("");
   };
-  const pagination = {
-    clickable: true,
-    pagination: true,
-  };
+  // const pagination = {
+  //   clickable: true,
+  //   pagination: true,
+  // };
 
   //   assign the value of price according to the requirement of the client
   //(remove .0 if exists , and if there is one decimal and that
@@ -403,8 +401,9 @@ const Cart = (props: any) => {
                                     src={item?.url}
                                     width={358}
                                     height={400}
-                                    placeholder="blur"
-                                    blurDataURL="/loaderShim.png"
+                                    priority={true}
+                                    // placeholder="blur"
+                                    // blurDataURL="/loaderShim.png"
                                     objectFit="contain"
                                     objectPosition={"center"}
                                   />

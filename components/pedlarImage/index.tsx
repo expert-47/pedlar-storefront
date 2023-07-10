@@ -3,15 +3,15 @@ import Image, { ImageProps, StaticImageData } from "next/image";
 import { useState } from "react";
 import { Box } from "@mui/material";
 import skeletonImg from "public/skeletonImg.jpeg";
-interface props extends ImageProps {
+interface Props extends ImageProps {
   zIndex?: number;
-  placeholder: StaticImageData;
-  item: any;
-  renderError: any;
-  onLoad: any;
-  enableBlurDataUrl: boolean;
+  placeholder?: StaticImageData;
+  item?: any;
+  renderError?: any;
+  onLoad?: any;
+  enableBlurDataUrl?: boolean;
 }
-const PedlarImage = (props: props) => {
+const PedlarImage = (props: Props) => {
   const [error, setError] = useState(false);
   const { zIndex = -1, placeholder, renderError, onLoad, enableBlurDataUrl } = props;
 

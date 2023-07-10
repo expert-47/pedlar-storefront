@@ -1,18 +1,19 @@
 /** @type {import('next').NextConfig} */
 const webpack = require("webpack");
 const securityHeaders = [
-    {
-        key: 'Strict-Transport-Security',
-        value: 'max-age=31536000; includeSubDomains'
-    }
-]
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=31536000; includeSubDomains",
+  },
+];
 const nextConfig = {
-  output: 'standalone',
+  output: "standalone",
   reactStrictMode: true,
   swcMinify: true,
   images: {
     domains: ["res.cloudinary.com", "storage.googleapis.com", "cdn.shopify.com"],
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -32,10 +33,10 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: "/:path*",
         headers: securityHeaders,
       },
-    ]
+    ];
   },
 };
 

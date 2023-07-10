@@ -128,6 +128,7 @@ export const styles = {
     width: "188px",
   },
   animateRow: {
+    display: "flex",
     alignItems: "center",
     ["@media (max-width:800px)"]: {
       flexDirection: "column",

@@ -6,9 +6,19 @@ const config: DefaultSeoProps = {
     locale: "en_IE",
     url: "https://pedlar.store/",
     siteName: "pedlar",
+    article: {
+      authors: ["/pedlaricongoogle.png"],
+    },
+    images: [
+      {
+        url: "/pedlaricongoogle.png",
+        width: 800,
+        height: 600,
+        alt: "Pedlar Image",
+      },
+    ],
   },
   title: "Pedlar",
-
   additionalLinkTags: [
     {
       rel: "favicon",

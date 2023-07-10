@@ -249,7 +249,7 @@ export const homeImpressiongmtEvent = (storeName) => {
         {
           promotion_id: "abc12ddd3",
           promotion_name: "shop all", // name of the banner/promotion
-          creative_name: "new additions",
+          creative_name: "my latest picks",
           creative_slot: "3",
           location_id: `${process.env.NEXT_PUBLIC_HOST_URL}${storeName}`, //location_id belongs to the current page url
           index: 3,
@@ -270,7 +270,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
       ...(item?.productType && item?.productType != "" && { item_category: item?.productType || "" }), //The category to which the product belongs to.
       index: index + 1,
 
-      item_list_name: "new additions", //e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
+      item_list_name: "my latest picks", //e.g. Filter results, Popular Picks For You ,Recently Viewed, Best sellers, Search Results, Personal Boutique etc.
 
       quantity: item?.totalInventory, //quantity of the item
     };

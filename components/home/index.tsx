@@ -20,7 +20,7 @@ export const Home = (props: any) => {
   const storeName = useSelector((data: any) => data.app.storeName);
 
   const onClickShopAll = () => {
-    gtmEvents.selectPromission(storeName, "shop all", "new additions", "3", "abc12ddd3");
+    gtmEvents.selectPromission(storeName, "shop all", "my latest picks", "3", "abc12ddd3");
   };
   const onClickShopNow = () => {
     gtmEvents.selectPromission(storeName, "shop brand", "curated brands", "2", "abc12d3");
@@ -32,8 +32,8 @@ export const Home = (props: any) => {
       <BannerImg headerData={props?.headerData} />
       <Divider sx={styles.bannerDivider} />
       <Box>
-        <BrandListing onClick={onClickShopAll} leftHeading="New Additions" rightHeading="SHOP ALL" />
-        <Gallery newAdditionData={props?.newAdditionData} heading={"new additions"} />
+        <BrandListing onClick={onClickShopAll} leftHeading="My Latest Picks" rightHeading="SHOP ALL" />
+        <Gallery newAdditionData={props?.newAdditionData} heading={"my latest picks"} />
         <Box
           sx={{
             textAlign: "center",

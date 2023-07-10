@@ -16,6 +16,7 @@ const BannerImg = (props: any) => {
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   const screen320 = useMediaQuery("(max-width:320px)");
   const screen375 = useMediaQuery("(max-width:375px)");
+  const isMatchMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [open, setOpen] = useState(true);
 
@@ -76,8 +77,8 @@ const BannerImg = (props: any) => {
               },
             }}
             style={{
-              top: "112px",
-              right: "1px",
+              top: !isMatchMobile ? "114px" : "122px",
+              right: "-2px",
               zIndex: "2",
             }}
           >
@@ -93,6 +94,7 @@ const BannerImg = (props: any) => {
                 lineHeight: "16px",
                 backgroundColor: "#21005D",
                 color: "F9F6F2",
+                borderRadius: "4px",
 
                 "& .MuiIconButton-root": {
                   paddingTop: "10px",

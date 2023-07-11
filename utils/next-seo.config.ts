@@ -6,25 +6,38 @@ const config: DefaultSeoProps = {
     locale: "en_IE",
     url: "https://pedlar.store/",
     siteName: "pedlar",
+    description: "Creator storefronts to showcase the brands you love",
     article: {
       authors: [
         {
-          url: "/pedlarIcon.png",
+          url: "/googleIcon.png",
           width: 800,
           height: 600,
-          alt: "Global Software Consulting",
+          alt: "Pedlar Image",
         },
         {
-          url: "/pedlarIcon.png",
+          url: "/googleIcon.png",
           width: 800,
           height: 600,
-          alt: "Global Software Consulting",
+          alt: "Pedlar Image",
         },
       ],
     },
+  },
+  twitter: {
+    handle: "@handle",
+    site: "@site",
+    cardType: "summary_large_image",
+    description: "Creator storefronts to showcase the brands you love",
     images: [
       {
-        url: "/pedlarIcon.png",
+        url: "/googleIcon.png",
+        width: 800,
+        height: 600,
+        alt: "Pedlar Image",
+      },
+      {
+        url: "/googleIcon.png",
         width: 800,
         height: 600,
         alt: "Pedlar Image",
@@ -43,12 +56,6 @@ const config: DefaultSeoProps = {
       sizes: "76x76",
     },
   ],
-  description: "Creator storefronts to showcase the brands you love",
-  twitter: {
-    handle: "@handle",
-    site: "@site",
-    cardType: "summary_large_image",
-  },
 };
 
 export default config;

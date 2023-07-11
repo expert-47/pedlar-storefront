@@ -7,7 +7,20 @@ const config: DefaultSeoProps = {
     url: "https://pedlar.store/",
     siteName: "pedlar",
     article: {
-      authors: ["/pedlaricongoogle.png"],
+      authors: [
+        {
+          url: "/pedlaricongoogle.png",
+          width: 800,
+          height: 600,
+          alt: "Global Software Consulting",
+        },
+        {
+          url: "/pedlaricongoogle.png",
+          width: 800,
+          height: 600,
+          alt: "Global Software Consulting",
+        },
+      ],
     },
     images: [
       {

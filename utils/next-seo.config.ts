@@ -9,13 +9,13 @@ const config: DefaultSeoProps = {
     article: {
       authors: [
         {
-          url: "/pedlaricongoogle.png",
+          url: "/pedlarIcon.png",
           width: 800,
           height: 600,
           alt: "Global Software Consulting",
         },
         {
-          url: "/pedlaricongoogle.png",
+          url: "/pedlarIcon.png",
           width: 800,
           height: 600,
           alt: "Global Software Consulting",
@@ -24,7 +24,7 @@ const config: DefaultSeoProps = {
     },
     images: [
       {
-        url: "/pedlaricongoogle.png",
+        url: "/pedlarIcon.png",
         width: 800,
         height: 600,
         alt: "Pedlar Image",

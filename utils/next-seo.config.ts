@@ -10,13 +10,13 @@ const config: DefaultSeoProps = {
     article: {
       authors: [
         {
-          url: "/googleIcon.png",
+          url: "/new-favicon.ico",
           width: 800,
           height: 600,
           alt: "Pedlar Image",
         },
         {
-          url: "/googleIcon.png",
+          url: "/new-favicon.ico",
           width: 800,
           height: 600,
           alt: "Pedlar Image",
@@ -31,13 +31,13 @@ const config: DefaultSeoProps = {
     description: "Creator storefronts to showcase the brands you love",
     images: [
       {
-        url: "/googleIcon.png",
+        url: "/new-favicon.ico",
         width: 800,
         height: 600,
         alt: "Pedlar Image",
       },
       {
-        url: "/googleIcon.png",
+        url: "/new-favicon.ico",
         width: 800,
         height: 600,
         alt: "Pedlar Image",

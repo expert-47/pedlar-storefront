@@ -27,7 +27,7 @@ const styless = {
     backgroundPosition: "0 0",
     backgroundRepeat: "repeat",
     backgroundSize: "initial",
-    content: "",
+    content: `""`,
     height: " 100%",
     mixBlendMode: "overlay",
     opacity: ".6",

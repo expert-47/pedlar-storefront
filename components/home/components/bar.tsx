@@ -9,16 +9,11 @@ import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 const Bar = () => {
   const theme = useTheme();
   const popupScreen = useMediaQuery("(min-width:600px)");
-  const [userType, setUserType] = useState(true);
-  const [stickybar, setStickyBar] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
   const [sucessModalshow, setSuccessModalShow] = useState(true);
 
   const openPopup = () => setOpenDialog(true);
 
-  const onCloseBar = () => {
-    setStickyBar(false);
-  };
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
@@ -82,7 +77,7 @@ const Bar = () => {
           closePopup={closePopup}
           isSecondModalActive={isSecondModalActive}
           sucessModalshow={sucessModalshow}
-          userType={userType}
+          userType={true}
         />
       ) : (
         <BottomSheet
@@ -92,7 +87,7 @@ const Bar = () => {
           closePopup={closePopup}
           isSecondModalActive={isSecondModalActive}
           sucessModalshow={sucessModalshow}
-          userType={userType}
+          userType={true}
         />
       )}
     </>

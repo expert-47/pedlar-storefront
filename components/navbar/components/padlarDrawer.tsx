@@ -62,7 +62,7 @@ export const PedlarDrawer = (props: {
     backgroundColor: "white",
   };
 
-  const cartProducts = useSelector((data: any) => data.app.products);
+  // const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
 
   const onClickDrawer = () => {

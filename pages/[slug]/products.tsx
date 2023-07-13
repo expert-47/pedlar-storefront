@@ -37,7 +37,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   useLayoutEffect(() => {
     if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
       if (route.query.dataType === "Brands") {
-        let filterList = [{ productVendor: route?.query.itemValue }];
+        const filterList = [{ productVendor: route?.query.itemValue }];
         setFiltersValue(filterList, []);
       }
       if (route.query.dataType === "Categories") {
@@ -56,18 +56,18 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setLoading(true);
       setProductsData([]);
       const response = await getFilteredProducts(collectionId, filterData);
-      let data = response?.data?.collection?.products?.filters;
+      const data = response?.data?.collection?.products?.filters;
 
-      let shopList = data.find((data) => data.label == "Product type");
+      const shopList = data.find((data) => data.label == "Product type");
 
-      let vender = data.find((data) => data.label == "Brand");
+      const vender = data.find((data) => data.label == "Brand");
       setFilterData({ shopList: shopList?.values || [], vender: vender?.values || [] });
-      let brandsFilter =
+      const brandsFilter =
         filterData.filter(
           (item) => vender?.values.findIndex((i) => i.label == item?.productVendor && i.count != 0) != -1,
         ) || [];
       setBrandFilterList(brandsFilter);
-      let shopFilter =
+      const shopFilter =
         filterData.filter(
           (item) => shopList?.values.findIndex((i) => i.label == item?.productType && i.count != 0) != -1,
         ) || [];
@@ -77,7 +77,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setProductsData(response?.data?.collection?.products?.nodes || []);
 
       setEndCursorValue((prev) => {
-        let data = { ...prev };
+        const data = { ...prev };
         data[1] = response?.data?.collection?.products?.pageInfo?.endCursor;
         return data;
       });
@@ -111,7 +111,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       setPageNumber(value);
 
       setEndCursorValue((prv) => {
-        let data = { ...prv };
+        const data = { ...prv };
         data[value] = collectionDataProducts?.pageInfo.endCursor;
         return data;
       });

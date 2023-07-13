@@ -102,7 +102,7 @@ export default function HomepagePopup() {
                 </Box>
                 <Box sx={{ marginTop: "3rem" }}>
                   <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
-                    <Button sx={styles.shopbutton}>Shop now</Button>
+                    <Button sx={{ width: "197px", ...styles.shopbutton }}>Shop now</Button>
                   </Link>
                 </Box>
               </Box>

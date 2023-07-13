@@ -1,10 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import { Typography, Grid, Box } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { getStoreName } from "utils/getPathName";
 import PedlarImage from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
@@ -21,7 +18,6 @@ interface Props {
   index: number;
   heading: string;
 }
-
 const CardComponent = ({
   name,
   type,
@@ -35,11 +31,8 @@ const CardComponent = ({
   index,
   heading,
 }: React.PropsWithChildren<Props>) => {
-  let productId = id?.split("gid://shopify/Product/")[1];
-  const route = useRouter();
-
+  const productId = id?.split("gid://shopify/Product/")[1];
   const storeName = useSelector((data: any) => data.app.storeName);
-
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
   };

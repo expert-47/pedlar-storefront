@@ -38,12 +38,14 @@ export default function Layout(props: LayoutProps) {
     };
     getTagsData();
   }, []);
-  const getCartList = async (value = false) => {
+  const getCartList = async () => {
     if (cartId) {
       try {
-        let response = await getCartProducts(cartId);
+        const response = await getCartProducts(cartId);
         dispatch(addProductToCart({ products: response?.data?.cart?.lines?.nodes || [], showCart: false }));
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   useEffect(() => {

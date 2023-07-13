@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "styles/home";
 import Grid from "@mui/material/Grid";
-import { Button, Box, useTheme, Typography } from "@mui/material";
+import { Button, Box, useTheme, Typography, useMediaQuery } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -13,6 +13,7 @@ const TextBox = (props: any) => {
   const slug = router?.query;
   const theme = useTheme();
   const storeName = useSelector((data: any) => data.app.storeName);
+  const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
 
   const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
@@ -29,7 +30,6 @@ const TextBox = (props: any) => {
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",
-        
       }}
       paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
@@ -39,7 +39,15 @@ const TextBox = (props: any) => {
           ? props?.headerData?.storefrontDescription
           : "Welcome to my Pedlar Store! Here is a collection of my favourite products from my favourite brands. Have a browse and enjoy."}
       </Typography>
-      <Grid container item xs={10} sm={10} md={10} lg={12} style={{ display: "flex", flexDirection: "column" }}>
+      <Grid
+        container
+        item
+        xs={10}
+        sm={10}
+        md={10}
+        lg={12}
+        style={{ display: "flex", flexDirection: "column", maxWidth: "100%" }}
+      >
         {props?.headerData?.instagramLink && instaNameLink[1] != "" && (
           <a
             target="_blank"
@@ -93,10 +101,10 @@ const TextBox = (props: any) => {
           <Grid
             style={{
               marginTop: "20px",
-              width: "150px",
+              width: isMatch ? "150px" : "100%",
             }}
           >
-            <Button sx={styles.shopbutton} onClick={onClickShopNow}>
+            <Button sx={{ width: !isMatch ? "100%" : "197px", ...styles.shopbutton }} onClick={onClickShopNow}>
               Shop now
             </Button>
           </Grid>

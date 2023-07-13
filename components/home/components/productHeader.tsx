@@ -4,14 +4,11 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import DropdownButton from "components/navbar/components/dropdownButton";
 import { ResponsiveHeader } from "./responsiveHeader";
-import apiClient from "api/restApi/client";
-import { useRouter } from "next/router";
 
 const ProductHeader = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
-  let slug = props?.slug;
-  const route = useRouter();
+
   const {
     brandsFilterList,
     shopFilterList,
@@ -24,7 +21,7 @@ const ProductHeader = (props: any) => {
   const [shopFilterData, setShopFilterData] = useState([]);
   const [openBrand, toggleBrandDropDown] = useState(null);
   const [openShop, toggleShopDropDown] = useState(null);
-  const [filterListLoading, setFilterListLoading] = useState(false);
+  // const [filterListLoading, setFilterListLoading] = useState(false);
   const handleOpenBrandDropDown = (event: any) => {
     {
       toggleBrandDropDown(event?.currentTarget || true);
@@ -76,8 +73,8 @@ const ProductHeader = (props: any) => {
     if (Boolean(openBrand)) {
       return;
     }
-    let selectedData = filterData.vender?.map((item: any) => {
-      let findIndex = brandsFilterList.findIndex((i: any) => i.productVendor == item.label);
+    const selectedData = filterData.vender?.map((item: any) => {
+      const findIndex = brandsFilterList.findIndex((i: any) => i.productVendor == item.label);
       return {
         ...item,
         checked: findIndex != -1,
@@ -90,8 +87,8 @@ const ProductHeader = (props: any) => {
     if (Boolean(openShop)) {
       return;
     }
-    let selectedData = filterData?.shopList?.map((item: any) => {
-      let findIndex = shopFilterList.findIndex((i: any) => i.productType == item.label);
+    const selectedData = filterData?.shopList?.map((item: any) => {
+      const findIndex = shopFilterList.findIndex((i: any) => i.productType == item.label);
       return {
         ...item,
         checked: findIndex != -1,
@@ -157,7 +154,7 @@ const ProductHeader = (props: any) => {
               handleClick={handleOpenBrandDropDown}
               handleClose={handleClose}
               anchorEl={openBrand}
-              pageLoading={filterListLoading}
+              pageLoading={false}
               loading={props?.loading}
             />
             <DropdownButton
@@ -171,7 +168,7 @@ const ProductHeader = (props: any) => {
               handleClick={handleOpenShopDropDown}
               anchorEl={openShop}
               loading={props?.loading}
-              pageLoading={filterListLoading}
+              pageLoading={false}
             />
           </Grid>
         )}

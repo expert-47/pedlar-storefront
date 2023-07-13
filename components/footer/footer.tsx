@@ -5,6 +5,7 @@ import { Divider, useTheme } from "@mui/material";
 import { styles } from "styles/footer";
 import Text from "components/customText";
 import Image from "next/image";
+import Link from "next/link";
 const Footer = () => {
   const theme = useTheme();
 
@@ -34,7 +35,10 @@ const Footer = () => {
             paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
             <Text fontSize="16px" sx={styles.footerText}>
-              Powered by <img src="/pedlar.png" style={{ marginBottom: "-4px", height: "16px" }} />
+              Powered by 
+              <Link href="/" >
+              <img src="/pedlar.png" style={{ marginBottom: "-4px", height: "16px" , cursor:"pointer" }} />
+              </Link>
             </Text>
           </Grid>
         </Grid>

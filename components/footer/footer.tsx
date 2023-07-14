@@ -36,9 +36,10 @@ const Footer = () => {
           >
             <Text fontSize="16px" sx={styles.footerText}>
               Powered by 
-              <Link href="/" >
-              <img src="/pedlar.png" style={{ marginBottom: "-4px", height: "16px" , cursor:"pointer" }} />
-              </Link>
+              <a href="https://pedlar.store/" target="_blank" rel="noopener noreferrer"  >
+                
+              <img src="/pedlar.png" style={{ marginBottom: "-4px", height: "16px" , cursor:"pointer" , marginLeft:"5px" }} />
+              </a>
             </Text>
           </Grid>
         </Grid>

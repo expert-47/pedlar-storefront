@@ -73,6 +73,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
+    width : "100%",
     marginTop: { xs: "10px", sm: "10px", lg: "0px" },
     "&:hover": {
       backgroundColor: "primary.main",
@@ -107,7 +108,7 @@ const styles = {
     height: "1px",
   },
   footerDivider: {
-    marginTop: "50px",
+    marginTop: "60px",
     marginBottom: "10px",
     height: "1px",
   },
@@ -155,6 +156,14 @@ const styles = {
       xs: "45%",
     },
   },
+  paper :{
+       width:"34px" ,
+       height:"34px" ,
+       display:"flex",
+      justifyContent:"center",
+      alignItems:"center",
+      marginTop: "20px",
+  }
 };
 
 export default styles;

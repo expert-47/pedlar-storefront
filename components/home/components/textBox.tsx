@@ -76,8 +76,8 @@ const TextBox = (props: any) => {
             }}
           >
           
-      <Paper elevation={1} sx={styles.paper}>
-       <Image src="/instagram.png" height="24px" width="24px" />
+      <Paper  sx={styles.paper}>
+       <Image src="/instagram-icon.svg" height="24px" width="24px" />
         </Paper>
           </a>
         )}
@@ -91,7 +91,7 @@ const TextBox = (props: any) => {
               marginLeft: instaNameLink[1] != "" ?  "20px" : "0px"
             }}
           >
-              <Paper elevation={1} sx={styles.paper}>
+              <Paper  sx={styles.paper}>
               <Image src="/tiktok-icon2.svg" height="24px" width="24px" />
             </Paper>
           </a>

@@ -9,7 +9,7 @@ const styles = {
   },
   bannerText: {
     fontWeight: "700",
-    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "20px" },
+    fontSize: { lg: "24px", md: "24px", sm: "20px", xs: "16px" },
   },
   typotext: {
     padding: "15px",
@@ -108,7 +108,7 @@ const styles = {
     height: "1px",
   },
   footerDivider: {
-    marginTop: "60px",
+    marginTop: "50px",
     marginBottom: "10px",
     height: "1px",
   },
@@ -163,6 +163,10 @@ const styles = {
       justifyContent:"center",
       alignItems:"center",
       marginTop: "20px",
+      borderRadius:"3px" ,
+      backgroundColor:"#fff",
+      boxShadow:" 0px 0px 10px 0px rgba(0, 0, 0, 0.10)"
+
   }
 };
 

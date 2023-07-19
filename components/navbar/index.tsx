@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Stack } from "@mui/system";
 import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
+import { isIOS } from "react-device-detect";
+
 import Image from "next/image";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
@@ -19,10 +21,10 @@ import { cartDrawerToggle } from "store/slice/appSlice";
 
 export default function Navbar(props: any) {
   const { data, shopList, loading, shopListLoading } = props;
+  const isIOSDevice = isIOS;
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
   const storeName = useSelector((data: any) => data.app.storeName);
-
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
 
   const dispatch = useDispatch();
@@ -46,15 +48,16 @@ export default function Navbar(props: any) {
   return (
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
-        <Marquee style={styles.marquee} gradient={false} >
-          <Typography fontSize={"11px"}  fontWeight={"600"} sx={{ display: { xl: "none" } }}>
+        <Marquee style={styles.marquee} gradient={false}>
+          <Typography fontSize={isIOSDevice ? "7px" : "11px"} fontWeight={"600"} sx={{ display: { xl: "none" } }}>
             FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All
             Orders Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
             Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
             Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
             Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
-            Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All
-            Orders Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+            Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
+            Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
+            Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
           </Typography>
           <Typography fontSize={"11px"} fontWeight={"600"} sx={{ display: { xs: "none", xl: "block" } }}>
             FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All
@@ -66,8 +69,9 @@ export default function Navbar(props: any) {
             Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
             Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; FREE
             Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
-            Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All
-            Orders Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+            Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
+            Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
+            Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
           </Typography>
         </Marquee>
 
@@ -101,7 +105,7 @@ export default function Navbar(props: any) {
                     <>
                       <DropDownMenu loading={loading} type={"Brands"} data={data || []} />
 
-                      <DropDownMenu loading={shopListLoading} type={"Categories"} data={shopList || []} />
+                      <DropDownMenu loading={shopListLoading} type={"Shop"} data={shopList || []} />
                     </>
                   )}
 

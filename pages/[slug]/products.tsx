@@ -35,7 +35,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   };
 
   useLayoutEffect(() => {
-    if (route.query.dataType === "Brands" || route.query.dataType === "Shop") {
+    if (route.query.dataType === "Brands" || route.query.dataType === "Categories") {
       if (route.query.dataType === "Brands") {
         const filterList = [{ productVendor: route?.query.itemValue }];
         setFiltersValue(filterList, []);

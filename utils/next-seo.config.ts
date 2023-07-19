@@ -47,12 +47,13 @@ const config: DefaultSeoProps = {
   title: "Pedlar",
   additionalLinkTags: [
     {
-      rel: "favicon",
-      href: "/new-favicon.ico",
+      rel: "icon",
+      href: "/favicon.ico",
+      sizes: "48x48",
     },
     {
       rel: "apple-touch-icon",
-      href: "/new-favicon.ico",
+      href: "/apple-touch-icon.png",
       sizes: "76x76",
     },
   ],

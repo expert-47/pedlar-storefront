@@ -48,7 +48,7 @@ export const Home = (props: any) => {
             <Grid>
               <Button
                 sx={{
-                  width: { xs: "100%", sm: "156px" },
+                  width: { xs: "100%", sm: "335px" },
                   height: "46px",
                   backgroundColor: "primary.dark",
                   color: "primary.main",

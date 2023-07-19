@@ -6,7 +6,7 @@ const styles = {
   },
   Typography: { color: "primary.contrastText" },
   appBar: { backgroundColor: "white", width: "100%" },
-  marquee: { backgroundColor: "black", color: "white", paddingTop: "12px", paddingBottom: "12px" },
+  marquee: { backgroundColor: "black", color: "white", paddingTop: "6px", paddingBottom: "6px" },
   toolbar: {
     display: "flex",
     justifyContent: "space-between",

@@ -51,7 +51,7 @@ const Bar = () => {
           paddingY={{ xs: theme.spacing(40), md: theme.spacing(10), lg: theme.spacing(0) }}
           style={{ backgroundColor: "black" }}
         >
-          <Grid item xs={12} sm={8} md={9.4} lg={9.5}>
+          <Grid item xs={12} sm={8} md={8.8} lg={8.8}>
             <Typography
               sx={styles.bartext}
               fontWeight={"bold"}
@@ -60,7 +60,7 @@ const Bar = () => {
               Love Fashion? Have your own style? Share it with your community.
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={4} md={2.6} lg={2.5} sx={{ textAlign: "right", marginTop: "10px" }}>
+          <Grid item xs={12} sm={4} md={3.2} lg={3.2} sx={{  marginTop: "10px" }}>
             <Button sx={styles.btn} onClick={openPopup}>
               <Typography fontSize={"16px"} fontWeight={"600"}>
                 Sign up for free

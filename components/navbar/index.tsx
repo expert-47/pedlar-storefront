@@ -49,7 +49,7 @@ export default function Navbar(props: any) {
     <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
-          <Typography fontSize={isIOSDevice ? "7px" : "11px"} fontWeight={"600"} sx={{ display: { xl: "none" } }}>
+          <Typography fontSize={isIOSDevice ? "8.5px" : "11px"} fontWeight={"600"} sx={{ display: { xl: "none" } }}>
             FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All
             Orders Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
             Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders

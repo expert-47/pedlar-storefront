@@ -20,6 +20,8 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         {/* <link rel="preload" href="/welcomeModalImageForMObile.webp" as="image" /> */}
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
+        <link rel="manifest" href="/manifest/manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="/images/icon-512x512.png"></link>
       </Head>
 
       <body>

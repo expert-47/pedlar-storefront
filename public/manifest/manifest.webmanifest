@@ -1,0 +1,35 @@
+{
+  "theme_color": "rgb(0, 26, 31)",
+
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Pedlar Influencers ",
+  "short_name": "Pedlar",
+  "id": "/",
+  "description": "Pedlar provides a platform for brands to register and showcase their products to a global audience",
+  "icons": [
+    {
+      "src": "/Favicon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/Favicon256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/Favicon384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/Favicon512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

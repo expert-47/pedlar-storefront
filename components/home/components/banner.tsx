@@ -14,8 +14,9 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props,
 const BannerImg = (props: any) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
-  const screen320 = useMediaQuery("(max-width:320px)");
+
   const screen375 = useMediaQuery("(max-width:375px)");
+
   const isMatchMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [open, setOpen] = useState(true);
@@ -46,8 +47,9 @@ const BannerImg = (props: any) => {
           <Box
             sx={{
               width: isMatch ? "100%" : 476,
-              height: isMatch ? 415 : 595,
-              minHeight: screen320 ? 415 : screen375 ? 480 : 500,
+
+              height: screen375 ? 430 : isMatch ? 470 : 530,
+              minHeight: screen375 ? 430 : isMatch ? 470 : 530,
             }}
           >
             <PedlarImage

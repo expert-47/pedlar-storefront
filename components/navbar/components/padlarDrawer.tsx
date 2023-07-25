@@ -24,6 +24,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
+import { isIOS } from "react-device-detect";
 
 export const PedlarDrawer = (props: {
   openDrawer: boolean;
@@ -64,6 +65,7 @@ export const PedlarDrawer = (props: {
 
   // const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
+  const isIOSDevice = isIOS;
 
   const onClickDrawer = () => {
     toggleDrawer(!openDrawer);
@@ -107,7 +109,7 @@ export const PedlarDrawer = (props: {
         }}
         gradient={false}
       >
-        <Typography fontSize={"14px"} fontWeight={"600"}>
+        <Typography fontSize={isIOSDevice ? "8.5px" : "11px"} fontWeight={"600"}>
           FREE Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders
           Shipped Directly From The Brand&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE
           Returns&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;FREE Shipping&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;All Orders

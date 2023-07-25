@@ -401,9 +401,9 @@ const Cart = (props: any) => {
                                     src={item?.url}
                                     width={358}
                                     height={400}
-                                    //priority={true}
-                                    // placeholder="blur"
-                                    // blurDataURL="/loaderShim.png"
+                                    loading={index < 4 ? "eager" : "lazy"}
+                                    placeholder="blur"
+                                    blurDataURL="/loaderShim.png"
                                     objectFit="contain"
                                     objectPosition={"center"}
                                   />

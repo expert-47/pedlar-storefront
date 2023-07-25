@@ -35,7 +35,7 @@ const PedlarImage = (props: Props) => {
         placeholder={enableBlurDataUrl ? "blur" : undefined}
         {...(enableBlurDataUrl ? { blurDataURL: "/loaderShim.png" } : {})}
         onLoad={onLoad}
-        loading="eager"
+        priority={true}
       />
     </Box>
   );

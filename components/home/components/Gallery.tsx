@@ -66,7 +66,7 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                     price={
                       item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
                     }
-                    image={item?.featuredImage?.src}
+                    image={item?.featuredImage?.url}
                     id={item?.id}
                     item={item}
                     index={index}

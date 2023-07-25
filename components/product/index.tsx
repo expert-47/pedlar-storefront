@@ -401,7 +401,7 @@ const Cart = (props: any) => {
                                     src={item?.url}
                                     width={358}
                                     height={400}
-                                    priority={true}
+                                    //priority={true}
                                     // placeholder="blur"
                                     // blurDataURL="/loaderShim.png"
                                     objectFit="contain"
@@ -615,12 +615,12 @@ const Cart = (props: any) => {
                     <CardComponent
                       width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      name={item?.title}
+                      name={item?.title?.toLowerCase()}
                       type={item?.vendor}
                       price={
                         item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
                       }
-                      image={item?.featuredImage?.transformedSrc}
+                      image={item?.featuredImage?.url}
                       id={item?.id}
                       item={item}
                       index={index}
@@ -688,7 +688,7 @@ const Cart = (props: any) => {
                       price={
                         item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
                       }
-                      image={item?.featuredImage?.transformedSrc}
+                      image={item?.featuredImage?.url}
                       id={item?.id}
                       item={item}
                       index={index}

@@ -36,7 +36,7 @@ export const getProductDetails = async (productId: string) => {
           }
           images(first: 10) {
             nodes {
-              url
+              url(transform: { preferredContentType: WEBP })
             }
           }
           createdAt
@@ -75,7 +75,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
         products(first: ${numberofProducts}, reverse: true ,filters: $query) {
             nodes {
                 id
-                 title
+                title
                 productType
                 vendor
                 description
@@ -91,11 +91,7 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
                     }
                 }
                 featuredImage {
-                    height
-                    src
-                    width
-                    originalSrc
-                    transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+                    url(transform: {preferredContentType: WEBP})
                 }
                 createdAt
                 publishedAt
@@ -438,11 +434,7 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
                 }
               }
               featuredImage {
-                height
-                src
-                width
-                originalSrc
-                transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
+                url(transform: { preferredContentType: WEBP })
               }
               createdAt
               publishedAt

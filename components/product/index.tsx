@@ -43,6 +43,14 @@ const Cart = (props: any) => {
   const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
   const slideRef = useRef(null);
+  const route = useRouter();
+  const slugValue = route.query.slug;
+  const path = getStoreName(route);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
@@ -61,9 +69,6 @@ const Cart = (props: any) => {
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
-  const route = useRouter();
-  const slugValue = route.query.slug;
-  const path = getStoreName(route);
 
   const storeName = useSelector((data: any) => data.app.storeName);
 
@@ -71,6 +76,7 @@ const Cart = (props: any) => {
 
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
   const dispatch = useDispatch();
+
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -86,6 +92,7 @@ const Cart = (props: any) => {
     }
     return () => {
       slideRef?.current?.goTo(0);
+      scrollToTop();
     };
   }, [route.query?.id]);
 
@@ -701,8 +708,8 @@ const Cart = (props: any) => {
           </Grid>
         </Grid>
       </CustomContainer>
-      <Divider sx={styles.footerDivider} />
-      <BaseFooter />
+      {/* <Divider sx={styles.footerDivider} />
+      <BaseFooter /> */}
     </Layout>
   );
 };

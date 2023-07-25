@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+
+const withPWA = require("next-pwa")({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
+});
 const webpack = require("webpack");
 const securityHeaders = [
   {
@@ -6,7 +12,7 @@ const securityHeaders = [
     value: "max-age=31536000; includeSubDomains",
   },
 ];
-const nextConfig = {
+const nextConfig = withPWA({
   output: "standalone",
   reactStrictMode: true,
   swcMinify: true,
@@ -38,6 +44,6 @@ const nextConfig = {
       },
     ];
   },
-};
+});
 
 module.exports = nextConfig;

@@ -34,7 +34,7 @@ export const styles = {
       paddingTop: "20px",
     },
     ["@media (min-width:1452px)"]: {
-      right: "-15px",
+      right: "150px",
       width: "44%",
       bottom: "15px",
     },

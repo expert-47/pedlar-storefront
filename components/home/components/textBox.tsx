@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "styles/home";
-import { Button, Box, useTheme, Typography, useMediaQuery, Paper , Grid } from "@mui/material";
+import { Button, Box, useTheme, Typography, useMediaQuery, Paper, Grid } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -22,6 +22,8 @@ const TextBox = (props: any) => {
   };
   return (
     <Box
+      paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
+      paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -29,9 +31,8 @@ const TextBox = (props: any) => {
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",
+        paddingBottom: isMatch ? "20px" : "0px",
       }}
-      paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
-      paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
     >
       <Typography sx={styles.bannerText}>
         {props?.headerData?.storefrontDescription
@@ -47,7 +48,7 @@ const TextBox = (props: any) => {
         lg={12}
         style={{ display: "flex", flexDirection: "column", maxWidth: "100%" }}
       >
-       <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+        <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid
             style={{
               marginTop: "20px",
@@ -59,43 +60,40 @@ const TextBox = (props: any) => {
             </Button>
           </Grid>
         </Link>
-        <div style={{
-          display:"flex",
-          justifyContent: !isMatch ? "center" : undefined
-          
-        }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: !isMatch ? "center" : undefined,
+          }}
+        >
+          {props?.headerData?.instagramLink && instaNameLink[1] != "" && (
+            <a
+              target="_blank"
+              href={`http://instagram.com/${instaNameLink[1]}/`}
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Paper sx={styles.paper}>
+                <Image src="/instagram-icon.svg" height="24px" width="24px" />
+              </Paper>
+            </a>
+          )}
 
-        {props?.headerData?.instagramLink && instaNameLink[1] != ""  && (
-
-        
-          <a
-            target="_blank"
-            href={`http://instagram.com/${instaNameLink[1]}/`}
-            style={{
-              textDecoration: "none",
-            }}
-          >
-          
-      <Paper  sx={styles.paper}>
-       <Image src="/instagram-icon.svg" height="24px" width="24px" />
-        </Paper>
-          </a>
-        )}
-        
-        {props?.headerData?.tiktokLink && tiktokNameLink[1] != "" && (
-          <a
-            target="_blank"
-            href={`https://www.tiktok.com/@${tiktokNameLink[1]}`}
-            style={{
-              textDecoration: "none",
-              marginLeft: instaNameLink[1] != "" ?  "20px" : "0px"
-            }}
-          >
-              <Paper  sx={styles.paper}>
-              <Image src="/tiktok-icon2.svg" height="24px" width="24px" />
-            </Paper>
-          </a>
-        )}
+          {props?.headerData?.tiktokLink && tiktokNameLink[1] != "" && (
+            <a
+              target="_blank"
+              href={`https://www.tiktok.com/@${tiktokNameLink[1]}`}
+              style={{
+                textDecoration: "none",
+                marginLeft: instaNameLink[1] != "" ? "20px" : "0px",
+              }}
+            >
+              <Paper sx={styles.paper}>
+                <Image src="/tiktok-icon2.svg" height="24px" width="24px" />
+              </Paper>
+            </a>
+          )}
         </div>
       </Grid>
     </Box>

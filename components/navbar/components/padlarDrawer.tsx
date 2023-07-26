@@ -104,8 +104,8 @@ export const PedlarDrawer = (props: {
         style={{
           backgroundColor: "black",
           color: "white",
-          paddingTop: "12px",
-          paddingBottom: "12px",
+          paddingTop: "6px",
+          paddingBottom: "6px",
         }}
         gradient={false}
       >

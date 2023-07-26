@@ -37,8 +37,8 @@ export const Home = (props: any) => {
         <Box
           sx={{
             textAlign: "center",
-            marginTop: "20px",
-            marginBottom: "20px",
+            marginTop: "50px",
+            marginBottom: "50px",
             zIndex: "-100 !important",
             paddingLeft: { xs: "10px", md: "0px" },
             paddingRight: { xs: "10px", md: "0px" },

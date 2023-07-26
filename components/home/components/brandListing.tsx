@@ -35,6 +35,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string; onClic
         alignItems={{ xs: "center", md: "center", lg: "center" }}
         justifyContent={{ xs: "space-between", md: "space-between", lg: "space-between" }}
         paddingY={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(20) }}
+        sx={{ paddingTop: "0px !important" }}
       >
         <Grid
           item

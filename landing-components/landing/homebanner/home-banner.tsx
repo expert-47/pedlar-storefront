@@ -1,18 +1,20 @@
-import { Box, Grid, Typography } from "@mui/material";
-import Button from "@mui/material/Button";
-import React, { useState } from "react";
-import Typewriter from "typewriter-effect";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material";
-import mobileBanner from "../../../public/mobBanner.png";
+import Button from "@mui/material/Button";
+import Typewriter from "typewriter-effect";
+import React, { Fragment, useState } from "react";
+import { Box, Grid, Typography } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
+import PedlarImage from "components/pedlarImage";
+
+import mobileBanner from "../../../public/mobBanner1.webp";
 import desktopBanner from "../../../public/desktopBanner.png";
 import largeBanner from "../../../public/largeBanner.png";
 import mediumBanner from "../../../public/TabletBanner.png";
-import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
-import PedlarImage from "components/pedlarImage";
+import { styles } from "./style";
 
 const Banner = () => {
   const isSmall = useMediaQuery("(max-width:767px)");
@@ -148,26 +150,30 @@ const Banner = () => {
                 <Button sx={styles.brands} onClick={() => openPopup("brand")}>
                   {"I’m a brand"}
                 </Button>
-                {popupScreen ? (
-                  <LoginDialog
-                    handleClose={handleClose}
-                    openDialog={openDialog}
-                    setOpenDialog={setOpenDialog}
-                    closePopup={closePopup}
-                    isSecondModalActive={isSecondModalActive}
-                    sucessModalshow={sucessModalshow}
-                    userType={userType}
-                  />
+                {openDialog ? (
+                  popupScreen ? (
+                    <LoginDialog
+                      handleClose={handleClose}
+                      openDialog={openDialog}
+                      setOpenDialog={setOpenDialog}
+                      closePopup={closePopup}
+                      isSecondModalActive={isSecondModalActive}
+                      sucessModalshow={sucessModalshow}
+                      userType={userType}
+                    />
+                  ) : (
+                    <BottomSheet
+                      handleClose={handleClose}
+                      openDialog={openDialog}
+                      setOpenDialog={setOpenDialog}
+                      closePopup={closePopup}
+                      isSecondModalActive={isSecondModalActive}
+                      sucessModalshow={sucessModalshow}
+                      userType={userType}
+                    />
+                  )
                 ) : (
-                  <BottomSheet
-                    handleClose={handleClose}
-                    openDialog={openDialog}
-                    setOpenDialog={setOpenDialog}
-                    closePopup={closePopup}
-                    isSecondModalActive={isSecondModalActive}
-                    sucessModalshow={sucessModalshow}
-                    userType={userType}
-                  />
+                  <Fragment />
                 )}
               </Grid>
             </Box>

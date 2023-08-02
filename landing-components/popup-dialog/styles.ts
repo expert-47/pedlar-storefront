@@ -1,10 +1,12 @@
+import { outlinedInputClasses } from "@mui/material/OutlinedInput";
+
 export const styles = {
   TextFeild: {
     width: "100%",
     color: "#49454F",
     borderRadius: "5px",
     marginBottom: "24px",
-    ".MuiOutlinedInput-notchedOutline": {
+    [`& .${outlinedInputClasses.notchedOutline}`]: {
       borderColor: "rgba(121, 116, 126, 1) !important",
       borderRadius: "5px",
       fontSize: "16px",
@@ -30,14 +32,5 @@ export const styles = {
     "&:hover": {
       backgroundColor: "#1C1B1F",
     },
-  },
-  BoxSelector: {
-    display: "flex",
-    backgroundColor: "transparent",
-    borderRadius: "10px",
-    border: "1px solid rgba(28, 27, 31, 0.64)",
-    marginBottom: "24px",
-    padding: "6px 5px",
-    width: "188px",
   },
 };

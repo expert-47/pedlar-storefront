@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { styles } from "./style";
 import { CustomContainer } from "../../landinglayout";
 import { useTheme } from "@mui/material";
@@ -94,26 +94,30 @@ const EarlyAcess = () => {
                   </Typography>
                 </Button>
               </Box>
-              {popupScreen ? (
-                <LoginDialog
-                  handleClose={handleClose}
-                  openDialog={openDialog}
-                  setOpenDialog={setOpenDialog}
-                  closePopup={closePopup}
-                  isSecondModalActive={isSecondModalActive}
-                  sucessModalshow={sucessModalshow}
-                  userType={userType}
-                />
+              {openDialog ? (
+                popupScreen ? (
+                  <LoginDialog
+                    handleClose={handleClose}
+                    openDialog={openDialog}
+                    setOpenDialog={setOpenDialog}
+                    closePopup={closePopup}
+                    isSecondModalActive={isSecondModalActive}
+                    sucessModalshow={sucessModalshow}
+                    userType
+                  />
+                ) : (
+                  <BottomSheet
+                    handleClose={handleClose}
+                    openDialog={openDialog}
+                    setOpenDialog={setOpenDialog}
+                    closePopup={closePopup}
+                    isSecondModalActive={isSecondModalActive}
+                    sucessModalshow={sucessModalshow}
+                    userType={userType}
+                  />
+                )
               ) : (
-                <BottomSheet
-                  handleClose={handleClose}
-                  openDialog={openDialog}
-                  setOpenDialog={setOpenDialog}
-                  closePopup={closePopup}
-                  isSecondModalActive={isSecondModalActive}
-                  sucessModalshow={sucessModalshow}
-                  userType={userType}
-                />
+                <Fragment />
               )}
             </Grid>
           </Grid>

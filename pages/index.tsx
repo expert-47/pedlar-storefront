@@ -1,4 +1,9 @@
+//packages
 import React from "react";
+import Box from "@mui/material/Box";
+import Image from "next/image";
+// import dynamic from "next/dynamic";
+//components
 import Banner from "../landing-components/landing/homebanner/home-banner";
 import Company from "../landing-components/landing/comapny/company";
 import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
@@ -7,7 +12,7 @@ import Layout from "../landing-components/landinglayout";
 import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
 import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
 import Howitswork from "../landing-components/how-its-work/how-its-work";
-import Box from "@mui/material/Box";
+//images
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.png";
 import orangeMesh from "../public/meshHome-gradient.png";
@@ -15,8 +20,7 @@ import firstStep from "../public/step1.png";
 import secondStep from "../public/step2.png";
 import thirdStep from "../public/step3.png";
 import fourthStep from "../public/step4.png";
-
-import Image from "next/image";
+//seo
 import { seo } from "utils/seoData";
 
 const styless = {

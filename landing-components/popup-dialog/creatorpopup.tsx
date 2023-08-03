@@ -1,22 +1,31 @@
-import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
-import { Field, Form, Formik } from "formik";
-import { creatorvalidation } from "../add-validation/creator-validation";
-import React, { useState, useRef } from "react";
-import { styles } from "./styles";
 import emailjs from "@emailjs/browser";
+import { Field, Form, Formik } from "formik";
+import React, { useState, useRef, FC, memo } from "react";
+import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
+// components
 import PedlarImage from "components/pedlarImage";
+// svgs
 import InstaIcon from "../../public/insta-icon.svg";
 import TiktokIcon from "../../public/tiktok-icon.svg";
+// validation schema
+import { creatorvalidation } from "../add-validation/creator-validation";
+// styles
+import { styles } from "./styles";
 
-const Creatorpopup = (props: any) => {
+interface Props {
+  isSecondModalActive: (val: boolean) => void;
+}
+
+const Creatorpopup: FC<Props> = (props): JSX.Element => {
   const [submitform, setSubmitForm] = useState(true);
-  const form = useRef();
+  const form = useRef<HTMLFormElement | null>(null);
+
   const formsubmission = (e: any) => {
     setSubmitForm(false);
     props?.isSecondModalActive(false);
     e.preventDefault();
 
-    emailjs.sendForm("service_2y5c7s5", "template_bjrpdiw", form.current, "eE9W4Thiy_5GA_B4N").then(
+    emailjs.sendForm("service_2y5c7s5", "template_bjrpdiw", form?.current ?? "", "eE9W4Thiy_5GA_B4N").then(
       (result) => {
         console.log("success", result.text);
       },
@@ -25,6 +34,7 @@ const Creatorpopup = (props: any) => {
       },
     );
   };
+
   const submitHandler = () => {
     console.log("clicked");
   };
@@ -43,7 +53,7 @@ const Creatorpopup = (props: any) => {
           validationSchema={creatorvalidation}
           onSubmit={submitHandler}
         >
-          {({ values, errors, touched, handleSubmit }) => (
+          {({ values, errors, touched, handleSubmit, handleChange }) => (
             <Form onSubmit={handleSubmit} ref={form}>
               <Field
                 as={TextField}
@@ -52,15 +62,17 @@ const Creatorpopup = (props: any) => {
                 variant="outlined"
                 label="First Name"
                 placeholder="Enter Here"
+                onChange={handleChange}
                 required
                 value={values?.firstName}
                 error={touched?.firstName && Boolean(errors?.firstName)}
                 helperText={touched?.firstName && errors?.firstName}
-                sx={styles.TextFeild}
                 InputLabelProps={{
                   style: { color: "#49454F", fontSize: "16px", fontWeight: "400" },
                 }}
+                sx={styles.TextFeild}
               />
+
               <Field
                 as={TextField}
                 type="text"
@@ -209,4 +221,4 @@ const Creatorpopup = (props: any) => {
   );
 };
 
-export default Creatorpopup;
+export default memo(Creatorpopup);

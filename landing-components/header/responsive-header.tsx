@@ -1,20 +1,24 @@
-import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
+import PedlarImage from "components/pedlarImage";
+import CloseIcon from "@mui/icons-material/Close";
+import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
+
 import { styles } from "./style";
 import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
-import PedlarImage from "components/pedlarImage";
 import BottomSheet from "landing-components/BottomSheet";
-import Link from "next/link";
 
 const ResponsiveHeader = () => {
-  const router = useRouter();
   const theme = useTheme();
+  const router = useRouter();
   const [opendrawer, setOpenDrawar] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
   const openPopup = () => setOpenDialog(true);
+
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
@@ -24,8 +28,7 @@ const ResponsiveHeader = () => {
 
     setOpenDialog(false);
   };
-  const [userType, setUserType] = useState(true);
-  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 15,
@@ -33,12 +36,6 @@ const ResponsiveHeader = () => {
 
   const openStorePage = () => {
     router.push("/");
-  };
-  const openCreators = () => {
-    router.push("/for-creator");
-  };
-  const openBrands = () => {
-    router.push("/for-brands");
   };
 
   const onClickDrawer = () => {
@@ -109,8 +106,8 @@ const ResponsiveHeader = () => {
                       textTransform="none"
                       sx={{
                         ...styles.ButtonRTypo,
-                        textDecorationLine: router.pathname == "/for-creator" && "underline",
-                        color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
+                        textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
+                        color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "initial",
                       }}
                     >
                       For Creators
@@ -125,8 +122,8 @@ const ResponsiveHeader = () => {
                       textTransform="none"
                       sx={{
                         ...styles.ButtonRTypo,
-                        textDecorationLine: router.pathname == "/for-brands" && "underline",
-                        color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
+                        textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
+                        color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "initial",
                       }}
                     >
                       For Brands
@@ -148,22 +145,24 @@ const ResponsiveHeader = () => {
                       Log in
                     </Typography>
                   </Button>
-
-                  <BottomSheet
-                    handleClose={handleClose}
-                    openDialog={openDialog}
-                    setOpenDialog={setOpenDialog}
-                    closePopup={closePopup}
-                    isSecondModalActive={isSecondModalActive}
-                    sucessModalshow={sucessModalshow}
-                    userType={userType}
-                  />
+                  {openDialog ? (
+                    <BottomSheet
+                      userType
+                      closePopup={closePopup}
+                      openDialog={openDialog}
+                      handleClose={handleClose}
+                      setOpenDialog={setOpenDialog}
+                      sucessModalshow={sucessModalshow}
+                      isSecondModalActive={isSecondModalActive}
+                    />
+                  ) : (
+                    <Fragment />
+                  )}
                 </Grid>
               </Grid>
             </Grid>
           </Drawer>
 
-          {/* <MenuIcon /> */}
           <Box
             style={{
               height: "30px",

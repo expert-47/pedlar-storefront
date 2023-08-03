@@ -1,6 +1,6 @@
 import { Typography, Grid, useMediaQuery } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { useTheme } from "@mui/material";
 import firstGrid from "../../../public/firstGrid.png";
@@ -14,24 +14,29 @@ import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
 const Gridbox = () => {
+  const theme = useTheme();
   const popupScreen = useMediaQuery("(min-width:600px)");
+
   const [openDialog, setOpenDialog] = useState(false);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
   const openPopup = () => setOpenDialog(true);
+
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
+
   const handleClose = () => {
     setSuccessModalShow(true);
 
     setOpenDialog(false);
   };
-  const [sucessModalshow, setSuccessModalShow] = useState(true);
-  const [userType, setUserType] = useState(true);
+
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
-  const theme = useTheme();
+
   return (
     <CustomContainer
       sx={{
@@ -195,26 +200,30 @@ const Gridbox = () => {
         </Typography>
       </Marquee>
 
-      {popupScreen ? (
-        <LoginDialog
-          handleClose={handleClose}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          closePopup={closePopup}
-          isSecondModalActive={isSecondModalActive}
-          sucessModalshow={sucessModalshow}
-          userType={userType}
-        />
+      {openDialog ? (
+        popupScreen ? (
+          <LoginDialog
+            handleClose={handleClose}
+            openDialog={openDialog}
+            setOpenDialog={setOpenDialog}
+            closePopup={closePopup}
+            isSecondModalActive={isSecondModalActive}
+            sucessModalshow={sucessModalshow}
+            userType
+          />
+        ) : (
+          <BottomSheet
+            handleClose={handleClose}
+            openDialog={openDialog}
+            setOpenDialog={setOpenDialog}
+            closePopup={closePopup}
+            isSecondModalActive={isSecondModalActive}
+            sucessModalshow={sucessModalshow}
+            userType
+          />
+        )
       ) : (
-        <BottomSheet
-          handleClose={handleClose}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          closePopup={closePopup}
-          isSecondModalActive={isSecondModalActive}
-          sucessModalshow={sucessModalshow}
-          userType={userType}
-        />
+        <Fragment />
       )}
     </CustomContainer>
   );

@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import styles from "styles/home";
-import { Typography, Button, Grid, useMediaQuery } from "@mui/material";
-import { useTheme } from "@mui/material";
+import React, { FC, Fragment, useState } from "react";
+import { Typography, Button, Grid, useMediaQuery, useTheme } from "@mui/material";
+// components
 import { CustomGrid } from "components/layout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
+// styles
+import styles from "styles/home";
 
-const Bar = () => {
+const Bar: FC = (): JSX.Element => {
   const theme = useTheme();
   const popupScreen = useMediaQuery("(min-width:600px)");
+
   const [openDialog, setOpenDialog] = useState(false);
   const [sucessModalshow, setSuccessModalShow] = useState(true);
 
@@ -60,7 +62,7 @@ const Bar = () => {
               Love Fashion? Have your own style? Share it with your community.
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={4} md={3.2} lg={3.2} sx={{  marginTop: "10px" }}>
+          <Grid item xs={12} sm={4} md={3.2} lg={3.2} sx={{ marginTop: "10px" }}>
             <Button sx={styles.btn} onClick={openPopup}>
               <Typography fontSize={"16px"} fontWeight={"600"}>
                 Sign up for free
@@ -69,26 +71,30 @@ const Bar = () => {
           </Grid>
         </Grid>
       </CustomGrid>
-      {popupScreen ? (
-        <LoginDialog
-          handleClose={handleClose}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          closePopup={closePopup}
-          isSecondModalActive={isSecondModalActive}
-          sucessModalshow={sucessModalshow}
-          userType={true}
-        />
+      {openDialog ? (
+        popupScreen ? (
+          <LoginDialog
+            userType
+            closePopup={closePopup}
+            openDialog={openDialog}
+            handleClose={handleClose}
+            setOpenDialog={setOpenDialog}
+            sucessModalshow={sucessModalshow}
+            isSecondModalActive={isSecondModalActive}
+          />
+        ) : (
+          <BottomSheet
+            userType
+            openDialog={openDialog}
+            closePopup={closePopup}
+            handleClose={handleClose}
+            setOpenDialog={setOpenDialog}
+            sucessModalshow={sucessModalshow}
+            isSecondModalActive={isSecondModalActive}
+          />
+        )
       ) : (
-        <BottomSheet
-          handleClose={handleClose}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          closePopup={closePopup}
-          isSecondModalActive={isSecondModalActive}
-          sucessModalshow={sucessModalshow}
-          userType={true}
-        />
+        <Fragment />
       )}
     </>
   );

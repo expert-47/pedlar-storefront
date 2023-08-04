@@ -1,13 +1,17 @@
+//package imports
 import React from "react";
-import { styles } from "./style";
+import Scrollspy from "react-scrollspy";
+import Image, { StaticImageData } from "next/image";
 import { Box, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
+//componet imports
+import PedlarImage from "components/pedlarImage";
 import { CustomContainer } from "../landinglayout";
 import Responsivehowitworks from "./responsive-how-it-works";
 import purpleGradient from "../../public/purple-gradient.png";
-import Scrollspy from "react-scrollspy";
-import Image, { StaticImageData } from "next/image";
+//image import
 import orangepinkmesh from "../../public/mesh-pink-orange.png";
-import PedlarImage from "components/pedlarImage";
+//style
+import { styles } from "./style";
 
 interface Props {
   title1: string;
@@ -113,7 +117,6 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="contain"
-                            disableShimmer={true}
                           />
                         </Box>
                       </Grid>
@@ -129,13 +132,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
-                            src={image2}
-                            disableShimmer={true}
-                            alt="step 2"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
-                          />
+                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="contain" />
                         </Box>
                       </Grid>
                       <Grid>
@@ -155,7 +152,6 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="contain"
-                            disableShimmer={true}
                           />
                         </Box>
                       </Grid>
@@ -179,7 +175,6 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                             alt="Picture of the author"
                             style={{ borderRadius: "16px" }}
                             objectFit="contain"
-                            disableShimmer={true}
                           />
                         </Box>
                       </Grid>

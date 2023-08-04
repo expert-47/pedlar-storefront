@@ -5,12 +5,11 @@ export const styles = {
     width: "100%",
     position: "relative",
     zIndex: "3",
+    paddingTop: "15px",
   },
   gridboxText: {
     color: "#1C1B1F",
     lineHeight: { lg: "64px", md: "62px", sm: "64px", xs: "40px" },
-    // margin: "0 auto 0 0",
-    // maxWidth: "1130px",
   },
   gridinnerPara: {
     color: "#1C1B1E",
@@ -45,29 +44,5 @@ export const styles = {
     opacity: "0.08",
     wordSpacing: "18px",
     paddingLeft: "30px",
-  },
-  LoginBox: {
-    backgroundColor: "#f9f6f2",
-    width: "500px",
-    borderRadius: "10px",
-    p: 25,
-  },
-  RespBox: {
-    borderRadius: "10px",
-    px: 25,
-  },
-  RespLoginBox: {
-    borderRadius: "10px",
-    paddingBottom: "30px",
-    px: 25,
-  },
-  BoxSelector: {
-    display: "flex",
-    backgroundColor: "transparent",
-    borderRadius: "10px",
-    border: "1px solid rgba(28, 27, 31, 0.64)",
-    marginBottom: "24px",
-    padding: "6px 5px",
-    width: "188px",
   },
 };

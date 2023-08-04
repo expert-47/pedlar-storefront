@@ -1,11 +1,14 @@
-import React, { useRef, useState } from "react";
-import { styles } from "./style";
-import { Box, Grid, Typography } from "@mui/material";
-import { CustomContainer } from "../landinglayout";
-import { StaticImageData } from "next/image";
-import { Swiper, SwiperSlide } from "swiper/react";
+//package imports
 import { Navigation } from "swiper";
 import SliderCard from "./SliderCard";
+import React, { useState } from "react";
+import { StaticImageData } from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Box, Grid, Typography } from "@mui/material";
+//component imports
+import { CustomContainer } from "../landinglayout";
+//style
+import { styles } from "./style";
 
 interface Props {
   title1: string;
@@ -17,13 +20,19 @@ interface Props {
   image3: StaticImageData;
   image4: StaticImageData;
 }
+interface SwiperType {
+  slideTo: (index: any) => void;
+}
+const arrayToIterateTetxt = [1, 2, 3, 4];
+
 const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, image3, image4 }: Props) => {
   const [updatedata, setUpdateData] = useState(1);
-  const ref = useRef();
-  const [swiper, setSwiper] = useState(null);
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
 
   const slideTo = (index: any) => {
-    swiper.slideTo(index);
+    if (swiper) {
+      swiper.slideTo(index);
+    }
   };
 
   return (
@@ -41,54 +50,22 @@ const Responsivehowitworks = ({ title1, title2, title3, title4, image1, image2, 
             </Typography>
           </Grid>
           <Grid container item xs={12} sm={6} style={{ justifyContent: "space-around", marginTop: "20px" }}>
-            <Grid item xs={2.2} sm={1.8} onClick={() => slideTo(0)}>
-              <Typography
-                sx={{
-                  ...styles.Respocirclecount,
-                  backgroundColor: updatedata === 1 ? "white" : "tranparent",
-                  color: updatedata === 1 ? "#1c1b1f" : "white",
-                }}
-                fontWeight={600}
-              >
-                1
-              </Typography>
-            </Grid>
-            <Grid item xs={2.2} sm={1.8} onClick={() => slideTo(1)}>
-              <Typography
-                sx={{
-                  ...styles.Respocirclecount,
-                  backgroundColor: updatedata === 2 ? "white" : "tranparent",
-                  color: updatedata === 2 ? "#1c1b1f" : "white",
-                }}
-                fontWeight={600}
-              >
-                2
-              </Typography>
-            </Grid>
-            <Grid item xs={2.2} sm={1.8} onClick={() => slideTo(2)}>
-              <Typography
-                sx={{
-                  ...styles.Respocirclecount,
-                  backgroundColor: updatedata === 3 ? "white" : "tranparent",
-                  color: updatedata === 3 ? "#1c1b1f" : "white",
-                }}
-                fontWeight={600}
-              >
-                3
-              </Typography>
-            </Grid>
-            <Grid item xs={2.2} sm={1.8} onClick={() => slideTo(3)}>
-              <Typography
-                sx={{
-                  ...styles.Respocirclecount,
-                  backgroundColor: updatedata === 4 ? "white" : "tranparent",
-                  color: updatedata === 4 ? "#1c1b1f" : "white",
-                }}
-                fontWeight={600}
-              >
-                4
-              </Typography>
-            </Grid>
+            {arrayToIterateTetxt?.map((itemNumber, index) => {
+              return (
+                <Grid item xs={2.2} sm={1.8} onClick={() => slideTo(index)} key={`howItWorks ${itemNumber}`}>
+                  <Typography
+                    sx={{
+                      ...styles.Respocirclecount,
+                      backgroundColor: updatedata === itemNumber ? "white" : "tranparent",
+                      color: updatedata === itemNumber ? "#1c1b1f" : "white",
+                    }}
+                    fontWeight={600}
+                  >
+                    {itemNumber}
+                  </Typography>
+                </Grid>
+              );
+            })}
           </Grid>
           <Swiper
             onSwiper={setSwiper}

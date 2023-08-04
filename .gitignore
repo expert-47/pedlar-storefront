@@ -39,7 +39,5 @@ next-env.d.ts
 #pwa
 public/sw.js
 public/sw.js.map
-public/workbox-588899ac.map
-public/workbox-327c579b.js
-public/workbox-327c579b.js.map
-
+public/workbox-8f0e986c.js
+public/workbox-8f0e986c.js.map

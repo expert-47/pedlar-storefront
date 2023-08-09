@@ -1,25 +1,38 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
-import { Box } from "@mui/system";
-import { Alert, Divider, Grid, Typography, CircularProgress } from "@mui/material";
+//package imports
+import {
+  Alert,
+  Divider,
+  Grid,
+  Typography,
+  CircularProgress,
+  Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  useTheme,
+  useMediaQuery,
+  AppBar,
+} from "@mui/material";
 import "swiper/css";
-import "swiper/css/pagination";
 import Link from "next/link";
-import "react-slideshow-image/dist/styles.css";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import { CustomContainer } from "../layout";
-
-import Layout from "../layout";
-import Options from "./components/options";
-import Action from "./components/action";
-import styles from "styles/product";
-import BaseFooter from "components/footer/baseFooter";
-import { useMediaQuery, useTheme } from "@mui/material";
-import { getStoreName } from "utils/getPathName";
-import { Gallery, Item } from "react-photoswipe-gallery";
+import Image from "next/image";
+import "swiper/css/pagination";
+import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
+import { Slide } from "react-slideshow-image";
+import "react-slideshow-image/dist/styles.css";
+import { Gallery, Item } from "react-photoswipe-gallery";
+import React, { useState, useEffect, useRef } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+//components imports
+import Layout from "../layout";
+import Action from "./components/action";
+import Options from "./components/options";
+import { CustomContainer } from "../layout";
+import CardComponent from "components/home/components/cardComponent";
+//style imports
+import styles from "styles/product";
+//api imports
 import {
   addToCart,
   updateCartLineItem,
@@ -28,58 +41,62 @@ import {
   getVariantBySelectedOptions,
   checkoutCartDetails,
 } from "api/graphql/grapgql";
+//redux
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId } from "store/slice/appSlice";
-import * as gtmEvents from "utils/gtm";
-import CardComponent from "components/home/components/cardComponent";
-import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
-import AppBar from "@mui/material/AppBar";
-import Image from "next/image";
+//utils
 import { seo } from "utils/seoData";
-import { Slide } from "react-slideshow-image";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import * as gtmEvents from "utils/gtm";
+import { getStoreName } from "utils/getPathName";
+import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+};
 
 const Cart = (props: any) => {
-  const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
   const theme = useTheme();
-  const slideRef = useRef(null);
   const route = useRouter();
-  const slugValue = route.query.slug;
+  const slideRef = useRef(null);
+  const dispatch = useDispatch();
   const path = getStoreName(route);
+  const slugValue = route.query.slug;
+  const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-  };
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [buttonLoaderState, setButtonLoaderState] = useState(false);
+  const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
+  const [expanded, setExpanded] = React.useState<string | false>("panel1");
+  const [price, setPrice] = useState({
+    price: 0,
+    currencyCode: "AUD",
+  });
 
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
 
-  const [expanded, setExpanded] = React.useState<string | false>("panel1");
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const [price, setPrice] = useState({
-    price: 0,
-    currencyCode: "AUD",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-  const [buttonLoaderState, setButtonLoaderState] = useState(false);
-  const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
-
   const storeName = useSelector((data: any) => data.app.storeName);
-
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
-
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
-  const dispatch = useDispatch();
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
+
+  useEffect(() => {
+    route.events.on("routeChangeComplete", () => {
+      setTimeout(() => {
+        scrollToTop();
+      }, 100);
+    });
+  }, [route?.events]);
+
   useEffect(() => {
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
@@ -92,7 +109,6 @@ const Cart = (props: any) => {
     }
     return () => {
       slideRef?.current?.goTo(0);
-      scrollToTop();
     };
   }, [route.query?.id]);
 
@@ -408,9 +424,9 @@ const Cart = (props: any) => {
                                     src={item?.url}
                                     width={358}
                                     height={400}
-                                    priority={true}
-                                    // placeholder="blur"
-                                    // blurDataURL="/loaderShim.png"
+                                    loading={index < 4 ? "eager" : "lazy"}
+                                    placeholder="blur"
+                                    blurDataURL="/loaderShim.png"
                                     objectFit="contain"
                                     objectPosition={"center"}
                                   />
@@ -622,12 +638,12 @@ const Cart = (props: any) => {
                     <CardComponent
                       width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
                       height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      name={item?.title}
+                      name={item?.title?.toLowerCase()}
                       type={item?.vendor}
                       price={
                         item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
                       }
-                      image={item?.featuredImage?.transformedSrc}
+                      image={item?.featuredImage?.url}
                       id={item?.id}
                       item={item}
                       index={index}
@@ -695,7 +711,7 @@ const Cart = (props: any) => {
                       price={
                         item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
                       }
-                      image={item?.featuredImage?.transformedSrc}
+                      image={item?.featuredImage?.url}
                       id={item?.id}
                       item={item}
                       index={index}

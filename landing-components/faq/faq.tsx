@@ -1,14 +1,21 @@
+//package imports
 import React from "react";
-import { styles } from "./style";
-import { Box, Grid, Typography } from "@mui/material";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
+import {
+  Box,
+  Grid,
+  useTheme,
+  Accordion,
+  Typography,
+  useMediaQuery,
+  AccordionDetails,
+  AccordionSummary,
+} from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+//component
 import { CustomContainer } from "../landinglayout";
-import { useTheme } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
+//style
+import { styles } from "./style";
 
 interface Props {
   question1: string;
@@ -35,12 +42,13 @@ const Faq = ({
   answer4,
   answer5,
 }: Props) => {
+  const theme = useTheme();
+  const isMatch = useMediaQuery("(max-width:767px)");
   const [expanded, setExpanded] = React.useState<string | false>(false);
+
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
-  const theme = useTheme();
-  const isMatch = useMediaQuery("(max-width:767px)");
   return (
     <CustomContainer>
       <Box

@@ -1,25 +1,23 @@
+import CloseIcon from "@mui/icons-material/Close";
 import React, { useEffect, useState } from "react";
 import { Grid, Typography, Button, Dialog, IconButton, Box } from "@mui/material";
-import { styles } from "./styles";
 
-import CloseIcon from "@mui/icons-material/Close";
 import Creatorpopup from "landing-components/popup-dialog/creatorpopup";
 import Brandspopup from "landing-components/popup-dialog/brandspopup";
 
+import { styles } from "./styles";
 interface Props {
   openDialog: boolean;
-
   handleClose: () => void;
   setOpenDialog: (value: boolean) => void;
   closePopup: () => void;
-  isSecondModalActive: any;
+  isSecondModalActive: (val: boolean) => void;
   sucessModalshow: boolean;
   userType?: boolean;
 }
+
 const LoginDialog = ({
-  handleClose,
   openDialog,
-  setOpenDialog,
   closePopup,
   isSecondModalActive,
   sucessModalshow,
@@ -29,13 +27,14 @@ const LoginDialog = ({
 
   const onChangeCreator = () => setUserType(true);
   const onChangeBrand = () => setUserType(false);
+
   useEffect(() => {
     setUserType(user_type);
   }, [user_type, openDialog]);
+
   return (
     <Dialog
       open={openDialog}
-      onClose={(handleClose, reason) => {}}
       sx={{
         ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
           borderRadius: "16px",
@@ -92,7 +91,7 @@ const LoginDialog = ({
               onClick={onChangeCreator}
             >
               <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
-              I'm a creator
+              I&apos;m a creator
             </Button>
             <Button
               style={{
@@ -111,7 +110,7 @@ const LoginDialog = ({
               }}
               onClick={onChangeBrand}
             >
-              I'm a brand
+              {"I'm a brand"}
             </Button>
           </Box>
         ) : null}

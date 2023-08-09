@@ -35,3 +35,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 /.bitbucket
+
+#pwa
+public/sw.js
+public/sw.js.map
+public/workbox-8f0e986c.js
+public/workbox-8f0e986c.js.map

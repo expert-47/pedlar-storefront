@@ -1,25 +1,58 @@
-import React from "react";
-import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { styles } from "./style";
+//package imports
 import "swiper/css";
+import Image from "next/image";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import MoraRuby from "../../public/demoo.png";
-import DebbiHeart from "../../public/DebbiHeart.png";
-import JacobMax from "../../public/JacobMax.png";
-import StephenDan from "../../public/StephenDan.png";
-import Shadow from "../../public/Shadow.png";
-import Lauren from "../../public/Lauren.png";
-import Image from "next/image";
+import React, { FC } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
+
+//images imports
+import Shadow from "public/Shadow.png";
+import Lauren from "public/Lauren.png";
+import MoraRuby from "public/demoo.png";
+import JacobMax from "public/JacobMax.png";
+import DebbiHeart from "public/DebbiHeart.png";
+import StephenDan from "public/StephenDan.png";
+
+//style imports
+import { styles } from "./style";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
-const Picturecarousel = () => {
+//swiper data
+const swiperSlidedata = [
+  {
+    src: MoraRuby,
+    altText: "Mora Ruby",
+  },
+  {
+    src: DebbiHeart,
+    altText: "Debbi Heart",
+  },
+  {
+    src: JacobMax,
+    altText: "Jacob Max",
+  },
+  {
+    src: StephenDan,
+    altText: "Stephen Dan",
+  },
+  {
+    src: Shadow,
+    altText: "Shadow",
+  },
+  {
+    src: Lauren,
+    altText: "Lauren",
+  },
+];
+
+const Picturecarousel: FC = (): JSX.Element => {
   const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
   const islarge = useMediaQuery(theme.breakpoints.up("lg"));
+  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 
   return (
     <Box sx={{ paddingTop: { xs: "50px", md: "100px" } }}>
@@ -40,90 +73,16 @@ const Picturecarousel = () => {
           position: "relative",
         }}
       >
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={MoraRuby} alt="Mora Ruby" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Mora Ruby</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={DebbiHeart} alt="Debbi Heart" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Debbi Heart</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={JacobMax} alt="JacobMax" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Jacob Max</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={StephenDan} alt="Stephen" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Stephen Dan</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={Shadow} alt="Shadow" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Shadow</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={Lauren} alt="Lauren" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Lauren</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={MoraRuby} alt="Mora Ruby" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Mora Ruby</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={DebbiHeart} alt="Debbi Heart" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Debbi Heart</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={JacobMax} alt="JacobMax" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Jacob Max</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={StephenDan} alt="Stephen" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Stephen Dan</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={Shadow} alt="Shadow" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Shadow</Typography>
-          </Box>
-        </SwiperSlide>
-        <SwiperSlide style={styles.slide}>
-          <Box sx={styles.cardBox}>
-            <Image src={Lauren} alt="Lauren" loading="eager" placeholder="blur" />
-
-            <Typography sx={styles.cardText}>Lauren</Typography>
-          </Box>
-        </SwiperSlide>
+        {swiperSlidedata?.map((item) => {
+          return (
+            <SwiperSlide style={styles.slide} key={item?.altText}>
+              <Box sx={styles.cardBox}>
+                <Image src={item?.src} alt={item?.altText} loading="eager" placeholder="blur" />
+                <Typography sx={styles.cardText}>{item?.altText}</Typography>
+              </Box>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </Box>
   );

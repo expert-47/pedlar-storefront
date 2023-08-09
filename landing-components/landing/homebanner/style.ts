@@ -91,42 +91,7 @@ export const styles = {
       width: "100%",
     },
   },
-  LoginBox: {
-    backgroundColor: "#f9f6f2",
-    width: "500px",
-    borderRadius: "10px",
-    p: 25,
-  },
-  RespBox: {
-    borderRadius: "10px",
-    px: 25,
-  },
-  RespLoginBox: {
-    borderRadius: "10px",
-    paddingBottom: "30px",
-    px: 25,
-  },
-  TextFeild: {
-    width: "100%",
-    color: "rgb(121, 116, 126)",
-    borderRadius: "5px",
-    marginBottom: "24px",
-  },
-  TextFeilds: {
-    width: "100%",
-    border: ".5px solid rgba(0, 0, 0, 0.4)",
-    borderRadius: "5px",
-    marginBottom: "24px",
-  },
-  BoxSelector: {
-    display: "flex",
-    backgroundColor: "transparent",
-    borderRadius: "10px",
-    border: "1px solid rgba(28, 27, 31, 0.64)",
-    marginBottom: "24px",
-    padding: "6px 5px",
-    width: "188px",
-  },
+
   animateRow: {
     display: "flex",
     alignItems: "center",
@@ -134,10 +99,5 @@ export const styles = {
       flexDirection: "column",
       alignItems: "flex-start",
     },
-  },
-  PopupBox: {
-    backgroundColor: "#f9f6f2",
-    borderRadius: "10px",
-    p: 25,
   },
 };

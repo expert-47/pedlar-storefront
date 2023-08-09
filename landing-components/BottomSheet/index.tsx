@@ -1,6 +1,6 @@
 import { Box, Grid, Typography, IconButton, SwipeableDrawer } from "@mui/material";
 import Button from "@mui/material/Button";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { styles } from "./styles";
 import Creatorpopup from "landing-components/popup-dialog/creatorpopup";
@@ -11,7 +11,7 @@ interface Props {
   handleClose: () => void;
   setOpenDialog: (value: boolean) => void;
   closePopup: () => void;
-  isSecondModalActive: any;
+  isSecondModalActive: (val: boolean) => void;
   sucessModalshow: boolean;
   userType?: boolean;
 }
@@ -33,7 +33,8 @@ const BottomSheet = ({
   }, [user_type, openDialog]);
   return (
     <SwipeableDrawer
-      ModalProps={{ keepMounted: true }}
+      // ModalProps={{ keepMounted: true }}
+      onOpen={() => {}}
       anchor="bottom"
       sx={{ height: "150px" }}
       open={openDialog}
@@ -43,7 +44,7 @@ const BottomSheet = ({
         sx: {
           // Since overflow is visible here and not 'auto' or 'scroll', the scrolling needs to happen in a nested div
           overflow: "visible",
-          height: `calc(94% - 13px)`,
+          height: "calc(94% - 13px)",
         },
       }}
     >
@@ -93,7 +94,7 @@ const BottomSheet = ({
               onClick={onChangeCreator}
             >
               <Typography fontSize={"16px"} fontWeight={userType == true ? "600" : "400"}>
-                I'm a creator
+                I&apos;m a creator
               </Typography>
             </Button>
             <Button
@@ -114,7 +115,7 @@ const BottomSheet = ({
               onClick={onChangeBrand}
             >
               <Typography fontSize={"16px"} fontWeight={userType == false ? "600" : "400"}>
-                I'm a brand
+                I&apos;m a brand
               </Typography>
             </Button>
           </Box>
@@ -157,4 +158,4 @@ const BottomSheet = ({
   );
 };
 
-export default BottomSheet;
+export default memo(BottomSheet);

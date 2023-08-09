@@ -1,24 +1,27 @@
+//packages imports
 import React from "react";
-import Banner from "../landing-components/landing/homebanner/home-banner";
-import Company from "../landing-components/landing/comapny/company";
-import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
+import Image from "next/image";
+import Box from "@mui/material/Box";
+//components imports
 import Faq from "../landing-components/faq/faq";
 import Layout from "../landing-components/landinglayout";
-import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
-import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
+import Company from "../landing-components/landing/comapny/company";
 import Howitswork from "../landing-components/how-its-work/how-its-work";
-import Box from "@mui/material/Box";
+import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
+import Banner from "../landing-components/landing/homebanner/home-banner";
+import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
+import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
+//images imports
+import firstStep from "../public/step1.png";
+import thirdStep from "../public/step3.png";
+import secondStep from "../public/step2.png";
+import fourthStep from "../public/step4.png";
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.png";
 import orangeMesh from "../public/meshHome-gradient.png";
-import firstStep from "../public/step1.png";
-import secondStep from "../public/step2.png";
-import thirdStep from "../public/step3.png";
-import fourthStep from "../public/step4.png";
-
-import Image from "next/image";
+//seo import
 import { seo } from "utils/seoData";
-
+//style
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.png) !important",

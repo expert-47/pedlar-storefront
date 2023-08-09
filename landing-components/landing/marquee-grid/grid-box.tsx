@@ -1,37 +1,57 @@
-import { Typography, Grid, useMediaQuery } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useState } from "react";
+//package imports
 import Marquee from "react-fast-marquee";
-import { useTheme } from "@mui/material";
+import React, { FC, Fragment, useState } from "react";
+import { Typography, Grid, useMediaQuery, Box, useTheme } from "@mui/material";
+//components imports
+import TextBox from "./textBox";
+import PedlarImage from "components/pedlarImage";
 import firstGrid from "../../../public/firstGrid.png";
-import secondGrid from "../../../public/secondGrid.png";
 import thirdGrid from "../../../public/thirdGrid.png";
 import { CustomContainer } from "../../landinglayout";
-import { styles } from "./style";
-import PedlarImage from "components/pedlarImage";
-import TextBox from "./textBox";
+import secondGrid from "../../../public/secondGrid.png";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
+//style imports
+import { styles } from "./style";
 
-const Gridbox = () => {
+// textboxes data
+const testBoxesdata = [
+  {
+    title: "More money. Less problems",
+    description: "Track performance over time. Create value for creators, brands and shoppers.",
+  },
+  {
+    title: "Simple and free",
+    description: "Creators and brands get set up in under two minutes. Start selling instantly!",
+  },
+  {
+    title: "Business as usual",
+    description: "Creators get paid more to do what they love. Brands integrate their Shopify then set and forget.",
+  },
+];
+
+const Gridbox: FC = (): JSX.Element => {
+  const theme = useTheme();
   const popupScreen = useMediaQuery("(min-width:600px)");
+
   const [openDialog, setOpenDialog] = useState(false);
-  const openPopup = () => setOpenDialog(true);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
+
   const handleClose = () => {
     setSuccessModalShow(true);
 
     setOpenDialog(false);
   };
-  const [sucessModalshow, setSuccessModalShow] = useState(true);
-  const [userType, setUserType] = useState(true);
+
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
-  const theme = useTheme();
+
   return (
     <CustomContainer
       sx={{
@@ -64,14 +84,7 @@ const Gridbox = () => {
         </Typography>
       </Marquee>
 
-      <Grid
-        sx={styles.mainGrid}
-        width={"100%"}
-        container
-        paddingBottom={{ xs: "15px", sm: "15px" }}
-        paddingTop="15px"
-        //  height={{ lg: "620px", xl: "620px" }}
-      >
+      <Grid sx={styles.mainGrid} container paddingBottom={{ xs: "15px", sm: "15px" }}>
         <Typography
           sx={styles.gridboxText}
           fontSize={{ lg: "54px", md: "54px", sm: "54px", xs: "30px" }}
@@ -144,23 +157,13 @@ const Gridbox = () => {
             paddingLeft={{ sm: "0px", lg: "15px" }}
             fontSize={{ xs: "18px", sm: "18px", md: "18px", lg: "22px" }}
           >
-            <TextBox
-              title="More money. Less problems"
-              description="Track performance over time. Create value for creators, brands and shoppers."
-            />
-
-            <TextBox
-              title="Simple and free"
-              description="Creators and brands get set up in under two minutes. Start selling instantly!"
-            />
-            <TextBox
-              title="Business as usual"
-              description="Creators get paid more to do what they love. Brands integrate their Shopify then set and forget."
-            />
+            {testBoxesdata?.map((item) => {
+              return <TextBox key={item.title} title={item?.title} description={item?.description} />;
+            })}
 
             <Box paddingLeft={{ xs: "30px", sm: "30px", md: "30px", lg: "40px", xl: "40px" }}>
               <Typography
-                onClick={openPopup}
+                onClick={() => setOpenDialog(true)}
                 sx={styles.creator}
                 fontFamily={"Inter"}
                 fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
@@ -195,26 +198,30 @@ const Gridbox = () => {
         </Typography>
       </Marquee>
 
-      {popupScreen ? (
-        <LoginDialog
-          handleClose={handleClose}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          closePopup={closePopup}
-          isSecondModalActive={isSecondModalActive}
-          sucessModalshow={sucessModalshow}
-          userType={userType}
-        />
+      {openDialog ? (
+        popupScreen ? (
+          <LoginDialog
+            handleClose={handleClose}
+            openDialog={openDialog}
+            setOpenDialog={setOpenDialog}
+            closePopup={closePopup}
+            isSecondModalActive={isSecondModalActive}
+            sucessModalshow={sucessModalshow}
+            userType
+          />
+        ) : (
+          <BottomSheet
+            handleClose={handleClose}
+            openDialog={openDialog}
+            setOpenDialog={setOpenDialog}
+            closePopup={closePopup}
+            isSecondModalActive={isSecondModalActive}
+            sucessModalshow={sucessModalshow}
+            userType
+          />
+        )
       ) : (
-        <BottomSheet
-          handleClose={handleClose}
-          openDialog={openDialog}
-          setOpenDialog={setOpenDialog}
-          closePopup={closePopup}
-          isSecondModalActive={isSecondModalActive}
-          sucessModalshow={sucessModalshow}
-          userType={userType}
-        />
+        <Fragment />
       )}
     </CustomContainer>
   );

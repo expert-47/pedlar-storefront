@@ -28,28 +28,4 @@ export const styles = {
       backgroundColor: "#1C1B1F",
     },
   },
-  LoginBox: {
-    backgroundColor: "#f9f6f2",
-    width: "500px",
-    borderRadius: "10px",
-    p: 25,
-  },
-  RespBox: {
-    borderRadius: "10px",
-    px: 25,
-  },
-  RespLoginBox: {
-    borderRadius: "10px",
-    paddingBottom: "30px",
-    px: 25,
-  },
-  BoxSelector: {
-    display: "flex",
-    backgroundColor: "transparent",
-    borderRadius: "10px",
-    border: "1px solid rgba(28, 27, 31, 0.64)",
-    marginBottom: "24px",
-    padding: "6px 5px",
-    width: "188px",
-  },
 };

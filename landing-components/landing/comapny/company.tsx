@@ -1,15 +1,25 @@
-import React, { useState } from "react";
-import { Grid, Typography, Button, useMediaQuery } from "@mui/material";
-import { styles } from "./style";
+//package imports
+import React, { FC, Fragment, useState } from "react";
+import { Grid, Typography, Button, useMediaQuery, useTheme } from "@mui/material";
+
+// components imports
 import { CustomContainer } from "../../landinglayout";
-import { useTheme } from "@mui/material";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
-const Company = () => {
+//style import
+import { styles } from "./style";
+
+const Company: FC = (): JSX.Element => {
+  const theme = useTheme();
   const popupScreen = useMediaQuery("(min-width:600px)");
-  const [openDialog, setOpenDialog] = useState(false);
+
+  //states
   const [userType, setUserType] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
+  //Methods
   const openPopup = (value: string) => {
     if (value == "creator") {
       setUserType(true);
@@ -25,8 +35,6 @@ const Company = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
-  const theme = useTheme();
-  const [sucessModalshow, setSuccessModalShow] = useState(true);
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
@@ -57,7 +65,7 @@ const Company = () => {
             paddingBottom={"40px"}
             sx={styles.heading}
           >
-            You're in good company
+            You&apos;re in good company
           </Typography>
         </Grid>
         <Grid
@@ -84,29 +92,33 @@ const Company = () => {
         >
           <Button sx={styles.CreatorButton} onClick={() => openPopup("creator")}>
             <Typography textTransform="none" fontSize={"22px"} lineHeight={"normal"}>
-              I’m a creator
+              I&apos;m a creator
             </Typography>
           </Button>
-          {popupScreen ? (
-            <LoginDialog
-              handleClose={handleClose}
-              openDialog={openDialog}
-              setOpenDialog={setOpenDialog}
-              closePopup={closePopup}
-              isSecondModalActive={isSecondModalActive}
-              sucessModalshow={sucessModalshow}
-              userType={userType}
-            />
+          {openDialog ? (
+            popupScreen ? (
+              <LoginDialog
+                userType={userType}
+                closePopup={closePopup}
+                openDialog={openDialog}
+                handleClose={handleClose}
+                setOpenDialog={setOpenDialog}
+                sucessModalshow={sucessModalshow}
+                isSecondModalActive={isSecondModalActive}
+              />
+            ) : (
+              <BottomSheet
+                userType={userType}
+                closePopup={closePopup}
+                openDialog={openDialog}
+                handleClose={handleClose}
+                setOpenDialog={setOpenDialog}
+                sucessModalshow={sucessModalshow}
+                isSecondModalActive={isSecondModalActive}
+              />
+            )
           ) : (
-            <BottomSheet
-              handleClose={handleClose}
-              openDialog={openDialog}
-              setOpenDialog={setOpenDialog}
-              closePopup={closePopup}
-              isSecondModalActive={isSecondModalActive}
-              sucessModalshow={sucessModalshow}
-              userType={userType}
-            />
+            <Fragment />
           )}
         </Grid>
       </Grid>

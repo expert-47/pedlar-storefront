@@ -3,10 +3,9 @@ import Image, { ImageProps, StaticImageData } from "next/image";
 import { useState } from "react";
 import { Box } from "@mui/material";
 import skeletonImg from "public/skeletonImg.jpeg";
-interface Props extends ImageProps {
+interface Props extends Omit<ImageProps, "placeholder"> {
   zIndex?: number;
   placeholder?: StaticImageData;
-  item?: any;
   renderError?: any;
   onLoad?: any;
   enableBlurDataUrl?: boolean;

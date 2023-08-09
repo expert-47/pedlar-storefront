@@ -1,17 +1,27 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { styles } from "./style";
+//package imports
+import React, { FC, Fragment, useState } from "react";
+import { Box, Button, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
+// componets imports
+import PedlarImage from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
-import { useTheme } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import rightArrow from "../../../public/right-arrow.svg";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
-import PedlarImage from "components/pedlarImage";
+//assets imports
+import rightArrow from "../../../public/right-arrow.svg";
+//style
+import { styles } from "./style";
 
-const EarlyAcess = () => {
-  const popupScreen = useMediaQuery("(min-width:600px)");
+const EarlyAcess: FC = (): JSX.Element => {
+  const theme = useTheme();
+  //states
+  const [userType, setUserType] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+  //media quries
+  const isTab = useMediaQuery("(max-width:767px)");
+  const isMatch = useMediaQuery("(max-width:800px)");
+  const popupScreen = useMediaQuery("(min-width:600px)");
+  //methods
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
@@ -20,7 +30,6 @@ const EarlyAcess = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
-  const [userType, setUserType] = useState(true);
   const openPopup = (value: string) => {
     if (value === "creator") {
       setUserType(true);
@@ -30,10 +39,7 @@ const EarlyAcess = () => {
     }
     setOpenDialog(true);
   };
-  const theme = useTheme();
-  const isMatch = useMediaQuery("(max-width:800px)");
-  const isTab = useMediaQuery("(max-width:767px)");
-  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
@@ -69,6 +75,7 @@ const EarlyAcess = () => {
                 <PedlarImage src={rightArrow} style={{ height: "68px", width: "68px" }} />
               </Box>
             </Grid>
+
             <Grid
               container
               item
@@ -85,35 +92,40 @@ const EarlyAcess = () => {
               <Box style={{ display: isTab ? "unset" : "flex" }}>
                 <Button sx={styles.CreatorButton} onClick={() => openPopup("creator")}>
                   <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
-                    I’m a creator
+                    I&apos;m a creator
                   </Typography>
                 </Button>
                 <Button sx={styles.BrandsButton} onClick={() => openPopup("brand")}>
                   <Typography textTransform="none" fontSize={"22px"} fontWeight={"600"} lineHeight={"normal"}>
-                    I’m a brand
+                    I&apos;m a brand
                   </Typography>
                 </Button>
               </Box>
-              {popupScreen ? (
-                <LoginDialog
-                  handleClose={handleClose}
-                  openDialog={openDialog}
-                  setOpenDialog={setOpenDialog}
-                  closePopup={closePopup}
-                  isSecondModalActive={isSecondModalActive}
-                  sucessModalshow={sucessModalshow}
-                  userType={userType}
-                />
+
+              {openDialog ? (
+                popupScreen ? (
+                  <LoginDialog
+                    userType
+                    closePopup={closePopup}
+                    openDialog={openDialog}
+                    handleClose={handleClose}
+                    setOpenDialog={setOpenDialog}
+                    sucessModalshow={sucessModalshow}
+                    isSecondModalActive={isSecondModalActive}
+                  />
+                ) : (
+                  <BottomSheet
+                    userType={userType}
+                    closePopup={closePopup}
+                    openDialog={openDialog}
+                    handleClose={handleClose}
+                    setOpenDialog={setOpenDialog}
+                    sucessModalshow={sucessModalshow}
+                    isSecondModalActive={isSecondModalActive}
+                  />
+                )
               ) : (
-                <BottomSheet
-                  handleClose={handleClose}
-                  openDialog={openDialog}
-                  setOpenDialog={setOpenDialog}
-                  closePopup={closePopup}
-                  isSecondModalActive={isSecondModalActive}
-                  sucessModalshow={sucessModalshow}
-                  userType={userType}
-                />
+                <Fragment />
               )}
             </Grid>
           </Grid>

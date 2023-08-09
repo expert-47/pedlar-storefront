@@ -37,7 +37,7 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
     });
     Crisp.setZIndex(9999);
     Crisp.load();
-  });
+  }, []);
 
   const persistor = persistStore(store);
 
@@ -57,7 +57,6 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
           `,
         }}
       />
-
 
       <DefaultSeo {...SEO} />
       <Provider store={store}>

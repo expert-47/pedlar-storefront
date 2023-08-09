@@ -1,56 +1,56 @@
+//package imports
+
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { Fragment, useState } from "react";
-import PedlarImage from "components/pedlarImage";
 import CloseIcon from "@mui/icons-material/Close";
+import React, { FC, Fragment, useState } from "react";
 import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
-
-import { styles } from "./style";
+//components
+import PedlarImage from "components/pedlarImage";
+import BottomSheet from "landing-components/BottomSheet";
+//assets
 import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
-import BottomSheet from "landing-components/BottomSheet";
+//styles
+import { styles } from "./style";
 
-const ResponsiveHeader = () => {
+const paperStyle = {
+  width: { xs: "100%", sm: "50%", md: "35%" },
+  boxShadow: "none",
+  backgroundColor: "#f9f6f2",
+};
+
+const ResponsiveHeader: FC = (): JSX.Element => {
   const theme = useTheme();
   const router = useRouter();
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 15,
+  });
+  //states
   const [opendrawer, setOpenDrawar] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [sucessModalshow, setSuccessModalShow] = useState(true);
 
   const openPopup = () => setOpenDialog(true);
-
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
   const handleClose = () => {
     setSuccessModalShow(true);
-
     setOpenDialog(false);
   };
-
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 15,
-  });
-
   const openStorePage = () => {
     router.push("/");
   };
-
   const onClickDrawer = () => {
     setOpenDrawar(true);
   };
-
   const onCloseDrawer = () => {
     setOpenDrawar(false);
   };
 
-  const paperStyle = {
-    width: { xs: "100%", sm: "50%", md: "35%" },
-    boxShadow: "none",
-    backgroundColor: "#f9f6f2",
-  };
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };

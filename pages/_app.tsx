@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
     <CacheProvider value={emotionCache}>
       <Script
         id="gtag-base"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         // strategy="worker"
         dangerouslySetInnerHTML={{
           __html: `

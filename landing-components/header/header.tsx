@@ -51,9 +51,7 @@ const Header: FC = (): JSX.Element => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
-  const openBrands = () => {
-    router.push("/for-brands");
-  };
+
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
@@ -104,7 +102,7 @@ const Header: FC = (): JSX.Element => {
               </Grid>
               <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid>
-                  <Link href={"/for-creator"}>
+                  <Link href={"/for-creator"} prefetch={false}>
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}
@@ -119,8 +117,8 @@ const Header: FC = (): JSX.Element => {
                     </Typography>
                   </Link>
                 </Grid>
-                <Grid onClick={openBrands}>
-                  <Link href={"/for-brands"}>
+                <Grid>
+                  <Link href={"/for-brands"} prefetch={false}>
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}

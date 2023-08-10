@@ -101,7 +101,7 @@ const ResponsiveHeader: FC = (): JSX.Element => {
             <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
               <Grid>
                 <Grid sx={styles.ResponButtonCreator}>
-                  <Link prefetch={true} href={"/for-creator"}>
+                  <Link prefetch={false} href={"/for-creator"}>
                     <Typography
                       textTransform="none"
                       sx={{
@@ -117,7 +117,7 @@ const ResponsiveHeader: FC = (): JSX.Element => {
               </Grid>
               <Grid>
                 <Grid sx={styles.ResponButtonBrands}>
-                  <Link href={"/for-brands"} prefetch={true}>
+                  <Link href={"/for-brands"} prefetch={false}>
                     <Typography
                       textTransform="none"
                       sx={{

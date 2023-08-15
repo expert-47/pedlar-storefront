@@ -72,7 +72,7 @@ const EarlyAcess: FC = (): JSX.Element => {
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
               <Box style={{ height: 47, width: 50 }}>
-                <PedlarImage src={rightArrow} style={{ height: "68px", width: "68px" }} />
+                <PedlarImage src={rightArrow} style={{ height: "68px", width: "68px" }} alt="pedlar righ arrow" />
               </Box>
             </Grid>
 

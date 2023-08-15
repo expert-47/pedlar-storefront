@@ -13,7 +13,6 @@ const securityHeaders = [
   },
 ];
 const nextConfig = withPWA({
-  output: "standalone",
   reactStrictMode: true,
   swcMinify: true,
   images: {

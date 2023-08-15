@@ -1,17 +1,17 @@
 // package imports
-import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import Typewriter from "typewriter-effect";
 import React, { FC, Fragment, useState } from "react";
+import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
 //components imports
 import PedlarImage from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 //images imports
-import mobileBanner from "../../../public/mobbanner.webp";
-import desktopBanner from "../../../public/desktopBanner.png";
-import largeBanner from "../../../public/largeBanner.png";
-import mediumBanner from "../../../public/TabletBanner.png";
+import largeBanner from "/public/largeBanner.png";
+import mobileBanner from "/public/mobbanner.webp";
+import mediumBanner from "/public/TabletBanner.png";
+import desktopBanner from "/public/desktopBanner.png";
 //styles imports
 import { styles } from "./style";
 
@@ -69,7 +69,7 @@ const Banner: FC = (): JSX.Element => {
           {isdektop ? (
             <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" priority />
           ) : isSmall ? (
-            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" priority style={{ width: "100%" }} />
+            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" priority />
           ) : isMedium ? (
             <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" priority />
           ) : (

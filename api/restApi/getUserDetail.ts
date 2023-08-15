@@ -7,6 +7,7 @@ export const getUserDetail = async (slug) => {
 
     return updateCartResponse;
   } catch (error) {
+    console.error(error);
     return undefined;
   }
 };

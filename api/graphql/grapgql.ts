@@ -503,12 +503,8 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
                       }
                   }
                   featuredImage {
-            height
-            src
-            width
-            originalSrc
-            transformedSrc(preferredContentType: WEBP, maxHeight: 343, maxWidth: 343)
-          }
+                    url(transform: {preferredContentType: WEBP})
+                  }
                   createdAt
                   publishedAt
               }

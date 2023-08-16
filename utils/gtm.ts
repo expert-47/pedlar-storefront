@@ -7,10 +7,11 @@ export const gtmEvents = (data: any) => {
   const pageEvent: PageEventProps = {
     ...data,
   };
-
+  setTimeout(() => {
+    window?.dataLayer?.push({ ecommerce: null });
+    window?.dataLayer?.push(data);
+  }, 5000);
   //@ts-ignore
-  window?.dataLayer?.push({ ecommerce: null });
-  window?.dataLayer?.push(data);
 };
 
 export const beginCheckout = (item: any, type = "checkout button") => {

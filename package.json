@@ -23,7 +23,7 @@
     "@mui/material": "^5.10.11",
     "@reduxjs/toolkit": "^1.9.1",
     "@swiper/core": "^0.0.21",
-    "axios": "^1.2.0",
+    "axios": "^1.4.0",
     "crisp-sdk-web": "^1.0.5",
     "formik": "^2.2.9",
     "graphql": "^16.6.0",

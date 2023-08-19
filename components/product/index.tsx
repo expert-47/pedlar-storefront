@@ -432,6 +432,7 @@ const Cart = (props: any) => {
                                       blurDataURL="/loaderShim.png"
                                       objectFit="contain"
                                       objectPosition={"center"}
+                                      priority={index == 0 ? true : false}
                                     />
                                   </Box>
                                 )}
@@ -469,10 +470,10 @@ const Cart = (props: any) => {
                                   src={item?.url}
                                   width={530}
                                   height={579}
-                                  loading={index < 4 ? "eager" : "lazy"}
                                   placeholder="blur"
                                   blurDataURL="/loaderShim.png"
                                   objectFit="contain"
+                                  priority={index == 0 ? true : false}
                                 />
                               </div>
                             )}

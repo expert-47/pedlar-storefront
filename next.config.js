@@ -14,6 +14,7 @@ const securityHeaders = [
 ];
 const nextConfig = withPWA({
   reactStrictMode: true,
+  output: "standalone",
   swcMinify: true,
   images: {
     domains: ["res.cloudinary.com", "storage.googleapis.com", "cdn.shopify.com"],

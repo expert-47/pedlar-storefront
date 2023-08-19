@@ -12,6 +12,7 @@ import {
   useTheme,
   useMediaQuery,
   AppBar,
+  Theme,
 } from "@mui/material";
 import "swiper/css";
 import Link from "next/link";
@@ -81,6 +82,7 @@ const Cart = (props: any) => {
   }, [newAdditionData2]);
 
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   const storeName = useSelector((data: any) => data.app.storeName);
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
@@ -383,102 +385,104 @@ const Cart = (props: any) => {
               }}
             >
               {/* Mobile View */}
-              <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
-                <Grid>
+              {isMobile ? (
+                <Grid item xs={12}>
+                  <Grid>
+                    <Gallery
+                      options={{
+                        showAnimationDuration: 0,
+                        hideAnimationDuration: 0,
+                      }}
+                    >
+                      <Slide
+                        transitionDuration={100}
+                        ref={slideRef}
+                        indicators={true}
+                        arrows={false}
+                        autoplay={false}
+                        infinite={false}
+                      >
+                        {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
+                          return (
+                            <Box
+                              style={{
+                                backgroundColor: "white",
+                              }}
+                              key={"newAdditiondataCart" + index}
+                            >
+                              <Item id={index} original={item?.url} thumbnail={item?.url}>
+                                {({ ref, open }) => (
+                                  <Box
+                                    ref={ref}
+                                    onClick={open}
+                                    sx={{
+                                      height: "100%",
+                                      width: "100%",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      display: "flex",
+                                    }}
+                                  >
+                                    <Image
+                                      src={item?.url}
+                                      width={358}
+                                      height={400}
+                                      loading={index < 4 ? "eager" : "lazy"}
+                                      placeholder="blur"
+                                      blurDataURL="/loaderShim.png"
+                                      objectFit="contain"
+                                      objectPosition={"center"}
+                                    />
+                                  </Box>
+                                )}
+                              </Item>
+                            </Box>
+                          );
+                        })}
+                      </Slide>
+                    </Gallery>
+                  </Grid>
+                </Grid>
+              ) : (
+                <Box sx={{ display: { xs: "none", sm: "block" } }}>
                   <Gallery
                     options={{
                       showAnimationDuration: 0,
                       hideAnimationDuration: 0,
                     }}
                   >
-                    <Slide
-                      transitionDuration={100}
-                      ref={slideRef}
-                      indicators={true}
-                      arrows={false}
-                      autoplay={false}
-                      infinite={false}
-                    >
-                      {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
-                        return (
-                          <Box
-                            style={{
-                              backgroundColor: "white",
-                            }}
-                            key={"newAdditiondataCart" + index}
-                          >
-                            <Item id={index} original={item?.url} thumbnail={item?.url}>
-                              {({ ref, open }) => (
-                                <Box
-                                  ref={ref}
-                                  onClick={open}
-                                  sx={{
-                                    height: "100%",
-                                    width: "100%",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    display: "flex",
-                                  }}
-                                >
-                                  <Image
-                                    src={item?.url}
-                                    width={358}
-                                    height={400}
-                                    loading={index < 4 ? "eager" : "lazy"}
-                                    placeholder="blur"
-                                    blurDataURL="/loaderShim.png"
-                                    objectFit="contain"
-                                    objectPosition={"center"}
-                                  />
-                                </Box>
-                              )}
-                            </Item>
-                          </Box>
-                        );
-                      })}
-                    </Slide>
+                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                      return (
+                        <div
+                          id={`section-${index + 1}`}
+                          key={"newAdditionImages" + index}
+                          style={{
+                            width: 530,
+                            height: 579,
+                            marginTop: "20px",
+                          }}
+                        >
+                          <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
+                            {({ ref, open }) => (
+                              <div onClick={open} ref={ref}>
+                                <Image
+                                  src={item?.url}
+                                  width={530}
+                                  height={579}
+                                  loading={index < 4 ? "eager" : "lazy"}
+                                  placeholder="blur"
+                                  blurDataURL="/loaderShim.png"
+                                  objectFit="contain"
+                                />
+                              </div>
+                            )}
+                          </Item>
+                        </div>
+                      );
+                    })}
                   </Gallery>
-                </Grid>
-              </Grid>
-
-              {/* Desktop View */}
-              <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                <Gallery
-                  options={{
-                    showAnimationDuration: 0,
-                    hideAnimationDuration: 0,
-                  }}
-                >
-                  {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                    return (
-                      <div
-                        id={`section-${index + 1}`}
-                        key={"newAdditionImages" + index}
-                        style={{
-                          width: 530,
-                          height: 579,
-                          marginTop: "20px",
-                        }}
-                      >
-                        <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
-                          {({ ref, open }) => (
-                            <div onClick={open} ref={ref}>
-                              <Image
-                                src={item?.url}
-                                width={530}
-                                height={579}
-                                placeholder="blur"
-                                blurDataURL="/loaderShim.png"
-                                objectFit="contain"
-                              />
-                            </div>
-                          )}
-                        </Item>
-                      </div>
-                    );
-                  })}
-                </Gallery>
-              </Box>
+                </Box>
+              )}
             </Grid>
             <Grid
               container

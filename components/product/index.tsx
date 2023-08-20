@@ -50,46 +50,10 @@ import { seo } from "utils/seoData";
 import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
+import GalleryItem from "./gallery-item";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-};
-
-const GalleryItem = ({ original, thumbnail, width, height }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  return (
-    <div style={{ position: "relative", width, height }}>
-      {!isLoaded && (
-        <img
-          src={thumbnail}
-          alt=""
-          style={{
-            width,
-            height,
-            filter: "blur(10px)",
-            objectFit: "contain",
-          }}
-        />
-      )}
-      <img
-        src={original}
-        alt=""
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          opacity: isLoaded ? 1 : 0,
-          transition: "opacity 0.3s ease-out",
-          width,
-          height,
-          objectFit: "contain",
-        }}
-        loading="lazy"
-        onLoad={() => setIsLoaded(true)}
-      />
-    </div>
-  );
 };
 
 const Cart = (props: any) => {

@@ -463,8 +463,8 @@ const Cart = (props: any) => {
                                     <GalleryItem
                                       original={item?.url}
                                       thumbnail="/loaderShim.png"
-                                      width={530}
-                                      height={579}
+                                      width={358}
+                                      height={400}
                                     />
                                   </Box>
                                 )}

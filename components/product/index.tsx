@@ -55,6 +55,43 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 };
 
+const GalleryItem = ({ original, thumbnail, width, height }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div style={{ position: "relative", width, height }}>
+      {!isLoaded && (
+        <img
+          src={thumbnail}
+          alt=""
+          style={{
+            width,
+            height,
+            filter: "blur(10px)",
+            objectFit: "contain",
+          }}
+        />
+      )}
+      <img
+        src={original}
+        alt=""
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          opacity: isLoaded ? 1 : 0,
+          transition: "opacity 0.3s ease-out",
+          width,
+          height,
+          objectFit: "contain",
+        }}
+        loading="lazy"
+        onLoad={() => setIsLoaded(true)}
+      />
+    </div>
+  );
+};
+
 const Cart = (props: any) => {
   const theme = useTheme();
   const route = useRouter();
@@ -423,16 +460,11 @@ const Cart = (props: any) => {
                                       display: "flex",
                                     }}
                                   >
-                                    <Image
-                                      src={item?.url}
-                                      width={358}
-                                      height={400}
-                                      loading={index < 4 ? "eager" : "lazy"}
-                                      placeholder="blur"
-                                      blurDataURL="/loaderShim.png"
-                                      objectFit="contain"
-                                      objectPosition={"center"}
-                                      priority={index == 0 ? true : false}
+                                    <GalleryItem
+                                      original={item?.url}
+                                      thumbnail="/loaderShim.png"
+                                      width={530}
+                                      height={579}
                                     />
                                   </Box>
                                 )}
@@ -466,14 +498,11 @@ const Cart = (props: any) => {
                           <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
                             {({ ref, open }) => (
                               <div onClick={open} ref={ref}>
-                                <Image
-                                  src={item?.url}
+                                <GalleryItem
+                                  original={item?.url}
+                                  thumbnail="/loaderShim.png"
                                   width={530}
                                   height={579}
-                                  placeholder="blur"
-                                  blurDataURL="/loaderShim.png"
-                                  objectFit="contain"
-                                  priority={index == 0 ? true : false}
                                 />
                               </div>
                             )}

@@ -424,11 +424,15 @@ const Cart = (props: any) => {
                                       display: "flex",
                                     }}
                                   >
-                                    <GalleryItem
-                                      original={item?.url}
-                                      thumbnail="/loaderShim.png"
+                                    <Image
+                                      src={item?.url}
                                       width={358}
                                       height={400}
+                                      priority={index < 2 ? true : false}
+                                      placeholder="blur"
+                                      blurDataURL="/loaderShim.png"
+                                      objectFit="contain"
+                                      objectPosition={"center"}
                                     />
                                   </Box>
                                 )}
@@ -462,11 +466,14 @@ const Cart = (props: any) => {
                           <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
                             {({ ref, open }) => (
                               <div onClick={open} ref={ref}>
-                                <GalleryItem
-                                  original={item?.url}
-                                  thumbnail="/loaderShim.png"
+                                <Image
+                                  src={item?.url}
                                   width={530}
                                   height={579}
+                                  placeholder="blur"
+                                  blurDataURL="/loaderShim.png"
+                                  objectFit="contain"
+                                  priority={index < 2 ? true : false}
                                 />
                               </div>
                             )}

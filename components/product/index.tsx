@@ -50,7 +50,6 @@ import { seo } from "utils/seoData";
 import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
-import GalleryItem from "./gallery-item";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });

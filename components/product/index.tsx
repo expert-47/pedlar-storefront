@@ -51,9 +51,9 @@ import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-};
+// const scrollToTop = () => {
+//   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+// };
 
 const Cart = (props: any) => {
   const theme = useTheme();
@@ -91,13 +91,13 @@ const Cart = (props: any) => {
     setExpanded(newExpanded ? panel : false);
   };
 
-  useEffect(() => {
-    route.events.on("routeChangeComplete", () => {
-      setTimeout(() => {
-        scrollToTop();
-      }, 100);
-    });
-  }, [route?.events]);
+  // useEffect(() => {
+  //   route.events.on("routeChangeComplete", () => {
+  //     setTimeout(() => {
+  //       scrollToTop();
+  //     }, 100);
+  //   });
+  // }, [route?.events]);
 
   useEffect(() => {
     if (newAdditionData?.options) {
@@ -334,42 +334,42 @@ const Cart = (props: any) => {
     >
       <CustomContainer>
         <Box sx={styles.mainContainer}>
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                sm: "block",
+          {!isMobile ? (
+            <Box
+              sx={{
                 zIndex: "10px",
                 marginRight: "1rem",
-              },
-            }}
-          >
-            <AppBar
-              position="sticky"
-              sx={{
-                top: "350px",
-                boxShadow: "none",
-                zIndex: "5",
+                height: "400px",
               }}
             >
-              <Scrollspy
-                items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
-                currentClassName="detail-page-current"
-                style={{ width: 10 }}
-                offset={-300}
+              <AppBar
+                position="sticky"
+                sx={{
+                  top: "350px",
+                  boxShadow: "none",
+                  zIndex: "5",
+                }}
               >
-                {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                  return (
-                    <li className="list_unorder" key={"imagesScrollSpy" + index}>
-                      <a href={`#section-${index + 1}`}>
-                        <div className="app__navigation-dot"></div>
-                      </a>
-                    </li>
-                  );
-                })}
-              </Scrollspy>
-            </AppBar>
-          </Box>
+                <Scrollspy
+                  items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
+                  currentClassName="detail-page-current"
+                  style={{ width: 10 }}
+                  offset={-300}
+                >
+                  {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                    return (
+                      <li className="list_unorder" key={"imagesScrollSpy" + index}>
+                        <a href={`#section-${index + 1}`}>
+                          <div className="app__navigation-dot"></div>
+                        </a>
+                      </li>
+                    );
+                  })}
+                </Scrollspy>
+              </AppBar>
+            </Box>
+          ) : null}
+
           <Grid container item md={11} lg={9} xl={9}>
             <Grid
               item
@@ -386,7 +386,7 @@ const Cart = (props: any) => {
             >
               {/* Mobile View */}
               {isMobile ? (
-                <Grid item xs={12}>
+                <Grid item xs={12} sx={{ height: "400px" }}>
                   <Grid>
                     <Gallery
                       options={{
@@ -444,7 +444,7 @@ const Cart = (props: any) => {
                   </Grid>
                 </Grid>
               ) : (
-                <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                <Box>
                   <Gallery
                     options={{
                       showAnimationDuration: 0,
@@ -592,141 +592,147 @@ const Cart = (props: any) => {
             </Grid>
           </Grid>
         </Box>
-        {/* Desktop View */}
-        <Grid container spacing={4} sx={{ ...styles.bottomContainer, display: { xs: "none", sm: "block" } }}>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
-            <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
-              You might like
-            </Typography>
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            pl={3}
-            pr={3}
-            sx={{
-              display: "flex",
-              justifyContent: "space-evenly",
-            }}
-          >
-            {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
-              const productId = item?.id?.split("gid://shopify/Product/")[1];
-              //   assign the value of price according to the requirement of the client
-              //(remove .0 if exists , and if there is one decimal and that
-              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
-              const prices = item.priceRange?.minVariantPrice?.amount;
-              let formattedPrice = prices;
 
-              const decimalPart = formattedPrice.split(".")[1];
-              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
-                formattedPrice += "0";
-              } else if (decimalPart === "0") {
-                formattedPrice = Math.round(formattedPrice);
-              }
-              return (
-                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
-                  <Grid
-                    key={index}
-                    item
-                    xs={6}
-                    sm={3}
-                    md={3}
-                    lg={2}
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                    onClick={ClearErrors}
-                  >
-                    <CardComponent
-                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      name={item?.title?.toLowerCase()}
-                      type={item?.vendor}
-                      price={
-                        item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
-                      }
-                      image={item?.featuredImage?.url}
-                      id={item?.id}
-                      item={item}
-                      index={index}
-                      heading={"you might like"}
-                    />
-                  </Grid>
-                </Link>
-              );
-            })}
-          </Grid>
-        </Grid>
-        {/* Mobile View */}
-        <Grid container spacing={4} sx={{ ...styles.bottomContainer, display: { xs: "block", sm: "none" } }}>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
-            <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
-              You might like
-            </Typography>
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            pl={3}
-            pr={3}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
-              const productId = item?.id?.split("gid://shopify/Product/")[1];
-              //   assign the value of price according to the requirement of the client
-              //(remove .0 if exists , and if there is one decimal and that
-              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+        {isMobile ? (
+          <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
+              <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+                You might like
+              </Typography>
+            </Grid>
+            <Grid
+              container
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              xl={12}
+              pl={3}
+              pr={3}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
+                const productId = item?.id?.split("gid://shopify/Product/")[1];
+                //   assign the value of price according to the requirement of the client
+                //(remove .0 if exists , and if there is one decimal and that
+                //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
 
-              const prices = item.priceRange?.minVariantPrice?.amount;
-              let formattedPrice = prices;
+                const prices = item.priceRange?.minVariantPrice?.amount;
+                let formattedPrice = prices;
 
-              const decimalPart = formattedPrice.split(".")[1];
-              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
-                formattedPrice += "0";
-              } else if (decimalPart === "0") {
-                formattedPrice = Math.round(formattedPrice);
-              }
-              return (
-                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
-                  <Grid
-                    key={index}
-                    item
-                    xs={6}
-                    sm={3}
-                    md={3}
-                    lg={2}
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                    onClick={ClearErrors}
-                  >
-                    <CardComponent
-                      width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
-                      height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
-                      name={item?.title?.toLowerCase()}
-                      type={item?.vender}
-                      price={
-                        item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
-                      }
-                      image={item?.featuredImage?.url}
-                      id={item?.id}
-                      item={item}
-                      index={index}
-                      heading={"you might like"}
-                    />
-                  </Grid>
-                </Link>
-              );
-            })}
+                const decimalPart = formattedPrice.split(".")[1];
+                if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                  formattedPrice += "0";
+                } else if (decimalPart === "0") {
+                  formattedPrice = Math.round(formattedPrice);
+                }
+                return (
+                  <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
+                    <Grid
+                      key={index}
+                      item
+                      xs={6}
+                      sm={3}
+                      md={3}
+                      lg={2}
+                      sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
+                      onClick={ClearErrors}
+                    >
+                      <CardComponent
+                        width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
+                        height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
+                        name={item?.title?.toLowerCase()}
+                        type={item?.vender}
+                        price={
+                          item.priceRange?.minVariantPrice?.currencyCode === "AUD"
+                            ? `$${formattedPrice}`
+                            : formattedPrice
+                        }
+                        image={item?.featuredImage?.url}
+                        id={item?.id}
+                        item={item}
+                        index={index}
+                        heading={"you might like"}
+                      />
+                    </Grid>
+                  </Link>
+                );
+              })}
+            </Grid>
           </Grid>
-        </Grid>
+        ) : (
+          <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
+              <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+                You might like
+              </Typography>
+            </Grid>
+            <Grid
+              container
+              xs={12}
+              sm={12}
+              md={12}
+              lg={12}
+              xl={12}
+              pl={3}
+              pr={3}
+              sx={{
+                display: "flex",
+                justifyContent: "space-evenly",
+              }}
+            >
+              {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
+                const productId = item?.id?.split("gid://shopify/Product/")[1];
+                //   assign the value of price according to the requirement of the client
+                //(remove .0 if exists , and if there is one decimal and that
+                //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+                const prices = item.priceRange?.minVariantPrice?.amount;
+                let formattedPrice = prices;
+
+                const decimalPart = formattedPrice.split(".")[1];
+                if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                  formattedPrice += "0";
+                } else if (decimalPart === "0") {
+                  formattedPrice = Math.round(formattedPrice);
+                }
+                return (
+                  <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
+                    <Grid
+                      key={index}
+                      item
+                      xs={6}
+                      sm={3}
+                      md={3}
+                      lg={2}
+                      sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
+                      onClick={ClearErrors}
+                    >
+                      <CardComponent
+                        width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                        height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                        name={item?.title?.toLowerCase()}
+                        type={item?.vendor}
+                        price={
+                          item.priceRange?.minVariantPrice?.currencyCode === "AUD"
+                            ? `$${formattedPrice}`
+                            : formattedPrice
+                        }
+                        image={item?.featuredImage?.url}
+                        id={item?.id}
+                        item={item}
+                        index={index}
+                        heading={"you might like"}
+                      />
+                    </Grid>
+                  </Link>
+                );
+              })}
+            </Grid>
+          </Grid>
+        )}
       </CustomContainer>
       {/* <Divider sx={styles.footerDivider} />
       <BaseFooter /> */}

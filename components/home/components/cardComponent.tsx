@@ -35,6 +35,7 @@ const CardComponent = ({
   const storeName = useSelector((data: any) => data.app.storeName);
   const onClickCard = () => {
     gtmEvents.selectItem({ ...item, index: index, heading: heading });
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   };
 
   return (

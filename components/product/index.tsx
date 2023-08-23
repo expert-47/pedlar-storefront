@@ -1,18 +1,18 @@
 //package imports
 import {
-  Alert,
-  Divider,
-  Grid,
-  Typography,
-  CircularProgress,
   Box,
+  Grid,
+  Alert,
+  Theme,
+  AppBar,
+  Divider,
+  useTheme,
   Accordion,
+  Typography,
+  useMediaQuery,
+  CircularProgress,
   AccordionSummary,
   AccordionDetails,
-  useTheme,
-  useMediaQuery,
-  AppBar,
-  Theme,
 } from "@mui/material";
 import "swiper/css";
 import Link from "next/link";
@@ -51,10 +51,6 @@ import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 
-// const scrollToTop = () => {
-//   window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-// };
-
 const Cart = (props: any) => {
   const theme = useTheme();
   const route = useRouter();
@@ -90,14 +86,6 @@ const Cart = (props: any) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-
-  // useEffect(() => {
-  //   route.events.on("routeChangeComplete", () => {
-  //     setTimeout(() => {
-  //       scrollToTop();
-  //     }, 100);
-  //   });
-  // }, [route?.events]);
 
   useEffect(() => {
     if (newAdditionData?.options) {

@@ -50,7 +50,7 @@ const Banner = () => {
         >
           Sell directly to Aussie shoppers with customised storefronts curated by social media creators.
         </Typography>
-        <ScrollLink to="ScheduleCalleForm" spy={true} smooth={true} offset={-150} duration={500}>
+        <ScrollLink to="ScheduleCalleForm" spy={true} smooth={true} offset={-150} duration={1000}>
           <Button sx={styles.Button}>
             <Typography textTransform={"none"} fontSize={"22px"}>
               Schedule a call

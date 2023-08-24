@@ -327,7 +327,6 @@ const Cart = (props: any) => {
               sx={{
                 zIndex: "10px",
                 marginRight: "1rem",
-                height: "400px",
               }}
             >
               <AppBar

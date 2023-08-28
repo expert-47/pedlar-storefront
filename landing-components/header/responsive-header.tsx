@@ -69,11 +69,6 @@ const ResponsiveHeader: FC = (): JSX.Element => {
     >
       <Grid
         container
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
         sx={styles.RespoMainGrid}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
@@ -90,77 +85,81 @@ const ResponsiveHeader: FC = (): JSX.Element => {
               sx: paperStyle,
             }}
           >
-            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingBottom: "15px",
+              }}
+            >
               <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }} onClick={openStorePage}>
                 <PedlarImage src={headerlogo} alt="header-logo" style={{ cursor: "pointer", paddingTop: "10px" }} />
               </Box>
               <IconButton onClick={onCloseDrawer}>
                 <CloseIcon style={{ height: "35px", width: "35px", color: "black", marginTop: "-20px" }} />
               </IconButton>
-            </Grid>
-            <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
+            </Box>
+            <Box sx={styles.ResponButtonCreator}>
+              <Link href={"/for-creator"}>
+                <Typography
+                  textTransform="none"
+                  sx={{
+                    ...styles.ButtonRTypo,
+                    textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
+                    color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "initial",
+                  }}
+                >
+                  For Creators
+                </Typography>
+              </Link>
+            </Box>
+
+            <Box sx={styles.ResponButtonBrands}>
+              <Link href={"/for-brands"}>
+                <Typography
+                  textTransform="none"
+                  sx={{
+                    ...styles.ButtonRTypo,
+                    textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
+                    color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "initial",
+                  }}
+                >
+                  For Brands
+                </Typography>
+              </Link>
+            </Box>
+
+            <Box sx={{ textAlign: "center" }}>
               <Grid>
-                <Grid sx={styles.ResponButtonCreator}>
-                  <Link href={"/for-creator"}>
-                    <Typography
-                      textTransform="none"
-                      sx={{
-                        ...styles.ButtonRTypo,
-                        textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
-                        color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "initial",
-                      }}
-                    >
-                      For Creators
-                    </Typography>
-                  </Link>
-                </Grid>
+                <Button sx={styles.GetAccess1} onClick={openPopup}>
+                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                    Get Access
+                  </Typography>
+                </Button>
               </Grid>
               <Grid>
-                <Grid sx={styles.ResponButtonBrands}>
-                  <Link href={"/for-brands"}>
-                    <Typography
-                      textTransform="none"
-                      sx={{
-                        ...styles.ButtonRTypo,
-                        textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
-                        color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "initial",
-                      }}
-                    >
-                      For Brands
-                    </Typography>
-                  </Link>
-                </Grid>
+                <Button sx={styles.Login1} onClick={handleClick}>
+                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                    Log in
+                  </Typography>
+                </Button>
+                {openDialog ? (
+                  <BottomSheet
+                    userType
+                    closePopup={closePopup}
+                    openDialog={openDialog}
+                    handleClose={handleClose}
+                    setOpenDialog={setOpenDialog}
+                    sucessModalshow={sucessModalshow}
+                    isSecondModalActive={isSecondModalActive}
+                  />
+                ) : (
+                  <Fragment />
+                )}
               </Grid>
-              <Grid style={{ textAlign: "center" }}>
-                <Grid>
-                  <Button sx={styles.GetAccess1} onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                      Get Access
-                    </Typography>
-                  </Button>
-                </Grid>
-                <Grid>
-                  <Button sx={styles.Login1} onClick={handleClick}>
-                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                      Log in
-                    </Typography>
-                  </Button>
-                  {openDialog ? (
-                    <BottomSheet
-                      userType
-                      closePopup={closePopup}
-                      openDialog={openDialog}
-                      handleClose={handleClose}
-                      setOpenDialog={setOpenDialog}
-                      sucessModalshow={sucessModalshow}
-                      isSecondModalActive={isSecondModalActive}
-                    />
-                  ) : (
-                    <Fragment />
-                  )}
-                </Grid>
-              </Grid>
-            </Grid>
+            </Box>
           </Drawer>
 
           <Box

@@ -79,10 +79,10 @@ const Banner: FC = (): JSX.Element => {
           <Box sx={styles.bannerText}>
             <Typography
               sx={styles.fashionText}
-              fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
+              color={"#1C1B1F"}
               fontWeight={"700"}
               lineHeight={"normal"}
-              color={"#1C1B1F"}
+              fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
             >
               We put fashion
             </Typography>
@@ -98,11 +98,11 @@ const Banner: FC = (): JSX.Element => {
               />
 
               <Typography
-                fontWeight={"700"}
-                color={"#1C1B1F"}
-                sx={styles.fashionText}
-                lineHeight={"unset"}
                 ml={1}
+                color={"#1C1B1F"}
+                fontWeight={"700"}
+                lineHeight={"unset"}
+                sx={styles.fashionText}
                 fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
               >
                 in business

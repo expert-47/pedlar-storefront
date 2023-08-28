@@ -59,6 +59,9 @@ const Header: FC = (): JSX.Element => {
     router.push("https://portal.pedlar.store");
   };
 
+  if (isMatch) {
+    return <ResponsiveHeader />;
+  }
   return (
     <AppBar
       elevation={0}

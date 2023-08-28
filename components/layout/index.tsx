@@ -37,7 +37,7 @@ export default function Layout(props: LayoutProps) {
       }
     };
     getTagsData();
-  }, []);
+  }, [shop, brand]);
   const getCartList = async () => {
     if (cartId) {
       try {

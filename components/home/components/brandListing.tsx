@@ -48,7 +48,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string; onClic
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
 
-        <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+        <Link href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
           <Grid
             item
             xs={5}

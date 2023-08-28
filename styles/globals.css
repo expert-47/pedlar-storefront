@@ -539,3 +539,18 @@ section {
 .pswp--touch .pswp__button--arrow {
   visibility: visible !important;
 }
+.positionProperty{
+position: relative !important;
+}
+.orangeMeshesBox{
+  position: absolute;
+  right: 0;
+  width: auto;
+  z-index: 0 ;
+}
+.pinkMeshesBox{
+ position: absolute;
+ left: 0;
+ width: auto;
+ z-index: 0 ;
+}

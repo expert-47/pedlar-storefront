@@ -30,8 +30,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
 
   const setFiltersValue = async (brandData = [], shopData = []) => {
     getFilteredData([...brandData, ...shopData]);
-    // setBrandFilterList(brandData);
-    // setShopFilterList(shopData);
   };
 
   useLayoutEffect(() => {

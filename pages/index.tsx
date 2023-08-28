@@ -17,14 +17,14 @@ import thirdStep from "../public/step3.png";
 import secondStep from "../public/step2.png";
 import fourthStep from "../public/step4.png";
 import orangeMeshes from "../public/orange-meshes.png";
-import pinkMeshes from "../public/left-pink-meshes.png";
+import pinkMeshes from "../public/left-pink-meshes.webp";
 import orangeMesh from "../public/meshHome-gradient.png";
 //seo import
 import { seo } from "utils/seoData";
 //style
 const styless = {
   paperContainer: {
-    backgroundImage: "url(../Grain-Texture.png) !important",
+    backgroundImage: "url(../Grain-Texture.webp) !important",
     backgroundPosition: "0 0",
     backgroundRepeat: "repeat",
     backgroundSize: "initial",

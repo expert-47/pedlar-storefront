@@ -1,29 +1,33 @@
+//package imports
 import React from "react";
-import Faq from "../landing-components/faq/faq";
-import Banner from "../landing-components/brand-page/mainbanner/Banner";
-import Layout from "../landing-components/landinglayout";
-import Influncerheading from "../landing-components/brand-page/influncerheading/Influncerheading";
-import Businesstoday from "../landing-components/brand-page/businesstoday/Businesstoday";
 import Box from "@mui/material/Box";
+//components
 import orangetop from "../public/top-mesh.png";
-import orangebottom from "../public/bottom-mesh.png";
-import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/how-its-work/how-its-work";
-import firstStep from "../public/step1.png";
-import secondStep from "../public/work1.png";
-import thirdStep from "../public/work4.png";
-import fourthStep from "../public/cartList.png";
+import Faq from "../landing-components/faq/faq";
 import PedlarImage from "components/pedlarImage";
+import orangebottom from "../public/bottom-mesh.png";
+import Layout from "../landing-components/landinglayout";
 import CardBox from "landing-components/card-box/card-box";
-import SalesBrand from "../public/sales-brand1.png";
-import SetForgot from "../public/set-forgot.png";
+import Banner from "../landing-components/brand-page/mainbanner/Banner";
+import Howitswork from "../landing-components/how-its-work/how-its-work";
+import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
+import Businesstoday from "../landing-components/brand-page/businesstoday/Businesstoday";
+import Influncerheading from "../landing-components/brand-page/influncerheading/Influncerheading";
+//assets
+import firstStep from "../public/step1.png";
+import thirdStep from "../public/work4.png";
+import secondStep from "../public/work1.png";
 import FreeJoin from "../public/free-join.png";
+import fourthStep from "../public/cartList.png";
+import SetForgot from "../public/set-forgot.png";
+import SalesBrand from "../public/sales-brand1.png";
 import PropleTrustPeople from "../public/people-trust-people.png";
+//assets
 import { seo } from "utils/seoData";
 
 const styless = {
   paperContainer: {
-    backgroundImage: "url(../Grain-Texture.png) !important",
+    backgroundImage: "url(../Grain-Texture.webp) !important",
     backgroundPosition: "0 0",
     backgroundRepeat: "repeat",
     backgroundSize: "initial",

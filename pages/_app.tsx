@@ -1,5 +1,5 @@
 //package
-import { SWRConfig } from "swr";
+
 import Script from "next/script";
 import { useEffect } from "react";
 import { store } from "store/slice";
@@ -9,7 +9,6 @@ import { DefaultSeo } from "next-seo";
 import { Provider } from "react-redux";
 import "photoswipe/dist/photoswipe.css";
 import SEO from "../utils/next-seo.config";
-import apiClient from "api/restApi/client";
 import { client } from "api/graphql/client";
 import { persistStore } from "redux-persist";
 import { ThemeProvider } from "@mui/material";
@@ -30,11 +29,13 @@ const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: any) {
   useEffect(() => {
-    Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
-      autoload: false,
-    });
-    Crisp.setZIndex(9999);
-    Crisp.load();
+    setTimeout(() => {
+      Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
+        autoload: false,
+      });
+      Crisp.setZIndex(9999);
+      Crisp.load();
+    }, 100);
   }, []);
   const persistor = persistStore(store);
   return (
@@ -57,19 +58,13 @@ setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${proces
       <DefaultSeo {...SEO} />
       <Provider store={store}>
         <ApolloProvider client={client}>
-          <SWRConfig
-            value={{
-              fetcher: (resource) => apiClient.get(resource).then((r) => r.data),
-            }}
-          >
-            <ThemeProvider theme={theme}>
-              <PersistGate persistor={persistor}>
-                <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
+          <ThemeProvider theme={theme}>
+            <PersistGate persistor={persistor}>
+              <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-                <Component {...pageProps} />
-              </PersistGate>
-            </ThemeProvider>
-          </SWRConfig>
+              <Component {...pageProps} />
+            </PersistGate>
+          </ThemeProvider>
         </ApolloProvider>
       </Provider>
     </CacheProvider>

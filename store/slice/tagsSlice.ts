@@ -3,7 +3,7 @@
  * Avoid data persist
  */
 
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { client } from "api/graphql/client";
 import { getFilterData } from "api/graphql/grapgql";
 

@@ -13,7 +13,7 @@ middleware.push(thunk);
 
 const persistConfig = {
   key: "root",
-  blacklist: ["tags"],
+  //  blacklist: ["tags"],
   version: 1,
   storage,
 };

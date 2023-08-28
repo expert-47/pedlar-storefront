@@ -23,7 +23,7 @@ import { seo } from "utils/seoData";
 
 const styless = {
   paperContainer: {
-    backgroundImage: "url(../Grain-Texture.png) !important",
+    backgroundImage: "url(../Grain-Texture.webp) !important",
     backgroundPosition: "0 0",
     backgroundRepeat: "repeat",
     backgroundSize: "initial",

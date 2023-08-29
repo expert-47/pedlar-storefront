@@ -1,16 +1,14 @@
 // pages/_document.ts
 
-// `getInitialProps` belongs to `_document` (instead of `_app`),
-// it's compatible with static-site generation (SSG).
-
-import * as React from "react";
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript, DocumentProps } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from "utils/createEmotionCache";
 
-export default function MyDocument(props) {
-  const { emotionStyleTags } = props;
+interface MyDocumentProps extends DocumentProps {
+  emotionStyleTags: JSX.Element[];
+}
 
+export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
     <Html lang="en">
       <Head>
@@ -18,17 +16,21 @@ export default function MyDocument(props) {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block"
           rel="stylesheet"
         />
-
-        <link rel="manifest" href="/manifest/manifest.webmanifest" />
-        <link rel="apple-touch-icon" href="/images/icon-512x512.png"></link>
-
-        {/* PWA primary color */}
-        <meta name="theme-color" content={"wite"} />
-        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
+        <link rel="manifest" href="/manifest/manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="/images/icon-512x512.png"></link>
       </Head>
+
       <body>
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_KEY}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Main />
         <NextScript />
       </body>
@@ -38,7 +40,8 @@ export default function MyDocument(props) {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+
+MyDocument.getInitialProps = async (ctx: DocumentContext) => {
   // Resolution order
   //
   // On the server:
@@ -70,7 +73,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) =>
+      enhanceApp: (App: React.ComponentType<React.ComponentProps<AppType> & MyAppProps>) =>
         function EnhanceApp(props) {
           return <App emotionCache={cache} {...props} />;
         },

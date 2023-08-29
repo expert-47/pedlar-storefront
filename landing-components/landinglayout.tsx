@@ -1,10 +1,9 @@
-import React, { lazy } from "react";
+import React from "react";
 import { Container, ContainerProps, useMediaQuery, useTheme } from "@mui/material";
+import Header from "./header/header";
+import Footer from "./footer/footer";
 import { NextSeo, NextSeoProps } from "next-seo";
-const Header = lazy(() => import("./header/header"));
-const Footer = lazy(() => import("./footer/footer"));
-
-const ResponsiveHeader = lazy(() => import("./header/responsive-header"));
+import ResponsiveHeader from "./header/responsive-header";
 
 interface LayoutProps extends ContainerProps {
   seo?: NextSeoProps;

@@ -1,7 +1,7 @@
 // package imports
 import Typewriter from "typewriter-effect";
-import React, { FC, useState } from "react";
-import { useTheme, Button, Box, Typography, useMediaQuery } from "@mui/material";
+import React, { FC, Fragment, useState } from "react";
+import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
 //components imports
 import PedlarImage from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
@@ -14,7 +14,6 @@ import mediumBanner from "/public/TabletBanner.png";
 import desktopBanner from "/public/desktopBanner.png";
 //styles imports
 import { styles } from "./style";
-import Image from "next/image";
 
 const Banner: FC = (): JSX.Element => {
   const theme = useTheme();
@@ -57,84 +56,96 @@ const Banner: FC = (): JSX.Element => {
       <Box
         sx={styles.MainBox}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
-        marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
       >
-        {isdektop ? (
-          <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" priority />
-        ) : isSmall ? (
-          <Image src={mobileBanner} alt="Mobile banner" priority={true} />
-        ) : isMedium ? (
-          <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" priority />
-        ) : (
-          <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" priority />
-        )}
+        <Grid
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
+          sx={{ position: "relative", zIndex: "9" }}
+          marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
+        >
+          {isdektop ? (
+            <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" priority />
+          ) : isSmall ? (
+            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" priority />
+          ) : isMedium ? (
+            <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" priority />
+          ) : (
+            <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" priority />
+          )}
 
-        <Box sx={styles.bannerText}>
-          <Typography
-            sx={styles.fashionText}
-            color={"#1C1B1F"}
-            fontWeight={"700"}
-            lineHeight={"normal"}
-            fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
-          >
-            We put fashion
-          </Typography>
-          <Box sx={styles.animateRow}>
-            <Typewriter
-              options={{
-                strings: ["Creators ", "Influencers ", "Curators "],
-                autoStart: true,
-                loop: true,
-                skipAddStyles: true,
-                wrapperClassName: "Typewriter__wrapper",
-              }}
-            />
-
+          <Box sx={styles.bannerText}>
             <Typography
-              ml={1}
+              sx={styles.fashionText}
               color={"#1C1B1F"}
               fontWeight={"700"}
-              lineHeight={"unset"}
-              sx={styles.fashionText}
+              lineHeight={"normal"}
               fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
             >
-              in business
+              We put fashion
             </Typography>
-          </Box>
+            <Box sx={styles.animateRow}>
+              <Typewriter
+                options={{
+                  strings: ["Creators ", "Influencers ", "Curators "],
+                  autoStart: true,
+                  loop: true,
+                  skipAddStyles: true,
+                  wrapperClassName: "Typewriter__wrapper",
+                }}
+              />
 
-          <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px", lg: "22px" }} fontWeight={600}>
-            Simplified creator commerce. Sell directly to your followers through customisable storefronts.
-          </Typography>
-          <Button sx={styles.creator} onClick={() => openPopup("creator")}>
-            {"I’m a creator"}
-          </Button>
-          <Button sx={styles.brands} onClick={() => openPopup("brand")}>
-            {"I’m a brand"}
-          </Button>
-          {openDialog ? (
-            popupScreen ? (
-              <LoginDialog
-                userType={userType}
-                openDialog={openDialog}
-                closePopup={closePopup}
-                handleClose={handleClose}
-                setOpenDialog={setOpenDialog}
-                sucessModalshow={sucessModalshow}
-                isSecondModalActive={isSecondModalActive}
-              />
-            ) : (
-              <BottomSheet
-                userType={userType}
-                openDialog={openDialog}
-                closePopup={closePopup}
-                handleClose={handleClose}
-                setOpenDialog={setOpenDialog}
-                sucessModalshow={sucessModalshow}
-                isSecondModalActive={isSecondModalActive}
-              />
-            )
-          ) : null}
-        </Box>
+              <Typography
+                ml={1}
+                color={"#1C1B1F"}
+                fontWeight={"700"}
+                lineHeight={"unset"}
+                sx={styles.fashionText}
+                fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
+              >
+                in business
+              </Typography>
+            </Box>
+            <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px", lg: "22px" }} fontWeight={600}>
+              Simplified creator commerce. Sell directly to your followers through customisable storefronts.
+            </Typography>
+            <Grid>
+              <Button sx={styles.creator} onClick={() => openPopup("creator")}>
+                {"I’m a creator"}
+              </Button>
+              <Button sx={styles.brands} onClick={() => openPopup("brand")}>
+                {"I’m a brand"}
+              </Button>
+              {openDialog ? (
+                popupScreen ? (
+                  <LoginDialog
+                    userType={userType}
+                    openDialog={openDialog}
+                    closePopup={closePopup}
+                    handleClose={handleClose}
+                    setOpenDialog={setOpenDialog}
+                    sucessModalshow={sucessModalshow}
+                    isSecondModalActive={isSecondModalActive}
+                  />
+                ) : (
+                  <BottomSheet
+                    userType={userType}
+                    openDialog={openDialog}
+                    closePopup={closePopup}
+                    handleClose={handleClose}
+                    setOpenDialog={setOpenDialog}
+                    sucessModalshow={sucessModalshow}
+                    isSecondModalActive={isSecondModalActive}
+                  />
+                )
+              ) : (
+                <Fragment />
+              )}
+            </Grid>
+          </Box>
+        </Grid>
       </Box>
     </CustomContainer>
   );

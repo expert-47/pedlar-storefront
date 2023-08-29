@@ -1,6 +1,8 @@
 export const styles = {
   MainBox: {
     paddingTop: "25px",
+    position: "relative",
+    zIndex: "9",
   },
   fashionText: {
     ["@media (min-width:1300px)"]: {

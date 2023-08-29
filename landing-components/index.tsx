@@ -1,16 +1,19 @@
 //packages imports
-import React from "react";
-import Image from "next/image";
+import React, { lazy } from "react";
 import Box from "@mui/material/Box";
 //components imports
-import Faq from "../landing-components/faq/faq";
-import Layout from "../landing-components/landinglayout";
-import Company from "../landing-components/landing/comapny/company";
-import Howitswork from "../landing-components/how-its-work/how-its-work";
-import Gridbox from "../landing-components/landing/marquee-grid/grid-box";
-import Banner from "../landing-components/landing/homebanner/home-banner";
-import EarlyAcess from "../landing-components/landing/earlyaccess/early-access";
-import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
+const Faq = lazy(() => import("../landing-components/faq/faq"));
+
+const Layout = lazy(() => import("../landing-components/landinglayout"));
+
+const Company = lazy(() => import("../landing-components/landing/comapny/company"));
+
+const Banner = lazy(() => import("../landing-components/landing/homebanner/home-banner"));
+const Picturecarousel = lazy(() => import("../landing-components/picture-carousel/pictures-carousel"));
+const EarlyAcess = lazy(() => import("../landing-components/landing/earlyaccess/early-access"));
+const Gridbox = lazy(() => import("../landing-components/landing/marquee-grid/grid-box"));
+const Howitswork = lazy(() => import("../landing-components/how-its-work/how-its-work"));
+
 //images imports
 import firstStep from "../public/step1.png";
 import thirdStep from "../public/step3.png";
@@ -19,19 +22,16 @@ import fourthStep from "../public/step4.png";
 import orangeMeshes from "../public/orange-meshes.png";
 import pinkMeshes from "../public/left-pink-meshes.webp";
 import orangeMesh from "../public/meshHome-gradient.png";
+const PedlarImage = lazy(() => import("components/pedlarImage"));
+
 //seo import
 import { seo } from "utils/seoData";
 //style
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.webp) !important",
-    backgroundPosition: "0 0",
-    backgroundRepeat: "repeat",
-    backgroundSize: "initial",
-    content: `""`,
     height: " 100%",
-    mixBlendMode: "overlay",
-    opacity: ".6",
+    opacity: ".1",
     position: " absolute",
     width: "100%",
     zIndex: "2",
@@ -50,16 +50,16 @@ const Home = () => {
         description: seo.landingDescription,
       }}
     >
-      <Box sx={styless.paperContainer}></Box>
+      <Box sx={styless.paperContainer} />
       <Box className="positionProperty">
         <Box className="orangeMeshesBox" top={{ xs: "1051px" }}>
-          <Image layout="intrinsic" src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
+          <PedlarImage layout="intrinsic" src={orangeMeshes} alt="Orange meshes" loading={"lazy"} quality={50} />
         </Box>
         <Box className="pinkMeshesBox" top={{ xs: "512px", lg: "57px" }}>
-          <Image layout="intrinsic" src={pinkMeshes} alt="pink meshes" quality={50} />
+          <PedlarImage layout="intrinsic" loading={"lazy"} src={pinkMeshes} alt="pink meshes" quality={50} />
         </Box>
         <Box className="orangeMeshesBox" top={{ xs: "2118px", sm: "422px", md: "422px", lg: "1655px" }}>
-          <Image layout="intrinsic" src={orangeMesh} alt="Oranges pink meshes" quality={50} />
+          <PedlarImage layout="intrinsic" loading={"lazy"} src={orangeMesh} alt="Oranges pink meshes" quality={50} />
         </Box>
       </Box>
       <Banner />

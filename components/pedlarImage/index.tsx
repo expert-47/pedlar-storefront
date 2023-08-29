@@ -26,7 +26,7 @@ const PedlarImage = (props: Props) => {
         sizes="(max-width: 768px) 100vw,
         (max-width: 1200px) 50vw,
         33vw"
-        {...props}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         src={error ? placeholder || skeletonImg : props.src}
         onError={() => {
           setError(true);
@@ -35,6 +35,7 @@ const PedlarImage = (props: Props) => {
         {...(enableBlurDataUrl ? { blurDataURL: "/loaderShim.png" } : {})}
         onLoad={onLoad}
         loading="eager"
+        {...props}
       />
     </Box>
   );

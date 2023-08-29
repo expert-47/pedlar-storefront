@@ -62,7 +62,7 @@ const Banner: FC = (): JSX.Element => {
         {isdektop ? (
           <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" priority />
         ) : isSmall ? (
-          <PedlarImage src={mobileBanner} alt="Mobile banner" priority={true} enableBlurDataUrl={true} />
+          <Image src={mobileBanner} alt="Mobile banner" priority={true} />
         ) : isMedium ? (
           <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" priority />
         ) : (
@@ -101,6 +101,7 @@ const Banner: FC = (): JSX.Element => {
               in business
             </Typography>
           </Box>
+
           <Typography sx={styles.FirstPara} fontSize={{ xs: "18px", md: "20px", lg: "22px" }} fontWeight={600}>
             Simplified creator commerce. Sell directly to your followers through customisable storefronts.
           </Typography>

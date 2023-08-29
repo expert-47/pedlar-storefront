@@ -30,8 +30,13 @@ import { seo } from "utils/seoData";
 const styless = {
   paperContainer: {
     backgroundImage: "url(../Grain-Texture.webp) !important",
+    backgroundPosition: "0 0",
+    backgroundRepeat: "repeat",
+    backgroundSize: "initial",
+    content: `""`,
     height: " 100%",
-    opacity: ".1",
+    mixBlendMode: "overlay",
+    opacity: ".6",
     position: " absolute",
     width: "100%",
     zIndex: "2",

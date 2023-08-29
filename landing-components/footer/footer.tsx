@@ -15,6 +15,11 @@ const Footer = () => {
       <CustomContainer>
         <Grid
           container
+          item
+          xs={12}
+          sm={12}
+          md={12}
+          lg={12}
           sx={styles.footerRow}
           flexDirection={{ xs: "column-reverse", sm: "unset" }}
           paddingX={{ xs: theme.spacing(10), md: theme.spacing(20), lg: theme.spacing(30) }}
@@ -57,6 +62,7 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid
+            container
             item
             xs={12}
             sm={5}

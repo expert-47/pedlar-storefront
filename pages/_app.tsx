@@ -1,30 +1,33 @@
 //package
 
 import Script from "next/script";
-import { Fragment, lazy, useEffect } from "react";
+import { useEffect } from "react";
+import { store } from "store/slice";
+import { AppProps } from "next/app";
 import { Crisp } from "crisp-sdk-web";
 import { DefaultSeo } from "next-seo";
-
+import { Provider } from "react-redux";
+import "photoswipe/dist/photoswipe.css";
 import SEO from "../utils/next-seo.config";
 import { client } from "api/graphql/client";
-
+import { persistStore } from "redux-persist";
+import { ThemeProvider } from "@mui/material";
+import "react-slideshow-image/dist/styles.css";
+import NextNProgress from "nextjs-progressbar";
 import { ApolloProvider } from "@apollo/client";
+import { theme } from "styles/theme/defalutTheme";
+import createEmotionCache from "utils/createEmotionCache";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import { PersistGate } from "redux-persist/integration/react";
 //style
 import "../styles/globals.css";
-import createEmotionCache from "utils/createEmotionCache";
-import { CacheProvider } from "@emotion/react";
-import Head from "next/head";
 
-const ReduxProvider = lazy(() => import("../Provider/redux"));
+export interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+const clientSideEmotionCache = createEmotionCache();
 
-const MuiThemeProvider = lazy(() => import("../Provider/ThemeProvider"));
-const NextProgress = lazy(() => import("../Provider/NextProgress"));
-
-function MyApp(props: any) {
-  const clientSideEmotionCache = createEmotionCache();
-
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
+function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: any) {
   useEffect(() => {
     setTimeout(() => {
       Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
@@ -34,6 +37,7 @@ function MyApp(props: any) {
       Crisp.load();
     }, 100);
   }, []);
+  const persistor = persistStore(store);
   return (
     <CacheProvider value={emotionCache}>
       <Script
@@ -51,19 +55,18 @@ function MyApp(props: any) {
 setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${process.env.NEXT_PUBLIC_GTM_KEY}'), 3000);'${process.env.NEXT_PUBLIC_GTM_KEY}'`,
         }}
       />
-      <Head>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-      </Head>
       <DefaultSeo {...SEO} />
-      <ApolloProvider client={client}>
-        <MuiThemeProvider>
-          <ReduxProvider>
-            <NextProgress />
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <ThemeProvider theme={theme}>
+            <PersistGate persistor={persistor}>
+              <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-            <Component {...pageProps} />
-          </ReduxProvider>
-        </MuiThemeProvider>
-      </ApolloProvider>
+              <Component {...pageProps} />
+            </PersistGate>
+          </ThemeProvider>
+        </ApolloProvider>
+      </Provider>
     </CacheProvider>
   );
 }

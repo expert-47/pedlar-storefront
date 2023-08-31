@@ -61,7 +61,7 @@ export const ResponsiveNavbar = (props: Props) => {
           <Box sx={styles.menuIcon}>
             <Image src="/mIcons.png" alt="No Image Found" onClick={onClickDrawer} width="20px" height="14px" />
           </Box>
-          <Link href={`/${props?.slugs}`} legacyBehavior>
+          <Link href={`/${props?.slugs}`} style={{ display: "flex", alignItems: "center" }}>
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>

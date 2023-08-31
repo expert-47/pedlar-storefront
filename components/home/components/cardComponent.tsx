@@ -44,7 +44,8 @@ const CardComponent = ({
         query: { id: productId, index: index, heading: heading },
       }}
       as={`/${storeName}/product/${productId}`}
-      legacyBehavior>
+      style={{ textDecoration: "none", color: "black" }}
+    >
       <Box
         width={width}
         sx={{

@@ -89,7 +89,7 @@ export default function Navbar(props: any) {
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
-                  <Link href={`/${props?.slug}`} legacyBehavior>
+                  <Link href={`/${props?.slug}`}>
                     <Box sx={{ height: 22, width: 68, cursor: "pointer" }}>
                       <PedlarImage src="/pedlar.png" alt="No Image Found" />
                     </Box>
@@ -97,7 +97,7 @@ export default function Navbar(props: any) {
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
-                  <Link href={`/${path}`} legacyBehavior>
+                  <Link href={`/${path}`} style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
@@ -109,15 +109,10 @@ export default function Navbar(props: any) {
                     </>
                   )}
 
-                  <Link
-                    href={`/${path}/faq`}
-                    target="_blank"
-                    style={{ textDecoration: "none", marginTop: "4px" }}>
-
+                  <Link href={`/${path}/faq`} target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
                     <Button color="inherit" sx={styles.tabButton}>
                       FAQ
                     </Button>
-
                   </Link>
 
                   <Badge badgeContent={totalProductLength} color="secondary">

@@ -48,31 +48,34 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string; onClic
           <Typography sx={styles.gridtag1typo1}>{leftHeading}</Typography>
         </Grid>
 
-        <Link
-          href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
-          as={`/${slug.slug}/products`}
-          legacyBehavior>
-          <Grid
-            item
-            xs={5}
-            sm={4}
-            md={4}
-            lg={4}
-            style={{
-              cursor: "pointer",
-              alignItems: "center",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-              flexWrap: "nowrap",
-            }}
+        <Grid
+          item
+          xs={5}
+          sm={4}
+          md={4}
+          lg={4}
+          style={{
+            cursor: "pointer",
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            flexWrap: "nowrap",
+          }}
+        >
+          <Link
+            style={{ textDecoration: "none", display: "flex", alignItems: "center" }}
+            href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
+            as={`/${slug.slug}/products`}
           >
-            <Typography fontSize={15} fontWeight={500} sx={styles.gridtag1typo2}>
-              {rightHeading}
-            </Typography>
-            <ArrowForwardIcon sx={styles.arrowIcon} />
-          </Grid>
-        </Link>
+            <>
+              <Typography fontSize={15} fontWeight={500} sx={styles.gridtag1typo2}>
+                {rightHeading}
+              </Typography>
+              <ArrowForwardIcon sx={styles.arrowIcon} />
+            </>
+          </Link>
+        </Grid>
       </Grid>
     </CustomGrid>
   );

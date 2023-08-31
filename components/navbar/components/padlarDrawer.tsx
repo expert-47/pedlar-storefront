@@ -132,7 +132,7 @@ export const PedlarDrawer = (props: {
           </Grid>
           <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
             <Box onClick={closeDrawer}>
-              <Link href={`/${props?.slug}`} legacyBehavior>
+              <Link href={`/${props?.slug}`}>
                 <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
               </Link>
             </Box>
@@ -157,7 +157,7 @@ export const PedlarDrawer = (props: {
 
         <Grid style={{ paddingTop: "10px" }}></Grid>
         <ListItemText sx={styles.drawerText}>
-          <Link href={`/${storeName}`} legacyBehavior>
+          <Link href={`/${storeName}`} style={{ textDecoration: "none", color: "black" }}>
             <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               Home
             </ListItem>
@@ -295,12 +295,11 @@ export const PedlarDrawer = (props: {
           <Link
             href={`/${storeName}/faq`}
             target={"blank"}
-            style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}>
-
+            style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}
+          >
             <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               FAQ
             </ListItem>
-
           </Link>
         </ListItemText>
       </List>

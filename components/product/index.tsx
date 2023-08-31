@@ -617,19 +617,20 @@ const Cart = (props: any) => {
                   formattedPrice = Math.round(formattedPrice);
                 }
                 return (
-                  <Link
-                    key={"link" + index}
-                    href={{ pathname: `${path}/product/${productId}` }}
-                    legacyBehavior>
-                    <Grid
-                      key={index}
-                      item
-                      xs={6}
-                      sm={3}
-                      md={3}
-                      lg={2}
-                      sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                      onClick={ClearErrors}
+                  <Grid
+                    key={index}
+                    item
+                    xs={6}
+                    sm={3}
+                    md={3}
+                    lg={2}
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
+                    onClick={ClearErrors}
+                  >
+                    <Link
+                      key={"link" + index}
+                      href={{ pathname: `${path}/product/${productId}` }}
+                      style={{ textDecoration: "none" }}
                     >
                       <CardComponent
                         width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
@@ -647,8 +648,8 @@ const Cart = (props: any) => {
                         index={index}
                         heading={"you might like"}
                       />
-                    </Grid>
-                  </Link>
+                    </Link>
+                  </Grid>
                 );
               })}
             </Grid>
@@ -689,19 +690,20 @@ const Cart = (props: any) => {
                   formattedPrice = Math.round(formattedPrice);
                 }
                 return (
-                  <Link
-                    key={"link" + index}
-                    href={{ pathname: `${path}/product/${productId}` }}
-                    legacyBehavior>
-                    <Grid
-                      key={index}
-                      item
-                      xs={6}
-                      sm={3}
-                      md={3}
-                      lg={2}
-                      sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                      onClick={ClearErrors}
+                  <Grid
+                    key={index}
+                    item
+                    xs={6}
+                    sm={3}
+                    md={3}
+                    lg={2}
+                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
+                    onClick={ClearErrors}
+                  >
+                    <Link
+                      key={"link" + index}
+                      href={{ pathname: `${path}/product/${productId}` }}
+                      style={{ textDecoration: "none" }}
                     >
                       <CardComponent
                         width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
@@ -719,8 +721,8 @@ const Cart = (props: any) => {
                         index={index}
                         heading={"you might like"}
                       />
-                    </Grid>
-                  </Link>
+                    </Link>
+                  </Grid>
                 );
               })}
             </Grid>

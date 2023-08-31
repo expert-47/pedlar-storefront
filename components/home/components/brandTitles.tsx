@@ -5,21 +5,13 @@ import styles from "styles/home";
 import { useRouter } from "next/router";
 import PedlarImage from "components/pedlarImage";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const BrandTitles = (props: any) => {
   const route = useRouter();
   const storeName = useSelector((data: any) => data.app.storeName);
+  const type = "Brands";
 
-  const navigateToProduct = (data: any) => {
-    const type = "Brands";
-    route.push(
-      {
-        pathname: `${route.basePath}/${storeName}/products`,
-        query: { dataType: type, itemValue: data.vendor },
-      },
-      `${route.basePath}/${storeName}/products`,
-    );
-  };
   return (
     <>
       <CustomGrid
@@ -56,44 +48,52 @@ const BrandTitles = (props: any) => {
           sx={{ columnGap: "15px" }}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
-            <Box
-              onClick={() => {
-                navigateToProduct(item);
-              }}
-              sx={styles.brandImage}
-              style={{
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                backgroundColor: "white",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                zIndex: "1",
-                cursor: "pointer",
-              }}
+            <Link
               key={item?.vendor + index}
+              href={{
+                pathname: `${route.basePath}/${storeName}/products`,
+                query: { dataType: type, itemValue: item.vendor },
+              }}
+              as={`${route.basePath}/${storeName}/products`}
+              style={{
+                display: "flex",
+              }}
             >
-              <PedlarImage
-                renderError={() => {
-                  return (
-                    <Box
-                      sx={{
-                        color: "black",
-                        height: "150px",
-                        width: "280px",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <Typography fontSize={"16px"}>{item?.vendor}</Typography>
-                    </Box>
-                  );
+              <Box
+                sx={styles.brandImage}
+                style={{
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+                  backgroundColor: "white",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  zIndex: "1",
+                  cursor: "pointer",
                 }}
-                src={item?.logo_url}
-                alt={item?.vendor + index}
-                quality="100"
-              />
-            </Box>
+              >
+                <PedlarImage
+                  renderError={() => {
+                    return (
+                      <Box
+                        sx={{
+                          color: "black",
+                          height: "150px",
+                          width: "280px",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          display: "flex",
+                        }}
+                      >
+                        <Typography fontSize={"16px"}>{item?.vendor}</Typography>
+                      </Box>
+                    );
+                  }}
+                  src={item?.logo_url}
+                  alt={item?.vendor + index}
+                  quality="100"
+                />
+              </Box>
+            </Link>
           ))}
         </Grid>
       </CustomGrid>

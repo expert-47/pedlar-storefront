@@ -102,13 +102,19 @@ const ResponsiveHeader: FC = (): JSX.Element => {
               </IconButton>
             </Box>
             <Box sx={styles.ResponButtonCreator}>
-              <Link href={"/for-creator"} legacyBehavior>
+              <Link
+                href={"/for-creator"}
+                style={{
+                  color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  textDecoration: "none",
+                }}
+              >
                 <Typography
                   textTransform="none"
                   sx={{
                     ...styles.ButtonRTypo,
                     textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
-                    color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "initial",
+                    color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
                   }}
                 >
                   For Creators
@@ -117,13 +123,19 @@ const ResponsiveHeader: FC = (): JSX.Element => {
             </Box>
 
             <Box sx={styles.ResponButtonBrands}>
-              <Link href={"/for-brands"} legacyBehavior>
+              <Link
+                href={"/for-brands"}
+                style={{
+                  color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  textDecoration: "none",
+                }}
+              >
                 <Typography
                   textTransform="none"
                   sx={{
                     ...styles.ButtonRTypo,
                     textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
-                    color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "initial",
+                    color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "black",
                   }}
                 >
                   For Brands

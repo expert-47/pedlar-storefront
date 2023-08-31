@@ -44,10 +44,7 @@ export const Home = (props: any) => {
             paddingRight: { xs: "10px", md: "0px" },
           }}
         >
-          <Link
-            href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
-            as={`/${slug.slug}/products`}
-            legacyBehavior>
+          <Link href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
             <Grid>
               <Button
                 sx={{

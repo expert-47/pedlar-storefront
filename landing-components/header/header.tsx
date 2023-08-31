@@ -105,7 +105,13 @@ const Header: FC = (): JSX.Element => {
               </Grid>
               <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid>
-                  <Link href={"/for-creator"} legacyBehavior>
+                  <Link
+                    href={"/for-creator"}
+                    style={{
+                      textDecoration: "none",
+                      color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                    }}
+                  >
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}
@@ -121,7 +127,13 @@ const Header: FC = (): JSX.Element => {
                   </Link>
                 </Grid>
                 <Grid>
-                  <Link href={"/for-brands"} legacyBehavior>
+                  <Link
+                    href={"/for-brands"}
+                    style={{
+                      textDecoration: "none",
+                      color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "black",
+                    }}
+                  >
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}

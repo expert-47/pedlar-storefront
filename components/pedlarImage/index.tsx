@@ -1,9 +1,9 @@
 import React from "react";
-import Image, { ImageProps, StaticImageData } from "next/legacy/image";
+import Image from "next/legacy/image";
 import { useState } from "react";
 import { Box } from "@mui/material";
 import skeletonImg from "public/skeletonImg.jpeg";
-import NewImage from "next/image";
+import NewImage, { ImageProps, StaticImageData } from "next/image";
 
 interface Props extends Omit<ImageProps, "placeholder"> {
   zIndex?: number;
@@ -11,6 +11,8 @@ interface Props extends Omit<ImageProps, "placeholder"> {
   renderError?: any;
   onLoad?: any;
   enableBlurDataUrl?: boolean;
+  fill: boolean;
+  layout: "defalut" | "";
 }
 const PedlarImage = (props: Props) => {
   const [error, setError] = useState(false);
@@ -45,36 +47,46 @@ const PedlarImage = (props: Props) => {
 export default PedlarImage;
 
 export const NextImage = (props: Props) => {
-  const [error, setError] = useState(false);
-  const { zIndex = -1, placeholder, renderError, onLoad, fill = true, style } = props;
+  const { zIndex = -1, layout } = props;
 
-  if (error && renderError) {
-    return renderError();
+  if (layout == "defalut") {
+    return <CustomImage {...props} />;
   }
   return (
     <Box style={{ width: "100%", height: "100%", position: "relative", zIndex: zIndex }}>
-      <NewImage
-        sizes="(max-width: 768px) 100vw,
-        (max-width: 1200px) 50vw,
-        33vw"
-        fill={fill}
-        {...props}
-        style={{
-          ...style,
-          objectFit: style?.objectFit ? style?.objectFit : "cover",
-        }}
-        src={error ? placeholder || skeletonImg : props.src}
-        onError={() => {
-          setError(true);
-        }}
-        placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-        onLoad={onLoad}
-        loading={props.priority ? "eager" : "lazy"}
-      />
+      <CustomImage {...props} />
     </Box>
   );
 };
 
+const CustomImage = (props) => {
+  const [error, setError] = useState(false);
+
+  const { zIndex = -1, placeholder, renderError, onLoad, fill = true, style } = props;
+  if (error && renderError) {
+    return renderError();
+  }
+  return (
+    <NewImage
+      sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,
+        33vw"
+      fill={fill}
+      {...props}
+      style={{
+        ...style,
+        objectFit: style?.objectFit ? style?.objectFit : "cover",
+      }}
+      src={error ? placeholder || skeletonImg : props.src}
+      onError={() => {
+        setError(true);
+      }}
+      placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+      onLoad={onLoad}
+      loading={props.priority ? "eager" : "lazy"}
+    />
+  );
+};
 const toBase64 = (str: string) =>
   typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str);
 

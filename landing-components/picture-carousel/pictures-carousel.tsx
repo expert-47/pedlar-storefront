@@ -79,7 +79,13 @@ const Picturecarousel: FC = (): JSX.Element => {
             <SwiperSlide style={styles.slide} key={item?.altText}>
               <Box sx={styles.cardBox}>
                 <Box>
-                  <Image src={item?.src} alt={item?.altText} style={{ height: 250 }} />
+                  <NextImage
+                    layout="defalut"
+                    src={item?.src}
+                    fill={false}
+                    alt={item?.altText}
+                    style={{ height: 250 }}
+                  />
                 </Box>
                 <Typography sx={styles.cardText}>{item?.altText}</Typography>
               </Box>

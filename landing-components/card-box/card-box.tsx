@@ -4,7 +4,7 @@ import { CustomContainer } from "../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
 import PedlarImage from "components/pedlarImage";
-import { StaticImageData } from "next/image";
+import { StaticImageData } from "next/legacy/image";
 
 interface Props {
   heading: string;

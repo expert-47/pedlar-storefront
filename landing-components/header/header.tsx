@@ -12,7 +12,7 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
@@ -105,7 +105,7 @@ const Header: FC = (): JSX.Element => {
               </Grid>
               <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid>
-                  <Link href={"/for-creator"}>
+                  <Link href={"/for-creator"} legacyBehavior>
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}
@@ -121,7 +121,7 @@ const Header: FC = (): JSX.Element => {
                   </Link>
                 </Grid>
                 <Grid>
-                  <Link href={"/for-brands"}>
+                  <Link href={"/for-brands"} legacyBehavior>
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}

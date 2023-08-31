@@ -1,6 +1,6 @@
 //package imports
 import React from "react";
-import { StaticImageData } from "next/image";
+import { StaticImageData } from "next/legacy/image";
 import { Box, Typography } from "@mui/material";
 //componets imports
 import PedlarImage from "components/pedlarImage";

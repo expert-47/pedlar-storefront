@@ -1,5 +1,5 @@
 import React from "react";
-import Image, { ImageProps, StaticImageData } from "next/image";
+import Image, { ImageProps, StaticImageData } from "next/legacy/image";
 import { useState } from "react";
 import { Box } from "@mui/material";
 import skeletonImg from "public/skeletonImg.jpeg";

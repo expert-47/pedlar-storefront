@@ -11,7 +11,7 @@ const CheckoutHeader = () => {
         <Typography sx={styles.headerText1}>Cart - Information - Payment</Typography>
       </Grid>
       <Grid item xs={6} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <Box sx={{ width: 68, height: 22, cursor: "pointer" }}>
             <PedlarImage src="/pedlar.png" alt="No Image Found" />
           </Box>

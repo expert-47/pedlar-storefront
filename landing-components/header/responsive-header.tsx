@@ -102,7 +102,7 @@ const ResponsiveHeader: FC = (): JSX.Element => {
               </IconButton>
             </Box>
             <Box sx={styles.ResponButtonCreator}>
-              <Link href={"/for-creator"}>
+              <Link href={"/for-creator"} legacyBehavior>
                 <Typography
                   textTransform="none"
                   sx={{
@@ -117,7 +117,7 @@ const ResponsiveHeader: FC = (): JSX.Element => {
             </Box>
 
             <Box sx={styles.ResponButtonBrands}>
-              <Link href={"/for-brands"}>
+              <Link href={"/for-brands"} legacyBehavior>
                 <Typography
                   textTransform="none"
                   sx={{

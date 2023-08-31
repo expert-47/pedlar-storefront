@@ -6,7 +6,7 @@ import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
 import { isIOS } from "react-device-detect";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
 import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme, Box } from "@mui/material";
@@ -89,7 +89,7 @@ export default function Navbar(props: any) {
             <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
-                  <Link href={`/${props?.slug}`}>
+                  <Link href={`/${props?.slug}`} legacyBehavior>
                     <Box sx={{ height: 22, width: 68, cursor: "pointer" }}>
                       <PedlarImage src="/pedlar.png" alt="No Image Found" />
                     </Box>
@@ -97,7 +97,7 @@ export default function Navbar(props: any) {
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
-                  <Link href={`/${path}`}>
+                  <Link href={`/${path}`} legacyBehavior>
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
@@ -109,12 +109,15 @@ export default function Navbar(props: any) {
                     </>
                   )}
 
-                  <Link href={`/${path}/faq`}>
-                    <a target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
-                      <Button color="inherit" sx={styles.tabButton}>
-                        FAQ
-                      </Button>
-                    </a>
+                  <Link
+                    href={`/${path}/faq`}
+                    target="_blank"
+                    style={{ textDecoration: "none", marginTop: "4px" }}>
+
+                    <Button color="inherit" sx={styles.tabButton}>
+                      FAQ
+                    </Button>
+
                   </Link>
 
                   <Badge badgeContent={totalProductLength} color="secondary">

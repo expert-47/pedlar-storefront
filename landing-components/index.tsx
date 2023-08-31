@@ -1,6 +1,6 @@
 //packages imports
 import React from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Box from "@mui/material/Box";
 //components imports
 import Faq from "../landing-components/faq/faq";

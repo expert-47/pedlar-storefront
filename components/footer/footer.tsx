@@ -4,7 +4,7 @@ import Grid from "@mui/material/Grid";
 import { Divider, useTheme } from "@mui/material";
 import { styles } from "styles/footer";
 import Text from "components/customText";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 const Footer = () => {
   const theme = useTheme();

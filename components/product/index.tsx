@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import "swiper/css";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
@@ -617,7 +617,10 @@ const Cart = (props: any) => {
                   formattedPrice = Math.round(formattedPrice);
                 }
                 return (
-                  <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
+                  <Link
+                    key={"link" + index}
+                    href={{ pathname: `${path}/product/${productId}` }}
+                    legacyBehavior>
                     <Grid
                       key={index}
                       item
@@ -686,7 +689,10 @@ const Cart = (props: any) => {
                   formattedPrice = Math.round(formattedPrice);
                 }
                 return (
-                  <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
+                  <Link
+                    key={"link" + index}
+                    href={{ pathname: `${path}/product/${productId}` }}
+                    legacyBehavior>
                     <Grid
                       key={index}
                       item

@@ -1,7 +1,7 @@
 //package imports
 import React from "react";
 import Scrollspy from "react-scrollspy";
-import Image, { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/legacy/image";
 import { Box, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 //componet imports
 import PedlarImage from "components/pedlarImage";

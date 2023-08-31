@@ -237,7 +237,10 @@ const CartDrawer = () => {
               <Typography sx={styles.totalText}>Your cart is empty</Typography>
             </Grid>
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
-            <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+            <Link
+              href={{ pathname: "/products", query: { slug: slug.slug } }}
+              as={`/${slug.slug}/products`}
+              legacyBehavior>
               <Button sx={styles.checkoutButton} onClick={onCloseCart}>
                 Shop now
               </Button>

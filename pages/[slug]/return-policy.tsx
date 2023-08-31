@@ -40,7 +40,7 @@ const Returnpolicy = (props: any) => {
             We want you to be completely satisfied with your purchased; if for any you change your mind, we&apos;re
             happy to refund all full priced items
           </Typography>
-          <Link href={`/${slug}/return-form`}>
+          <Link href={`/${slug}/return-form`} legacyBehavior>
             <Button sx={styles.returnbutton}>Start Return</Button>
           </Link>
           <Typography textTransform={"none"} fontSize={"16px"} fontWeight={"600"} sx={styles.spacing}>

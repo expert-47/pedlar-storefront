@@ -1,6 +1,6 @@
 import { Grid, Toolbar, Typography, useTheme, IconButton, Badge } from "@mui/material";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import styles from "styles/navbar";
 import React, { useState } from "react";
 import PedlarDrawer from "./components/padlarDrawer";
@@ -61,7 +61,7 @@ export const ResponsiveNavbar = (props: Props) => {
           <Box sx={styles.menuIcon}>
             <Image src="/mIcons.png" alt="No Image Found" onClick={onClickDrawer} width="20px" height="14px" />
           </Box>
-          <Link href={`/${props?.slugs}`}>
+          <Link href={`/${props?.slugs}`} legacyBehavior>
             <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>

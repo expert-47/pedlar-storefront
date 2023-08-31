@@ -3,7 +3,7 @@ import styles from "styles/home";
 import { Button, Box, useTheme, Typography, useMediaQuery, Paper, Grid } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
 
@@ -48,7 +48,10 @@ const TextBox = (props: any) => {
         lg={12}
         style={{ display: "flex", flexDirection: "column", maxWidth: "100%" }}
       >
-        <Link href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+        <Link
+          href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
+          as={`/${slug.slug}/products`}
+          legacyBehavior>
           <Grid
             style={{
               marginTop: "20px",

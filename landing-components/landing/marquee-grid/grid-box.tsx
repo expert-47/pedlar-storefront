@@ -4,7 +4,7 @@ import React, { FC, Fragment, useState } from "react";
 import { Typography, Grid, useMediaQuery, Box, useTheme } from "@mui/material";
 //components imports
 import TextBox from "./textBox";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import firstGrid from "../../../public/firstGrid.png";
 import thirdGrid from "../../../public/thirdGrid.png";
 import { CustomContainer } from "../../landinglayout";
@@ -112,7 +112,12 @@ const Gridbox: FC = (): JSX.Element => {
           >
             <Grid item xs={12} sm={8} md={6.5} lg={8}>
               <Box sx={{ width: "100%", height: { lg: "450px", sm: "400px", xs: "260px" } }}>
-                <PedlarImage src={firstGrid} alt="First Image" style={{ borderRadius: "8px" }} />
+                <NextImage
+                  src={firstGrid}
+                  alt="First Image"
+                  fill={true}
+                  style={{ borderRadius: "8px", objectFit: "cover", width: "100%", height: "100%" }}
+                />
               </Box>
             </Grid>
             <Grid
@@ -133,7 +138,7 @@ const Gridbox: FC = (): JSX.Element => {
                   marginTop: { xs: "20px", sm: "0px" },
                 }}
               >
-                <PedlarImage src={secondGrid} alt="Second Image" style={{ borderRadius: "8px" }} />
+                <NextImage src={secondGrid} alt="Second Image" style={{ borderRadius: "8px", objectFit: "cover" }} />
               </Box>
               <Box
                 sx={{
@@ -142,7 +147,7 @@ const Gridbox: FC = (): JSX.Element => {
                   marginTop: { xs: "20px", sm: "0px", lg: "10px" },
                 }}
               >
-                <PedlarImage src={thirdGrid} alt="Second Image" style={{ borderRadius: "8px" }} />
+                <NextImage src={thirdGrid} alt="Second Image" style={{ borderRadius: "8px", objectFit: "cover" }} />
               </Box>
             </Grid>
           </Grid>

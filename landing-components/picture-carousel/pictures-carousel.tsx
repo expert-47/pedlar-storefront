@@ -1,6 +1,6 @@
 //package imports
 import "swiper/css";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import React, { FC } from "react";
@@ -18,6 +18,7 @@ import StephenDan from "public/StephenDan.png";
 
 //style imports
 import { styles } from "./style";
+import { NextImage } from "components/pedlarImage";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
@@ -77,7 +78,9 @@ const Picturecarousel: FC = (): JSX.Element => {
           return (
             <SwiperSlide style={styles.slide} key={item?.altText}>
               <Box sx={styles.cardBox}>
-                <Image src={item?.src} alt={item?.altText} loading="eager" placeholder="blur" />
+                <Box>
+                  <Image src={item?.src} alt={item?.altText} style={{ height: 250 }} />
+                </Box>
                 <Typography sx={styles.cardText}>{item?.altText}</Typography>
               </Box>
             </SwiperSlide>

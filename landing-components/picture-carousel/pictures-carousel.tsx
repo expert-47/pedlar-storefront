@@ -1,6 +1,5 @@
 //package imports
 import "swiper/css";
-import Image from "next/image";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import React, { FC } from "react";
@@ -80,7 +79,7 @@ const Picturecarousel: FC = (): JSX.Element => {
               <Box sx={styles.cardBox}>
                 <Box>
                   <NextImage
-                    layout="defalut"
+                    layout="default"
                     src={item?.src}
                     fill={false}
                     alt={item?.altText}

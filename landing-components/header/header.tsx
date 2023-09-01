@@ -12,12 +12,11 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import Link from "next/link";
-import Image from "next/legacy/image";
 import { useRouter } from "next/router";
 import React, { FC, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 //components
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import ResponsiveHeader from "./responsive-header";
 import { CustomContainer } from "../landinglayout";
 import Brandspopup from "../popup-dialog/brandspopup";
@@ -85,7 +84,7 @@ const Header: FC = (): JSX.Element => {
               <Grid item xs={12} sm={12} md={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
                   <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
-                    <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" priority />
+                    <NextImage src={headerlogo} alt="pedlar-logo" style={{ objectFit: "contain" }} priority />
                   </Box>
                 ) : (
                   <Box
@@ -99,7 +98,7 @@ const Header: FC = (): JSX.Element => {
                       bottom: { md: 0 },
                     }}
                   >
-                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
+                    <NextImage src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}
               </Grid>

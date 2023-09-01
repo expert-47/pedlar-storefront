@@ -12,7 +12,6 @@ import firstStep from "../public/work1.png";
 import secondStep from "../public/work2.png";
 import thirdStep from "../public/work3.png";
 import fourthStep from "../public/work4.png";
-import PedlarImage from "components/pedlarImage";
 import bluemeshbrand from "../public/blueMesh-brand.png";
 import CardBox from "landing-components/card-box/card-box";
 import HassleIcon1 from "../public/hassle-icon1.png";
@@ -20,6 +19,8 @@ import HassleIcon2 from "../public/hassle-icon2.png";
 import HassleIcon3 from "../public/hassle-icon3.png";
 import HassleIcon4 from "../public/hassle-icon4.png";
 import { seo } from "utils/seoData";
+import Image from "next/image";
+import { NextImage } from "components/pedlarImage";
 
 const styless = {
   paperContainer: {
@@ -49,14 +50,28 @@ const creator = () => {
       }}
     >
       <Box sx={styless.paperContainer}></Box>
-      <Box style={{ position: "absolute", right: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
-        <PedlarImage layout="intrinsic" src={bluemeshbrands} alt="Orange meshes" />
+      <Box style={{ position: "absolute", right: "0", width: "100%", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
+        <NextImage
+          src={bluemeshbrands}
+          fill={false}
+          style={{ width: "100%", height: "auto" }}
+          layout="default"
+          alt="Orange meshes"
+          loading={"lazy"}
+        />
       </Box>
       <Box
-        style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }}
+        style={{ position: "absolute", left: "0", width: "100%", zIndex: "0" }}
         bottom={{ xs: "640px", sm: "350px" }}
       >
-        <PedlarImage layout="intrinsic" src={bluemeshbrand} alt="orang brand meshes" />
+        <NextImage
+          src={bluemeshbrand}
+          style={{ width: "100%", height: "auto" }}
+          fill={false}
+          layout="default"
+          alt="Orange meshes"
+          loading={"lazy"}
+        />
       </Box>
       <Banner />
       <CardBox

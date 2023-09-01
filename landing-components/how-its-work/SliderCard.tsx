@@ -1,9 +1,9 @@
 //package imports
 import React from "react";
-import { StaticImageData } from "next/legacy/image";
+import { StaticImageData } from "next/image";
 import { Box, Typography } from "@mui/material";
 //componets imports
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 //style imports
 import { styles } from "./style";
 interface Props {
@@ -30,7 +30,7 @@ const SliderCard = ({ title, image }: Props) => {
         </Typography>
       </Box>
       <Box sx={styles.imageSize}>
-        <PedlarImage src={image} alt="Sticky Section Images" style={{ borderRadius: "16px" }} objectFit="contain" />
+        <NextImage src={image} alt="Sticky Section Images" style={{ borderRadius: "16px", objectFit: "contain" }} />
       </Box>
     </Box>
   );

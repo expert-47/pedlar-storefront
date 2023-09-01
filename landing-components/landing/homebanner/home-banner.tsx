@@ -3,7 +3,7 @@ import Typewriter from "typewriter-effect";
 import React, { FC, Fragment, useState } from "react";
 import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
 //components imports
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
@@ -67,13 +67,13 @@ const Banner: FC = (): JSX.Element => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isdektop ? (
-            <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" priority />
+            <NextImage fill={false} style={{ width: "100%" }} src={desktopBanner} alt="desktop banner" priority />
           ) : isSmall ? (
-            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" priority />
+            <NextImage fill={false} style={{ width: "100%" }} src={mobileBanner} alt="Mobile banner" priority />
           ) : isMedium ? (
-            <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" priority />
+            <NextImage fill={false} style={{ width: "100%" }} src={mediumBanner} alt="tab banner" priority />
           ) : (
-            <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" priority />
+            <NextImage fill={false} style={{ width: "100%" }} src={largeBanner} alt="Large banner " priority />
           )}
 
           <Box sx={styles.bannerText}>

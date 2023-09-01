@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Typography, Box } from "@mui/material";
 import Link from "next/link";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
 interface Props {
@@ -60,7 +60,7 @@ const CardComponent = ({
               width: "100%",
             }}
           >
-            <PedlarImage src={image} objectFit="contain" enableBlurDataUrl={true} />
+            <NextImage src={image} style={{ objectFit: "contain" }} />
           </Box>
         )}
         <Typography

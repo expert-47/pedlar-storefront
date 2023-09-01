@@ -15,6 +15,7 @@ export const styles = {
     padding: "2px",
     paddingLeft: "4px",
     lineHeight: "16px",
+    objectFit: "contain",
   },
   footerText: {
     fontWeight: "400",

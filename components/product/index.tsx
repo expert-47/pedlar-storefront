@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import "swiper/css";
 import Link from "next/link";
-import Image from "next/legacy/image";
 import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
@@ -50,6 +49,7 @@ import { seo } from "utils/seoData";
 import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
+import { NextImage } from "components/pedlarImage";
 
 const Cart = (props: any) => {
   const theme = useTheme();
@@ -410,15 +410,18 @@ const Cart = (props: any) => {
                                       display: "flex",
                                     }}
                                   >
-                                    <Image
+                                    <NextImage
                                       src={item?.url}
                                       width={358}
                                       height={400}
+                                      layout="default"
+                                      alt={"newAdditiondataCart" + index}
+                                      fill={false}
+                                      style={{
+                                        objectFit: "contain",
+                                        objectPosition: "center",
+                                      }}
                                       priority={index < 2 ? true : false}
-                                      placeholder="blur"
-                                      blurDataURL="/loaderShim.png"
-                                      objectFit="contain"
-                                      objectPosition={"center"}
                                     />
                                   </Box>
                                 )}
@@ -452,13 +455,16 @@ const Cart = (props: any) => {
                           <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
                             {({ ref, open }) => (
                               <div onClick={open} ref={ref}>
-                                <Image
+                                <NextImage
                                   src={item?.url}
-                                  width={530}
+                                  fill={false}
+                                  layout="default"
+                                  width={540}
+                                  style={{
+                                    objectFit: "contain",
+                                  }}
                                   height={579}
-                                  placeholder="blur"
-                                  blurDataURL="/loaderShim.png"
-                                  objectFit="contain"
+                                  alt={"newAdditionImages" + index}
                                   priority={index < 2 ? true : false}
                                 />
                               </div>

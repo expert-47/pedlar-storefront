@@ -1,7 +1,7 @@
 //package imports
 import React from "react";
 import Scrollspy from "react-scrollspy";
-import Image, { StaticImageData } from "next/legacy/image";
+import Image, { StaticImageData } from "next/image";
 import { Box, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 //componet imports
 import { NextImage } from "components/pedlarImage";
@@ -115,9 +115,9 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           <NextImage
                             src={image1}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
                             style={{
                               objectFit: "contain",
+                              borderRadius: "16px",
                             }}
                           />
                         </Box>

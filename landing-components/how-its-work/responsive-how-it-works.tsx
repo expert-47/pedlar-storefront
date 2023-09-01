@@ -2,7 +2,7 @@
 import { Navigation } from "swiper";
 import SliderCard from "./SliderCard";
 import React, { useState } from "react";
-import { StaticImageData } from "next/legacy/image";
+import { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box, Grid, Typography } from "@mui/material";
 //component imports

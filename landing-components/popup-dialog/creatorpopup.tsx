@@ -3,7 +3,7 @@ import { Field, Form, Formik } from "formik";
 import React, { useState, useRef, FC, memo } from "react";
 import { Box, Button, Grid, InputAdornment, TextField, Typography } from "@mui/material";
 // components
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 // svgs
 import InstaIcon from "../../public/insta-icon.svg";
 import TiktokIcon from "../../public/tiktok-icon.svg";
@@ -146,7 +146,7 @@ const Creatorpopup: FC<Props> = (props): JSX.Element => {
                           contain: "layout",
                         }}
                       >
-                        <PedlarImage src={InstaIcon} alt="insta" />
+                        <NextImage src={InstaIcon} alt="insta" />
                       </Box>
                     </InputAdornment>
                   ),
@@ -166,7 +166,7 @@ const Creatorpopup: FC<Props> = (props): JSX.Element => {
                           contain: "layout",
                         }}
                       >
-                        <PedlarImage src={TiktokIcon} alt="Tiktok" />
+                        <NextImage src={TiktokIcon} alt="Tiktok" />
                       </Box>
                     </InputAdornment>
                   ),

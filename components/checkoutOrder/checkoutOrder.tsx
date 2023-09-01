@@ -9,7 +9,7 @@ import { updateCartLineItem } from "api/graphql/grapgql";
 import { Alert } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, cartDrawerToggle } from "store/slice/appSlice";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
 import { useRouter } from "next/router";
 
@@ -174,7 +174,7 @@ const CheckoutOrder = (props: Props) => {
               }}
             >
               <Box sx={{ width: 130, height: 130 }} onClick={onClickCard}>
-                <PedlarImage src={props.image} objectFit="contain" />
+                <NextImage src={props.image} style={{ objectFit: "contain" }} />
               </Box>
             </Box>
             <Box

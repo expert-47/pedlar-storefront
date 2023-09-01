@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
 import { useRouter } from "next/router";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 
@@ -71,7 +71,7 @@ const BrandTitles = (props: any) => {
                   cursor: "pointer",
                 }}
               >
-                <PedlarImage
+                <NextImage
                   renderError={() => {
                     return (
                       <Box

@@ -3,7 +3,7 @@ import { Grid, Typography, Button, Box } from "@mui/material";
 import { styles } from "./style";
 import CreatorBanner from "../../../public/creatorbanner.png";
 import { Link as ScrollLink } from "react-scroll";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "components/layout";
 
 const Banner = () => {
@@ -18,12 +18,12 @@ const Banner = () => {
           top: "100px",
         }}
       >
-        <PedlarImage
-          zIndex={0}
+        <NextImage
+          fill={true}
+          layout="default"
           style={{ borderRadius: "0 20px 20px 0" }}
           src={CreatorBanner}
           alt={"Creator banner"}
-          priority
         />
       </Box>
       <Box sx={styles.GridBox}>

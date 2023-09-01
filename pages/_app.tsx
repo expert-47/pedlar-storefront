@@ -19,6 +19,9 @@ import { theme } from "styles/theme/defalutTheme";
 import createEmotionCache from "utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { PersistGate } from "redux-persist/integration/react";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"], display: "block" });
+
 //style
 import "../styles/globals.css";
 
@@ -56,17 +59,19 @@ setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${proces
         }}
       />
       <DefaultSeo {...SEO} />
-      <Provider store={store}>
-        <ApolloProvider client={client}>
-          <ThemeProvider theme={theme}>
-            <PersistGate persistor={persistor}>
-              <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-              <Component {...pageProps} />
-            </PersistGate>
-          </ThemeProvider>
-        </ApolloProvider>
-      </Provider>
+      <main className={inter.className}>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <ThemeProvider theme={theme}>
+              <PersistGate persistor={persistor}>
+                <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
+                <Component {...pageProps} />
+              </PersistGate>
+            </ThemeProvider>
+          </ApolloProvider>
+        </Provider>
+      </main>
     </CacheProvider>
   );
 }

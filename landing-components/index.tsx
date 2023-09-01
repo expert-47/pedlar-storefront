@@ -1,6 +1,5 @@
 //packages imports
 import React from "react";
-import Image from "next/image";
 import Box from "@mui/material/Box";
 //components imports
 import Faq from "../landing-components/faq/faq";
@@ -21,6 +20,7 @@ import pinkMeshes from "../public/left-pink-meshes.webp";
 import orangeMesh from "../public/meshHome-gradient.png";
 //seo import
 import { seo } from "utils/seoData";
+import { NextImage } from "components/pedlarImage";
 //style
 const styless = {
   paperContainer: {
@@ -53,13 +53,38 @@ const Home = () => {
       <Box sx={styless.paperContainer}></Box>
       <Box className="positionProperty">
         <Box className="orangeMeshesBox" sx={{ width: "100%" }} top={{ xs: "1051px" }}>
-          <Image src={orangeMeshes} style={{ objectFit: "cover" }} alt="Orange meshes" loading={"lazy"} quality={50} />
+          <NextImage
+            src={orangeMeshes}
+            style={{ objectFit: "cover" }}
+            alt="Orange meshes"
+            loading={"lazy"}
+            quality={50}
+            fill={false}
+            layout="default"
+            placeholder="empty"
+          />
         </Box>
         <Box className="pinkMeshesBox" top={{ xs: "512px", lg: "57px" }}>
-          <Image src={pinkMeshes} style={{ width: "100%" }} alt="pink meshes" quality={50} />
+          <NextImage
+            fill={false}
+            layout="default"
+            src={pinkMeshes}
+            style={{ width: "100%" }}
+            alt="pink meshes"
+            quality={50}
+            placeholder="empty"
+          />
         </Box>
         <Box className="orangeMeshesBox" top={{ xs: "2118px", sm: "422px", md: "422px", lg: "1655px" }}>
-          <Image src={orangeMesh} alt="Oranges pink meshes" style={{ width: "100%" }} quality={50} />
+          <NextImage
+            fill={false}
+            layout="default"
+            src={orangeMesh}
+            alt="Oranges pink meshes"
+            style={{ width: "100%" }}
+            quality={50}
+            placeholder="empty"
+          />
         </Box>
       </Box>
       <Banner />

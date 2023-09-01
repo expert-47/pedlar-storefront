@@ -58,6 +58,7 @@ const creator = () => {
           layout="default"
           alt="Orange meshes"
           loading={"lazy"}
+          placeholder="empty"
         />
       </Box>
       <Box
@@ -71,6 +72,7 @@ const creator = () => {
           layout="default"
           alt="Orange meshes"
           loading={"lazy"}
+          placeholder="empty"
         />
       </Box>
       <Banner />

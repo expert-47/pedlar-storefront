@@ -67,13 +67,41 @@ const Banner: FC = (): JSX.Element => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isdektop ? (
-            <NextImage fill={false} style={{ width: "100%" }} src={desktopBanner} alt="desktop banner" priority />
+            <NextImage
+              fill={false}
+              placeholder="empty"
+              style={{ width: "100%" }}
+              src={desktopBanner}
+              alt="desktop banner"
+              priority
+            />
           ) : isSmall ? (
-            <NextImage fill={false} style={{ width: "100%" }} src={mobileBanner} alt="Mobile banner" priority />
+            <NextImage
+              fill={false}
+              placeholder="empty"
+              style={{ width: "100%" }}
+              src={mobileBanner}
+              alt="Mobile banner"
+              priority
+            />
           ) : isMedium ? (
-            <NextImage fill={false} style={{ width: "100%" }} src={mediumBanner} alt="tab banner" priority />
+            <NextImage
+              fill={false}
+              placeholder="empty"
+              style={{ width: "100%" }}
+              src={mediumBanner}
+              alt="tab banner"
+              priority
+            />
           ) : (
-            <NextImage fill={false} style={{ width: "100%" }} src={largeBanner} alt="Large banner " priority />
+            <NextImage
+              placeholder="empty"
+              fill={false}
+              style={{ width: "100%" }}
+              src={largeBanner}
+              alt="Large banner "
+              priority
+            />
           )}
 
           <Box sx={styles.bannerText}>

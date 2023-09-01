@@ -4,9 +4,8 @@ import { Box } from "@mui/material";
 import skeletonImg from "public/skeletonImg.jpeg";
 import NewImage, { ImageProps, StaticImageData } from "next/image";
 
-interface Props extends Omit<ImageProps, "placeholder"> {
+interface Props extends ImageProps {
   zIndex?: number;
-  placeholder?: StaticImageData;
   renderError?: any;
   onLoad?: any;
   enableBlurDataUrl?: boolean;
@@ -45,11 +44,13 @@ const CustomImage = (props) => {
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",
       }}
-      src={error ? placeholder || skeletonImg : props.src}
+      src={props.src}
       onError={() => {
         setError(true);
       }}
-      placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+      placeholder={
+        placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}`
+      }
       onLoad={onLoad}
       loading={props.priority ? "eager" : "lazy"}
     />

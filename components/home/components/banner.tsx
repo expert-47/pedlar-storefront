@@ -54,7 +54,6 @@ const BannerImg = (props: any) => {
             <NextImage
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"
-              placeholder={placeholder}
               style={{ objectFit: "contain" }}
             />
           </Box>

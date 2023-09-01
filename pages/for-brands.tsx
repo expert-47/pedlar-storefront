@@ -63,6 +63,7 @@ const brands = () => {
             alt="Orange meshes"
             loading={"lazy"}
             quality={50}
+            placeholder="empty"
           />
         </Box>
       </Box>
@@ -117,6 +118,7 @@ const brands = () => {
           style={{ width: "100%", height: "auto" }}
           src={orangebottom}
           alt="orange brand meshes"
+          placeholder="empty"
         />
       </Box>
     </Layout>

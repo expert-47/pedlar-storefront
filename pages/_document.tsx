@@ -12,6 +12,10 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
     <Html lang="en">
       <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block"
+          rel="stylesheet"
+        />
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
         <link rel="manifest" href="/manifest/manifest.webmanifest" />

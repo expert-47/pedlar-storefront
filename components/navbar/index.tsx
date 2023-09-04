@@ -6,7 +6,6 @@ import styles from "styles/navbar";
 import Marquee from "react-fast-marquee";
 import { isIOS } from "react-device-detect";
 
-import Image from "next/image";
 import { ResponsiveNavbar } from "./responsiveNavbar";
 import { CustomContainer } from "components/layout";
 import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme, Box } from "@mui/material";
@@ -16,7 +15,7 @@ import CartDrawer from "components/cartDrawer/cartDrawer";
 import DropDownMenu from "./components/dropDownMenu";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
 export default function Navbar(props: any) {
@@ -91,13 +90,13 @@ export default function Navbar(props: any) {
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href={`/${props?.slug}`}>
                     <Box sx={{ height: 22, width: 68, cursor: "pointer" }}>
-                      <PedlarImage src="/pedlar.png" alt="No Image Found" />
+                      <NextImage src="/pedlar.png" alt="No Image Found" />
                     </Box>
                   </Link>
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
-                  <Link href={`/${path}`}>
+                  <Link href={`/${path}`} style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
@@ -109,17 +108,22 @@ export default function Navbar(props: any) {
                     </>
                   )}
 
-                  <Link href={`/${path}/faq`}>
-                    <a target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
-                      <Button color="inherit" sx={styles.tabButton}>
-                        FAQ
-                      </Button>
-                    </a>
+                  <Link href={`/${path}/faq`} target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
+                    <Button color="inherit" sx={styles.tabButton}>
+                      FAQ
+                    </Button>
                   </Link>
 
                   <Badge badgeContent={totalProductLength} color="secondary">
                     <IconButton sx={styles.iconColor} onClick={onClickDrawer}>
-                      <Image src="/cart.png" height="19.48px" width="19.48px" />
+                      <NextImage
+                        fill={false}
+                        layout="default"
+                        alt="cart"
+                        src="/cart.png"
+                        height={19.48}
+                        width={19.48}
+                      />
                     </IconButton>
                   </Badge>
                 </Stack>

@@ -1,4 +1,4 @@
-import React, { useRef  } from "react";
+import React, { useRef } from "react";
 import { Formik, ErrorMessage } from "formik";
 import { Typography, Box, Button } from "@mui/material";
 import * as Yup from "yup";
@@ -26,7 +26,7 @@ const ReturnForm = (props: any) => {
       <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
         <Link href={`/${slug}/return-policy`}>
           <Box sx={{ margin: "1rem" }}>
-            <img src="/backArrow.png" />
+            <img src="/backArrow.png" alt="back arrow pedlar" />
           </Box>
         </Link>
         <Box sx={{ width: "60%", margin: "auto" }}>
@@ -37,7 +37,7 @@ const ReturnForm = (props: any) => {
           </Box>
           <Box sx={{ width: "700px" }}>
             <Typography sx={{ fontSize: "16px", fontWeight: 400, marginTop: "1.5rem", color: "#1C1B1F" }}>
-              We want you to be completely satisfied with your purchases; if for any reason you change your mind, we’re
+              We want you to be completely satisfied with your purchases. if for any reason you change your mind, we’re
               happy to refund all full-priced items. Please fill in the below form.
             </Typography>
           </Box>
@@ -73,11 +73,11 @@ const ReturnForm = (props: any) => {
             {({
               values,
               errors,
-             
+
               handleChange,
               handleBlur,
               handleSubmit,
-            
+
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit} ref={forms2}>
@@ -114,8 +114,8 @@ const ReturnForm = (props: any) => {
                         <ErrorMessage component="div" name="Order_Number" />
                       </Box>
                       {/* {errors.orderNumber && touched.orderNumber ? (
-                        <Box sx={{ color: "red" }}>{errors.orderNumber}</Box>
-                      ) : null} */}
+                      <Box sx={{ color: "red" }}>{errors.orderNumber}</Box>
+                    ) : null} */}
                     </Box>
                     <Box>
                       <select
@@ -299,13 +299,13 @@ const ReturnForm = (props: any) => {
       <Box sx={{ width: "100%", display: { xs: "block", sm: "none" } }}>
         <Link href={`/${slug}/return-policy`}>
           <Box sx={{ margin: "1rem" }}>
-            <img src="/backArrow.png" />
+            <img src="/backArrow.png" alt="back arrow pedlar" />
           </Box>
         </Link>
         <Box sx={{ marginLeft: "1rem", marginTop: "2rem" }}>
           <Typography variant="h1">Returns form</Typography>
           <Typography sx={{ fontSize: "13px", fontWeight: "300", marginTop: "1rem", width: "335px" }}>
-            We want you to be completely satisfied with your purchases; if for any reason you change your mind, we’re
+            We want you to be completely satisfied with your purchases. if for any reason you change your mind, we’re
             happy to refund all full-priced items. Please fill in the below form.
           </Typography>
         </Box>

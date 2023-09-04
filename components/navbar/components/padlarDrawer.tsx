@@ -20,11 +20,11 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import Collapse from "@mui/material/Collapse";
 import Marquee from "react-fast-marquee";
 import styles from "styles/navbar";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
 import { isIOS } from "react-device-detect";
+import { NextImage } from "components/pedlarImage";
 
 export const PedlarDrawer = (props: {
   openDrawer: boolean;
@@ -133,7 +133,14 @@ export const PedlarDrawer = (props: {
           <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
             <Box onClick={closeDrawer}>
               <Link href={`/${props?.slug}`}>
-                <Image src="/pedlar.png" alt="No Image Found" width={68} height={22} />
+                <NextImage
+                  layout="default"
+                  fill={false}
+                  src="/pedlar.png"
+                  alt="No Image Found"
+                  width={68}
+                  height={22}
+                />
               </Link>
             </Box>
 
@@ -142,14 +149,16 @@ export const PedlarDrawer = (props: {
             </Typography>
           </Grid>
           <Grid xs={1.5}>
-            {/* <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 10 }} onClick={openCartHandler}>
-              <IconButton sx={styles.iconColor}>
-                <Image src="/cart.png" height="19.48px" width="19.48px" />
-              </IconButton>
-            </Badge> */}
             <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 10 }}>
               <IconButton onClick={openCartHandler} sx={styles.iconColor}>
-                <Image src="/cart.png" height="19.48px" width="19.48px" />
+                <NextImage
+                  src="/cart.png"
+                  layout="default"
+                  alt="cart-mobile"
+                  fill={false}
+                  height={19.48}
+                  width={19.48}
+                />
               </IconButton>
             </Badge>
           </Grid>
@@ -157,7 +166,7 @@ export const PedlarDrawer = (props: {
 
         <Grid style={{ paddingTop: "10px" }}></Grid>
         <ListItemText sx={styles.drawerText}>
-          <Link href={`/${storeName}`}>
+          <Link href={`/${storeName}`} style={{ textDecoration: "none", color: "black" }}>
             <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
               Home
             </ListItem>
@@ -292,12 +301,14 @@ export const PedlarDrawer = (props: {
               </List>
             </Collapse>
           </List>
-          <Link href={`/${storeName}/faq`} target={"blank"}>
-            <a target="_blank" style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}>
-              <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
-                FAQ
-              </ListItem>
-            </a>
+          <Link
+            href={`/${storeName}/faq`}
+            target={"blank"}
+            style={{ textDecoration: "none", color: "rgba(0, 0, 0, 0.87)" }}
+          >
+            <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
+              FAQ
+            </ListItem>
           </Link>
         </ListItemText>
       </List>

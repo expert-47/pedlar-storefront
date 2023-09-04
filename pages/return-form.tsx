@@ -12,11 +12,9 @@ const SubmitSchema = Yup.object().shape({
   First_Name: Yup.string().required("First Name is required!"),
   Last_Name: Yup.string().required("Last Name is required!"),
   Email_Address: Yup.string().required("This field is required").email("Invalid Email Address"),
-
 });
 
 const ReturnForm = () => {
- 
   const router = useRouter();
   const forms = useRef<HTMLFormElement>(null);
   const forms2 = useRef<HTMLFormElement>(null);
@@ -27,7 +25,7 @@ const ReturnForm = () => {
       <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
         <Link href={"/return-policy"}>
           <Box sx={{ margin: "1rem" }}>
-            <img src="/backArrow.png" />
+            <img src="/backArrow.png" alt="back arrow pedlar" />
           </Box>
         </Link>
         <Box sx={{ width: "60%", margin: "auto" }}>
@@ -53,25 +51,32 @@ const ReturnForm = () => {
             }}
             validationSchema={SubmitSchema}
             onSubmit={() => {
-              emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms2.current ? forms2.current :  "" , "eE9W4Thiy_5GA_B4N").then(
-                (result) => {
-                  console.log("success", result.text);
-                  router.push("/thankyou-return");
-                },
-                (error) => {
-                  console.log("Faild...", error.text);
-                },
-              );
+              emailjs
+                .sendForm(
+                  "service_2y5c7s5",
+                  "template_lwj4t3j",
+                  forms2.current ? forms2.current : "",
+                  "eE9W4Thiy_5GA_B4N",
+                )
+                .then(
+                  (result) => {
+                    console.log("success", result.text);
+                    router.push("/thankyou-return");
+                  },
+                  (error) => {
+                    console.log("Faild...", error.text);
+                  },
+                );
             }}
           >
             {({
               values,
               errors,
-             
+
               handleChange,
               handleBlur,
               handleSubmit,
-             
+
               /* and other goodies */
             }) => (
               <form onSubmit={handleSubmit} ref={forms2}>
@@ -108,8 +113,8 @@ const ReturnForm = () => {
                         <ErrorMessage component="div" name="Order_Number" />
                       </Box>
                       {/* {errors.orderNumber && touched.orderNumber ? (
-                        <Box sx={{ color: "red" }}>{errors.orderNumber}</Box>
-                      ) : null} */}
+                      <Box sx={{ color: "red" }}>{errors.orderNumber}</Box>
+                    ) : null} */}
                     </Box>
                     <Box>
                       <select
@@ -317,15 +322,17 @@ const ReturnForm = () => {
           }}
           validationSchema={SubmitSchema}
           onSubmit={() => {
-            emailjs.sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current ? forms.current : "", "eE9W4Thiy_5GA_B4N").then(
-              (result) => {
-                console.log("success", result.text);
-                router.push("/thankyou-return");
-              },
-              (error) => {
-                console.log("Faild...", error.text);
-              },
-            );
+            emailjs
+              .sendForm("service_2y5c7s5", "template_lwj4t3j", forms.current ? forms.current : "", "eE9W4Thiy_5GA_B4N")
+              .then(
+                (result) => {
+                  console.log("success", result.text);
+                  router.push("/thankyou-return");
+                },
+                (error) => {
+                  console.log("Faild...", error.text);
+                },
+              );
           }}
         >
           {({ values, errors, handleChange, handleBlur, handleSubmit }) => (
@@ -518,5 +525,3 @@ const ReturnForm = () => {
 };
 
 export default ReturnForm;
-
-

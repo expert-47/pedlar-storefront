@@ -4,7 +4,7 @@ import Scrollspy from "react-scrollspy";
 import Image, { StaticImageData } from "next/image";
 import { Box, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 //componet imports
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "../landinglayout";
 import Responsivehowitworks from "./responsive-how-it-works";
 import purpleGradient from "../../public/purple-gradient.png";
@@ -112,11 +112,13 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
+                          <NextImage
                             src={image1}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
+                            style={{
+                              objectFit: "contain",
+                              borderRadius: "16px",
+                            }}
                           />
                         </Box>
                       </Grid>
@@ -132,7 +134,7 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <NextImage src={image2} alt="step 2" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Grid>
                       <Grid>
@@ -147,11 +149,10 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
+                          <NextImage
                             src={image3}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
+                            style={{ borderRadius: "16px", objectFit: "contain" }}
                           />
                         </Box>
                       </Grid>
@@ -170,11 +171,10 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
+                          <NextImage
                             src={image4}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
+                            style={{ borderRadius: "16px", objectFit: "contain" }}
                           />
                         </Box>
                       </Grid>

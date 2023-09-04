@@ -19,6 +19,7 @@ import { theme } from "styles/theme/defalutTheme";
 import createEmotionCache from "utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { PersistGate } from "redux-persist/integration/react";
+
 //style
 import "../styles/globals.css";
 

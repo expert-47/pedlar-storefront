@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 //components
 import orangetop from "../public/top-mesh.png";
 import Faq from "../landing-components/faq/faq";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import orangebottom from "../public/bottom-mesh.png";
 import Layout from "../landing-components/landinglayout";
 import CardBox from "landing-components/card-box/card-box";
@@ -54,8 +54,17 @@ const brands = () => {
     >
       <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "relative" }}>
-        <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
-          <PedlarImage layout="intrinsic" src={orangetop} alt="Orange meshes" />
+        <Box style={{ position: "absolute", left: "0", width: "100%", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
+          <NextImage
+            src={orangetop}
+            fill={false}
+            layout="default"
+            style={{ width: "100%", height: "auto" }}
+            alt="Orange meshes"
+            loading={"lazy"}
+            quality={50}
+            placeholder="empty"
+          />
         </Box>
       </Box>
       <Banner />
@@ -100,10 +109,17 @@ const brands = () => {
       />
       <Businesstoday />
       <Box
-        style={{ position: "absolute", right: "0", width: "1783px", zIndex: "0" }}
+        style={{ position: "absolute", right: "0", width: "100%", zIndex: "0" }}
         bottom={{ xs: "619px", sm: "0px", lg: "343px" }}
       >
-        <PedlarImage layout="intrinsic" src={orangebottom} alt="orange brand meshes" />
+        <NextImage
+          layout="default"
+          fill={false}
+          style={{ width: "100%", height: "auto" }}
+          src={orangebottom}
+          alt="orange brand meshes"
+          placeholder="empty"
+        />
       </Box>
     </Layout>
   );

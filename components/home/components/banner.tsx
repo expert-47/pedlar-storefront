@@ -4,7 +4,7 @@ import { CustomContainer } from "../../layout";
 import { useMediaQuery, useTheme, Box, Snackbar } from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import TextBox from "./textBox";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import placeholder from "public/Placeholder.jpg";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
@@ -47,16 +47,14 @@ const BannerImg = (props: any) => {
           <Box
             sx={{
               width: isMatch ? "100%" : 476,
-
               height: screen375 ? 480 : isMatch ? 500 : 595,
               minHeight: screen375 ? 430 : isMatch ? 470 : 500,
             }}
           >
-            <PedlarImage
+            <NextImage
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"
-              placeholder={placeholder}
-              objectFit="contain"
+              style={{ objectFit: "contain" }}
             />
           </Box>
         </Grid>

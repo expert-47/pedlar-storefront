@@ -3,9 +3,9 @@ import styles from "styles/home";
 import { Button, Box, useTheme, Typography, useMediaQuery, Paper, Grid } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Image from "next/image";
 import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
+import { NextImage } from "components/pedlarImage";
 
 const TextBox = (props: any) => {
   const router = useRouter();
@@ -48,7 +48,11 @@ const TextBox = (props: any) => {
         lg={12}
         style={{ display: "flex", flexDirection: "column", maxWidth: "100%" }}
       >
-        <Link href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+        <Link
+          href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
+          as={`/${slug.slug}/products`}
+          style={{ textDecoration: "none" }}
+        >
           <Grid
             style={{
               marginTop: "20px",
@@ -67,22 +71,29 @@ const TextBox = (props: any) => {
           }}
         >
           {props?.headerData?.instagramLink && instaNameLink[1] != "" && (
-            <a
-              target="_blank"
+            <Link
+              target="blank"
               href={`http://instagram.com/${instaNameLink[1]}/`}
               style={{
                 textDecoration: "none",
               }}
             >
               <Paper sx={styles.paper}>
-                <Image src="/instagram-icon.svg" height="24px" width="24px" />
+                <NextImage
+                  layout="default"
+                  fill={false}
+                  src="/instagram-icon.svg"
+                  alt="instagram-icon"
+                  height={24}
+                  width={24}
+                />
               </Paper>
-            </a>
+            </Link>
           )}
 
           {props?.headerData?.tiktokLink && tiktokNameLink[1] != "" && (
-            <a
-              target="_blank"
+            <Link
+              target="blank"
               href={`https://www.tiktok.com/@${tiktokNameLink[1]}`}
               style={{
                 textDecoration: "none",
@@ -90,9 +101,16 @@ const TextBox = (props: any) => {
               }}
             >
               <Paper sx={styles.paper}>
-                <Image src="/tiktok-icon2.svg" height="24px" width="24px" />
+                <NextImage
+                  src="/tiktok-icon2.svg"
+                  alt="tiktok-icon2"
+                  layout="default"
+                  fill={false}
+                  height={24}
+                  width={24}
+                />
               </Paper>
-            </a>
+            </Link>
           )}
         </div>
       </Grid>

@@ -5,7 +5,7 @@ import { styles } from "./style";
 import BrandBanner from "../../../public/forbrand-sec1-img1.png";
 import { useTheme } from "@mui/material";
 import { Link as ScrollLink } from "react-scroll";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 
 const Banner = () => {
   const theme = useTheme();
@@ -33,7 +33,7 @@ const Banner = () => {
             }}
             paddingLeft={{ xl: "30px" }}
           >
-            <PedlarImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} priority />
+            <NextImage zIndex={0} style={{ borderRadius: "10px" }} src={BrandBanner} alt={"brand banner"} priority />
           </Box>
         </Grid>
       </CustomContainer>

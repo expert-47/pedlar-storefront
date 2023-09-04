@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import React, { FC, Fragment, useState } from "react";
 import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
 //components
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import BottomSheet from "landing-components/BottomSheet";
 //assets
 import headerlogo from "../../public/header-logo.svg";
@@ -74,7 +74,15 @@ const ResponsiveHeader: FC = (): JSX.Element => {
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
           <Box style={{ height: 70, width: 230 }} onClick={openStorePage}>
-            <PedlarImage src={headerlogo} alt="pedlar-logo" height={75} width={230} style={{ cursor: "pointer" }} />
+            <NextImage
+              src={headerlogo}
+              fill={false}
+              layout="default"
+              alt="pedlar-logo"
+              height={75}
+              width={230}
+              style={{ cursor: "pointer", objectFit: "cover" }}
+            />
           </Box>
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>
@@ -95,20 +103,26 @@ const ResponsiveHeader: FC = (): JSX.Element => {
               }}
             >
               <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }} onClick={openStorePage}>
-                <PedlarImage src={headerlogo} alt="header-logo" style={{ cursor: "pointer", paddingTop: "10px" }} />
+                <NextImage src={headerlogo} alt="pedlar-logo" style={{ cursor: "pointer", objectFit: "cover" }} />
               </Box>
               <IconButton onClick={onCloseDrawer}>
                 <CloseIcon style={{ height: "35px", width: "35px", color: "black", marginTop: "-20px" }} />
               </IconButton>
             </Box>
             <Box sx={styles.ResponButtonCreator}>
-              <Link href={"/for-creator"}>
+              <Link
+                href={"/for-creator"}
+                style={{
+                  color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  textDecoration: "none",
+                }}
+              >
                 <Typography
                   textTransform="none"
                   sx={{
                     ...styles.ButtonRTypo,
                     textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
-                    color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "initial",
+                    color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
                   }}
                 >
                   For Creators
@@ -117,13 +131,19 @@ const ResponsiveHeader: FC = (): JSX.Element => {
             </Box>
 
             <Box sx={styles.ResponButtonBrands}>
-              <Link href={"/for-brands"}>
+              <Link
+                href={"/for-brands"}
+                style={{
+                  color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  textDecoration: "none",
+                }}
+              >
                 <Typography
                   textTransform="none"
                   sx={{
                     ...styles.ButtonRTypo,
                     textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
-                    color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "initial",
+                    color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "black",
                   }}
                 >
                   For Brands
@@ -170,7 +190,7 @@ const ResponsiveHeader: FC = (): JSX.Element => {
             }}
             onClick={onClickDrawer}
           >
-            <PedlarImage src={MenuIcon} alt="Menu Icon" />
+            <NextImage src={MenuIcon} alt="Menu Icon" />
           </Box>
         </Grid>
       </Grid>

@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import React, { FC } from "react";
+import { isIOS } from "react-device-detect";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
@@ -53,6 +54,7 @@ const Picturecarousel: FC = (): JSX.Element => {
   const theme = useTheme();
   const islarge = useMediaQuery(theme.breakpoints.up("lg"));
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const isIOSDevice = isIOS;
 
   return (
     <Box sx={{ paddingTop: { xs: "50px", md: "100px" } }}>
@@ -83,7 +85,7 @@ const Picturecarousel: FC = (): JSX.Element => {
                     src={item?.src}
                     fill={false}
                     alt={item?.altText}
-                    style={{ height: 250 }}
+                    style={{ height: 250, width: isIOSDevice ? 220 : "auo" }}
                   />
                 </Box>
                 <Typography sx={styles.cardText}>{item?.altText}</Typography>

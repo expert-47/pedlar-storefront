@@ -70,7 +70,7 @@ const Banner: FC = (): JSX.Element => {
             <NextImage
               fill={false}
               placeholder="empty"
-              style={{ width: "100%" }}
+              style={{ width: "100%", height: "100%" }}
               src={desktopBanner}
               alt="desktop banner"
               priority
@@ -79,7 +79,7 @@ const Banner: FC = (): JSX.Element => {
             <NextImage
               fill={false}
               placeholder="empty"
-              style={{ width: "100%" }}
+              style={{ width: "100%", height: "100%" }}
               src={mobileBanner}
               alt="Mobile banner"
               priority
@@ -88,16 +88,18 @@ const Banner: FC = (): JSX.Element => {
             <NextImage
               fill={false}
               placeholder="empty"
-              style={{ width: "100%" }}
+              style={{ width: "100%", height: "100%" }}
               src={mediumBanner}
               alt="tab banner"
-              priority
+              priority={true}
+              loading="eager"
+              decoding="async"
             />
           ) : (
             <NextImage
               placeholder="empty"
               fill={false}
-              style={{ width: "100%" }}
+              style={{ width: "100%", height: "100%" }}
               src={largeBanner}
               alt="Large banner "
               priority

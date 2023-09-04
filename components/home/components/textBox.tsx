@@ -48,7 +48,11 @@ const TextBox = (props: any) => {
         lg={12}
         style={{ display: "flex", flexDirection: "column", maxWidth: "100%" }}
       >
-        <Link href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+        <Link
+          href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
+          as={`/${slug.slug}/products`}
+          style={{ textDecoration: "none" }}
+        >
           <Grid
             style={{
               marginTop: "20px",

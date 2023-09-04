@@ -55,7 +55,7 @@ const Home = () => {
         <Box className="orangeMeshesBox" sx={{ width: "100%" }} top={{ xs: "1051px" }}>
           <NextImage
             src={orangeMeshes}
-            style={{ objectFit: "cover" }}
+            style={{ objectFit: "cover", width: "100%" }}
             alt="Orange meshes"
             loading={"lazy"}
             quality={50}

@@ -41,3 +41,11 @@ public/sw.js
 public/sw.js.map
 public/workbox-8f0e986c.js
 public/workbox-8f0e986c.js.map
+
+# PWA files
+**/public/sw.js
+**/public/workbox-*.js
+**/public/worker-*.js
+**/public/sw.js.map
+**/public/workbox-*.js.map
+**/public/worker-*.js.map

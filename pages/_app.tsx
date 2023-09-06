@@ -62,8 +62,9 @@ setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${proces
           <ThemeProvider theme={theme}>
             <PersistGate persistor={persistor}>
               <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
-
-              <Component {...pageProps} />
+              <main>
+                <Component {...pageProps} />
+              </main>
             </PersistGate>
           </ThemeProvider>
         </ApolloProvider>

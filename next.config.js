@@ -5,11 +5,15 @@ const withPWA = require("next-pwa")({
   register: true,
   skipWaiting: true,
 });
-const webpack = require("webpack");
+
 const securityHeaders = [
   {
     key: "Strict-Transport-Security",
     value: "max-age=31536000; includeSubDomains",
+  },
+  {
+    key: "Cache-Control",
+    value: "s-maxage=1, stale-while-revalidate=59",
   },
 ];
 const nextConfig = withPWA({
@@ -26,16 +30,7 @@ const nextConfig = withPWA({
   typescript: {
     ignoreBuildErrors: true,
   },
-  webpack: (config, { webpack }) => {
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery",
-      }),
-    );
-    return config;
-  },
+
   async headers() {
     return [
       {

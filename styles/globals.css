@@ -74,7 +74,7 @@ body {
 }
 .marq-right {
   color: rgb(28, 27, 31);
-  opacity: 0.08;
+  opacity: 0.5;
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: top right;
@@ -85,7 +85,7 @@ body {
 }
 .marq-left {
   color: rgb(28, 27, 31);
-  opacity: 0.08;
+  opacity: 0.5;
   transform: rotate(-90deg);
   position: absolute !important;
   transform-origin: top left;

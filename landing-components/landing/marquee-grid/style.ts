@@ -30,7 +30,7 @@ export const styles = {
   },
   marqueetop: {
     color: "rgb(28, 27, 31)",
-    opacity: "0.08",
+    opacity: "0.5",
     wordSpacing: "18px",
     paddingLeft: "30px",
     transform: "translate(0px, 17px)",
@@ -41,7 +41,7 @@ export const styles = {
   marqueebottom: {
     color: "rgb(28, 27, 31)",
     transform: "rotate(-180deg)",
-    opacity: "0.08",
+    opacity: "0.5",
     wordSpacing: "18px",
     paddingLeft: "30px",
   },

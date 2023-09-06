@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { Box } from "@mui/material";
-import skeletonImg from "public/skeletonImg.jpeg";
-import NewImage, { ImageProps, StaticImageData } from "next/image";
+
+import NewImage, { ImageProps } from "next/image";
 
 interface Props extends ImageProps {
   zIndex?: number;

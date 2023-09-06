@@ -103,12 +103,18 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              1
-                            </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              {title1}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  1
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
+                                  {title1}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
@@ -125,12 +131,18 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              2
-                            </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              {title2}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  2
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
+                                  {title2}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
@@ -140,12 +152,18 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              3
-                            </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              {title3}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  3
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
+                                  {title3}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
@@ -159,15 +177,21 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              4
-                            </Typography>
-                            <Typography
-                              fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "40px" }}
-                              sx={styles.stickyText}
-                            >
-                              {title4}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  4
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography
+                                  fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "40px" }}
+                                  sx={styles.stickyText}
+                                >
+                                  {title4}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">

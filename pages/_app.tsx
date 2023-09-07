@@ -9,7 +9,7 @@ import { DefaultSeo } from "next-seo";
 import { Provider } from "react-redux";
 import "photoswipe/dist/photoswipe.css";
 import SEO from "../utils/next-seo.config";
-import { client } from "api/graphql/client";
+import { client } from "apis/graphql/client";
 import { persistStore } from "redux-persist";
 import { ThemeProvider } from "@mui/material";
 import "react-slideshow-image/dist/styles.css";
@@ -19,6 +19,10 @@ import { theme } from "styles/theme/defalutTheme";
 import createEmotionCache from "utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { PersistGate } from "redux-persist/integration/react";
+
+export function reportWebVitals(metric) {
+  console.log(metric);
+}
 
 //style
 import "../styles/globals.css";

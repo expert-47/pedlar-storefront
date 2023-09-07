@@ -6,7 +6,7 @@ import { NextSeo, NextSeoProps } from "next-seo";
 import ApiError from "components/PageError";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, clearStore } from "store/slice/appSlice";
-import { getCartProducts } from "api/graphql/grapgql";
+import { getCartProducts } from "apis/graphql/grapgql";
 import { getBrandShopTags } from "store/slice/tagsSlice";
 import { useMediaQuery, useTheme } from "@mui/material";
 

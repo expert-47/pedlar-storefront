@@ -1,17 +1,15 @@
 //packages imports
-import React, { Suspense, lazy } from "react";
+import React, from "react";
 
-const Home = lazy(() => import("../landing-components/index"));
+import dynamic from "next/dynamic";
+import Header from "landing-components/header/header";
 
-const Loading = () => {
-  return <div></div>;
-};
+const Home = dynamic(() => import("../landing-components/index"), {
+  loading: () => <Header />,
+});
+
 const index = () => {
-  return (
-    <Suspense fallback={<Loading />}>
-      <Home />
-    </Suspense>
-  );
+  return <Home />;
 };
 
 export default index;

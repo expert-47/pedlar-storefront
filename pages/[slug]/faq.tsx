@@ -10,7 +10,7 @@ import Scrollspy from "react-scrollspy";
 import Layout from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
 
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 
 const Faq = (props) => {

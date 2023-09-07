@@ -40,7 +40,7 @@ import {
   getCartProducts,
   getVariantBySelectedOptions,
   checkoutCartDetails,
-} from "api/graphql/grapgql";
+} from "apis/graphql/grapgql";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId } from "store/slice/appSlice";

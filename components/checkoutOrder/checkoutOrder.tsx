@@ -5,7 +5,7 @@ import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
-import { updateCartLineItem } from "api/graphql/grapgql";
+import { updateCartLineItem } from "apis/graphql/grapgql";
 import { Alert } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, cartDrawerToggle } from "store/slice/appSlice";

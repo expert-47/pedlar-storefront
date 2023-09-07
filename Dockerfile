@@ -1,18 +1,20 @@
+# Define base image with Node.js
 FROM node:16-alpine AS base
-
 ARG ENV
 ENV ENV=${ENV}
 
+# Build dependencies
 FROM base AS deps
-
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
+RUN apk add --no-cache libc6-compat
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN npm ci
 
+# Build Next.js application
 FROM base AS builder
 WORKDIR /app
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
@@ -23,6 +25,7 @@ RUN if [ "${ENV}" = "dev" ] ; then \
 
 RUN npm run build
 
+# Runner stage
 FROM base AS runner
 WORKDIR /app
 
@@ -32,10 +35,9 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./next
+COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
 
 USER nextjs
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]

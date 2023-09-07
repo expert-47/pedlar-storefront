@@ -8,8 +8,8 @@ import Gallery from "components/home/components/Gallery";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/router";
 import Pagination from "@mui/material/Pagination";
-import { getFilteredProducts, getPaginationProducts } from "api/graphql/grapgql";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getFilteredProducts, getPaginationProducts } from "apis/graphql/grapgql";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { productsImpressiongmtEvent } from "utils/gtm";
 import { seo } from "utils/seoData";
 const Products = ({ slug, collectionId, userData: data, error }: any) => {

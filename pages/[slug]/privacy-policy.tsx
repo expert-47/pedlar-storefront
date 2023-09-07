@@ -3,7 +3,7 @@ import BaseFooter from "components/footer/baseFooter";
 import Layout, { CustomContainer } from "components/layout";
 import React from "react";
 import { styles } from "../../landing-components/static-pages/privacy-policy/style";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 
 const privacypolicy = (props: any) => {

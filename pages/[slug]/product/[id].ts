@@ -1,5 +1,5 @@
-import { getProductDetails, getUserDetailByFetchAPICall } from "api/graphql/grapgql";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getProductDetails, getUserDetailByFetchAPICall } from "apis/graphql/grapgql";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import Cart from "components/product";
 
 export default Cart;

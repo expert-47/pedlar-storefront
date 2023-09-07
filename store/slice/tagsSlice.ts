@@ -4,8 +4,8 @@
  */
 
 import { createSlice } from "@reduxjs/toolkit";
-import { client } from "api/graphql/client";
-import { getFilterData } from "api/graphql/grapgql";
+import { client } from "apis/graphql/client";
+import { getFilterData } from "apis/graphql/grapgql";
 
 export const getBrandShopTags = (collectionId) => {
   return async (dispatch) => {

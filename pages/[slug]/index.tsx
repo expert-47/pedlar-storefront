@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Layout from "components/layout";
 import { Home } from "components/home";
-import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import { getUserDetailByFetchAPICall } from "apis/graphql/grapgql";
 import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gtm";
-import { getCuratedBrands } from "api/restApi/getCuratedBrands";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getCuratedBrands } from "apis/restApi/getCuratedBrands";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 
 export default function Index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {

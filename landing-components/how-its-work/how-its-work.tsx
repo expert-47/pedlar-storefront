@@ -54,19 +54,12 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
           }}
         >
           {isResponsive ? (
-            <Image
-              src={purpleGradient}
-              alt="purple gradient"
-              loading={"lazy"}
-              layout={"fill"}
-              style={{ borderRadius: "16px" }}
-            />
+            <Image src={purpleGradient} fill alt="purple gradient" loading={"lazy"} style={{ borderRadius: "16px" }} />
           ) : (
             <Image
               src={purpleGradient}
               alt="purple gradient"
-              layout={"intrinsic"}
-              style={{ borderRadius: "16px" }}
+              style={{ borderRadius: "16px", width: "100%" }}
               loading={"lazy"}
             />
           )}

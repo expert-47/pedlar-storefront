@@ -61,16 +61,18 @@ const Gridbox: FC = (): JSX.Element => {
         position: "relative",
       }}
     >
-      <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }} className="marq-left">
-        <Typography
-          fontWeight={"700"}
-          fontSize={{ xs: "24px", sm: "36px" }}
-          style={{ wordSpacing: "18px", paddingLeft: "30px" }}
-        >
-          Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
-          Pedlar Pedlar Pedlar Pedlar Pedlar
-        </Typography>
-      </Marquee>
+      <div className="marq-left">
+        <Marquee direction="right" speed={1.3} gradient={false} style={{ overflow: "hidden" }}>
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            style={{ wordSpacing: "18px", paddingLeft: "30px" }}
+          >
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+            Pedlar Pedlar Pedlar Pedlar Pedlar
+          </Typography>
+        </Marquee>
+      </div>
 
       <Marquee direction="right" speed={45} gradient={false} style={{ overflow: "hidden" }}>
         <Typography
@@ -192,17 +194,17 @@ const Gridbox: FC = (): JSX.Element => {
           Pedlar Pedlar Pedlar Pedlar
         </Typography>
       </Marquee>
-
-      <Marquee direction="right" speed={1.3} gradient={false} className="marq-right">
-        <Typography
-          fontWeight={"700"}
-          fontSize={{ xs: "24px", sm: "36px" }}
-          style={{ wordSpacing: "18px", paddingLeft: "30px" }}
-        >
-          Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
-        </Typography>
-      </Marquee>
-
+      <div className="marq-right">
+        <Marquee direction="right" speed={1.3} gradient={false}>
+          <Typography
+            fontWeight={"700"}
+            fontSize={{ xs: "24px", sm: "36px" }}
+            style={{ wordSpacing: "18px", paddingLeft: "30px" }}
+          >
+            Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar Pedlar
+          </Typography>
+        </Marquee>
+      </div>
       {openDialog ? (
         popupScreen ? (
           <LoginDialog

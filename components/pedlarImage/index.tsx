@@ -48,9 +48,7 @@ const CustomImage = (props) => {
       onError={() => {
         setError(true);
       }}
-      placeholder={
-        placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}`
-      }
+      placeholder={placeholder || "empty"}
       onLoad={onLoad}
       loading={props.priority ? "eager" : "lazy"}
     />

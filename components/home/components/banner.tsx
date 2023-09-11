@@ -54,6 +54,7 @@ const BannerImg = (props: any) => {
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"
               style={{ objectFit: "contain" }}
+              priority
             />
           </Box>
         </Grid>

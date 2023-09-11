@@ -12,39 +12,39 @@ export const styles = {
   },
   faqTextmain: {
     color: " #1C1B1F",
-    fontFamily: "Inter",
+
     lineHeight: "unset",
     paddingBottom: "27px",
     ["@media (max-width:2600px)"]: {
       color: " #1C1B1F",
-      fontFamily: "Inter",
+
       lineHeight: "unset",
       paddingBottom: "27px",
       marginLeft: "-5px",
     },
     ["@media (max-width:1600px)"]: {
       color: " #1C1B1F",
-      fontFamily: "Inter",
+
       lineHeight: "unset",
       paddingBottom: "27px",
     },
     ["@media (max-width:1025px)"]: {
       color: " #1C1B1F",
-      fontFamily: "Inter",
+
       lineHeight: "unset",
       paddingBottom: "27px",
       paddingLeft: "35px",
     },
     ["@media (max-width:768px)"]: {
       color: " #1C1B1F",
-      fontFamily: "Inter",
+
       lineHeight: "unset",
       paddingBottom: "27px",
       marginLeft: "-18px",
     },
     ["@media (max-width:425px)"]: {
       color: " #1C1B1F",
-      fontFamily: "Inter",
+
       lineHeight: "unset",
       paddingBottom: "27px",
       paddingRight: "68px",
@@ -52,21 +52,21 @@ export const styles = {
     },
     ["@media (max-width:325px)"]: {
       color: " #1C1B1F",
-      fontFamily: "Inter",
+
       lineHeight: "unset",
       paddingBottom: "27px",
     },
   },
   faqText: {
     color: " #1C1B1F",
-    fontFamily: "Inter",
+
     lineHeight: "unset",
     paddingBottom: "40px",
   },
   acordianText: {
     opacity: "0.64",
     color: " rgb(28, 27, 31)",
-    fontFamily: "Inter",
+
     lineHeight: "normal",
     fontWight: "600",
 
@@ -75,7 +75,7 @@ export const styles = {
   },
   acordianPara: {
     color: " rgb(28, 27, 31)",
-    fontFamily: "Inter",
+
     fontSize: "16px",
     fontWeight: "400",
   },
@@ -132,7 +132,7 @@ export const styles = {
     fontWeight: "600",
     textDecoration: "none",
     color: "#1C1B1F",
-    fontFamily: "Inter",
+
     position: "relative",
   },
   eastIconStyle: {

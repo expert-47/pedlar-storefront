@@ -6,6 +6,10 @@ import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gt
 import { getCuratedBrands } from "apis/restApi/getCuratedBrands";
 import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
+import { isMobile } from "react-device-detect";
+
+const maxWidthProductImage = isMobile ? 185 : 380;
+const maxHeightProductImage = isMobile ? 230 : 450;
 
 export default function Index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
   const [newAdditionsLatest, setnewAdditionsLatest] = useState();
@@ -18,7 +22,12 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
   const getNewAdditionsData = async () => {
     const numberofProducts = 6;
 
-    const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    const data = await getUserDetailByFetchAPICall(
+      headerData?.data?.collectionId,
+      numberofProducts,
+      maxWidthProductImage,
+      maxHeightProductImage,
+    );
     const userData = data?.data?.collection?.products?.nodes || [];
 
     setnewAdditionsLatest(userData);
@@ -50,7 +59,12 @@ export async function getServerSideProps(context: any) {
 
   const numberofProducts = 6;
   if (headerData?.data) {
-    const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    const data = await getUserDetailByFetchAPICall(
+      headerData?.data?.collectionId,
+      numberofProducts,
+      maxWidthProductImage,
+      maxHeightProductImage,
+    );
     const userData = data?.data?.collection?.products?.nodes || [];
     const curatedBrandsResponse = await getCuratedBrands(slug);
 

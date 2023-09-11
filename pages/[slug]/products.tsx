@@ -1,32 +1,42 @@
-import ProductHeader from "components/home/components/productHeader";
-import Layout from "components/layout";
-import { Divider, Box } from "@mui/material";
+//package imports
 import Head from "next/head";
-import BaseFooter from "components/footer/baseFooter";
-import styles from "styles/home";
-import Gallery from "components/home/components/Gallery";
-import { useState, useEffect, useLayoutEffect } from "react";
 import { useRouter } from "next/router";
-import Pagination from "@mui/material/Pagination";
-import { getFilteredProducts, getPaginationProducts } from "apis/graphql/grapgql";
+import { useState, useEffect, useLayoutEffect } from "react";
+import { Divider, Box, useMediaQuery, Pagination, Theme } from "@mui/material";
+//components imports
+import Layout from "components/layout";
+import BaseFooter from "components/footer/baseFooter";
+import Gallery from "components/home/components/Gallery";
+import ProductHeader from "components/home/components/productHeader";
+//apis
 import { getUserDetail } from "apis/restApi/getUserDetail";
-import { productsImpressiongmtEvent } from "utils/gtm";
+import { getFilteredProducts, getPaginationProducts } from "apis/graphql/grapgql";
+//style
+import styles from "styles/home";
+//SEO
 import { seo } from "utils/seoData";
+//GTM
+import { productsImpressiongmtEvent } from "utils/gtm";
+
 const Products = ({ slug, collectionId, userData: data, error }: any) => {
+  const route = useRouter();
+  //states
+  const [pageCount, setPageCount] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(true);
   const [productsData, setProductsData] = useState([]);
+  const [shopFilterList, setShopFilterList] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
+  const [brandsFilterList, setBrandFilterList] = useState([]);
   const [filterData, setFilterData] = useState({
     shopList: [],
     vender: [],
   });
-  const [hasNextPage, setHasNextPage] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [brandsFilterList, setBrandFilterList] = useState([]);
-  const [shopFilterList, setShopFilterList] = useState([]);
-
-  const [pageNumber, setPageNumber] = useState(1);
-  const [pageCount, setPageCount] = useState(1);
-  const route = useRouter();
+  //media query
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+  const maxWidthProductImage = isMobile ? 185 : 380;
+  const maxHeightProductImage = isMobile ? 230 : 450;
 
   const setFiltersValue = async (brandData = [], shopData = []) => {
     getFilteredData([...brandData, ...shopData]);
@@ -53,7 +63,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     try {
       setLoading(true);
       setProductsData([]);
-      const response = await getFilteredProducts(collectionId, filterData);
+      const response = await getFilteredProducts(collectionId, filterData, maxWidthProductImage, maxHeightProductImage);
       const data = response?.data?.collection?.products?.filters;
 
       const shopList = data.find((data) => data.label == "Product type");
@@ -98,10 +108,14 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         return;
       }
 
-      const collectionDataProducts = await getPaginationProducts("after", endCursorValue[value - 1], collectionId, [
-        ...brandsFilterList,
-        ...shopFilterList,
-      ]);
+      const collectionDataProducts = await getPaginationProducts(
+        "after",
+        endCursorValue[value - 1],
+        collectionId,
+        [...brandsFilterList, ...shopFilterList],
+        maxWidthProductImage,
+        maxHeightProductImage,
+      );
 
       setProductsData(collectionDataProducts?.nodes || []);
       productsImpressiongmtEvent(collectionDataProducts?.nodes || [], "all products");

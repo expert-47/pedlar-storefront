@@ -19,11 +19,6 @@ import { theme } from "styles/theme/defalutTheme";
 import createEmotionCache from "utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { PersistGate } from "redux-persist/integration/react";
-
-export function reportWebVitals(metric) {
-  console.log(metric);
-}
-
 //style
 import "../styles/globals.css";
 
@@ -40,7 +35,7 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
       });
       Crisp.setZIndex(9999);
       Crisp.load();
-    }, 100);
+    }, 5000);
   }, []);
   const persistor = persistStore(store);
   return (
@@ -57,7 +52,7 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: 
   j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
   f.parentNode.insertBefore(j, f);
 }
-setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${process.env.NEXT_PUBLIC_GTM_KEY}'), 3000);'${process.env.NEXT_PUBLIC_GTM_KEY}'`,
+setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${process.env.NEXT_PUBLIC_GTM_KEY}'), 4000);'${process.env.NEXT_PUBLIC_GTM_KEY}'`,
         }}
       />
       <DefaultSeo {...SEO} />
@@ -66,6 +61,7 @@ setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${proces
           <ThemeProvider theme={theme}>
             <PersistGate persistor={persistor}>
               <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
+
               <main>
                 <Component {...pageProps} />
               </main>

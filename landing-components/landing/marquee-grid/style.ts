@@ -13,7 +13,7 @@ export const styles = {
   },
   gridinnerPara: {
     color: "#1C1B1E",
-    fontFamily: "Inter",
+
     opacity: "0.64",
     lineHeight: "normal",
     letterSpacing: "normal",

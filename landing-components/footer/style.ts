@@ -1,6 +1,6 @@
 export const styles = {
   footerLink: {
-    fontFamily: "Inter",
+    //
     display: "block",
     textDecoration: "none",
     fontSize: "22px",
@@ -10,12 +10,12 @@ export const styles = {
     color: "rgb(249, 246, 242)",
   },
   footerText: {
-    fontFamily: "Inter",
+    //
     paddingBottom: "18px",
     color: "rgb(249, 246, 242)",
   },
   footersocial: {
-    fontFamily: "Inter",
+    //
     color: "#fff",
     fontSize: "22px",
     fontWeight: "600",

@@ -1,5 +1,5 @@
 //packages imports
-import React, from "react";
+import React from "react";
 
 import dynamic from "next/dynamic";
 import Header from "landing-components/header/header";

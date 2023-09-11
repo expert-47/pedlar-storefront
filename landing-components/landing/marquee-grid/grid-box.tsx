@@ -172,7 +172,6 @@ const Gridbox: FC = (): JSX.Element => {
               <Typography
                 onClick={() => setOpenDialog(true)}
                 sx={styles.creator}
-                fontFamily={"Inter"}
                 fontSize={{ xs: "18px", lg: "22px", xl: "22px" }}
                 fontWeight={"600"}
               >

@@ -37,8 +37,13 @@ const Footer = () => {
             <Text fontSize="16px" sx={styles.footerText}>
               Powered by
               <a href="https://pedlar.store/" target="_blank" rel="noopener noreferrer">
-                <img
+                <NextImage
                   src="/pedlar.png"
+                  layout="default"
+                  fill={false}
+                  width={35}
+                  height={24}
+                  alt="pedlar logo"
                   style={{ marginBottom: "-4px", height: "16px", cursor: "pointer", marginLeft: "5px" }}
                 />
               </a>

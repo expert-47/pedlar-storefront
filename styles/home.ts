@@ -73,7 +73,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    width : "100%",
+    width: "100%",
     marginTop: { xs: "10px", sm: "10px", lg: "0px" },
     "&:hover": {
       backgroundColor: "primary.main",
@@ -120,7 +120,6 @@ const styles = {
     fontWeight: "600",
     paddingLeft: "8px",
     width: "90%",
-    fontFamily: "Inter",
   },
   baseFootTypopara: {
     fontSize: "20px",
@@ -156,18 +155,17 @@ const styles = {
       xs: "45%",
     },
   },
-  paper :{
-       width:"34px" ,
-       height:"34px" ,
-       display:"flex",
-      justifyContent:"center",
-      alignItems:"center",
-      marginTop: "20px",
-      borderRadius:"3px" ,
-      backgroundColor:"#fff",
-      boxShadow:" 0px 0px 10px 0px rgba(0, 0, 0, 0.10)"
-
-  }
+  paper: {
+    width: "34px",
+    height: "34px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px",
+    borderRadius: "3px",
+    backgroundColor: "#fff",
+    boxShadow: " 0px 0px 10px 0px rgba(0, 0, 0, 0.10)",
+  },
 };
 
 export default styles;

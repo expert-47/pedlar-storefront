@@ -10,7 +10,7 @@ export const gtmEvents = (data: any) => {
   setTimeout(() => {
     window?.dataLayer?.push({ ecommerce: null });
     window?.dataLayer?.push(data);
-  }, 5000);
+  }, 6000);
   //@ts-ignore
 };
 

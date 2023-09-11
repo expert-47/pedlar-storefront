@@ -1,6 +1,13 @@
 import { getProductDetails, getUserDetailByFetchAPICall } from "apis/graphql/grapgql";
 import { getUserDetail } from "apis/restApi/getUserDetail";
 import Cart from "components/product";
+import { isMobile } from "react-device-detect";
+
+const maxWidthProductImage = isMobile ? 150 : 290;
+const maxHeightProductImage = isMobile ? 187 : 290;
+
+const maxWidthProductDetailImage = isMobile ? 358 : 530;
+const maxHeightProductDetailImage = isMobile ? 400 : 579;
 
 export default Cart;
 export async function getServerSideProps(context: any) {
@@ -9,10 +16,15 @@ export async function getServerSideProps(context: any) {
   const headerData = await getUserDetail(slug);
   if (headerData?.data) {
     const numberofProducts = 6;
-    let response = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
+    let response = await getUserDetailByFetchAPICall(
+      headerData?.data?.collectionId,
+      numberofProducts,
+      maxWidthProductImage,
+      maxHeightProductImage,
+    );
     response = response?.data?.collection?.products?.nodes;
 
-    const data = await getProductDetails(context?.query?.id);
+    const data = await getProductDetails(context?.query?.id, maxWidthProductDetailImage, maxHeightProductDetailImage);
 
     return {
       props: {

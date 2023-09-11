@@ -9,7 +9,6 @@ export const styles = {
     },
   },
   cardText: {
-    fontFamily: "Inter",
     fontWeight: "600",
     fontSize: " 16px",
     textAlign: "left",

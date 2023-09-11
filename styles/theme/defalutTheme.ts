@@ -1,4 +1,7 @@
 import { createTheme } from "@mui/material";
+import { Inter } from "@next/font/google";
+
+export const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const theme = createTheme({
   palette: {
@@ -20,7 +23,7 @@ export const theme = createTheme({
     divider: "rgba(6,6,6,0.12)",
   },
   typography: {
-    fontFamily: "Inter",
+    fontFamily: inter.style.fontFamily,
     h1: {
       fontSize: "26px",
       fontWeight: 600,
@@ -37,6 +40,7 @@ export const theme = createTheme({
       fontSize: "20px",
       fontWeight: 600,
     },
+
     subtitle1: {
       fontSize: "18px",
       fontWeight: 600,
@@ -66,7 +70,7 @@ export const theme = createTheme({
 theme.typography.h2 = {
   fontSize: "20px",
   fontWeight: 700,
-  fontFamily: "Inter",
+  fontFamily: inter.style.fontFamily,
   [theme.breakpoints.up("sm")]: {
     fontSize: "24px",
   },

@@ -110,7 +110,7 @@ const ReturnForm = (props: any) => {
                           fontWeight: 400,
                         }}
                       />
-                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
+                      <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Order_Number" />
                       </Box>
                       {/* {errors.orderNumber && touched.orderNumber ? (
@@ -142,7 +142,7 @@ const ReturnForm = (props: any) => {
                         <option value="Damaged or defective">Damaged or defective</option>
                         <option value="Other">Other</option>
                       </select>
-                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
+                      <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Reason_For_Return" />
                       </Box>
                     </Box>
@@ -173,7 +173,7 @@ const ReturnForm = (props: any) => {
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
+                      <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="First_Name" />
                       </Box>
                       {/* {errors.fname && touched.fname ? <div>{errors.fname}</div> : null} */}
@@ -195,7 +195,7 @@ const ReturnForm = (props: any) => {
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
+                      <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Last_Name" />
                       </Box>
                       {/* {errors.lname && touched.lname ? <div>{errors.lname}</div> : null} */}
@@ -228,7 +228,7 @@ const ReturnForm = (props: any) => {
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
+                      <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Email_Address" />
                       </Box>
                     </Box>
@@ -249,7 +249,7 @@ const ReturnForm = (props: any) => {
                           fontSize: "15px",
                         }}
                       />
-                      <Box sx={{ color: "red", fontFamily: "Inter", fontSize: "16px", fontWeight: 400 }}>
+                      <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                         <ErrorMessage component="div" name="Phone_Number" />
                       </Box>
                     </Box>

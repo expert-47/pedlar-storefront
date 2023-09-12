@@ -20,7 +20,7 @@ const nextConfig = withPWA({
     domains: ["res.cloudinary.com", "storage.googleapis.com", "cdn.shopify.com"],
   },
   compiler: {
-    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+    // removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
   },
   eslint: {
     ignoreDuringBuilds: true,

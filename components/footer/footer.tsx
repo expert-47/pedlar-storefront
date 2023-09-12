@@ -41,7 +41,7 @@ const Footer = () => {
                   src="/pedlar.png"
                   layout="default"
                   fill={false}
-                  width={35}
+                  width={50}
                   height={24}
                   alt="pedlar logo"
                   style={{ marginBottom: "-4px", height: "16px", cursor: "pointer", marginLeft: "5px" }}

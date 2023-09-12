@@ -15,13 +15,14 @@ interface Props extends ImageProps {
 
 export const NextImage = (props: Props) => {
   const { zIndex = -1, layout } = props;
-
+  const imageProps = { ...props };
+  delete imageProps.layout;
   if (layout == "default") {
-    return <CustomImage {...props} />;
+    return <CustomImage {...imageProps} />;
   }
   return (
     <Box style={{ width: "100%", height: "100%", position: "relative", zIndex: zIndex }}>
-      <CustomImage {...props} />
+      <CustomImage {...imageProps} />
     </Box>
   );
 };

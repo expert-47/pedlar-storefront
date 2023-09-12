@@ -52,10 +52,7 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   item
                   xs={6}
                   sm={4}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  key={item?.collectionId}
+                  key={"collectionID" + item?.collectionId + index}
                   sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent

@@ -119,18 +119,11 @@ export const PedlarDrawer = (props: {
         </Typography>
       </Marquee>
       <List sx={styles.drawerList}>
-        <Grid
-          container
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "5px" }}
-        >
-          <Grid xs={1.5}>
+        <Grid container sx={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "5px" }}>
+          <Grid item xs={1.5}>
             <CloseIcon onClick={onClickDrawer} sx={{ paddingLeft: "8px" }} />
           </Grid>
-          <Grid item xs={9} sm={9} md={9} style={{ display: "flex", alignItems: "center" }}>
+          <Grid item xs={9} sx={{ display: "flex", alignItems: "center" }}>
             <Box onClick={closeDrawer}>
               <Link href={`/${props?.slug}`}>
                 <NextImage
@@ -148,7 +141,7 @@ export const PedlarDrawer = (props: {
               {storefrontName ? storefrontName : ""}
             </Typography>
           </Grid>
-          <Grid xs={1.5}>
+          <Grid item xs={1.5}>
             <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: 10 }}>
               <IconButton onClick={openCartHandler} sx={styles.iconColor}>
                 <NextImage
@@ -164,7 +157,7 @@ export const PedlarDrawer = (props: {
           </Grid>
         </Grid>
 
-        <Grid style={{ paddingTop: "10px" }}></Grid>
+        <div style={{ paddingTop: "10px" }}></div>
         <ListItemText sx={styles.drawerText}>
           <Link href={`/${storeName}`} style={{ textDecoration: "none", color: "black" }}>
             <ListItem onClick={closeDrawer} color="inherit" style={{ fontSize: "16px", fontWeight: "600" }}>
@@ -181,7 +174,7 @@ export const PedlarDrawer = (props: {
             <Collapse in={open}>
               <List>
                 <ListItem>
-                  <Grid container item gap={10} xs={12} sm={12}>
+                  <Grid container gap={10}>
                     {loading ? (
                       <CircularProgress color="inherit" />
                     ) : (
@@ -247,7 +240,7 @@ export const PedlarDrawer = (props: {
             <Collapse in={opens}>
               <List>
                 <ListItem>
-                  <Grid container item gap={10} xs={12} sm={12}>
+                  <Grid container gap={10}>
                     {shopListLoading ? (
                       <CircularProgress color="inherit" />
                     ) : (

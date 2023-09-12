@@ -8,6 +8,10 @@ import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 import { isMobile } from "react-device-detect";
 
+function logCurrentTime() {
+  return new Date().toUTCString();
+}
+
 const Home = dynamic(() => import("components/home"), {
   loading: () => <p></p>,
 });
@@ -17,28 +21,43 @@ const Layout = dynamic(() => import("components/layout"), {
 const maxWidthProductImage = isMobile ? 185 : 380;
 const maxHeightProductImage = isMobile ? 230 : 450;
 
-export default function Index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
-  const [newAdditionsLatest, setnewAdditionsLatest] = useState();
+export default function Index({
+  headerData,
+  newAdditionData,
+  slug,
+  curatedBrandsResponse,
+  firstTime,
+  secondTime,
+  error,
+}: any) {
+  // const [newAdditionsLatest, setnewAdditionsLatest] = useState();
   useEffect(() => {
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
-    getNewAdditionsData();
+    // getNewAdditionsData();
   }, [newAdditionData]);
 
-  const getNewAdditionsData = async () => {
-    const numberofProducts = 6;
+  // const getNewAdditionsData = async () => {
+  //   const numberofProducts = 6;
 
-    const data = await getUserDetailByFetchAPICall(
-      headerData?.data?.collectionId,
-      numberofProducts,
-      maxWidthProductImage,
-      maxHeightProductImage,
-    );
-    const userData = data?.data?.collection?.products?.nodes || [];
+  //   const data = await getUserDetailByFetchAPICall(
+  //     headerData?.data?.collectionId,
+  //     numberofProducts,
+  //     maxWidthProductImage,
+  //     maxHeightProductImage,
+  //   );
+  //   const userData = data?.data?.collection?.products?.nodes || [];
 
-    setnewAdditionsLatest(userData);
-  };
+  //   setnewAdditionsLatest(userData);
+  // };
 
+  useEffect(() => {
+    console.log("====================================");
+    console.log("first time = ", firstTime);
+    console.log("Second time = ", secondTime);
+
+    console.log("====================================");
+  }, []);
   return (
     <Layout
       error={error}
@@ -52,7 +71,7 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
     >
       <Home
         headerData={headerData?.data}
-        newAdditionData={newAdditionsLatest}
+        newAdditionData={newAdditionData}
         curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
       />
     </Layout>
@@ -292,7 +311,9 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
 // }
 
 export async function getServerSideProps(context: any) {
+  const firstTime = logCurrentTime();
   const { slug } = context.query;
+
   const data = await Promise.all([getCuratedBrands(slug), getUserDetail(slug)]);
   const headerData = data[1];
 
@@ -309,7 +330,7 @@ export async function getServerSideProps(context: any) {
 
     const userData = response?.data?.collection?.products?.nodes || [];
     const curatedBrandsResponse = data[0];
-
+    const secondTime = logCurrentTime();
     return {
       props: {
         data: [],
@@ -317,6 +338,8 @@ export async function getServerSideProps(context: any) {
         newAdditionData: userData ? userData : [],
         slug: slug || [],
         curatedBrandsResponse: curatedBrandsResponse?.data || [],
+        firstTime,
+        secondTime,
       },
     };
   }

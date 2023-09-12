@@ -14,9 +14,7 @@ middleware.push(thunk);
 const persistConfig = {
   key: "root",
   //  blacklist: ["tags"],
-  version: 1,
   storage,
-  timeout: 100, //Set the timeout function to 2 seconds
   // manualPersist: true,
 };
 
@@ -28,7 +26,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const enhancers = [...middleware];
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: enhancers,
 });
 

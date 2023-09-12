@@ -21,9 +21,9 @@ interface LayoutProps extends ContainerProps {
 export default function Layout(props: LayoutProps) {
   const { children, seo, storefrontName = "", slug = "", productsPage = "", error, collectionId } = props;
 
-  const storeName = useSelector((data) => data.app.storeName);
+  const storeName = useSelector((data) => data?.app?.storeName);
 
-  const cartId = useSelector((data: any) => data.app.cartId[storeName]);
+  const cartId = useSelector((data: any) => data?.app?.cartId[storeName]);
   const { shop, brand } = useSelector((data: any) => data.tags);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
@@ -51,10 +51,11 @@ export default function Layout(props: LayoutProps) {
   useEffect(() => {
     getCartList();
   }, [cartId]);
-  console.log("storeName != slug", storeName != slug);
 
   useEffect(() => {
-    if (storeName != slug) {
+    console.log("slug", slug);
+
+    if (Boolean(slug)) {
       dispatch(clearStore(slug));
     }
   }, [slug]);

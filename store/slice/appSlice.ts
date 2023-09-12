@@ -4,6 +4,7 @@
  */
 
 import { createSlice } from "@reduxjs/toolkit";
+import { log } from "console";
 
 const initialState = {
   products: {},
@@ -14,6 +15,17 @@ const initialState = {
   showNavbar: true,
 };
 
+const storeData = (stateData) => {
+  if (window) {
+    localStorage.setItem("state", JSON.stringify(stateData));
+  }
+};
+const getData = () => {
+  if (window) {
+    return localStorage.getItem("state") ? JSON.parse(localStorage.getItem("state")) : {};
+  }
+  return {};
+};
 const AppState = createSlice({
   name: "app",
   initialState,
@@ -23,47 +35,85 @@ const AppState = createSlice({
       let cartIds = { ...state.cartId };
       cartIds[state.storeName] = action.payload.products?.length == 0 ? undefined : cartIds[state.storeName];
       data[state.storeName] = !state.cartId[state.storeName] ? [] : action.payload.products;
-      return {
+
+      const stateData = {
         ...state,
         products: data,
         showCart: state.showCart ? state.showCart : action.payload.showCart || false,
         cartId: cartIds,
       };
+      storeData(stateData);
+      return stateData;
     },
     updateCartId: (state, action) => {
       let data = { ...state.cartId };
       data[state.storeName] = action.payload.id;
 
-      return {
+      const stateData = {
         ...state,
         cartId: data,
         showCart: action.payload.showCart,
       };
+      storeData(stateData);
+      return stateData;
     },
     clearCart: (state, action) => {
-      return {
+      const stateData = {
         ...state,
         cartId: "",
         products: [],
       };
+
+      storeData(stateData);
+
+      return stateData;
     },
     toggleDialog: (state, action) => {
       let data = { ...state.showDilog };
       data[state.storeName] = false;
 
-      return {
+      const stateData = {
         ...state,
         showDilog: data,
       };
+      storeData(stateData);
+
+      return stateData;
     },
     cartDrawerToggle: (state, action) => {
-      return {
+      const stateData = {
         ...state,
         showCart: action.payload,
       };
+      storeData(stateData);
+
+      return stateData;
     },
     clearStore: (state, action) => {
-      return { ...state, showNavbar: true, storeName: action.payload, cartId: state.cartId };
+      console.log("getData", getData().storeName, action.payload);
+      if (action.payload && getData().storeName && getData().storeName != action.payload) {
+        console.log("getData");
+
+        const stateData = {
+          ...getData(),
+          showNavbar: true,
+          storeName: action.payload,
+        };
+        storeData(stateData);
+        return stateData;
+      }
+      console.log("getData", getData());
+
+      const stateData = {
+        ...state,
+
+        ...getData(),
+        showNavbar: true,
+        storeName: action.payload,
+      };
+      storeData(stateData);
+
+      return stateData;
     },
   },
 });

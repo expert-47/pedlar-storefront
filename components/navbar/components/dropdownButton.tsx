@@ -53,7 +53,6 @@ const DropdownButton = (props: Props) => {
 
   const resetFilters = () => {
     setClick("reset");
-    console.log("here");
 
     setFiltersValue([], type, false);
   };

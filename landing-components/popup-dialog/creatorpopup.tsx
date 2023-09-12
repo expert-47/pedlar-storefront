@@ -35,9 +35,7 @@ const Creatorpopup: FC<Props> = (props): JSX.Element => {
     );
   };
 
-  const submitHandler = () => {
-    console.log("clicked");
-  };
+  const submitHandler = () => {};
 
   return (
     <Grid item xs={12} sm={12} md={12} lg={12}>

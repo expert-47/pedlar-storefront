@@ -44,20 +44,20 @@ export default function Layout(props: LayoutProps) {
         const response = await getCartProducts(cartId);
         dispatch(addProductToCart({ products: response?.data?.cart?.lines?.nodes || [], showCart: false }));
       } catch (error) {
-        console.log(error);
+        console.log("error");
       }
     }
   };
   useEffect(() => {
     getCartList();
   }, [cartId]);
+  console.log("storeName != slug", storeName != slug);
 
   useEffect(() => {
     if (storeName != slug) {
       dispatch(clearStore(slug));
     }
-  }, []);
-  console.log();
+  }, [slug]);
 
   return (
     <Container maxWidth={false} disableGutters {...props}>

@@ -199,22 +199,22 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image1} alt="step1" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image1} alt="step1" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image2} alt="step2" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image2} alt="step2" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image3} alt="step3" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image3} alt="step3" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                       <Box id="section-4" mt={132}>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image4} alt="step4" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image4} alt="step4" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                     </div>

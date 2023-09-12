@@ -330,7 +330,6 @@ export const getVariantBySelectedOptions = async (productID, size, color, varien
 
     return getVariantResponse;
   } catch (error) {
-    console.log("error", error);
     return undefined;
   }
 };
@@ -487,8 +486,6 @@ export const getFilteredProducts = async (
 
     return getVariantResponse;
   } catch (error) {
-    console.log("error", error);
-
     return undefined;
   }
 };
@@ -562,7 +559,7 @@ export const getPaginationProducts = async (
     const collectionDataProducts = await client.query({ query: requestBody.query, variables: requestBody.variables });
     return collectionDataProducts?.data?.collection?.products;
   } catch (error) {
-    console.log(error);
+    console.log("error");
   }
 };
 

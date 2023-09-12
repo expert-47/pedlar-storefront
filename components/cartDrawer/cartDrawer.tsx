@@ -43,7 +43,7 @@ const CartDrawer = () => {
         dispatch(addProductToCart({ products: cartProducts, showCart: true }));
         gtmEvents.viewCart(cartProducts);
       } catch (error) {
-        console.log(error);
+        console.log("error");
       } finally {
         setLoading(false);
       }

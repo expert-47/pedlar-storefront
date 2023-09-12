@@ -256,7 +256,6 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              console.log("gfds");
               const data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
               gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
               setTimeout(async () => {
@@ -277,7 +276,7 @@ const Cart = (props: any) => {
         }
       }
     } catch (error) {
-      console.log("response", error);
+      console.log("response");
     } finally {
       setBuyNowLoaderState(false);
     }

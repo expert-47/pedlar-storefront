@@ -80,3 +80,5 @@ export const Home = (props: any) => {
     </Grid>
   );
 };
+
+export default Home;

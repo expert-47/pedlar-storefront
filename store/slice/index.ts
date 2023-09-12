@@ -16,6 +16,8 @@ const persistConfig = {
   //  blacklist: ["tags"],
   version: 1,
   storage,
+  timeout: 100, //Set the timeout function to 2 seconds
+  // manualPersist: true,
 };
 
 const rootReducer = combineReducers({

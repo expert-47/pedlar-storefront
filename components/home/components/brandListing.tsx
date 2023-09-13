@@ -69,7 +69,7 @@ const BrandListing = (props: { leftHeading: string; rightHeading: string; onClic
             as={`/${slug.slug}/products`}
           >
             <>
-              <Typography fontSize={15} fontWeight={500} sx={styles.gridtag1typo2}>
+              <Typography fontSize={14} fontWeight={500} sx={styles.gridtag1typo2}>
                 {rightHeading}
               </Typography>
               <ArrowForwardIcon sx={styles.arrowIcon} />

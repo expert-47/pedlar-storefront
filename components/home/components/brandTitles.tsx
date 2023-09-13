@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery, Theme } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
 import { useRouter } from "next/router";
@@ -11,25 +11,13 @@ const BrandTitles = (props: any) => {
   const route = useRouter();
   const storeName = useSelector((data: any) => data.app.storeName);
   const type = "Brands";
+  const isGreaterThanSmall = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));
 
   return (
     <>
-      <CustomGrid
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: "0",
-        }}
-      >
+      <CustomGrid>
         <Grid
           container
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          gap={10}
           {...props}
           justifyContent={{
             xs:
@@ -45,31 +33,18 @@ const BrandTitles = (props: any) => {
                 ? 15
                 : undefined,
           }}
-          sx={{ columnGap: "15px" }}
+          mt={5}
+          columnGap={15}
+          rowGap={15}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
-            <Link
-              key={item?.vendor + index}
-              href={{
-                pathname: `${route.basePath}/${storeName}/products`,
-                query: { dataType: type, itemValue: item.vendor },
-              }}
-              as={`${route.basePath}/${storeName}/products`}
-              style={{
-                display: "flex",
-              }}
-            >
-              <Box
-                sx={styles.brandImage}
-                style={{
-                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                  backgroundColor: "white",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  zIndex: "1",
-                  cursor: "pointer",
+            <Grid item xs={5.5} sm={2.8} sx={styles.brandImage} key={item?.vendor + index}>
+              <Link
+                href={{
+                  pathname: `${route.basePath}/${storeName}/products`,
+                  query: { dataType: type, itemValue: item.vendor },
                 }}
+                as={`${route.basePath}/${storeName}/products`}
               >
                 <NextImage
                   renderError={() => {
@@ -89,11 +64,15 @@ const BrandTitles = (props: any) => {
                     );
                   }}
                   src={item?.logo_url}
-                  alt={item?.vendor + index}
-                  quality="100"
+                  alt={item?.vendor}
+                  quality="50"
+                  fill={false}
+                  width={270}
+                  height={150}
+                  style={{ position: "relative", width: "100%", height: "100%" }}
                 />
-              </Box>
-            </Link>
+              </Link>
+            </Grid>
           ))}
         </Grid>
       </CustomGrid>

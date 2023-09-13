@@ -142,18 +142,13 @@ const styles = {
     paddingLeft: "10px",
   },
   brandImage: {
-    height: {
-      lg: "150px",
-      md: "100px",
-      sm: "80px",
-      xs: "80px",
-    },
-    width: {
-      lg: "285px",
-      md: "238px",
-      sm: "170px",
-      xs: "45%",
-    },
+    display: "flex",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: "1",
+    cursor: "pointer",
   },
   paper: {
     width: "34px",

@@ -22,7 +22,7 @@ export const NextImage = (props: Props) => {
   }
   return (
     <Box style={{ width: "100%", height: "100%", position: "relative", zIndex: zIndex }}>
-      <CustomImage {...imageProps} />
+      <CustomImage {...props} />
     </Box>
   );
 };
@@ -49,7 +49,9 @@ const CustomImage = (props) => {
       onError={() => {
         setError(true);
       }}
-      placeholder={placeholder || "empty"}
+      placeholder={
+        placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}`
+      }
       onLoad={onLoad}
       loading={props.priority ? "eager" : "lazy"}
     />
@@ -62,12 +64,12 @@ const shimmer = (w = 200, h = 200) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <defs>
     <linearGradient id="g">
-      <stop stop-color="#333" offset="20%" />
-      <stop stop-color="#222" offset="50%" />
-      <stop stop-color="#333" offset="70%" />
+      <stop stop-color=" #f8f7ec" offset="20%" />
+      <stop stop-color=" #f8f7ec" offset="50%" />
+      <stop stop-color=" #f8f7ec" offset="70%" />
     </linearGradient>
   </defs>
-  <rect width="${w}" height="${h}" fill="#333" />
+  <rect width="${w}" height="${h}" fill=" #f8f7ec" />
   <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
   <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
 </svg>`;

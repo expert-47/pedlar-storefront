@@ -2,7 +2,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect, useLayoutEffect } from "react";
-import { Divider, Box, useMediaQuery, Pagination, Theme } from "@mui/material";
+import { Divider, Box, useMediaQuery, Pagination, Theme, CircularProgress } from "@mui/material";
 //components imports
 import Layout from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
@@ -29,6 +29,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [shopFilterList, setShopFilterList] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
   const [brandsFilterList, setBrandFilterList] = useState([]);
+  const [productLoader, setproductLoader] = useState(false);
   const [filterData, setFilterData] = useState({
     shopList: [],
     vender: [],
@@ -107,6 +108,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         getFilteredData([...brandsFilterList, ...shopFilterList]);
         return;
       }
+      setproductLoader(true);
 
       const collectionDataProducts = await getPaginationProducts(
         "after",
@@ -117,10 +119,9 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         maxHeightProductImage,
       );
 
+      setPageNumber(value);
       setProductsData(collectionDataProducts?.nodes || []);
       productsImpressiongmtEvent(collectionDataProducts?.nodes || [], "all products");
-
-      setPageNumber(value);
 
       setEndCursorValue((prv) => {
         const data = { ...prv };
@@ -133,12 +134,19 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     } catch (error) {
       console.log(error);
       setHasNextPage(false);
-    } finally {
-      setTimeout(() => {
-        scrollToTop();
-      }, 500);
     }
+    // finally {
+    //   setTimeout(() => {
+    //     scrollToTop();
+    //   }, 500);
+    // }
   };
+  useEffect(() => {
+    if (productsData?.length > 0) {
+      setproductLoader(false);
+      scrollToTop();
+    }
+  }, [productsData]);
   useEffect(() => {
     if (hasNextPage && pageCount <= pageNumber) {
       setPageCount(pageNumber + 1);
@@ -174,17 +182,31 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         }}
       >
         <ProductHeader
-          loading={loading}
-          setLoading={setLoading}
-          brandsFilterList={brandsFilterList}
-          setFiltersValue={setFiltersValue}
-          collectionId={collectionId}
           slug={slug}
+          loading={loading}
           filterData={filterData}
+          setLoading={setLoading}
+          collectionId={collectionId}
           shopFilterList={shopFilterList}
+          setFiltersValue={setFiltersValue}
+          brandsFilterList={brandsFilterList}
         />
       </Box>
-      <Gallery newAdditionData={productsData} heading={"all products"} />
+
+      {productLoader ? (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: 30,
+          }}
+        >
+          <CircularProgress color="secondary" />
+        </Box>
+      ) : (
+        <Gallery newAdditionData={productsData} heading={"all products"} />
+      )}
       {(!loading && productsData?.length > 0) || pageNumber != 1 ? (
         <Box
           sx={{

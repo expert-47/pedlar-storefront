@@ -6,7 +6,6 @@ import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gt
 import { getCuratedBrands } from "apis/restApi/getCuratedBrands";
 import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
-import { isMobile } from "react-device-detect";
 
 function logCurrentTime() {
   return new Date().toUTCString();
@@ -18,8 +17,6 @@ const Home = dynamic(() => import("components/home"), {
 const Layout = dynamic(() => import("components/layout"), {
   loading: () => <p></p>,
 });
-const maxWidthProductImage = isMobile ? 185 : 380;
-const maxHeightProductImage = isMobile ? 230 : 450;
 
 export default function Index({
   headerData,
@@ -311,6 +308,11 @@ export default function Index({
 // }
 
 export async function getServerSideProps(context: any) {
+  const { req } = context;
+  const userAgent = req.headers["user-agent"] || "";
+  const isMobile = /Mobile/.test(userAgent);
+  const maxWidthProductImage = isMobile ? 185 : 380;
+  const maxHeightProductImage = isMobile ? 230 : 450;
   const firstTime = logCurrentTime();
   const { slug } = context.query;
 

@@ -135,11 +135,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       console.log(error);
       setHasNextPage(false);
     }
-    // finally {
-    //   setTimeout(() => {
-    //     scrollToTop();
-    //   }, 500);
-    // }
   };
   useEffect(() => {
     if (productsData?.length > 0) {

@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Box } from "@mui/material";
-
+import { isMobile } from "react-device-detect";
+const maxWidthProductImage = isMobile ? 150 : 290;
+const maxHeightProductImage = isMobile ? 187 : 290;
 import NewImage, { ImageProps } from "next/image";
 
 interface Props extends ImageProps {
@@ -49,9 +51,14 @@ const CustomImage = (props) => {
       onError={() => {
         setError(true);
       }}
-      placeholder={
-        placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}`
-      }
+      placeholder="blur"
+      blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}`}
+      // placeholder={
+      //   placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}`
+      // }
+      // {...(placeholder
+      //   ? { blurDataURL: `data:image/svg+xml;base64,${toBase64(shimmer(style?.width || 340, style?.height || 400))}` }
+      //   : {})}
       onLoad={onLoad}
       loading={props.priority ? "eager" : "lazy"}
     />
@@ -60,16 +67,14 @@ const CustomImage = (props) => {
 const toBase64 = (str: string) =>
   typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str);
 
-const shimmer = (w = 200, h = 200) => `
-<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+const shimmer = (w = maxWidthProductImage, h = maxHeightProductImage) => `
+<svg width="${w}" height="${h}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g">
-      <stop stop-color=" #f8f7ec" offset="20%" />
-      <stop stop-color=" #f8f7ec" offset="50%" />
-      <stop stop-color=" #f8f7ec" offset="70%" />
-    </linearGradient>
+    <filter id="blur" x="-100%" y="0" width="300%" height="100%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="100">
+        <animate attributeName="x" from="-100%" to="100%" dur="1s" repeatCount="indefinite" />
+      </feGaussianBlur>
+    </filter>
   </defs>
-  <rect width="${w}" height="${h}" fill=" #f8f7ec" />
-  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
-  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+  <rect width="${w}" height="${h}" fill="rgba(200, 200, 200, 0.5)" filter="url(#blur)" />
 </svg>`;

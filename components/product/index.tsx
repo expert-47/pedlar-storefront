@@ -286,14 +286,6 @@ const Cart = (props: any) => {
     setError(false);
     setErrorMessage("");
   };
-  // const pagination = {
-  //   clickable: true,
-  //   pagination: true,
-  // };
-
-  //   assign the value of price according to the requirement of the client
-  //(remove .0 if exists , and if there is one decimal and that
-  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
   const getPriceValueFromState = price?.price;
 
   let priceOfProduct: any = getPriceValueFromState;
@@ -370,7 +362,6 @@ const Cart = (props: any) => {
                 paddingTop: "26px",
               }}
             >
-              {/* Mobile View */}
               {isMobile ? (
                 <Grid item xs={12} sx={{ height: "400px" }}>
                   <Grid>
@@ -547,7 +538,6 @@ const Cart = (props: any) => {
                     </Accordion>
                     <Accordion elevation={0}>
                       <AccordionSummary
-                        // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
                         expandIcon={<ExpandMoreIcon />}
                         aria-controls="panel2a-content"
                         id="panel2a-header"
@@ -734,8 +724,6 @@ const Cart = (props: any) => {
           </Grid>
         )}
       </CustomContainer>
-      {/* <Divider sx={styles.footerDivider} />
-      <BaseFooter /> */}
     </Layout>
   );
 };

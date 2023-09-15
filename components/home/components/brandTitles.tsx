@@ -65,7 +65,7 @@ const BrandTitles = (props: any) => {
                   }}
                   src={item?.logo_url}
                   alt={item?.vendor}
-                  quality="50"
+                  quality={50}
                   fill={false}
                   width={270}
                   height={150}

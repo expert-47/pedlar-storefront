@@ -62,8 +62,8 @@ export async function getServerSideProps(context: any) {
   const { req } = context;
   const userAgent = req.headers["user-agent"] || "";
   const isMobile = /Mobile/.test(userAgent);
-  const maxWidthProductImage = isMobile ? 185 : 380;
-  const maxHeightProductImage = isMobile ? 230 : 450;
+  const maxWidthProductImage = isMobile ? 600 : 800;
+  const maxHeightProductImage = isMobile ? 700 : 900;
   const firstTime = logCurrentTime();
   const { slug } = context.query;
 

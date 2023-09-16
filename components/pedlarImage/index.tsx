@@ -4,8 +4,8 @@ import { Box } from "@mui/material";
 
 import NewImage, { ImageProps } from "next/image";
 import { isMobile } from "react-device-detect";
-const maxWidthProductImage = isMobile ? 150 : 380;
-const maxHeightProductImage = isMobile ? 187 : 450;
+const maxWidthProductImage = isMobile ? 600 : 800;
+const maxHeightProductImage = isMobile ? 700 : 900;
 interface Props extends ImageProps {
   zIndex?: number;
   renderError?: any;

@@ -22,7 +22,7 @@ export default function Navbar(props: any) {
   const { data, shopList, loading, shopListLoading } = props;
   const isIOSDevice = isIOS;
   const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   const storeName = useSelector((data: any) => data.app.storeName);
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
 
@@ -75,7 +75,7 @@ export default function Navbar(props: any) {
         </Marquee>
 
         <CustomContainer>
-          {!isMatch ? (
+          {isMatch ? (
             <ResponsiveNavbar
               storefrontName={props?.storefrontName}
               slugs={props?.slug}

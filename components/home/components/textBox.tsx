@@ -12,7 +12,7 @@ const TextBox = (props: any) => {
   const slug = router?.query;
   const theme = useTheme();
   const storeName = useSelector((data: any) => data.app.storeName);
-  const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
   const instaNameLink = props?.headerData?.instagramLink?.split("instagram.com/@") || "";
   const tiktokNameLink = props?.headerData?.tiktokLink?.split("tiktok.com/@") || "";
@@ -31,7 +31,7 @@ const TextBox = (props: any) => {
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",
-        paddingBottom: isMatch ? "20px" : "0px",
+        paddingBottom: isMatch ? "0px" : "20px",
       }}
     >
       <Typography sx={styles.bannerText}>
@@ -59,7 +59,7 @@ const TextBox = (props: any) => {
               width: isMatch ? "260px" : "100%",
             }}
           >
-            <Button sx={{ width: !isMatch ? "100%" : "260px", ...styles.shopbutton }} onClick={onClickShopNow}>
+            <Button sx={{ width: isMatch ? "100%" : "260px", ...styles.shopbutton }} onClick={onClickShopNow}>
               Shop now
             </Button>
           </Grid>
@@ -67,7 +67,7 @@ const TextBox = (props: any) => {
         <div
           style={{
             display: "flex",
-            justifyContent: !isMatch ? "center" : undefined,
+            justifyContent: isMatch ? "center" : undefined,
           }}
         >
           {props?.headerData?.instagramLink && instaNameLink[1] != "" && (

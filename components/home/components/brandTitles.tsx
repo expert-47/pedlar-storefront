@@ -52,8 +52,8 @@ const BrandTitles = (props: any) => {
                       <Box
                         sx={{
                           color: "black",
-                          height: "150px",
-                          width: "280px",
+                          height: "100%",
+                          width: "100%",
                           alignItems: "center",
                           justifyContent: "center",
                           display: "flex",

@@ -103,6 +103,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   };
 
   const getPaginationData = async (e, value) => {
+    scrollToTop();
+
     try {
       if (value == 1) {
         getFilteredData([...brandsFilterList, ...shopFilterList]);
@@ -139,9 +141,9 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   useEffect(() => {
     if (productsData?.length > 0) {
       setproductLoader(false);
-      scrollToTop();
     }
   }, [productsData]);
+
   useEffect(() => {
     if (hasNextPage && pageCount <= pageNumber) {
       setPageCount(pageNumber + 1);
@@ -194,7 +196,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            paddingTop: 30,
+            height: 80,
           }}
         >
           <CircularProgress color="secondary" />

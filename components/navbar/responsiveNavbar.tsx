@@ -67,19 +67,10 @@ export const ResponsiveNavbar = (props: Props) => {
               onClick={onClickDrawer}
               width={20}
               height={14}
-              placeholder="empty"
             />
           </Box>
           <Link href={`/${props?.slugs}`} style={{ display: "flex", alignItems: "center" }}>
-            <NextImage
-              layout="default"
-              fill={false}
-              src="/pedlar.png"
-              alt="No Image Found"
-              placeholder="empty"
-              width={80}
-              height={25}
-            />
+            <NextImage layout="default" fill={false} src="/pedlar.png" alt="No Image Found" width={80} height={25} />
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>

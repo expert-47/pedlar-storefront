@@ -5,13 +5,14 @@ import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gt
 import { getCuratedBrands } from "apis/restApi/getCuratedBrands";
 import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
+import { Box } from "@mui/material";
 
 function logCurrentTime() {
   return new Date().toUTCString();
 }
 
 const Home = dynamic(() => import("components/home"), {
-  loading: () => <p></p>,
+  loading: () => <Box sx={{ height: 1000 }}></Box>,
 });
 const Layout = dynamic(() => import("components/layout"), {
   loading: () => <p></p>,

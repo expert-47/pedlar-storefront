@@ -50,6 +50,7 @@ import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 import { NextImage } from "components/pedlarImage";
+import { log } from "console";
 
 const Cart = (props: any) => {
   const theme = useTheme();
@@ -658,26 +659,17 @@ const Cart = (props: any) => {
               </Grid>
             </Grid>
           ) : (
-            <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
-              <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
+            <>
+              <Box
+                sx={{
+                  padding: "40px 0 0 10px",
+                }}
+              >
                 <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                   You might like
                 </Typography>
-              </Grid>
-              <Grid
-                container
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                xl={12}
-                pl={3}
-                pr={3}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-evenly",
-                }}
-              >
+              </Box>
+              <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
                 {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
                   const productId = item?.id?.split("gid://shopify/Product/")[1];
                   //   assign the value of price according to the requirement of the client
@@ -693,16 +685,7 @@ const Cart = (props: any) => {
                     formattedPrice = Math.round(formattedPrice);
                   }
                   return (
-                    <Grid
-                      key={index}
-                      item
-                      xs={6}
-                      sm={3}
-                      md={3}
-                      lg={2}
-                      sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                      onClick={ClearErrors}
-                    >
+                    <Grid key={"you_might_like" + index} item sm={3} lg={2.4} onClick={ClearErrors}>
                       <Link
                         key={"link" + index}
                         href={{ pathname: `${path}/product/${productId}` }}
@@ -710,8 +693,8 @@ const Cart = (props: any) => {
                         onClick={() => setproductsLoadedState(true)}
                       >
                         <CardComponent
-                          width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                          height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
+                          width={{ xs: 150, sm: 170, md: 230, lg: 270 }}
+                          height={{ xs: 150, sm: 170, md: 230, lg: 270 }}
                           name={item?.title?.toLowerCase()}
                           type={item?.vendor}
                           price={
@@ -730,7 +713,7 @@ const Cart = (props: any) => {
                   );
                 })}
               </Grid>
-            </Grid>
+            </>
           )}
         </CustomContainer>
       ) : (

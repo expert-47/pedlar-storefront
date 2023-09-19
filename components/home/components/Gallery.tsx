@@ -20,7 +20,6 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
       >
         <Grid
           container
-          item
           xs={11.5}
           sm={11.8}
           md={11.6}
@@ -56,8 +55,8 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent
-                    width={{ xs: "185px", sm: 250, md: 320, lg: 380 }}
-                    height={{ xs: "230px", sm: 312, md: 400, lg: 450 }}
+                    width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
+                    height={{ xs: 195, sm: 312, md: 400, lg: 450 }}
                     type={item?.vendor}
                     name={item?.title?.toLowerCase()}
                     price={

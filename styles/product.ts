@@ -81,12 +81,9 @@ const styles = {
     color: "rgba(0, 0, 0, 0.54)",
   },
   bottomContainer: {
-    paddingTop: "40px",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingLeft: "1%",
     borderColor: "info.main",
     paddingBottom: "50px",
+    marginLeft: "0px",
   },
   eachSlideEffect: {
     display: "flex",

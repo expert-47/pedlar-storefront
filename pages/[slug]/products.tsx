@@ -29,7 +29,6 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   const [shopFilterList, setShopFilterList] = useState([]);
   const [endCursorValue, setEndCursorValue] = useState({});
   const [brandsFilterList, setBrandFilterList] = useState([]);
-  const [productLoader, setproductLoader] = useState(false);
   const [filterData, setFilterData] = useState({
     shopList: [],
     vender: [],
@@ -61,6 +60,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   }, [route?.query]);
 
   const getFilteredData = async (filterData) => {
+    scrollToTop();
+
     try {
       setLoading(true);
       setProductsData([]);
@@ -96,21 +97,17 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       // }
     } catch (error) {
       setProductsData([]);
-    } finally {
-      setLoading(false);
-      scrollToTop();
     }
   };
 
   const getPaginationData = async (e, value) => {
-    scrollToTop();
-
     try {
       if (value == 1) {
         getFilteredData([...brandsFilterList, ...shopFilterList]);
         return;
       }
-      setproductLoader(true);
+      scrollToTop();
+      setLoading(true);
 
       const collectionDataProducts = await getPaginationProducts(
         "after",
@@ -140,7 +137,11 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
   };
   useEffect(() => {
     if (productsData?.length > 0) {
-      setproductLoader(false);
+      scrollToTop();
+
+      setTimeout(() => {
+        setLoading(false);
+      }, 300);
     }
   }, [productsData]);
 
@@ -170,39 +171,41 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         <meta property="og:description" content="Home" />
         <meta property="og:title" content="Home" key="Home" name="description" />
       </Head>
-      <Box
-        sx={{
-          alignItems: { xs: "center", md: "center", lg: "center" },
-          justifyContent: { xs: "center", md: "center", lg: "center" },
-          paddingLeft: { xs: "10px", md: "20px", lg: "40px" },
-          paddingRight: { xs: "10px", md: "20px", lg: "40px" },
-        }}
-      >
-        <ProductHeader
-          slug={slug}
-          loading={loading}
-          filterData={filterData}
-          setLoading={setLoading}
-          collectionId={collectionId}
-          shopFilterList={shopFilterList}
-          setFiltersValue={setFiltersValue}
-          brandsFilterList={brandsFilterList}
-        />
-      </Box>
 
-      {productLoader ? (
+      {loading ? (
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: 80,
+            height: 300,
           }}
         >
           <CircularProgress color="secondary" />
         </Box>
       ) : (
-        <Gallery newAdditionData={productsData} heading={"all products"} />
+        <>
+          <Box
+            sx={{
+              alignItems: { xs: "center", md: "center", lg: "center" },
+              justifyContent: { xs: "center", md: "center", lg: "center" },
+              paddingLeft: { xs: "10px", md: "20px", lg: "40px" },
+              paddingRight: { xs: "10px", md: "20px", lg: "40px" },
+            }}
+          >
+            <ProductHeader
+              slug={slug}
+              loading={loading}
+              filterData={filterData}
+              setLoading={setLoading}
+              collectionId={collectionId}
+              shopFilterList={shopFilterList}
+              setFiltersValue={setFiltersValue}
+              brandsFilterList={brandsFilterList}
+            />
+          </Box>
+          <Gallery newAdditionData={productsData} heading={"all products"} />
+        </>
       )}
       {(!loading && productsData?.length > 0) || pageNumber != 1 ? (
         <Box
@@ -261,5 +264,5 @@ function scrollToTop() {
   const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
 
   if (!isBrowser()) return;
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: "instant" });
 }

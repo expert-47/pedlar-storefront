@@ -179,7 +179,7 @@ const ProductHeader = (props: any) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: 80,
+            height: 300,
           }}
         >
           <CircularProgress color="secondary" />

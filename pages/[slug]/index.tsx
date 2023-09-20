@@ -25,6 +25,7 @@ export default function Index({
   curatedBrandsResponse,
   firstTime,
   secondTime,
+  isMobile,
   error,
 }: any) {
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function Index({
 
     console.log("====================================");
   }, []);
+
   return (
     <Layout
       error={error}
@@ -49,6 +51,7 @@ export default function Index({
       storefrontName={headerData?.data?.storefrontName}
       slug={slug}
       collectionId={headerData?.data?.collectionId}
+      isMobile={isMobile}
     >
       <Home
         headerData={headerData?.data}
@@ -58,6 +61,7 @@ export default function Index({
     </Layout>
   );
 }
+// }
 
 export async function getServerSideProps(context: any) {
   const { req } = context;
@@ -92,6 +96,7 @@ export async function getServerSideProps(context: any) {
         curatedBrandsResponse: curatedBrandsResponse?.data || [],
         firstTime,
         secondTime,
+        isMobile,
       },
     };
   }

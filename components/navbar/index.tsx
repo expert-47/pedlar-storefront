@@ -1,28 +1,27 @@
+//package imports
 import React from "react";
 import Link from "next/link";
-
-import { Stack } from "@mui/system";
 import styles from "styles/navbar";
+import { Stack } from "@mui/system";
+import { useRouter } from "next/router";
 import Marquee from "react-fast-marquee";
 import { isIOS } from "react-device-detect";
-
-import { ResponsiveNavbar } from "./responsiveNavbar";
-import { CustomContainer } from "components/layout";
-import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme, Box } from "@mui/material";
-
+import { AppBar, Badge, Button, Grid, IconButton, Toolbar, Box } from "@mui/material";
+//components
 import Typography from "components/customText";
-import CartDrawer from "components/cartDrawer/cartDrawer";
-import DropDownMenu from "./components/dropDownMenu";
-import { useRouter } from "next/router";
-import { useSelector, useDispatch } from "react-redux";
 import { NextImage } from "components/pedlarImage";
+import { CustomContainer } from "components/layout";
+import DropDownMenu from "./components/dropDownMenu";
+import { ResponsiveNavbar } from "./responsiveNavbar";
+import CartDrawer from "components/cartDrawer/cartDrawer";
+//redux
+import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
 export default function Navbar(props: any) {
-  const { data, shopList, loading, shopListLoading } = props;
+  const { data, shopList, loading, shopListLoading, isMobile } = props;
   const isIOSDevice = isIOS;
-  const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
+
   const storeName = useSelector((data: any) => data.app.storeName);
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
 
@@ -45,7 +44,7 @@ export default function Navbar(props: any) {
       ? Number(cartProducts[0].quantity)
       : 0;
   return (
-    <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
+    <Grid container sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={isIOSDevice ? "8.5px" : "11px"} fontWeight={"600"} sx={{ display: { xl: "none" } }}>
@@ -75,7 +74,7 @@ export default function Navbar(props: any) {
         </Marquee>
 
         <CustomContainer>
-          {isMatch ? (
+          {isMobile ? (
             <ResponsiveNavbar
               storefrontName={props?.storefrontName}
               slugs={props?.slug}
@@ -85,7 +84,7 @@ export default function Navbar(props: any) {
               shopListLoading={shopListLoading}
             />
           ) : (
-            <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
+            <Grid item sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href={`/${props?.slug}`}>

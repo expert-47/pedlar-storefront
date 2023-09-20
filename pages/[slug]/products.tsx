@@ -172,7 +172,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
         <meta property="og:title" content="Home" key="Home" name="description" />
       </Head>
 
-      {loading ? (
+      {loading && !error ? (
         <Box
           sx={{
             display: "flex",

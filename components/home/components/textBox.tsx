@@ -56,7 +56,7 @@ const TextBox = (props: any) => {
           <Grid
             style={{
               marginTop: "20px",
-              width: isMatch ? "260px" : "100%",
+              width: "100%",
             }}
           >
             <Button sx={{ width: isMatch ? "100%" : "260px", ...styles.shopbutton }} onClick={onClickShopNow}>

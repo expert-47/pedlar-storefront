@@ -317,6 +317,7 @@ const Cart = (props: any) => {
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
+      isMobile={isMobile}
     >
       {!productsLoadedState ? (
         <CustomContainer>

@@ -162,6 +162,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
       slug={slug}
       productsPage={true}
       collectionId={collectionId}
+      isMobile={isMobile}
     >
       <Head>
         <title>Pedlar</title>

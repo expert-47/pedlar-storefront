@@ -57,6 +57,7 @@ export default function Index({
         headerData={headerData?.data}
         newAdditionData={newAdditionData}
         curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
+        isMobile={isMobile}
       />
     </Layout>
   );

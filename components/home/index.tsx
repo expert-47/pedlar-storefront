@@ -8,7 +8,6 @@ import Divider from "@mui/material/Divider";
 import styles from "styles/home";
 import BrandTitles from "./components/brandTitles";
 import Gallery from "./components/Gallery";
-// import HomepagePopup from "components/popups/homepagePopup";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as gtmEvents from "utils/gtm";

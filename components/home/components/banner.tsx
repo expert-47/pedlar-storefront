@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { CustomContainer } from "../../layout";
 import { useMediaQuery, useTheme, Box, Snackbar } from "@mui/material";
@@ -11,16 +11,13 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props,
 });
 
 const BannerImg = (props: any) => {
+  const { isMobile } = props;
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  const [mounted, setmounted] = useState(false);
 
   const screen375 = useMediaQuery("(max-width:375px)");
   const isMatchMobile = useMediaQuery(theme.breakpoints.up("sm"));
-  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
-  useEffect(() => {
-    setmounted(true);
-  }, []);
+  // const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
@@ -48,9 +45,9 @@ const BannerImg = (props: any) => {
         <Grid item xs={11.5} md={4} lg={4}>
           <Box
             sx={{
-              width: isMatch ? "100%" : mounted ? 476 : "fit-content",
-              height: screen375 ? 480 : isMatch ? 500 : 595,
-              minHeight: screen375 ? 430 : isMatch ? 470 : 500,
+              width: isMobile ? "100%" : 476,
+              height: screen375 ? 480 : isMobile ? 500 : 595,
+              minHeight: screen375 ? 430 : isMobile ? 470 : 500,
             }}
           >
             <NextImage

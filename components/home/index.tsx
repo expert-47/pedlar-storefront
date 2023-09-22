@@ -29,7 +29,7 @@ export const Home = (props: any) => {
   return (
     <Grid>
       {/* <HomepagePopup /> */}
-      <BannerImg headerData={props?.headerData} />
+      <BannerImg headerData={props?.headerData} isMobile={props?.isMobile} />
       <Divider sx={styles.bannerDivider} />
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="My Latest Picks" rightHeading="SHOP ALL" />

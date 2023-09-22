@@ -50,7 +50,13 @@ import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 import { NextImage } from "components/pedlarImage";
-import { log } from "console";
+
+function scrollToTop() {
+  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+
+  if (!isBrowser()) return;
+  window.scrollTo({ top: -50, behavior: "instant" });
+}
 
 const Cart = (props: any) => {
   const theme = useTheme();
@@ -65,6 +71,7 @@ const Cart = (props: any) => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [ImageLoaded, setImageLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -74,6 +81,12 @@ const Cart = (props: any) => {
     currencyCode: "AUD",
   });
   const [productsLoadedState, setproductsLoadedState] = useState(true);
+
+  useEffect(() => {
+    if (ImageLoaded) {
+      scrollToTop();
+    }
+  }, [ImageLoaded]);
 
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
@@ -420,6 +433,7 @@ const Cart = (props: any) => {
                                           objectFit: "contain",
                                           objectPosition: "center",
                                         }}
+                                        onLoad={() => setImageLoaded(true)}
                                         priority={index < 2 ? true : false}
                                       />
                                     </Box>

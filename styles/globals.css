@@ -406,7 +406,7 @@ section {
 .faq-current .faqHide {
   display: block;
   position: absolute;
-  right: 90px;
+ margin-left: 90px;
   margin-top: -20px;
 }
 @media screen and (max-width: 860px) {

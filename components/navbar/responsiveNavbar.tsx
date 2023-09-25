@@ -67,16 +67,33 @@ export const ResponsiveNavbar = (props: Props) => {
               onClick={onClickDrawer}
               width={20}
               height={14}
+              placeholder="empty"
             />
           </Box>
           <Link href={`/${props?.slugs}`} style={{ display: "flex", alignItems: "center" }}>
-            <NextImage layout="default" fill={false} src="/pedlar.png" alt="No Image Found" width={80} height={25} />
+            <NextImage
+              layout="default"
+              fill={false}
+              src="/pedlar.png"
+              alt="No Image Found"
+              width={80}
+              height={25}
+              placeholder="empty"
+            />
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
         <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: "10px" }}>
           <IconButton onClick={onClickCart} sx={styles.iconColor}>
-            <NextImage layout="default" fill={false} src="/cart.png" alt="cart-image" height={19.48} width={19.48} />
+            <NextImage
+              layout="default"
+              fill={false}
+              src="/cart.png"
+              alt="cart-image"
+              height={19.48}
+              width={19.48}
+              placeholder="empty"
+            />
           </IconButton>
         </Badge>
         <CartDrawer />

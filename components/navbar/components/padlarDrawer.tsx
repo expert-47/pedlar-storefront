@@ -133,6 +133,7 @@ export const PedlarDrawer = (props: {
                   alt="No Image Found"
                   width={68}
                   height={22}
+                  placeholder="empty"
                 />
               </Link>
             </Box>
@@ -151,6 +152,7 @@ export const PedlarDrawer = (props: {
                   fill={false}
                   height={19.48}
                   width={19.48}
+                  placeholder="empty"
                 />
               </IconButton>
             </Badge>

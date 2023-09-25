@@ -1,4 +1,14 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Divider, Grid, Typography } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Divider,
+  Grid,
+  Typography,
+  useMediaQuery,
+  Theme,
+} from "@mui/material";
 import React from "react";
 import { CustomContainer } from "../../landing-components/landinglayout";
 import { styles } from "../../landing-components/static-pages/faq/style";
@@ -15,6 +25,7 @@ import { seo } from "utils/seoData";
 
 const Faq = (props) => {
   const { slug, headerData } = props;
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -29,6 +40,7 @@ const Faq = (props) => {
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
+      isMobile={isMobile}
     >
       <CustomContainer>
         <Box sx={styles.MainBox}>

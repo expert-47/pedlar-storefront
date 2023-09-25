@@ -54,7 +54,7 @@ const Faq = () => {
                 currentClassName="faq-current"
                 offset={-500}
               >
-                <Box style={{ paddingBottom: "26px" }}>
+                <Box pb={26}>
                   <Link href="#creator" sx={styles.faqLink}>
                     Creator
                   </Link>

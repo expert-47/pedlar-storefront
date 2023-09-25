@@ -85,7 +85,7 @@ const Picturecarousel: FC = (): JSX.Element => {
                     src={item?.src}
                     fill={false}
                     alt={item?.altText}
-                    style={{ height: 250, width: isIOSDevice ? 220 : "auo" }}
+                    style={{ height: 250, width: isIOSDevice ? 220 : "auto" }}
                   />
                 </Box>
                 <Typography sx={styles.cardText}>{item?.altText}</Typography>

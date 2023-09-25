@@ -89,7 +89,7 @@ export default function Navbar(props: any) {
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href={`/${props?.slug}`}>
                     <Box sx={{ height: 22, width: 68, cursor: "pointer" }}>
-                      <NextImage src="/pedlar.png" alt="No Image Found" />
+                      <NextImage src="/pedlar.png" alt="No Image Found" placeholder="empty" />
                     </Box>
                   </Link>
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
@@ -122,6 +122,7 @@ export default function Navbar(props: any) {
                         src="/cart.png"
                         height={19.48}
                         width={19.48}
+                        placeholder="empty"
                       />
                     </IconButton>
                   </Badge>

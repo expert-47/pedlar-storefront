@@ -599,7 +599,7 @@ const Cart = (props: any) => {
           </Box>
 
           {isMobileDevice ? (
-            <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
+            <Grid container sx={{ ...styles.bottomContainer }}>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
                 <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
                   You might like
@@ -607,11 +607,6 @@ const Cart = (props: any) => {
               </Grid>
               <Grid
                 container
-                xs={12}
-                sm={12}
-                md={12}
-                lg={12}
-                xl={12}
                 pl={3}
                 pr={3}
                 sx={{

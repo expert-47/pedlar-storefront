@@ -18,7 +18,7 @@ import { seo } from "utils/seoData";
 //GTM
 import { productsImpressiongmtEvent } from "utils/gtm";
 
-const Products = ({ slug, collectionId, userData: data, error }: any) => {
+const Products = ({ slug, collectionId, userData: data, isMobile, error }: any) => {
   const route = useRouter();
   //states
   const [pageCount, setPageCount] = useState(1);
@@ -34,7 +34,7 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     vender: [],
   });
   //media query
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+  // const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   const maxWidthProductImage = isMobile ? 600 : 800;
   const maxHeightProductImage = isMobile ? 700 : 900;
 
@@ -243,7 +243,9 @@ export default Products;
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
-
+  const { req } = context;
+  const userAgent = req.headers["user-agent"] || "";
+  const isMobile = /Mobile/.test(userAgent);
   const headerData = await getUserDetail(slug);
 
   if (headerData?.data) {
@@ -252,12 +254,14 @@ export async function getServerSideProps(context: any) {
         slug,
         collectionId: headerData?.data?.collectionId,
         userData: headerData,
+        isMobile,
       },
     };
   } else {
     return {
       props: {
         error: true,
+        isMobile,
       },
     };
   }

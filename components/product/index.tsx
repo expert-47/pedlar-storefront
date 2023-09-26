@@ -65,7 +65,7 @@ const Cart = (props: any) => {
   const dispatch = useDispatch();
   const path = getStoreName(route);
   const slugValue = route.query.slug;
-  const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
+  const { newAdditionData, headerData, newAdditionData2, isMobile, error: apiError } = props;
 
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
@@ -95,7 +95,7 @@ const Cart = (props: any) => {
   }, [newAdditionData2]);
 
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+  const isMobileDevice = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   const storeName = useSelector((data: any) => data.app.storeName);
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
@@ -337,7 +337,7 @@ const Cart = (props: any) => {
       {!productsLoadedState ? (
         <CustomContainer>
           <Box sx={styles.mainContainer}>
-            {!isMobile ? (
+            {!isMobileDevice ? (
               <Box
                 sx={{
                   zIndex: "10px",
@@ -386,7 +386,7 @@ const Cart = (props: any) => {
                   paddingTop: "26px",
                 }}
               >
-                {isMobile ? (
+                {isMobileDevice ? (
                   <Grid item xs={12} sx={{ height: "400px" }}>
                     <Gallery
                       options={{
@@ -598,7 +598,7 @@ const Cart = (props: any) => {
             </Grid>
           </Box>
 
-          {isMobile ? (
+          {isMobileDevice ? (
             <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
                 <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>

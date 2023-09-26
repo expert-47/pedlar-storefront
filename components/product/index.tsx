@@ -83,6 +83,8 @@ const Cart = (props: any) => {
   const [productsLoadedState, setproductsLoadedState] = useState(true);
 
   useEffect(() => {
+    window.history.scrollRestoration = "manual";
+
     if (ImageLoaded) {
       scrollToTop();
     }

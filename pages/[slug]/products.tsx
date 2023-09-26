@@ -136,6 +136,8 @@ const Products = ({ slug, collectionId, userData: data, error }: any) => {
     }
   };
   useEffect(() => {
+    window.history.scrollRestoration = "manual";
+
     if (productsData?.length > 0) {
       scrollToTop();
 

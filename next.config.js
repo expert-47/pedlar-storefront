@@ -28,6 +28,9 @@ const nextConfig = withPWA({
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    scrollRestoration: false,
+  },
 
   async headers() {
     return [

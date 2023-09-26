@@ -31,6 +31,7 @@ export default function Index({
   useEffect(() => {
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
+    window.history.scrollRestoration = "manual";
   }, [newAdditionData]);
 
   useEffect(() => {

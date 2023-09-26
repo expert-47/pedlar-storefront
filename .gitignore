@@ -49,3 +49,6 @@ public/workbox-8f0e986c.js.map
 **/public/sw.js.map
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
+
+# Idea
+.idea/

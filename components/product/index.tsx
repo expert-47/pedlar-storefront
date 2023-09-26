@@ -385,64 +385,63 @@ const Cart = (props: any) => {
                 }}
               >
                 {isMobile ? (
-                  <Grid item xs={12} sx={{ height: "400px", display: "flex", width: "100%", overflowX: "auto" }}>
+                  <Grid item xs={12} sx={{ height: "400px" }}>
                     <Gallery
                       options={{
                         showAnimationDuration: 0,
                         hideAnimationDuration: 0,
                       }}
                     >
-                      {/* <Slide
-                          transitionDuration={100}
-                          ref={slideRef}
-                          indicators={true}
-                          arrows={false}
-                          autoplay={false}
-                          infinite={false}
-                        > */}
-                      {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
-                        return (
-                          <Box
-                            style={{
-                              backgroundColor: "white",
-                            }}
-                            key={"newAdditiondataCart" + index}
-                            // ml={5}
-                          >
-                            <Item id={index} original={item?.url} thumbnail={item?.url}>
-                              {({ ref, open }) => (
-                                <Box
-                                  ref={ref}
-                                  onClick={open}
-                                  sx={{
-                                    height: "100%",
-                                    width: "100%",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    display: "flex",
-                                  }}
-                                >
-                                  <NextImage
-                                    src={item?.url}
-                                    width={358}
-                                    height={400}
-                                    layout="default"
-                                    alt={"newAdditiondataCart" + index}
-                                    fill={false}
-                                    style={{
-                                      objectFit: "contain",
-                                      objectPosition: "center",
+                      <Slide
+                        transitionDuration={100}
+                        ref={slideRef}
+                        indicators={true}
+                        arrows={false}
+                        autoplay={false}
+                        infinite={false}
+                      >
+                        {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
+                          return (
+                            <Box
+                              style={{
+                                backgroundColor: "white",
+                              }}
+                              key={"newAdditiondataCart" + index}
+                            >
+                              <Item id={index} original={item?.url} thumbnail={item?.url}>
+                                {({ ref, open }) => (
+                                  <Box
+                                    ref={ref}
+                                    onClick={open}
+                                    sx={{
+                                      height: "100%",
+                                      width: "100%",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      display: "flex",
                                     }}
-                                    onLoad={() => setImageLoaded(true)}
-                                    priority={index < 2 ? true : false}
-                                  />
-                                </Box>
-                              )}
-                            </Item>
-                          </Box>
-                        );
-                      })}
-                      {/* </Slide> */}
+                                  >
+                                    <NextImage
+                                      src={item?.url}
+                                      width={358}
+                                      height={400}
+                                      layout="default"
+                                      alt={"newAdditiondataCart" + index}
+                                      fill={false}
+                                      style={{
+                                        objectFit: "contain",
+                                        objectPosition: "center",
+                                      }}
+                                      onLoad={() => setImageLoaded(true)}
+                                      priority={index < 2 ? true : false}
+                                    />
+                                  </Box>
+                                )}
+                              </Item>
+                            </Box>
+                          );
+                        })}
+                      </Slide>
                     </Gallery>
                   </Grid>
                 ) : (

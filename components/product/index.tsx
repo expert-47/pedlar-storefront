@@ -52,7 +52,7 @@ import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "uti
 import { NextImage } from "components/pedlarImage";
 
 function scrollToTop() {
-  const isBrowser = () => typeof window !== "undefined"; //The approach recommended by Next.js
+  const isBrowser = () => typeof window !== "undefined";
 
   if (!isBrowser()) return;
   window.scrollTo({ top: -50, behavior: "instant" });

@@ -12,7 +12,9 @@ const maxHeightProductDetailImage = isMobile ? 700 : 900;
 export default Cart;
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;
-
+  const { req } = context;
+  const userAgent = req.headers["user-agent"] || "";
+  const isMobile = /Mobile/.test(userAgent);
   const headerData = await getUserDetail(slug);
   if (headerData?.data) {
     const numberofProducts = 6;
@@ -31,12 +33,14 @@ export async function getServerSideProps(context: any) {
         headerData: headerData ? headerData : [],
         newAdditionData: data?.data?.product || [],
         newAdditionData2: response ? response : [],
+        isMobile,
       },
     };
   } else {
     return {
       props: {
         error: true,
+        isMobile,
       },
     };
   }

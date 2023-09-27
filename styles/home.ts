@@ -26,7 +26,6 @@ const styles = {
   },
   shopbutton: {
     marginTop: "10px",
-    // width: "197px",
     height: "46px",
     backgroundColor: "primary.dark",
     color: "primary.main",

@@ -11,23 +11,12 @@ export async function getServerSideProps(context: any) {
     getImageDimensions(isMobile);
 
   try {
-    const headerDataPromise = getUserDetail(slug);
-
-    const headerData = await headerDataPromise;
+    const headerData = await getUserDetail(slug);
 
     if (headerData?.data) {
-      const userDetailResponsePromise = getUserDetailByFetchAPICall(
-        headerData.data.collectionId,
-        6, // numberofProducts
-        maxWidthProductImage,
-        maxHeightProductImage,
-      );
-      const productDetailsPromise = getProductDetails(id, maxWidthProductDetailImage, maxHeightProductDetailImage);
-
-      // Wait for both API calls to complete.
       const [userDetailResponse, productDetails] = await Promise.all([
-        userDetailResponsePromise,
-        productDetailsPromise,
+        getUserDetailByFetchAPICall(headerData.data.collectionId, 6, maxWidthProductImage, maxHeightProductImage),
+        getProductDetails(id, maxWidthProductDetailImage, maxHeightProductDetailImage),
       ]);
 
       return {

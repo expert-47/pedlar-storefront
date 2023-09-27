@@ -55,8 +55,8 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent
-                    width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
-                    height={{ xs: 195, sm: 312, md: 400, lg: 450 }}
+                    width={{ xs: 185, sm: 250, md: 320, lg: 380 }}
+                    height={{ xs: 230, sm: 312, md: 400, lg: 450 }}
                     type={item?.vendor}
                     name={item?.title?.toLowerCase()}
                     price={

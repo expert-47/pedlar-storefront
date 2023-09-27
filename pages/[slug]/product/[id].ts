@@ -1,47 +1,70 @@
 import { getProductDetails, getUserDetailByFetchAPICall } from "apis/graphql/grapgql";
 import { getUserDetail } from "apis/restApi/getUserDetail";
 import Cart from "components/product";
-import { isMobile } from "react-device-detect";
-
-const maxWidthProductImage = isMobile ? 300 : 500;
-const maxHeightProductImage = isMobile ? 400 : 500;
-
-const maxWidthProductDetailImage = isMobile ? 500 : 800;
-const maxHeightProductDetailImage = isMobile ? 600 : 900;
 
 export default Cart;
 export async function getServerSideProps(context: any) {
-  const { slug } = context.query;
-  const { req } = context;
-  const userAgent = req.headers["user-agent"] || "";
+  const { slug, id } = context.query;
+  const userAgent = context.req.headers["user-agent"] || "";
   const isMobile = /Mobile/.test(userAgent);
-  const headerData = await getUserDetail(slug);
-  if (headerData?.data) {
-    const numberofProducts = 6;
-    let response = await getUserDetailByFetchAPICall(
-      headerData?.data?.collectionId,
-      numberofProducts,
-      maxWidthProductImage,
-      maxHeightProductImage,
-    );
-    response = response?.data?.collection?.products?.nodes;
+  const { maxWidthProductImage, maxHeightProductImage, maxWidthProductDetailImage, maxHeightProductDetailImage } =
+    getImageDimensions(isMobile);
 
-    const data = await getProductDetails(context?.query?.id, maxWidthProductDetailImage, maxHeightProductDetailImage);
+  try {
+    const headerDataPromise = getUserDetail(slug);
 
+    const headerData = await headerDataPromise;
+
+    if (headerData?.data) {
+      const userDetailResponsePromise = getUserDetailByFetchAPICall(
+        headerData.data.collectionId,
+        6, // numberofProducts
+        maxWidthProductImage,
+        maxHeightProductImage,
+      );
+      const productDetailsPromise = getProductDetails(id, maxWidthProductDetailImage, maxHeightProductDetailImage);
+
+      // Wait for both API calls to complete.
+      const [userDetailResponse, productDetails] = await Promise.all([
+        userDetailResponsePromise,
+        productDetailsPromise,
+      ]);
+
+      return {
+        props: {
+          headerData: headerData.data,
+          newAdditionData: productDetails?.data?.product || [],
+          newAdditionData2: userDetailResponse?.data?.collection?.products?.nodes || [],
+          isMobile,
+        },
+      };
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  return {
+    props: {
+      error: true,
+      isMobile,
+    },
+  };
+}
+
+function getImageDimensions(isMobile: boolean) {
+  if (isMobile) {
     return {
-      props: {
-        headerData: headerData ? headerData : [],
-        newAdditionData: data?.data?.product || [],
-        newAdditionData2: response ? response : [],
-        isMobile,
-      },
-    };
-  } else {
-    return {
-      props: {
-        error: true,
-        isMobile,
-      },
+      maxWidthProductImage: 300,
+      maxHeightProductImage: 400,
+      maxWidthProductDetailImage: 500,
+      maxHeightProductDetailImage: 600,
     };
   }
+
+  return {
+    maxWidthProductImage: 500,
+    maxHeightProductImage: 500,
+    maxWidthProductDetailImage: 800,
+    maxHeightProductDetailImage: 900,
+  };
 }

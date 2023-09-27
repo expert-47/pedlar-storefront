@@ -58,7 +58,7 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent
-                    width={screen320 ? "100%" : screen375 ? 165 : { xs: 180, sm: 245, md: 280, lg: 380 }}
+                    width={screen320 ? "100%" : screen375 ? 166 : { xs: 180, sm: 245, md: 280, lg: 380 }}
                     height={{ xs: 230, sm: 312, md: 400, lg: 450 }}
                     type={item?.vendor}
                     name={item?.title?.toLowerCase()}

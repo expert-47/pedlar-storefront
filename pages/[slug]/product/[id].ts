@@ -3,11 +3,11 @@ import { getUserDetail } from "apis/restApi/getUserDetail";
 import Cart from "components/product";
 import { isMobile } from "react-device-detect";
 
-const maxWidthProductImage = isMobile ? 800 : 800;
-const maxHeightProductImage = isMobile ? 900 : 900;
+const maxWidthProductImage = isMobile ? 300 : 500;
+const maxHeightProductImage = isMobile ? 400 : 500;
 
-const maxWidthProductDetailImage = isMobile ? 600 : 800;
-const maxHeightProductDetailImage = isMobile ? 700 : 900;
+const maxWidthProductDetailImage = isMobile ? 500 : 800;
+const maxHeightProductDetailImage = isMobile ? 600 : 900;
 
 export default Cart;
 export async function getServerSideProps(context: any) {

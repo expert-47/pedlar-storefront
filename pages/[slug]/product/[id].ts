@@ -43,16 +43,16 @@ export async function getServerSideProps(context: any) {
 function getImageDimensions(isMobile: boolean) {
   if (isMobile) {
     return {
-      maxWidthProductImage: 300,
-      maxHeightProductImage: 400,
-      maxWidthProductDetailImage: 500,
-      maxHeightProductDetailImage: 600,
+      maxWidthProductImage: 500,
+      maxHeightProductImage: 600,
+      maxWidthProductDetailImage: 600,
+      maxHeightProductDetailImage: 700,
     };
   }
 
   return {
-    maxWidthProductImage: 500,
-    maxHeightProductImage: 500,
+    maxWidthProductImage: 700,
+    maxHeightProductImage: 700,
     maxWidthProductDetailImage: 800,
     maxHeightProductDetailImage: 900,
   };

@@ -35,8 +35,8 @@ const Products = ({ slug, collectionId, userData: data, isMobile, error }: any) 
   });
   //media query
   // const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
-  const maxWidthProductImage = isMobile ? 300 : 800;
-  const maxHeightProductImage = isMobile ? 400 : 900;
+  const maxWidthProductImage = isMobile ? 500 : 800;
+  const maxHeightProductImage = isMobile ? 600 : 900;
 
   const setFiltersValue = async (brandData = [], shopData = []) => {
     getFilteredData([...brandData, ...shopData]);

@@ -1,6 +1,5 @@
 export const styles = {
   footerLink: {
-    //
     display: "block",
     textDecoration: "none",
     fontSize: "22px",
@@ -10,12 +9,10 @@ export const styles = {
     color: "rgb(249, 246, 242)",
   },
   footerText: {
-    //
     paddingBottom: "18px",
     color: "rgb(249, 246, 242)",
   },
   footersocial: {
-    //
     color: "#fff",
     fontSize: "22px",
     fontWeight: "600",
@@ -27,7 +24,6 @@ export const styles = {
     borderRadius: " 16px 16px 0px 0px",
     paddingTop: " 80px",
     paddingBottom: "40px",
-    //zIndex:'9999',
     position: "relative",
   },
   footerRow: {

@@ -45,7 +45,5 @@ export const styles = {
       padding: "15px",
     },
   },
-  brandImg: {
-    // position: "relative",
-  },
+  brandImg: {},
 };

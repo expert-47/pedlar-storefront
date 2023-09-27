@@ -33,8 +33,7 @@ const Products = ({ slug, collectionId, userData: data, isMobile, error }: any) 
     shopList: [],
     vender: [],
   });
-  //media query
-  // const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+
   const maxWidthProductImage = isMobile ? 600 : 800;
   const maxHeightProductImage = isMobile ? 700 : 900;
 

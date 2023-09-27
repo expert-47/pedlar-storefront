@@ -3,9 +3,7 @@
   padding: 0;
   margin: 0;
 }
-html {
-  /* scroll-behavior: smooth; */
-}
+
 body {
   font-family: 'Inter', sans-serif;  
   overflow-x: hidden;
@@ -142,11 +140,9 @@ body {
 @media only screen and (min-width: 768px) {
   .marq-left {
     width: 1080px !important;
-    /* left: -5px; */
   }
   .marq-right {
     width: 1080px !important;
-    /* right: 34px !important; */
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
@@ -488,7 +484,6 @@ section {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  /* background-color: #cbcbcb; */
   margin-top: 0.5rem;
 
   transition: background-color 0.2s ease-in-out;
@@ -526,7 +521,6 @@ section {
   background-color: black !important;
   height: "100%" !important;
   width: "100%" !important;
-  /* transform: none !important; */
 }
 
 .pswp--ui-visible {

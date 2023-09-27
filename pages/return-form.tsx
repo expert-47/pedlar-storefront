@@ -77,8 +77,6 @@ const ReturnForm = () => {
                 handleChange,
                 handleBlur,
                 handleSubmit,
-
-                /* and other goodies */
               }) => (
                 <form onSubmit={handleSubmit} ref={forms2}>
                   <Box sx={{ marginTop: "1.5rem" }}>

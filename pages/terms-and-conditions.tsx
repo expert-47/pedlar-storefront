@@ -110,7 +110,6 @@ const TermsAndConditions = () => {
         </Typography>
       </Box>
     </>
-    // </Layout>
   );
 };
 

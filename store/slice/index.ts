@@ -13,9 +13,7 @@ middleware.push(thunk);
 
 const persistConfig = {
   key: "root",
-  //  blacklist: ["tags"],
   storage,
-  // manualPersist: true,
 };
 
 const rootReducer = combineReducers({

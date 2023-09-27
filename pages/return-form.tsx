@@ -105,7 +105,6 @@ const ReturnForm = () => {
                             borderRadius: "40px",
                             border: "1px solid #BEBEBE",
                             paddingLeft: "25px",
-                            // marginBottom: "30px",
                             fontSize: "16px",
                             fontWeight: 400,
                           }}
@@ -113,9 +112,6 @@ const ReturnForm = () => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="Order_Number" />
                         </Box>
-                        {/* {errors.orderNumber && touched.orderNumber ? (
-                      <Box sx={{ color: "red" }}>{errors.orderNumber}</Box>
-                    ) : null} */}
                       </Box>
                       <Box>
                         <select
@@ -176,7 +172,6 @@ const ReturnForm = () => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="First_Name" />
                         </Box>
-                        {/* {errors.fname && touched.fname ? <div>{errors.fname}</div> : null} */}
                       </Box>
                       <Box>
                         <input
@@ -198,7 +193,6 @@ const ReturnForm = () => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="Last_Name" />
                         </Box>
-                        {/* {errors.lname && touched.lname ? <div>{errors.lname}</div> : null} */}
                       </Box>
                     </Box>
                     <Box
@@ -231,7 +225,6 @@ const ReturnForm = () => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="Email_Address" />
                         </Box>
-                        {/* {errors.email && touched.email ? <div>{errors.email}</div> : null} */}
                       </Box>
                       <Box>
                         <input
@@ -263,7 +256,6 @@ const ReturnForm = () => {
                   <Box sx={{ textAlign: "center" }}>
                     <Button
                       type="submit"
-                      // href={isEmailSent ? "thankyou-return" : ""}
                       disabled={Object.keys(errors).length > 0 ? true : !values?.Email_Address.length ? true : false}
                       sx={{
                         width: "335px",
@@ -375,7 +367,6 @@ const ReturnForm = () => {
                         borderRadius: "40px",
                         border: "1px solid #BEBEBE",
                         paddingLeft: "25px",
-                        // paddingRight: "25px",
                         color: "#808080",
                         fontSize: "15px",
                         marginRight: "1rem",

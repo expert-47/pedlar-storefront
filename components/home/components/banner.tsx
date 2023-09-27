@@ -17,7 +17,6 @@ const BannerImg = (props: any) => {
 
   const screen375 = useMediaQuery("(max-width:375px)");
   const isMatchMobile = useMediaQuery(theme.breakpoints.up("sm"));
-  // const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {

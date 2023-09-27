@@ -45,8 +45,8 @@ function getImageDimensions(isMobile: boolean) {
     return {
       maxWidthProductImage: 500,
       maxHeightProductImage: 600,
-      maxWidthProductDetailImage: 600,
-      maxHeightProductDetailImage: 700,
+      maxWidthProductDetailImage: 650,
+      maxHeightProductDetailImage: 750,
     };
   }
 

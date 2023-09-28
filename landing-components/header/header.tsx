@@ -1,68 +1,72 @@
-import React, { useState } from "react";
-import { styles } from "./style";
-import CloseIcon from "@mui/icons-material/Close";
-import { Button, Grid, IconButton, Dialog, Typography, useMediaQuery, useTheme, Box } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
+//package imports
+import {
+  Box,
+  Grid,
+  Button,
+  Dialog,
+  AppBar,
+  useTheme,
+  Typography,
+  IconButton,
+  useMediaQuery,
+  useScrollTrigger,
+} from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import React, { FC, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+//components
+import { NextImage } from "components/pedlarImage";
 import ResponsiveHeader from "./responsive-header";
 import { CustomContainer } from "../landinglayout";
-import Creatorpopup from "../popup-dialog/creatorpopup";
 import Brandspopup from "../popup-dialog/brandspopup";
 import headerlogo from "../../public/header-logo.svg";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import PedlarImage from "components/pedlarImage";
-import Image from "next/image";
-import Link from "next/link";
-
-const Header = () => {
+import Creatorpopup from "../popup-dialog/creatorpopup";
+//style
+import { styles } from "./style";
+const Header: FC = (): JSX.Element => {
   const theme = useTheme();
   const router = useRouter();
-  const openPopup = () => setOpenDialog(true);
-  const closePopup = () => {
-    setSuccessModalShow(true);
-    setOpenDialog(false);
-  };
-  const handleClose = () => {
-    setSuccessModalShow(true);
-    setOpenDialog(false);
-  };
-  const onChangeBrand = () => setUserType(false);
-  const [userType, setUserType] = useState(true);
-  const [sucessModalshow, setSuccessModalShow] = useState(true);
-
-  const onChangeCreator = () => setUserType(true);
-  const [openDialog, setOpenDialog] = useState(false);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
   const Scrolltrigger = useScrollTrigger({ threshold: 22, disableHysteresis: true });
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 22,
   });
 
+  //states
+  const [userType, setUserType] = useState(true);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [sucessModalshow, setSuccessModalShow] = useState(true);
+
+  const onChangeBrand = () => setUserType(false);
   const openStorePage = () => {
     router.push("/");
   };
-  const openCreators = () => {
-    router.push("/for-creator");
+  const onChangeCreator = () => setUserType(true);
+  const openPopup = () => setOpenDialog(true);
+  const closePopup = () => {
+    setSuccessModalShow(true);
+    setOpenDialog(false);
   };
-  const openBrands = () => {
-    router.push("/for-brands");
-  };
+
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
-
   const handleClick = () => {
     router.push("https://portal.pedlar.store");
   };
 
+  if (isMatch) {
+    return <ResponsiveHeader />;
+  }
   return (
     <AppBar
       elevation={0}
       sx={{
         ...styles.header,
         backgroundColor: trigger ? "#f9f6f2" : "transparent",
-        // transition: trigger ? "0.2s" : "0.4s",
       }}
     >
       <CustomContainer>
@@ -80,7 +84,7 @@ const Header = () => {
               <Grid item xs={12} sm={12} md={3.5}>
                 {Scrolltrigger || router.pathname != "/" ? (
                   <Box onClick={openStorePage} sx={{ height: 75, width: 230, cursor: "pointer" }}>
-                    <PedlarImage src={headerlogo} alt="pedlar-logo" objectFit="contain" priority />
+                    <NextImage src={headerlogo} alt="pedlar-logo" style={{ objectFit: "contain" }} priority />
                   </Box>
                 ) : (
                   <Box
@@ -94,37 +98,49 @@ const Header = () => {
                       bottom: { md: 0 },
                     }}
                   >
-                    <Image src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
+                    <NextImage src={headerlogo} alt="pedlar-logo" onClick={openStorePage} priority />
                   </Box>
                 )}
               </Grid>
               <Grid container item xs={12} sm={12} md={5} lg={5} gap={40} style={{ justifyContent: "center" }}>
                 <Grid>
-                  <Link href={"/for-creator"}>
+                  <Link
+                    href={"/for-creator"}
+                    style={{
+                      textDecoration: "none",
+                      color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                    }}
+                  >
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}
                       fontWeight={600}
                       sx={{
                         ...styles.Button,
-                        textDecorationLine: router.pathname == "/for-creator" && "underline",
-                        color: router.pathname == "/for-creator" && "rgba(28,27,31,.64)",
+                        textDecorationLine: router.pathname == "/for-creator" ? "underline" : undefined,
+                        color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : undefined,
                       }}
                     >
                       For Creators
                     </Typography>
                   </Link>
                 </Grid>
-                <Grid onClick={openBrands}>
-                  <Link href={"/for-brands"}>
+                <Grid>
+                  <Link
+                    href={"/for-brands"}
+                    style={{
+                      textDecoration: "none",
+                      color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "black",
+                    }}
+                  >
                     <Typography
                       textTransform="none"
                       fontSize={"16px"}
                       fontWeight={600}
                       sx={{
                         ...styles.Button,
-                        textDecorationLine: router.pathname == "/for-brands" && "underline",
-                        color: router.pathname == "/for-brands" && "rgba(28,27,31,.64)",
+                        textDecorationLine: router.pathname == "/for-brands" ? "underline" : undefined,
+                        color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : undefined,
                       }}
                     >
                       For Brands
@@ -147,11 +163,6 @@ const Header = () => {
 
               <Dialog
                 open={openDialog}
-                onClose={(handleClose, reason) => {
-                  // if (reason !== "backdropClick") {
-                  //   onClose(handleClose, reason);
-                  // }
-                }}
                 sx={{
                   ".css-1t1j96h-MuiPaper-root-MuiDialog-paper": {
                     borderRadius: "16px",
@@ -211,7 +222,7 @@ const Header = () => {
                         onClick={onChangeCreator}
                       >
                         <Typography fontSize={{ xs: "13px", sm: "13px", md: "16px", lg: "16px" }}></Typography>
-                        I'm a creator
+                        I&apos;m a creator
                       </Button>
                       <Button
                         style={{
@@ -230,7 +241,7 @@ const Header = () => {
                         }}
                         onClick={onChangeBrand}
                       >
-                        I'm a brand
+                        I&apos;m a brand
                       </Button>
                     </Box>
                   ) : null}

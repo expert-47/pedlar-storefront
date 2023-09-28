@@ -4,8 +4,8 @@ import React from "react";
 import CheckoutOrder from "components/checkoutOrder/checkoutOrder";
 import styles from "styles/checkout";
 import { useEffect, useState } from "react";
-import { getCartProducts } from "api/graphql/grapgql";
-import { checkoutCartDetails } from "../../api/graphql/grapgql";
+import { getCartProducts } from "apis/graphql/grapgql";
+import { checkoutCartDetails } from "../../apis/graphql/grapgql";
 import { addProductToCart } from "store/slice/appSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
@@ -43,7 +43,7 @@ const CartDrawer = () => {
         dispatch(addProductToCart({ products: cartProducts, showCart: true }));
         gtmEvents.viewCart(cartProducts);
       } catch (error) {
-        console.log(error);
+        console.log("error");
       } finally {
         setLoading(false);
       }
@@ -224,7 +224,6 @@ const CartDrawer = () => {
         >
           <Grid
             container
-            item
             style={{
               display: "flex",
               padding: "5px",
@@ -233,11 +232,14 @@ const CartDrawer = () => {
               paddingBottom: "15px",
             }}
           >
-            <Grid item style={{ display: "flex", justifyContent: "between" }}>
+            <Grid xs={12} item style={{ display: "flex", justifyContent: "center" }}>
               <Typography sx={styles.totalText}>Your cart is empty</Typography>
             </Grid>
             <Typography sx={styles.paymentTotal}>{totalPrice ? `$${totalPrice}` : ""}</Typography>
-            <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+            <Link
+              href={`/${slug.slug}/products`}
+              style={{ display: "flex", width: "100%", justifyContent: "center", textDecoration: "none" }}
+            >
               <Button sx={styles.checkoutButton} onClick={onCloseCart}>
                 Shop now
               </Button>

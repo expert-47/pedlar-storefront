@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "paths": {
-      "api/*": ["./api/*"],
+      "api/*": ["apis/*"],
       "components/*": ["./components/*"],
       "configs/*": ["configs/*"],
       "hooks/*": ["./hooks/*"],

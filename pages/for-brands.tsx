@@ -1,29 +1,33 @@
+//package imports
 import React from "react";
-import Faq from "../landing-components/faq/faq";
-import Banner from "../landing-components/brand-page/mainbanner/Banner";
-import Layout from "../landing-components/landinglayout";
-import Influncerheading from "../landing-components/brand-page/influncerheading/Influncerheading";
-import Businesstoday from "../landing-components/brand-page/businesstoday/Businesstoday";
 import Box from "@mui/material/Box";
+//components
 import orangetop from "../public/top-mesh.png";
+import Faq from "../landing-components/faq/faq";
+import { NextImage } from "components/pedlarImage";
 import orangebottom from "../public/bottom-mesh.png";
-import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
-import Howitswork from "../landing-components/how-its-work/how-its-work";
-import firstStep from "../public/step1.png";
-import secondStep from "../public/work1.png";
-import thirdStep from "../public/work4.png";
-import fourthStep from "../public/cartList.png";
-import PedlarImage from "components/pedlarImage";
+import Layout from "../landing-components/landinglayout";
 import CardBox from "landing-components/card-box/card-box";
-import SalesBrand from "../public/sales-brand1.png";
-import SetForgot from "../public/set-forgot.png";
+import Banner from "../landing-components/brand-page/mainbanner/Banner";
+import Howitswork from "../landing-components/how-its-work/how-its-work";
+import Picturecarousel from "../landing-components/picture-carousel/pictures-carousel";
+import Businesstoday from "../landing-components/brand-page/businesstoday/Businesstoday";
+import Influncerheading from "../landing-components/brand-page/influncerheading/Influncerheading";
+//assets
+import firstStep from "../public/step1.png";
+import thirdStep from "../public/work4.png";
+import secondStep from "../public/work1.png";
 import FreeJoin from "../public/free-join.png";
+import fourthStep from "../public/cartList.png";
+import SetForgot from "../public/set-forgot.png";
+import SalesBrand from "../public/sales-brand1.png";
 import PropleTrustPeople from "../public/people-trust-people.png";
+//assets
 import { seo } from "utils/seoData";
 
 const styless = {
   paperContainer: {
-    backgroundImage: "url(../Grain-Texture.png) !important",
+    backgroundImage: "url(../Grain-Texture.webp) !important",
     backgroundPosition: "0 0",
     backgroundRepeat: "repeat",
     backgroundSize: "initial",
@@ -50,8 +54,17 @@ const brands = () => {
     >
       <Box sx={styless.paperContainer}></Box>
       <Box style={{ position: "relative" }}>
-        <Box style={{ position: "absolute", left: "0", width: "auto", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
-          <PedlarImage layout="intrinsic" src={orangetop} alt="Orange meshes" />
+        <Box style={{ position: "absolute", left: "0", width: "100%", zIndex: "0" }} top={{ xs: "0px", lg: "0px" }}>
+          <NextImage
+            src={orangetop}
+            fill={false}
+            layout="default"
+            style={{ width: "100%", height: "auto" }}
+            alt="Orange meshes"
+            loading={"lazy"}
+            quality={50}
+            placeholder="empty"
+          />
         </Box>
       </Box>
       <Banner />
@@ -96,10 +109,17 @@ const brands = () => {
       />
       <Businesstoday />
       <Box
-        style={{ position: "absolute", right: "0", width: "1783px", zIndex: "0" }}
+        style={{ position: "absolute", right: "0", width: "100%", zIndex: "0" }}
         bottom={{ xs: "619px", sm: "0px", lg: "343px" }}
       >
-        <PedlarImage layout="intrinsic" src={orangebottom} alt="orange brand meshes" />
+        <NextImage
+          layout="default"
+          fill={false}
+          style={{ width: "100%", height: "auto" }}
+          src={orangebottom}
+          alt="orange brand meshes"
+          placeholder="empty"
+        />
       </Box>
     </Layout>
   );

@@ -26,7 +26,6 @@ const styles = {
   },
   shopbutton: {
     marginTop: "10px",
-    // width: "197px",
     height: "46px",
     backgroundColor: "primary.dark",
     color: "primary.main",
@@ -73,7 +72,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    width : "100%",
+    width: "100%",
     marginTop: { xs: "10px", sm: "10px", lg: "0px" },
     "&:hover": {
       backgroundColor: "primary.main",
@@ -120,7 +119,6 @@ const styles = {
     fontWeight: "600",
     paddingLeft: "8px",
     width: "90%",
-    fontFamily: "Inter",
   },
   baseFootTypopara: {
     fontSize: "20px",
@@ -143,31 +141,25 @@ const styles = {
     paddingLeft: "10px",
   },
   brandImage: {
-    height: {
-      lg: "150px",
-      md: "100px",
-      sm: "80px",
-      xs: "80px",
-    },
-    width: {
-      lg: "285px",
-      md: "238px",
-      sm: "170px",
-      xs: "45%",
-    },
+    display: "flex",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: "1",
+    cursor: "pointer",
   },
-  paper :{
-       width:"34px" ,
-       height:"34px" ,
-       display:"flex",
-      justifyContent:"center",
-      alignItems:"center",
-      marginTop: "20px",
-      borderRadius:"3px" ,
-      backgroundColor:"#fff",
-      boxShadow:" 0px 0px 10px 0px rgba(0, 0, 0, 0.10)"
-
-  }
+  paper: {
+    width: "34px",
+    height: "34px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px",
+    borderRadius: "3px",
+    backgroundColor: "#fff",
+    boxShadow: " 0px 0px 10px 0px rgba(0, 0, 0, 0.10)",
+  },
 };
 
 export default styles;

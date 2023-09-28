@@ -1,28 +1,46 @@
-import React, { useEffect, useState } from "react";
-import Layout from "components/layout";
-import { Home } from "components/home";
-import { getUserDetailByFetchAPICall } from "api/graphql/grapgql";
+import React, { useEffect } from "react";
+import dynamic from "next/dynamic";
+import { getUserDetailByFetchAPICall } from "apis/graphql/grapgql";
 import { homeImpressiongmtEvent, homeProductsImpressiongmtEvent } from "utils/gtm";
-import { getCuratedBrands } from "api/restApi/getCuratedBrands";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getCuratedBrands } from "apis/restApi/getCuratedBrands";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
+import { Box } from "@mui/material";
 
-export default function Index({ headerData, newAdditionData, slug, curatedBrandsResponse, error }: any) {
-  const [newAdditionsLatest, setnewAdditionsLatest] = useState();
+function logCurrentTime() {
+  return new Date().toUTCString();
+}
+
+const Home = dynamic(() => import("components/home"), {
+  loading: () => <Box sx={{ height: 1000 }}></Box>,
+});
+const Layout = dynamic(() => import("components/layout"), {
+  loading: () => <p></p>,
+});
+
+export default function Index({
+  headerData,
+  newAdditionData,
+  slug,
+  curatedBrandsResponse,
+  firstTime,
+  secondTime,
+  isMobile,
+  error,
+}: any) {
   useEffect(() => {
     homeImpressiongmtEvent(headerData?.data?.storefrontName);
     homeProductsImpressiongmtEvent(newAdditionData);
-    getNewAdditionsData();
+    window.history.scrollRestoration = "manual";
   }, [newAdditionData]);
 
-  const getNewAdditionsData = async () => {
-    const numberofProducts = 6;
+  useEffect(() => {
+    console.log("====================================");
+    console.log("first time = ", firstTime);
+    console.log("Second time = ", secondTime);
 
-    const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
-    const userData = data?.data?.collection?.products?.nodes || [];
-
-    setnewAdditionsLatest(userData);
-  };
+    console.log("====================================");
+  }, []);
 
   return (
     <Layout
@@ -34,32 +52,52 @@ export default function Index({ headerData, newAdditionData, slug, curatedBrands
       storefrontName={headerData?.data?.storefrontName}
       slug={slug}
       collectionId={headerData?.data?.collectionId}
+      isMobile={isMobile}
     >
       <Home
         headerData={headerData?.data}
-        newAdditionData={newAdditionsLatest}
+        newAdditionData={newAdditionData}
         curatedBrandsResponse={curatedBrandsResponse?.slice(0, 4)}
+        isMobile={isMobile}
       />
     </Layout>
   );
 }
 
 export async function getServerSideProps(context: any) {
+  const { req } = context;
+  const userAgent = req.headers["user-agent"] || "";
+  const isMobile = /Mobile/.test(userAgent);
+  const maxWidthProductImage = isMobile ? 600 : 800;
+  const maxHeightProductImage = isMobile ? 700 : 900;
+  const firstTime = logCurrentTime();
   const { slug } = context.query;
-  const headerData = await getUserDetail(slug);
+
+  const data = await Promise.all([getCuratedBrands(slug), getUserDetail(slug)]);
+  const headerData = data[1];
 
   const numberofProducts = 6;
   if (headerData?.data) {
-    const data = await getUserDetailByFetchAPICall(headerData?.data?.collectionId, numberofProducts);
-    const userData = data?.data?.collection?.products?.nodes || [];
-    const curatedBrandsResponse = await getCuratedBrands(slug);
+    const response = await getUserDetailByFetchAPICall(
+      headerData?.data?.collectionId,
+      numberofProducts,
+      maxWidthProductImage,
+      maxHeightProductImage,
+    );
 
+    const userData = response?.data?.collection?.products?.nodes || [];
+    const curatedBrandsResponse = data[0];
+    const secondTime = logCurrentTime();
     return {
       props: {
+        data: [],
         headerData: headerData ? headerData : [],
         newAdditionData: userData ? userData : [],
         slug: slug || [],
         curatedBrandsResponse: curatedBrandsResponse?.data || [],
+        firstTime,
+        secondTime,
+        isMobile,
       },
     };
   }

@@ -4,22 +4,19 @@ import { CustomContainer } from "../../layout";
 import { useMediaQuery, useTheme, Box, Snackbar } from "@mui/material";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import TextBox from "./textBox";
-import PedlarImage from "components/pedlarImage";
-import placeholder from "public/Placeholder.jpg";
+import { NextImage } from "components/pedlarImage";
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 const BannerImg = (props: any) => {
+  const { isMobile } = props;
   const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const [open, setOpen] = useState(true);
 
   const screen375 = useMediaQuery("(max-width:375px)");
-
   const isMatchMobile = useMediaQuery(theme.breakpoints.up("sm"));
-
-  const [open, setOpen] = useState(true);
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === "clickaway") {
@@ -27,6 +24,7 @@ const BannerImg = (props: any) => {
     }
     setOpen(false);
   };
+
   return (
     <CustomContainer
       style={{
@@ -46,17 +44,17 @@ const BannerImg = (props: any) => {
         <Grid item xs={11.5} md={4} lg={4}>
           <Box
             sx={{
-              width: isMatch ? "100%" : 476,
-
-              height: screen375 ? 480 : isMatch ? 500 : 595,
-              minHeight: screen375 ? 430 : isMatch ? 470 : 500,
+              width: isMobile ? "100%" : 476,
+              height: screen375 ? 480 : isMobile ? 500 : 595,
+              minHeight: screen375 ? 430 : isMobile ? 470 : 500,
             }}
           >
-            <PedlarImage
+            <NextImage
               src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
               alt="headerimage"
-              placeholder={placeholder}
-              objectFit="contain"
+              style={{ objectFit: "contain" }}
+              priority
+              quality={50}
             />
           </Box>
         </Grid>

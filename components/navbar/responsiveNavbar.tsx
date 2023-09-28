@@ -1,6 +1,5 @@
 import { Grid, Toolbar, Typography, useTheme, IconButton, Badge } from "@mui/material";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "styles/navbar";
 import React, { useState } from "react";
 import PedlarDrawer from "./components/padlarDrawer";
@@ -8,6 +7,7 @@ import CartDrawer from "components/cartDrawer/cartDrawer";
 import { Box } from "@mui/system";
 import { useSelector, useDispatch } from "react-redux";
 import { cartDrawerToggle } from "store/slice/appSlice";
+import { NextImage } from "components/pedlarImage";
 
 interface Props {
   storefrontName: string;
@@ -59,16 +59,41 @@ export const ResponsiveNavbar = (props: Props) => {
         />
         <Grid container item xs={12} alignItems={"center"} display={"flex"} paddingX={{ xs: theme.spacing(0) }}>
           <Box sx={styles.menuIcon}>
-            <Image src="/mIcons.png" alt="No Image Found" onClick={onClickDrawer} width="20px" height="14px" />
+            <NextImage
+              layout="default"
+              fill={false}
+              src="/mIcons.png"
+              alt="No Image Found"
+              onClick={onClickDrawer}
+              width={20}
+              height={14}
+              placeholder="empty"
+            />
           </Box>
-          <Link href={`/${props?.slugs}`}>
-            <Image src="/pedlar.png" alt="No Image Found" width={80} height={25} />
+          <Link href={`/${props?.slugs}`} style={{ display: "flex", alignItems: "center" }}>
+            <NextImage
+              layout="default"
+              fill={false}
+              src="/pedlar.png"
+              alt="No Image Found"
+              width={80}
+              height={25}
+              placeholder="empty"
+            />
           </Link>
           <Typography sx={styles.responsiveTypography}>{storefrontName ? storefrontName : ""}</Typography>
         </Grid>
         <Badge badgeContent={totalProductLength} color="secondary" sx={{ right: "10px" }}>
           <IconButton onClick={onClickCart} sx={styles.iconColor}>
-            <Image src="/cart.png" height="19.48px" width="19.48px" />
+            <NextImage
+              layout="default"
+              fill={false}
+              src="/cart.png"
+              alt="cart-image"
+              height={19.48}
+              width={19.48}
+              placeholder="empty"
+            />
           </IconButton>
         </Badge>
         <CartDrawer />

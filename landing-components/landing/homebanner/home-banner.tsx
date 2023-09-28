@@ -1,17 +1,17 @@
 // package imports
-import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import Typewriter from "typewriter-effect";
 import React, { FC, Fragment, useState } from "react";
+import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
 //components imports
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 //images imports
-import mobileBanner from "../../../public/mobbanner.webp";
-import desktopBanner from "../../../public/desktopBanner.png";
-import largeBanner from "../../../public/largeBanner.png";
-import mediumBanner from "../../../public/TabletBanner.png";
+import largeBanner from "/public/largeBanner.png";
+import mobileBanner from "/public/mobbanner.webp";
+import mediumBanner from "/public/TabletBanner.png";
+import desktopBanner from "/public/desktopBanner.png";
 //styles imports
 import { styles } from "./style";
 
@@ -67,22 +67,52 @@ const Banner: FC = (): JSX.Element => {
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
           {isdektop ? (
-            <PedlarImage layout="intrinsic" src={desktopBanner} alt="desktop banner" priority />
+            <NextImage
+              fill={false}
+              placeholder="empty"
+              style={{ width: "100%", height: "100%" }}
+              src={desktopBanner}
+              alt="desktop banner"
+              priority
+            />
           ) : isSmall ? (
-            <PedlarImage layout="intrinsic" src={mobileBanner} alt="Mobile banner" priority style={{ width: "100%" }} />
+            <NextImage
+              fill={false}
+              placeholder="empty"
+              style={{ width: "100%", height: "100%" }}
+              src={mobileBanner}
+              alt="Mobile banner"
+              priority
+            />
           ) : isMedium ? (
-            <PedlarImage layout="intrinsic" src={mediumBanner} alt="tab banner" priority />
+            <NextImage
+              fill={false}
+              placeholder="empty"
+              style={{ width: "100%", height: "100%" }}
+              src={mediumBanner}
+              alt="tab banner"
+              priority={true}
+              loading="eager"
+              decoding="async"
+            />
           ) : (
-            <PedlarImage layout="intrinsic" src={largeBanner} alt="Large banner" priority />
+            <NextImage
+              placeholder="empty"
+              fill={false}
+              style={{ width: "100%", height: "100%" }}
+              src={largeBanner}
+              alt="Large banner "
+              priority
+            />
           )}
 
           <Box sx={styles.bannerText}>
             <Typography
               sx={styles.fashionText}
-              fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
+              color={"#1C1B1F"}
               fontWeight={"700"}
               lineHeight={"normal"}
-              color={"#1C1B1F"}
+              fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
             >
               We put fashion
             </Typography>
@@ -98,11 +128,11 @@ const Banner: FC = (): JSX.Element => {
               />
 
               <Typography
-                fontWeight={"700"}
-                color={"#1C1B1F"}
-                sx={styles.fashionText}
-                lineHeight={"unset"}
                 ml={1}
+                color={"#1C1B1F"}
+                fontWeight={"700"}
+                lineHeight={"unset"}
+                sx={styles.fashionText}
                 fontSize={{ xs: "34px", sm: "42px", md: "40px", lg: "42px", xl: "54px" }}
               >
                 in business

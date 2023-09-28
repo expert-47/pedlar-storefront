@@ -104,31 +104,6 @@ export const styles = {
     borderRadius: "16px",
   },
 
-  RespBox: {
-    borderRadius: "10px",
-    px: 25,
-  },
-  RespLoginBox: {
-    borderRadius: "10px",
-    paddingBottom: "30px",
-    px: 25,
-  },
-  TextFeild: {
-    width: "100%",
-    color: "#49454F",
-    borderColor: "#49454F",
-    borderRadius: "5px",
-    marginBottom: "24px",
-  },
-  TextFeilds: {
-    width: "100%",
-    fontSize: "16px",
-    fontWeight: "400",
-    color: "#49454F",
-    borderColor: "#49454F",
-    borderRadius: "5px",
-    marginBottom: "24px",
-  },
   BoxSelector: {
     display: "flex",
     backgroundColor: "transparent",

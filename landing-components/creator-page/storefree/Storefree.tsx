@@ -5,7 +5,7 @@ import { styles } from "./style";
 import { Field, Form, Formik } from "formik";
 import { creatorvalidation } from "../../add-validation/creator-validation";
 import emailjs from "@emailjs/browser";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import InstagramIcon from "@mui/icons-material/Instagram";
 
 const Storefree = () => {
@@ -200,7 +200,7 @@ const Storefree = () => {
                                     width: 20,
                                   }}
                                 >
-                                  <PedlarImage layout="fill" src="/tiktok-icon.svg" alt="insta" />
+                                  <NextImage src="/tiktok-icon.svg" alt="insta" />
                                 </Box>
                               </InputAdornment>
                             ),
@@ -246,22 +246,22 @@ const Storefree = () => {
               </Formik>
             </Box>
           ) : (
-          <Box
-            style={{ display: "flex", flexDirection: "column", textAlign: "center", alignItems: "center" }}
-            paddingTop={{ xs: "66px", sm: "140px" }}
-            paddingBottom={{ xs: "66px", sm: "140px" }}
-          >
-            <Box style={{ paddingBottom: "20px" }}>
-              <Typography fontSize={{ xs: "44px", sx: "48px" }} fontWeight={700}>
-                Thank you!
-              </Typography>
+            <Box
+              style={{ display: "flex", flexDirection: "column", textAlign: "center", alignItems: "center" }}
+              paddingTop={{ xs: "66px", sm: "140px" }}
+              paddingBottom={{ xs: "66px", sm: "140px" }}
+            >
+              <Box style={{ paddingBottom: "20px" }}>
+                <Typography fontSize={{ xs: "44px", sx: "48px" }} fontWeight={700}>
+                  Thank you!
+                </Typography>
+              </Box>
+              <Grid item xs={12} sm={8} style={{ paddingBottom: "40px", color: "#49454F" }}>
+                <Typography fontSize={{ xs: "18px", sx: "22px" }} fontWeight={600} sx={{ opacity: "0.74" }}>
+                  A member of our team will contact you shortly.
+                </Typography>
+              </Grid>
             </Box>
-            <Grid item xs={12} sm={8} style={{ paddingBottom: "40px", color: "#49454F" }}>
-              <Typography fontSize={{ xs: "18px", sx: "22px" }} fontWeight={600} sx={{ opacity: "0.74" }}>
-                A member of our team will contact you shortly.
-              </Typography>
-            </Grid>
-          </Box>
           )}
           <Grid item xs={12} sm={12} md={12} style={{ textAlign: "center", color: "rgb(73,69,79)" }}>
             <Typography textTransform={"none"} fontSize={"16px"} fontWeight={400}>

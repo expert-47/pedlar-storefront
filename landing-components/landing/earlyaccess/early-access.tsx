@@ -2,7 +2,7 @@
 import React, { FC, Fragment, useState } from "react";
 import { Box, Button, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 // componets imports
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
@@ -72,7 +72,7 @@ const EarlyAcess: FC = (): JSX.Element => {
               style={{ display: isMatch ? "none" : "block", textAlign: "center" }}
             >
               <Box style={{ height: 47, width: 50 }}>
-                <PedlarImage src={rightArrow} style={{ height: "68px", width: "68px" }} />
+                <NextImage src={rightArrow} alt="pedlar righ arrow" />
               </Box>
             </Grid>
 

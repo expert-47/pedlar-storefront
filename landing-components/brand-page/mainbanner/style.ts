@@ -41,8 +41,6 @@ export const styles = {
     lineHeight: "1",
     color: "#1c1b1f",
     fontWeight: "bold",
-    fontFamily: "Inter",
-    // margin: "0 auto 0 0",
     maxWidth: "526px",
     ["@media (max-width:600px)"]: {
       maxWidth: "272px !important",

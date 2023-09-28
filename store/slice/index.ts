@@ -13,8 +13,6 @@ middleware.push(thunk);
 
 const persistConfig = {
   key: "root",
-  blacklist: ["tags"],
-  version: 1,
   storage,
 };
 
@@ -26,7 +24,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const enhancers = [...middleware];
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: enhancers,
 });
 

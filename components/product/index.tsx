@@ -1,21 +1,21 @@
 //package imports
 import {
-  Alert,
-  Divider,
-  Grid,
-  Typography,
-  CircularProgress,
   Box,
+  Grid,
+  Alert,
+  Theme,
+  AppBar,
+  Divider,
+  useTheme,
   Accordion,
+  Typography,
+  useMediaQuery,
+  CircularProgress,
   AccordionSummary,
   AccordionDetails,
-  useTheme,
-  useMediaQuery,
-  AppBar,
 } from "@mui/material";
 import "swiper/css";
 import Link from "next/link";
-import Image from "next/image";
 import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
@@ -40,7 +40,7 @@ import {
   getCartProducts,
   getVariantBySelectedOptions,
   checkoutCartDetails,
-} from "api/graphql/grapgql";
+} from "apis/graphql/grapgql";
 //redux
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId } from "store/slice/appSlice";
@@ -49,10 +49,14 @@ import { seo } from "utils/seoData";
 import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
+import { NextImage } from "components/pedlarImage";
 
-const scrollToTop = () => {
-  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-};
+function scrollToTop() {
+  const isBrowser = () => typeof window !== "undefined";
+
+  if (!isBrowser()) return;
+  window.scrollTo({ top: -50, behavior: "instant" });
+}
 
 const Cart = (props: any) => {
   const theme = useTheme();
@@ -61,12 +65,13 @@ const Cart = (props: any) => {
   const dispatch = useDispatch();
   const path = getStoreName(route);
   const slugValue = route.query.slug;
-  const { newAdditionData, headerData, newAdditionData2, error: apiError } = props;
+  const { newAdditionData, headerData, newAdditionData2, isMobile, error: apiError } = props;
 
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [ImageLoaded, setImageLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -75,12 +80,22 @@ const Cart = (props: any) => {
     price: 0,
     currencyCode: "AUD",
   });
+  const [productsLoadedState, setproductsLoadedState] = useState(true);
+
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+
+    if (ImageLoaded) {
+      scrollToTop();
+    }
+  }, [ImageLoaded]);
 
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
   }, [newAdditionData2]);
 
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "md"));
+  const isMobileDevice = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   const storeName = useSelector((data: any) => data.app.storeName);
   const cartId = useSelector((data: any) => data.app.cartId[storeName]);
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
@@ -88,14 +103,6 @@ const Cart = (props: any) => {
   const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
-
-  useEffect(() => {
-    route.events.on("routeChangeComplete", () => {
-      setTimeout(() => {
-        scrollToTop();
-      }, 100);
-    });
-  }, [route?.events]);
 
   useEffect(() => {
     if (newAdditionData?.options) {
@@ -266,7 +273,6 @@ const Cart = (props: any) => {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
-              console.log("gfds");
               const data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
               gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
               setTimeout(async () => {
@@ -287,7 +293,7 @@ const Cart = (props: any) => {
         }
       }
     } catch (error) {
-      console.log("response", error);
+      console.log("response");
     } finally {
       setBuyNowLoaderState(false);
     }
@@ -297,14 +303,6 @@ const Cart = (props: any) => {
     setError(false);
     setErrorMessage("");
   };
-  // const pagination = {
-  //   clickable: true,
-  //   pagination: true,
-  // };
-
-  //   assign the value of price according to the requirement of the client
-  //(remove .0 if exists , and if there is one decimal and that
-  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
   const getPriceValueFromState = price?.price;
 
   let priceOfProduct: any = getPriceValueFromState;
@@ -314,6 +312,11 @@ const Cart = (props: any) => {
   } else if (decimalPart === "0") {
     priceOfProduct = Math.round(priceOfProduct);
   }
+  useEffect(() => {
+    if (newAdditionData?.images?.nodes.length > 0) {
+      setproductsLoadedState(false);
+    }
+  }, [newAdditionData]);
 
   return (
     <Layout
@@ -329,403 +332,413 @@ const Cart = (props: any) => {
       }}
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
+      isMobile={isMobile}
     >
-      <CustomContainer>
-        <Box sx={styles.mainContainer}>
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                sm: "block",
-                zIndex: "10px",
-                marginRight: "1rem",
-              },
-            }}
-          >
-            <AppBar
-              position="sticky"
-              sx={{
-                top: "350px",
-                boxShadow: "none",
-                zIndex: "5",
-              }}
-            >
-              <Scrollspy
-                items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
-                currentClassName="detail-page-current"
-                style={{ width: 10 }}
-                offset={-300}
+      {!productsLoadedState ? (
+        <CustomContainer>
+          <Box sx={styles.mainContainer}>
+            {!isMobileDevice ? (
+              <Box
+                sx={{
+                  zIndex: "10px",
+                  marginRight: "1rem",
+                }}
               >
-                {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                  return (
-                    <li className="list_unorder" key={"imagesScrollSpy" + index}>
-                      <a href={`#section-${index + 1}`}>
-                        <div className="app__navigation-dot"></div>
-                      </a>
-                    </li>
-                  );
-                })}
-              </Scrollspy>
-            </AppBar>
-          </Box>
-          <Grid container item md={11} lg={9} xl={9}>
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              sx={{
-                display: "flex",
-                justifyContent: isMatch ? "center" : "start",
-                textAlign: "center",
-                paddingTop: "26px",
-              }}
-            >
-              {/* Mobile View */}
-              <Grid item xs={12} sx={{ display: { lg: "none", md: "none", sm: "none" } }}>
-                <Grid>
-                  <Gallery
-                    options={{
-                      showAnimationDuration: 0,
-                      hideAnimationDuration: 0,
-                    }}
+                <AppBar
+                  position="sticky"
+                  sx={{
+                    top: "350px",
+                    boxShadow: "none",
+                    zIndex: "5",
+                  }}
+                >
+                  <Scrollspy
+                    items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
+                    currentClassName="detail-page-current"
+                    style={{ width: 10 }}
+                    offset={-300}
                   >
-                    <Slide
-                      transitionDuration={100}
-                      ref={slideRef}
-                      indicators={true}
-                      arrows={false}
-                      autoplay={false}
-                      infinite={false}
+                    {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
+                      return (
+                        <li className="list_unorder" key={"imagesScrollSpy" + index}>
+                          <a href={`#section-${index + 1}`}>
+                            <div className="app__navigation-dot"></div>
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </Scrollspy>
+                </AppBar>
+              </Box>
+            ) : null}
+
+            <Grid container item md={11} lg={9} xl={9}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                sx={{
+                  display: "flex",
+                  justifyContent: isMatch ? "center" : "start",
+                  textAlign: "center",
+                  paddingTop: "26px",
+                }}
+              >
+                {isMobileDevice ? (
+                  <Grid item xs={12} sx={{ height: "400px" }}>
+                    <Gallery
+                      options={{
+                        showAnimationDuration: 0,
+                        hideAnimationDuration: 0,
+                      }}
                     >
-                      {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
+                      <Slide
+                        transitionDuration={100}
+                        ref={slideRef}
+                        indicators={true}
+                        arrows={false}
+                        autoplay={false}
+                        infinite={false}
+                      >
+                        {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
+                          return (
+                            <Box
+                              style={{
+                                backgroundColor: "white",
+                              }}
+                              key={"newAdditiondataCart" + index}
+                            >
+                              <Item id={index} original={item?.url} thumbnail={item?.url}>
+                                {({ ref, open }) => (
+                                  <Box
+                                    ref={ref}
+                                    onClick={open}
+                                    sx={{
+                                      height: "100%",
+                                      width: "100%",
+                                      alignItems: "center",
+                                      justifyContent: "center",
+                                      display: "flex",
+                                    }}
+                                  >
+                                    <NextImage
+                                      src={item?.url}
+                                      width={358}
+                                      height={400}
+                                      layout="default"
+                                      alt={"newAdditiondataCart" + index}
+                                      fill={false}
+                                      style={{
+                                        objectFit: "contain",
+                                        objectPosition: "center",
+                                      }}
+                                      onLoad={() => setImageLoaded(true)}
+                                      priority={index < 2 ? true : false}
+                                    />
+                                  </Box>
+                                )}
+                              </Item>
+                            </Box>
+                          );
+                        })}
+                      </Slide>
+                    </Gallery>
+                  </Grid>
+                ) : (
+                  <Box>
+                    <Gallery
+                      options={{
+                        showAnimationDuration: 0,
+                        hideAnimationDuration: 0,
+                      }}
+                    >
+                      {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
                         return (
-                          <Box
+                          <div
+                            id={`section-${index + 1}`}
+                            key={"newAdditionImages" + index}
                             style={{
-                              backgroundColor: "white",
+                              width: 530,
+                              height: 579,
+                              marginTop: "20px",
                             }}
-                            key={"newAdditiondataCart" + index}
                           >
-                            <Item id={index} original={item?.url} thumbnail={item?.url}>
+                            <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
                               {({ ref, open }) => (
-                                <Box
-                                  ref={ref}
-                                  onClick={open}
-                                  sx={{
-                                    height: "100%",
-                                    width: "100%",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    display: "flex",
-                                  }}
-                                >
-                                  <Image
+                                <div onClick={open} ref={ref}>
+                                  <NextImage
                                     src={item?.url}
-                                    width={358}
-                                    height={400}
-                                    loading={index < 4 ? "eager" : "lazy"}
-                                    placeholder="blur"
-                                    blurDataURL="/loaderShim.png"
-                                    objectFit="contain"
-                                    objectPosition={"center"}
+                                    fill={false}
+                                    layout="default"
+                                    width={540}
+                                    style={{
+                                      objectFit: "contain",
+                                    }}
+                                    height={579}
+                                    alt={"newAdditionImages" + index}
+                                    priority={index < 2 ? true : false}
                                   />
-                                </Box>
+                                </div>
                               )}
                             </Item>
-                          </Box>
+                          </div>
                         );
                       })}
-                    </Slide>
-                  </Gallery>
+                    </Gallery>
+                  </Box>
+                )}
+              </Grid>
+              <Grid
+                container
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                sx={{ justifyContent: { xs: "center", lg: "flex-end" } }}
+              >
+                <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
+                  <Box
+                    style={{
+                      position: "sticky",
+                      top: "110px",
+                    }}
+                  >
+                    <Typography fontSize={"16px"} fontWeight={"600"}>
+                      {newAdditionData?.vendor}
+                    </Typography>
+                    <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
+                    <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
+                      {loading ? (
+                        <CircularProgress color="secondary" />
+                      ) : (
+                        <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
+                          {`${price.currencyCode === "AUD" ? "$" : ""}${priceOfProduct}`}
+                        </Typography>
+                      )}
+                    </Grid>
+                    <Options
+                      newAdditionData={newAdditionData}
+                      onSelectedItem={onSelectedItem}
+                      size={size}
+                      color={color}
+                      setSizeValue={setSizeValue}
+                      setColorValue={setColorValue}
+                    />
+                    {error ? (
+                      <Alert sx={{ marginTop: 10 }} severity="error">
+                        {errorMessage}
+                      </Alert>
+                    ) : null}
+                    <Action
+                      addToCartButton={addToCartButton}
+                      buttonLoaderState={buttonLoaderState}
+                      BuyNowHandler={BuyNowHandler}
+                      buyNowLoaderState={buyNowLoaderState}
+                      disabled={error}
+                    />
+                    <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
+                    <Divider />
+                    <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
+                      <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")} elevation={0}>
+                        <AccordionSummary // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
+                            Description
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography
+                            sx={styles.descriptionTypography}
+                            dangerouslySetInnerHTML={{ __html: newAdditionData?.descriptionHtml }}
+                          ></Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion elevation={0}>
+                        <AccordionSummary
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel2a-content"
+                          id="panel2a-header"
+                        >
+                          <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
+                            Shipping
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography sx={styles.descriptionTypography}>Free shipping on all Pedlar orders</Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion elevation={0}>
+                        <AccordionSummary // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                          expandIcon={<ExpandMoreIcon />}
+                          aria-controls="panel3a-content"
+                          id="panel3a-header"
+                        >
+                          <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
+                            Returns
+                          </Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography sx={styles.descriptionTypography}>Free returns on all Pedlar orders</Typography>
+                        </AccordionDetails>
+                      </Accordion>
+                      <Accordion elevation={0}>
+                        <AccordionSummary></AccordionSummary>
+                        <AccordionDetails></AccordionDetails>
+                      </Accordion>
+                    </Grid>
+                  </Box>
                 </Grid>
               </Grid>
-
-              {/* Desktop View */}
-              <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                <Gallery
-                  options={{
-                    showAnimationDuration: 0,
-                    hideAnimationDuration: 0,
-                  }}
-                >
-                  {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
-                    return (
-                      <div
-                        id={`section-${index + 1}`}
-                        key={"newAdditionImages" + index}
-                        style={{
-                          width: 530,
-                          height: 579,
-                          marginTop: "20px",
-                        }}
-                      >
-                        <Item original={item?.url} thumbnail={item?.url} width="700" height="700">
-                          {({ ref, open }) => (
-                            <div onClick={open} ref={ref}>
-                              <Image
-                                src={item?.url}
-                                width={530}
-                                height={579}
-                                placeholder="blur"
-                                blurDataURL="/loaderShim.png"
-                                objectFit="contain"
-                              />
-                            </div>
-                          )}
-                        </Item>
-                      </div>
-                    );
-                  })}
-                </Gallery>
-              </Box>
             </Grid>
-            <Grid
-              container
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={6}
-              sx={{ justifyContent: { xs: "center", lg: "flex-end" } }}
-            >
-              <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
-                <Box
-                  style={{
-                    position: "sticky",
-                    top: "110px",
-                  }}
-                >
-                  <Typography fontSize={"16px"} fontWeight={"600"}>
-                    {newAdditionData?.vendor}
-                  </Typography>
-                  <Typography sx={styles.description}>{newAdditionData?.title}</Typography>
-                  <Grid container item xs={12} sm={12} md={12} lg={12} justifyContent="center">
-                    {loading ? (
-                      <CircularProgress color="secondary" />
-                    ) : (
-                      <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                        {`${price.currencyCode === "AUD" ? "$" : ""}${priceOfProduct}`}
-                      </Typography>
-                    )}
-                  </Grid>
-                  <Options
-                    newAdditionData={newAdditionData}
-                    onSelectedItem={onSelectedItem}
-                    size={size}
-                    color={color}
-                    setSizeValue={setSizeValue}
-                    setColorValue={setColorValue}
-                  />
-                  {error ? (
-                    <Alert sx={{ marginTop: 10 }} severity="error">
-                      {errorMessage}
-                    </Alert>
-                  ) : null}
-                  <Action
-                    addToCartButton={addToCartButton}
-                    buttonLoaderState={buttonLoaderState}
-                    BuyNowHandler={BuyNowHandler}
-                    buyNowLoaderState={buyNowLoaderState}
-                    disabled={error}
-                  />
-                  <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
-                  <Divider />
-                  <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
-                    <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")} elevation={0}>
-                      <AccordionSummary // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
+          </Box>
+
+          {isMobileDevice ? (
+            <Grid container sx={{ ...styles.bottomContainer }}>
+              <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
+                <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+                  You might like
+                </Typography>
+              </Grid>
+              <Grid
+                container
+                pl={3}
+                pr={3}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
+                  const productId = item?.id?.split("gid://shopify/Product/")[1];
+                  //   assign the value of price according to the requirement of the client
+                  //(remove .0 if exists , and if there is one decimal and that
+                  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+
+                  const prices = item.priceRange?.minVariantPrice?.amount;
+                  let formattedPrice = prices;
+
+                  const decimalPart = formattedPrice.split(".")[1];
+                  if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                    formattedPrice += "0";
+                  } else if (decimalPart === "0") {
+                    formattedPrice = Math.round(formattedPrice);
+                  }
+                  return (
+                    <Grid
+                      key={index}
+                      item
+                      xs={6}
+                      sm={3}
+                      md={3}
+                      lg={2}
+                      sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
+                      onClick={ClearErrors}
+                    >
+                      <Link
+                        key={"link" + index}
+                        href={{ pathname: `${path}/product/${productId}` }}
+                        style={{ textDecoration: "none" }}
+                        onClick={() => setproductsLoadedState(true)}
                       >
-                        <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
-                          Description
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography
-                          sx={styles.descriptionTypography}
-                          dangerouslySetInnerHTML={{ __html: newAdditionData?.descriptionHtml }}
-                        ></Typography>
-                      </AccordionDetails>
-                    </Accordion>
-                    <Accordion elevation={0}>
-                      <AccordionSummary
-                        // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel2a-content"
-                        id="panel2a-header"
-                      >
-                        <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
-                          Shipping
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>Free shipping on all Pedlar orders</Typography>
-                      </AccordionDetails>
-                    </Accordion>
-                    <Accordion elevation={0}>
-                      <AccordionSummary // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
-                        expandIcon={<ExpandMoreIcon />}
-                        aria-controls="panel3a-content"
-                        id="panel3a-header"
-                      >
-                        <Typography sx={styles.accordianTypography} fontWeight={"bold"}>
-                          Returns
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography sx={styles.descriptionTypography}>Free returns on all Pedlar orders</Typography>
-                      </AccordionDetails>
-                    </Accordion>
-                    <Accordion elevation={0}>
-                      <AccordionSummary></AccordionSummary>
-                      <AccordionDetails></AccordionDetails>
-                    </Accordion>
-                  </Grid>
-                </Box>
+                        <CardComponent
+                          width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
+                          height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
+                          name={item?.title?.toLowerCase()}
+                          type={item?.vender}
+                          price={
+                            item.priceRange?.minVariantPrice?.currencyCode === "AUD"
+                              ? `$${formattedPrice}`
+                              : formattedPrice
+                          }
+                          image={item?.featuredImage?.url}
+                          id={item?.id}
+                          item={item}
+                          index={index}
+                          heading={"you might like"}
+                        />
+                      </Link>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Grid>
-          </Grid>
+          ) : (
+            <>
+              <Box
+                sx={{
+                  padding: "40px 0 0 10px",
+                }}
+              >
+                <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
+                  You might like
+                </Typography>
+              </Box>
+              <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
+                {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
+                  const productId = item?.id?.split("gid://shopify/Product/")[1];
+                  //   assign the value of price according to the requirement of the client
+                  //(remove .0 if exists , and if there is one decimal and that
+                  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+                  const prices = item.priceRange?.minVariantPrice?.amount;
+                  let formattedPrice = prices;
+
+                  const decimalPart = formattedPrice.split(".")[1];
+                  if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
+                    formattedPrice += "0";
+                  } else if (decimalPart === "0") {
+                    formattedPrice = Math.round(formattedPrice);
+                  }
+                  return (
+                    <Grid key={"you_might_like" + index} item sm={3} lg={2.4} onClick={ClearErrors}>
+                      <Link
+                        key={"link" + index}
+                        href={{ pathname: `${path}/product/${productId}` }}
+                        style={{ textDecoration: "none" }}
+                        onClick={() => setproductsLoadedState(true)}
+                      >
+                        <CardComponent
+                          width={{ xs: 150, sm: 170, md: 230, lg: 270 }}
+                          height={{ xs: 150, sm: 170, md: 230, lg: 270 }}
+                          name={item?.title?.toLowerCase()}
+                          type={item?.vendor}
+                          price={
+                            item.priceRange?.minVariantPrice?.currencyCode === "AUD"
+                              ? `$${formattedPrice}`
+                              : formattedPrice
+                          }
+                          image={item?.featuredImage?.url}
+                          id={item?.id}
+                          item={item}
+                          index={index}
+                          heading={"you might like"}
+                        />
+                      </Link>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </>
+          )}
+        </CustomContainer>
+      ) : (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingTop: 30,
+            height: 500,
+          }}
+        >
+          <CircularProgress color="secondary" />
         </Box>
-        {/* Desktop View */}
-        <Grid container spacing={4} sx={{ ...styles.bottomContainer, display: { xs: "none", sm: "block" } }}>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
-            <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
-              You might like
-            </Typography>
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            pl={3}
-            pr={3}
-            sx={{
-              display: "flex",
-              justifyContent: "space-evenly",
-            }}
-          >
-            {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
-              const productId = item?.id?.split("gid://shopify/Product/")[1];
-              //   assign the value of price according to the requirement of the client
-              //(remove .0 if exists , and if there is one decimal and that
-              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
-              const prices = item.priceRange?.minVariantPrice?.amount;
-              let formattedPrice = prices;
-
-              const decimalPart = formattedPrice.split(".")[1];
-              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
-                formattedPrice += "0";
-              } else if (decimalPart === "0") {
-                formattedPrice = Math.round(formattedPrice);
-              }
-              return (
-                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
-                  <Grid
-                    key={index}
-                    item
-                    xs={6}
-                    sm={3}
-                    md={3}
-                    lg={2}
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                    onClick={ClearErrors}
-                  >
-                    <CardComponent
-                      width={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      height={{ xs: 150, sm: 170, md: 230, lg: 290 }}
-                      name={item?.title?.toLowerCase()}
-                      type={item?.vendor}
-                      price={
-                        item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
-                      }
-                      image={item?.featuredImage?.url}
-                      id={item?.id}
-                      item={item}
-                      index={index}
-                      heading={"you might like"}
-                    />
-                  </Grid>
-                </Link>
-              );
-            })}
-          </Grid>
-        </Grid>
-        {/* Mobile View */}
-        <Grid container spacing={4} sx={{ ...styles.bottomContainer, display: { xs: "block", sm: "none" } }}>
-          <Grid item xs={12} sm={12} md={12} lg={12} xl={12} paddingTop="40px" paddingLeft="10px">
-            <Typography sx={styles.text} fontSize={"24px"} fontWeight={"bold"}>
-              You might like
-            </Typography>
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            sm={12}
-            md={12}
-            lg={12}
-            xl={12}
-            pl={3}
-            pr={3}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
-              const productId = item?.id?.split("gid://shopify/Product/")[1];
-              //   assign the value of price according to the requirement of the client
-              //(remove .0 if exists , and if there is one decimal and that
-              //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
-
-              const prices = item.priceRange?.minVariantPrice?.amount;
-              let formattedPrice = prices;
-
-              const decimalPart = formattedPrice.split(".")[1];
-              if (decimalPart && decimalPart.length === 1 && decimalPart !== "0") {
-                formattedPrice += "0";
-              } else if (decimalPart === "0") {
-                formattedPrice = Math.round(formattedPrice);
-              }
-              return (
-                <Link key={"link" + index} href={{ pathname: `${path}/product/${productId}` }}>
-                  <Grid
-                    key={index}
-                    item
-                    xs={6}
-                    sm={3}
-                    md={3}
-                    lg={2}
-                    sx={{ display: "flex", justifyContent: "center", alignItems: "baseline" }}
-                    onClick={ClearErrors}
-                  >
-                    <CardComponent
-                      width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
-                      height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
-                      name={item?.title?.toLowerCase()}
-                      type={item?.vender}
-                      price={
-                        item.priceRange?.minVariantPrice?.currencyCode === "AUD" ? `$${formattedPrice}` : formattedPrice
-                      }
-                      image={item?.featuredImage?.url}
-                      id={item?.id}
-                      item={item}
-                      index={index}
-                      heading={"you might like"}
-                    />
-                  </Grid>
-                </Link>
-              );
-            })}
-          </Grid>
-        </Grid>
-      </CustomContainer>
-      {/* <Divider sx={styles.footerDivider} />
-      <BaseFooter /> */}
+      )}
     </Layout>
   );
 };

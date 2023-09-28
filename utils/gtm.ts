@@ -7,10 +7,11 @@ export const gtmEvents = (data: any) => {
   const pageEvent: PageEventProps = {
     ...data,
   };
-
+  setTimeout(() => {
+    window?.dataLayer?.push({ ecommerce: null });
+    window?.dataLayer?.push(data);
+  }, 6000);
   //@ts-ignore
-  window?.dataLayer?.push({ ecommerce: null });
-  window?.dataLayer?.push(data);
 };
 
 export const beginCheckout = (item: any, type = "checkout button") => {
@@ -285,7 +286,7 @@ export const homeProductsImpressiongmtEvent = (data: any) => {
 };
 
 export const productsImpressiongmtEvent = (data: any, type = "all products") => {
-  let items = data.map((item, index) => {
+  let items = data?.map((item, index) => {
     return {
       currency: item?.priceRange?.minVariantPrice?.currencyCode || "", // Currency
       item_name: item?.title || "", // Name or ID is required.

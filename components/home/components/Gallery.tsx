@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Grid, useMediaQuery } from "@mui/material";
 import CardComponent from "./cardComponent";
 import { CustomGrid } from "components/layout";
 
@@ -9,6 +9,9 @@ interface Props {
   heading: string;
 }
 const Gallery = ({ newAdditionData, heading }: Props) => {
+  const screen320 = useMediaQuery("(max-width:320px)");
+  const screen375 = useMediaQuery("(max-width:375px)");
+
   return (
     <>
       <CustomGrid
@@ -20,7 +23,6 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
       >
         <Grid
           container
-          item
           xs={11.5}
           sm={11.8}
           md={11.6}
@@ -52,15 +54,12 @@ const Gallery = ({ newAdditionData, heading }: Props) => {
                   item
                   xs={6}
                   sm={4}
-                  md={4}
-                  lg={4}
-                  xl={4}
-                  key={item?.collectionId}
+                  key={"collectionID" + item?.collectionId + index}
                   sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
                 >
                   <CardComponent
-                    width={{ xs: "185px", sm: 250, md: 320, lg: 380 }}
-                    height={{ xs: "230px", sm: 312, md: 400, lg: 450 }}
+                    width={screen320 ? "100%" : screen375 ? 166 : { xs: 180, sm: 245, md: 280, lg: 380 }}
+                    height={{ xs: 230, sm: 312, md: 400, lg: 450 }}
                     type={item?.vendor}
                     name={item?.title?.toLowerCase()}
                     price={

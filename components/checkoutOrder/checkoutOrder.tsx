@@ -5,11 +5,11 @@ import AddIcon from "@mui/icons-material/Add";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import styles from "styles/checkout";
-import { updateCartLineItem } from "api/graphql/grapgql";
+import { updateCartLineItem } from "apis/graphql/grapgql";
 import { Alert } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, cartDrawerToggle } from "store/slice/appSlice";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
 import { useRouter } from "next/router";
 
@@ -51,7 +51,6 @@ const CheckoutOrder = (props: Props) => {
         const products = [...cartProducts];
         products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
-        // setProductCount(quantity + 1);
         gmtEventToAddProduct({ ...itemData, index: props.index, quantity: 1 });
 
         setLoadingButtonState(false);
@@ -174,7 +173,7 @@ const CheckoutOrder = (props: Props) => {
               }}
             >
               <Box sx={{ width: 130, height: 130 }} onClick={onClickCard}>
-                <PedlarImage src={props.image} objectFit="contain" />
+                <NextImage src={props.image} style={{ objectFit: "contain" }} />
               </Box>
             </Box>
             <Box

@@ -1,7 +1,11 @@
 import { gql } from "@apollo/client";
 import { client } from "./client";
 
-export const getProductDetails = async (productId: string) => {
+export const getProductDetails = async (
+  productId: string,
+  maxWidthProductDetailImage: number,
+  maxHeightProductDetailImage: number,
+) => {
   const requestBody = {
     query: gql`
       query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {
@@ -36,7 +40,8 @@ export const getProductDetails = async (productId: string) => {
           }
           images(first: 10) {
             nodes {
-              url(transform: { preferredContentType: WEBP })
+                      url(transform: { preferredContentType: WEBP, maxWidth: ${maxWidthProductDetailImage}, maxHeight: ${maxHeightProductDetailImage} })
+
             }
           }
           createdAt
@@ -68,7 +73,12 @@ export const getProductDetails = async (productId: string) => {
   }
 };
 
-export const getUserDetailByFetchAPICall = async (collectionID: number, numberofProducts: number) => {
+export const getUserDetailByFetchAPICall = async (
+  collectionID: number,
+  numberofProducts: number,
+  maxWidthProductImage: number,
+  maxHeightProductImage: number,
+) => {
   const requestBody = {
     query: gql`query GetCollection($collectionId: ID! , $query: [ProductFilter!] ) {
     collection(id: $collectionId) {
@@ -91,7 +101,8 @@ export const getUserDetailByFetchAPICall = async (collectionID: number, numberof
                     }
                 }
                 featuredImage {
-                    url(transform: {preferredContentType: WEBP})
+              url(transform: { preferredContentType: WEBP, maxWidth: ${maxWidthProductImage}, maxHeight: ${maxHeightProductImage} })
+
                 }
                 createdAt
                 publishedAt
@@ -319,7 +330,6 @@ export const getVariantBySelectedOptions = async (productID, size, color, varien
 
     return getVariantResponse;
   } catch (error) {
-    console.log("error", error);
     return undefined;
   }
 };
@@ -410,7 +420,12 @@ export const updateCartLineItem = async (createdCartID, cartLineid, quantity) =>
   }
 };
 
-export const getFilteredProducts = async (collectionId, filterValuesForQuery) => {
+export const getFilteredProducts = async (
+  collectionId,
+  filterValuesForQuery,
+  maxWidthProductImage: number,
+  maxHeightProductImage: number,
+) => {
   const requestBody = {
     query: gql`
       query GetCollection($collectionId: ID!, $query: [ProductFilter!]) {
@@ -434,7 +449,7 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
                 }
               }
               featuredImage {
-                url(transform: { preferredContentType: WEBP })
+                url(transform: { preferredContentType: WEBP, maxWidth: ${maxWidthProductImage}, maxHeight: ${maxHeightProductImage} })
               }
               createdAt
               publishedAt
@@ -471,13 +486,18 @@ export const getFilteredProducts = async (collectionId, filterValuesForQuery) =>
 
     return getVariantResponse;
   } catch (error) {
-    console.log("error", error);
-
     return undefined;
   }
 };
 
-export const getPaginationProducts = async (action, cursorValue, collectionId, filterValuesForQuery) => {
+export const getPaginationProducts = async (
+  action,
+  cursorValue,
+  collectionId,
+  filterValuesForQuery,
+  maxWidthProductImage: number,
+  maxHeightProductImage: number,
+) => {
   const limitOfProducts = action === "after" ? "first" : "last";
 
   const requestBody = {
@@ -503,7 +523,8 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
                       }
                   }
                   featuredImage {
-                    url(transform: {preferredContentType: WEBP})
+           url(transform: { preferredContentType: WEBP, maxWidth: ${maxWidthProductImage}, maxHeight: ${maxHeightProductImage} })
+
                   }
                   createdAt
                   publishedAt
@@ -538,7 +559,7 @@ export const getPaginationProducts = async (action, cursorValue, collectionId, f
     const collectionDataProducts = await client.query({ query: requestBody.query, variables: requestBody.variables });
     return collectionDataProducts?.data?.collection?.products;
   } catch (error) {
-    console.log(error);
+    console.log("error");
   }
 };
 

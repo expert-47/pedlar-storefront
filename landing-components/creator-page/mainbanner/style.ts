@@ -24,7 +24,6 @@ export const styles = {
     lineHeight: "1",
     color: "#1c1b1f",
     fontWeight: "bold",
-    fontFamily: "Inter",
   },
   title: {
     paddingTop: "20px",
@@ -46,7 +45,5 @@ export const styles = {
       padding: "15px",
     },
   },
-  brandImg: {
-    // position: "relative",
-  },
+  brandImg: {},
 };

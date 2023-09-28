@@ -4,7 +4,7 @@ import Scrollspy from "react-scrollspy";
 import Image, { StaticImageData } from "next/image";
 import { Box, Grid, Typography, useTheme, useMediaQuery } from "@mui/material";
 //componet imports
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "../landinglayout";
 import Responsivehowitworks from "./responsive-how-it-works";
 import purpleGradient from "../../public/purple-gradient.png";
@@ -54,19 +54,12 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
           }}
         >
           {isResponsive ? (
-            <Image
-              src={purpleGradient}
-              alt="purple gradient"
-              loading={"lazy"}
-              layout={"fill"}
-              style={{ borderRadius: "16px" }}
-            />
+            <Image src={purpleGradient} fill alt="purple gradient" loading={"lazy"} style={{ borderRadius: "16px" }} />
           ) : (
             <Image
               src={purpleGradient}
               alt="purple gradient"
-              layout={"intrinsic"}
-              style={{ borderRadius: "16px" }}
+              style={{ borderRadius: "16px", width: "100%" }}
               loading={"lazy"}
             />
           )}
@@ -103,78 +96,102 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              1
-                            </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              {title1}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  1
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
+                                  {title1}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
+                          <NextImage
                             src={image1}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
+                            style={{
+                              objectFit: "contain",
+                              borderRadius: "16px",
+                            }}
                           />
                         </Box>
                       </Grid>
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              2
-                            </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              {title2}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  2
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
+                                  {title2}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage src={image2} alt="step 2" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <NextImage src={image2} alt="step 2" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Grid>
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"} mb={"30px"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              3
-                            </Typography>
-                            <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
-                              {title3}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  3
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography fontSize={{ md: "32px", lg: "40px", xl: "40px" }} sx={styles.stickyText}>
+                                  {title3}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
+                          <NextImage
                             src={image3}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
+                            style={{ borderRadius: "16px", objectFit: "contain" }}
                           />
                         </Box>
                       </Grid>
                       <Grid>
                         <Box>
                           <Box display={"flex"} alignItems={"flex-start"}>
-                            <Typography sx={styles.number} className="activeCount">
-                              4
-                            </Typography>
-                            <Typography
-                              fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "40px" }}
-                              sx={styles.stickyText}
-                            >
-                              {title4}
-                            </Typography>
+                            <ul style={{ display: "flex" }}>
+                              <li>
+                                <Typography sx={styles.number} className="activeCount">
+                                  4
+                                </Typography>
+                              </li>
+                              <li>
+                                <Typography
+                                  fontSize={{ sm: "30px", md: "32px", lg: "40px", xl: "40px" }}
+                                  sx={styles.stickyText}
+                                >
+                                  {title4}
+                                </Typography>
+                              </li>
+                            </ul>
                           </Box>
                         </Box>
                         <Box className="hs5-ib-sbr-img">
-                          <PedlarImage
+                          <NextImage
                             src={image4}
                             alt="Picture of the author"
-                            style={{ borderRadius: "16px" }}
-                            objectFit="contain"
+                            style={{ borderRadius: "16px", objectFit: "contain" }}
                           />
                         </Box>
                       </Grid>
@@ -182,22 +199,22 @@ const Howitswork = ({ title1, title2, title3, title4, image1, image2, image3, im
                     <div className="hs5-ib-slider-box-right">
                       <Box id="section-1">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image1} alt="step1" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image1} alt="step1" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                       <Box id="section-2">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image2} alt="step2" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image2} alt="step2" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                       <Box id="section-3">
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image3} alt="step3" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image3} alt="step3" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                       <Box id="section-4" mt={132}>
                         <Box className="hs5-ib-sbr-img">
-                          <Image src={image4} alt="step4" style={{ borderRadius: "16px" }} objectFit="contain" />
+                          <Image src={image4} alt="step4" style={{ borderRadius: "16px", objectFit: "contain" }} />
                         </Box>
                       </Box>
                     </div>

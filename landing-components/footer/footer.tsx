@@ -6,7 +6,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { styles } from "./style";
 import { CustomContainer } from "../landinglayout";
 import { useTheme } from "@mui/material";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 
 const Footer = () => {
   const theme = useTheme();
@@ -32,7 +32,7 @@ const Footer = () => {
                   width: 213,
                 }}
               >
-                <PedlarImage src={footerLogo} alt="footer logo" />
+                <NextImage src={footerLogo} alt="footer logo" />
               </Box>
             </Link>
             <Typography sx={styles.footerText} fontSize={"22px"} fontWeight={"600"} paddingTop={"40px"}>
@@ -45,7 +45,6 @@ const Footer = () => {
               style={{ margin: "0 auto 0 0", maxWidth: "435px" }}
             >
               Contact us at{" "}
-              {/* <span style={{ textDecoration: "underline", cursor: "pointer", textDecorationColor: "white" }}> */}
               <a
                 href="mailto:hello@pedlar.store"
                 style={{
@@ -57,7 +56,6 @@ const Footer = () => {
               >
                 hello@pedlar.store
               </a>{" "}
-              {/* </span> */}
               and our team will be in touch.
             </Typography>
           </Grid>

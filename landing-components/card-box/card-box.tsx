@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CustomContainer } from "../landinglayout";
 import { styles } from "./style";
 import { useTheme } from "@mui/material";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { StaticImageData } from "next/image";
 
 interface Props {
@@ -73,7 +73,13 @@ const CardBox = ({
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={icon1} alt="hassle1" zIndex={0} />
+                <NextImage
+                  src={icon1}
+                  fill={false}
+                  alt={"hassle 1"}
+                  layout={"default"}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
@@ -90,7 +96,13 @@ const CardBox = ({
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={icon2} alt="hassle2" zIndex={0} />
+                <NextImage
+                  src={icon2}
+                  fill={false}
+                  alt={"hassle 2"}
+                  layout={"default"}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
@@ -107,7 +119,13 @@ const CardBox = ({
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={icon3} alt="hassle3" zIndex={0} />
+                <NextImage
+                  src={icon3}
+                  fill={false}
+                  alt={"hassle 3"}
+                  layout={"default"}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>
@@ -124,7 +142,13 @@ const CardBox = ({
           <Grid item xs={12} sm={5.5} md={5.7} lg={2.8} sx={styles.GridBox}>
             <Grid item xs={12} sm={12} md={12} lg={12} style={{ paddingBottom: "10px" }}>
               <Box sx={{ height: 79, width: 79 }}>
-                <PedlarImage src={icon4} alt="hassle4" zIndex={0} />
+                <NextImage
+                  src={icon4}
+                  fill={false}
+                  alt={"hassle 4"}
+                  layout={"default"}
+                  style={{ width: "100%", height: "100%" }}
+                />
               </Box>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.title}>

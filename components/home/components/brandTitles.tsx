@@ -3,42 +3,20 @@ import { Box, Grid, Typography } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
 import { useRouter } from "next/router";
-import PedlarImage from "components/pedlarImage";
+import { NextImage } from "components/pedlarImage";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const BrandTitles = (props: any) => {
   const route = useRouter();
   const storeName = useSelector((data: any) => data.app.storeName);
+  const type = "Brands";
 
-  const navigateToProduct = (data: any) => {
-    const type = "Brands";
-    route.push(
-      {
-        pathname: `${route.basePath}/${storeName}/products`,
-        query: { dataType: type, itemValue: data.vendor },
-      },
-      `${route.basePath}/${storeName}/products`,
-    );
-  };
   return (
     <>
-      <CustomGrid
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          zIndex: "0",
-        }}
-      >
+      <CustomGrid>
         <Grid
           container
-          item
-          xs={12}
-          sm={12}
-          md={12}
-          lg={12}
-          gap={10}
-          {...props}
           justifyContent={{
             xs:
               props?.curatedBrandsResponse?.length === 1 || props?.curatedBrandsResponse?.length === 3
@@ -53,47 +31,67 @@ const BrandTitles = (props: any) => {
                 ? 15
                 : undefined,
           }}
-          sx={{ columnGap: "15px" }}
+          mt={5}
+          columnGap={10}
+          rowGap={15}
         >
           {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
-            <Box
-              onClick={() => {
-                navigateToProduct(item);
-              }}
-              sx={styles.brandImage}
-              style={{
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-                backgroundColor: "white",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                zIndex: "1",
-                cursor: "pointer",
-              }}
-              key={item?.vendor + index}
-            >
-              <PedlarImage
-                renderError={() => {
-                  return (
-                    <Box
-                      sx={{
-                        color: "black",
-                        height: "150px",
-                        width: "280px",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        display: "flex",
-                      }}
-                    >
-                      <Typography fontSize={"16px"}>{item?.vendor}</Typography>
-                    </Box>
-                  );
+            <Grid item xs={5.5} sm={2.8} sx={styles.brandImage} key={item?.vendor + index}>
+              <Link
+                href={{
+                  pathname: `${route.basePath}/${storeName}/products`,
+                  query: { dataType: type, itemValue: item.vendor },
                 }}
-                src={item?.logo_url}
-                alt={item?.vendor + index}
-                quality="100"
-              />
-            </Box>
+                as={`${route.basePath}/${storeName}/products`}
+                style={{ textDecoration: "none" }}
+              >
+                <Box
+                  sx={{
+                    height: {
+                      lg: 165,
+                      md: 140,
+                      sm: 125,
+                      xs: 115,
+                    },
+                  }}
+                >
+                  <NextImage
+                    renderError={() => {
+                      return (
+                        <Box
+                          sx={{
+                            color: "black",
+                            height: "100%",
+                            width: "100%",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Typography
+                            fontSize={"16px"}
+                            sx={{
+                              textAlign: "center",
+                              width: { xs: 145, sm: 160, md: 230 },
+                              wordBreak: "break-word",
+                            }}
+                          >
+                            {item?.vendor}
+                          </Typography>
+                        </Box>
+                      );
+                    }}
+                    src={item?.logo_url}
+                    alt={item?.vendor}
+                    quality={50}
+                    fill={false}
+                    width={270}
+                    height={150}
+                    style={{ position: "relative", width: "100%", height: "100%" }}
+                  />
+                </Box>
+              </Link>
+            </Grid>
           ))}
         </Grid>
       </CustomGrid>

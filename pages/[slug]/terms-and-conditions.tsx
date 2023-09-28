@@ -1,12 +1,14 @@
 import React from "react";
-import { Typography, Box, Divider } from "@mui/material";
+import { Typography, Box, Divider, useMediaQuery, Theme } from "@mui/material";
 import Layout, { CustomContainer } from "components/layout";
 import BaseFooter from "components/footer/baseFooter";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 
-const TermAndCondition = (props : any) => {
+const TermAndCondition = (props: any) => {
   const { slug, headerData, error } = props;
+
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   return (
     <Layout
@@ -19,6 +21,7 @@ const TermAndCondition = (props : any) => {
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
       productsPage={false}
+      isMobile={isMobile}
     >
       <CustomContainer>
         <Box sx={{ padding: "15px" }}>

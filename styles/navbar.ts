@@ -37,7 +37,6 @@ const styles = {
     fontSize: "22px",
     fontWeight: "400",
     paddingLeft: "5px",
-    fontFamily: "Inter",
   },
   tabButton: {
     color: "rgba(28, 27, 31, 0.8)",
@@ -81,7 +80,7 @@ const styles = {
   menu: {
     backgroundImage:
       "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5018382352941176) 0%)",
-    backgroundSize: "100% calc(100% - 105px)",
+    backgroundSize: "100% calc(100% - 103px)",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center bottom",
     display: "flex",

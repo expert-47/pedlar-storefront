@@ -1,13 +1,15 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Divider, Typography, useMediaQuery, Theme } from "@mui/material";
 import BaseFooter from "components/footer/baseFooter";
 import Layout, { CustomContainer } from "components/layout";
 import React from "react";
 import { styles } from "../../landing-components/static-pages/privacy-policy/style";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import { seo } from "utils/seoData";
 
-const privacypolicy = (props: any) => {
+const Privacypolicy = (props: any) => {
   const { slug, headerData, error } = props;
+
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
   return (
     <Layout
       seo={{
@@ -18,6 +20,7 @@ const privacypolicy = (props: any) => {
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
       error={error}
+      isMobile={isMobile}
     >
       <CustomContainer>
         <Box
@@ -257,7 +260,7 @@ const privacypolicy = (props: any) => {
   );
 };
 
-export default privacypolicy;
+export default Privacypolicy;
 
 export async function getServerSideProps(context: any) {
   const { slug } = context.query;

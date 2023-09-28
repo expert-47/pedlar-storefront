@@ -1,5 +1,4 @@
 // pages/_document.ts
-
 import Document, { Html, Head, Main, NextScript, DocumentProps } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import createEmotionCache from "utils/createEmotionCache";
@@ -12,12 +11,6 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
     <Html lang="en">
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block"
-          rel="stylesheet"
-        />
-
-        {/* <link rel="preload" href="/welcomeModalImageForMObile.webp" as="image" /> */}
         <meta name="emotion-insertion-point" content="" />
         {emotionStyleTags}
         <link rel="manifest" href="/manifest/manifest.webmanifest" />

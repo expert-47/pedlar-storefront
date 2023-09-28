@@ -1,14 +1,15 @@
-import { Box, Button, Divider, Typography } from "@mui/material";
+import { Box, Button, Divider, Typography, useMediaQuery, Theme } from "@mui/material";
 import BaseFooter from "components/footer/baseFooter";
 import Layout, { CustomContainer } from "components/layout";
 import React from "react";
-import { getUserDetail } from "api/restApi/getUserDetail";
+import { getUserDetail } from "apis/restApi/getUserDetail";
 import Link from "next/link";
 import { styles } from "../../landing-components/static-pages/return-policy/style";
 import { seo } from "utils/seoData";
 
 const Returnpolicy = (props: any) => {
   const { slug, headerData } = props;
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   return (
     <Layout
@@ -20,6 +21,7 @@ const Returnpolicy = (props: any) => {
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
       productsPage={false}
+      isMobile={isMobile}
     >
       <CustomContainer>
         <Box

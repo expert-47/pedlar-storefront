@@ -8,7 +8,6 @@ import Divider from "@mui/material/Divider";
 import styles from "styles/home";
 import BrandTitles from "./components/brandTitles";
 import Gallery from "./components/Gallery";
-// import HomepagePopup from "components/popups/homepagePopup";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as gtmEvents from "utils/gtm";
@@ -28,8 +27,7 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
-      {/* <HomepagePopup /> */}
-      <BannerImg headerData={props?.headerData} />
+      <BannerImg headerData={props?.headerData} isMobile={props?.isMobile} />
       <Divider sx={styles.bannerDivider} />
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="My Latest Picks" rightHeading="SHOP ALL" />
@@ -44,7 +42,11 @@ export const Home = (props: any) => {
             paddingRight: { xs: "10px", md: "0px" },
           }}
         >
-          <Link href={{ pathname: "/products", query: { slug: slug.slug } }} as={`/${slug.slug}/products`}>
+          <Link
+            href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
+            as={`/${slug.slug}/products`}
+            style={{ textDecoration: "none" }}
+          >
             <Grid>
               <Button
                 sx={{
@@ -76,3 +78,5 @@ export const Home = (props: any) => {
     </Grid>
   );
 };
+
+export default Home;

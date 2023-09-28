@@ -1,29 +1,27 @@
+//package imports
 import React from "react";
 import Link from "next/link";
-
-import { Stack } from "@mui/system";
 import styles from "styles/navbar";
+import { Stack } from "@mui/system";
+import { useRouter } from "next/router";
 import Marquee from "react-fast-marquee";
 import { isIOS } from "react-device-detect";
-
-import Image from "next/image";
-import { ResponsiveNavbar } from "./responsiveNavbar";
-import { CustomContainer } from "components/layout";
-import { AppBar, Badge, Button, Grid, IconButton, Toolbar, useMediaQuery, useTheme, Box } from "@mui/material";
-
+import { AppBar, Badge, Button, Grid, IconButton, Toolbar, Box } from "@mui/material";
+//components
 import Typography from "components/customText";
-import CartDrawer from "components/cartDrawer/cartDrawer";
+import { NextImage } from "components/pedlarImage";
+import { CustomContainer } from "components/layout";
 import DropDownMenu from "./components/dropDownMenu";
-import { useRouter } from "next/router";
+import { ResponsiveNavbar } from "./responsiveNavbar";
+import CartDrawer from "components/cartDrawer/cartDrawer";
+//redux
 import { useSelector, useDispatch } from "react-redux";
-import PedlarImage from "components/pedlarImage";
 import { cartDrawerToggle } from "store/slice/appSlice";
 
 export default function Navbar(props: any) {
-  const { data, shopList, loading, shopListLoading } = props;
+  const { data, shopList, loading, shopListLoading, isMobile } = props;
   const isIOSDevice = isIOS;
-  const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.up("sm"));
+
   const storeName = useSelector((data: any) => data.app.storeName);
   const cartProducts = useSelector((data: any) => data.app.products[storeName]) || [];
 
@@ -46,7 +44,7 @@ export default function Navbar(props: any) {
       ? Number(cartProducts[0].quantity)
       : 0;
   return (
-    <Grid container item xs={12} sm={12} lg={12} sx={styles.container}>
+    <Grid container sx={styles.container}>
       <AppBar position="fixed" sx={styles.appBar} elevation={0}>
         <Marquee style={styles.marquee} gradient={false}>
           <Typography fontSize={isIOSDevice ? "8.5px" : "11px"} fontWeight={"600"} sx={{ display: { xl: "none" } }}>
@@ -76,7 +74,7 @@ export default function Navbar(props: any) {
         </Marquee>
 
         <CustomContainer>
-          {!isMatch ? (
+          {isMobile ? (
             <ResponsiveNavbar
               storefrontName={props?.storefrontName}
               slugs={props?.slug}
@@ -86,18 +84,18 @@ export default function Navbar(props: any) {
               shopListLoading={shopListLoading}
             />
           ) : (
-            <Grid container item xs={12} md={12} lg={12} sx={styles.padding}>
+            <Grid item sx={styles.padding}>
               <Toolbar sx={styles.toolbar}>
                 <Stack direction="row" sx={styles.leftContainer}>
                   <Link href={`/${props?.slug}`}>
                     <Box sx={{ height: 22, width: 68, cursor: "pointer" }}>
-                      <PedlarImage src="/pedlar.png" alt="No Image Found" />
+                      <NextImage src="/pedlar.png" alt="No Image Found" placeholder="empty" />
                     </Box>
                   </Link>
                   <Grid sx={styles.navTypo}>{props?.storefrontName ? props?.storefrontName : ""}</Grid>
                 </Stack>
                 <Stack direction="row" spacing={2}>
-                  <Link href={`/${path}`}>
+                  <Link href={`/${path}`} style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
                     <Button sx={styles.tabButton}>Home</Button>
                   </Link>
 
@@ -109,17 +107,23 @@ export default function Navbar(props: any) {
                     </>
                   )}
 
-                  <Link href={`/${path}/faq`}>
-                    <a target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
-                      <Button color="inherit" sx={styles.tabButton}>
-                        FAQ
-                      </Button>
-                    </a>
+                  <Link href={`/${path}/faq`} target="_blank" style={{ textDecoration: "none", marginTop: "4px" }}>
+                    <Button color="inherit" sx={styles.tabButton}>
+                      FAQ
+                    </Button>
                   </Link>
 
                   <Badge badgeContent={totalProductLength} color="secondary">
                     <IconButton sx={styles.iconColor} onClick={onClickDrawer}>
-                      <Image src="/cart.png" height="19.48px" width="19.48px" />
+                      <NextImage
+                        fill={false}
+                        layout="default"
+                        alt="cart"
+                        src="/cart.png"
+                        height={19.48}
+                        width={19.48}
+                        placeholder="empty"
+                      />
                     </IconButton>
                   </Badge>
                 </Stack>

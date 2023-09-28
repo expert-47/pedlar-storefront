@@ -1,32 +1,17 @@
 
-
 * {
   padding: 0;
   margin: 0;
 }
-html {
-  scroll-behavior: smooth;
-}
 
-
- 
-  @font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-display: block;
-  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-}
 body {
- 
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;  
   overflow-x: hidden;
 }
-
 .Typewriter {
   padding: 1px;
   color: #1c1b1f;
-  font-family: "Inter";
+ 
   font-weight: 700;
 }
 @media screen and (min-width: 1300px) {
@@ -88,7 +73,7 @@ body {
 }
 .marq-right {
   color: rgb(28, 27, 31);
-  opacity: 0.08;
+  opacity: 0.5;
   transform: rotate(90deg);
   position: absolute !important;
   transform-origin: top right;
@@ -99,7 +84,7 @@ body {
 }
 .marq-left {
   color: rgb(28, 27, 31);
-  opacity: 0.08;
+  opacity: 0.5;
   transform: rotate(-90deg);
   position: absolute !important;
   transform-origin: top left;
@@ -155,11 +140,9 @@ body {
 @media only screen and (min-width: 768px) {
   .marq-left {
     width: 1080px !important;
-    /* left: -5px; */
   }
   .marq-right {
     width: 1080px !important;
-    /* right: 34px !important; */
   }
 }
 /* Large devices (laptops/desktops, 992px and up) */
@@ -419,7 +402,7 @@ section {
 .faq-current .faqHide {
   display: block;
   position: absolute;
-  right: 90px;
+ margin-left: 90px;
   margin-top: -20px;
 }
 @media screen and (max-width: 860px) {
@@ -501,7 +484,6 @@ section {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  /* background-color: #cbcbcb; */
   margin-top: 0.5rem;
 
   transition: background-color 0.2s ease-in-out;
@@ -539,7 +521,6 @@ section {
   background-color: black !important;
   height: "100%" !important;
   width: "100%" !important;
-  /* transform: none !important; */
 }
 
 .pswp--ui-visible {
@@ -552,4 +533,19 @@ section {
 }
 .pswp--touch .pswp__button--arrow {
   visibility: visible !important;
+}
+.positionProperty{
+position: relative !important;
+}
+.orangeMeshesBox{
+  position: absolute;
+  right: 0;
+  width: auto;
+  z-index: 0 ;
+}
+.pinkMeshesBox{
+ position: absolute;
+ left: 0;
+ width: auto;
+ z-index: 0 ;
 }

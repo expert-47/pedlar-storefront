@@ -1,9 +1,9 @@
 //package imports
 import "swiper/css";
-import Image from "next/image";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import React, { FC } from "react";
+import { isIOS } from "react-device-detect";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import SwiperCore, { Virtual, Navigation, Pagination, Autoplay } from "swiper";
@@ -18,6 +18,7 @@ import StephenDan from "public/StephenDan.png";
 
 //style imports
 import { styles } from "./style";
+import { NextImage } from "components/pedlarImage";
 
 SwiperCore.use([Virtual, Navigation, Pagination]);
 
@@ -53,6 +54,7 @@ const Picturecarousel: FC = (): JSX.Element => {
   const theme = useTheme();
   const islarge = useMediaQuery(theme.breakpoints.up("lg"));
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const isIOSDevice = isIOS;
 
   return (
     <Box sx={{ paddingTop: { xs: "50px", md: "100px" } }}>
@@ -77,7 +79,15 @@ const Picturecarousel: FC = (): JSX.Element => {
           return (
             <SwiperSlide style={styles.slide} key={item?.altText}>
               <Box sx={styles.cardBox}>
-                <Image src={item?.src} alt={item?.altText} loading="eager" placeholder="blur" />
+                <Box>
+                  <NextImage
+                    layout="default"
+                    src={item?.src}
+                    fill={false}
+                    alt={item?.altText}
+                    style={{ height: 250, width: isIOSDevice ? 220 : "auto" }}
+                  />
+                </Box>
                 <Typography sx={styles.cardText}>{item?.altText}</Typography>
               </Box>
             </SwiperSlide>

@@ -5,7 +5,7 @@ const withPWA = require("next-pwa")({
   register: true,
   skipWaiting: true,
 });
-const webpack = require("webpack");
+
 const securityHeaders = [
   {
     key: "Strict-Transport-Security",
@@ -13,29 +13,25 @@ const securityHeaders = [
   },
 ];
 const nextConfig = withPWA({
-  output: "standalone",
   reactStrictMode: true,
+  output: "standalone",
   swcMinify: true,
   images: {
     domains: ["res.cloudinary.com", "storage.googleapis.com", "cdn.shopify.com"],
   },
-
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  webpack: (config, { webpack }) => {
-    config.plugins.push(
-      new webpack.ProvidePlugin({
-        $: "jquery",
-        jQuery: "jquery",
-        "window.jQuery": "jquery",
-      }),
-    );
-    return config;
+  experimental: {
+    scrollRestoration: false,
   },
+
   async headers() {
     return [
       {

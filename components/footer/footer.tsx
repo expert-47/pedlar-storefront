@@ -4,8 +4,8 @@ import Grid from "@mui/material/Grid";
 import { Divider, useTheme } from "@mui/material";
 import { styles } from "styles/footer";
 import Text from "components/customText";
-import Image from "next/image";
-import Link from "next/link";
+
+import { NextImage } from "components/pedlarImage";
 const Footer = () => {
   const theme = useTheme();
 
@@ -35,10 +35,17 @@ const Footer = () => {
             paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
           >
             <Text fontSize="16px" sx={styles.footerText}>
-              Powered by 
-              <a href="https://pedlar.store/" target="_blank" rel="noopener noreferrer"  >
-                
-              <img src="/pedlar.png" style={{ marginBottom: "-4px", height: "16px" , cursor:"pointer" , marginLeft:"5px" }} />
+              Powered by
+              <a href="https://pedlar.store/" target="_blank" rel="noopener noreferrer">
+                <NextImage
+                  src="/pedlar.png"
+                  layout="default"
+                  fill={false}
+                  width={50}
+                  height={24}
+                  alt="pedlar logo"
+                  style={{ marginBottom: "-4px", height: "16px", cursor: "pointer", marginLeft: "5px" }}
+                />
               </a>
             </Text>
           </Grid>
@@ -53,12 +60,60 @@ const Footer = () => {
           paddingTop={{ md: theme.spacing(10), xs: theme.spacing(10) }}
           paddingBottom={{ xs: theme.spacing(10), md: theme.spacing(10), lg: theme.spacing(10) }}
         >
-          <Image src="/amex.png" style={styles.footerImage} width="35px" height="24px" />
-          <Image src="/applePay.png" style={styles.footerImage} width="35px" height="24px" />
-          <Image src="/mastercard.png" style={styles.footerImage} width="35px" height="24px" />
-          <Image src="/paypal.png" style={styles.footerImage} width="35px" height="24px" />
-          <Image src="/shopPay.png" style={styles.footerImage} width="35px" height="24px" />
-          <Image src="/visa.png" style={styles.footerImage} width="35px" height="24px" />
+          <NextImage
+            fill={false}
+            layout="default"
+            src="/amex.png"
+            alt="amex"
+            style={styles.footerImage}
+            width={35}
+            height={24}
+          />
+          <NextImage
+            src="/applePay.png"
+            fill={false}
+            layout="default"
+            style={styles.footerImage}
+            alt="applePay"
+            width={35}
+            height={24}
+          />
+          <NextImage
+            src="/mastercard.png"
+            fill={false}
+            layout="default"
+            style={styles.footerImage}
+            alt="mastercard"
+            width={35}
+            height={24}
+          />
+          <NextImage
+            src="/paypal.png"
+            layout="default"
+            fill={false}
+            style={styles.footerImage}
+            alt="paypal"
+            width={35}
+            height={24}
+          />
+          <NextImage
+            src="/shopPay.png"
+            layout="default"
+            fill={false}
+            style={styles.footerImage}
+            alt="shopPay"
+            width={35}
+            height={24}
+          />
+          <NextImage
+            src="/visa.png"
+            layout="default"
+            fill={false}
+            style={styles.footerImage}
+            alt="visa"
+            width={35}
+            height={24}
+          />
         </Grid>
       </Grid>
     </Box>

@@ -1,56 +1,56 @@
+//package imports
+
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { Fragment, useState } from "react";
-import PedlarImage from "components/pedlarImage";
 import CloseIcon from "@mui/icons-material/Close";
+import React, { FC, Fragment, useState } from "react";
 import { AppBar, Box, Button, Drawer, Grid, IconButton, Typography, useScrollTrigger, useTheme } from "@mui/material";
-
-import { styles } from "./style";
+//components
+import { NextImage } from "components/pedlarImage";
+import BottomSheet from "landing-components/BottomSheet";
+//assets
 import headerlogo from "../../public/header-logo.svg";
 import MenuIcon from "../../public/menu-icon.png";
-import BottomSheet from "landing-components/BottomSheet";
+//styles
+import { styles } from "./style";
 
-const ResponsiveHeader = () => {
+const paperStyle = {
+  width: { xs: "100%", sm: "50%", md: "35%" },
+  boxShadow: "none",
+  backgroundColor: "#f9f6f2",
+};
+
+const ResponsiveHeader: FC = (): JSX.Element => {
   const theme = useTheme();
   const router = useRouter();
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 15,
+  });
+  //states
   const [opendrawer, setOpenDrawar] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [sucessModalshow, setSuccessModalShow] = useState(true);
 
   const openPopup = () => setOpenDialog(true);
-
   const closePopup = () => {
     setSuccessModalShow(true);
     setOpenDialog(false);
   };
   const handleClose = () => {
     setSuccessModalShow(true);
-
     setOpenDialog(false);
   };
-
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 15,
-  });
-
   const openStorePage = () => {
     router.push("/");
   };
-
   const onClickDrawer = () => {
     setOpenDrawar(true);
   };
-
   const onCloseDrawer = () => {
     setOpenDrawar(false);
   };
 
-  const paperStyle = {
-    width: { xs: "100%", sm: "50%", md: "35%" },
-    boxShadow: "none",
-    backgroundColor: "#f9f6f2",
-  };
   const isSecondModalActive = (value: boolean) => {
     setSuccessModalShow(value);
   };
@@ -69,17 +69,20 @@ const ResponsiveHeader = () => {
     >
       <Grid
         container
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
         sx={styles.RespoMainGrid}
         paddingX={{ xs: theme.spacing(20), sm: theme.spacing(30), md: theme.spacing(30), lg: theme.spacing(35) }}
       >
         <Grid item xs={11} sm={11.5} md={11.5}>
           <Box style={{ height: 70, width: 230 }} onClick={openStorePage}>
-            <PedlarImage src={headerlogo} alt="pedlar-logo" height={75} width={230} style={{ cursor: "pointer" }} />
+            <NextImage
+              src={headerlogo}
+              fill={false}
+              layout="default"
+              alt="pedlar-logo"
+              height={75}
+              width={230}
+              style={{ cursor: "pointer", objectFit: "cover" }}
+            />
           </Box>
         </Grid>
         <Grid item xs={0.5} sm={0.5} md={0.5}>
@@ -90,77 +93,93 @@ const ResponsiveHeader = () => {
               sx: paperStyle,
             }}
           >
-            <Grid container style={{ alignItems: "center", justifyContent: "space-between", paddingBottom: "15px" }}>
+            <Box
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                paddingBottom: "15px",
+              }}
+            >
               <Box style={{ height: 62, width: "192px", margin: "15px 0 0 19px" }} onClick={openStorePage}>
-                <PedlarImage src={headerlogo} alt="header-logo" style={{ cursor: "pointer", paddingTop: "10px" }} />
+                <NextImage src={headerlogo} alt="pedlar-logo" style={{ cursor: "pointer", objectFit: "cover" }} />
               </Box>
               <IconButton onClick={onCloseDrawer}>
                 <CloseIcon style={{ height: "35px", width: "35px", color: "black", marginTop: "-20px" }} />
               </IconButton>
-            </Grid>
-            <Grid container item xs={12} sm={12} md={12} lg={12} style={{ display: "flex", flexDirection: "column" }}>
+            </Box>
+            <Box sx={styles.ResponButtonCreator}>
+              <Link
+                href={"/for-creator"}
+                style={{
+                  color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  textDecoration: "none",
+                }}
+              >
+                <Typography
+                  textTransform="none"
+                  sx={{
+                    ...styles.ButtonRTypo,
+                    textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
+                    color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  }}
+                >
+                  For Creators
+                </Typography>
+              </Link>
+            </Box>
+
+            <Box sx={styles.ResponButtonBrands}>
+              <Link
+                href={"/for-brands"}
+                style={{
+                  color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "black",
+                  textDecoration: "none",
+                }}
+              >
+                <Typography
+                  textTransform="none"
+                  sx={{
+                    ...styles.ButtonRTypo,
+                    textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
+                    color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "black",
+                  }}
+                >
+                  For Brands
+                </Typography>
+              </Link>
+            </Box>
+
+            <Box sx={{ textAlign: "center" }}>
               <Grid>
-                <Grid sx={styles.ResponButtonCreator}>
-                  <Link prefetch={true} href={"/for-creator"}>
-                    <Typography
-                      textTransform="none"
-                      sx={{
-                        ...styles.ButtonRTypo,
-                        textDecorationLine: router.pathname == "/for-creator" ? "underline" : "initial",
-                        color: router.pathname == "/for-creator" ? "rgba(28,27,31,.64)" : "initial",
-                      }}
-                    >
-                      For Creators
-                    </Typography>
-                  </Link>
-                </Grid>
+                <Button sx={styles.GetAccess1} onClick={openPopup}>
+                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                    Get Access
+                  </Typography>
+                </Button>
               </Grid>
               <Grid>
-                <Grid sx={styles.ResponButtonBrands}>
-                  <Link href={"/for-brands"} prefetch={true}>
-                    <Typography
-                      textTransform="none"
-                      sx={{
-                        ...styles.ButtonRTypo,
-                        textDecorationLine: router.pathname === "/for-brands" ? "underline" : "initial",
-                        color: router.pathname == "/for-brands" ? "rgba(28,27,31,.64)" : "initial",
-                      }}
-                    >
-                      For Brands
-                    </Typography>
-                  </Link>
-                </Grid>
+                <Button sx={styles.Login1} onClick={handleClick}>
+                  <Typography textTransform="none" sx={styles.ButtonRTypo}>
+                    Log in
+                  </Typography>
+                </Button>
+                {openDialog ? (
+                  <BottomSheet
+                    userType
+                    closePopup={closePopup}
+                    openDialog={openDialog}
+                    handleClose={handleClose}
+                    setOpenDialog={setOpenDialog}
+                    sucessModalshow={sucessModalshow}
+                    isSecondModalActive={isSecondModalActive}
+                  />
+                ) : (
+                  <Fragment />
+                )}
               </Grid>
-              <Grid style={{ textAlign: "center" }}>
-                <Grid>
-                  <Button sx={styles.GetAccess1} onClick={openPopup}>
-                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                      Get Access
-                    </Typography>
-                  </Button>
-                </Grid>
-                <Grid>
-                  <Button sx={styles.Login1} onClick={handleClick}>
-                    <Typography textTransform="none" sx={styles.ButtonRTypo}>
-                      Log in
-                    </Typography>
-                  </Button>
-                  {openDialog ? (
-                    <BottomSheet
-                      userType
-                      closePopup={closePopup}
-                      openDialog={openDialog}
-                      handleClose={handleClose}
-                      setOpenDialog={setOpenDialog}
-                      sucessModalshow={sucessModalshow}
-                      isSecondModalActive={isSecondModalActive}
-                    />
-                  ) : (
-                    <Fragment />
-                  )}
-                </Grid>
-              </Grid>
-            </Grid>
+            </Box>
           </Drawer>
 
           <Box
@@ -171,7 +190,7 @@ const ResponsiveHeader = () => {
             }}
             onClick={onClickDrawer}
           >
-            <PedlarImage src={MenuIcon} alt="Menu Icon" />
+            <NextImage src={MenuIcon} alt="Menu Icon" />
           </Box>
         </Grid>
       </Grid>

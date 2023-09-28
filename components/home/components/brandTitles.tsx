@@ -87,7 +87,7 @@ const BrandTitles = (props: any) => {
                     fill={false}
                     width={270}
                     height={150}
-                    style={{ position: "relative", width: "100%", height: "100%" }}
+                    style={{ position: "relative", width: "100%", height: "100%", objectFit: "contain" }}
                   />
                 </Box>
               </Link>

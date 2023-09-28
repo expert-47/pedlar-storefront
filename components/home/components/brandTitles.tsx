@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useMediaQuery } from "@mui/material";
 import { CustomGrid } from "components/layout";
 import styles from "styles/home";
 import { useRouter } from "next/router";
@@ -11,6 +11,10 @@ const BrandTitles = (props: any) => {
   const route = useRouter();
   const storeName = useSelector((data: any) => data.app.storeName);
   const type = "Brands";
+
+  const screen320 = useMediaQuery("(max-width:320px)");
+  const screen375 = useMediaQuery("(max-width:375px)");
+  const screen425 = useMediaQuery("(max-width:425px)");
 
   return (
     <>
@@ -35,8 +39,8 @@ const BrandTitles = (props: any) => {
           columnGap={10}
           rowGap={15}
         >
-          {props?.curatedBrandsResponse?.slice(0, 4)?.map((item: any, index: number) => (
-            <Grid item xs={5.5} sm={2.8} sx={styles.brandImage} key={item?.vendor + index}>
+          {props?.curatedBrandsResponse?.map((item: any, index: number) => (
+            <Grid item xs={5.6} sm={2.8} sx={styles.brandImage} key={item?.vendor + index}>
               <Link
                 href={{
                   pathname: `${route.basePath}/${storeName}/products`,
@@ -47,11 +51,24 @@ const BrandTitles = (props: any) => {
               >
                 <Box
                   sx={{
-                    height: {
-                      lg: 165,
-                      md: 140,
-                      sm: 125,
-                      xs: 115,
+                    height: screen320
+                      ? 85
+                      : screen375
+                      ? 95
+                      : screen425
+                      ? 115
+                      : {
+                          lg: 165,
+                          md: 140,
+                          sm: 125,
+                          xs: 85,
+                        },
+
+                    width: {
+                      lg: 280,
+                      md: 238,
+                      sm: 180,
+                      xs: "45.5vw",
                     },
                   }}
                 >
@@ -87,7 +104,7 @@ const BrandTitles = (props: any) => {
                     fill={false}
                     width={270}
                     height={150}
-                    style={{ position: "relative", width: "100%", height: "100%", objectFit: "contain" }}
+                    style={{ position: "relative", width: "100%", height: "100%" }}
                   />
                 </Box>
               </Link>

@@ -68,7 +68,7 @@ const BrandTitles = (props: any) => {
                       lg: 280,
                       md: 238,
                       sm: 180,
-                      xs: "45.5vw",
+                      xs: "46.6vw",
                     },
                   }}
                 >

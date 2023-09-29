@@ -61,7 +61,7 @@ const CardComponent = ({
                 width: "100%",
               }}
             >
-              <NextImage src={image} style={{ objectFit: "contain" }} alt={name} />
+              <NextImage src={image} style={{ objectFit: "cover", objectPosition: "center center" }} alt={name} />
             </Box>
           )}
           <Typography

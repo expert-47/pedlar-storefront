@@ -59,6 +59,9 @@ function scrollToTop() {
 }
 
 const Cart = (props: any) => {
+  const screen320 = useMediaQuery("(max-width:320px)");
+  const screen375 = useMediaQuery("(max-width:375px)");
+
   const theme = useTheme();
   const route = useRouter();
   const slideRef = useRef(null);
@@ -613,6 +616,7 @@ const Cart = (props: any) => {
                   display: "flex",
                   justifyContent: "center",
                 }}
+                rowSpacing={20}
               >
                 {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
                   const productId = item?.id?.split("gid://shopify/Product/")[1];
@@ -647,8 +651,8 @@ const Cart = (props: any) => {
                         onClick={() => setproductsLoadedState(true)}
                       >
                         <CardComponent
-                          width={{ xs: 150, sm: 250, md: 320, lg: 380 }}
-                          height={{ xs: 187, sm: 312, md: 400, lg: 450 }}
+                          width={screen320 ? "100%" : screen375 ? 166 : { xs: 180, sm: 245, md: 280, lg: 380 }}
+                          height={{ xs: 230, sm: 312, md: 400, lg: 450 }}
                           name={item?.title?.toLowerCase()}
                           type={item?.vender}
                           price={

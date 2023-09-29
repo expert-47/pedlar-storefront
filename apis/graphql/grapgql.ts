@@ -188,7 +188,7 @@ export const addToCartLineItem = async (cartID, merchandiseId, quantity) => {
                     id
                     currentlyNotInStock
                     image {
-                      url
+                      url(transform: { preferredContentType: WEBP, maxWidth: 300, maxHeight: 300 })
                     }
                     product {
                       title
@@ -251,7 +251,7 @@ export const getCartProducts = async (cartid) => {
                   id
                   currentlyNotInStock
                   image {
-                    url
+                    url(transform: { preferredContentType: WEBP, maxWidth: 300, maxHeight: 300 })
                   }
                   product {
                     title
@@ -372,7 +372,7 @@ export const updateCartLineItem = async (createdCartID, cartLineid, quantity) =>
                     id
                     currentlyNotInStock
                     image {
-                      url
+                      url(transform: { preferredContentType: WEBP, maxWidth: 300, maxHeight: 300 })
                     }
                     product {
                       title
@@ -523,8 +523,7 @@ export const getPaginationProducts = async (
                       }
                   }
                   featuredImage {
-           url(transform: { preferredContentType: WEBP, maxWidth: ${maxWidthProductImage}, maxHeight: ${maxHeightProductImage} })
-
+                    url(transform: { preferredContentType: WEBP, maxWidth: ${maxWidthProductImage}, maxHeight: ${maxHeightProductImage} })
                   }
                   createdAt
                   publishedAt

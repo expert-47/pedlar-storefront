@@ -70,7 +70,7 @@ export const Home = (props: any) => {
           </Link>
         </Box>
         <BrandListing onClick={onClickShopNow} leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
-        <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse?.slice(0, 4)} />
+        <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />
       </Box>
       <Bar />
       <Divider sx={styles.footerDivider} />

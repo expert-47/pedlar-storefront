@@ -1,17 +1,16 @@
-
 * {
   padding: 0;
   margin: 0;
 }
 
 body {
-  font-family: 'Inter', sans-serif;  
+  font-family: "Inter", sans-serif;
   overflow-x: hidden;
 }
 .Typewriter {
   padding: 1px;
   color: #1c1b1f;
- 
+
   font-weight: 700;
 }
 @media screen and (min-width: 1300px) {
@@ -402,7 +401,7 @@ section {
 .faq-current .faqHide {
   display: block;
   position: absolute;
- margin-left: 90px;
+  margin-left: 90px;
   margin-top: -20px;
 }
 @media screen and (max-width: 860px) {
@@ -534,18 +533,27 @@ section {
 .pswp--touch .pswp__button--arrow {
   visibility: visible !important;
 }
-.positionProperty{
-position: relative !important;
+.positionProperty {
+  position: relative !important;
 }
-.orangeMeshesBox{
+.orangeMeshesBox {
   position: absolute;
   right: 0;
   width: auto;
-  z-index: 0 ;
+  z-index: 0;
 }
-.pinkMeshesBox{
- position: absolute;
- left: 0;
- width: auto;
- z-index: 0 ;
+.pinkMeshesBox {
+  position: absolute;
+  left: 0;
+  width: auto;
+  z-index: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.image-loaded {
+  opacity: 1;
 }

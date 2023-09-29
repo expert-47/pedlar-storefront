@@ -31,18 +31,21 @@ export const NextImage = (props: Props) => {
 
 const CustomImage = (props) => {
   const [error, setError] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   const { zIndex = -1, placeholder, renderError, onLoad, fill = true, style } = props;
   if (error && renderError) {
     return renderError();
   }
+
   return (
     <NewImage
       sizes="(max-width: 768px) 100vw,
-        (max-width: 1200px) 50vw,
-        33vw"
+          (max-width: 1200px) 50vw,
+          33vw"
       fill={fill}
       {...props}
+      className={`fade-in ${loaded ? "image-loaded" : ""}`}
       style={{
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",
@@ -54,11 +57,15 @@ const CustomImage = (props) => {
       placeholder={
         placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(maxWidthProductImage, maxHeightProductImage))}`
       }
-      onLoad={onLoad}
+      onLoad={() => {
+        setLoaded(true);
+        if (onLoad) onLoad();
+      }}
       loading={props.priority ? "eager" : "lazy"}
     />
   );
 };
+
 const toBase64 = (str: string) =>
   typeof window === "undefined" ? Buffer.from(str).toString("base64") : window.btoa(str);
 

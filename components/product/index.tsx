@@ -19,16 +19,18 @@ import Link from "next/link";
 import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
-import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import SwipeableViews from "react-swipeable-views";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import React, { useState, useEffect, useRef } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 //components imports
 import Layout from "../layout";
 import Action from "./components/action";
 import Options from "./components/options";
 import { CustomContainer } from "../layout";
+import SliderDots from "./components/sliderDots";
 import CardComponent from "components/home/components/cardComponent";
 //style imports
 import styles from "styles/product";
@@ -74,16 +76,26 @@ const Cart = (props: any) => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [ImageLoaded, setImageLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
+  const [productsLoadedState, setproductsLoadedState] = useState(true);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [price, setPrice] = useState({
     price: 0,
     currencyCode: "AUD",
   });
-  const [productsLoadedState, setproductsLoadedState] = useState(true);
+
+  const handleChangeIndex = (index: number) => {
+    setActiveIndex(index);
+  };
+
+  const onDotClick = (index: number) => {
+    console.log("indexindex", index);
+    setActiveIndex(index);
+  };
 
   useEffect(() => {
     window.history.scrollRestoration = "manual";
@@ -397,14 +409,7 @@ const Cart = (props: any) => {
                         hideAnimationDuration: 0,
                       }}
                     >
-                      <Slide
-                        transitionDuration={100}
-                        ref={slideRef}
-                        indicators={true}
-                        arrows={false}
-                        autoplay={false}
-                        infinite={false}
-                      >
+                      <SwipeableViews index={activeIndex} onChangeIndex={handleChangeIndex} enableMouseEvents>
                         {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                           return (
                             <Box
@@ -446,7 +451,7 @@ const Cart = (props: any) => {
                             </Box>
                           );
                         })}
-                      </Slide>
+                      </SwipeableViews>
                     </Gallery>
                   </Grid>
                 ) : (
@@ -502,7 +507,21 @@ const Cart = (props: any) => {
                 lg={6}
                 sx={{ justifyContent: { xs: "center", lg: "flex-end" } }}
               >
-                <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
+                <SliderDots
+                  activeIndex={activeIndex}
+                  slideCount={newAdditionData?.images?.nodes?.length}
+                  onDotClick={onDotClick}
+                />
+
+                <Grid
+                  item
+                  xs={11}
+                  sm={6}
+                  md={10}
+                  lg={10}
+                  textAlign="center"
+                  paddingTop={isMobileDevice ? "10px" : "40px"}
+                >
                   <Box
                     style={{
                       position: "sticky",

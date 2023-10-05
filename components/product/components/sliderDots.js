@@ -1,31 +1,32 @@
+import { Box } from "@mui/material";
 import React from "react";
 
-const SliderDots = ({ activeIndex, slideCount, onDotClick }) => {
-  const dots = [];
-  for (let i = 0; i < slideCount; i++) {
-    let dotColor = "";
-    dotColor = i === activeIndex ? "#000000" : "#ccc";
-    dots.push(
-      <div
-        key={i}
-        style={{ backgroundColor: dotColor, width: 8, height: 8, borderRadius: 4, margin: 5 }}
-        onClick={() => onDotClick(i)} // Pass the index to onDotClick
-      />,
-    );
-  }
-
+const SliderDots = ({ activeIndex, items, onDotClick }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: "20px",
-      }}
-    >
-      {dots}
-    </div>
+    <Box sx={styles.container}>
+      {items?.map((_, index) => (
+        <Box
+          key={index}
+          style={{ ...styles.dot, backgroundColor: index === activeIndex ? "#000000" : "#ccc" }}
+          onClick={() => onDotClick(index)} // Pass the index to onDotClick
+        />
+      ))}
+    </Box>
   );
 };
 
+const styles = {
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: "20px",
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    margin: 5,
+  },
+};
 export default SliderDots;

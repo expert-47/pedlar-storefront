@@ -14,12 +14,10 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import "swiper/css";
 import Link from "next/link";
-import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
-import "react-slideshow-image/dist/styles.css";
+
 import SwipeableViews from "react-swipeable-views-react-18-fix";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import React, { useState, useEffect, useRef } from "react";

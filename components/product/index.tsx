@@ -118,6 +118,8 @@ const Cart = (props: any) => {
   };
 
   useEffect(() => {
+    setActiveIndex(0);
+
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");

@@ -507,7 +507,13 @@ const Cart = (props: any) => {
                 lg={6}
                 sx={{ justifyContent: { xs: "center", lg: "flex-end" } }}
               >
-                <SliderDots activeIndex={activeIndex} items={newAdditionData?.images?.nodes} onDotClick={onDotClick} />
+                {isMobileDevice && (
+                  <SliderDots
+                    activeIndex={activeIndex}
+                    items={newAdditionData?.images?.nodes}
+                    onDotClick={onDotClick}
+                  />
+                )}
 
                 <Grid
                   item

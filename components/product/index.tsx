@@ -334,7 +334,7 @@ const Cart = (props: any) => {
       collectionId={headerData?.data?.collectionId}
       isMobile={isMobile}
       containerStyle={{
-        paddingTop: isMatch ? "30px" : "75px",
+        paddingTop: "75px",
       }}
     >
       {!productsLoadedState ? (

@@ -51,13 +51,6 @@ import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 import { NextImage } from "components/pedlarImage";
 
-function scrollToTop() {
-  const isBrowser = () => typeof window !== "undefined";
-
-  if (!isBrowser()) return;
-  window.scrollTo({ top: -50, behavior: "instant" });
-}
-
 const Cart = (props: any) => {
   const screen320 = useMediaQuery("(max-width:320px)");
   const screen375 = useMediaQuery("(max-width:375px)");
@@ -75,7 +68,7 @@ const Cart = (props: any) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [ImageLoaded, setImageLoaded] = useState(false);
+
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -94,14 +87,6 @@ const Cart = (props: any) => {
     console.log("indexindex", index);
     setActiveIndex(index);
   };
-
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-
-    if (ImageLoaded) {
-      scrollToTop();
-    }
-  }, [ImageLoaded]);
 
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
@@ -348,6 +333,9 @@ const Cart = (props: any) => {
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
       isMobile={isMobile}
+      containerStyle={{
+        paddingTop: isMatch ? "30px" : "75px",
+      }}
     >
       {!productsLoadedState ? (
         <CustomContainer>
@@ -442,7 +430,6 @@ const Cart = (props: any) => {
                                         objectFit: "contain",
                                         objectPosition: "center",
                                       }}
-                                      onLoad={() => setImageLoaded(true)}
                                       priority={index < 2 ? true : false}
                                     />
                                   </Box>

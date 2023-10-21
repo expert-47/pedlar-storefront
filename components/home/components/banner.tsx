@@ -50,7 +50,7 @@ const BannerImg = (props: any) => {
             }}
           >
             <NextImage
-              src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : ""}
+              src={props?.headerData?.storefrontImageUrl ? props?.headerData?.storefrontImageUrl : "/Placeholder.jpg"}
               alt="headerimage"
               style={{ objectFit: "contain" }}
               priority

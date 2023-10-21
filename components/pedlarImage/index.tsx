@@ -37,7 +37,6 @@ const CustomImage = (props) => {
   if (error && renderError) {
     return renderError();
   }
-
   return (
     <NewImage
       sizes="(max-width: 768px) 100vw,
@@ -45,10 +44,11 @@ const CustomImage = (props) => {
           33vw"
       fill={fill}
       {...props}
-      className={`fade-in ${loaded ? "image-loaded" : ""}`}
+      className={`fade-in ${loaded || error ? "image-loaded" : ""}`}
       style={{
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",
+        backgroundColor: error ? "#eae9e7ff" : "transparent",
       }}
       src={props.src}
       onError={() => {

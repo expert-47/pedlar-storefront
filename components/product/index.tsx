@@ -14,21 +14,21 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import "swiper/css";
 import Link from "next/link";
-import "swiper/css/pagination";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
-import { Slide } from "react-slideshow-image";
-import "react-slideshow-image/dist/styles.css";
+
+import SwipeableViews from "react-swipeable-views-react-18-fix";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import React, { useState, useEffect, useRef } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 //components imports
 import Layout from "../layout";
 import Action from "./components/action";
 import Options from "./components/options";
 import { CustomContainer } from "../layout";
+import SliderDots from "./components/sliderDots";
 import CardComponent from "components/home/components/cardComponent";
 //style imports
 import styles from "styles/product";
@@ -51,13 +51,6 @@ import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 import { NextImage } from "components/pedlarImage";
 
-function scrollToTop() {
-  const isBrowser = () => typeof window !== "undefined";
-
-  if (!isBrowser()) return;
-  window.scrollTo({ top: -50, behavior: "instant" });
-}
-
 const Cart = (props: any) => {
   const screen320 = useMediaQuery("(max-width:320px)");
   const screen375 = useMediaQuery("(max-width:375px)");
@@ -74,24 +67,26 @@ const Cart = (props: any) => {
   const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [ImageLoaded, setImageLoaded] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
+  const [productsLoadedState, setproductsLoadedState] = useState(true);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [price, setPrice] = useState({
     price: 0,
     currencyCode: "AUD",
   });
-  const [productsLoadedState, setproductsLoadedState] = useState(true);
 
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
+  const handleChangeIndex = (index: number) => {
+    setActiveIndex(index);
+  };
 
-    if (ImageLoaded) {
-      scrollToTop();
-    }
-  }, [ImageLoaded]);
+  const onDotClick = (index: number) => {
+    console.log("indexindex", index);
+    setActiveIndex(index);
+  };
 
   useEffect(() => {
     productsImpressiongmtEvent(newAdditionData2, "you might like");
@@ -108,6 +103,8 @@ const Cart = (props: any) => {
   };
 
   useEffect(() => {
+    setActiveIndex(0);
+
     if (newAdditionData?.options) {
       setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
       setColor(newAdditionData?.options[1]?.values[0] || "");
@@ -336,6 +333,9 @@ const Cart = (props: any) => {
       storefrontName={headerData?.data?.storefrontName}
       collectionId={headerData?.data?.collectionId}
       isMobile={isMobile}
+      containerStyle={{
+        paddingTop: "75px",
+      }}
     >
       {!productsLoadedState ? (
         <CustomContainer>
@@ -397,14 +397,7 @@ const Cart = (props: any) => {
                         hideAnimationDuration: 0,
                       }}
                     >
-                      <Slide
-                        transitionDuration={100}
-                        ref={slideRef}
-                        indicators={true}
-                        arrows={false}
-                        autoplay={false}
-                        infinite={false}
-                      >
+                      <SwipeableViews index={activeIndex} onChangeIndex={handleChangeIndex} enableMouseEvents>
                         {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                           return (
                             <Box
@@ -437,7 +430,6 @@ const Cart = (props: any) => {
                                         objectFit: "contain",
                                         objectPosition: "center",
                                       }}
-                                      onLoad={() => setImageLoaded(true)}
                                       priority={index < 2 ? true : false}
                                     />
                                   </Box>
@@ -446,7 +438,7 @@ const Cart = (props: any) => {
                             </Box>
                           );
                         })}
-                      </Slide>
+                      </SwipeableViews>
                     </Gallery>
                   </Grid>
                 ) : (
@@ -502,7 +494,23 @@ const Cart = (props: any) => {
                 lg={6}
                 sx={{ justifyContent: { xs: "center", lg: "flex-end" } }}
               >
-                <Grid item xs={11} sm={6} md={10} lg={10} textAlign="center" paddingTop="40px">
+                {isMobileDevice && (
+                  <SliderDots
+                    activeIndex={activeIndex}
+                    items={newAdditionData?.images?.nodes}
+                    onDotClick={onDotClick}
+                  />
+                )}
+
+                <Grid
+                  item
+                  xs={11}
+                  sm={6}
+                  md={10}
+                  lg={10}
+                  textAlign="center"
+                  paddingTop={isMobileDevice ? "10px" : "40px"}
+                >
                   <Box
                     style={{
                       position: "sticky",

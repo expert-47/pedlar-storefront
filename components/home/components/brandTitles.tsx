@@ -16,6 +16,8 @@ const BrandTitles = (props: any) => {
   const screen375 = useMediaQuery("(max-width:375px)");
   const screen425 = useMediaQuery("(max-width:425px)");
 
+  console.log("props?.curatedBrandsResponse", props?.curatedBrandsResponse[0]);
+
   return (
     <>
       <CustomGrid>
@@ -98,7 +100,7 @@ const BrandTitles = (props: any) => {
                         </Box>
                       );
                     }}
-                    src={item?.logo_url}
+                    src={item?.banner_url}
                     alt={item?.vendor}
                     quality={50}
                     fill={false}

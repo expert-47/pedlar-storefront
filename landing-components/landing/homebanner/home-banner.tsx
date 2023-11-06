@@ -8,10 +8,10 @@ import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 //images imports
-import largeBanner from "/public/largeBanner.png";
-import mobileBanner from "/public/mobbanner.webp";
-import mediumBanner from "/public/TabletBanner.png";
-import desktopBanner from "/public/desktopBanner.png";
+import largeBanner from "/public/desktopBannerNew.png";
+import mobileBanner from "/public/mobileBannerNew.png";
+import mediumBanner from "/public/tabletBannerNew.png";
+import desktopBanner from "/public/desktopBannerNew.png";
 //styles imports
 import { styles } from "./style";
 

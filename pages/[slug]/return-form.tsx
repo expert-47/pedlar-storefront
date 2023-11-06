@@ -78,8 +78,6 @@ const ReturnForm = (props: any) => {
                 handleChange,
                 handleBlur,
                 handleSubmit,
-
-                /* and other goodies */
               }) => (
                 <form onSubmit={handleSubmit} ref={forms2}>
                   <Box sx={{ marginTop: "1.5rem" }}>
@@ -106,7 +104,6 @@ const ReturnForm = (props: any) => {
                             borderRadius: "40px",
                             border: "1px solid #BEBEBE",
                             paddingLeft: "25px",
-                            // marginBottom: "30px",
                             fontSize: "16px",
                             fontWeight: 400,
                           }}
@@ -114,9 +111,6 @@ const ReturnForm = (props: any) => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="Order_Number" />
                         </Box>
-                        {/* {errors.orderNumber && touched.orderNumber ? (
-                      <Box sx={{ color: "red" }}>{errors.orderNumber}</Box>
-                    ) : null} */}
                       </Box>
                       <Box>
                         <select
@@ -177,7 +171,6 @@ const ReturnForm = (props: any) => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="First_Name" />
                         </Box>
-                        {/* {errors.fname && touched.fname ? <div>{errors.fname}</div> : null} */}
                       </Box>
                       <Box>
                         <input
@@ -199,7 +192,6 @@ const ReturnForm = (props: any) => {
                         <Box sx={{ color: "red", fontSize: "16px", fontWeight: 400 }}>
                           <ErrorMessage component="div" name="Last_Name" />
                         </Box>
-                        {/* {errors.lname && touched.lname ? <div>{errors.lname}</div> : null} */}
                       </Box>
                     </Box>
                     <Box

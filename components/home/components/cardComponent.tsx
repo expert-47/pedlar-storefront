@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import Link from "next/link";
 import { NextImage } from "components/pedlarImage";
 import * as gtmEvents from "utils/gtm";
@@ -38,100 +38,102 @@ const CardComponent = ({
   };
 
   return (
-    <Link
-      href={{
-        pathname: `/${storeName}/product/${productId}`,
-        query: { id: productId, index: index, heading: heading },
-      }}
-      as={`/${storeName}/product/${productId}`}
-      style={{ textDecoration: "none", color: "black" }}
-    >
-      <Box
-        width={width}
-        sx={{
-          cursor: "pointer",
+    <Grid item xs={11.4}>
+      <Link
+        href={{
+          pathname: `/${storeName}/product/${productId}`,
+          query: { id: productId, index: index, heading: heading },
         }}
-        onClick={onClickCard}
+        as={`/${storeName}/product/${productId}`}
+        style={{ textDecoration: "none", color: "black" }}
       >
-        {image && (
-          <Box
-            height={height}
-            sx={{
-              width: "100%",
-            }}
-          >
-            <NextImage src={image} style={{ objectFit: "contain" }} alt={name} />
-          </Box>
-        )}
-        <Typography
-          align="center"
-          fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
-          fontWeight={"500"}
-          style={{
-            color: "#1C1B1F",
-            paddingTop: "20px",
-          }}
+        <Box
+          width={width}
           sx={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: "1",
-            WebkitBoxOrient: "vertical",
+            cursor: "pointer",
           }}
+          onClick={onClickCard}
         >
-          {type}
-        </Typography>
-        <Typography
-          align="center"
-          style={{
-            textTransform: "capitalize",
-            lineHeight: "18px",
-            color: "#1C1B1F",
-          }}
-          fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
-          fontWeight={"400"}
-          sx={{
-            paddingTop: "3px",
-            paddingInline: "7px",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitLineClamp: "2",
-            WebkitBoxOrient: "vertical",
-          }}
-        >
-          {name}
-        </Typography>
-        {crossPrice ? (
-          <Box sx={{ display: "flex" }}>
-            <Typography
-              align="center"
-              style={{
-                fontSize: "13px",
-                fontWeight: "400",
-                paddingTop: "8px",
-                textDecoration: "line-through",
-                textDecorationColor: "#1C1B1F87",
-                textDecorationThickness: "0.1em",
-                color: "#1C1B1F87",
+          {image && (
+            <Box
+              height={height}
+              sx={{
+                width: "100%",
               }}
             >
-              {crossPrice}
-            </Typography>
-            <Typography
-              align="center"
-              style={{ fontSize: "13px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
-            >
+              <NextImage src={image} style={{ objectFit: "cover", objectPosition: "center center" }} alt={name} />
+            </Box>
+          )}
+          <Typography
+            align="center"
+            fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
+            fontWeight={"500"}
+            style={{
+              color: "#1C1B1F",
+              paddingTop: "20px",
+            }}
+            sx={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: "1",
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {type}
+          </Typography>
+          <Typography
+            align="center"
+            style={{
+              textTransform: "capitalize",
+              lineHeight: "18px",
+              color: "#1C1B1F",
+            }}
+            fontSize={{ xs: "14px", sm: "14px", md: "15px", lg: "15px" }}
+            fontWeight={"400"}
+            sx={{
+              paddingTop: "3px",
+              paddingInline: "7px",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              display: "-webkit-box",
+              WebkitLineClamp: "2",
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {name}
+          </Typography>
+          {crossPrice ? (
+            <Box sx={{ display: "flex" }}>
+              <Typography
+                align="center"
+                style={{
+                  fontSize: "13px",
+                  fontWeight: "400",
+                  paddingTop: "8px",
+                  textDecoration: "line-through",
+                  textDecorationColor: "#1C1B1F87",
+                  textDecorationThickness: "0.1em",
+                  color: "#1C1B1F87",
+                }}
+              >
+                {crossPrice}
+              </Typography>
+              <Typography
+                align="center"
+                style={{ fontSize: "13px", marginLeft: "6px", fontWeight: "400", paddingTop: "8px" }}
+              >
+                {price}
+              </Typography>
+            </Box>
+          ) : (
+            <Typography align="center" style={{ fontSize: "13px", fontWeight: "400", paddingTop: "8px" }}>
               {price}
             </Typography>
-          </Box>
-        ) : (
-          <Typography align="center" style={{ fontSize: "13px", fontWeight: "400", paddingTop: "8px" }}>
-            {price}
-          </Typography>
-        )}
-      </Box>
-    </Link>
+          )}
+        </Box>
+      </Link>
+    </Grid>
   );
 };
 CardComponent.propTypes = {

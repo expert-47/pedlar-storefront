@@ -51,7 +51,6 @@ const CheckoutOrder = (props: Props) => {
         const products = [...cartProducts];
         products[props.index] = { ...cartProducts[props.index], quantity: quantity + 1 };
         dispatch(addProductToCart({ products: products, showCart: true }));
-        // setProductCount(quantity + 1);
         gmtEventToAddProduct({ ...itemData, index: props.index, quantity: 1 });
 
         setLoadingButtonState(false);
@@ -168,13 +167,17 @@ const CheckoutOrder = (props: Props) => {
             <Box
               style={{
                 width: "130px",
-                height: "130px",
+                height: "155px",
                 cursor: "pointer",
                 marginRight: "10px",
               }}
             >
-              <Box sx={{ width: 130, height: 130 }} onClick={onClickCard}>
-                <NextImage src={props.image} style={{ objectFit: "contain" }} />
+              <Box sx={{ width: 130, height: 155 }} onClick={onClickCard}>
+                <NextImage
+                  src={props.image}
+                  style={{ objectFit: "cover", objectPosition: "center center" }}
+                  alt={props.name}
+                />
               </Box>
             </Box>
             <Box

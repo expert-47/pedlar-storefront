@@ -36,8 +36,6 @@ export const styles = {
     color: "rgba(249, 246, 242, 1)",
   },
   Respocirclecount: {
-    // height: { xs: "35px", sm: "50px" },
-    // width: { xs: "35px", sm: "50px" },
     width: "45px",
     height: "45px",
     fontSize: { xs: "22px", sm: "30px" },

@@ -18,9 +18,20 @@ interface LayoutProps extends ContainerProps {
   error?: boolean;
   collectionId: string;
   isMobile: boolean;
+  containerStyle: object;
 }
 export default function Layout(props: LayoutProps) {
-  const { children, seo, storefrontName = "", slug = "", productsPage = "", error, collectionId, isMobile } = props;
+  const {
+    children,
+    seo,
+    storefrontName = "",
+    slug = "",
+    productsPage = "",
+    error,
+    collectionId,
+    isMobile,
+    containerStyle = {},
+  } = props;
 
   const storeName = useSelector((data) => data?.app?.storeName);
 
@@ -74,7 +85,7 @@ export default function Layout(props: LayoutProps) {
           isMobile={isMobile}
         />
       </header>
-      <main style={{ paddingTop: isMatch ? "110px" : productsPage ? " 90px" : "75px" }}>
+      <main style={{ paddingTop: isMatch ? "110px" : productsPage ? " 90px" : "75px", ...containerStyle }}>
         {error ? <ApiError /> : children}
       </main>
       <footer>

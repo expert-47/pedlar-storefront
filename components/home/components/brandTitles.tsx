@@ -98,7 +98,7 @@ const BrandTitles = (props: any) => {
                         </Box>
                       );
                     }}
-                    src={item?.logo_url}
+                    src={item?.banner_url}
                     alt={item?.vendor}
                     quality={50}
                     fill={false}

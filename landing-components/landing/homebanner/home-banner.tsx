@@ -8,7 +8,7 @@ import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 //images imports
-import largeBanner from "/public/desktopBannerNew.png";
+import largeBanner from "/public/largeBannerNew.png";
 import mobileBanner from "/public/mobileBannerNew.png";
 import mediumBanner from "/public/tabletBannerNew.png";
 import desktopBanner from "/public/desktopBannerNew.png";
@@ -20,6 +20,8 @@ const Banner: FC = (): JSX.Element => {
 
   const isSmall = useMediaQuery("(max-width:767px)");
   const isdektop = useMediaQuery("(min-width:1024px)");
+  const isLarge = useMediaQuery("(min-width:1440px)");
+
   const popupScreen = useMediaQuery("(min-width:600px)");
   const isMedium = useMediaQuery("(min-width:768px) and (max-width:1023px)");
 
@@ -66,45 +68,14 @@ const Banner: FC = (): JSX.Element => {
           sx={{ position: "relative", zIndex: "9" }}
           marginY={{ xs: theme.spacing(75), sm: theme.spacing(75), md: theme.spacing(75), lg: theme.spacing(75) }}
         >
-          {isdektop ? (
-            <NextImage
-              fill={false}
-              placeholder="empty"
-              style={{ width: "100%", height: "100%" }}
-              src={desktopBanner}
-              alt="desktop banner"
-              priority
-            />
-          ) : isSmall ? (
-            <NextImage
-              fill={false}
-              placeholder="empty"
-              style={{ width: "100%", height: "100%" }}
-              src={mobileBanner}
-              alt="Mobile banner"
-              priority
-            />
-          ) : isMedium ? (
-            <NextImage
-              fill={false}
-              placeholder="empty"
-              style={{ width: "100%", height: "100%" }}
-              src={mediumBanner}
-              alt="tab banner"
-              priority={true}
-              loading="eager"
-              decoding="async"
-            />
-          ) : (
-            <NextImage
-              placeholder="empty"
-              fill={false}
-              style={{ width: "100%", height: "100%" }}
-              src={largeBanner}
-              alt="Large banner "
-              priority
-            />
-          )}
+          <NextImage
+            fill={false}
+            placeholder="empty"
+            style={{ width: "100%", height: "100%" }}
+            src={isdektop ? desktopBanner : isSmall ? mobileBanner : isMedium ? mediumBanner : largeBanner}
+            alt="desktop banner"
+            priority
+          />
 
           <Box sx={styles.bannerText}>
             <Typography

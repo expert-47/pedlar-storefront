@@ -557,3 +557,7 @@ section {
 .image-loaded {
   opacity: 1;
 }
+
+li {
+  list-style-type: none;
+}

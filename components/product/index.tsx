@@ -60,6 +60,8 @@ const Cart = (props: any) => {
   const slideRef = useRef(null);
   const dispatch = useDispatch();
   const path = getStoreName(route);
+  const [varientData, setVarientData] = useState(null);
+  const [priceFilter, setPriceFilter] = useState([]);
   const slugValue = route.query.slug;
   const { newAdditionData, headerData, newAdditionData2, isMobile, error: apiError } = props;
 
@@ -106,13 +108,14 @@ const Cart = (props: any) => {
     setActiveIndex(0);
 
     if (newAdditionData?.options) {
-      setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
-      setColor(newAdditionData?.options[1]?.values[0] || "");
-      onSelectedItem(
-        newAdditionData?.options[0]?.values[0] || "Default Title",
-        newAdditionData?.options[1]?.values[0] || "",
-        newAdditionData?.options.length,
-      );
+      let filterList = newAdditionData?.options?.map((item) => {
+        return {
+          name: item.name,
+          value: item?.values[0],
+        };
+      });
+      setPriceFilter(filterList);
+      onSelectedItem(filterList);
     }
     return () => {
       slideRef?.current?.goTo(0);
@@ -122,12 +125,10 @@ const Cart = (props: any) => {
   // for setting the size of the product
   const setSizeValue = (value: string) => {
     setSize(value);
-    onSelectedItem(value, undefined, newAdditionData?.options.length);
   };
   // for setting the color of product
   const setColorValue = (value: string) => {
     setColor(value);
-    onSelectedItem(undefined, value, newAdditionData?.options.length);
   };
   // add to cart method
   const getCartList = async (value = false) => {
@@ -158,14 +159,8 @@ const Cart = (props: any) => {
 
   const addToCartButton = async () => {
     try {
+      const variant = await getVariantBySelectedOptions(newAdditionData?.id, priceFilter);
       setButtonLoaderState(true);
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        size,
-        color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
 
       const varientData = variant?.data?.product?.variantBySelectedOptions;
 
@@ -204,25 +199,20 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined, type) => {
+  const onSelectedItem = async (values) => {
     try {
       setError(false);
       setErrorMessage("");
       setLoading(true);
-      productDetailImpressiongmtEvent({
-        ...newAdditionData,
-        ...(type != 1 && { size: sizeValue != undefined ? sizeValue : size }),
-        color: type == 1 && sizeValue != undefined ? sizeValue : colorValue != undefined ? colorValue : color,
-        index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
-        heading: route?.query?.heading || "all products",
-      });
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        sizeValue != undefined ? sizeValue : size,
-        colorValue != undefined ? colorValue : color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
+      // productDetailImpressiongmtEvent({
+      //   ...newAdditionData,
+      //   ...(type != 1 && { size: sizeValue != undefined ? sizeValue : size }),
+      //   color: type == 1 && sizeValue != undefined ? sizeValue : colorValue != undefined ? colorValue : color,
+      //   index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
+      //   heading: route?.query?.heading || "all products",
+      // });
+
+      const variant = await getVariantBySelectedOptions(newAdditionData?.id, values);
       const varientData = variant?.data.product?.variantBySelectedOptions;
       setPrice({
         price: varientData.price.amount,
@@ -246,13 +236,7 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        size,
-        color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
+      const variant = await getVariantBySelectedOptions(newAdditionData?.id, priceFilter);
       const varientData = variant?.data.product?.variantBySelectedOptions;
       if (varientData?.quantityAvailable === 0) {
         setError(true);
@@ -532,11 +516,9 @@ const Cart = (props: any) => {
                     </Grid>
                     <Options
                       newAdditionData={newAdditionData}
+                      setFilter={setPriceFilter}
                       onSelectedItem={onSelectedItem}
-                      size={size}
-                      color={color}
-                      setSizeValue={setSizeValue}
-                      setColorValue={setColorValue}
+                      priceFilter={priceFilter}
                     />
                     {error ? (
                       <Alert sx={{ marginTop: 10 }} severity="error">

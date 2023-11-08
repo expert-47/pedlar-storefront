@@ -2,17 +2,17 @@
 import Typewriter from "typewriter-effect";
 import React, { FC, Fragment, useState } from "react";
 import { useTheme, Button, Box, Grid, Typography, useMediaQuery } from "@mui/material";
-//components imports
+
 import { NextImage } from "components/pedlarImage";
 import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
-//images imports
+
 import largeBanner from "/public/largeDesktop.png";
 import mobileBanner from "/public/mobileBannerNew.png";
 import mediumBanner from "/public/tabletBannerNew.png";
 import desktopBanner from "/public/desktopBannerNew.png";
-//styles imports
+
 import { styles } from "./style";
 
 const Banner: FC = (): JSX.Element => {

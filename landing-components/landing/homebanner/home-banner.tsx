@@ -8,7 +8,7 @@ import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 //images imports
-import largeBanner from "/public/largeBannerNew.png";
+import largeBanner from "/public/largeDesktop.png";
 import mobileBanner from "/public/mobileBannerNew.png";
 import mediumBanner from "/public/tabletBannerNew.png";
 import desktopBanner from "/public/desktopBannerNew.png";
@@ -20,7 +20,6 @@ const Banner: FC = (): JSX.Element => {
 
   const isSmall = useMediaQuery("(max-width:767px)");
   const isdektop = useMediaQuery("(min-width:1024px)");
-  const isLarge = useMediaQuery("(min-width:1440px)");
 
   const popupScreen = useMediaQuery("(min-width:600px)");
   const isMedium = useMediaQuery("(min-width:768px) and (max-width:1023px)");

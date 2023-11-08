@@ -289,20 +289,7 @@ export const getCartProducts = async (cartid) => {
   }
 };
 
-export const getVariantBySelectedOptions = async (productID, size, color, varientSize, varitentColor) => {
-  const selectedOptionInput = [
-    {
-      name: varientSize,
-      value: size ? size : "Default Title",
-    },
-  ];
-
-  if (color && color != "") {
-    selectedOptionInput.push({
-      name: varitentColor,
-      value: color ? color : "",
-    });
-  }
+export const getVariantBySelectedOptions = async (productID, selectedOptionInput) => {
   const requestBody = {
     query: gql`
       query GetProduct($productId: ID!, $selectedOptionInput: [SelectedOptionInput!]!) {

@@ -16,8 +16,6 @@ const BrandTitles = (props: any) => {
   const screen375 = useMediaQuery("(max-width:375px)");
   const screen425 = useMediaQuery("(max-width:425px)");
 
-  console.log("props?.curatedBrandsResponse", props?.curatedBrandsResponse[0]);
-
   return (
     <>
       <CustomGrid>

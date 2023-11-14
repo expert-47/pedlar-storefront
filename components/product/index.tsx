@@ -1,4 +1,3 @@
-//package imports
 import {
   Box,
   Grid,
@@ -23,16 +22,15 @@ import { Gallery, Item } from "react-photoswipe-gallery";
 import React, { useState, useEffect, useRef } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-//components imports
 import Layout from "../layout";
 import Action from "./components/action";
 import Options from "./components/options";
 import { CustomContainer } from "../layout";
 import SliderDots from "./components/sliderDots";
 import CardComponent from "components/home/components/cardComponent";
-//style imports
+
 import styles from "styles/product";
-//api imports
+
 import {
   addToCart,
   updateCartLineItem,
@@ -41,15 +39,16 @@ import {
   getVariantBySelectedOptions,
   checkoutCartDetails,
 } from "apis/graphql/grapgql";
-//redux
+
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart, updateCartId } from "store/slice/appSlice";
-//utils
+
 import { seo } from "utils/seoData";
 import * as gtmEvents from "utils/gtm";
 import { getStoreName } from "utils/getPathName";
 import { productDetailImpressiongmtEvent, productsImpressiongmtEvent } from "utils/gtm";
 import { NextImage } from "components/pedlarImage";
+import { getProductId } from "utils/common";
 
 const Cart = (props: any) => {
   const screen320 = useMediaQuery("(max-width:320px)");
@@ -60,11 +59,11 @@ const Cart = (props: any) => {
   const slideRef = useRef(null);
   const dispatch = useDispatch();
   const path = getStoreName(route);
+
+  const [priceFilter, setPriceFilter] = useState([]);
   const slugValue = route.query.slug;
   const { newAdditionData, headerData, newAdditionData2, isMobile, error: apiError } = props;
 
-  const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -72,7 +71,7 @@ const Cart = (props: any) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
-  const [productsLoadedState, setproductsLoadedState] = useState(true);
+  const [productsLoadedState, setProductsLoadedState] = useState(true);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
   const [price, setPrice] = useState({
     price: 0,
@@ -106,30 +105,21 @@ const Cart = (props: any) => {
     setActiveIndex(0);
 
     if (newAdditionData?.options) {
-      setSize(newAdditionData?.options[0]?.values[0] || "Default Title");
-      setColor(newAdditionData?.options[1]?.values[0] || "");
-      onSelectedItem(
-        newAdditionData?.options[0]?.values[0] || "Default Title",
-        newAdditionData?.options[1]?.values[0] || "",
-        newAdditionData?.options.length,
-      );
+      let filterList = newAdditionData?.options?.map((item) => {
+        return {
+          name: item.name,
+          value: item?.values[0],
+        };
+      });
+
+      setPriceFilter(filterList);
+      onSelectedItem(filterList);
     }
     return () => {
       slideRef?.current?.goTo(0);
     };
   }, [route.query?.id]);
 
-  // for setting the size of the product
-  const setSizeValue = (value: string) => {
-    setSize(value);
-    onSelectedItem(value, undefined, newAdditionData?.options.length);
-  };
-  // for setting the color of product
-  const setColorValue = (value: string) => {
-    setColor(value);
-    onSelectedItem(undefined, value, newAdditionData?.options.length);
-  };
-  // add to cart method
   const getCartList = async (value = false) => {
     if (cartId) {
       try {
@@ -141,8 +131,7 @@ const Cart = (props: any) => {
   const gmtEventToAddProduct = (data: any) => {
     gtmEvents.addToCart({
       ...data,
-      ...(newAdditionData?.options.length != 1 && { size: size }),
-      color: newAdditionData?.options.length == 1 ? size : color,
+
       index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
     });
   };
@@ -150,22 +139,15 @@ const Cart = (props: any) => {
   const gmtEventToBuyNow = (data: any) => {
     gtmEvents.buyNowbeginCheckout({
       ...data,
-      ...(newAdditionData?.options.length != 1 && { size: size }),
-      color: newAdditionData?.options.length == 1 ? size : color,
+
       index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
     });
   };
 
   const addToCartButton = async () => {
     try {
+      const variant = await getVariantBySelectedOptions(newAdditionData?.id, priceFilter);
       setButtonLoaderState(true);
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        size,
-        color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
 
       const varientData = variant?.data?.product?.variantBySelectedOptions;
 
@@ -204,26 +186,20 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
-  const onSelectedItem = async (sizeValue = undefined, colorValue = undefined, type) => {
+  const onSelectedItem = async (values) => {
     try {
       setError(false);
       setErrorMessage("");
       setLoading(true);
       productDetailImpressiongmtEvent({
         ...newAdditionData,
-        ...(type != 1 && { size: sizeValue != undefined ? sizeValue : size }),
-        color: type == 1 && sizeValue != undefined ? sizeValue : colorValue != undefined ? colorValue : color,
         index: route?.query?.index ? parseInt(route?.query?.index) + 1 : 1,
         heading: route?.query?.heading || "all products",
       });
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        sizeValue != undefined ? sizeValue : size,
-        colorValue != undefined ? colorValue : color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
+
+      const variant = await getVariantBySelectedOptions(newAdditionData?.id, values);
       const varientData = variant?.data.product?.variantBySelectedOptions;
+
       setPrice({
         price: varientData.price.amount,
         currencyCode: varientData.price.currencyCode,
@@ -246,13 +222,7 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
-      const variant = await getVariantBySelectedOptions(
-        newAdditionData?.id,
-        size,
-        color,
-        newAdditionData?.options[0]?.name,
-        newAdditionData?.options[1]?.name,
-      );
+      const variant = await getVariantBySelectedOptions(newAdditionData?.id, priceFilter);
       const varientData = variant?.data.product?.variantBySelectedOptions;
       if (varientData?.quantityAvailable === 0) {
         setError(true);
@@ -314,7 +284,7 @@ const Cart = (props: any) => {
   }
   useEffect(() => {
     if (newAdditionData?.images?.nodes.length > 0) {
-      setproductsLoadedState(false);
+      setProductsLoadedState(false);
     }
   }, [newAdditionData]);
 
@@ -532,11 +502,9 @@ const Cart = (props: any) => {
                     </Grid>
                     <Options
                       newAdditionData={newAdditionData}
+                      setFilter={setPriceFilter}
                       onSelectedItem={onSelectedItem}
-                      size={size}
-                      color={color}
-                      setSizeValue={setSizeValue}
-                      setColorValue={setColorValue}
+                      priceFilter={priceFilter}
                     />
                     {error ? (
                       <Alert sx={{ marginTop: 10 }} severity="error">
@@ -554,7 +522,7 @@ const Cart = (props: any) => {
                     <Divider />
                     <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
                       <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")} elevation={0}>
-                        <AccordionSummary // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                        <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
                           id="panel1a-header"
@@ -585,7 +553,7 @@ const Cart = (props: any) => {
                         </AccordionDetails>
                       </Accordion>
                       <Accordion elevation={0}>
-                        <AccordionSummary // expandIcon={expanded === "panel2" ? <RemoveIcon /> : <AddIcon />}
+                        <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel3a-content"
                           id="panel3a-header"
@@ -627,10 +595,7 @@ const Cart = (props: any) => {
                 rowSpacing={20}
               >
                 {newAdditionData2?.slice(0, 4)?.map((item: any, index: any) => {
-                  const productId = item?.id?.split("gid://shopify/Product/")[1];
-                  //   assign the value of price according to the requirement of the client
-                  //(remove .0 if exists , and if there is one decimal and that
-                  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+                  const productId = getProductId(item?.id);
 
                   const prices = item.priceRange?.minVariantPrice?.amount;
                   let formattedPrice = prices;
@@ -656,7 +621,7 @@ const Cart = (props: any) => {
                         key={"link" + index}
                         href={{ pathname: `${path}/product/${productId}` }}
                         style={{ textDecoration: "none" }}
-                        onClick={() => setproductsLoadedState(true)}
+                        onClick={() => setProductsLoadedState(true)}
                       >
                         <CardComponent
                           width={screen320 ? "100%" : screen375 ? 166 : { xs: 180, sm: 245, md: 280, lg: 380 }}
@@ -693,10 +658,7 @@ const Cart = (props: any) => {
               </Box>
               <Grid container spacing={4} sx={{ ...styles.bottomContainer }}>
                 {newAdditionData2?.slice(0, 5)?.map((item: any, index: any) => {
-                  const productId = item?.id?.split("gid://shopify/Product/")[1];
-                  //   assign the value of price according to the requirement of the client
-                  //(remove .0 if exists , and if there is one decimal and that
-                  //  decimal is not zero put the extra zero with that decimal for example 1.1 should be 1.10)
+                  const productId = getProductId(item?.id);
                   const prices = item.priceRange?.minVariantPrice?.amount;
                   let formattedPrice = prices;
 
@@ -712,7 +674,7 @@ const Cart = (props: any) => {
                         key={"link" + index}
                         href={{ pathname: `${path}/product/${productId}` }}
                         style={{ textDecoration: "none" }}
-                        onClick={() => setproductsLoadedState(true)}
+                        onClick={() => setProductsLoadedState(true)}
                       >
                         <CardComponent
                           width={{ xs: 150, sm: 170, md: 230, lg: 270 }}

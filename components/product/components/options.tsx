@@ -7,63 +7,45 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import styles from "styles/product";
 
 function Options(props: any) {
-  const { newAdditionData, setColorValue, setSizeValue, size, color } = props;
+  const { newAdditionData, priceFilter, setFilter, onSelectedItem } = props;
 
-  const handleChange1 = (event: any) => {
-    setSizeValue(event.target.value);
+  const handleChange = (value: any, type: string, index) => {
+    let data = { name: newAdditionData?.options[index].name, value: value };
+    let filter = [...priceFilter];
+    filter[index] = data;
+    setFilter(filter);
+    onSelectedItem(filter);
   };
-  const handleChange2 = (event: any) => {
-    setColorValue(event.target.value);
-  };
+
   return (
     <Grid container item xs={12} sm={12} md={12} lg={12} gap={22} sx={styles.container}>
-      {size != "Default Title" && newAdditionData?.options[0]?.values?.length > 0 && (
-        <Grid item xs={12} sm={10} md={6} lg={6}>
-          <Typography sx={styles.typography}>{newAdditionData?.options[0]?.name}</Typography>
-          <FormControl sx={{ width: "100%" }}>
-            <Select
-              value={size}
-              onChange={handleChange1}
-              displayEmpty
-              sx={styles.select}
-              IconComponent={newAdditionData?.options[0]?.values?.length === 1 ? "" : KeyboardArrowDownIcon}
-              disabled={newAdditionData?.options[0]?.values?.length == 1}
-            >
-              {newAdditionData?.options[0]?.values?.map((val: any, index: any) => {
-                return (
-                  <MenuItem key={index} value={val}>
-                    {val}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        </Grid>
-      )}
-
-      {newAdditionData?.options[1]?.values?.length > 0 && (
-        <Grid item xs={12} sm={10} md={6} lg={6}>
-          <Typography sx={styles.typography}>{newAdditionData?.options[1]?.name}</Typography>
-          <FormControl sx={{ width: "100%" }}>
-            <Select
-              value={color}
-              displayEmpty
-              sx={styles.select}
-              onChange={handleChange2}
-              IconComponent={newAdditionData?.options[1]?.values?.length === 1 ? "" : KeyboardArrowDownIcon}
-              disabled={newAdditionData?.options[1]?.values?.length == 1}
-            >
-              {newAdditionData?.options[1]?.values?.map((val: any, index: any) => {
-                return (
-                  <MenuItem key={index} value={val}>
-                    {val}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        </Grid>
-      )}
+      {newAdditionData?.options[0]?.name == "Title" && newAdditionData?.options[0]?.values[0] == "Default Title"
+        ? null
+        : newAdditionData?.options?.map((item, index) => (
+            <Grid item xs={12} sm={10} md={6} lg={6}>
+              <Typography sx={styles.typography}>{item.name}</Typography>
+              <FormControl sx={{ width: "100%" }}>
+                <Select
+                  value={priceFilter[index].value}
+                  onChange={(event) => {
+                    handleChange(event.target.value, item.name, index);
+                  }}
+                  displayEmpty
+                  sx={styles.select}
+                  IconComponent={item?.values?.length === 1 ? "" : KeyboardArrowDownIcon}
+                  disabled={item?.values?.length == 1}
+                >
+                  {item?.values?.map((val: any, index: any) => {
+                    return (
+                      <MenuItem key={index} value={val}>
+                        {val}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+            </Grid>
+          ))}
     </Grid>
   );
 }

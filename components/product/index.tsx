@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
+import Tooltip from "@mui/material/Tooltip";
 
 import SwipeableViews from "react-swipeable-views-react-18-fix";
 import { Gallery, Item } from "react-photoswipe-gallery";
@@ -67,7 +68,7 @@ const Cart = (props: any) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const [variantData, setVariantData] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [buttonLoaderState, setButtonLoaderState] = useState(false);
   const [buyNowLoaderState, setBuyNowLoaderState] = useState(false);
@@ -146,21 +147,18 @@ const Cart = (props: any) => {
 
   const addToCartButton = async () => {
     try {
-      const variant = await getVariantBySelectedOptions(newAdditionData?.id, priceFilter);
       setButtonLoaderState(true);
 
-      const varientData = variant?.data?.product?.variantBySelectedOptions;
-
-      if (!Boolean(varientData?.quantityAvailable) || varientData?.quantityAvailable === 0) {
+      if (!Boolean(variantData?.quantityAvailable) || variantData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
         setLoading(false);
       } else {
         if (Boolean(cartId)) {
-          const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
+          const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === variantData?.id);
 
           if (data1) {
-            if (varientData?.quantityAvailable === data1?.quantity) {
+            if (variantData?.quantityAvailable === data1?.quantity) {
               setError(true);
               setErrorMessage("This item is currently out of stock");
               setLoading(false);
@@ -170,10 +168,10 @@ const Cart = (props: any) => {
               await updateCartLineItem(cartId, data1?.id, quantity);
             }
           } else {
-            await addToCartLineItem(cartId, varientData?.id, 1);
+            await addToCartLineItem(cartId, variantData?.id, 1);
           }
         } else {
-          const response = await addToCart(varientData?.id, slugValue, 1);
+          const response = await addToCart(variantData?.id, slugValue, 1);
 
           dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
         }
@@ -198,13 +196,22 @@ const Cart = (props: any) => {
       });
 
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, values);
-      const varientData = variant?.data.product?.variantBySelectedOptions;
+      const variantData = variant?.data.product?.variantBySelectedOptions;
 
-      setPrice({
-        price: varientData.price.amount,
-        currencyCode: varientData.price.currencyCode,
-      });
-      if (!varientData?.quantityAvailable || varientData?.quantityAvailable === 0) {
+      setVariantData(variantData);
+      if (variantData) {
+        setPrice({
+          price: variantData.price.amount,
+          currencyCode: variantData.price.currencyCode,
+        });
+      } else {
+        setPrice({
+          price: newAdditionData?.priceRange?.minVariantPrice?.amount || 0,
+          currencyCode: newAdditionData?.priceRange?.minVariantPrice?.currencyCode || "$",
+        });
+      }
+
+      if (!variantData?.quantityAvailable || variantData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
         setLoading(false);
@@ -222,24 +229,22 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
-      const variant = await getVariantBySelectedOptions(newAdditionData?.id, priceFilter);
-      const varientData = variant?.data.product?.variantBySelectedOptions;
-      if (varientData?.quantityAvailable === 0) {
+      if (variantData?.quantityAvailable === 0) {
         setError(true);
         setErrorMessage("This item is currently out of stock");
       } else {
         gmtEventToAddProduct({ ...newAdditionData, quantity: 1, item_category3: "buy now button" });
         if (!cartId) {
-          const res = await addToCart(varientData?.id, slugValue, quantity);
+          const res = await addToCart(variantData?.id, slugValue, quantity);
           dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
           const cartId = res?.data?.cartCreate?.cart?.id;
           const response = await checkoutCartDetails(cartId);
           window.open(response?.data?.cart?.checkoutUrl, "_self");
           gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
         } else {
-          const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === varientData?.id);
+          const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === variantData?.id);
           if (data1) {
-            if (varientData?.quantityAvailable === data1?.quantity) {
+            if (variantData?.quantityAvailable === data1?.quantity) {
               setError(true);
               setErrorMessage("This item is currently out of stock");
             } else {
@@ -251,7 +256,7 @@ const Cart = (props: any) => {
               }, 500);
             }
           } else {
-            const data = await addToCartLineItem(cartId, varientData?.id, quantity);
+            const data = await addToCartLineItem(cartId, variantData?.id, quantity);
 
             gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
             setTimeout(async () => {
@@ -516,7 +521,7 @@ const Cart = (props: any) => {
                       buttonLoaderState={buttonLoaderState}
                       BuyNowHandler={BuyNowHandler}
                       buyNowLoaderState={buyNowLoaderState}
-                      disabled={error}
+                      disabled={error || !variantData}
                     />
                     <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
                     <Divider />

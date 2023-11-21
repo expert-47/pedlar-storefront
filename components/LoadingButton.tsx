@@ -6,27 +6,13 @@ interface Props extends ButtonProps {
   title: string;
 }
 const LoadingButton = (props: Props) => {
-  const { loading, children, disabled, title = "" } = props;
+  const { loading, children, title = "" } = props;
 
   return (
     <Tooltip title={title}>
-      <Button {...props} disabled={false}>
+      <Button {...props}>
         {loading && (
-          <Box
-            sx={{
-              backgroundColor: "#D7D8D9",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              zIndex: 6,
-              width: "100%",
-              height: "100%",
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              borderRadius: 30,
-            }}
-          >
+          <Box sx={styles.container}>
             <CircularProgress size={20} sx={{ color: "black" }} />
           </Box>
         )}
@@ -34,6 +20,22 @@ const LoadingButton = (props: Props) => {
       </Button>
     </Tooltip>
   );
+};
+
+const styles = {
+  container: {
+    backgroundColor: "#D7D8D9",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    zIndex: 6,
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    borderRadius: 30,
+  },
 };
 
 export default LoadingButton;

@@ -16,7 +16,6 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Scrollspy from "react-scrollspy";
-import Tooltip from "@mui/material/Tooltip";
 
 import SwipeableViews from "react-swipeable-views-react-18-fix";
 import { Gallery, Item } from "react-photoswipe-gallery";
@@ -149,32 +148,26 @@ const Cart = (props: any) => {
     try {
       setButtonLoaderState(true);
 
-      if (!Boolean(variantData?.quantityAvailable) || variantData?.quantityAvailable === 0) {
-        setError(true);
-        setErrorMessage("This item is currently out of stock");
-        setLoading(false);
-      } else {
-        if (Boolean(cartId)) {
-          const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === variantData?.id);
+      if (Boolean(cartId)) {
+        const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === variantData?.id);
 
-          if (data1) {
-            if (variantData?.quantityAvailable === data1?.quantity) {
-              setError(true);
-              setErrorMessage("This item is currently out of stock");
-              setLoading(false);
-            } else {
-              const quantity = data1.quantity + 1;
-
-              await updateCartLineItem(cartId, data1?.id, quantity);
-            }
+        if (data1) {
+          if (variantData?.quantityAvailable === data1?.quantity) {
+            setError(true);
+            setErrorMessage("This item is currently out of stock");
+            setLoading(false);
           } else {
-            await addToCartLineItem(cartId, variantData?.id, 1);
+            const quantity = data1.quantity + 1;
+
+            await updateCartLineItem(cartId, data1?.id, quantity);
           }
         } else {
-          const response = await addToCart(variantData?.id, slugValue, 1);
-
-          dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
+          await addToCartLineItem(cartId, variantData?.id, 1);
         }
+      } else {
+        const response = await addToCart(variantData?.id, slugValue, 1);
+
+        dispatch(updateCartId({ id: response?.data?.cartCreate?.cart?.id, showCart: true }));
       }
     } catch (error) {
     } finally {
@@ -184,6 +177,7 @@ const Cart = (props: any) => {
       setLoading(false);
     }
   };
+
   const onSelectedItem = async (values) => {
     try {
       setError(false);
@@ -196,31 +190,32 @@ const Cart = (props: any) => {
       });
 
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, values);
-      const variantData = variant?.data.product?.variantBySelectedOptions;
+      const variantResponse = variant?.data.product?.variantBySelectedOptions;
+      console.log("variantData", variantResponse);
 
-      setVariantData(variantData);
+      setVariantData(variantResponse);
       if (variantData) {
         setPrice({
-          price: variantData.price.amount,
-          currencyCode: variantData.price.currencyCode,
+          price: variantResponse.price.amount,
+          currencyCode: variantResponse.price.currencyCode,
         });
+        console.log("variantData?.quantityAvailable", variantResponse?.quantityAvailable);
+
+        if (variantResponse?.quantityAvailable === 0) {
+          setError(true);
+          setErrorMessage("This item is currently out of stock");
+        } else {
+          setError(false);
+          setErrorMessage("");
+        }
       } else {
         setPrice({
           price: newAdditionData?.priceRange?.minVariantPrice?.amount || 0,
           currencyCode: newAdditionData?.priceRange?.minVariantPrice?.currencyCode || "$",
         });
       }
-
-      if (!variantData?.quantityAvailable || variantData?.quantityAvailable === 0) {
-        setError(true);
-        setErrorMessage("This item is currently out of stock");
-        setLoading(false);
-      } else {
-        setError(false);
-        setErrorMessage("");
-        setLoading(false);
-      }
     } catch (error) {
+    } finally {
       setLoading(false);
     }
   };
@@ -229,42 +224,37 @@ const Cart = (props: any) => {
 
     setBuyNowLoaderState(true);
     try {
-      if (variantData?.quantityAvailable === 0) {
-        setError(true);
-        setErrorMessage("This item is currently out of stock");
+      gmtEventToAddProduct({ ...newAdditionData, quantity: 1, item_category3: "buy now button" });
+      if (!cartId) {
+        const res = await addToCart(variantData?.id, slugValue, quantity);
+        dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
+        const cartId = res?.data?.cartCreate?.cart?.id;
+        const response = await checkoutCartDetails(cartId);
+        window.open(response?.data?.cart?.checkoutUrl, "_self");
+        gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
       } else {
-        gmtEventToAddProduct({ ...newAdditionData, quantity: 1, item_category3: "buy now button" });
-        if (!cartId) {
-          const res = await addToCart(variantData?.id, slugValue, quantity);
-          dispatch(updateCartId(res?.data?.cartCreate?.cart?.id));
-          const cartId = res?.data?.cartCreate?.cart?.id;
-          const response = await checkoutCartDetails(cartId);
-          window.open(response?.data?.cart?.checkoutUrl, "_self");
-          gmtEventToBuyNow({ ...newAdditionData, quantity: 1 });
-        } else {
-          const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === variantData?.id);
-          if (data1) {
-            if (variantData?.quantityAvailable === data1?.quantity) {
-              setError(true);
-              setErrorMessage("This item is currently out of stock");
-            } else {
-              const data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
-              gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
-              setTimeout(async () => {
-                const response = await checkoutCartDetails(cartId);
-                window.open(response?.data?.cart?.checkoutUrl, "_self");
-              }, 500);
-            }
+        const data1 = cartProducts?.find((item: any) => item?.merchandise?.id === variantData?.id);
+        if (data1) {
+          if (variantData?.quantityAvailable === data1?.quantity) {
+            setError(true);
+            setErrorMessage("This item is currently out of stock");
           } else {
-            const data = await addToCartLineItem(cartId, variantData?.id, quantity);
-
-            gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
+            const data = await updateCartLineItem(cartId, data1?.id, data1?.quantity + 1);
+            gtmEvents.beginCheckout(data.data?.cartLinesUpdate?.cart?.lines?.nodes || [], "buy now button");
             setTimeout(async () => {
               const response = await checkoutCartDetails(cartId);
-
               window.open(response?.data?.cart?.checkoutUrl, "_self");
             }, 500);
           }
+        } else {
+          const data = await addToCartLineItem(cartId, variantData?.id, quantity);
+
+          gtmEvents.beginCheckout(data.data?.cartLinesAdd?.cart?.lines?.nodes || [], "buy now button");
+          setTimeout(async () => {
+            const response = await checkoutCartDetails(cartId);
+
+            window.open(response?.data?.cart?.checkoutUrl, "_self");
+          }, 500);
         }
       }
     } catch (error) {
@@ -522,6 +512,13 @@ const Cart = (props: any) => {
                       BuyNowHandler={BuyNowHandler}
                       buyNowLoaderState={buyNowLoaderState}
                       disabled={error || !variantData}
+                      title={
+                        error
+                          ? errorMessage
+                          : !variantData
+                          ? "There is a problem with your selection. Please contact support."
+                          : ""
+                      }
                     />
                     <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
                     <Divider />

@@ -13,6 +13,7 @@ interface Props extends ImageProps {
   enableBlurDataUrl?: boolean;
   fill?: boolean;
   layout?: "default" | "";
+  showPlaceHolder: boolean;
 }
 
 export const NextImage = (props: Props) => {
@@ -33,7 +34,7 @@ const CustomImage = (props) => {
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  const { zIndex = -1, placeholder, renderError, onLoad, fill = true, style } = props;
+  const { zIndex = -1, placeholder, renderError, onLoad, fill = true, style, showPlaceHolder = false } = props;
   if (error && renderError) {
     return renderError();
   }
@@ -44,7 +45,7 @@ const CustomImage = (props) => {
           33vw"
       fill={fill}
       {...props}
-      className={`fade-in ${loaded || error ? "image-loaded" : ""}`}
+      {...(!showPlaceHolder ? { className: `fade-in ${loaded || error ? "image-loaded" : ""}` } : {})}
       style={{
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",

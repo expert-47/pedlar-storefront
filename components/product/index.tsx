@@ -199,7 +199,6 @@ const Cart = (props: any) => {
           price: variantResponse.price.amount,
           currencyCode: variantResponse.price.currencyCode,
         });
-        console.log("variantData?.quantityAvailable", variantResponse?.quantityAvailable);
 
         if (variantResponse?.quantityAvailable === 0) {
           setError(true);
@@ -215,6 +214,11 @@ const Cart = (props: any) => {
         });
       }
     } catch (error) {
+      setVariantData(null);
+      setPrice({
+        price: newAdditionData?.priceRange?.minVariantPrice?.amount || 0,
+        currencyCode: newAdditionData?.priceRange?.minVariantPrice?.currencyCode || "$",
+      });
     } finally {
       setLoading(false);
     }
@@ -490,9 +494,11 @@ const Cart = (props: any) => {
                       {loading ? (
                         <CircularProgress color="secondary" />
                       ) : (
-                        <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
-                          {`${price.currencyCode === "AUD" ? "$" : ""}${priceOfProduct}`}
-                        </Typography>
+                        variantData && (
+                          <Typography style={styles.price} fontSize={"24px"} fontWeight={"600"}>
+                            {`${price.currencyCode === "AUD" ? "$" : ""}${priceOfProduct}`}
+                          </Typography>
+                        )
                       )}
                     </Grid>
                     <Options

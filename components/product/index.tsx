@@ -290,13 +290,13 @@ const Cart = (props: any) => {
       seo={{
         title: seo.productDetailTitle
           .replace("TITLE", `${newAdditionData?.title}`)
-          .replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
+          .replace("storefrontName", `${headerData?.storefrontName}'s`),
         description: seo.productDetailDescription
           .replace("TITLE", `${newAdditionData?.title}`)
-          .replace("storefrontName", `${headerData?.data?.storefrontName}'s`),
+          .replace("storefrontName", `${headerData?.storefrontName}'s`),
       }}
-      storefrontName={headerData?.data?.storefrontName}
-      collectionId={headerData?.data?.collectionId}
+      storefrontName={headerData?.storefrontName}
+      collectionId={headerData?.collectionId}
       isMobile={isMobile}
       containerStyle={{
         paddingTop: "75px",

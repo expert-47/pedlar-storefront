@@ -8,21 +8,24 @@ import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
-import largeBanner from "/public/largeDesktop.png";
-import mobileBanner from "/public/mobileBannerNew.png";
-import mediumBanner from "/public/tabletBannerNew.png";
-import desktopBanner from "/public/desktopBannerNew.png";
+import largeDesktopBanner from "/public/largeDesktopBanner.png";
+import desktopScreenBanner from "/public/desktopScreenBanner.png";
+import isTablet768 from "/public/isTablet768.png";
+import isTablet843 from "/public/isTablet843.png";
+import mobileScreenBanner from "/public/mobileScreenBanner.png";
 
 import { styles } from "./style";
 
 const Banner: FC = (): JSX.Element => {
   const theme = useTheme();
 
-  const isSmall = useMediaQuery("(max-width:767px)");
-  const isdektop = useMediaQuery("(min-width:1024px)");
-
   const popupScreen = useMediaQuery("(min-width:600px)");
-  const isMedium = useMediaQuery("(min-width:768px) and (max-width:1023px)");
+
+  const isLargeDesktop = useMediaQuery("(min-width:1782px)");
+  const isDesktop = useMediaQuery("(min-width:1024px) and (max-width:1781px)");
+  const isIpad843 = useMediaQuery("(min-width:768px) and (max-width:1023px)");
+  const isIpad768 = useMediaQuery("(min-width:426px) and (max-width:768px)");
+  const isMobile = useMediaQuery("(max-width:425px)");
 
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
@@ -71,7 +74,19 @@ const Banner: FC = (): JSX.Element => {
             fill={false}
             placeholder="empty"
             style={{ width: "100%", height: "100%" }}
-            src={isdektop ? desktopBanner : isSmall ? mobileBanner : isMedium ? mediumBanner : largeBanner}
+            src={
+              isLargeDesktop
+                ? largeDesktopBanner
+                : isDesktop
+                ? desktopScreenBanner
+                : isIpad843
+                ? isTablet843
+                : isIpad768
+                ? isTablet768
+                : isMobile
+                ? mobileScreenBanner
+                : largeDesktopBanner
+            }
             alt="desktop banner"
             priority
           />

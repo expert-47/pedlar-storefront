@@ -8,11 +8,10 @@ import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
-import largeDesktopBanner from "/public/largeDesktopBanner.png";
-import desktopScreenBanner from "/public/desktopScreenBanner.png";
-import isTablet768 from "/public/isTablet768.png";
-import isTablet843 from "/public/isTablet843.png";
-import mobileScreenBanner from "/public/mobileScreenBanner.png";
+import largeDesktopBanner from "/public/large desktop.png";
+import desktopScreenBanner from "/public/Desktop.png";
+import isTablet843 from "/public/tablet(843px wide).png";
+import mobileScreenBanner from "/public/Mobile.jpg";
 
 import { styles } from "./style";
 
@@ -23,9 +22,8 @@ const Banner: FC = (): JSX.Element => {
 
   const isLargeDesktop = useMediaQuery("(min-width:1782px)");
   const isDesktop = useMediaQuery("(min-width:1024px) and (max-width:1781px)");
-  const isIpad843 = useMediaQuery("(min-width:768px) and (max-width:1023px)");
-  const isIpad768 = useMediaQuery("(min-width:426px) and (max-width:768px)");
-  const isMobile = useMediaQuery("(max-width:425px)");
+  const isIpad843 = useMediaQuery("(min-width:601px) and (max-width:1023px)");
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
@@ -74,6 +72,7 @@ const Banner: FC = (): JSX.Element => {
             fill={false}
             placeholder="empty"
             style={{ width: "100%", height: "100%" }}
+            quality={100}
             src={
               isLargeDesktop
                 ? largeDesktopBanner
@@ -81,8 +80,6 @@ const Banner: FC = (): JSX.Element => {
                 ? desktopScreenBanner
                 : isIpad843
                 ? isTablet843
-                : isIpad768
-                ? isTablet768
                 : isMobile
                 ? mobileScreenBanner
                 : largeDesktopBanner

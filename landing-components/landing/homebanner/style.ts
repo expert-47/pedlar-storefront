@@ -16,8 +16,8 @@ export const styles = {
     paddingRight: "2px",
 
     ["@media (max-width:1145px)"]: {
-      bottom: "-8%",
-      width: "52%",
+      bottom: "-1%",
+      width: "53%",
     },
     ["@media (max-width:1023px)"]: {
       bottom: " 6%",
@@ -36,7 +36,7 @@ export const styles = {
       top: "55%",
     },
 
-    ["@media (max-width:425px)"]: {
+    ["@media (max-width:600px)"]: {
       position: "unset",
       width: "100% !important",
       paddingTop: "20px",

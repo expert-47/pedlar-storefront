@@ -57,14 +57,16 @@ const Picturecarousel: FC = (): JSX.Element => {
   const isMobile = useMediaQuery("(max-width:320px)");
   const isTablet = useMediaQuery("(max-width:768px)");
   const isLaptop = useMediaQuery("(max-width:1024px)");
-  const isLarge = useMediaQuery("(min-width:1025px)");
+  const isLaptopLarge = useMediaQuery("(max-width:1260px)");
+
+  const isLarge = useMediaQuery("(min-width:1261px)");
 
   const isIOSDevice = isIOS;
 
   return (
     <Box sx={{ paddingTop: { xs: "50px", md: "100px" } }}>
       <Swiper
-        slidesPerView={isMatch ? 1.3 : isTablet ? 2.6 : isLaptop ? 3.5 : isLarge ? 4.8 : 2.6}
+        slidesPerView={isMatch ? 1.3 : isTablet ? 2.7 : isLaptop ? 3.5 : isLaptopLarge ? 3.7 : isLarge ? 4.3 : 2.6}
         centeredSlides={false}
         spaceBetween={15}
         autoplay={{

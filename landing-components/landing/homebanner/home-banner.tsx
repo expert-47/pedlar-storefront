@@ -8,21 +8,22 @@ import { CustomContainer } from "../../landinglayout";
 import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 
-import largeBanner from "/public/largeDesktop.png";
-import mobileBanner from "/public/mobileBannerNew.png";
-import mediumBanner from "/public/tabletBannerNew.png";
-import desktopBanner from "/public/desktopBannerNew.png";
+import largeDesktopBanner from "/public/large desktop.png";
+import desktopScreenBanner from "/public/Desktop.png";
+import isTablet843 from "/public/tablet(843px wide).png";
+import mobileScreenBanner from "/public/Mobile.jpg";
 
 import { styles } from "./style";
 
 const Banner: FC = (): JSX.Element => {
   const theme = useTheme();
 
-  const isSmall = useMediaQuery("(max-width:767px)");
-  const isdektop = useMediaQuery("(min-width:1024px)");
-
   const popupScreen = useMediaQuery("(min-width:600px)");
-  const isMedium = useMediaQuery("(min-width:768px) and (max-width:1023px)");
+
+  const isLargeDesktop = useMediaQuery("(min-width:1782px)");
+  const isDesktop = useMediaQuery("(min-width:1024px) and (max-width:1781px)");
+  const isIpad843 = useMediaQuery("(min-width:601px) and (max-width:1023px)");
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   const [sucessModalshow, setSuccessModalShow] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
@@ -71,7 +72,18 @@ const Banner: FC = (): JSX.Element => {
             fill={false}
             placeholder="empty"
             style={{ width: "100%", height: "100%" }}
-            src={isdektop ? desktopBanner : isSmall ? mobileBanner : isMedium ? mediumBanner : largeBanner}
+            quality={100}
+            src={
+              isLargeDesktop
+                ? largeDesktopBanner
+                : isDesktop
+                ? desktopScreenBanner
+                : isIpad843
+                ? isTablet843
+                : isMobile
+                ? mobileScreenBanner
+                : largeDesktopBanner
+            }
             alt="desktop banner"
             priority
           />

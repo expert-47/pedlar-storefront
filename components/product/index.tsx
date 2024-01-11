@@ -289,6 +289,8 @@ const Cart = (props: any) => {
     }
   }, [newAdditionData]);
 
+  console.log("newAdditionData", newAdditionData);
+
   return (
     <Layout
       error={apiError}

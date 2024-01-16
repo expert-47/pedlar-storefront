@@ -40,7 +40,7 @@ const CustomImage = (props) => {
 
     const timeoutId = setTimeout(() => {
       setFade(true);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timeoutId);

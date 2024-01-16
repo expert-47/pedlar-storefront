@@ -34,6 +34,7 @@ const CustomImage = (props) => {
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [fade, setFade] = useState(false);
+  const { placeholder, renderError, onLoad, fill = true, style, showPlaceHolder } = props;
 
   useEffect(() => {
     // Show the image after a delay (3 seconds in this case)
@@ -49,7 +50,6 @@ const CustomImage = (props) => {
       }
     };
   }, []);
-  const { placeholder, renderError, onLoad, fill = true, style, showPlaceHolder } = props;
   if (error && renderError) {
     return renderError();
   }

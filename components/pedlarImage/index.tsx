@@ -37,16 +37,13 @@ const CustomImage = (props) => {
 
   useEffect(() => {
     // Show the image after a delay (3 seconds in this case)
-    let timeoutId = null;
-    if (showPlaceHolder) {
-      timeoutId = setTimeout(() => {
-        setFade(true);
-      }, 1000);
-    }
+
+    const timeoutId = setTimeout(() => {
+      setFade(true);
+    }, 1000);
+
     return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
+      clearTimeout(timeoutId);
     };
   }, []);
   const { placeholder, renderError, onLoad, fill = true, style, showPlaceHolder } = props;
@@ -60,7 +57,7 @@ const CustomImage = (props) => {
           33vw"
       fill={fill}
       {...props}
-      className={`fade-in ${showPlaceHolder && fade ? "image-loaded" : loaded || error ? "image-loaded" : ""}`}
+      className={`fade-in ${fade ? "image-loaded" : ""}`}
       style={{
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",

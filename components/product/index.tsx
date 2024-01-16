@@ -83,7 +83,6 @@ const Cart = (props: any) => {
   };
 
   const onDotClick = (index: number) => {
-    console.log("indexindex", index);
     setActiveIndex(index);
   };
 
@@ -288,8 +287,6 @@ const Cart = (props: any) => {
       setProductsLoadedState(false);
     }
   }, [newAdditionData]);
-
-  console.log("newAdditionData", newAdditionData);
 
   return (
     <Layout

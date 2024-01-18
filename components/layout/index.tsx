@@ -65,8 +65,6 @@ export default function Layout(props: LayoutProps) {
   }, [cartId]);
 
   useEffect(() => {
-    console.log("slug", slug);
-
     if (Boolean(slug)) {
       dispatch(clearStore(slug));
     }

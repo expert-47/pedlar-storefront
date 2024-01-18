@@ -41,7 +41,6 @@ export default function Index({
 
     console.log("====================================");
   }, []);
-  console.log("slug", slug);
 
   return (
     <Layout

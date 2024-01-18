@@ -1,17 +1,22 @@
+//package imports
 import React from "react";
-import BannerImg from "./components/banner";
-import BrandListing from "./components/brandListing";
-import { Box, Grid, Button } from "@mui/material";
-import Bar from "./components/bar";
-import BaseFooter from "components/footer/baseFooter";
-import Divider from "@mui/material/Divider";
-import styles from "styles/home";
-import BrandTitles from "./components/brandTitles";
-import Gallery from "./components/Gallery";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
+import Divider from "@mui/material/Divider";
+import { Box, Grid, Button } from "@mui/material";
+//components imports
+import Bar from "./components/bar";
+import Gallery from "./components/Gallery";
+import BannerImg from "./components/banner";
+import CreateShop from "components/creatorShop";
+import BrandTitles from "./components/brandTitles";
+import BrandListing from "./components/brandListing";
+import BaseFooter from "components/footer/baseFooter";
+//styles
+import styles from "styles/home";
+//gtm
+import * as gtmEvents from "utils/gtm";
 
 export const Home = (props: any) => {
   const router = useRouter();
@@ -27,8 +32,15 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
-      <BannerImg headerData={props?.headerData} isMobile={props?.isMobile} />
-      <Divider sx={styles.bannerDivider} />
+      {slug?.slug === "creator-shop" ? (
+        <CreateShop />
+      ) : (
+        <>
+          <BannerImg headerData={props?.headerData} isMobile={props?.isMobile} />
+          <Divider sx={styles.bannerDivider} />
+        </>
+      )}
+
       <Box>
         <BrandListing onClick={onClickShopAll} leftHeading="My Latest Picks" rightHeading="SHOP ALL" />
         <Gallery newAdditionData={props?.newAdditionData} heading={"my latest picks"} />

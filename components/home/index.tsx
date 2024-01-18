@@ -42,7 +42,11 @@ export const Home = (props: any) => {
       )}
 
       <Box>
-        <BrandListing onClick={onClickShopAll} leftHeading="My Latest Picks" rightHeading="SHOP ALL" />
+        <BrandListing
+          onClick={onClickShopAll}
+          leftHeading={slug?.slug === "creator-shop" ? "Recently Added" : "My Latest Picks"}
+          rightHeading="SHOP ALL"
+        />
         <Gallery newAdditionData={props?.newAdditionData} heading={"my latest picks"} />
         <Box
           sx={{
@@ -81,7 +85,11 @@ export const Home = (props: any) => {
             </Grid>
           </Link>
         </Box>
-        <BrandListing onClick={onClickShopNow} leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
+        <BrandListing
+          onClick={onClickShopNow}
+          leftHeading={slug?.slug === "creator-shop" ? "Featured Brands" : " Curated Brands"}
+          rightHeading="SHOP BRANDS"
+        />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />
       </Box>
       <Bar />

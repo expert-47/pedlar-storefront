@@ -88,7 +88,7 @@ const CartDrawer = () => {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "white",
+    backgroundColor: "#FFF7EC",
     justifyContent: "space-between",
   };
 

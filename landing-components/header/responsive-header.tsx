@@ -17,7 +17,7 @@ import { styles } from "./style";
 const paperStyle = {
   width: { xs: "100%", sm: "50%", md: "35%" },
   boxShadow: "none",
-  backgroundColor: "#f9f6f2",
+  backgroundColor: "#FFF7EC",
 };
 
 const ResponsiveHeader: FC = (): JSX.Element => {
@@ -63,7 +63,7 @@ const ResponsiveHeader: FC = (): JSX.Element => {
       elevation={0}
       sx={{
         ...styles.Respheader,
-        backgroundColor: trigger ? "#f9f6f2" : "transparent",
+        backgroundColor: trigger ? "#FFF7EC" : "transparent",
         transition: trigger ? "0.2s" : "0.4s",
       }}
     >

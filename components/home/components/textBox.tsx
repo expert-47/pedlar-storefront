@@ -27,11 +27,12 @@ const TextBox = (props: any) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "white",
+        backgroundColor: "#FFF7EC",
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",
         paddingBottom: isMatch ? "0px" : "20px",
+        boxShadow: "2px 4px 8px rgba(0, 0, 0, 0.2)",
       }}
     >
       <Typography sx={styles.bannerText}>

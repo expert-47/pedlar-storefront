@@ -1,6 +1,6 @@
 export const styles = {
   desktopMainBox: {
-    height: { xs: 300, sm: 350, md: 400, lg: 550 },
+    height: { sm: 350, md: 400, lg: 550 },
     position: "relative",
   },
   paperComponentMainBox: {
@@ -13,22 +13,25 @@ export const styles = {
   },
   desktopPaperStyling: {
     padding: "30px 43px 43px 200px 30px",
-    width: "50%",
-    height: "226px",
+    width: { sm: "500px", md: "724px" },
+    height: { sm: "180px", md: "226px" },
     display: "flex",
     flexDirection: "column",
     justifyContent: "end",
     alignItems: "center",
-    marginBottom: "3%",
+    marginBottom: "40px",
     borderRadius: "10px",
   },
   textAlignCenter: {
     textAlign: "center",
   },
   desktopPaperTypography: {
-    fontWeight: { sm: "700", md: "700" },
-    fontSize: { sm: "25px", md: "35px" },
-    lineHeight: { sm: "35px", md: "40px", lg: "45px" },
+    fontWeight: { sm: "600", md: "700" },
+    fontSize: { sm: "22px", md: "35px" },
+    lineHeight: { sm: "30px", md: "35px", lg: "45px" },
+    paddingLeft: { sm: "20px", md: "43px" },
+    paddingRight: { sm: "20px", md: "43px" },
+    paddingTop: "30px",
   },
   desktopButton: {
     width: { sm: "200px", md: "260px" },

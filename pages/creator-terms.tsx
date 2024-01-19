@@ -7,7 +7,7 @@ const creatorterms = () => {
   return (
     <Layout
       sx={{
-        backgroundColor: "#FFF7EC",
+        backgroundColor: "common.white",
         color: "#1C1B1F",
       }}
       seo={{

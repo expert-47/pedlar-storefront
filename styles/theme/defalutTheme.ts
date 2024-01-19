@@ -16,6 +16,9 @@ export const theme = createTheme({
       light: "rgba(28, 27, 31, 0.64)",
       dark: "rgba(28, 27, 31, 0.64)",
     },
+    common: {
+      white: "#FFF7EC",
+    },
     info: {
       main: "#C5C5C5",
       contrastText: "#6750A4",

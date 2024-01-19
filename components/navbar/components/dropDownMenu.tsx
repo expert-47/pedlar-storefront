@@ -77,7 +77,7 @@ const DropDownMenu = (props: Props) => {
                   sx: data?.length <= 6 ? "150px" : `${(data?.length / 6) * 170}px`,
                   lg: data?.length <= 6 ? "200px" : `${(data?.length / 6) * 220}px`,
                 },
-                backgroundColor: "#FFF7EC",
+                backgroundColor: "common.white",
               },
             }}
             sx={styles.menu}

@@ -7,7 +7,7 @@ export const styles = {
     paddingBottom: "4px",
     paddingRight: "30px",
     alignItems: "center",
-    backgroundColor: "#FFF7EC",
+    backgroundColor: "common.white",
   },
   footerImage: {
     height: "24px",

@@ -92,6 +92,7 @@ const DropdownButton = (props: Props) => {
             maxWidth: "100% ",
             justifyContent: "center",
             top: "131px !important",
+            backgroundColor: "common.white",
           },
         }}
         sx={styles.menu}

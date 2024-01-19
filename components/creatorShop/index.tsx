@@ -20,7 +20,7 @@ const CreateShop = () => {
     <Box>
       {!isMobile ? (
         <>
-          <Box sx={styles.desktopMainBox}>
+          <Box sx={styles.desktopMainBox} className="creatorShopMainImageBox">
             <NextImage src={CreatorShopBanner} alt="Creator shop banner" layout="default"></NextImage>
             <Box sx={styles.paperComponentMainBox}>
               <Paper elevation={1} sx={styles.desktopPaperStyling}>

@@ -561,3 +561,11 @@ section {
 li {
   list-style-type: none;
 }
+
+  @media screen and (min-width: 1440px) {
+      .creatorShopMainImageBox {
+        height: 600px;
+        
+      }
+    }
+

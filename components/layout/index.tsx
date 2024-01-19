@@ -83,7 +83,12 @@ export default function Layout(props: LayoutProps) {
           isMobile={isMobile}
         />
       </header>
-      <main style={{ paddingTop: isMatch ? "110px" : productsPage ? " 90px" : "75px", ...containerStyle }}>
+      <main
+        style={{
+          paddingTop: isMatch && slug === "creator-shop" ? "94px" : isMatch ? "110px" : productsPage ? " 90px" : "75px",
+          ...containerStyle,
+        }}
+      >
         {error ? <ApiError /> : children}
       </main>
       <footer>

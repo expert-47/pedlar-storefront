@@ -533,7 +533,7 @@ const Cart = (props: any) => {
                         expanded={expanded === "panel1"}
                         onChange={handleChange("panel1")}
                         elevation={0}
-                        sx={{ backgroundColor: "#FFF7EC" }}
+                        sx={{ backgroundColor: "common.white" }}
                       >
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
@@ -551,7 +551,7 @@ const Cart = (props: any) => {
                           ></Typography>
                         </AccordionDetails>
                       </Accordion>
-                      <Accordion elevation={0} sx={{ backgroundColor: "#FFF7EC" }}>
+                      <Accordion elevation={0} sx={{ backgroundColor: "common.white" }}>
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel2a-content"
@@ -565,7 +565,7 @@ const Cart = (props: any) => {
                           <Typography sx={styles.descriptionTypography}>Free shipping on all Pedlar orders</Typography>
                         </AccordionDetails>
                       </Accordion>
-                      <Accordion elevation={0} sx={{ backgroundColor: "#FFF7EC" }}>
+                      <Accordion elevation={0} sx={{ backgroundColor: "common.white" }}>
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel3a-content"

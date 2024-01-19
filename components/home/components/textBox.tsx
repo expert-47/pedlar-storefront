@@ -27,7 +27,7 @@ const TextBox = (props: any) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#FFF7EC",
+        backgroundColor: "common.white",
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",

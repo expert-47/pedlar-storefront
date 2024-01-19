@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Box } from "@mui/material";
 
@@ -33,8 +33,20 @@ export const NextImage = (props: Props) => {
 const CustomImage = (props) => {
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [fade, setFade] = useState(false);
 
-  const { zIndex = -1, placeholder, renderError, onLoad, fill = true, style, showPlaceHolder = false } = props;
+  useEffect(() => {
+    // Show the image after a delay (3 seconds in this case)
+
+    const timeoutId = setTimeout(() => {
+      setFade(true);
+    }, 500);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+  const { placeholder, renderError, onLoad, fill = true, style, showPlaceHolder } = props;
   if (error && renderError) {
     return renderError();
   }
@@ -45,7 +57,7 @@ const CustomImage = (props) => {
           33vw"
       fill={fill}
       {...props}
-      {...(!showPlaceHolder ? { className: `fade-in ${loaded || error ? "image-loaded" : ""}` } : {})}
+      className={`fade-in ${fade ? "image-loaded" : ""}`}
       style={{
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",

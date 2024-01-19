@@ -52,14 +52,21 @@ const swiperSlidedata = [
 
 const Picturecarousel: FC = (): JSX.Element => {
   const theme = useTheme();
-  const islarge = useMediaQuery(theme.breakpoints.up("lg"));
+
   const isMatch = useMediaQuery(theme.breakpoints.between("xs", "sm"));
+  const isMobile = useMediaQuery("(max-width:320px)");
+  const isTablet = useMediaQuery("(max-width:768px)");
+  const isLaptop = useMediaQuery("(max-width:1024px)");
+  const isLaptopLarge = useMediaQuery("(max-width:1260px)");
+
+  const isLarge = useMediaQuery("(min-width:1261px)");
+
   const isIOSDevice = isIOS;
 
   return (
     <Box sx={{ paddingTop: { xs: "50px", md: "100px" } }}>
       <Swiper
-        slidesPerView={isMatch ? 1.3 : islarge ? 4.8 : 3.6}
+        slidesPerView={isMatch ? 1.3 : isTablet ? 2.7 : isLaptop ? 3.5 : isLaptopLarge ? 3.7 : isLarge ? 4.3 : 2.6}
         centeredSlides={false}
         spaceBetween={15}
         autoplay={{
@@ -85,7 +92,7 @@ const Picturecarousel: FC = (): JSX.Element => {
                     src={item?.src}
                     fill={false}
                     alt={item?.altText}
-                    style={{ height: 250, width: isIOSDevice ? 220 : "auto" }}
+                    style={{ height: isMobile ? 210 : 250, width: isIOSDevice ? 220 : "auto" }}
                   />
                 </Box>
                 <Typography sx={styles.cardText}>{item?.altText}</Typography>

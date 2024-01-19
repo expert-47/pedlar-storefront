@@ -63,7 +63,6 @@ export const PedlarDrawer = (props: {
     backgroundColor: "common.white",
   };
 
-  // const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
   const isIOSDevice = isIOS;
 

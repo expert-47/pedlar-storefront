@@ -1,15 +1,10 @@
-//package imports
 import React from "react";
-//components
 import { NextImage } from "components/pedlarImage";
-//assets
 import CreatorShopBanner from "../../public/creator_shop_banner.png";
 import CreatorShopBannerMobile from "../../public/creator_shop_banner_mobile.png";
-
 import { Box, useMediaQuery, Theme, Paper, Typography, Button } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-//styles
 import { styles } from "./styles";
 const CreateShop = () => {
   const router = useRouter();

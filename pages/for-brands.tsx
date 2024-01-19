@@ -46,7 +46,7 @@ const styless = {
 const brands = () => {
   return (
     <Layout
-      style={{ position: "relative", backgroundColor: "common.white" }}
+      sx={{ position: "relative", backgroundColor: "common.white" }}
       seo={{
         title: seo.landingTitle,
         description: seo.landingDescription,

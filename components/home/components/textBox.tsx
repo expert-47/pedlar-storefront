@@ -24,7 +24,7 @@ const TextBox = (props: any) => {
     <Box
       paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
-      style={{
+      sx={{
         display: "flex",
         flexDirection: "column",
         backgroundColor: "common.white",

@@ -1,11 +1,9 @@
-//package imports
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Divider from "@mui/material/Divider";
 import { Box, Grid, Button } from "@mui/material";
-//components imports
 import Bar from "./components/bar";
 import Gallery from "./components/Gallery";
 import BannerImg from "./components/banner";
@@ -13,9 +11,7 @@ import CreateShop from "components/creatorShop";
 import BrandTitles from "./components/brandTitles";
 import BrandListing from "./components/brandListing";
 import BaseFooter from "components/footer/baseFooter";
-//styles
 import styles from "styles/home";
-//gtm
 import * as gtmEvents from "utils/gtm";
 
 export const Home = (props: any) => {

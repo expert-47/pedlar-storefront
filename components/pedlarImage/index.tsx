@@ -36,8 +36,6 @@ const CustomImage = (props) => {
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
-    // Show the image after a delay (3 seconds in this case)
-
     const timeoutId = setTimeout(() => {
       setFade(true);
     }, 500);

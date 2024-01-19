@@ -55,6 +55,7 @@ export const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: "30px",
   },
   desktopTypographyPremium: {
     fontWeight: "600",

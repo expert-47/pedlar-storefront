@@ -12,9 +12,8 @@ export const styles = {
     alignItems: "flex-end",
   },
   desktopPaperStyling: {
-    padding: "30px 43px 43px 200px 30px",
     width: { sm: "500px", md: "724px" },
-    height: { sm: "180px", md: "226px" },
+    height: { sm: "200px", md: "226px" },
     display: "flex",
     flexDirection: "column",
     justifyContent: "end",
@@ -27,11 +26,11 @@ export const styles = {
   },
   desktopPaperTypography: {
     fontWeight: { sm: "600", md: "700" },
-    fontSize: { sm: "22px", md: "35px" },
-    lineHeight: { sm: "30px", md: "35px", lg: "45px" },
-    paddingLeft: { sm: "20px", md: "43px" },
-    paddingRight: { sm: "20px", md: "43px" },
-    paddingTop: "30px",
+    fontSize: { sm: "22px", md: "30px", lg: "35px" },
+    lineHeight: { sm: "35px", md: "40px", lg: "45px" },
+    paddingLeft: { sm: "30px", md: "43px" },
+    paddingRight: { sm: "30px", md: "43px" },
+    textAlign: "center",
   },
   desktopButton: {
     width: { sm: "200px", md: "260px" },

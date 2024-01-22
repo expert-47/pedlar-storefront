@@ -19,12 +19,10 @@ const CreateShop = () => {
             <NextImage src={CreatorShopBanner} alt="Creator shop banner" layout="default"></NextImage>
             <Box sx={styles.paperComponentMainBox}>
               <Paper elevation={1} sx={styles.desktopPaperStyling}>
-                <Box sx={styles.textAlignCenter}>
-                  <Typography color={"#1C1B1F"} sx={styles.desktopPaperTypography}>
-                    Discover & shop <span style={{ color: "#8652FF" }}>40% off</span> everything in exchange for content
-                    creation
-                  </Typography>
-                </Box>
+                <Typography color={"#1C1B1F"} sx={styles.desktopPaperTypography}>
+                  Discover & shop <span style={{ color: "#8652FF" }}>40% off</span> everything in exchange for content
+                  creation
+                </Typography>
                 <Link
                   href={{ pathname: `/${slug.slug}/products`, query: { slug: slug.slug } }}
                   as={`/${slug.slug}/products`}

@@ -18,6 +18,7 @@ export const Home = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
   const storeName = useSelector((data: any) => data.app.storeName);
+  const specificStoreName = process.env.NEXT_PUBLIC_SPECIFIC_STORE;
 
   const onClickShopAll = () => {
     gtmEvents.selectPromission(storeName, "shop all", "my latest picks", "3", "abc12ddd3");
@@ -28,7 +29,7 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
-      {slug?.slug === "creator-shop" ? (
+      {slug?.slug === specificStoreName ? (
         <CreateShop />
       ) : (
         <>
@@ -40,7 +41,7 @@ export const Home = (props: any) => {
       <Box>
         <BrandListing
           onClick={onClickShopAll}
-          leftHeading={slug?.slug === "creator-shop" ? "Recently Added" : "My Latest Picks"}
+          leftHeading={slug?.slug === specificStoreName ? "Recently Added" : "My Latest Picks"}
           rightHeading="SHOP ALL"
         />
         <Gallery newAdditionData={props?.newAdditionData} heading={"my latest picks"} />
@@ -83,7 +84,7 @@ export const Home = (props: any) => {
         </Box>
         <BrandListing
           onClick={onClickShopNow}
-          leftHeading={slug?.slug === "creator-shop" ? "Featured Brands" : " Curated Brands"}
+          leftHeading={slug?.slug === specificStoreName ? "Featured Brands" : " Curated Brands"}
           rightHeading="SHOP BRANDS"
         />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />

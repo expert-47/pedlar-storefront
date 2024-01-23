@@ -34,7 +34,7 @@ export default function Layout(props: LayoutProps) {
   } = props;
 
   const storeName = useSelector((data) => data?.app?.storeName);
-  const specificStoreName = process.env.NEXT_PUBLIC_SPECIFIC_STORE;
+  const specificStoreName = process.env.NEXT_PUBLIC_FEATURE_STORE;
 
   const cartId = useSelector((data: any) => data?.app?.cartId[storeName]);
   const { shop, brand } = useSelector((data: any) => data.tags);

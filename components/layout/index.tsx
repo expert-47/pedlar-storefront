@@ -34,6 +34,7 @@ export default function Layout(props: LayoutProps) {
   } = props;
 
   const storeName = useSelector((data) => data?.app?.storeName);
+  const specificStoreName = process.env.NEXT_PUBLIC_SPECIFIC_STORE;
 
   const cartId = useSelector((data: any) => data?.app?.cartId[storeName]);
   const { shop, brand } = useSelector((data: any) => data.tags);
@@ -85,7 +86,8 @@ export default function Layout(props: LayoutProps) {
       </header>
       <main
         style={{
-          paddingTop: isMatch && slug === "creator-shop" ? "94px" : isMatch ? "110px" : productsPage ? " 90px" : "75px",
+          paddingTop:
+            isMatch && slug === specificStoreName ? "94px" : isMatch ? "110px" : productsPage ? " 90px" : "75px",
           ...containerStyle,
         }}
       >

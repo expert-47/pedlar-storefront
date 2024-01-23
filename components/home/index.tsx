@@ -18,7 +18,7 @@ export const Home = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
   const storeName = useSelector((data: any) => data.app.storeName);
-  const specificStoreName = process.env.NEXT_PUBLIC_SPECIFIC_STORE;
+  const specificStoreName = process.env.NEXT_PUBLIC_FEATURE_STORE;
 
   const onClickShopAll = () => {
     gtmEvents.selectPromission(storeName, "shop all", "my latest picks", "3", "abc12ddd3");

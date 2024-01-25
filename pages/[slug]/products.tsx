@@ -64,12 +64,14 @@ const Products = ({ slug, collectionId, userData: data, isMobile, error }: any) 
     try {
       setLoading(true);
       setProductsData([]);
+
       const response = await getFilteredProducts(collectionId, filterData, maxWidthProductImage, maxHeightProductImage);
+
       const data = response?.data?.collection?.products?.filters;
 
-      const shopList = data.find((data) => data.label == "Product type");
+      const shopList = data?.find((data) => data.label == "Product type");
 
-      const vender = data.find((data) => data.label == "Brand");
+      const vender = data?.find((data) => data.label == "Brand");
       setFilterData({ shopList: shopList?.values || [], vender: vender?.values || [] });
       const brandsFilter =
         filterData.filter(
@@ -134,6 +136,7 @@ const Products = ({ slug, collectionId, userData: data, isMobile, error }: any) 
       setHasNextPage(false);
     }
   };
+
   useEffect(() => {
     window.history.scrollRestoration = "manual";
 
@@ -143,6 +146,8 @@ const Products = ({ slug, collectionId, userData: data, isMobile, error }: any) 
       setTimeout(() => {
         setLoading(false);
       }, 300);
+    } else {
+      setLoading(false);
     }
   }, [productsData]);
 

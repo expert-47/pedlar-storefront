@@ -11,10 +11,6 @@ const securityHeaders = [
     key: "Strict-Transport-Security",
     value: "max-age=31536000; includeSubDomains",
   },
-  {
-    key: "Cache-Control",
-    value: "no-store",
-  },
 ];
 const nextConfig = withPWA({
   reactStrictMode: true,

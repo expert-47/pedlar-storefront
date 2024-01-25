@@ -1,7 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 const headers: any = {
   "X-Shopify-Storefront-Access-Token": process.env.NEXT_PUBLIC_SHOPIFY_TOKEN,
-  cache: "no-cache",
 };
 const defaultOptions = {
   query: {

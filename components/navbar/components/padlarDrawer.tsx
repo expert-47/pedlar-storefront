@@ -60,10 +60,9 @@ export const PedlarDrawer = (props: {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "white",
+    backgroundColor: "common.white",
   };
 
-  // const cartProducts = useSelector((data: any) => data.app.products);
   const dispatch = useDispatch();
   const isIOSDevice = isIOS;
 

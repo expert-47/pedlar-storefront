@@ -88,7 +88,7 @@ const CartDrawer = () => {
     height: "100%",
     display: "flex",
     flexDirection: "column",
-    backgroundColor: "white",
+    backgroundColor: "common.white",
     justifyContent: "space-between",
   };
 
@@ -179,7 +179,7 @@ const CartDrawer = () => {
           sx={{
             paddingRight: "20px",
             paddingLeft: "20px",
-            backgroundColor: "white",
+            backgroundColor: "common.white",
             position: "fixed",
             bottom: "0px",
             cursor: "pointer",

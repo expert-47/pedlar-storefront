@@ -6,6 +6,8 @@
 body {
   font-family: "Inter", sans-serif;
   overflow-x: hidden;
+  background-color:#FFF7EC;
+  
 }
 .Typewriter {
   padding: 1px;
@@ -561,3 +563,11 @@ section {
 li {
   list-style-type: none;
 }
+
+  @media screen and (min-width: 1440px) {
+      .creatorShopMainImageBox {
+        height: 600px;
+        
+      }
+    }
+

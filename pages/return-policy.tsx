@@ -7,7 +7,7 @@ const Returnpolicy = () => {
   return (
     <Layout
       sx={{
-        backgroundColor: "#f9f6f2",
+        backgroundColor: "common.white",
       }}
       seo={{
         title: seo.landingTitle,

@@ -1,22 +1,24 @@
 import React from "react";
-import BannerImg from "./components/banner";
-import BrandListing from "./components/brandListing";
-import { Box, Grid, Button } from "@mui/material";
-import Bar from "./components/bar";
-import BaseFooter from "components/footer/baseFooter";
-import Divider from "@mui/material/Divider";
-import styles from "styles/home";
-import BrandTitles from "./components/brandTitles";
-import Gallery from "./components/Gallery";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import * as gtmEvents from "utils/gtm";
 import { useSelector } from "react-redux";
+import Divider from "@mui/material/Divider";
+import { Box, Grid, Button } from "@mui/material";
+import Bar from "./components/bar";
+import Gallery from "./components/Gallery";
+import BannerImg from "./components/banner";
+import CreateShop from "components/creatorShop";
+import BrandTitles from "./components/brandTitles";
+import BrandListing from "./components/brandListing";
+import BaseFooter from "components/footer/baseFooter";
+import styles from "styles/home";
+import * as gtmEvents from "utils/gtm";
 
 export const Home = (props: any) => {
   const router = useRouter();
   const slug = router?.query;
   const storeName = useSelector((data: any) => data.app.storeName);
+  const specificStoreName = process.env.NEXT_PUBLIC_FEATURE_STORE;
 
   const onClickShopAll = () => {
     gtmEvents.selectPromission(storeName, "shop all", "my latest picks", "3", "abc12ddd3");
@@ -27,10 +29,21 @@ export const Home = (props: any) => {
 
   return (
     <Grid>
-      <BannerImg headerData={props?.headerData} isMobile={props?.isMobile} />
-      <Divider sx={styles.bannerDivider} />
+      {slug?.slug === specificStoreName ? (
+        <CreateShop />
+      ) : (
+        <>
+          <BannerImg headerData={props?.headerData} isMobile={props?.isMobile} />
+          <Divider sx={styles.bannerDivider} />
+        </>
+      )}
+
       <Box>
-        <BrandListing onClick={onClickShopAll} leftHeading="My Latest Picks" rightHeading="SHOP ALL" />
+        <BrandListing
+          onClick={onClickShopAll}
+          leftHeading={slug?.slug === specificStoreName ? "Recently Added" : "My Latest Picks"}
+          rightHeading="SHOP ALL"
+        />
         <Gallery newAdditionData={props?.newAdditionData} heading={"my latest picks"} />
         <Box
           sx={{
@@ -69,7 +82,11 @@ export const Home = (props: any) => {
             </Grid>
           </Link>
         </Box>
-        <BrandListing onClick={onClickShopNow} leftHeading=" Curated Brands" rightHeading="SHOP BRANDS" />
+        <BrandListing
+          onClick={onClickShopNow}
+          leftHeading={slug?.slug === specificStoreName ? "Featured Brands" : " Curated Brands"}
+          rightHeading="SHOP BRANDS"
+        />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />
       </Box>
       <Bar />

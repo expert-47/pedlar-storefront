@@ -44,7 +44,7 @@ const styless = {
 const Home = () => {
   return (
     <Layout
-      sx={{ position: "relative", backgroundColor: "#f9f6f2" }}
+      sx={{ position: "relative", backgroundColor: "common.white" }}
       seo={{
         title: seo.landingTitle,
         description: seo.landingDescription,

@@ -66,7 +66,7 @@ const Header: FC = (): JSX.Element => {
       elevation={0}
       sx={{
         ...styles.header,
-        backgroundColor: trigger ? "#f9f6f2" : "transparent",
+        backgroundColor: trigger ? "common.white" : "transparent",
       }}
     >
       <CustomContainer>

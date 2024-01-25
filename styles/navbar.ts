@@ -5,7 +5,7 @@ const styles = {
     width: "100%",
   },
   Typography: { color: "primary.contrastText" },
-  appBar: { backgroundColor: "white", width: "100%" },
+  appBar: { backgroundColor: "common.white", width: "100%" },
   marquee: { backgroundColor: "black", color: "white", paddingTop: "6px", paddingBottom: "6px" },
   toolbar: {
     display: "flex",

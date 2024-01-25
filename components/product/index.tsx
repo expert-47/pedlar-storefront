@@ -529,7 +529,12 @@ const Cart = (props: any) => {
                     <Typography sx={styles.mainDescription}>All Orders Shipped Directly From Each Brand </Typography>
                     <Divider />
                     <Grid item xs={12} sm={12} md={12} lg={12} sx={styles.accordianGrid}>
-                      <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")} elevation={0}>
+                      <Accordion
+                        expanded={expanded === "panel1"}
+                        onChange={handleChange("panel1")}
+                        elevation={0}
+                        sx={{ backgroundColor: "common.white" }}
+                      >
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel1a-content"
@@ -546,7 +551,7 @@ const Cart = (props: any) => {
                           ></Typography>
                         </AccordionDetails>
                       </Accordion>
-                      <Accordion elevation={0}>
+                      <Accordion elevation={0} sx={{ backgroundColor: "common.white" }}>
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel2a-content"
@@ -560,7 +565,7 @@ const Cart = (props: any) => {
                           <Typography sx={styles.descriptionTypography}>Free shipping on all Pedlar orders</Typography>
                         </AccordionDetails>
                       </Accordion>
-                      <Accordion elevation={0}>
+                      <Accordion elevation={0} sx={{ backgroundColor: "common.white" }}>
                         <AccordionSummary
                           expandIcon={<ExpandMoreIcon />}
                           aria-controls="panel3a-content"
@@ -573,10 +578,6 @@ const Cart = (props: any) => {
                         <AccordionDetails>
                           <Typography sx={styles.descriptionTypography}>Free returns on all Pedlar orders</Typography>
                         </AccordionDetails>
-                      </Accordion>
-                      <Accordion elevation={0}>
-                        <AccordionSummary></AccordionSummary>
-                        <AccordionDetails></AccordionDetails>
                       </Accordion>
                     </Grid>
                   </Box>

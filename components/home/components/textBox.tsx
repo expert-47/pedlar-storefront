@@ -24,14 +24,15 @@ const TextBox = (props: any) => {
     <Box
       paddingX={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
       paddingY={{ xs: theme.spacing(20), md: theme.spacing(30), lg: theme.spacing(40) }}
-      style={{
+      sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "white",
+        backgroundColor: "common.white",
         wordWrap: "break-word",
         width: "100%",
         minWidth: "242px",
         paddingBottom: isMatch ? "0px" : "20px",
+        boxShadow: "2px 4px 8px rgba(0, 0, 0, 0.2)",
       }}
     >
       <Typography sx={styles.bannerText}>

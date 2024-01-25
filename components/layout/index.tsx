@@ -34,6 +34,7 @@ export default function Layout(props: LayoutProps) {
   } = props;
 
   const storeName = useSelector((data) => data?.app?.storeName);
+  const specificStoreName = process.env.NEXT_PUBLIC_FEATURE_STORE;
 
   const cartId = useSelector((data: any) => data?.app?.cartId[storeName]);
   const { shop, brand } = useSelector((data: any) => data.tags);
@@ -65,8 +66,6 @@ export default function Layout(props: LayoutProps) {
   }, [cartId]);
 
   useEffect(() => {
-    console.log("slug", slug);
-
     if (Boolean(slug)) {
       dispatch(clearStore(slug));
     }
@@ -85,7 +84,13 @@ export default function Layout(props: LayoutProps) {
           isMobile={isMobile}
         />
       </header>
-      <main style={{ paddingTop: isMatch ? "110px" : productsPage ? " 90px" : "75px", ...containerStyle }}>
+      <main
+        style={{
+          paddingTop:
+            isMatch && slug === specificStoreName ? "94px" : isMatch ? "110px" : productsPage ? " 90px" : "75px",
+          ...containerStyle,
+        }}
+      >
         {error ? <ApiError /> : children}
       </main>
       <footer>

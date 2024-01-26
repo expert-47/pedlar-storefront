@@ -17,7 +17,20 @@ const nextConfig = withPWA({
   output: "standalone",
   swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com", "storage.googleapis.com", "cdn.shopify.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "storage.googleapis.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.comcdn.shopify.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,

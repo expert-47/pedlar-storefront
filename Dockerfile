@@ -1,4 +1,4 @@
-FROM node:18.18.2-alpine AS base
+FROM node:18-alpine AS base
 
 ARG ENV
 ENV ENV=${ENV}

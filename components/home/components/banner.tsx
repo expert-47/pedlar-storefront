@@ -54,7 +54,7 @@ const BannerImg = (props: any) => {
               alt="headerimage"
               style={{ objectFit: "contain", zIndex: 1 }}
               priority
-              quality={100}
+              quality={50}
               showPlaceHolder={true}
             />
           </Box>

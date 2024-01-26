@@ -31,6 +31,12 @@ const nextConfig = withPWA({
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
   compiler: {

@@ -17,6 +17,7 @@ const nextConfig = withPWA({
   output: "standalone",
   swcMinify: true,
   images: {
+    minimumCacheTTL: 30,
     remotePatterns: [
       {
         protocol: "https",

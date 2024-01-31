@@ -286,8 +286,6 @@ const Cart = (props: any) => {
     }
   }, [newAdditionData]);
 
-  console.log("variantData", variantData?.quantityAvailable);
-
   return (
     <Layout
       error={apiError}

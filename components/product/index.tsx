@@ -192,7 +192,7 @@ const Cart = (props: any) => {
       const variantResponse = variant?.data.product?.variantBySelectedOptions;
 
       setVariantData(variantResponse);
-      if (variantData) {
+      if (variantResponse) {
         setPrice({
           price: variantResponse.price.amount,
           currencyCode: variantResponse.price.currencyCode,
@@ -285,6 +285,8 @@ const Cart = (props: any) => {
       setProductsLoadedState(false);
     }
   }, [newAdditionData]);
+
+  console.log("variantData", variantData);
 
   return (
     <Layout
@@ -506,9 +508,9 @@ const Cart = (props: any) => {
                       onSelectedItem={onSelectedItem}
                       priceFilter={priceFilter}
                     />
-                    {error || variantData?.quantityAvailable === 0 ? (
+                    {error ? (
                       <Alert sx={{ marginTop: 10 }} severity="error">
-                        {errorMessage ? errorMessage : "This item is currently out of stock"}
+                        {errorMessage}
                       </Alert>
                     ) : null}
                     <Action
@@ -516,7 +518,7 @@ const Cart = (props: any) => {
                       buttonLoaderState={buttonLoaderState}
                       BuyNowHandler={BuyNowHandler}
                       buyNowLoaderState={buyNowLoaderState}
-                      disabled={error || !variantData || variantData?.quantityAvailable === 0}
+                      disabled={error || !variantData}
                       title={
                         error
                           ? errorMessage

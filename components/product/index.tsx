@@ -190,7 +190,6 @@ const Cart = (props: any) => {
 
       const variant = await getVariantBySelectedOptions(newAdditionData?.id, values);
       const variantResponse = variant?.data.product?.variantBySelectedOptions;
-      console.log("variantData", variantResponse);
 
       setVariantData(variantResponse);
       if (variantResponse) {

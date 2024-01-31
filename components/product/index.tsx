@@ -193,7 +193,7 @@ const Cart = (props: any) => {
       console.log("variantData", variantResponse);
 
       setVariantData(variantResponse);
-      if (variantData) {
+      if (variantResponse) {
         setPrice({
           price: variantResponse.price.amount,
           currencyCode: variantResponse.price.currencyCode,

@@ -3,6 +3,8 @@
 import Script from "next/script";
 import { useEffect } from "react";
 import { store } from "store/slice";
+import { useRouter } from "next/router";
+
 import { AppProps } from "next/app";
 import { Crisp } from "crisp-sdk-web";
 import { DefaultSeo } from "next-seo";
@@ -16,6 +18,7 @@ import "react-slideshow-image/dist/styles.css";
 import NextNProgress from "nextjs-progressbar";
 import { ApolloProvider } from "@apollo/client";
 import { theme } from "styles/theme/defalutTheme";
+import { featureTheme } from "styles/theme/featuredTheme";
 import createEmotionCache from "utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 
@@ -28,6 +31,11 @@ export interface MyAppProps extends AppProps {
 const clientSideEmotionCache = createEmotionCache();
 
 function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: any) {
+  const router = useRouter();
+  const slug = router?.query;
+
+  const specificStoreName = process.env.NEXT_PUBLIC_FEATURE_STORE;
+
   useEffect(() => {
     setTimeout(() => {
       Crisp.configure("0d4e2511-7101-418f-a040-f3f1a89ccb6d", {
@@ -58,10 +66,10 @@ setTimeout(loadGtm.bind(null, window, document, 'script', 'dataLayer', '${proces
       <DefaultSeo {...SEO} />
       <Provider store={store}>
         <ApolloProvider client={client}>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={slug?.slug == specificStoreName ? featureTheme : theme}>
             <NextNProgress color="#29D" startPosition={0.3} height={3} showOnShallow={true} />
 
-            <main>
+            <main style={{ backgroundColor: slug?.slug == specificStoreName ? "#FFF7EC" : "white" }}>
               <Component {...pageProps} />
             </main>
           </ThemeProvider>

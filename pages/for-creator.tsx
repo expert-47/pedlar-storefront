@@ -43,7 +43,7 @@ const styless = {
 const creator = () => {
   return (
     <Layout
-      sx={{ position: "relative", backgroundColor: "common.white" }}
+      sx={{ position: "relative", backgroundColor: "landing.main" }}
       seo={{
         title: seo.landingTitle,
         description: seo.landingDescription,

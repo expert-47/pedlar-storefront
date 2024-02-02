@@ -1,19 +1,9 @@
-declare module "@mui/material/styles" {
-  interface Palette {
-    landing: Palette["primary"];
-  }
-
-  interface PaletteOptions {
-    landing: PaletteOptions["primary"];
-  }
-}
-
 import { createTheme } from "@mui/material";
 import { Inter } from "@next/font/google";
 
 export const inter = Inter({ subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
-export const theme = createTheme({
+export const featureTheme = createTheme({
   palette: {
     primary: {
       main: "#FFFFFF",
@@ -21,16 +11,14 @@ export const theme = createTheme({
       contrastText: "#1C1B1F",
       light: "#8652FF",
     },
-    landing: {
-      main: "#f9f6f2",
-    },
     success: {
       main: "rgba(0, 0, 0, 0.2)",
       light: "rgba(28, 27, 31, 0.64)",
       dark: "rgba(28, 27, 31, 0.64)",
     },
+
     common: {
-      white: "white",
+      white: "#FFF7EC",
     },
     info: {
       main: "#C5C5C5",
@@ -83,11 +71,11 @@ export const theme = createTheme({
   spacing: 1,
 });
 
-theme.typography.h2 = {
+featureTheme.typography.h2 = {
   fontSize: "20px",
   fontWeight: 700,
   fontFamily: inter.style.fontFamily,
-  [theme.breakpoints.up("sm")]: {
+  [featureTheme.breakpoints.up("sm")]: {
     fontSize: "24px",
   },
 };

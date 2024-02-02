@@ -33,6 +33,7 @@ const TextBox = (props: any) => {
         minWidth: "242px",
         paddingBottom: isMatch ? "0px" : "20px",
         boxShadow: "2px 4px 8px rgba(0, 0, 0, 0.2)",
+        zIndex: "1",
       }}
     >
       <Typography sx={styles.bannerText}>

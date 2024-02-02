@@ -17,7 +17,7 @@ interface Props extends ImageProps {
 }
 
 export const NextImage = (props: Props) => {
-  const { zIndex = -1, layout } = props;
+  const { zIndex = 0, layout } = props;
   const imageProps = { ...props };
   delete imageProps.layout;
   if (layout == "default") {

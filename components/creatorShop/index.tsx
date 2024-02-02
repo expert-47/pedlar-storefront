@@ -23,6 +23,7 @@ const CreateShop = () => {
               src={isTabletScreen ? tabletCreaterShop : CreatorShopBanner}
               alt="Creator shop banner"
               layout="default"
+              priority
             ></NextImage>
             <Box sx={styles.paperComponentMainBox}>
               <Paper elevation={1} sx={styles.desktopPaperStyling}>
@@ -49,7 +50,7 @@ const CreateShop = () => {
       ) : (
         <Box>
           <Box sx={styles.mobileImageBox}>
-            <NextImage src={CreatorShopBannerMobile} alt="Creator shop banner" layout="default"></NextImage>
+            <NextImage src={CreatorShopBannerMobile} alt="Creator shop banner" layout="default" priority></NextImage>
           </Box>
           <Box sx={styles.mobilePaperBox}>
             <Paper elevation={1} sx={styles.borderRadiusTen}>

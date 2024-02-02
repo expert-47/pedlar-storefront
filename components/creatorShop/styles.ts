@@ -58,7 +58,7 @@ export const styles = {
   },
   desktopTypographyPremium: {
     fontWeight: "600",
-    fontSize: "22px",
+    fontSize: { sm: "16px", md: "18px", lg: "22px" },
     lineHeight: "30px",
     color: "white",
     textAlign: "center",
@@ -66,12 +66,13 @@ export const styles = {
   mobileImageBox: {
     position: "relative",
     minHeight: "375px",
-    zIndex: "-1",
+    zIndex: "0",
     marginTop: "12px",
   },
   mobilePaperBox: {
     height: "346px",
     marginTop: "-6px",
+    position: "relative",
   },
   borderRadiusTen: {
     borderRadius: "10px",

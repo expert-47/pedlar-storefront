@@ -1,6 +1,7 @@
 import React from "react";
 import { NextImage } from "components/pedlarImage";
 import CreatorShopBanner from "../../public/creator_shop_banner.png";
+import tabletCreaterShop from "../../public/tablet_creator_shop.png";
 import CreatorShopBannerMobile from "../../public/creator_shop_banner_mobile.png";
 import { Box, useMediaQuery, Theme, Paper, Typography, Button } from "@mui/material";
 import Link from "next/link";
@@ -11,12 +12,18 @@ const CreateShop = () => {
   const slug = router?.query;
 
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
+  const isTabletScreen = useMediaQuery("(max-width:786px)");
+
   return (
     <Box>
       {!isMobile ? (
         <>
           <Box sx={styles.desktopMainBox} className="creatorShopMainImageBox">
-            <NextImage src={CreatorShopBanner} alt="Creator shop banner" layout="default"></NextImage>
+            <NextImage
+              src={isTabletScreen ? tabletCreaterShop : CreatorShopBanner}
+              alt="Creator shop banner"
+              layout="default"
+            ></NextImage>
             <Box sx={styles.paperComponentMainBox}>
               <Paper elevation={1} sx={styles.desktopPaperStyling}>
                 <Typography color={"#1C1B1F"} sx={styles.desktopPaperTypography}>

@@ -32,7 +32,7 @@ export const NextImage = (props: Props) => {
 
 const CustomImage = (props) => {
   const [error, setError] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const CustomImage = (props) => {
       clearTimeout(timeoutId);
     };
   }, []);
-  const { placeholder, renderError, onLoad, fill = true, style, showPlaceHolder } = props;
+  const { placeholder, renderError, onLoad, fill = true, style, showPlaceHolder = true } = props;
   if (error && renderError) {
     return renderError();
   }
@@ -55,7 +55,7 @@ const CustomImage = (props) => {
           33vw"
       fill={fill}
       {...props}
-      className={`fade-in ${fade ? "image-loaded" : ""}`}
+      {...(showPlaceHolder && { className: `fade-in ${fade ? "image-loaded" : ""}` })}
       style={{
         ...style,
         objectFit: style?.objectFit ? style?.objectFit : "cover",
@@ -69,7 +69,6 @@ const CustomImage = (props) => {
         placeholder || `data:image/svg+xml;base64,${toBase64(shimmer(maxWidthProductImage, maxHeightProductImage))}`
       }
       onLoad={() => {
-        setLoaded(true);
         if (onLoad) onLoad();
       }}
       loading={props.priority ? "eager" : "lazy"}

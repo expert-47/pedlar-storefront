@@ -83,7 +83,6 @@ const Cart = (props: any) => {
   };
 
   const onDotClick = (index: number) => {
-    console.log("indexindex", index);
     setActiveIndex(index);
   };
 
@@ -281,8 +280,9 @@ const Cart = (props: any) => {
   } else if (decimalPart === "0") {
     priceOfProduct = Math.round(priceOfProduct);
   }
+
   useEffect(() => {
-    if (newAdditionData?.images?.nodes.length > 0) {
+    if (newAdditionData) {
       setProductsLoadedState(false);
     }
   }, [newAdditionData]);
@@ -709,6 +709,20 @@ const Cart = (props: any) => {
             </>
           )}
         </CustomContainer>
+      ) : !newAdditionData ? (
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "70vh",
+          }}
+        >
+          <Typography variant="subtitle1">
+            No product detail found Please try again or use a different search term.
+          </Typography>
+        </Box>
       ) : (
         <Box
           sx={{

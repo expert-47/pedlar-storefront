@@ -22,7 +22,7 @@ function Options(props: any) {
       {newAdditionData?.options[0]?.name == "Title" && newAdditionData?.options[0]?.values[0] == "Default Title"
         ? null
         : newAdditionData?.options?.map((item, index) => (
-            <Grid item xs={12} sm={10} md={6} lg={6}>
+            <Grid item xs={12} sm={10} md={6} lg={6} key={"options" + index}>
               <Typography sx={styles.typography}>{item.name}</Typography>
               <FormControl sx={{ width: "100%" }}>
                 <Select
@@ -34,6 +34,13 @@ function Options(props: any) {
                   sx={styles.select}
                   IconComponent={item?.values?.length === 1 ? "" : KeyboardArrowDownIcon}
                   disabled={item?.values?.length == 1}
+                  MenuProps={{
+                    PaperProps: {
+                      sx: {
+                        backgroundColor: "common.white",
+                      },
+                    },
+                  }}
                 >
                   {item?.values?.map((val: any, index: any) => {
                     return (

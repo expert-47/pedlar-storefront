@@ -14,7 +14,6 @@ const BannerImg = (props: any) => {
   const { isMobile } = props;
   const theme = useTheme();
   const [open, setOpen] = useState(true);
-  console.log("props?.headerData?.storefrontImageUrl", props?.headerData?.storefrontImageUrl);
 
   const screen375 = useMediaQuery("(max-width:375px)");
   const isMatchMobile = useMediaQuery(theme.breakpoints.up("sm"));

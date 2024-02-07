@@ -371,7 +371,7 @@ const Cart = (props: any) => {
                           return (
                             <Box
                               style={{
-                                backgroundColor: "white",
+                                backgroundColor: "common.white",
                               }}
                               key={"newAdditiondataCart" + index}
                             >

@@ -370,7 +370,7 @@ const Cart = (props: any) => {
                         {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                           return (
                             <Box
-                              style={{
+                              sx={{
                                 backgroundColor: "common.white",
                               }}
                               key={"newAdditiondataCart" + index}

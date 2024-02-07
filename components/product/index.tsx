@@ -280,9 +280,8 @@ const Cart = (props: any) => {
   } else if (decimalPart === "0") {
     priceOfProduct = Math.round(priceOfProduct);
   }
-
   useEffect(() => {
-    if (newAdditionData) {
+    if (newAdditionData?.images?.nodes.length > 0) {
       setProductsLoadedState(false);
     }
   }, [newAdditionData]);
@@ -327,7 +326,7 @@ const Cart = (props: any) => {
                   <Scrollspy
                     items={newAdditionData?.images?.nodes?.map((_: any, index: any) => `section-${index + 1}`)}
                     currentClassName="detail-page-current"
-                    style={{ width: 10 }}
+                    style={{ width: 10, backgroundColor: theme.palette.common.white }}
                     offset={-300}
                   >
                     {newAdditionData?.images?.nodes?.map((item: any, index: any) => {
@@ -370,8 +369,8 @@ const Cart = (props: any) => {
                         {newAdditionData?.images?.nodes?.map((item: any, index: number) => {
                           return (
                             <Box
-                              sx={{
-                                backgroundColor: "common.white",
+                              style={{
+                                backgroundColor: "white",
                               }}
                               key={"newAdditiondataCart" + index}
                             >
@@ -709,20 +708,6 @@ const Cart = (props: any) => {
             </>
           )}
         </CustomContainer>
-      ) : !newAdditionData ? (
-        <Box
-          sx={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "70vh",
-          }}
-        >
-          <Typography variant="subtitle1">
-            No product detail found Please try again or use a different search term.
-          </Typography>
-        </Box>
       ) : (
         <Box
           sx={{

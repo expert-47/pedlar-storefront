@@ -70,7 +70,6 @@ export const styles = {
     marginTop: "12px",
   },
   mobilePaperBox: {
-    height: "346px",
     marginTop: "-6px",
     position: "relative",
   },
@@ -83,7 +82,7 @@ export const styles = {
   },
   mobilePaperTypography: {
     fontWeight: "700",
-    fontSize: "29px",
+    fontSize: "33px",
     lineHeight: "45px",
   },
   mobileShopNowButton: {
@@ -107,7 +106,7 @@ export const styles = {
     height: "148px",
     display: "flex",
     alignItems: "center",
-    marginTop: "20px",
+    marginTop: "-7px",
     marginBottom: "60px",
   },
   mobilePremiumTypography: {

@@ -108,6 +108,7 @@ const styles = {
     textTransform: "none",
     fontWeight: "600",
     fontSize: "16px",
+    boxShadow: "none",
     "& hover": {
       backgroundColor: "#000000",
     },

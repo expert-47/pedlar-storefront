@@ -84,7 +84,7 @@ const TextBox = (props: any) => {
                 <NextImage
                   layout="default"
                   fill={false}
-                  src="/instagram-icon.svg"
+                  src="/instagram-svgrepo-com.svg"
                   alt="instagram-icon"
                   height={24}
                   width={24}
@@ -104,7 +104,7 @@ const TextBox = (props: any) => {
             >
               <Paper sx={styles.paper}>
                 <NextImage
-                  src="/tiktok-icon2.svg"
+                  src="/logo-tiktok-svgrepo-com.svg"
                   alt="tiktok-icon2"
                   layout="default"
                   fill={false}

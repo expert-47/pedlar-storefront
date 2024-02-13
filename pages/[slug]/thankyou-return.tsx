@@ -1,20 +1,18 @@
 import React from "react";
-
-import { Typography, Box, useMediaQuery, Theme, useTheme } from "@mui/material";
+import { Typography, Box, useMediaQuery, Theme } from "@mui/material";
 import BaseFooter from "components/footer/baseFooter";
 import Divider from "@mui/material/Divider";
 import styles from "styles/home";
 import Footer from "components/footer/footer";
 
 const ThankyouReturn = () => {
-  const theme = useTheme();
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("sm"));
 
   return (
     <>
       {!isMobile ? (
-        <Box sx={{ width: "100%", display: { xs: "none", sm: "block" } }}>
-          <Box sx={{ width: "50%", margin: "auto", marginTop: "10%", marginBottom: "15%" }}>
+        <Box>
+          <Box sx={{ width: "50%", margin: "auto", paddingTop: "10%", marginBottom: "15%" }}>
             <Typography sx={{ fontSize: "35px", fontWeight: "450", marginBottom: "2rem" }}>Thank you.</Typography>
             <Typography sx={{ fontSize: "20px", fontWeight: "380", marginBottom: "1rem" }}>
               Thank you for completing your returns form.
@@ -29,8 +27,8 @@ const ThankyouReturn = () => {
           <Footer />
         </Box>
       ) : (
-        <Box sx={{ width: "100%", display: { xs: "block", sm: "none" } }}>
-          <Box sx={{ margin: "2rem", marginTop: "10%", marginBottom: "15%" }}>
+        <Box>
+          <Box sx={{ padding: "2rem", paddingTop: "10%", paddingBottom: "15%" }}>
             <Typography sx={{ fontSize: "35px", fontWeight: "450", marginBottom: "2rem" }}>Thank you.</Typography>
             <Typography sx={{ fontSize: "20px", fontWeight: "380", marginBottom: "1rem" }}>
               Thank you for completing your returns form.

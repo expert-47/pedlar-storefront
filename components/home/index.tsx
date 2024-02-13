@@ -89,7 +89,7 @@ export const Home = (props: any) => {
         />
         <BrandTitles curatedBrandsResponse={props?.curatedBrandsResponse} />
       </Box>
-      <Bar />
+      <Bar featureStore={slug?.slug === specificStoreName ? true : false} />
       <Divider sx={styles.footerDivider} />
       <BaseFooter />
     </Grid>

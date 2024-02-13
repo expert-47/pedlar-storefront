@@ -72,7 +72,7 @@ const styles = {
     color: "primary.dark",
     textTransform: "none",
     padding: "10px 32.5px",
-    width: "100%",
+
     marginTop: { xs: "10px", sm: "10px", lg: "0px" },
     "&:hover": {
       backgroundColor: "primary.main",

@@ -6,15 +6,27 @@ import BottomSheet from "landing-components/BottomSheet";
 import LoginDialog from "landing-components/BottomSheet/LoginDialog";
 // styles
 import styles from "styles/home";
+import { useRouter } from "next/router";
 
-const Bar: FC = (): JSX.Element => {
+interface Props {
+  featureStore: boolean;
+}
+
+const Bar = (props: Props) => {
   const theme = useTheme();
+  const router = useRouter();
   const popupScreen = useMediaQuery("(min-width:600px)");
 
   const [openDialog, setOpenDialog] = useState(false);
   const [sucessModalshow, setSuccessModalShow] = useState(true);
 
-  const openPopup = () => setOpenDialog(true);
+  const openPopup = () => {
+    if (props?.featureStore === true) {
+      router.push("https://portal.pedlar.store");
+    } else {
+      setOpenDialog(true);
+    }
+  };
 
   const closePopup = () => {
     setSuccessModalShow(true);
@@ -59,13 +71,15 @@ const Bar: FC = (): JSX.Element => {
               fontWeight={"bold"}
               fontSize={{ lg: "24px", md: "24px", sm: "20px", xs: "20px" }}
             >
-              Love Fashion? Have your own style? Share it with your community.
+              {props?.featureStore
+                ? "Add new products to your store today and keep your followers inspired."
+                : "Love Fashion? Have your own style? Share it with your community."}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={4} md={3.2} lg={3.2} sx={{ marginTop: "10px" }}>
-            <Button sx={styles.btn} onClick={openPopup}>
+          <Grid item xs={12} sm={4} md={3.2} lg={3.2} sx={{ marginTop: "10px", textAlign: "center" }}>
+            <Button sx={{ ...styles.btn, width: props?.featureStore ? "80%" : "100%" }} onClick={openPopup}>
               <Typography fontSize={"16px"} fontWeight={"600"}>
-                Sign up for free
+                {props?.featureStore ? "Add new products" : "Sign up for free"}
               </Typography>
             </Button>
           </Grid>

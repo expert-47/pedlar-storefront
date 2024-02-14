@@ -570,10 +570,17 @@ li {
         
       }
     }
-        @media screen and (min-width: 425px) and (max-width: 786px) {
+ @media screen and (max-width: 350px) {
+              .MangeFontSizeForMoreSmallerScreen {
+    font-size: 30px;
+              }
+            }
+ @media screen and (min-width: 425px) and (max-width: 786px) {
         .creatorShopMainImageBox {
             height: 500px;
         
           }
         }
+
+                
 

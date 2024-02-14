@@ -78,11 +78,11 @@ export const styles = {
   },
   mobilePaperInnerBox: {
     textAlign: "center",
-    padding: "40px  20px  20px  20px ",
+    padding: "40px  10px  10px  10px ",
   },
   mobilePaperTypography: {
     fontWeight: "700",
-    fontSize: "33px",
+    fontSize: "35px",
     lineHeight: "45px",
   },
   mobileShopNowButton: {
@@ -108,6 +108,7 @@ export const styles = {
     alignItems: "center",
     marginTop: "-7px",
     marginBottom: "60px",
+    justifyContent: "center",
   },
   mobilePremiumTypography: {
     fontWeight: "600",

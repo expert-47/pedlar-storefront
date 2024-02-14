@@ -62,9 +62,13 @@ const CreateShop = () => {
           <Box sx={styles.mobilePaperBox}>
             <Paper elevation={1} sx={styles.borderRadiusTen}>
               <Box sx={styles.mobilePaperInnerBox}>
-                <Typography color={"#1C1B1F"} sx={styles.mobilePaperTypography}>
-                  Discover & shop <span style={{ color: "#8652FF" }}>40% off</span> everything in exchange for content
-                  creation
+                <Typography
+                  color={"#1C1B1F"}
+                  sx={styles.mobilePaperTypography}
+                  className="MangeFontSizeForMoreSmallerScreen"
+                >
+                  Discover & shop <br /> <span style={{ color: "#8652FF" }}>40% off</span> everything <br /> in exchange
+                  for <br /> content creation
                 </Typography>
               </Box>
               <Box textAlign={"center"}>
@@ -80,7 +84,8 @@ const CreateShop = () => {
           </Box>
           <Box sx={styles.mobilePremiumTextBox}>
             <Typography sx={styles.mobilePremiumTypography}>
-              Shop top premium brands at unheard of discounts in exchange for posting a Reel or a Tiktok
+              Shop top premium brands at <br /> unheard of discounts in <br /> exchange for posting a <br /> Reel or a
+              TikTok
             </Typography>
           </Box>
         </Box>

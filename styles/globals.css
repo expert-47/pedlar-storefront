@@ -135,7 +135,6 @@ body {
     width: 1150px !important;
   }
 }
-/* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .marq-left {
     width: 1080px !important;
@@ -144,7 +143,6 @@ body {
     width: 1080px !important;
   }
 }
-/* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .marq-left {
     width: 950px !important;
